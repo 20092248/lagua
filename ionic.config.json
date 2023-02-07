@@ -1,0 +1,8 @@
+{
+  "name": "Lagua",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "991dde7e"
+}
