@@ -16,6 +16,15 @@ const routes: Routes = [
     path: 'login', canActivate: [IsLoggedGuard],
     loadChildren: () => import('./login/login.module').then( m => m.LoginInPageModule)
   },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  }
+
 ];
 @NgModule({
   imports: [
