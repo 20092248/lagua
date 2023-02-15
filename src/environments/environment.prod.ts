@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  firebaseConfig: {
+  firebase: {
     apiKey: "AIzaSyBG1JdaVSev7mgGNRHzInzQ1q1IqZ5LF04",
     authDomain: "lagua-shikomori.firebaseapp.com",
     projectId: "lagua-shikomori",
