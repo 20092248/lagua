@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: DictionaryPage,
+  },
+  {
+    path: ':id',
+    loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
   }
 ];
 

@@ -22,7 +22,7 @@
 
     <ion-card-content>
       <ion-searchbar animated="true" placeholder="Rechercher dans le dictionnaire..."></ion-searchbar>
-      <ion-button expand="block">Block</ion-button>
+      <ion-button expand="block">Rechercher</ion-button>
     </ion-card-content>
   </ion-card>
 
@@ -34,7 +34,13 @@
 
   <ion-card-content>
     <ion-text>je suis en train de lui faire son manger.</ion-text>
-    <ion-text color="primary"><i> (je suis en train de lui faire son manger)</i></ion-text>
+    <ion-text color="primary"><i> (je suis en train de lui faire son manger.)</i></ion-text>
   </ion-card-content>
 </ion-card>
 </ion-content>
+
+<ion-fab slot="fixed" horizontal="end" vertical="bottom">
+  <ion-fab-button [routerLink]="['add']">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
