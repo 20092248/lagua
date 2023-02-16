@@ -2,28 +2,29 @@
   <h4>Ajouter un mot</h4>
   <ion-list>
     <ion-item>
-      <ion-label position="floating">Mot (en francais) *</ion-label>
+      <ion-label position="stacked">Mot (en francais) *</ion-label>
       <ion-input placeholder="Nom, verbe..."></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Traduction *</ion-label>
-      <ion-input placeholder="Traduction..."></ion-input>
+      <ion-label position="stacked">Traduction *</ion-label>
+      <ion-input placeholder="En shindzuani..."></ion-input>
     </ion-item>
-    <ion-item class="ion-margin-bottom">
+    <ion-item>
       <ion-label position="stacked">Description *</ion-label>
       <ion-textarea placeholder=""></ion-textarea>
-    </ion-item>
-  </ion-list>
-  <h3>Exemple <ion-icon name="add-circle-outline"></ion-icon></h3>
-  <ion-list>
-    <ion-item class="ion-margin-bottom">
-      <ion-label position="stacked">Texte (en francais)</ion-label>
-      <ion-textarea class="ion-no-padding" placeholder="Ex : un paquet de corde (d'une trentaine de coudées)."></ion-textarea>
-    </ion-item>
-    <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Traduction</ion-label>
-    <ion-textarea class="ion-no-padding" placeholder="Ex : Kungu la bamba."></ion-textarea>
-  </ion-item>
+    </ion-item>  
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col size="10">
+          <ion-item> 
+            <ion-label position="stacked">Exemple</ion-label>
+            <ion-input placeholder="Texte : un paquet de corde (d'une trentaine de coudées)."></ion-input>
+            <ion-input placeholder="Traduction : Kungu la bamba."></ion-input>
+          </ion-item>  
+        </ion-col>
+        <ion-col size="2"><ion-icon size="large" name="add-circle-outline"></ion-icon><ion-icon size="large" name="remove-circle-outline"></ion-icon></ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-list>
   <ion-button expand="block">Ajouter</ion-button>
 </ion-content>
