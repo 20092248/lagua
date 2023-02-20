@@ -8,7 +8,7 @@ const routes: Routes = [
     component: DictionaryPage,
   },
   {
-    path: ':id',
+    path: 'add',
     loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
   }
 ];

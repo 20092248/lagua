@@ -21,8 +21,8 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-searchbar animated="true" placeholder="Rechercher dans le dictionnaire..."></ion-searchbar>
-      <ion-button expand="block">Rechercher</ion-button>
+      <ion-searchbar animated="true" placeholder="Rechercher dans le dictionnaire..." [(ngModel)]="word" name="name"></ion-searchbar>
+      <ion-button expand="block" (click)="searchWord()">Rechercher</ion-button>
     </ion-card-content>
   </ion-card>
 

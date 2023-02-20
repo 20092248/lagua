@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DictionaryService } from '../services/dictionary.service';
 
 @Component({
   selector: 'app-dictionary',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
 })
 export class DictionaryPage {
 
-  constructor() {}
+  word: string = '';
+
+  constructor(private dictionaryService: DictionaryService) {}
+
+  searchWord() {
+    console.log(this.word);
+    this.dictionaryService.searchWord(this.word).then((data: any) => {
+      console.log(data);
+    });
+  }
 
 }

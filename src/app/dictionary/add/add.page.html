@@ -3,28 +3,28 @@
   <ion-list>
     <ion-item>
       <ion-label position="stacked">Mot (en francais) *</ion-label>
-      <ion-input placeholder="Nom, verbe..."></ion-input>
+      <ion-input placeholder="Nom, verbe..." [(ngModel)]="word.text" name="text" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Traduction *</ion-label>
-      <ion-input placeholder="En shindzuani..."></ion-input>
+      <ion-input placeholder="En shindzuani..." [(ngModel)]="word.translate" name="translate" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Description *</ion-label>
-      <ion-textarea placeholder=""></ion-textarea>
+      <ion-textarea placeholder="" [(ngModel)]="word.description" name="description" required></ion-textarea>
     </ion-item>  
-    <ion-grid class="ion-no-padding">
+    <ion-grid class="ion-no-padding" *ngFor="let example of word.examples; let index = index">
       <ion-row>
         <ion-col size="10">
           <ion-item> 
             <ion-label position="stacked">Exemple</ion-label>
-            <ion-input placeholder="Texte : un paquet de corde (d'une trentaine de coudées)."></ion-input>
-            <ion-input placeholder="Traduction : Kungu la bamba."></ion-input>
+            <ion-input placeholder="Texte : un paquet de corde (d'une trentaine de coudées)." [(ngModel)]="example.text" name="exampleText{{index}}"></ion-input>
+            <ion-input placeholder="Traduction : Kungu la bamba." [(ngModel)]="example.translate" name="exampleTranslate{{index}}"></ion-input>
           </ion-item>  
         </ion-col>
-        <ion-col size="2"><ion-icon size="large" name="add-circle-outline"></ion-icon><ion-icon size="large" name="remove-circle-outline"></ion-icon></ion-col>
+        <ion-col size="2"><ion-icon size="large" name="add-circle-outline" (click)="addExample(index)"></ion-icon><ion-icon size="large" name="remove-circle-outline" (click)="removeExample(index)"></ion-icon></ion-col>
       </ion-row>
     </ion-grid>
   </ion-list>
-  <ion-button expand="block">Ajouter</ion-button>
+  <ion-button expand="block" (click)="addWord()">Ajouter</ion-button>
 </ion-content>
