@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Word } from '../model/word.model';
+import { FirebaseWord } from '../model/wordFirebase.model';
 import { DictionaryService } from '../services/dictionary.service';
 
 @Component({
@@ -9,13 +11,19 @@ import { DictionaryService } from '../services/dictionary.service';
 export class DictionaryPage {
 
   word: string = '';
+  wordsFound: Word[] = [];
 
-  constructor(private dictionaryService: DictionaryService) {}
+  constructor(private dictionaryService: DictionaryService) { }
 
   searchWord() {
-    console.log(this.word);
-    this.dictionaryService.searchWord(this.word).then((data: any) => {
-      console.log(data);
+    this.wordsFound = [];
+    this.dictionaryService.searchWord(this.word).then((words: FirebaseWord[]) => {
+      if(words && words.length){
+        words.forEach((w: FirebaseWord)=>{
+          this.wordsFound.push(new Word(w.text.join(', '), w.translate.join(', '), w.description, w.examples));
+        });
+        console.log(this.wordsFound);
+      }
     });
   }
 

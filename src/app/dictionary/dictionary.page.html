@@ -4,9 +4,7 @@
       <ion-grid>
         <ion-row>
           <ion-col>Francais</ion-col>
-          <ion-col
-            ><ion-icon size="large" name="repeat-outline"></ion-icon
-          ></ion-col>
+          <ion-col><ion-icon size="large" name="repeat-outline"></ion-icon></ion-col>
           <ion-col>Shindzuani</ion-col>
         </ion-row>
       </ion-grid>
@@ -16,27 +14,27 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title>DICTIONNAIRE FRANÇAIS-SHINDZUANI</ion-card-title>
-      <ion-card-subtitle
-        >Un dictionnaire de 200 000 mots et expressions.</ion-card-subtitle>
+      <ion-card-subtitle>Un dictionnaire de 200 000 mots et expressions.</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
-      <ion-searchbar animated="true" placeholder="Rechercher dans le dictionnaire..." [(ngModel)]="word" name="name"></ion-searchbar>
+      <ion-searchbar animated="true" placeholder="Rechercher dans le dictionnaire..." [(ngModel)]="word"
+        name="name"></ion-searchbar>
       <ion-button expand="block" (click)="searchWord()">Rechercher</ion-button>
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
-  <ion-card-header>
-    <ion-card-title>manger</ion-card-title>
-    <ion-card-subtitle>-la</ion-card-subtitle>
-  </ion-card-header>
+  <ion-card *ngFor="let infoWord of wordsFound">
+    <ion-card-header>
+      <ion-card-title>{{infoWord.translate}}</ion-card-title>
+      <ion-card-subtitle>{{infoWord.text}}</ion-card-subtitle>
+    </ion-card-header>
 
-  <ion-card-content>
-    <ion-text>je suis en train de lui faire son manger.</ion-text>
-    <ion-text color="primary"><i> (je suis en train de lui faire son manger.)</i></ion-text>
-  </ion-card-content>
-</ion-card>
+    <ion-card-content *ngFor="let example of infoWord.examples">Exemple :
+      <ion-text>{{example.translate}}</ion-text>
+      <ion-text color="primary"><i> ({{example.text}})</i></ion-text>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 
 <ion-fab slot="fixed" horizontal="end" vertical="bottom">
