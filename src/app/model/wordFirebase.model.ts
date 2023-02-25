@@ -4,6 +4,7 @@ export interface FirebaseWord {
     text: string[];
     translate: string[];
     description: string;
-    phonetic: string[];
+    phoneticText: string[];
+    phoneticTranslate: string[];
     examples: Examples[];
 }

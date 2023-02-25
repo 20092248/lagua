@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { Examples } from 'src/app/model/example.model';
 import { DictionaryService } from 'src/app/services/dictionary.service';
@@ -10,20 +11,30 @@ import { DictionaryService } from 'src/app/services/dictionary.service';
 })
 export class AddPage implements OnInit {
 
+  wordForm: FormGroup;
   word: any = { text: '', translate: '', description: '', examples: [{ text: '', translate: '' }] };
   examplesCount: number = 1;
 
-  constructor(private dictionaryService: DictionaryService, private toastController: ToastController) { }
+  constructor(private formBuilder: FormBuilder, private dictionaryService: DictionaryService, private toastController: ToastController) {
+    this.wordForm = this.formBuilder.group({
+      'text':['',Validators.required],
+      'translate':['',Validators.required],
+      'description':['',Validators.required],
+      'exampleText0': [], 'exampleTranslate0': [],
+      'exampleText1': [], 'exampleTranslate1': [],
+      'exampleText2': [], 'exampleTranslate2': [],
+      'exampleText3': [], 'exampleTranslate3': [],
+      'exampleText4': [], 'exampleTranslate4': []
+    });
+   }
 
-  ngOnInit() {
-    console.log(this.word.examples.length);
-  }
+  ngOnInit() { }
 
   addWord() {
     console.log(this.word);
     this.controlExamples();
     this.dictionaryService.updateDictionary(this.word).then((data: any) => {
-      console.log(data);
+      this.wordForm.reset();
       this.displayToast();
     });
   }
@@ -39,7 +50,7 @@ export class AddPage implements OnInit {
   controlExamples() {
     this.word.examples.forEach((w: Examples, index: number) => {
       if (!(w.text && w.translate)) {
-        this.word.examples.splice(index + 1, 1);
+        this.word.examples.splice(index, 1);
       }
     });
   }

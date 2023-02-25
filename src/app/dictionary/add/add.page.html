@@ -1,30 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Lagua
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true" class="start-content">
   <h4>Ajouter un mot</h4>
-  <ion-list>
-    <ion-item>
-      <ion-label position="stacked">Mot (en shindzuani) *</ion-label>
-      <ion-input placeholder="Nom, verbe..." [(ngModel)]="word.text" name="text" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Traduction *</ion-label>
-      <ion-input placeholder="en français..." [(ngModel)]="word.translate" name="translate" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Description *</ion-label>
-      <ion-textarea placeholder="" [(ngModel)]="word.description" name="description" required></ion-textarea>
-    </ion-item>  
-    <ion-grid class="ion-no-padding" *ngFor="let example of word.examples; let index = index">
-      <ion-row>
-        <ion-col size="10">
-          <ion-item>
-            <ion-label position="stacked">Exemple {{index + 1}}</ion-label>
-            <ion-input placeholder="Traduction : Kungu la bamba." [(ngModel)]="example.text" name="exampleText{{index}}"></ion-input>
-            <ion-input placeholder="Texte : un paquet de corde (d'une trentaine de coudées)." [(ngModel)]="example.translate" name="exampleTranslate{{index}}"></ion-input>
-          </ion-item>  
-        </ion-col>
-        <ion-col size="2"><ion-icon size="large" name="add-circle-outline" (click)="addExample(index)"></ion-icon><ion-icon *ngIf="word.examples.length - 1" size="large" name="remove-circle-outline" (click)="removeExample(index)"></ion-icon></ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-list>
-  <ion-button expand="block" (click)="addWord()">Ajouter</ion-button>
+  <form [formGroup]="wordForm" class="ion-padding-bottom" (ngSubmit)="addWord();">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Mot (en shindzuani) *</ion-label>
+        <ion-input placeholder="Nom, verbe..." [(ngModel)]="word.text" name="text" formControlName="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Traduction *</ion-label>
+        <ion-input placeholder="en français..." [(ngModel)]="word.translate" name="translate" formControlName="translate"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Description *</ion-label>
+        <ion-textarea placeholder="" [(ngModel)]="word.description" name="description" formControlName="description"></ion-textarea>
+      </ion-item>
+      <ion-grid class="ion-no-padding" *ngFor="let example of word.examples; let index = index">
+        <ion-row>
+          <ion-col size="10">
+            <ion-item>
+              <ion-label position="stacked">Exemple {{index + 1}}</ion-label>
+              <ion-input placeholder="Traduction : Kungu la bamba." [(ngModel)]="example.text" formControlName="exampleText{{index}}"
+                name="exampleText{{index}}"></ion-input>
+              <ion-input placeholder="Texte : un paquet de corde (d'une trentaine de coudées)."
+                [(ngModel)]="example.translate" name="exampleTranslate{{index}}" formControlName="exampleTranslate{{index}}"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="2"><ion-icon size="large" name="add-circle-outline" *ngIf="word.examples.length < 5"
+              (click)="addExample(index)"></ion-icon><ion-icon *ngIf="word.examples.length - 1" size="large"
+              name="remove-circle-outline" (click)="removeExample(index)"></ion-icon></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+    <ion-button expand="block" type="submit" [disabled]="!wordForm.valid">Ajouter</ion-button>
+  </form>
 </ion-content>

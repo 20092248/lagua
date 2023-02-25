@@ -2,3 +2,15 @@ ion-row {
   text-align: center;
   align-items: center;
 }
+
+ion-card-subtitle {
+  white-space: break-spaces;
+}
+
+.ion-padding-top-bottom {
+  padding: 0 16px;
+}
+
+.ion-padding-top-bottom:last-child {
+  padding-bottom: 16px;
+}

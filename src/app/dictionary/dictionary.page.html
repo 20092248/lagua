@@ -1,3 +1,10 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Lagua
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true" class="start-content">
   <ion-card>
     <ion-card-content>
@@ -26,11 +33,11 @@
 
   <ion-card *ngFor="let infoWord of wordsFound">
     <ion-card-header>
-      <ion-card-title>{{infoWord.translate}}</ion-card-title>
-      <ion-card-subtitle>{{infoWord.text}}</ion-card-subtitle>
+      <ion-card-title>{{infoWord.text}} - <ion-text color="primary"><i>{{infoWord.translate}}</i></ion-text></ion-card-title>
+      <ion-card-subtitle>{{infoWord.description}}</ion-card-subtitle>
     </ion-card-header>
 
-    <ion-card-content *ngFor="let example of infoWord.examples">Exemple :
+    <ion-card-content class="ion-padding-top-bottom" *ngFor="let example of infoWord.examples">
       <ion-text>{{example.translate}}</ion-text>
       <ion-text color="primary"><i> ({{example.text}})</i></ion-text>
     </ion-card-content>
