@@ -19,7 +19,7 @@
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Description *</ion-label>
-        <ion-textarea placeholder="" [(ngModel)]="word.description" name="description" formControlName="description"></ion-textarea>
+        <ion-textarea [autoGrow]="true" placeholder="" [(ngModel)]="word.description" name="description" formControlName="description"></ion-textarea>
       </ion-item>
       <ion-grid class="ion-no-padding" *ngFor="let example of word.examples; let index = index">
         <ion-row>
