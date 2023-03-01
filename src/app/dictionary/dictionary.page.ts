@@ -17,12 +17,11 @@ export class DictionaryPage {
 
   searchWord() {
     this.wordsFound = [];
-    this.dictionaryService.searchWord(this.word).then((words: FirebaseWord[]) => {
+    this.dictionaryService.searchWord(this.word.toLocaleLowerCase()).then((words: FirebaseWord[]) => {
       if(words && words.length){
         words.forEach((w: FirebaseWord)=>{
           this.wordsFound.push(new Word(w.text.join(', '), w.translate.join(', '), w.description, w.examples));
         });
-        console.log(this.wordsFound);
       }
     });
   }
