@@ -1,6 +1,21 @@
+ion-popover {
+  --width: 97%;
+  --backdrop-opacity: 0;
+
+  --offset-y: 10px;
+}
+
+.img-box>ion-icon {
+  padding: 9px;
+}
+
+ion-tab-bar ion-icon {
+  padding: 5px;
+}
+
 .border-white-tabs {
-  border: black solid 2px;
-  background-color: black;
+  // border: black solid 2px;
+  // background-color: black;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -10,9 +25,9 @@
 .img-box {
   border-radius: 50%;
   overflow: hidden;
-  height: 46px;
-  width: 46px;
-  background-color: #5c913b;
-  margin-left: auto; 
+  height: 50px;
+  width: 50px;
+  background-color: #cccfcb;
+  margin-left: auto;
   margin-right: auto;
 }

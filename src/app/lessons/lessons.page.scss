@@ -1,0 +1,61 @@
+ion-card-header {
+    text-align: center;
+    padding: 16px 0;
+}
+
+ion-card-header.ion-unlock-lesson {
+    width: 72.5%;
+    margin-left: 15%;
+}
+
+ion-card-header.ion-lock-lesson {
+    width: 72.5%;
+}
+
+.ion-flex:first-child {
+    margin-top: 0px !important;
+}
+
+.ion-flex {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.ion-size-arrow {
+    width: 12.5%;
+    text-align: center;
+}
+
+.ion-lock-lesson {
+    opacity: 0.7;
+}
+
+.ionic-category {
+    background: #ccffd4;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px #284b7c14;
+    padding: 1px 8px 16px
+}
+
+.ion-link-between-card {
+    width: 5px;
+    height: 50px;
+    background: green;
+    margin-top: 0;
+    position: relative;
+    margin-left: 50%;
+}
+
+.ion-custom-lock{
+    text-align: center;
+    width: 15%;
+}
+
+.ion-lock-closed {
+    background: lightgray;
+    padding: 7px;
+    border-radius: 25px;
+}

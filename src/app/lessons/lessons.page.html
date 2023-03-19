@@ -1,3 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Lagua
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
-  <app-explore-container name="Leçon page"></app-explore-container>
+  <div class="ionic-category ion-margin-top">
+    <div class="">
+      <h2>Leçon</h2>
+      <div class="ion-padding-bottom">Découverte - Cours Débutant</div>
+    </div>
+    <div>
+      <ion-card *ngFor="let lesson of lessons" class="ion-no-margin ion-flex">
+        <ion-card-header class="ion-unlock-lesson">
+          <ion-card-title>{{lesson.title}}</ion-card-title>
+          <ion-card-subtitle>{{lesson.subTitle}}</ion-card-subtitle>
+        </ion-card-header>
+        <div class="ion-size-arrow"><ion-icon size="large" name="chevron-forward-outline"></ion-icon></div>
+      </ion-card>
+      <ion-card class="ion-no-margin ion-flex">
+        <div class="ion-lock-lesson ion-custom-lock"><ion-icon size="large" class="ion-lock-closed" name="lock-closed-outline"></ion-icon></div>
+        <ion-card-header class="ion-lock-lesson ion-padding-horizontal">
+          <ion-card-title>L'accent</ion-card-title>
+          <ion-card-subtitle>langue accentogène, non-accentogène</ion-card-subtitle>
+        </ion-card-header>
+        <div class="ion-lock-lesson ion-size-arrow"><ion-icon size="large" name="chevron-forward-outline"></ion-icon></div>
+      </ion-card>
+    </div>
+  </div>
 </ion-content>

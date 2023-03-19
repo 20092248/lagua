@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../lessons/lessons.module').then(m => m.LessonsPageModule)
       },
       {
+        path: 'review',
+        loadChildren: () => import('../review/review.module').then(m => m.ReviewPageModule)
+      },
+      {
         path: 'profile',
         loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
       },

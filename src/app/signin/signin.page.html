@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="padding">
+
+    <div class="logo">
+      <ion-icon color="light" name="globe-outline"></ion-icon>
+      <!-- <ion-icon color="light" name="contact"></ion-icon> -->
+      <!-- <ion-icon color="light" name="cloudy-night"></ion-icon> -->
+      <!-- <img src="../../assets/logo_comores.png"> -->
+    </div>
+
+    <ion-item>
+      <ion-label position="stacked" color="light">Pseudonyme</ion-label>
+      <ion-input color="light" type="text" class="custom"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" color="light">Email</ion-label>
+      <ion-input color="light" type="mail" class="custom"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" color="light">Mot de passe</ion-label>
+      <ion-input color="light" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" color="light">Confirmer mot de passe</ion-label>
+      <ion-input color="light" type="password"></ion-input>
+    </ion-item>
+
+    <ion-button color="lagua ion-margin-top" expand="block" shape="round">Valider</ion-button>
+
+    <ion-item lines="none">
+      <ion-label color="light" text-center>Ou vous avez déjà un identifiant</ion-label>
+    </ion-item>
+
+    <ion-button color="light" expand="block" shape="round" fill="outline" [routerLink]="['/login']">Connexion</ion-button>
+
+  </div>
+</ion-content>
