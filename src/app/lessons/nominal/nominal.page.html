@@ -1,9 +1,229 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>nominal</ion-title>
+    <ion-title>
+      Lagua
+    </ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+  <h1><ion-icon class="ion-arrow-back-position" size="large" name="arrow-back-circle-outline" [routerLink]="['/tabs/lessons']"></ion-icon> Les classes
+    nominales</h1>
+  <p>Comme pour les autres langues bantoues, la langue anjouanaise est caractérisée
+    par la répartition des noms en classes. Une classe forme l'ensemble
+    des noms qui engendrent les mêmes accords grammaticaux. Les racines ou
+    thèmes reçoivent un préfixe qui en est l'indicateur de classe. Tous les mots
+    qui dépendent du nom s'accordent avec lui en recevant un préfixe spécifique.</p>
+  <p>La répartition des noms en classes se fait souvent par paire en opposition
+    de nombre. En suivant la convention adoptée par la linguistique bantoue, je
+    vais énumérer les classes nominales en anjouanais:</p>
+  <p>1) Classes 1-2 : dans ces deux classes, ne figurent que les humains. Ces
+    classes sont caractérisées par les préfixes mu- (ou m- et mw- lorsque la
+    racine commence par une voyelle) au singulier et wa- (ou w- lorsque la racine
+    commence également par une voyelle) au pluriel. Ex. :</p>
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col>muntru (ou mntru) "personne"</ion-col>
+      <ion-col>wantru "personnes"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>mlozi "pêcheur"</ion-col>
+      <ion-col>walozi "pêcheurs"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>mwana "enfant"</ion-col>
+      <ion-col>wana "enfants"</ion-col>
+    </ion-row>
+  </ion-grid>
+  <p><i>Remarque</i> : la classe 1 comprend une sous-classe que l'on nommera
+    la. Dans cette catégorie, caractérisée par l'absence de préfixe, ne
+    figurent également que des humains, des noms de métier, de
+    parenté. Ex. : fundi "enseignant, artisan", shemedji "beau-frère",
+    shofera "chauffeur", bwení "madame",... Ces mots forment leur
+    pluriel en classe 6 (voir ci-dessous).</p>
+  <p>2) classes 3-4 : Elles sont caractérisées par les préfixes mu- (ou m- et mw- lorsque
+    la racine commence par une voyelle) au singulier et mi- (ou m- lorsque
+    la racine commence également par une voyelle) au pluriel. On trouve
+    dans ces deux classes, des noms d'arbres et des noms divers. Ex. :</p>
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col>mnadzí "cocotier"</ion-col>
+      <ion-col>minadzí "cocotiers"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>mwirí "arbre"</ion-col>
+      <ion-col>mirí "arbres"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>mhono "main"</ion-col>
+      <ion-col>mihono "mains"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>mwezi "mois"</ion-col>
+      <ion-col>mezi "mois"</ion-col>
+    </ion-row>
+  </ion-grid>
+  <p>3) classes 5-6 : Elles sont caractérisées par les préfixes dzi- (dans deux
+    mots seulement: dzinyo "dent" et dzitso "oeil") ou par une absence de
+    préfIxe (ø-) au singulier et ma- au pluriel. On y trouve des mots désignant
+    des termes de parenté, des parties du corps et divers, beaucoup de mots
+    d'emprunt. Ex. :</p>
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col>dzinyo "dent"</ion-col>
+      <ion-col>manyo "dents"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>dzitso "oeil"</ion-col>
+      <ion-col>matso "yeux"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>kara "nid"</ion-col>
+      <ion-col>mahara "nids"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>paja "cuisse"</ion-col>
+      <ion-col>mavaja "cuisses"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>dao "natte"</ion-col>
+      <ion-col>maIao "nattes"</ion-col>
+    </ion-row>
+  </ion-grid>
+  <p><i>Remarque</i> : dans la classe 6, figure le pluriel des mots de la classe
+    la : mafundi "enseignants, artisans", mazemedji "beaux-frères",
+    mazofera "chauffeurs", mabweni "dames",... On y trouve
+    également des noms de liquide, des collectifs: maji "eau, liquide,
+    jus", matrá "huile", ma "ensemble de doigts", masiwá "archipel".</p>
+  <p>4) classes 7-8 : On trouve ici des noms divers dont les préfixes de classe
+    sont shi- (ou sh- lorsque la racine commence par une voyelle) au singulier,
+    et zi- (ou z- lorsque la racine commence par une voyelle) :</p>
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col>shitswá "tête"</ion-col>
+      <ion-col>zitswá "têtes"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>shintru "chose"</ion-col>
+      <ion-col>zintru "choses"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>shombo "outil"</ion-col>
+      <ion-col>zombo "outils"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>shuma "métal"</ion-col>
+      <ion-col>zuma "métaux"</ion-col>
+    </ion-row>
+  </ion-grid>
+  <p><i>Remarque</i> : la classe 7 comprend également des mots désignant des
+    noms de langue ou de manière, sans forme de pluriel en classe 8.
+    Ex. : shindzuani "anjouanais, manière anjouanaise", shifarantsa
+    "français, manière française", shisawahili "swahili", shibushí
+    "malgache, manière malgache"...</p>
+  <p>5) classe 9-10 : Ces deux classes ont le même préfixe N- homorganique
+    (m- devant p et b, ny- lorsque la racine commence par une voyelle, et n- dans
+    les autres cas), ø- devant les consonnes labio-dentales f et v, et devant
+    beaucoup de mots d'emprunt. On trouve dans ces classes des noms de fruits,
+    d'animaux et des noms divers. Ex. :</p>
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col>ntrovi "banane"</ion-col>
+      <ion-col>ntrovi "bananes"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>manga "mangue"</ion-col>
+      <ion-col>manga "mangues"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>nadzí "noix de coco"</ion-col>
+      <ion-col>nadzí "noix de coco"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>mpuhu "souris"</ion-col>
+      <ion-col>mpuhu "souris"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>mbuzi "chèvre"</ion-col>
+      <ion-col>mbuzi "chèvres"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>fi "poisson"</ion-col>
+      <ion-col>fi "poissons"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>vua "pluie"</ion-col>
+      <ion-col>vua "pluies"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>hazi "travail"</ion-col>
+      <ion-col>hazi "travaux"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>âvió "avion"</ion-col>
+      <ion-col>âvió "avions"</ion-col>
+    </ion-row>
+  </ion-grid>
+  <p>6) classe 11 : on trouve dans cette classe des noms divers commençant par
+    le préftxe u- (ou w- lorsque la racine commence par une voyelle). Les mots
+    désignant des objets concrets, forment leur pluriel soit en classe 10, soit en
+    classe 6. Ex. :</p>
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col>utseo "van"</ion-col>
+      <ion-col>ntseo "vans" (cl.lO)</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>upanga "sabre"</ion-col>
+      <ion-col>mpanga "sabres" (cl.lO)</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>ulili "lit"</ion-col>
+      <ion-col>ma1iIi "lits" (cl.6)</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>waswia "conseil"</ion-col>
+      <ion-col>nyasia "conseils" (cl.lO)</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>wango "bord"</ion-col>
+      <ion-col>nyango "bords" (cl.10)</ion-col>
+    </ion-row>
+  </ion-grid>
+  <span>Les mots désignant des abstractions n'ont pas de pluriel</span>
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col>ujuzi "connaissance"</ion-col>
+      <ion-col>ulibwavu "grandeur"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>uzuri "beauté"</ion-col>
+      <ion-col>utiti "petitesse"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>weu "blancheur, clarté"</ion-col>
+      <ion-col>wema "bonté"</ion-col>
+    </ion-row>
+  </ion-grid>
+  <p>7) classe 15 : c'est la classe des inftnitifs, avec comme préftxe de classe:
+    hu- (hw- lorsque la racine verbale commence par une voyelle). Les inftnitifs
+    n'ont pas de pluriel. Ex. :</p>
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col>hujá "venir"</ion-col>
+      <ion-col>hunwá "boire"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>husomesa "enseigner"</ion-col>
+      <ion-col>huona "voir"</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>hwendrá "aller, marcher"</ion-col>
+      <ion-col>hwanyisa "partager"</ion-col>
+    </ion-row>
+  </ion-grid>
+  <p>On se souviendra que les verbes sont classés non pas sous hu- ou hw-
+    mais à l'ordre alphabétique de leur racine.</p>
+  <p>8) classes locatives 16, 17, 18 : ces classes, qui jouent un certain rôle
+    grammatical, ne comportent qu'un seul nom indépendant vahanu ou
+    vwahanu "endroit" (de classe 16).</p>
 </ion-content>
