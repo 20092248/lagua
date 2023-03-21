@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Lessons } from '../model/lessons.model';
 import { LessonsService } from '../services/lessons.service';
 
@@ -11,12 +12,16 @@ export class LessonsPage implements OnInit {
 
   lessons: Lessons[] | undefined;
 
-  constructor(private lessonsService: LessonsService) { }
+  constructor(private router: Router, private lessonsService: LessonsService) { }
 
   ngOnInit(): void {
     this.lessonsService.searchLessons().then(((lessons: Lessons[]) => {
       console.log(lessons);
       this.lessons = lessons;
     }));
+  }
+
+  goTo(routing: string) {
+    this.router.navigate(['tabs/lessons/' + routing]);
   }
 }

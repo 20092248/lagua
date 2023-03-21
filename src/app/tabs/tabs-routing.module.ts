@@ -17,7 +17,7 @@ const routes: Routes = [
       },
       {
         path: 'lessons',
-        loadChildren: () => import('../lessons/lessons.module').then(m => m.LessonsPageModule)
+        loadChildren: () => import('../lessons/lessons.module').then(m => m.LessonsPageModule),
       },
       {
         path: 'review',

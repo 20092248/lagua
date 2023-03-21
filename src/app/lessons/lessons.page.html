@@ -12,7 +12,7 @@
       <div class="ion-padding-bottom">Découverte - Cours Débutant</div>
     </div>
     <div>
-      <ion-card *ngFor="let lesson of lessons" class="ion-no-margin ion-flex">
+      <ion-card *ngFor="let lesson of lessons" class="ion-no-margin ion-flex" (click)="goTo(lesson.navigate)">
         <ion-card-header class="ion-unlock-lesson">
           <ion-card-title>{{lesson.title}}</ion-card-title>
           <ion-card-subtitle>{{lesson.subTitle}}</ion-card-subtitle>
