@@ -36,6 +36,10 @@ const routes: Routes = [
     loadChildren: () => import('./verbal/verbal.module').then(m => m.VerbalPageModule)
   },
   {
+    path: 'conjugation',
+    loadChildren: () => import('./conjugation/conjugation.module').then(m => m.ConjugationPageModule)
+  },
+  {
     path: '',
     redirectTo: '/tabs/lessons',
     pathMatch: 'full'

@@ -27,7 +27,12 @@ const routes: Routes = [
   {
     path: 'review',
     loadChildren: () => import('./review/review.module').then( m => m.ReviewPageModule)
+  },
+  {
+    path: 'conjugation',
+    loadChildren: () => import('./lessons/conjugation/conjugation.module').then( m => m.ConjugationPageModule)
   }
+
 
 
 ];
