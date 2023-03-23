@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FacebookLoginPlugin, FacebookLogin } from '@capacitor-community/facebook-login';
+import { Plugins } from '@capacitor/core';
+import { isPlatform } from '@ionic/angular';
 import { AuthentificationService } from '../services/authentification.service';
 
 @Component({
@@ -8,7 +11,7 @@ import { AuthentificationService } from '../services/authentification.service';
   styleUrls: ['./login.page.scss']
 })
 export class LoginPage implements OnInit {
-
+  fbLogin: FacebookLoginPlugin | undefined;
   constructor(private router: Router, private authentificationService: AuthentificationService) { }
 
   ngOnInit() {
@@ -21,8 +24,12 @@ export class LoginPage implements OnInit {
   }
 
   signInWithFacebook() {
-    this.authentificationService.signinwithfacebook().then((connected: boolean) => {
-      this.router.navigate(['']); //go to home page
-    });
+      this.authentificationService.signinwithfacebook().then((connected: boolean) => {
+        this.router.navigate(['']); //go to home page
+      });
   }
+
+//   FB.getLoginStatus(function(response) {
+//     statusChangeCallback(response);
+// });
 }

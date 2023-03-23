@@ -12,7 +12,7 @@ export class AuthentificationService {
   constructor(private _auth: Auth) { }
 
   checkUserState() {
-    return true; //getAuth() && getAuth().currentUser;
+    return getAuth() && getAuth().currentUser;
   }
 
   async login() { }
@@ -44,6 +44,11 @@ export class AuthentificationService {
 
   async signinwithfacebook(): Promise<boolean> {
     const provider = new FacebookAuthProvider();
+    provider.setDefaultLanguage('fr');
+    provider.addScope('user_birthday');
+    provider.setCustomParameters({
+      'display': 'popup'
+    });
     const auth = getAuth();
     let response = await signInWithPopup(auth, provider)
       .then((result) => {
