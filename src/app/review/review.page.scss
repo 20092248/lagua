@@ -1,0 +1,88 @@
+
+ion-content {
+  --ion-background-color: #f6fcf6;
+}
+
+ion-card {
+  --background: #ffffff
+}
+
+.subHeader {
+  border-bottom: 0.125rem solid rgb(225, 229, 231);
+  background-color: #ffffff;
+  box-shadow: rgb(0 0 0 / 12%) 0px 4px 16px;
+}
+
+.headline {
+  color: #14441c;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.25;
+  padding: 0px 5px;
+}
+
+.ion-scroll-review {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 0 5px;
+}
+
+.ion-margin-vertical-min {
+  margin: 10px 0 5px;
+}
+
+.ion-unlock-lesson {
+  position: relative;
+  border-left: 0.125rem solid rgb(147, 150, 147);
+  margin: 0.625rem 2rem 0.625rem 0px;
+  padding-left: 10px;
+  left: 1.5rem;
+}
+
+.ion-icon-checked {
+  position: absolute;
+    font-size: 20px;
+    left: -11px;
+    padding: 2px 0;
+    border-radius: 12px;
+    color: rgb(48 137 133);
+    background-color: #f6fcf6;
+    background-size: contain;
+}
+
+.ion-icon-locked {
+  position: absolute;
+    font-size: 20px;
+    left: -11px;
+    padding: 2px 0;
+    border-radius: 12px;
+    color: rgb(255 93 15);
+    background-color: #f6fcf6;
+    background-size: contain;
+}
+
+@media only screen and (min-width: 992px) {
+  /* For desktop: */
+  /* width */
+  ::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}

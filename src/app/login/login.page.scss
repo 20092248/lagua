@@ -1,8 +1,27 @@
 ion-content {
 
-    --ion-background-color: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+    --ion-background-color: linear-gradient(45deg, #85FFBD 0%, #485563 100%);
     /* --ion-background-color: linear-gradient(#f5af19, #f12711); */
     /* --ion-background-color: linear-gradient(#485563, #29323c); */
+}
+
+// ion-content {
+// 	--ion-background-color: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+// 	--ion-background-size: 400% 400%;
+// 	animation: gradient 15s ease infinite;
+// 	height: 100vh;
+// }
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 ion-item {
