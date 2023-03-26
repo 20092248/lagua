@@ -1,10 +1,24 @@
-
 ion-content {
   --ion-background-color: #f6fcf6;
 }
 
 ion-card {
-  --background: #ffffff
+  --background: #ffffff;
+  border-radius: 15px;
+}
+
+ion-card-content {
+  white-space: pre-wrap;
+  line-height: 1.3;
+}
+
+.ion-first-icon {
+  top: -25px;
+}
+
+.ion-custom-text:not(:first-child) {
+  font-size: 85%;
+  padding-left: 5px;
 }
 
 .subHeader {
@@ -34,37 +48,75 @@ ion-card {
   margin: 10px 0 5px;
 }
 
+.ion-last-card {
+  margin-bottom: 16px !important;
+}
+
 .ion-unlock-lesson {
   position: relative;
   border-left: 0.125rem solid rgb(147, 150, 147);
-  margin: 0.625rem 2rem 0.625rem 0px;
+  margin: 0.625rem 2rem 1.625rem 0px;
   padding-left: 10px;
   left: 1.5rem;
 }
 
 .ion-icon-checked {
   position: absolute;
-    font-size: 20px;
-    left: -11px;
-    padding: 2px 0;
-    border-radius: 12px;
-    color: rgb(48 137 133);
-    background-color: #f6fcf6;
-    background-size: contain;
+  font-size: 20px;
+  left: -11px;
+  padding: 2px 0;
+  border-radius: 12px;
+  color: rgb(48 137 133);
+  background-color: #f6fcf6;
+  background-size: contain;
 }
 
-.ion-icon-locked {
+ion-icon.ion-icon-locked {
   position: absolute;
-    font-size: 20px;
-    left: -11px;
-    padding: 2px 0;
-    border-radius: 12px;
-    color: rgb(255 93 15);
-    background-color: #f6fcf6;
-    background-size: contain;
+  font-size: 20px;
+  left: -11px;
+  padding: 2px 0;
+  border-radius: 12px;
+  color: rgb(255 93 15);
+  background-color: #f6fcf6;
+  background-size: contain;
+}
+
+ion-icon.ion-icon-locked.first-icon {
+  bottom: 20px;
+}
+
+.ion-button {
+  --color: #ffffff;
+}
+
+.ion-button.ion-button-position {
+  margin-top: -5px;
+  margin-bottom: 16px;
+}
+
+.ion-button-a1 {
+  --background: #1a6921;
+}
+
+.ion-button-a2 {
+  --background: #6eb523;
+}
+
+.ion-button-b1 {
+  --background: #ffc409;
+}
+
+.ion-button-b2 {
+  --background: #ff9000;
+}
+
+.ion-button-c1 {
+  --background: #ff0000;
 }
 
 @media only screen and (min-width: 992px) {
+
   /* For desktop: */
   /* width */
   ::-webkit-scrollbar {

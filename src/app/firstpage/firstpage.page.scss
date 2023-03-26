@@ -1,0 +1,45 @@
+ion-slides {
+    height: 100%;
+}
+
+ion-button {
+    --border-radius: 10px;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+ion-grid {
+    height: 100%;
+}
+
+ion-col.ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ion-icon {
+    font-size: 150px;
+}
+
+.ion-content-page {
+    height: 80%;
+}
+
+.ion-footer-page {
+    height: 20%;
+}
+
+.ion-subtitle-text {
+    line-height: 1.5rem;
+    font-size: 18px;
+}
+
+ion-slides {
+    --bullet-background-active: #418824;
+}
+
+.swiper-pagination-bullet {
+    width: 20px !important;
+    height: 10px;
+}

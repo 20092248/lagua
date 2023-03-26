@@ -283,3 +283,11 @@
   --ion-color-shade: var(--ion-color-lagua-shade) !important;
   --ion-color-tint: var(--ion-color-lagua-tint) !important;
 }
+
+ion-button {
+  text-transform: none;
+ }
+
+.ion-arrow-back-position {
+  vertical-align: bottom;
+}

@@ -1,0 +1,56 @@
+<ion-content>
+  <ion-grid class="ion-text-center">
+    <ion-row class="ion-content-page">
+      <ion-col class="ion-content">
+        <ion-content>
+          <ion-slides pager="true" [options]="slideOpts">
+            <ion-slide>
+              <div class="ion-padding-horizontal ion-margin-horizontal">
+                <ion-icon name="save-outline"></ion-icon>
+                <p class="ion-subtitle-text">Apprenez les mots dont vous avez vraiment besoin, quand vous en avez besoin
+                </p>
+                <small>Vous apprenez de facon plus rapide et plus intelligente en découvrant d'abord les mots les plus
+                  fréquents utilisés dans une langue</small>
+              </div>
+            </ion-slide>
+            <ion-slide>
+              <div class="ion-padding-horizontal ion-margin-horizontal">
+                <ion-icon name="options-outline"></ion-icon>
+                <p class="ion-subtitle-text">Apprenez selon votre rythme
+                </p>
+                <small>Intégrez facilement les leçons dans votre quotidien avec la possibilité de réviser les cours déjà visionnées.</small>
+              </div>
+            </ion-slide>
+            <ion-slide>
+              <div class="ion-padding-horizontal ion-margin-horizontal">
+                <ion-icon name="book-outline"></ion-icon>
+                <p class="ion-subtitle-text">Recherchez des mots et expressions grâce à notre dictionnaire
+                </p>
+                <small>L'équipe Lagua est heureux de vous mettre à disposition le meilleur dictionnaire avec plus de 100
+                  000 mots et expressions dans notre dictionnaire</small>
+              </div>
+            </ion-slide>
+          </ion-slides>
+        </ion-content>
+        <!-- <div class="ion-padding-horizontal">
+          <ion-icon size="large" name="save-outline"></ion-icon>
+          <p class="ion-subtitle-text">Apprenez les mots dont vous avez vraiment besoin, quand vous en avez besoin</p>
+          <small>Vous apprenez de facon plus rapide et plus intelligente en découvrant d'abord les mots les plus
+            fréquents utilisés dans une langue</small>
+        </div> -->
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-footer-page">
+      <ion-col>
+        <div>
+          <!-- <div>
+            2
+          </div> -->
+          <ion-button [routerLink]="['../information-user/learn']" class="ion-margin-bottom" expand="block" color="lagua">Démarrer
+            l'apprentissage</ion-button>
+          <ion-button [routerLink]="['../login']" expand="block" color="light">J'ai déjà un compte</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

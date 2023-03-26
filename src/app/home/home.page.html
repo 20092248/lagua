@@ -1,3 +1,106 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Lagua </ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
-  <app-explore-container name="Home page"></app-explore-container>
+  <div>
+    <div>
+      <div class="subHeader ion-padding">
+        <h1 class="headline ion-no-margin">Content de vous revoir {{user?.displayName}}.</h1>
+      </div>
+
+      <div>
+        <ion-grid class="ion-text-center">
+          <ion-row>
+            <ion-col>
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-subtitle>Mon niveau</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content class="ion-card-content-level">
+                  <div class="ion-card-content-level-label">Découverte (A1)
+                  </div>
+                  <svg class="progress-visualizer-canvas" viewBox="0 0 33.831 33.831">
+                    <circle class="progress-visualizer-arc" cx="50%" cy="50%" stroke-dasharray="56.7, 100"
+                      r="15.9155"></circle>
+                  </svg>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col>
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-subtitle>Mots appris</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content>
+                  <span>20</span>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <div class="ion-unlock-lesson">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>C'est l'heure de réviser</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="">Visiualiser les précédentes leçons</div>
+            <div class="">Améliorer votre score en faisant des tests</div>
+          </ion-card-content>
+          <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
+            fill="clear">Réviser</ion-button>
+        </ion-card>
+      </div>
+
+      <div class="ion-unlock-lesson">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Prochain cours à visualiser</ion-card-title>
+            <ion-card-subtitle>Cours 1 : Leçon 2 - Kwezi! 2e partie/<i>Salut !</i></ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="ion-custom-text">Vous allez apprendre :</div>
+            <div class="ion-custom-text">à demander à quelqu'un comment il va</div>
+            <div class="ion-custom-text">à dire que vous allez bien</div>
+            <div class="ion-custom-text">à utiliser les pronoms you et I</div>
+          </ion-card-content>
+          <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
+            fill="clear">Accéder au cours</ion-button>
+        </ion-card>
+      </div>
+
+      <!-- <div>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Content de vous revoir, Brady</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h3 class="ion-subtitle-custom">Prochaine cours à visualiser</h3>
+            <div class="ion-content-lesson ion-margin-bottom">
+                <p>Découverte (A1) - Cours 1 : Leçon 2</p>
+                <p>Hi! 2e partie</p>
+                <p>Salut !</p>
+                <p>Vous allez apprendre :</p>
+                <p>- à demander à quelqu'un comment il va</p>
+                <p>- à dire que vous allez bien</p>
+                <p>à utiliser les pronoms you et I</p>
+                <ion-button>Commencer la leçon</ion-button>
+            </div>
+
+            <h3 class="ion-subtitle-custom">C'est l'heure de réviser</h3>
+            <div class="ion-content-lesson ion-margin-bottom">
+                <p>Visiualiser les précédentes leçons</p>
+                <p>Améliorer votre score en faisant des tests</p>
+                <ion-button>Réviser</ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div> -->
+
+    </div>
+  </div>
 </ion-content>
