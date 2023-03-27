@@ -48,8 +48,8 @@ const routes: Routes = [
         loadChildren: () => import('./information-user/level/level.module').then(m => m.LevelPageModule)
       },
       {
-        path: 'from',
-        loadChildren: () => import('./information-user/from/from.module').then(m => m.FromPageModule)
+        path: 'time',
+        loadChildren: () => import('./information-user/time/time.module').then(m => m.TimePageModule)
       },
       {
         path: 'why',
