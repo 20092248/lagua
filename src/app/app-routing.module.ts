@@ -37,27 +37,27 @@ const routes: Routes = [
     loadChildren: () => import('./firstpage/firstpage.module').then(m => m.FirstpagePageModule)
   },
   {
-    path: 'information-user',
+    path: 'user-information',
     children: [
       {
         path: 'learn',
-        loadChildren: () => import('./information-user/learn/learn.module').then(m => m.LearnPageModule)
+        loadChildren: () => import('./user-information/learn/learn.module').then(m => m.LearnPageModule)
       },
       {
         path: 'level',
-        loadChildren: () => import('./information-user/level/level.module').then(m => m.LevelPageModule)
+        loadChildren: () => import('./user-information/level/level.module').then(m => m.LevelPageModule)
       },
       {
         path: 'time',
-        loadChildren: () => import('./information-user/time/time.module').then(m => m.TimePageModule)
+        loadChildren: () => import('./user-information/time/time.module').then(m => m.TimePageModule)
       },
       {
         path: 'why',
-        loadChildren: () => import('./information-user/why/why.module').then(m => m.WhyPageModule)
+        loadChildren: () => import('./user-information/why/why.module').then(m => m.WhyPageModule)
       },
       {
         path: 'age',
-        loadChildren: () => import('./information-user/age/age.module').then(m => m.AgePageModule)
+        loadChildren: () => import('./user-information/age/age.module').then(m => m.AgePageModule)
       }
     ]
   }
@@ -66,24 +66,24 @@ const routes: Routes = [
   //   loadChildren: () => import('./firstpage/firstpage.module').then( m => m.FirstpagePageModule)
   // },
   // {
-  //   path: 'information-user/learn',
-  //   loadChildren: () => import('./information-user/learn/learn.module').then( m => m.LearnPageModule)
+  //   path: 'user-information/learn',
+  //   loadChildren: () => import('./user-information/learn/learn.module').then( m => m.LearnPageModule)
   // },
   // {
   //   path: 'level',
-  //   loadChildren: () => import('./information-user/level/level.module').then( m => m.LevelPageModule)
+  //   loadChildren: () => import('./user-information/level/level.module').then( m => m.LevelPageModule)
   // },
   // {
   //   path: 'from',
-  //   loadChildren: () => import('./information-user/from/from.module').then( m => m.FromPageModule)
+  //   loadChildren: () => import('./user-information/from/from.module').then( m => m.FromPageModule)
   // },
   // {
   //   path: 'why',
-  //   loadChildren: () => import('./information-user/why/why.module').then( m => m.WhyPageModule)
+  //   loadChildren: () => import('./user-information/why/why.module').then( m => m.WhyPageModule)
   // },
   // {
   //   path: 'age',
-  //   loadChildren: () => import('./information-user/age/age.module').then( m => m.AgePageModule)
+  //   loadChildren: () => import('./user-information/age/age.module').then( m => m.AgePageModule)
   // }
 ];
 @NgModule({

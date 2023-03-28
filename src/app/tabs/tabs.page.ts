@@ -21,7 +21,7 @@ export class TabsPage implements OnInit {
 
   logout() {
     this.authentification.logout().then(() => {
-      this.goTo('/login'); //retour au portal
+      this.goTo('/firstPage');
     });
   }
 

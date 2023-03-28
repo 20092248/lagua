@@ -7,7 +7,7 @@ import { User } from '../model/user.model';
 })
 export class AuthentificationService {
 
-  user: User | undefined;
+  user: User = {};
 
   constructor(private _auth: Auth) { }
 
@@ -75,7 +75,7 @@ export class AuthentificationService {
 
   async logout() {
     return signOut(getAuth()).then(() => {
-      this.user = undefined;
+      this.user = {};
       console.log('sign-out successful.');
     }).catch((error) => {
       console.error(error);

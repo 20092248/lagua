@@ -1,28 +1,49 @@
 import { Injectable } from '@angular/core';
-import { Firestore, getFirestore, orderBy } from '@angular/fire/firestore';
-import { doc, getDoc, getDocs, collection, query } from '@firebase/firestore';
+import { Firestore, getFirestore } from '@angular/fire/firestore';
+import { doc, getDoc, collection, setDoc, addDoc } from '@firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingService {
 
-  settingsReview: any | undefined;
+  userInformation: any |undefined;
 
   constructor(private _firestore: Firestore) { }
 
-  async getCategories(): Promise<any> {
-
-    const docRef = doc(getFirestore(), 'settings', 'review');
+  async getSettings(document: string): Promise<any> {
+    var settingsReview: any | undefined;
+    const docRef = doc(getFirestore(), 'settings', document);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      this.settingsReview =  docSnap.data();
+      settingsReview = docSnap.data();
     } else {
       console.log('Impossible de récupérer les infos du cours.');
     }
-    return this.settingsReview;
-
+    return settingsReview;
   }
 
+  async getUserInformation(): Promise<any> {
+    const docRef = doc(getFirestore(), 'settings', 'userInformation');
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      this.userInformation = docSnap.data();
+    } else {
+      console.log('Impossible de récupérer les infos du cours.');
+    }
+    return this.userInformation;
+  }
+
+  async createCollection(col: string,  values: any[]) {
+    values.forEach(async data => {
+      const docRef = await addDoc(collection(getFirestore(), col), data);
+      console.log("Document written with ID: ", docRef.id);
+    });
+  }
+
+  async createDocument(collection: string, document: string, value: any) {
+    await setDoc(doc(getFirestore(), collection, document), value);
+  }
 }

@@ -14,7 +14,7 @@ export class ReviewService {
 
   async getReview(category: string): Promise<Review[]> {
     this.review = [];
-    const q = query(collection(getFirestore(), 'review'), where('category', '==', category), orderBy('order'));
+    const q = query(collection(getFirestore(), 'reviews'), where('category', '==', category), orderBy('order'));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => this.review.push(doc.data() as Review));
     return this.review;

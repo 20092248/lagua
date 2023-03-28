@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingService } from '../services/setting.service';
 
 @Component({
   selector: 'app-firstpage',
@@ -17,9 +18,10 @@ export class FirstpagePage implements OnInit {
     speed: 2000,
     direction: 'vertical'
   };
-  constructor() { }
+  constructor(private settingsService: SettingService) { }
 
   ngOnInit() {
+    this.settingsService.getUserInformation().then();
   }
 
 }

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Apprendre</ion-title>
+    <ion-button class="ion-margin-end" slot="end" color="light" size="small" [routerLink]="['../../login']">Se connecter</ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item lines="full">
+      <ion-label>Je voudrais apprendre</ion-label>
+    </ion-item>
+    <ion-item *ngFor="let l of learn" [routerLink]="['../why']" routerLinkActive="selected" lines="full" (click)="selectedItem(l)">
+      <ion-thumbnail slot="start">
+        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+      </ion-thumbnail>
+      <ion-label>{{l.text}} / <i>{{l.translate}}</i></ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
