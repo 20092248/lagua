@@ -1,3 +1,8 @@
+ion-card {
+  --background: #ffffff;
+  border-radius: 15px;
+}
+
 ion-row {
   text-align: center;
   align-items: center;
@@ -5,6 +10,19 @@ ion-row {
 
 ion-card-subtitle {
   white-space: break-spaces;
+}
+
+ion-searchbar {
+  --border-radius: 10px;
+}
+
+.ion-language {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.ion-title-dictionary {
+  margin-top: 5px;
 }
 
 .ion-padding-top-bottom {

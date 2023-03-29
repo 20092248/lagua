@@ -10,9 +10,9 @@
     <ion-card-content>
       <ion-grid>
         <ion-row>
-          <ion-col>Francais</ion-col>
-          <ion-col><ion-icon size="large" name="repeat-outline"></ion-icon></ion-col>
-          <ion-col>Shindzuani</ion-col>
+          <ion-col class="ion-language">Francais</ion-col>
+          <ion-icon size="large" name="repeat-outline"></ion-icon>
+          <ion-col class="ion-language">Shindzuani</ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-content>
@@ -20,14 +20,13 @@
 
   <ion-card>
     <ion-card-header>
-      <ion-card-title>DICTIONNAIRE FRANÇAIS-SHINDZUANI</ion-card-title>
-      <ion-card-subtitle>Un dictionnaire de 200 000 mots et expressions.</ion-card-subtitle>
+      <ion-card-title class="ion-title-dictionary">Dictionnaire Français-Shindzuani</ion-card-title>
+      <ion-card-subtitle>Un dictionnaire de 100 000 mots et expressions.</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
-      <ion-searchbar animated="true" placeholder="Rechercher dans le dictionnaire..." [(ngModel)]="word"
-        name="name"></ion-searchbar>
-      <ion-button expand="block" (click)="searchWord()">Rechercher</ion-button>
+      <ion-searchbar animated="true" placeholder="Rechercher dans le dictionnaire..." [(ngModel)]="word" show-clear-button="always" clear-icon="close-outline" name="name" class="ion-no-padding"></ion-searchbar>
+      <ion-button class="ion-no-margin" expand="block" (click)="searchWord()">Rechercher</ion-button>
     </ion-card-content>
   </ion-card>
 
