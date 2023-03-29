@@ -1,3 +1,114 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Lagua </ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
-  <app-explore-container name="Profile page"></app-explore-container>
+  <div class="ion-profile-header">
+    <ion-grid class="ion-text-center">
+      <ion-row>
+        <ion-col>
+          <div class="border-white-tabs" id="popover-profil">
+            <div class="img-box"></div></div
+        ></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Display name</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Email</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="ion-profile-content">
+    <ion-grid class="ion-text-center">
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header class="ion-weekly-calendar">
+              <ion-card-subtitle>Tendance hebdomadaire</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <div class="ion-calendar-content">
+                <div class="ion-calendar-day is-today">
+                  <div style="color: rgb(154, 167, 179)">Lu</div>
+                  <div class="ion-calendar-activity">0</div>
+                </div>
+                <div class="ion-calendar-day">
+                  <div style="color: rgb(154, 167, 179)">Ma</div>
+                  <div class="ion-calendar-activity">0</div>
+                </div>
+                <div class="ion-calendar-day">
+                  <div style="color: rgb(154, 167, 179)">Me</div>
+                  <div class="ion-calendar-activity">0</div>
+                </div>
+                <div class="ion-calendar-day">
+                  <div style="color: rgb(154, 167, 179)">Je</div>
+                  <div class="ion-calendar-activity">0</div>
+                </div>
+                <div class="ion-calendar-day">
+                  <div style="color: rgb(154, 167, 179)">Ve</div>
+                  <div class="ion-calendar-activity">0</div>
+                </div>
+                <div class="ion-calendar-day">
+                  <div style="color: rgb(154, 167, 179)">Sa</div>
+                  <div class="ion-calendar-activity">0</div>
+                </div>
+                <div class="ion-calendar-day">
+                  <div style="color: rgb(154, 167, 179)">Di</div>
+                  <div class="ion-calendar-activity">0</div>
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card></ion-col
+        >
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle></ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content> </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle></ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content> </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div>
+      <ion-list class="ion-padding-bottom">
+        <ion-item [routerLink]="['']" routerLinkActive="selected" lines="full"
+          ><ion-icon slot="start" name="settings-outline"></ion-icon>Paramètres
+          de compte
+        </ion-item>
+        <ion-item [routerLink]="['']" routerLinkActive="selected" lines="full"
+          ><ion-icon slot="start" name="people-outline"></ion-icon>Invite des
+          amis
+        </ion-item>
+        <ion-item [routerLink]="['']" routerLinkActive="selected" lines="none"
+          ><ion-icon slot="start" name="help-circle-outline"></ion-icon>Aide
+        </ion-item>
+      </ion-list>
+    </div>
+    <ion-button expand="block">Se déconnecter</ion-button>
+    <ion-button expand="block" color="danger"
+      >Supprimer votre compte</ion-button
+    >
+  </div>
 </ion-content>
+
+<!-- email?: string;
+    displayName?: string;
+    photoURL? : string;
+    learn?: CodeTextTranslate;
+    why?: CodeLabel;
+    age?: CodeLabel;
+    time?: CodeLabel;
+    level?: CodeLabel; -->

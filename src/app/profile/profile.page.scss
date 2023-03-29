@@ -1,0 +1,67 @@
+.ion-profile-header {
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 0.125rem solid rgb(225, 229, 231);
+  box-shadow: rgb(0 0 0 / 12%) 0px 4px 13px 1px;
+}
+
+.ion-profile-content {
+  // height: 70%;
+}
+
+.border-white-tabs {
+  border-radius: 50%;
+  height: 100px;
+}
+
+.img-box {
+  border-radius: 50%;
+  overflow: hidden;
+  height: 100px;
+  width: 100px;
+  background-color: #cccfcb;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ion-card-header.ion-weekly-calendar {
+  padding: 10px;
+}
+
+.ion-calendar-content {
+  display: flex;
+  flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding: 0 10px 10px;
+  gap: 0px;
+}
+
+.ion-calendar-day {
+  display: flex;
+  flex-flow: column nowrap;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 10px;
+  gap: 16px;
+}
+
+.ion-calendar-activity {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  font-family: "Babbel Milliard", sans-serif;
+  line-height: 22px;
+  color: rgb(57, 65, 73);
+  white-space: normal;
+  margin: 0px;
+  width: 1rem;
+}
+
+.is-today {
+  background-color: #f4f4f6;
+  border: 1px solid #d3d4d9;
+  border-radius: 4px;
+}
