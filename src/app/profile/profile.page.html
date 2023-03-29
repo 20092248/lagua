@@ -16,7 +16,13 @@
         <ion-col>Display name</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col>Email</ion-col>
+        <ion-col class="ion-no-padding ion-margin-bottom"><i><span class="ion-padding-left">Email</span><ion-icon name="pencil-sharp"></ion-icon></i></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Niveau actuel : Débutant</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Langue en apprentissage : Shindzuani / <i>L'anjouanais</i></ion-col>
       </ion-row>
     </ion-grid>
   </div>
@@ -26,7 +32,7 @@
         <ion-col>
           <ion-card>
             <ion-card-header class="ion-weekly-calendar">
-              <ion-card-subtitle>Tendance hebdomadaire</ion-card-subtitle>
+              <ion-card-title>Tendance hebdomadaire</ion-card-title>
             </ion-card-header>
             <ion-card-content>
               <div class="ion-calendar-content">
@@ -60,24 +66,25 @@
                 </div>
               </div>
             </ion-card-content>
-          </ion-card></ion-col
-        >
+          </ion-card></ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <ion-card>
             <ion-card-header>
-              <ion-card-subtitle></ion-card-subtitle>
+              <ion-card-title><ion-icon name="thumbs-up-outline"></ion-icon> QCM réussis</ion-card-title>
             </ion-card-header>
-            <ion-card-content> </ion-card-content>
+            <ion-card-content class="ion-custom-card-content"
+              >5</ion-card-content>
           </ion-card>
         </ion-col>
         <ion-col>
           <ion-card>
             <ion-card-header>
-              <ion-card-subtitle></ion-card-subtitle>
+              <ion-card-title><ion-icon name="trending-up-outline"></ion-icon> Mots appris</ion-card-title>
             </ion-card-header>
-            <ion-card-content> </ion-card-content>
+            <ion-card-content class="ion-custom-card-content"
+              >20</ion-card-content>
           </ion-card>
         </ion-col>
       </ion-row>
@@ -89,26 +96,20 @@
           de compte
         </ion-item>
         <ion-item [routerLink]="['']" routerLinkActive="selected" lines="full"
-          ><ion-icon slot="start" name="people-outline"></ion-icon>Invite des
-          amis
+          ><ion-icon slot="start" name="people-outline"></ion-icon>Invite des amis
         </ion-item>
         <ion-item [routerLink]="['']" routerLinkActive="selected" lines="none"
           ><ion-icon slot="start" name="help-circle-outline"></ion-icon>Aide
         </ion-item>
       </ion-list>
     </div>
-    <ion-button expand="block">Se déconnecter</ion-button>
-    <ion-button expand="block" color="danger"
-      >Supprimer votre compte</ion-button
+    <ion-button expand="block"
+      ><ion-icon slot="start" name="log-out-outline"></ion-icon>Se
+      déconnecter</ion-button
+    >
+    <ion-button expand="block" color="danger" class="ion-margin-bottom"
+      ><ion-icon slot="start" name="trash-outline"></ion-icon>Supprimer votre
+      compte</ion-button
     >
   </div>
 </ion-content>
-
-<!-- email?: string;
-    displayName?: string;
-    photoURL? : string;
-    learn?: CodeTextTranslate;
-    why?: CodeLabel;
-    age?: CodeLabel;
-    time?: CodeLabel;
-    level?: CodeLabel; -->
