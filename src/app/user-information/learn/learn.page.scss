@@ -7,11 +7,16 @@ ion-toolbar {
   --padding-bottom: 20px;
 }
 
+ion-item:first-child {
+  text-align: center;
+  --border-radius: 20px 20px 0 0;
+}
+
 ion-item {
-  --background: #dfe0e0;
-  --color: #fff;
+  --background: #eef1ee;
+  --border-width: 1px;
+}
 
-  --border-width: 2px;
-
-  --border-radius: 20px;
+ion-item:last-child {
+  --border-radius: 0 0 20px 20px;
 }
