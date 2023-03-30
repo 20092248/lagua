@@ -11,10 +11,7 @@ export class FirstpagePage implements OnInit {
   slideOpts: any = {
     initialSlide: 0,
     slidesPerView: 1,
-    autoplay: {
-      delay: 6000,
-      pauseOnMouseEnter: true
-    },
+    autoplay: false,
     speed: 2000,
     direction: 'vertical'
   };

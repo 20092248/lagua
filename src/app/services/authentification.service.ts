@@ -12,7 +12,7 @@ export class AuthentificationService {
   constructor(private _auth: Auth) { }
 
   checkUserState() {
-    return true; //getAuth() && getAuth().currentUser;
+    return getAuth() && getAuth().currentUser;
   }
 
   async login() { }
