@@ -44,6 +44,12 @@ ion-button {
   transform: translate(-50%, -50%);
 }
 
+.ion-login-img {
+  height: 70%;
+  filter: invert(1);
+  animation: 1s;
+}
+
 .logo {
   position: relative;
   height: 30%;
