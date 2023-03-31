@@ -7,18 +7,19 @@ import { SettingService } from '../services/setting.service';
   styleUrls: ['./firstpage.page.scss'],
 })
 export class FirstpagePage implements OnInit {
-
   slideOpts: any = {
     initialSlide: 0,
     slidesPerView: 1,
-    autoplay: false,
+    autoplay: {
+      delay: 6000,
+      pauseOnMouseEnter: true,
+    },
     speed: 2000,
-    direction: 'vertical'
+    direction: 'vertical',
   };
-  constructor(private settingsService: SettingService) { }
+  constructor(private settingsService: SettingService) {}
 
   ngOnInit() {
     this.settingsService.getUserInformation().then();
   }
-
 }

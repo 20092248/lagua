@@ -1,39 +1,63 @@
 ion-content {
-    --ion-background-color: linear-gradient(#61d89a, #29764a);
-    /* --ion-background-color: linear-gradient(#f5af19, #f12711); */
-    /* --ion-background-color: linear-gradient(#485563, #29323c); */
+  --ion-background-color: linear-gradient(#46895c, #99cfa9);
 }
 
 ion-item {
-    --ion-background-color: transparent!important;
+  --ion-background-color: transparent !important;
 }
 
-.padding {
-    padding: 5%!important;
+ion-grid {
+  height: 100%;
 }
 
-.logo ion-icon{
-    font-size: 10em;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+ion-row {
+  height: 100%;
 }
 
-.logo img{
-    height: 200px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+ion-col {
+  height: 100%;
+}
+
+.ion-content-button ion-button {
+  --border-radius: 10px;
+  font-size: 14px;
+  font-weight: 100;
+}
+
+.logo ion-icon {
+  font-size: 10em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo img {
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .logo {
-    position: relative;
-    height: 250px;
+  position: relative;
+  height: 30%;
 }
 
-.flex {
-    display: flex;
-    justify-content: space-between;
+.content {
+    height: 70%;
+}
+
+.ion-client-login-custom {
+  font-size: 16px;
+}
+
+.ion-other-connection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ion-other-connection ion-button {
+  --border-radius: 20px;
 }
