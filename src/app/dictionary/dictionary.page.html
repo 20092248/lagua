@@ -1,50 +1,132 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Lagua
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 <ion-content [fullscreen]="true" class="start-content">
-  <ion-card>
-    <ion-card-content>
-      <ion-grid>
-        <ion-row>
-          <ion-col class="ion-language">Francais</ion-col>
-          <ion-icon size="large" name="repeat-outline"></ion-icon>
-          <ion-col class="ion-language">Shindzuani</ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title class="ion-title-dictionary">Dictionnaire Français-Shindzuani</ion-card-title>
-      <ion-card-subtitle>Un dictionnaire de 100 000 mots et expressions.</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content>
-      <ion-searchbar animated="true" placeholder="Rechercher dans le dictionnaire..." [(ngModel)]="word" show-clear-button="always" clear-icon="close-outline" name="name" class="ion-no-padding"></ion-searchbar>
-      <ion-button class="ion-no-margin" expand="block" (click)="searchWord()">Rechercher</ion-button>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card *ngFor="let infoWord of wordsFound">
-    <ion-card-header>
-      <ion-card-title>{{infoWord.text}} - <ion-text color="primary"><i>{{infoWord.translate}}</i></ion-text></ion-card-title>
-      <ion-card-subtitle>{{infoWord.description}}</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content class="ion-padding-top-bottom" *ngFor="let example of infoWord.examples">
-      <ion-text>{{example.translate}}</ion-text>
-      <ion-text color="primary"><i> ({{example.text}})</i></ion-text>
-    </ion-card-content>
-  </ion-card>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-search-header">
+      <ion-col>
+        <div>
+          <h1 class="ion-padding-top ion-no-margin">Dictionnaire</h1>
+          <div class="ion-padding-vertical-min">
+            <ion-searchbar animated="true" placeholder="Rechercher dans le dictionnaire..." [(ngModel)]="word"
+              show-clear-button="always" clear-icon="close-outline" name="name" class="ion-no-padding"
+              (ionBlur)="searchWord()"></ion-searchbar>
+            <ion-modal [isOpen]="isResultDisplay" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">
+              <ng-template>
+                <ion-header>
+                  <ion-toolbar>
+                    <ion-title>Résultat pour le mot <ion-text color="lagua"><i>{{word}}</i></ion-text></ion-title>
+                    <ion-buttons slot="end">
+                      <ion-button (click)="closeModal()">
+                        <ion-icon slot="icon-only" name="close"></ion-icon>
+                      </ion-button>
+                    </ion-buttons>
+                  </ion-toolbar>
+                </ion-header>
+                <ion-content>
+                  <ion-list>
+                    <ion-item *ngFor="let infoWord of wordsFound" lines="full"
+                      class="ion-item-result-dictionary">
+                      <ion-icon color="lagua" class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
+                      <ion-label class="ion-text-wrap">
+                        <ion-text>{{infoWord.text}}</ion-text>
+                        <p class="ion-text-italic">{{infoWord.translate}}</p>
+                        <p class="ion-word-description ion-text-italic"><q>{{infoWord.description}}</q></p>
+                        <p *ngFor="let example of infoWord.examples">
+                          <ion-text>{{example.translate}}</ion-text>
+                          <ion-text class="ion-text-italic"><ion-text color="lagua">
+                              ({{example.text}})</ion-text></ion-text>
+                        </p>
+                      </ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ion-content>
+              </ng-template>
+            </ion-modal>
+          </div>
+          <div class="ion-scroll-review">
+            <div class="ion-margin-vertical-min">
+              <ion-button *ngFor="let letter of alphabet">{{letter}}</ion-button>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding-language">
+      <ion-col size="5">
+        Français
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon color="lagua" size="large" name="repeat-outline"></ion-icon>
+      </ion-col>
+      <ion-col size="5">
+        Shindzuani
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-result-dictionary">
+      <ion-col class="ion-full-height">
+        <ion-list class="ion-no-padding" lines="full">
+          <ion-item class="ion-item-result-dictionary">
+            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
+            <ion-label>
+              Blablabla
+            </ion-label>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item class="ion-item-result-dictionary">
+            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
+            <ion-label class="ion-text-wrap">
+              Blablabla reqlbrvs vrhsjl
+              <p class="ion-text-italic">rovreslvresvbr hjtrs vtrs</p>
+            </ion-label>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item class="ion-item-result-dictionary">
+            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
+            <ion-label>
+              VBLABLABLABL
+            </ion-label>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item class="ion-item-result-dictionary">
+            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
+            <ion-label>
+              Blablabla
+            </ion-label>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item class="ion-item-result-dictionary">
+            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
+            <ion-label>
+              Blablabla
+            </ion-label>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item class="ion-item-result-dictionary">
+            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
+            <ion-label>
+              Blablabla
+            </ion-label>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item class="ion-item-result-dictionary">
+            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
+            <ion-label>
+              Blablabla
+            </ion-label>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item class="ion-item-result-dictionary">
+            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
+            <ion-label>
+              Blablabla
+            </ion-label>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+    <ion-fab-button color="lagua" [routerLink]="['add']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
-
-<ion-fab slot="fixed" horizontal="end" vertical="bottom">
-  <ion-fab-button [routerLink]="['add']">
-    <ion-icon name="add"></ion-icon>
-  </ion-fab-button>
-</ion-fab>

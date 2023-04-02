@@ -14,7 +14,7 @@
     </ion-item>
     <ion-item *ngFor="let l of learn" [routerLink]="['../why']" routerLinkActive="selected" lines="full" (click)="selectedItem(l)">
       <ion-thumbnail slot="start">
-        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+        <img alt="Silhouette of mountains" src="assets/img/flag/{{l.flag}}" />
       </ion-thumbnail>
       <ion-label>{{l.text}} / <i>{{l.translate}}</i></ion-label>
     </ion-item>

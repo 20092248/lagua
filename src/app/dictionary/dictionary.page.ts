@@ -13,10 +13,12 @@ export class DictionaryPage {
   word: string = '';
   wordsFound: Word[] = [];
   alphabet: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  isResultDisplay: boolean | undefined;
 
   constructor(private dictionaryService: DictionaryService) { }
 
   searchWord() {
+    this.isResultDisplay = true;
     this.wordsFound = [];
     this.dictionaryService.searchWord(this.word.toLocaleLowerCase()).then((words: FirebaseWord[]) => {
       if(words && words.length){
@@ -25,6 +27,10 @@ export class DictionaryPage {
         });
       }
     });
+  }
+
+  closeModal(){
+    this.isResultDisplay = false;
   }
 
 }
