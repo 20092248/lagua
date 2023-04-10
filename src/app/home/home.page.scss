@@ -36,7 +36,7 @@ ion-text {
 }
 
 .ion-padding-top-min {
-  padding-top: 5px
+  padding-top: 2px
 }
 
 .ion-custom-text:not(:first-child) {
@@ -194,7 +194,9 @@ ion-card-content>span {
 
 ion-card.ion-dashboard {
   --background: #578154;
-  --color: #ffffff
+  --color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 ion-card.ion-dashboard ion-icon {

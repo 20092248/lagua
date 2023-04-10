@@ -15,7 +15,7 @@ export class AuthentificationService {
   constructor(private _auth: Auth, private _firestore: Firestore) { }
 
   checkUserState() {
-    return true; //getAuth() && getAuth().currentUser;
+    return getAuth() && getAuth().currentUser;
   }
 
   getInfoUser(uid: string) {
