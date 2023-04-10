@@ -6,4 +6,5 @@ export interface Lessons {
     navigate: string;
     title: string;
     subTitle: string;
+    src: string;
 }

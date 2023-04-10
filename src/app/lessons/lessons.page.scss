@@ -1,5 +1,11 @@
+ion-toolbar {
+    --ion-background-color: #1a6921;
+    --color: #ffffff;
+}
+
 ion-content {
-    --ion-background-color: #f6fcf6;
+    --ion-background-color: #1a6921;
+    --color: #ffffff;
 }
 
 ion-card {
@@ -13,12 +19,11 @@ ion-card-header {
 }
 
 ion-card-header.ion-unlock-lesson {
-    width: 72.5%;
-    margin-left: 15%;
+    width: 70%;
 }
 
 ion-card-header.ion-lock-lesson {
-    width: 72.5%;
+    width: 70%;
 }
 
 ion-card-title {
@@ -45,6 +50,10 @@ ion-card-subtitle {
     text-align: center;
 }
 
+.ion-size-img {
+    width: 17.5%;
+}
+
 .ion-lock-lesson {
     opacity: 0.7;
 }
@@ -61,7 +70,7 @@ ion-card-subtitle {
 .ion-link-between-card {
     width: 5px;
     height: 50px;
-    background: green;
+    background: #1a6921;
     margin-top: 0;
     position: relative;
     margin-left: 50%;
@@ -78,15 +87,8 @@ ion-card-subtitle {
     border-radius: 25px;
 }
 
-.subHeader {
-    border-bottom: 0.125rem solid rgb(225, 229, 231);
-    background-color: #ffffff;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 13px 1px;
-    margin-top: 8px;
-}
-
 .headline {
-    color: #14441c;
+    color: #ffffff;
     font-size: 1.5rem;
     font-weight: 400;
     letter-spacing: normal;
@@ -95,6 +97,10 @@ ion-card-subtitle {
 }
 
 .subHeadline {
-    color: #14441c;
+    color: #ffffff;
     margin: 5px 0px 5px 5px !important;
 }
+
+.ion-icon-src {
+    padding-left: 8px;
+  }

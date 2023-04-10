@@ -1,27 +1,30 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>
-      Lagua
-    </ion-title>
+    <div class="subHeader ion-padding ion-margin-vertical ion-text-center">
+      <h1 class="headline ion-no-margin">Leçon <ion-icon name="reader-outline"></ion-icon></h1>
+      <p class="subHeadline">Découverte - Cours Débutant / Intermédiaire</p>
+    </div>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
   <div class="">
-    <div class="subHeader ion-padding ion-margin-bottom">
-      <h1 class="headline ion-no-margin">Leçon</h1>
-      <p class="subHeadline">Découverte - Cours Débutant / Intermédiaire</p>
-    </div>
+    
     <!-- <div class="headline ion-padding-horizontal">
       <h2>Leçon</h2>
       <div class="ion-padding-bottom">Découverte - Cours Débutant/Intermédiaire</div>
     </div> -->
     <div>
       <ion-card *ngFor="let lesson of lessons" class=" ion-flex" (click)="goTo(lesson.navigate)">
+        <div class="ion-size-img">
+          <img class="ion-icon-src ion-float-right" width="50" src="{{lesson.src}}">
+        </div>
         <ion-card-header class="ion-unlock-lesson">
           <ion-card-title>{{lesson.title}}</ion-card-title>
           <ion-card-subtitle>{{lesson.subTitle}}</ion-card-subtitle>
         </ion-card-header>
-        <div class="ion-size-arrow"><ion-icon size="large" color="lagua" name="chevron-forward-outline"></ion-icon></div>
+        <div class="ion-size-arrow">
+          <ion-icon size="large" color="lagua" name="chevron-forward-outline"></ion-icon>
+        </div>
       </ion-card>
       <!-- <ion-card class="ion-no-margin ion-flex">
         <div class="ion-lock-lesson ion-custom-lock"><ion-icon size="large" class="ion-lock-closed" name="lock-closed-outline"></ion-icon></div>
