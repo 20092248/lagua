@@ -21,3 +21,9 @@ ion-item {
 ion-item:last-child {
   --border-radius: 0 0 20px 20px;
 }
+
+img {
+  border-radius: 30px;
+  object-fit: contain;
+  padding: 5px;;
+}

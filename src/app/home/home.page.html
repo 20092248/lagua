@@ -1,45 +1,136 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title> Lagua </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- <ion-header class="ion-no-border"> -->
+<ion-toolbar>
+  <ion-grid class="ion-no-margin">
+    <ion-row>
+      <ion-col size="9">
+        <div class="ion-margin-start ion-padding-top">
+          <h4>Kwezi</h4>
+          <h5 class="ion-subtitle">Brady ABDEREMANE{{user?.displayName}} !</h5>
+        </div>
+      </ion-col>
+      <ion-col size="3" class="ion-padding-end ion-display-flex">
+        <div class="border-white-tabs " id="popover-profil">
+          <div class="img-box">
+            <img *ngIf="user?.photoURL" [src]="user?.photoURL">
+            <ion-icon size="large" *ngIf="!user?.photoURL" [src]="user?.photoURL" name="person-outline"></ion-icon>
+          </div>
+        </div>
+        <ion-popover trigger="popover-profil" class="ion-custom-top-popover">
+          <ng-template>
+            <ion-content>
+              <ion-list>
+                <div class="ion-padding-horizontal">
+                  <h5 class="ion-margin-top">{{user?.displayName}}</h5>
+                  <div class="ion-margin-bottom">{{user?.email}}</div>
+                </div>
+                <ion-item button (click)="goTo('/tabs/update-cv')"><ion-icon class="ion-padding-end"
+                    name="settings-outline"></ion-icon>Paramètres</ion-item>
+                <ion-item button (click)="goTo('/tabs/recrute')"><ion-icon class="ion-padding-end"
+                    name="bar-chart-outline"></ion-icon>Mon activité</ion-item>
+                <ion-item button (click)="goTo('/tabs/account')"><ion-icon class="ion-padding-end"
+                    name="flag-outline"></ion-icon>Mes langues</ion-item>
+                <ion-item button lines="none" detail="false" (click)="logout()"><ion-icon class="ion-padding-end"
+                    name="log-out-outline"></ion-icon>Déconnexion</ion-item>
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding ion-margin-horizontal ion-margin-bottom">
+        <p class="ion-text-progress">Votre progression</p>
+        <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate" data-max="100"
+          class="ion-progress">
+          <div data-state="indeterminate" data-max="100" value="1" class="ion-range-progress" style="width: 6%;">
+            <span class="ion-position-cursor">1%</span>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-toolbar>
+<!-- </ion-header> -->
 <ion-content [fullscreen]="true">
-  <div>
+  <div class="ion-content-home">
     <div>
-      <div class="subHeader ion-padding">
-        <h1 class="headline ion-no-margin">Content de vous revoir {{user?.displayName}}.</h1>
+
+      <div class="ion-padding-top-min">
+        <ion-card>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row class="ion-text-bold">
+                <ion-col class="ion-no-padding-left ion-text-left">
+                  Vocabulaire
+                </ion-col>
+                <ion-col class="ion-text-right">
+                  1383 mot au total
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="ion-no-padding">
+                  <div class="ion-label-progress ion-label-progress-warning">
+                    <ion-text color="warning" class="ion-text-left ion-text-bold">9%</ion-text>à apprendre
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate"
+                    data-max="100" class="ion-vocabulary-bar-red">
+                  </div>
+                  <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate"
+                    data-max="100" class="ion-vocabulary-bar-orange">
+                  </div>
+                  <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate"
+                    data-max="100" class="ion-vocabulary-bar-green">
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-label-progress-bottom-position">
+                <ion-col size="6">
+                  <div class="ion-label-progress ion-label-progress-danger">
+                    <ion-text color="danger" class="ion-text-left ion-text-bold">17%</ion-text>à réviser
+                  </div>
+                </ion-col>
+                <ion-col size="6">
+                  <div class="ion-label-progress ion-label-progress-success ion-text-right">
+                    <ion-text color="success" class="ion-text-bold">74%</ion-text>appris
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
       </div>
 
-      <div>
-        <ion-grid class="ion-text-center">
-          <ion-row>
-            <ion-col>
-              <ion-card>
-                <ion-card-header>
-                  <ion-card-subtitle>Mon niveau</ion-card-subtitle>
-                </ion-card-header>
-                <ion-card-content class="ion-card-content-level">
-                  <div class="ion-card-content-level-label">Découverte (A1)
-                  </div>
-                  <svg class="progress-visualizer-canvas" viewBox="0 0 33.831 33.831">
-                    <circle class="progress-visualizer-arc" cx="50%" cy="50%" stroke-dasharray="56.7, 100"
-                      r="15.9155"></circle>
-                  </svg>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-            <ion-col>
-              <ion-card>
-                <ion-card-header>
-                  <ion-card-subtitle>Mots appris</ion-card-subtitle>
-                </ion-card-header>
-                <ion-card-content>
-                  <span>20</span>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+      <div class="ion-display-flex">
+        <div class="ion-dashboard-bloc">
+          <ion-card class="ion-dashboard">
+            <ion-card-header>
+              <ion-card-title>
+                <span class="ion-card-title">4</span>
+                <span class="ion-float-right"><ion-icon size="large" name="checkmark-outline"></ion-icon></span>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="ion-card-content-level">
+              Lessons terminées
+            </ion-card-content>
+          </ion-card>
+        </div>
+        <div class="ion-dashboard-bloc">
+          <ion-card class="ion-dashboard">
+            <ion-card-header>
+              <ion-card-title>
+                <span class="ion-card-title">20</span>
+                <span class="ion-float-right"><ion-icon size="large" name="book-outline"></ion-icon></span>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="ion-card-content-level">
+              Cours visualisés
+            </ion-card-content>
+          </ion-card>
+        </div>
       </div>
 
       <div class="ion-unlock-lesson">

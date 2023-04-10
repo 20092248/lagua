@@ -1,54 +1,47 @@
 <ion-content>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <div class="logo">
-            <img class="ion-login-img" src="assets/img/logo/login_icon.png"/>
-          </div>
-          <div class="content">
-            <ion-item>
-              <ion-label position="stacked" color="light">Pseudonyme</ion-label>
-              <ion-input color="light" type="text" class="custom"></ion-input>
-            </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="logo">
+          <img class="ion-login-img" src="assets/img/connection/signin_icon.png" />
+        </div>
+        <div class="content">
+          <ion-item>
+            <ion-label position="stacked" color="light">Pseudonyme</ion-label>
+            <ion-input color="light" type="text" class="custom" [(ngModel)]="displayName" #displayNameCtrl="ngModel"
+              name="displayName"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="stacked" color="light">Email</ion-label>
-              <ion-input color="light" type="mail" class="custom"></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="light">Email</ion-label>
+            <ion-input color="light" type="mail" class="custom" [(ngModel)]="email" #emailCtrl="ngModel"
+              name="email"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="stacked" color="light"
-                >Mot de passe</ion-label
-              >
-              <ion-input color="light" type="password"></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="light">Mot de passe</ion-label>
+            <ion-input color="light" type="password" [(ngModel)]="password" #passwordCtrl="ngModel"
+              name="password"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="stacked" color="light"
-                >Confirmer mot de passe</ion-label
-              >
-              <ion-input color="light" type="password"></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="stacked" color="light">Confirmer mot de passe</ion-label>
+            <ion-input color="light" type="password" [(ngModel)]="confirmPassword" #confirmPasswordCtrl="ngModel"
+              name="confirmPassword"></ion-input>
+          </ion-item>
 
-            <ion-button class="ion-margin-top"
-              color="lagua"
-              expand="block"
-              >Valider</ion-button
-            >
+          <ion-item *ngIf="passwordCtrl.touched && confirmPasswordCtrl.touched && password !== confirmPassword">
+            <ion-text color="danger"><small>Mot de passe différent</small></ion-text>
+          </ion-item>
 
-            <ion-item lines="none">
-              <ion-label color="light" text-center
-                >Ou vous avez déjà un identifiant</ion-label
-              >
-            </ion-item>
-            <ion-button
-              color="light"
-              expand="block"
-              [routerLink]="['/login']"
-              >Connexion</ion-button
-            >
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-content>
+          <ion-button class="ion-margin-top" color="lagua" expand="block">Valider</ion-button>
+
+          <ion-item lines="none">
+            <ion-label color="light" text-center>Ou vous avez déjà un identifiant</ion-label>
+          </ion-item>
+          <ion-button color="light" expand="block" [routerLink]="['/login']">Connexion</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -2,10 +2,10 @@ import { CodeLabel } from "./codeLabel.model";
 import { CodeTextTranslate } from "./codeTextTranslate.model";
 
 export class User {
-    uid?: string;
-    email?: string;
+    uid?: string | null;
+    email?: string | null;
     displayName?: string;
-    photoURL? : string;
+    photoURL?: string;
     learn?: CodeTextTranslate;
     why?: CodeLabel;
     age?: CodeLabel;

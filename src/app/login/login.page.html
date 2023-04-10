@@ -2,77 +2,48 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <div class="logo">
-          <ion-icon color="light" name="globe-outline"></ion-icon>
-        </div>
-        <div class="content">
-          <ion-item>
-            <ion-label
-              class="ion-client-login-custom"
-              position="stacked"
-              color="light"
-              >Identifiant</ion-label
-            >
-            <ion-input
-              color="light"
-              type="mail"
-              class="custom"
-              placeholder="Adresse email"
-            ></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label
-              class="ion-client-login-custom"
-              position="stacked"
-              color="light"
-              >Mot de passe</ion-label
-            >
-            <ion-input
-              color="light"
-              type="password"
-              placeholder="•••••••••"
-            ></ion-input>
-          </ion-item>
-
-          <ion-item lines="none">
-            <ion-button color="light" slot="end" fill="clear"
-              >Mot de passe oublié ?</ion-button
-            >
-          </ion-item>
-          <div class="ion-content-button">
-            <ion-button color="light" expand="block">Connexion</ion-button>
-            <br />
-            <ion-button color="lagua" expand="block" [routerLink]="['/signin']"
-              >Inscription</ion-button
-            >
+        <form #f="ngForm">
+          <div class="logo">
+            <img class="ion-login-img" src="assets/img/connection/login_icon.png" />
           </div>
+          <div class="content">
+            <ion-item>
+              <ion-label class="ion-client-login-custom" position="stacked" color="light">Identifiant</ion-label>
+              <ion-input color="light" type="mail" class="custom" placeholder="Adresse email" [(ngModel)]="email"
+                #emailCtrl="ngModel" name="email" ></ion-input>
+            </ion-item>
 
-          <ion-item lines="none">
-            <ion-label color="light" text-center
-              >Ou connectez-vous avec</ion-label
-            >
-          </ion-item>
+            <ion-item>
+              <ion-label class="ion-client-login-custom" position="stacked" color="light">Mot de passe</ion-label>
+              <ion-input color="light" type="password" placeholder="•••••••••" [(ngModel)]="password"
+                #passwordCtrl="ngModel" name="password" ></ion-input>
+            </ion-item>
 
-          <div class="ion-other-connection">
-            <ion-button
-              color="facebook"
-              shape="round"
-              (click)="signInWithFacebook()"
-            >
-              <ion-icon slot="start" name="logo-facebook"></ion-icon>
-              Facebook
-            </ion-button>
-            <ion-button
-              color="google"
-              shape="round"
-              (click)="signInWithGoogle()"
-            >
-              <ion-icon slot="start" name="logo-google"></ion-icon>
-              Google
-            </ion-button>
+            <ion-item lines="none">
+              <ion-button color="light" slot="end" fill="clear">Mot de passe oublié ?</ion-button>
+            </ion-item>
+            <div class="ion-content-button">
+              <ion-button [disabled]="!f.valid" color="light" expand="block" (click)="login()">Connexion</ion-button>
+              <br />
+              <ion-button color="lagua" expand="block" [routerLink]="['/signin']">Inscription</ion-button>
+            </div>
+
+            <ion-item lines="none">
+              <ion-label color="light" text-center>Ou connectez-vous avec</ion-label>
+            </ion-item>
+
+            <div class="ion-other-connection">
+              <ion-button color="facebook" shape="round" (click)="signInWithFacebook()">
+                <ion-icon slot="start" name="logo-facebook"></ion-icon>
+                Facebook
+              </ion-button>
+              <ion-button color="google" shape="round" (click)="signInWithGoogle()">
+                <ion-icon slot="start" name="logo-google"></ion-icon>
+                Google
+              </ion-button>
+            </div>
           </div>
-        </div>
+        </form>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -11,9 +11,16 @@ import { AuthentificationService } from '../services/authentification.service';
 })
 export class LoginPage implements OnInit {
 
+  email: string = '';
+  password: string = '';
+
   constructor(private router: Router, private authentificationService: AuthentificationService) { }
 
   ngOnInit() {
+  }
+
+  login() {
+    this.authentificationService.login(this.email, this.password);
   }
 
   signInWithGoogle() {
@@ -23,12 +30,10 @@ export class LoginPage implements OnInit {
   }
 
   signInWithFacebook() {
-      this.authentificationService.signinwithfacebook().then((connected: boolean) => {
-        this.router.navigate(['']); //go to home page
-      });
+    this.authentificationService.signinwithfacebook().then((connected: boolean) => {
+      this.router.navigate(['']); //go to home page
+    });
   }
 
-//   FB.getLoginStatus(function(response) {
-//     statusChangeCallback(response);
-// });
+
 }

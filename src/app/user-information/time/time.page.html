@@ -14,7 +14,7 @@
   <ion-label>Combien de temps allez-vous consacrer du temps à l'apprentissage du comorien ?</ion-label>
 </ion-item>
 <ion-item lines="full" *ngFor="let t of time" [routerLink]="['../level']" routerLinkActive="selected" (click)="selectedItem(t)">
-  <ion-icon name="information-circle" slot="start"></ion-icon>
+  <img class="ion-icon-src" width="64" src="{{t.src}}">
   <ion-label>{{t.label}}</ion-label>
 </ion-item>
 </ion-content>

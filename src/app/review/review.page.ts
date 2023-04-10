@@ -18,7 +18,7 @@ export class ReviewPage implements OnInit {
 
   ngOnInit() {
     if(!this.categories.length){
-      this.settingsService.getSettings('review').then((data => {
+      this.settingsService.getSettings('reviews').then((data => {
         this.categories = data.categories;        
         this.categorySelected = data.categories[0];
       }));

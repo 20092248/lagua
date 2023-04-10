@@ -14,7 +14,7 @@
     <ion-label>Comment jugerez-vous vos connaissances en comorien ?</ion-label>
   </ion-item>
   <ion-item lines="full" *ngFor="let l of level" [routerLink]="['../../signin']" routerLinkActive="selected" (click)="selectedItem(l)">
-    <ion-icon name="information-circle" slot="start"></ion-icon>
+    <img class="ion-icon-src" width="64" src="{{l.src}}">
     <ion-label>{{l.label}}</ion-label>
   </ion-item>
 </ion-content>

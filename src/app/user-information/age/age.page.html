@@ -13,7 +13,7 @@
   <ion-label>Quel âge avez-vous ?</ion-label>
 </ion-item>
 <ion-item lines="full" *ngFor="let a of age" [routerLink]="['../time']" routerLinkActive="selected" (click)="selectedItem(a)">
-  <ion-icon name="information-circle" slot="start"></ion-icon>
+  <img class="ion-icon-src" width="64" src="{{a.src}}">
   <ion-label>{{a.label}}</ion-label>
 </ion-item>
 </ion-content>

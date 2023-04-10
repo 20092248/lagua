@@ -3,7 +3,11 @@
     <ion-row class="ion-search-header">
       <ion-col>
         <div>
-          <h1 class="ion-padding-top ion-no-margin">Dictionnaire</h1>
+          <div class="ion-inline-flex ion-padding-top">
+            <h1 class="ion-no-margin">
+              Dictionnaire <ion-icon name="bookmarks-outline"></ion-icon>
+            </h1>
+          </div>
           <div class="ion-padding-vertical-min">
             <ion-searchbar animated="true" placeholder="Rechercher dans le dictionnaire..." [(ngModel)]="word"
               show-clear-button="always" clear-icon="close-outline" name="name" class="ion-no-padding"
@@ -22,8 +26,7 @@
                 </ion-header>
                 <ion-content>
                   <ion-list>
-                    <ion-item *ngFor="let infoWord of wordsFound" lines="full"
-                      class="ion-item-result-dictionary">
+                    <ion-item *ngFor="let infoWord of wordsFound" lines="full" class="ion-item-result-dictionary">
                       <ion-icon color="lagua" class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
                       <ion-label class="ion-text-wrap">
                         <ion-text>{{infoWord.text}}</ion-text>

@@ -2,6 +2,10 @@ ion-content {
   --ion-background-color: linear-gradient(#5bad77, #2b7142);
 }
 
+form {
+  height: 100%;
+}
+
 ion-item {
   --ion-background-color: transparent !important;
 }
@@ -33,7 +37,7 @@ ion-col {
 }
 
 .logo img {
-  height: 200px;
+  height: 150px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -43,6 +47,12 @@ ion-col {
 .logo {
   position: relative;
   height: 30%;
+}
+
+.ion-login-img {
+  height: 70%;
+  filter: invert(1);
+  animation: 1s;
 }
 
 .content {
