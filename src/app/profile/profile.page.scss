@@ -1,5 +1,35 @@
+ion-content {
+  --background: #1a6921;
+  --color: #ffffff;
+}
+
+ion-grid.ion-grid-header {
+  position: relative;
+  background: #1a6921;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 25px -15px, rgba(0, 0, 0, 0.08) 0px 10px 10px -10px;
+}
+
+ion-grid.ion-grid-content {
+  background: #eef1ee;
+  border-radius: 20px 20px 0 0;
+}
+
 ion-card-header.ion-weekly-calendar {
   padding: 10px;
+}
+
+ion-list {
+  background: transparent;
+}
+
+ion-item {
+  --background: transparent;
+}
+
+ion-card {
+  --background: #ffffff;
+  border-radius: 15px;
+  height: 90%;
 }
 
 .ion-profile-header {
@@ -53,16 +83,43 @@ ion-card-header.ion-weekly-calendar {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0px;
-  font-family: "Babbel Milliard", sans-serif;
+  font-family: 'Babbel Milliard', sans-serif;
   line-height: 22px;
   color: rgb(57, 65, 73);
   white-space: normal;
   margin: 0px;
-  width: 1rem;
+  // width: 1rem;
 }
 
 .is-today {
-  background-color: #f4f4f6;
-  border: 1px solid #d3d4d9;
+  background-color: #f0f7eb;
+  border: 1px solid #bdd5ac;
   border-radius: 4px;
+}
+
+.ion-display-flex {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+}
+
+ion-card.ion-dashboard {
+  --background: #6d9f72;
+  --color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ion-card.ion-dashboard ion-icon {
+  color: #ffffff;
+}
+
+.ion-dashboard-bloc {
+  width: 50%;
+}
+
+ion-card-title .ion-card-title {
+  font-size: 30px;
+  color: #ffffff;
 }

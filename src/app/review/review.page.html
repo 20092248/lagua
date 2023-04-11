@@ -1,18 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title> Lagua </ion-title>
-  </ion-toolbar>
-</ion-header>
 <ion-content [fullscreen]="true">
   <div>
+    <div class="subHeader ion-padding">
+      <h1 class="headline ion-no-margin">{{categorySelected?.label}} ({{categorySelected?.code}})<small> - Leçon</small><ion-icon class="ion-chatbox" name="chatbox-outline"></ion-icon></h1>
+    </div>
     <div class="ion-scroll-review">
       <div class="ion-margin-vertical-min">
         <ion-button *ngFor="let c of categories" size="small" class="ion-button ion-button-{{c.code | lowercase}}" (click)="setCategory(c.code)">{{c.label}}
           ({{c.code}})</ion-button>
       </div>
-    </div>
-    <div class="subHeader ion-padding">
-      <h1 class="headline ion-no-margin">{{categorySelected?.label}} ({{categorySelected?.code}})<small> - Cours</small></h1>
     </div>
     <div *ngFor="let r of reviews; let index = index" class="ion-unlock-lesson" [ngClass]="{ 'ion-last-card' : index === reviews.length - 1 }">
       <!-- <ion-icon class="ion-icon-locked" size="medium" name="lock-closed" [ngClass]="{ 'ion-first-icon' : index }"></ion-icon> -->
