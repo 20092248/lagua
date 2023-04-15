@@ -23,14 +23,14 @@ export class LoginPage implements OnInit {
     this.authentificationService.login(this.email, this.password);
   }
 
-  signInWithGoogle() {
-    this.authentificationService.signinwithgoogle().then((connected: boolean) => {
+  logInWithGoogle() {
+    this.authentificationService.loginwithgoogle().then((connected: boolean) => {
       this.router.navigate(['']); //go to home page
     });
   }
 
-  signInWithFacebook() {
-    this.authentificationService.signinwithfacebook().then((connected: boolean) => {
+  logInWithFacebook() {
+    this.authentificationService.loginwithfacebook().then((connected: boolean) => {
       this.router.navigate(['']); //go to home page
     });
   }

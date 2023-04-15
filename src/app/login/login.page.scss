@@ -56,18 +56,38 @@ ion-col {
 }
 
 .content {
-    height: 70%;
+  height: 70%;
 }
 
 .ion-client-login-custom {
   font-size: 16px;
 }
 
-.ion-other-connection {
+ion-label.ion-text-other {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+}
+
+ion-label.ion-text-other:before,
+ion-label.ion-text-other:after {
+  content: "";
+  flex: 1 1;
+  border-bottom: 2px solid #ffffff;
+  margin: auto;
+}
+
+ion-label.ion-text-other:before {
+  margin-right: 5px;
+}
+
+ion-label.ion-text-other:after {
+  margin-left: 5px;
 }
 
 .ion-other-connection ion-button {
-  --border-radius: 20px;
+  --border-radius: 10px;
+}
+
+.item-has-focus {
+  --highlight-background: #ffffff;
 }

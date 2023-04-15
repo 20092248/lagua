@@ -27,12 +27,18 @@ ion-card-content {
 }
 
 h5.ion-subtitle {
-  white-space: nowrap;
   margin-top: 0px;
 }
 
 ion-text {
   display: block;
+}
+
+ion-popover {
+  --width: 99%;
+  --backdrop-opacity: 0;
+  --offset-y: 5px;
+  --offset-x: 10px;
 }
 
 .ion-padding-top-min {
@@ -210,4 +216,26 @@ ion-card.ion-dashboard ion-icon {
 ion-card-title .ion-card-title {
   font-size: 30px;
   color: #ffffff;
+}
+
+.border-white-tabs {
+  border: #ffffff solid 2px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  float: right;
+}
+
+.img-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 60px;
+  width: 60px;
+  background-color: #cccfcb;
+  margin-left: auto;
+  margin-right: auto;
 }

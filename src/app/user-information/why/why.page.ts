@@ -18,8 +18,8 @@ export class WhyPage implements OnInit {
     this.why = this.settingService.userInformation?.why;
   }
 
-  selectedItem(timeSelected: CodeLabel) {
-    this.authentificationService.user.time = timeSelected;
+  selectedItem(whySelected: CodeLabel) {
+    this.authentificationService.user.why = whySelected;
   }
 
 }

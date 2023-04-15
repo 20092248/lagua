@@ -6,6 +6,16 @@ ion-item {
   --ion-background-color: transparent !important;
 }
 
+.ion-bloc-error.p-error {
+  // --ion-background-color: #ffe7e6 !important;
+  // --color: #ff5757;
+  // --border-color:#ff5757;
+  // --border-width: 1px;
+  // --border-radius: 10px;
+  font-weight: bold;
+  // padding: 5px 0;
+}
+
 ion-grid {
   height: 100%;
 }
@@ -61,4 +71,33 @@ ion-button {
 
 .ion-client-login-custom {
   font-size: 16px;
+}
+
+ion-label.ion-text-other {
+  display: flex;
+  flex-direction: row;
+}
+
+ion-label.ion-text-other:before,
+ion-label.ion-text-other:after {
+  content: "";
+  flex: 1 1;
+  border-bottom: 2px solid #ffffff;
+  margin: auto;
+}
+
+ion-label.ion-text-other:before {
+  margin-right: 5px;
+}
+
+ion-label.ion-text-other:after {
+  margin-left: 5px;
+}
+
+.ion-other-inscription ion-button {
+  --border-radius: 10px;
+}
+
+.item-has-focus {
+  --highlight-background: #ffffff;
 }

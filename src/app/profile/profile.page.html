@@ -4,15 +4,18 @@
       <ion-col>
         <div>
           <div class="border-white-tabs" id="popover-profil">
-            <div class="img-box"></div>
+            <div class="img-box">
+              <img *ngIf="user?.photoURL" [src]="user?.photoURL">
+              <ion-icon class="ion-position-icon" *ngIf="!user?.photoURL" [src]="user?.photoURL" name="person-outline"></ion-icon>
+            </div>
           </div>
         </div>
-        <p>Display name</p>
+        <p>{{user?.displayName}}</p>
         <p class="ion-no-padding ion-margin-bottom">
-          <i><span class="ion-padding-left">Email</span><ion-icon name="pencil-sharp"></ion-icon></i>
+          <i><span class="ion-padding-left">{{user?.email}} </span><ion-icon name="pencil-sharp"></ion-icon></i>
         </p>
-        <p>Niveau actuel : Débutant</p>
-        <p>Langue en apprentissage : Shindzuani / <i>L'anjouanais</i></p>
+        <p>Niveau actuel : {{getActualLevelByCode()}}</p>
+        <p>Langue en apprentissage : {{user?.learn?.text}} / <i>{{user?.learn?.translate}}</i></p>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -25,31 +28,31 @@
           </ion-card-header>
           <ion-card-content>
             <div class="ion-calendar-content">
-              <div class="ion-calendar-day is-today">
+              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 1 }">
                 <div style="color: rgb(154, 167, 179)">Lu</div>
                 <div class="ion-calendar-activity">0</div>
               </div>
-              <div class="ion-calendar-day">
+              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 2 }">
                 <div style="color: rgb(154, 167, 179)">Ma</div>
                 <div class="ion-calendar-activity">0</div>
               </div>
-              <div class="ion-calendar-day">
+              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 3 }">
                 <div style="color: rgb(154, 167, 179)">Me</div>
                 <div class="ion-calendar-activity">0</div>
               </div>
-              <div class="ion-calendar-day">
+              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 4 }">
                 <div style="color: rgb(154, 167, 179)">Je</div>
                 <div class="ion-calendar-activity">0</div>
               </div>
-              <div class="ion-calendar-day">
+              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 5 }">
                 <div style="color: rgb(154, 167, 179)">Ve</div>
                 <div class="ion-calendar-activity">0</div>
               </div>
-              <div class="ion-calendar-day">
+              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 6 }">
                 <div style="color: rgb(154, 167, 179)">Sa</div>
                 <div class="ion-calendar-activity">0</div>
               </div>
-              <div class="ion-calendar-day">
+              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 7 }">
                 <div style="color: rgb(154, 167, 179)">Di</div>
                 <div class="ion-calendar-activity">0</div>
               </div>
@@ -105,7 +108,7 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button color="lagua" expand="block"><ion-icon slot="start" name="log-out-outline"></ion-icon>Se
+        <ion-button color="lagua" expand="block" (click)="logout()"><ion-icon slot="start" name="log-out-outline"></ion-icon>Se
           déconnecter</ion-button>
         <ion-button expand="block" color="danger" class="ion-margin-bottom"><ion-icon slot="start"
             name="trash-outline"></ion-icon>Supprimer

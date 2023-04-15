@@ -9,13 +9,13 @@
           <div class="content">
             <ion-item>
               <ion-label class="ion-client-login-custom" position="stacked" color="light">Identifiant</ion-label>
-              <ion-input color="light" type="mail" class="custom" placeholder="Adresse email" [(ngModel)]="email"
+              <ion-input color="light" type="mail" class="custom" [(ngModel)]="email"
                 #emailCtrl="ngModel" name="email" ></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label class="ion-client-login-custom" position="stacked" color="light">Mot de passe</ion-label>
-              <ion-input color="light" type="password" placeholder="•••••••••" [(ngModel)]="password"
+              <ion-input color="light" type="password" [(ngModel)]="password"
                 #passwordCtrl="ngModel" name="password" ></ion-input>
             </ion-item>
 
@@ -24,22 +24,20 @@
             </ion-item>
             <div class="ion-content-button">
               <ion-button [disabled]="!f.valid" color="light" expand="block" (click)="login()">Connexion</ion-button>
-              <br />
-              <ion-button color="lagua" expand="block" [routerLink]="['/signin']">Inscription</ion-button>
             </div>
 
             <ion-item lines="none">
-              <ion-label color="light" text-center>Ou connectez-vous avec</ion-label>
+              <ion-label color="light" class="ion-text-other ion-text-center">Ou</ion-label>
             </ion-item>
 
             <div class="ion-other-connection">
-              <ion-button color="facebook" shape="round" (click)="signInWithFacebook()">
+              <ion-button class="ion-margin-bottom" color="facebook" expand="block" (click)="logInWithFacebook()">
                 <ion-icon slot="start" name="logo-facebook"></ion-icon>
-                Facebook
+                Se connecter avec Facebook
               </ion-button>
-              <ion-button color="google" shape="round" (click)="signInWithGoogle()">
+              <ion-button color="google" expand="block" (click)="logInWithGoogle()">
                 <ion-icon slot="start" name="logo-google"></ion-icon>
-                Google
+                Se connecter avec Google
               </ion-button>
             </div>
           </div>
