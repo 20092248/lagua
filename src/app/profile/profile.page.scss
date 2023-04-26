@@ -10,7 +10,7 @@ ion-grid.ion-grid-header {
 }
 
 ion-grid.ion-grid-content {
-  background: #eef1ee;
+  background: var(--ion-background-light-color);
   border-radius: 20px 20px 0 0;
 }
 
@@ -27,7 +27,7 @@ ion-item {
 }
 
 ion-card {
-  --background: #ffffff;
+  --background: var(--ion-color-step-100);
   border-radius: 15px;
   height: 90%;
 }
@@ -96,8 +96,8 @@ ion-card {
 }
 
 .is-today {
-  background-color: #f0f7eb;
-  border: 1px solid #bdd5ac;
+  background-color: #d7e3ce;
+  border: 1.5px solid #9dba88;
   border-radius: 4px;
 }
 

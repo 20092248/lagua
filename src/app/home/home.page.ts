@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { User } from '../model/user.model';
 import { AuthentificationService } from '../services/authentification.service';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,11 @@ export class HomePage implements OnInit {
 
   user: User | undefined;
 
-  constructor(private router: Router, private authentificationService: AuthentificationService, private popoverController: PopoverController) { }
+  constructor(private router: Router, private themeService: ThemeService, private authentificationService: AuthentificationService, private popoverController: PopoverController) {
+   }
+  get getTheme() {
+    return this.themeService.themeMode;
+  }
 
   ngOnInit() {
     this.user = this.authentificationService.user;
@@ -28,6 +33,10 @@ export class HomePage implements OnInit {
   goTo(routing: string) {
     this.router.navigate([routing]);
     this.dismissPopover();
+  }
+
+  changeMode(){
+    this.themeService.setAppTheme(this.getTheme);
   }
 
   dismissPopover() {

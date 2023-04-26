@@ -18,6 +18,10 @@
         <ion-input placeholder="en français..." [(ngModel)]="word.translate" name="translate" formControlName="translate"></ion-input>
       </ion-item>
       <ion-item>
+        <ion-label position="stacked">Mot clé *</ion-label>
+        <ion-input placeholder="" [(ngModel)]="word.index" name="index" formControlName="index"></ion-input>
+      </ion-item>
+      <ion-item>
         <ion-label position="stacked">Description *</ion-label>
         <ion-textarea [autoGrow]="true" placeholder="" [(ngModel)]="word.description" name="description" formControlName="description"></ion-textarea>
       </ion-item>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore, getFirestore } from '@angular/fire/firestore';
-import { doc, getDocs, addDoc, collection, query, where, DocumentData } from '@firebase/firestore';
+import { doc, getDocs, addDoc, collection, query, where, DocumentData, orderBy } from '@firebase/firestore';
 import { Word } from '../model/word.model';
 import { FirebaseWord } from '../model/wordFirebase.model';
 
@@ -16,10 +16,12 @@ export class DictionaryService {
     const firebaseWord: FirebaseWord = {
       text: word.text.split(','),
       translate: word.translate.split(','),
+      originalText: word.text,
+      originalTranslate: word.translate,
       description: word.description,
       examples: word.examples,
       phoneticText: word.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').toLocaleLowerCase().split(','),
-      phoneticTranslate: word.translate.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').toLocaleLowerCase().split(','),
+      phoneticTranslate: word.index.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').toLocaleLowerCase().split(','),
     };
     const dictionayRef = await addDoc(collection(getFirestore(), 'shindzuani_francais_' + firstLetter), firebaseWord);
     return dictionayRef.id;
@@ -28,6 +30,14 @@ export class DictionaryService {
   async searchWord(word: string): Promise<FirebaseWord[]> {
     const firstLetter = word.normalize('NFD').replace(/[\u0300-\u036f]/g, '').substring(0, 1).toLocaleLowerCase();
     const q = query(collection(getFirestore(), 'shindzuani_francais_' + firstLetter), where('phoneticText', 'array-contains', word));
+    const querySnapshot = await getDocs(q);
+    const words: FirebaseWord[] = [];
+    querySnapshot.forEach((doc) => words.push(doc.data() as FirebaseWord));
+    return words;
+  }
+
+  async displayAlphabet(text: string | undefined, translate : string | undefined, alphabet: string): Promise<FirebaseWord[]> {
+    const q = query(collection(getFirestore(), text + '_' + translate + '_' + alphabet), orderBy('originalText', 'asc'));
     const querySnapshot = await getDocs(q);
     const words: FirebaseWord[] = [];
     querySnapshot.forEach((doc) => words.push(doc.data() as FirebaseWord));

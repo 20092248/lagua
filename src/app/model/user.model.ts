@@ -4,8 +4,8 @@ import { CodeTextTranslate } from "./codeTextTranslate.model";
 export class User {
     uid?: string | null;
     email?: string | null;
-    displayName?: string;
-    photoURL?: string;
+    displayName?: string | null;
+    photoURL?: string | null;
     learn?: CodeTextTranslate;
     why?: CodeLabel;
     age?: CodeLabel;

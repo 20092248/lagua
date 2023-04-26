@@ -1,15 +1,15 @@
 ion-toolbar {
-    --ion-background-color: #1a6921;
+    --background: #1a6921;
     --color: #ffffff;
 }
 
 ion-content {
-    --ion-background-color: #1a6921;
+    --background: #1a6921;
     --color: #ffffff;
 }
 
 ion-card {
-    --background: #ffffff;
+    --background: var(--ion-background-color);
     border-radius: 15px;
 }
 

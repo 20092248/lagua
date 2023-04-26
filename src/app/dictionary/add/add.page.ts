@@ -12,7 +12,7 @@ import { DictionaryService } from 'src/app/services/dictionary.service';
 export class AddPage implements OnInit {
 
   wordForm: FormGroup;
-  word: any = { text: '', translate: '', description: '', examples: [{ text: '', translate: '' }] };
+  word: any = { text: '', translate: '', index: '', description: '', examples: [{ text: '', translate: '' }] };
   examplesCount: number = 1;
 
   constructor(private formBuilder: FormBuilder, private dictionaryService: DictionaryService, private toastController: ToastController) {
@@ -20,6 +20,7 @@ export class AddPage implements OnInit {
       'text':['',Validators.required],
       'translate':['',Validators.required],
       'description':['',Validators.required],
+      'index':['',Validators.required],
       'exampleText0': [], 'exampleTranslate0': [],
       'exampleText1': [], 'exampleTranslate1': [],
       'exampleText2': [], 'exampleTranslate2': [],

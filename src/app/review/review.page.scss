@@ -1,9 +1,9 @@
 ion-content {
-  --ion-background-color: #eef1ee;
+  --background: #eef1ee;
 }
 
 ion-card {
-  --background: #ffffff;
+  --background: var(--ion-background-color);
   border-radius: 15px;
 }
 

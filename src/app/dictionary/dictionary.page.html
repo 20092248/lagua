@@ -11,7 +11,7 @@
           <div class="ion-padding-vertical-min">
             <ion-searchbar animated="true" placeholder="Rechercher dans le dictionnaire..." [(ngModel)]="word"
               show-clear-button="always" clear-icon="close-outline" name="name" class="ion-no-padding"
-              (ionBlur)="searchWord()"></ion-searchbar>
+              (keyup.enter)="searchWord()"></ion-searchbar>
             <ion-modal [isOpen]="isResultDisplay" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">
               <ng-template>
                 <ion-header>
@@ -46,7 +46,7 @@
           </div>
           <div class="ion-scroll-review">
             <div class="ion-margin-vertical-min">
-              <ion-button *ngFor="let letter of alphabet">{{letter}}</ion-button>
+              <ion-button *ngFor="let letter of alphabet" (click)="changeLetter(letter)">{{letter}}</ion-button>
             </div>
           </div>
         </div>
@@ -54,72 +54,23 @@
     </ion-row>
     <ion-row class="ion-padding-language">
       <ion-col size="5">
-        Français
+        {{user?.learn?.text}}
       </ion-col>
       <ion-col size="2">
         <ion-icon color="lagua" size="large" name="repeat-outline"></ion-icon>
       </ion-col>
       <ion-col size="5">
-        Shindzuani
+        {{user?.learn?.translate}}
       </ion-col>
     </ion-row>
     <ion-row class="ion-result-dictionary">
       <ion-col class="ion-full-height">
         <ion-list class="ion-no-padding" lines="full">
-          <ion-item class="ion-item-result-dictionary">
-            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
-            <ion-label>
-              Blablabla
-            </ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-          </ion-item>
-          <ion-item class="ion-item-result-dictionary">
+          <ion-item class="ion-item-result-dictionary" *ngFor="let w of words">
             <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
             <ion-label class="ion-text-wrap">
-              Blablabla reqlbrvs vrhsjl
-              <p class="ion-text-italic">rovreslvresvbr hjtrs vtrs</p>
-            </ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-          </ion-item>
-          <ion-item class="ion-item-result-dictionary">
-            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
-            <ion-label>
-              VBLABLABLABL
-            </ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-          </ion-item>
-          <ion-item class="ion-item-result-dictionary">
-            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
-            <ion-label>
-              Blablabla
-            </ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-          </ion-item>
-          <ion-item class="ion-item-result-dictionary">
-            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
-            <ion-label>
-              Blablabla
-            </ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-          </ion-item>
-          <ion-item class="ion-item-result-dictionary">
-            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
-            <ion-label>
-              Blablabla
-            </ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-          </ion-item>
-          <ion-item class="ion-item-result-dictionary">
-            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
-            <ion-label>
-              Blablabla
-            </ion-label>
-            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-          </ion-item>
-          <ion-item class="ion-item-result-dictionary">
-            <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
-            <ion-label>
-              Blablabla
+              {{w.text}}
+              <p class="ion-text-italic">{{w.translate}}</p>
             </ion-label>
             <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
           </ion-item>

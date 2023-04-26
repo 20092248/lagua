@@ -29,6 +29,8 @@
                     name="bar-chart-outline"></ion-icon>Mon activité</ion-item>
                 <ion-item button (click)="goTo('/tabs/account')"><ion-icon class="ion-padding-end"
                     name="flag-outline"></ion-icon>Mes langues</ion-item>
+                <ion-item><ion-icon name="brush-outline" class="ion-padding-end">
+                  </ion-icon>Thème {{getTheme === 'moon' ? 'sombre' : 'clair'}}<ion-icon name="{{getTheme}}" slot="end" (click)="changeMode()"></ion-icon></ion-item>
                 <ion-item button lines="none" detail="false" (click)="logout()"><ion-icon class="ion-padding-end"
                     name="log-out-outline"></ion-icon>Déconnexion</ion-item>
               </ion-list>

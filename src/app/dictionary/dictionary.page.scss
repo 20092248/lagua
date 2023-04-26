@@ -7,13 +7,17 @@ ion-grid {
 }
 
 ion-card {
-  --background: #ffffff;
+  --background: var(--ion-background-color);
   border-radius: 15px;
 }
 
 ion-row {
   text-align: center;
   align-items: center;
+}
+
+ion-row:last-child {
+  align-items: baseline;
 }
 
 ion-row.ion-search-header {
@@ -76,8 +80,8 @@ ion-searchbar {
 }
 
 .ion-result-dictionary {
-  height: -webkit-fill-available;
-  background: #eef1ee;
+  min-height: -webkit-fill-available;
+  background: var(--ion-background-light-color);
   border-radius: 0 10px 0 0;
 }
 
@@ -102,6 +106,7 @@ ion-icon.ion-icon-start {
 }
 
 ion-modal {
+  --border-radius: 20px;
   ion-toolbar {
     --background: #ffffff;
   }
