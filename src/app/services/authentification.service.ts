@@ -125,9 +125,9 @@ export class AuthentificationService {
     const provider = new FacebookAuthProvider();
     provider.setDefaultLanguage('fr');
     provider.addScope('user_birthday');
-    provider.setCustomParameters({
-      'display': 'popup'
-    });
+    // provider.setCustomParameters({
+    //   'display': 'popup'
+    // });
     const auth = getAuth();
     let response = await signInWithPopup(auth, provider)
       .then((result) => {
@@ -152,9 +152,9 @@ export class AuthentificationService {
     const provider = new FacebookAuthProvider();
     provider.setDefaultLanguage('fr');
     provider.addScope('user_birthday');
-    provider.setCustomParameters({
-      'display': 'popup'
-    });
+    // provider.setCustomParameters({
+    //   'display': 'popup'
+    // });
     const auth = getAuth();
     let response = await signInWithPopup(auth, provider)
       .then((result) => {

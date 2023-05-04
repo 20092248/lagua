@@ -8,26 +8,26 @@
           </div>
           <div class="content">
             <ion-item>
-              <ion-label class="ion-client-login-custom" position="stacked" color="light">Identifiant</ion-label>
-              <ion-input color="light" type="mail" class="custom" [(ngModel)]="email"
+              <ion-label color="light" class="ion-client-login-custom" position="stacked">Identifiant</ion-label>
+              <ion-input type="mail" class="custom" [(ngModel)]="email"
                 #emailCtrl="ngModel" name="email" ></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-label class="ion-client-login-custom" position="stacked" color="light">Mot de passe</ion-label>
-              <ion-input color="light" type="password" [(ngModel)]="password"
+              <ion-label color="light" class="ion-client-login-custom" position="stacked">Mot de passe</ion-label>
+              <ion-input type="password" [(ngModel)]="password"
                 #passwordCtrl="ngModel" name="password" ></ion-input>
             </ion-item>
 
             <ion-item lines="none">
-              <ion-button color="light" slot="end" fill="clear">Mot de passe oublié ?</ion-button>
+              <ion-button class="ion-password-forgot" slot="end" fill="clear">Mot de passe oublié ?</ion-button>
             </ion-item>
             <div class="ion-content-button">
               <ion-button [disabled]="!f.valid" color="light" expand="block" (click)="login()">Connexion</ion-button>
             </div>
 
             <ion-item lines="none">
-              <ion-label color="light" class="ion-text-other ion-text-center">Ou</ion-label>
+              <ion-label class="ion-text-other ion-text-center ion-client-login-custom">Ou</ion-label>
             </ion-item>
 
             <div class="ion-other-connection">

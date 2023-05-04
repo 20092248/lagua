@@ -14,7 +14,7 @@ ion-item:first-child {
 }
 
 ion-item {
-  --background: #eef1ee;
+  --background: var(--ion-item-light-background);
   --border-width: 1px;
 }
 

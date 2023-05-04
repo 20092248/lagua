@@ -1,13 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Lagua
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Les classes nominales</ion-title>
+    <ion-icon class="ion-margin-end" slot="end" size="medium" name="home-outline"
+      [routerLink]="['/tabs/home']"></ion-icon>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
-  <h1><ion-icon class="ion-arrow-back-position" size="large" name="arrow-back-circle-outline" [routerLink]="['/tabs/lessons']"></ion-icon> Les classes
-    nominales</h1>
   <p>Comme pour les autres langues bantoues, la langue anjouanaise est caractérisée
     par la répartition des noms en classes. Une classe forme l'ensemble
     des noms qui engendrent les mêmes accords grammaticaux. Les racines ou

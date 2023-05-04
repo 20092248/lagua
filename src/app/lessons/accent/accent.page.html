@@ -1,47 +1,49 @@
 <ion-header>
-<ion-toolbar>
-  <ion-title>
-    Lagua
-  </ion-title>
-</ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>L'accent</ion-title>
+    <ion-icon class="ion-margin-end" slot="end" size="medium" name="home-outline"
+      [routerLink]="['/tabs/home']"></ion-icon>
+  </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
-<h1><ion-icon class="ion-arrow-back-position" size="large" name="arrow-back-circle-outline" [routerLink]="['/tabs/lessons']"></ion-icon> L'ACCENT</h1>
-<p>L'anjouanais est une langue accentuelle : tous les mots reçoivent un accent.
-Mais contrairement à ce qui se passe par exemple en swahili où l'accent
-tombe toujours sur l'avant-dernière syllabe ou pénultième, en anjouanais,
-l'accent peut tomber sur toute syllabe: un mot peut très bien être accentué
-sur la syllabe finale (ex. : nyumbá "maison"), la pénultième (ex. ; nyóshi
-"abeille"), l'anté-pénultième (ex. : lávani "vanille) et même avant. Dans une
-phrase, la place de ces accents peut varier, et l'accent reporté sur une autre
-syllabe. Les règles de ces déplacements sont trop complexes pour être
-énumérées dans le cadre du présent ouvrage. Je me contenterai ici de noter,</p>
-<p>avec un accent aigu, la place de la syllabe accentuée, aussi bien dans les
-entrées que dans les exemples (ces accents aigus ne sont donnés qu'à titre
-informatif: ils ne seront pas notés dans l'orthographe normale). Toutefois,
-aucun accent n'est marqué dans les entrées sur les mots (les plus nombreux)
-qui sont accentués sur la pénultième.</p>
-<p>Sans entrer dans un exposé complet des règles de l'accentuation, il est
-pourtant nécessaire de distinguer deux catégories de mots selon leur
-comportement accentuel.</p>
-<p>Ces deux catégories seront nommées respectivement "accentogène" et
-"non-accentogène". Ainsi par exemple, les mots dágo "maison" et ndzía
-"chemin", sont tous deux accentués sur la pénultième à l'état isolé. Mais leur
-comportement n'est pas le même si on leur adjoint le suffixe locatif -ni j on
-obtient pour le premier dagóni "à la maison" et, pour le deuxième ndzianí
-"en chemin". On posera que le premier est accentogène et le deuxième, nonaccentogène.
-Une mention spéciale entre parenthèses (non-accentog.) permet
-de repérer les mots qui ont ce comportement particulier. Tous les mots qui, à
-l'état isolé, portent l'accent sur une syllabe autre que la pénultième, sont
-accentogènes.</p>
-<p>Les verbes disyllabiques se divisent eux aussi en deux catégories: les
-accentogènes et les non-accentogènes. Ainsi, -vúna "récolter" et -vúka "s'en
-sortir" sont respectivement accentogène (pour le premier) et non-accentogène
-(pour le deuxième). Cette distinction joue un rôle important pour connaître,
-par exemple, la forme de l'accompli des verbes. En effet un verbe
-accentogène comme -vuna donne une forme d'accompli avúnu "il a récolté",
-tandis que un verbe non-accentogène, comme -vu ka donne à l'accompli
-avukú "il s'en est sorti". Comme pour les noms, cette distinction ne concerne
-que les disyllabes. Tous les verbes d'une seule syllabe, ou de plus de deux
-syllabes sont accentogènes.</p>
+  <p>L'anjouanais est une langue accentuelle : tous les mots reçoivent un accent.
+    Mais contrairement à ce qui se passe par exemple en swahili où l'accent
+    tombe toujours sur l'avant-dernière syllabe ou pénultième, en anjouanais,
+    l'accent peut tomber sur toute syllabe: un mot peut très bien être accentué
+    sur la syllabe finale (ex. : nyumbá "maison"), la pénultième (ex. ; nyóshi
+    "abeille"), l'anté-pénultième (ex. : lávani "vanille) et même avant. Dans une
+    phrase, la place de ces accents peut varier, et l'accent reporté sur une autre
+    syllabe. Les règles de ces déplacements sont trop complexes pour être
+    énumérées dans le cadre du présent ouvrage. Je me contenterai ici de noter,</p>
+  <p>avec un accent aigu, la place de la syllabe accentuée, aussi bien dans les
+    entrées que dans les exemples (ces accents aigus ne sont donnés qu'à titre
+    informatif: ils ne seront pas notés dans l'orthographe normale). Toutefois,
+    aucun accent n'est marqué dans les entrées sur les mots (les plus nombreux)
+    qui sont accentués sur la pénultième.</p>
+  <p>Sans entrer dans un exposé complet des règles de l'accentuation, il est
+    pourtant nécessaire de distinguer deux catégories de mots selon leur
+    comportement accentuel.</p>
+  <p>Ces deux catégories seront nommées respectivement "accentogène" et
+    "non-accentogène". Ainsi par exemple, les mots dágo "maison" et ndzía
+    "chemin", sont tous deux accentués sur la pénultième à l'état isolé. Mais leur
+    comportement n'est pas le même si on leur adjoint le suffixe locatif -ni j on
+    obtient pour le premier dagóni "à la maison" et, pour le deuxième ndzianí
+    "en chemin". On posera que le premier est accentogène et le deuxième, nonaccentogène.
+    Une mention spéciale entre parenthèses (non-accentog.) permet
+    de repérer les mots qui ont ce comportement particulier. Tous les mots qui, à
+    l'état isolé, portent l'accent sur une syllabe autre que la pénultième, sont
+    accentogènes.</p>
+  <p>Les verbes disyllabiques se divisent eux aussi en deux catégories: les
+    accentogènes et les non-accentogènes. Ainsi, -vúna "récolter" et -vúka "s'en
+    sortir" sont respectivement accentogène (pour le premier) et non-accentogène
+    (pour le deuxième). Cette distinction joue un rôle important pour connaître,
+    par exemple, la forme de l'accompli des verbes. En effet un verbe
+    accentogène comme -vuna donne une forme d'accompli avúnu "il a récolté",
+    tandis que un verbe non-accentogène, comme -vu ka donne à l'accompli
+    avukú "il s'en est sorti". Comme pour les noms, cette distinction ne concerne
+    que les disyllabes. Tous les verbes d'une seule syllabe, ou de plus de deux
+    syllabes sont accentogènes.</p>
 </ion-content>

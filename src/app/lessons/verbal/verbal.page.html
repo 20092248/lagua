@@ -1,12 +1,14 @@
 <ion-header>
 <ion-toolbar>
-  <ion-title>
-    Lagua
-  </ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-title>Le système verbal</ion-title>
+  <ion-icon class="ion-margin-end" slot="end" size="medium" name="home-outline"
+      [routerLink]="['/tabs/home']"></ion-icon>
 </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
-<h1><ion-icon class="ion-arrow-back-position" size="large" name="arrow-back-circle-outline" [routerLink]="['/tabs/lessons']"></ion-icon> Le sysyème verbal</h1>
 <h2>Présentation</h2>
   <p>En shindzuani, un verbe, dans sa forme conjuguée, est accompagné de
   nombreux affixes (préfixes et suffixes). Ce sont: les pré-préfixes verbaux

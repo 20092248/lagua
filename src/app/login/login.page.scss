@@ -7,7 +7,11 @@ form {
 }
 
 ion-item {
-  --ion-background-color: transparent !important;
+  --background: transparent !important;
+}
+
+ion-item::part(native) {
+  border-color: #ffffff;
 }
 
 ion-grid {
@@ -61,6 +65,7 @@ ion-col {
 
 .ion-client-login-custom {
   font-size: 16px;
+  color: #ffffff;
 }
 
 ion-label.ion-text-other {
@@ -82,6 +87,10 @@ ion-label.ion-text-other:before {
 
 ion-label.ion-text-other:after {
   margin-left: 5px;
+}
+
+ion-button.ion-password-forgot {
+  color: #ffffff;
 }
 
 .ion-other-connection ion-button {

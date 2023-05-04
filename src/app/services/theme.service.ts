@@ -4,6 +4,8 @@ import { doc, getDocs, addDoc, collection, query, where, DocumentData, orderBy }
 import { Word } from '../model/word.model';
 import { FirebaseWord } from '../model/wordFirebase.model';
 
+const THEME_KEY = 'selected-app-theme';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +25,7 @@ export class ThemeService {
       this.themeMode = 'moon';
       document.body.classList.remove('dark');
     }
+    localStorage.setItem(THEME_KEY, theme === 'moon' ? 'moon' : 'sunny');
   }
 
 }

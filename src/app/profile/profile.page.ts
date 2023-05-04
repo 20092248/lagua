@@ -21,15 +21,15 @@ export class ProfilePage implements OnInit {
 
   getActualLevelByCode() {
     const code = this.user?.level?.code;
-    if (code === '1') {
+    if (code === '0') {
       return 'Découverte';
-    } else if (code === '2') {
+    } else if (code === '1') {
       return 'Débutant';
-    } else if (code === '3') {
+    } else if (code === '2') {
       return 'Intermédiaire';
-    } else if (code === '4') {
+    } else if (code === '3') {
       return 'Intermédiaire avancé';
-    } else if (code === '5') {
+    } else if (code === '4') {
       return 'Avancé';
     } else {
       return '';

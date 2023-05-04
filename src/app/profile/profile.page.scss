@@ -5,7 +5,7 @@ ion-content {
 
 ion-grid.ion-grid-header {
   position: relative;
-  background: #1a6921;
+  background: linear-gradient(#5bad77, #1a6921);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 25px -15px, rgba(0, 0, 0, 0.08) 0px 10px 10px -10px;
 }
 
@@ -104,12 +104,12 @@ ion-card {
 .ion-display-flex {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   width: 100%;
 }
 
 ion-card.ion-dashboard {
-  --background: #6d9f72;
+  --background: #498b5f;
   --color: #ffffff;
   margin-top: 0;
   margin-bottom: 0;

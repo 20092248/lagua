@@ -15,10 +15,7 @@ export class LessonsPage implements OnInit {
   constructor(private router: Router, private lessonsService: LessonsService) { }
 
   ngOnInit(): void {
-    this.lessonsService.searchLessons().then(((lessons: Lessons[]) => {
-      console.log(lessons);
-      this.lessons = lessons;
-    }));
+    this.lessons = this.lessonsService.lessons;
   }
 
   goTo(routing: string) {

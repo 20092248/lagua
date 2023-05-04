@@ -1,13 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Lagua
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Les pronoms</ion-title>
+    <ion-icon class="ion-margin-end" slot="end" size="medium" name="home-outline"
+      [routerLink]="['/tabs/home']"></ion-icon>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
-  <h1><ion-icon class="ion-arrow-back-position" size="large" name="arrow-back-circle-outline"
-      [routerLink]="['/tabs/lessons']"></ion-icon> Les pronoms</h1>
   <p>1) les pronoms allocutifs :</p>
   <p>Ce sont les pronoms qui représentent les personnes participant au
     discours. Le shindzuani en connaît deux types, résumés dans le tableau
@@ -124,90 +125,90 @@
     degrés: proche, intermédiatre et élotgné. Le premier peut être traduit
     par votct, le ou la ou les votci, Le deuxième et le troisième par vat/à, le
     ou la votlà, les votlà. Voici les principaux accords:</p>
-    <ion-grid class="ion-text-center">
-      <ion-row>
-        <ion-col>classes</ion-col>
-        <ion-col>proches</ion-col>
-        <ion-col>intermédiaires</ion-col>
-        <ion-col>éloignés</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>1</ion-col>
-        <ion-col>tsíwani</ion-col>
-        <ion-col>tsiwo</ion-col>
-        <ion-col>tsule</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>2</ion-col>
-        <ion-col>tsáwani</ion-col>
-        <ion-col>tsáwo</ion-col>
-        <ion-col>tsáwale</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>3</ion-col>
-        <ion-col>tsíwani</ion-col>
-        <ion-col>tsiwo</ion-col>
-        <ion-col>tsule</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>4</ion-col>
-        <ion-col>tsíyani</ion-col>
-        <ion-col>tsiyo</ion-col>
-        <ion-col>tsile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>5</ion-col>
-        <ion-col>tsílani</ion-col>
-        <ion-col>tsilo</ion-col>
-        <ion-col>tsílile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>6</ion-col>
-        <ion-col>tsáyani</ion-col>
-        <ion-col>tsayo</ion-col>
-        <ion-col>tsáyale</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>7</ion-col>
-        <ion-col>tsíslani</ion-col>
-        <ion-col>tsisho</ion-col>
-        <ion-col>tsíslile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>8</ion-col>
-        <ion-col>tsízani</ion-col>
-        <ion-col>tsizo</ion-col>
-        <ion-col>tsízile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>9</ion-col>
-        <ion-col>tsíyani</ion-col>
-        <ion-col>tsiyo</ion-col>
-        <ion-col>tsile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>10</ion-col>
-        <ion-col>tsízani</ion-col>
-        <ion-col>tsizo</ion-col>
-        <ion-col>tsízile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>11</ion-col>
-        <ion-col>tsíwani</ion-col>
-        <ion-col>tsiwo</ion-col>
-        <ion-col>tsule</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>15</ion-col>
-        <ion-col>tsíyani</ion-col>
-        <ion-col>tsiyo</ion-col>
-        <ion-col>tsile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>2</ion-col>
-        <ion-col>tsáwani</ion-col>
-        <ion-col>tsáwo</ion-col>
-        <ion-col>tsáwale</ion-col>
-      </ion-row>
-    </ion-grid>
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col>classes</ion-col>
+      <ion-col>proches</ion-col>
+      <ion-col>intermédiaires</ion-col>
+      <ion-col>éloignés</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>1</ion-col>
+      <ion-col>tsíwani</ion-col>
+      <ion-col>tsiwo</ion-col>
+      <ion-col>tsule</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>2</ion-col>
+      <ion-col>tsáwani</ion-col>
+      <ion-col>tsáwo</ion-col>
+      <ion-col>tsáwale</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>3</ion-col>
+      <ion-col>tsíwani</ion-col>
+      <ion-col>tsiwo</ion-col>
+      <ion-col>tsule</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>4</ion-col>
+      <ion-col>tsíyani</ion-col>
+      <ion-col>tsiyo</ion-col>
+      <ion-col>tsile</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>5</ion-col>
+      <ion-col>tsílani</ion-col>
+      <ion-col>tsilo</ion-col>
+      <ion-col>tsílile</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>6</ion-col>
+      <ion-col>tsáyani</ion-col>
+      <ion-col>tsayo</ion-col>
+      <ion-col>tsáyale</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>7</ion-col>
+      <ion-col>tsíslani</ion-col>
+      <ion-col>tsisho</ion-col>
+      <ion-col>tsíslile</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>8</ion-col>
+      <ion-col>tsízani</ion-col>
+      <ion-col>tsizo</ion-col>
+      <ion-col>tsízile</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>9</ion-col>
+      <ion-col>tsíyani</ion-col>
+      <ion-col>tsiyo</ion-col>
+      <ion-col>tsile</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>10</ion-col>
+      <ion-col>tsízani</ion-col>
+      <ion-col>tsizo</ion-col>
+      <ion-col>tsízile</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>11</ion-col>
+      <ion-col>tsíwani</ion-col>
+      <ion-col>tsiwo</ion-col>
+      <ion-col>tsule</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>15</ion-col>
+      <ion-col>tsíyani</ion-col>
+      <ion-col>tsiyo</ion-col>
+      <ion-col>tsile</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>2</ion-col>
+      <ion-col>tsáwani</ion-col>
+      <ion-col>tsáwo</ion-col>
+      <ion-col>tsáwale</ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

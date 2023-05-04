@@ -17,17 +17,17 @@ export class AddPage implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private dictionaryService: DictionaryService, private toastController: ToastController) {
     this.wordForm = this.formBuilder.group({
-      'text':['',Validators.required],
-      'translate':['',Validators.required],
-      'description':['',Validators.required],
-      'index':['',Validators.required],
+      'text': ['', Validators.required],
+      'translate': ['', Validators.required],
+      'description': ['', Validators.required],
+      'index': ['', Validators.required],
       'exampleText0': [], 'exampleTranslate0': [],
       'exampleText1': [], 'exampleTranslate1': [],
       'exampleText2': [], 'exampleTranslate2': [],
       'exampleText3': [], 'exampleTranslate3': [],
       'exampleText4': [], 'exampleTranslate4': []
     });
-   }
+  }
 
   ngOnInit() { }
 
@@ -64,6 +64,13 @@ export class AddPage implements OnInit {
       color: 'success'
     });
     await toast.present();
+  }
+
+  copierTexte(letter: string) {
+    if (letter) {
+      console.log(letter);
+      navigator.clipboard.writeText(letter).then();
+    }
   }
 
 }

@@ -14,7 +14,7 @@
       <div class="ion-padding-bottom">Découverte - Cours Débutant/Intermédiaire</div>
     </div> -->
     <div>
-      <ion-card *ngFor="let lesson of lessons" class=" ion-flex" (click)="goTo(lesson.navigate)">
+      <ion-card *ngFor="let lesson of lessons" class="ion-flex" (click)="goTo(lesson.navigate)">
         <div class="ion-size-img">
           <img class="ion-icon-src ion-float-right" width="50" src="{{lesson.src}}">
         </div>

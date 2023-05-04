@@ -7,15 +7,16 @@ import { Lessons } from '../model/lessons.model';
   providedIn: 'root'
 })
 export class LessonsService {
+  
+  lessons: Lessons[] = [];
 
   constructor(private _firestore: Firestore) { }
 
   async searchLessons(): Promise<Lessons[]> {
-    const lessons: Lessons[] = [];
     const q = query(collection(getFirestore(), 'lessons'), orderBy('order'));
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => lessons.push(doc.data() as Lessons));
-    return lessons;
+    querySnapshot.forEach((doc) => this.lessons.push(doc.data() as Lessons));
+    return this.lessons;
   }
 
 }

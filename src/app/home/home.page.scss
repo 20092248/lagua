@@ -1,7 +1,7 @@
 ion-toolbar {
-  --background: #1a6921;
+  --background: linear-gradient(#5bad77, #1a6921);
   --color: #ffffff;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 20px 25px -15px, rgba(0, 0, 0, 0.08) 0px 10px 10px -10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 25px -15px, rgba(0, 0, 0, 0.18) 0px 10px 10px -10px;
   height: 220px;
 }
 
@@ -41,8 +41,13 @@ ion-popover {
   --offset-x: 10px;
 }
 
+ion-slide ion-card ion-card-content {
+  height: 83px;
+  padding: 10px;
+}
+
 .ion-padding-top-min {
-  padding-top: 2px
+  padding-top: 2px;
 }
 
 .ion-custom-text:not(:first-child) {
@@ -199,7 +204,7 @@ ion-card-content>span {
 
 
 ion-card.ion-dashboard {
-  --background: #578154;
+  --background: #498b5f;
   --color: #ffffff;
   margin-top: 0;
   margin-bottom: 0;
@@ -238,4 +243,27 @@ ion-card-title .ion-card-title {
   background-color: #cccfcb;
   margin-left: auto;
   margin-right: auto;
+}
+
+.ion-font-weight-bold {
+  font-weight: bold;
+}
+
+.ion-no-margin-bottom {
+  margin-bottom: 1px !important;
+}
+
+.ion-no-margin-middle {
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+.ion-no-margin-left {
+  margin-left: 0px !important;
+  margin-right: 10px !important;
+}
+
+.ion-no-margin-right {
+  margin-left: 10px !important;
+  margin-right: 0px !important;
 }

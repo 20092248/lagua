@@ -1,13 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Lagua New
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>La conjugaison</ion-title>
+    <ion-icon class="ion-margin-end" slot="end" size="medium" name="home-outline"
+      [routerLink]="['/tabs/home']"></ion-icon>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
-  <h1><ion-icon class="ion-arrow-back-position" size="large" name="arrow-back-circle-outline"
-      [routerLink]="['/tabs/lessons']"></ion-icon> La conjugaison</h1>
   <p>(exemples avec le verbe -vuna "récolter")</p>
   <p>1) l'inaccompli-présent :</p>
   <ion-grid class="ion-text-center">
