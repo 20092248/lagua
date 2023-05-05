@@ -1,5 +1,5 @@
 <!-- <ion-header class="ion-no-border"> -->
-<ion-toolbar>
+<ion-toolbar class="ion-header-home">
   <ion-grid class="ion-no-margin">
     <ion-row>
       <ion-col size="9">
@@ -54,7 +54,7 @@
   </ion-grid>
 </ion-toolbar>
 <!-- </ion-header> -->
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-content-fullscreen-home">
   <div class="ion-content-home">
     <div>
 
@@ -164,8 +164,34 @@
             <div class="">Visiualiser les précédentes leçons</div>
             <div class="">Améliorer votre score en faisant des tests</div>
           </ion-card-content>
-          <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
-            fill="clear">Réviser</ion-button>
+          <ion-button id="open-modal" size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
+            fill="clear" (click)="displayPreviousReviews()">Réviser</ion-button>
+
+            <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>Quelles leçon souhaitez-vous réviser ?</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button (click)="modal.dismiss()">
+                      <ion-icon slot="icon-only" name="close"></ion-icon>
+                    </ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content>
+                <ion-list>
+                  <ion-item detail="true" lines="full" class="ion-item-result-dictionary" *ngFor="let r of reviews; let index = index">
+                  <ion-icon name="reader-outline" slot="start"></ion-icon>
+                    <ion-label class="ion-text-wrap">
+                      <h3>{{r.text}}</h3>
+                      <p>{{r.translate}}</p>
+                    </ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
         </ion-card>
       </div>
 

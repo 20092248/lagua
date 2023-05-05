@@ -6,6 +6,9 @@ import { User } from '../model/user.model';
 import { AuthentificationService } from '../services/authentification.service';
 import { LessonsService } from '../services/lessons.service';
 import { ThemeService } from '../services/theme.service';
+import { ModalController } from '@ionic/angular';
+import { ReviewService } from '../services/review.service';
+import { Review } from '../model/review.model';
 
 @Component({
   selector: 'app-home',
@@ -21,8 +24,9 @@ export class HomePage implements OnInit {
     speed: 400,
   };
   recommendedLesson: any[] = [];
+  reviews: Review[] = [];
 
-  constructor(private router: Router, private themeService: ThemeService, private authentificationService: AuthentificationService, private lessonsService: LessonsService, private popoverController: PopoverController) {
+  constructor(private router: Router, private themeService: ThemeService, private authentificationService: AuthentificationService, private lessonsService: LessonsService, private popoverController: PopoverController, private modalController: ModalController, private reviewService: ReviewService) {
   }
   get getTheme() {
     return this.themeService.themeMode;
@@ -75,5 +79,11 @@ export class HomePage implements OnInit {
       this.popoverController.dismiss();
     }
   }
+
+  displayPreviousReviews() {
+    this.reviewService.getReview('A1').then((data: Review[]) =>{
+      this.reviews = data;
+    });
+  };
 
 }

@@ -1,11 +1,11 @@
-ion-toolbar {
+ion-toolbar.ion-header-home {
   --background: linear-gradient(#5bad77, #1a6921);
   --color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 25px -15px, rgba(0, 0, 0, 0.18) 0px 10px 10px -10px;
   height: 220px;
 }
 
-ion-content {
+ion-content.ion-content-fullscreen-home {
   --background: #eef1ee;
   --background: linear-gradient(to bottom, #eef1ee 220px, #1a6921 220px, #eef1ee 420px);
 }
@@ -44,6 +44,29 @@ ion-popover {
 ion-slide ion-card ion-card-content {
   height: 83px;
   padding: 10px;
+}
+
+ion-modal {
+  --border-radius: 20px;
+  ion-toolbar {
+    --background: #ffffff;
+  }
+
+  ion-content {
+    --background: #eef1ee;
+  }
+
+  ion-title {
+    font-size: 16px;
+  }
+
+  ion-list {
+    background: transparent;
+  }
+
+  ion-item {
+    --background: transparent;
+  }
 }
 
 .ion-padding-top-min {
