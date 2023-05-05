@@ -84,6 +84,10 @@ export class HomePage implements OnInit {
     this.reviewService.getReview('A1').then((data: Review[]) =>{
       this.reviews = data;
     });
-  };
+  }
+
+  accessToNextLesson() {
+    this.router.navigate(['/questions/type']);
+  }
 
 }

@@ -66,6 +66,11 @@ ion-modal {
 
   ion-item {
     --background: transparent;
+    ion-icon {
+      padding: 10px;
+      border-radius: 20px;
+      background: var(--ion-background-color);
+    }
   }
 }
 

@@ -1,1 +1,19 @@
-TYPE PAGE !
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Lagua</ion-title>
+    <ion-icon class="ion-margin-end" slot="end" size="large" name="close-outline"
+      [routerLink]="['/tabs/home']"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content> </ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="ion-float-right ion-margin">
+      Continuer
+      <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
