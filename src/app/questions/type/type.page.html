@@ -1,19 +1,13 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Lagua</ion-title>
-    <ion-icon class="ion-margin-end" slot="end" size="large" name="close-outline"
-      [routerLink]="['/tabs/home']"></ion-icon>
-  </ion-toolbar>
-</ion-header>
-<ion-content> </ion-content>
-<ion-footer class="ion-no-border">
-  <ion-toolbar>
-    <ion-button class="ion-float-right ion-margin">
-      Continuer
-      <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
-    </ion-button>
-  </ion-toolbar>
-</ion-footer>
+<div class="ion-position-content ion-text-center">
+  <div class="ion-content-center">
+    <h5 class="ion-padding-bottom">Sélectionner le mode d'apprentissage</h5>
+    <div>
+      <ion-card *ngFor="let type of types" (click)="typeSelected(type.code)">
+        <img src="{{type.src}}"/>
+        <ion-card-header>
+          <ion-card-title>{{type.label}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </div>
+  </div>
+</div>

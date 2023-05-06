@@ -1,1 +1,20 @@
-QUESTIONS PAGE !
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Lagua</ion-title>
+    <ion-icon class="ion-margin-end" slot="end" size="large" name="close-outline"
+      [routerLink]="['/tabs/home']"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <app-type></app-type>
+  <app-content></app-content> -->
+  <ion-router-outlet></ion-router-outlet>
+</ion-content>
+<ion-footer class="ion-no-border" *ngIf="getType">
+  <ion-toolbar>
+    <ion-button class="ion-float-right ion-margin">
+      Continuer
+      <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

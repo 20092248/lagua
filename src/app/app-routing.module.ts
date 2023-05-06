@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { QuestionsPage } from './questions/questions.page';
 import { AuthGuard } from './shared/auth.guard';
 import { IsLoggedGuard } from './shared/is-logged.guard';
 
@@ -38,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'questions',
-    loadChildren: () => import('./questions/questions.module').then(m => m.QuestionsPageModule)
+    loadChildren: () => import('./questions/questions.module').then(m => m.QuestionsPageModule),
   },
   {
     path: 'user-information',

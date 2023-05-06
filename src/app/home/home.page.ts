@@ -87,7 +87,7 @@ export class HomePage implements OnInit {
   }
 
   accessToNextLesson() {
-    this.router.navigate(['/questions/type']);
+    this.router.navigate(['/questions']);
   }
 
 }

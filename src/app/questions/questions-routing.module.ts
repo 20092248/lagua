@@ -6,11 +6,26 @@ import { QuestionsPage } from './questions.page';
 const routes: Routes = [
   {
     path: '',
-    component: QuestionsPage
+    component: QuestionsPage,
+    children: [
+      {
+        path: 'type',
+        loadChildren: () => import('./type/type.module').then(m => m.TypePageModule)
+      },
+      {
+        path: 'content',
+        loadChildren: () => import('./content/content.module').then(m => m.ContentPageModule)
+      },
+      {
+        path: '',
+        redirectTo: '/questions/type',
+        pathMatch: 'full'
+      }]
   },
   {
-    path: 'type',
-    loadChildren: () => import('./type/type.module').then( m => m.TypePageModule)
+    path: '',
+    redirectTo: '/questions/type',
+    pathMatch: 'full'
   }
 ];
 
@@ -18,4 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class QuestionsPageRoutingModule {}
+export class QuestionsPageRoutingModule { }

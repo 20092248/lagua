@@ -1,9 +1,16 @@
-ion-content {
-  --background: var(--ion-background-light-color);
+ion-card {
+    margin: 8% 25%;
+    padding-top: 15px;
+    transition-duration: 0.1s;
 }
 
-ion-footer {
-  ion-button {
-    --background: #1a6921; 
-  }
+ion-card:active {
+    background: rgb(244, 244, 246);
+}
+
+div.ion-position-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
