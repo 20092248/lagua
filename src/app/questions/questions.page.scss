@@ -1,9 +1,58 @@
 ion-content {
-    --background: var(--ion-background-light-color);
+  --background: var(--ion-background-light-color);
+}
+
+ion-title {
+    padding: 0 16px;
 }
 
 ion-footer {
-    ion-button {
-        --background: #1a6921;
-    }
+  ion-button {
+    --background: #1a6921;
+  }
+}
+
+.ion-progress-content {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.ion-progress-button {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  background-color: rgb(233, 234, 237);
+  border-radius: 10px;
+}
+
+.ion-progress-bar {
+  border: none;
+  background: none;
+  padding: 0px;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  margin: 0px;
+  display: flex;
+}
+
+.ion-progress-bar-active {
+    position: relative;
+    height: 8px;
+    background-color: #27a132;
+    transition: width 500ms ease 0s;
+    border-radius: 10px;
+}
+
+.ion-progress-bar-inactive {
+    position: relative;
+    height: 8px;
+    background-color: #27a132;
+    transition: width 500ms ease 0s;
 }

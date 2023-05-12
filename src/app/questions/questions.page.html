@@ -1,6 +1,18 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>Lagua</ion-title>
+    <ion-title>
+    <span>
+    <div class="ion-progress-content">
+      <span class="ion-padding-end">Lagua</span>
+          <div class="ion-progress-button">
+            <button aria-label="progress bar" data-selector="progress-bar" class="ion-progress-bar">
+              <span width="16.666666666666668" class="ion-progress-bar-active" style="width: 16.6667%;"></span>
+              <span width="-16.666666666666668" class="ion-progress-bar-inactive"></span>
+            </button>
+          </div>
+        </div>
+      </span>
+    </ion-title>
     <ion-icon class="ion-margin-end" slot="end" size="large" name="close-outline"
       [routerLink]="['/tabs/home']"></ion-icon>
   </ion-toolbar>
