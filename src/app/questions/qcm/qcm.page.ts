@@ -16,8 +16,9 @@ export class QcmPage implements OnInit {
   question: any;
   nbrQuestion: number = 0;
   displayAnswer: boolean = false;
+  secondChance: boolean = false;
   answerSelected: any | undefined;
-  radio: any;
+  radio_group: any;
 
   constructor(private questionService: QuestionService, private authentificationService: AuthentificationService) { }
 
@@ -38,9 +39,16 @@ export class QcmPage implements OnInit {
     this.displayAnswer = true;
   }
 
+  tryAgain() {
+    this.secondChance = true;
+    this.displayAnswer = false;
+    this.answerSelected = undefined;
+  }
+
   continue() {
     this.nbrQuestion++;
     this.displayAnswer = false;
+    this.secondChance = false;
     this.answerSelected = undefined;
     this.question = this.questions[this.nbrQuestion];
     // this.questionService.updateQuestion(this.user?.learn?.text.toLocaleLowerCase() + '_' + this.translate + '_qcm', this.user?.review ? this.user.review : '1_1', this.questions).then();

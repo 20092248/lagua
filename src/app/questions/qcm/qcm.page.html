@@ -9,7 +9,7 @@
       <ion-card>
         <img src="{{question?.img}}" />
         <ion-card-header>
-          <ion-card-title>{{question?.text}}</ion-card-title>
+          <ion-card-title class="ion-text-qcm">{{answerSelected?.choice}}</ion-card-title>
           <ion-card-subtitle>{{question?.translate}}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
@@ -21,10 +21,10 @@
   <ion-row>
     <ion-col>
       <ion-list class="ion-no-padding">
-        <ion-radio-group [allowEmptySelection]="true" [value]="radio">
-          <ion-item [ngClass]="{ 'error' : !c?.answer && displayAnswer, 'success' : c?.answer && displayAnswer }" *ngFor="let c of question?.choices" (click)="choiceSelected(c)">
+        <ion-radio-group [allowEmptySelection]="true" [value]="radio_group">
+          <ion-item [ngClass]="{ 'error' : !c?.answer && displayAnswer && secondChance, 'success' : c?.answer && displayAnswer && secondChance }" *ngFor="let c of question?.choices" (click)="choiceSelected(c)">
             <ion-label>{{c?.choice}}</ion-label>
-            <ion-radio slot="end" name="{{c?.choice}}" value="{{c?.choice}}" [ngClass]="{ 'ion-error' : !c?.answer && displayAnswer}"></ion-radio>
+            <ion-radio slot="end" name="{{c?.choice}}" value="{{c?.choice}}" [disabled]="displayAnswer" [ngClass]="{ 'ion-error' : !c?.answer && displayAnswer}"></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
@@ -36,10 +36,10 @@
     <ion-button *ngIf="!displayAnswer" [disabled]="!answerSelected" color="tertiary" class="ion-margin" (click)="validate()">
       Valider
     </ion-button>
-    <ion-button *ngIf="displayAnswer" color="danger" class="ion-margin" (click)="validate()">
+    <ion-button *ngIf="displayAnswer" color="danger" class="ion-margin" (click)="tryAgain();;radio_group = ''">
       Réessayer
     </ion-button>
-    <ion-button *ngIf="displayAnswer" color="lagua" class="ion-float-right ion-margin" (click)="continue();radio = ''">
+    <ion-button *ngIf="displayAnswer" color="lagua" class="ion-float-right ion-margin" (click)="continue();radio_group = ''">
       Continuer
       <!-- <ion-icon slot="end" name="caret-forward-outline"></ion-icon> -->
     </ion-button>

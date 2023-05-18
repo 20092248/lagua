@@ -71,3 +71,16 @@ ion-radio.radio-checked::part(mark) {
 
   transform: rotate(45deg);
 }
+
+.ion-text-qcm {
+  display: inline-block;
+  min-width: 50%;
+  border-radius: 4px 4px 0px 0px;
+  background-color: rgb(244, 244, 246);
+  border-width: 1px 1px 2px;
+  border-style: solid;
+  border-color: rgb(233, 234, 237) rgb(233, 234, 237) rgb(76, 180, 80);
+  border-image: initial;
+  padding: 3px;
+  min-height: 35px;
+}
