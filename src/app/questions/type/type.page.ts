@@ -19,10 +19,17 @@ export class TypePage implements OnInit {
       this.types = data?.types;
     }));
   }
-  
-  typeSelected(code: string){
+
+  typeSelected(code: string) {
     this.questionService.type = code;
-    this.router.navigate(['/questions/content']);
-   }
+    switch (this.questionService.type) {
+      case 'Q':
+        this.router.navigate(['/questions/qcm']);
+        break;
+      case 'C':
+        this.router.navigate(['/questions/memo']);
+        break;
+    }
+  }
 
 }

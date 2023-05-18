@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ContentPage } from './content.page';
+import { QcmPage } from './qcm.page';
 
-describe('ContentPage', () => {
-  let component: ContentPage;
-  let fixture: ComponentFixture<ContentPage>;
+describe('QcmPage', () => {
+  let component: QcmPage;
+  let fixture: ComponentFixture<QcmPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContentPage ],
+      declarations: [ QcmPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ContentPage);
+    fixture = TestBed.createComponent(QcmPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

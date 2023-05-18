@@ -15,17 +15,17 @@ export class AuthentificationService {
   constructor(private _auth: Auth, private _firestore: Firestore) { }
 
   checkUserState() {
-    // if(getAuth() && getAuth().currentUser){
-    //   const user = getAuth().currentUser;
-    //   this.user.uid = user?.uid;
-    //   this.user.email = user?.email;
-    //   this.user.displayName = user?.displayName;
-    //   this.user.photoURL = user?.photoURL;
-    //   if(user){
-    //     this.getInfoUser(user.uid);
-    //   }
-    // }
-    return true; //getAuth() && getAuth().currentUser;
+    if(getAuth() && getAuth().currentUser){
+      const user = getAuth().currentUser;
+      this.user.uid = user?.uid;
+      this.user.email = user?.email;
+      this.user.displayName = user?.displayName;
+      this.user.photoURL = user?.photoURL;
+      if(user){
+        this.getInfoUser(user.uid);
+      }
+    }
+    return getAuth() && getAuth().currentUser;
   }
 
   getInfoUser(uid: string) {

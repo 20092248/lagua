@@ -1,0 +1,47 @@
+<ion-grid class="ion-text-center">
+  <ion-row>
+    <ion-col>
+      <h5>Complétez les espaces vides</h5>
+      </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="8">
+      <ion-card>
+        <img src="{{question?.img}}" />
+        <ion-card-header>
+          <ion-card-title>{{question?.text}}</ion-card-title>
+          <ion-card-subtitle>{{question?.translate}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{question?.description}}
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-list class="ion-no-padding">
+        <ion-radio-group [allowEmptySelection]="true" [value]="radio">
+          <ion-item [ngClass]="{ 'error' : !c?.answer && displayAnswer, 'success' : c?.answer && displayAnswer }" *ngFor="let c of question?.choices" (click)="choiceSelected(c)">
+            <ion-label>{{c?.choice}}</ion-label>
+            <ion-radio slot="end" name="{{c?.choice}}" value="{{c?.choice}}" [ngClass]="{ 'ion-error' : !c?.answer && displayAnswer}"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-footer class="ion-no-border">
+  <ion-toolbar [ngClass]="{ 'ion-text-center' : !displayAnswer}">
+    <ion-button *ngIf="!displayAnswer" [disabled]="!answerSelected" color="tertiary" class="ion-margin" (click)="validate()">
+      Valider
+    </ion-button>
+    <ion-button *ngIf="displayAnswer" color="danger" class="ion-margin" (click)="validate()">
+      Réessayer
+    </ion-button>
+    <ion-button *ngIf="displayAnswer" color="lagua" class="ion-float-right ion-margin" (click)="continue();radio = ''">
+      Continuer
+      <!-- <ion-icon slot="end" name="caret-forward-outline"></ion-icon> -->
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

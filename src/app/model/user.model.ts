@@ -11,6 +11,8 @@ export class User {
     age?: CodeLabel;
     time?: CodeLabel;
     level?: CodeLabel;
+    review?: any;
+    lessons?: any;
 
     constructor(uid: string, email: string, displayName: string, photoURL: string) {
         this.uid = uid;

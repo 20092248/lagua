@@ -13,8 +13,12 @@ const routes: Routes = [
         loadChildren: () => import('./type/type.module').then(m => m.TypePageModule)
       },
       {
-        path: 'content',
-        loadChildren: () => import('./content/content.module').then(m => m.ContentPageModule)
+        path: 'qcm',
+        loadChildren: () => import('./qcm/qcm.module').then(m => m.QcmPageModule)
+      },
+      {
+        path: 'memo',
+        loadChildren: () => import('./memo/memo.module').then(m => m.MemoPageModule)
       },
       {
         path: '',

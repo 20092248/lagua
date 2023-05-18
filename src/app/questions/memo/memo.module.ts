@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ContentPageRoutingModule } from './content-routing.module';
+import { MemoPageRoutingModule } from './memo-routing.module';
 
-import { ContentPage } from './content.page';
+import { MemoPage } from './memo.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ContentPageRoutingModule
+    MemoPageRoutingModule
   ],
-  declarations: [ContentPage]
+  declarations: [MemoPage]
 })
-export class ContentPageModule {}
+export class MemoPageModule {}

@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from '@angular/fire/auth';
-import { doc, Firestore, getFirestore, onSnapshot, setDoc, updateDoc } from '@angular/fire/firestore';
-import { CodeLabel } from '../model/codeLabel.model';
-import { CodeTextTranslate } from '../model/codeTextTranslate.model';
-import { User } from '../model/user.model';
+import { Auth } from '@angular/fire/auth';
+import { doc, Firestore, getDoc, getFirestore, updateDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +8,26 @@ import { User } from '../model/user.model';
 export class QuestionService {
 
   type: string | undefined;
+  questions: any | undefined;
 
   constructor(private _auth: Auth, private _firestore: Firestore) { }
 
+  async getQuestions(collection: string, document: string): Promise<any> {
+    const docRef = doc(getFirestore(), collection, document);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      this.questions = docSnap.data();
+    } else {
+      console.log('Impossible de récupérer la liste de questions.');
+    }
+    return this.questions;
+  }
+
+  async updateQuestion(collection: string, document: string, data: any[]): Promise<any> {
+    const docRef = doc(getFirestore(), collection, document);
+    await updateDoc(docRef, {
+      qcm: {questions : data }
+    });
+  }
 }

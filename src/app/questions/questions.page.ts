@@ -14,4 +14,5 @@ export class QuestionsPage implements OnInit {
   }
 
   ngOnInit() { }
+
 }
