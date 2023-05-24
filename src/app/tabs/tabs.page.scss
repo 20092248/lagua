@@ -5,7 +5,7 @@ ion-popover {
   --offset-y: 10px;
 }
 
-.img-box>ion-icon {
+.img-box > ion-icon {
   padding: 9px;
 }
 
@@ -14,24 +14,19 @@ ion-tab-bar ion-icon {
 }
 
 .tab-selected {
-    color: #15601b;
+  color: #15601b;
+  font-weight: bold;
 }
 
-.border-white-tabs {
-  // border: black solid 2px;
-  // background-color: black;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  float: right;
+ion-tabs {
+  background: #eef1ee;
 }
 
-.img-box {
-  border-radius: 50%;
-  overflow: hidden;
-  height: 50px;
-  width: 50px;
-  background-color: #cccfcb;
-  margin-left: auto;
-  margin-right: auto;
+ion-tab-bar {
+  margin-top: 5px;
+  --border: none;
+  border-radius: 25px 25px 0 0;
+  --background: var(--ion-background-color);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px,
+    rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
 }
