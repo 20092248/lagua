@@ -20,11 +20,13 @@ export class HomePage implements OnInit {
   user: User | undefined;
   slideOpts = {
     initialSlide: 0,
-    slidesPerView: 1.5,
+    slidesPerView: 1.75,
     speed: 400,
   };
   recommendedLesson: any[] = [];
   reviews: Review[] = [];
+  currentDate: Date = new Date();
+  dailyIcon: string | undefined;
 
   constructor(private router: Router, private themeService: ThemeService, private authentificationService: AuthentificationService, private lessonsService: LessonsService, private popoverController: PopoverController, private modalController: ModalController, private reviewService: ReviewService) {
   }
@@ -88,6 +90,15 @@ export class HomePage implements OnInit {
 
   accessToNextLesson() {
     this.router.navigate(['/questions']);
+  }
+
+  getDailyIcon(day: number) {
+    const currentDay = this.currentDate.getUTCDay();
+    if(currentDay >= day){
+      return "checkbox-outline";
+    } else {
+      return "square-outline";
+    }
   }
 
 }

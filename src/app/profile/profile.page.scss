@@ -18,6 +18,10 @@ ion-card-header.ion-weekly-calendar {
   padding: 10px;
 }
 
+ion-card-content {
+  padding: 13px 10px;
+}
+
 ion-list {
   background: transparent;
 }
@@ -27,9 +31,21 @@ ion-item {
 }
 
 ion-card {
-  --background: var(--ion-color-step-100);
+  --background: var(--ion-background-color);
   border-radius: 15px;
   height: 90%;
+}
+
+p {
+  margin: 10px;
+}
+
+p:last-child {
+  margin-bottom: 13px;
+}
+
+ion-text {
+  display: block;
 }
 
 .ion-profile-header {
@@ -65,40 +81,68 @@ ion-card {
   margin-right: auto;
 }
 
-.ion-calendar-content {
-  display: flex;
-  flex-flow: row nowrap;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  padding-bottom: 10px;
-  gap: 0px;
+.ion-label-progress-bottom-position {
+  margin-top: 5px;
 }
 
-.ion-calendar-day {
-  display: flex;
-  flex-flow: column nowrap;
-  -webkit-box-align: center;
-  align-items: center;
-  padding: 10px;
-  gap: 16px;
+.ion-label-progress-warning {
+  padding-left: 5px;
+  margin-top: 10px;
+  position: relative;
+  left: 20%;
+  border-left: 2px solid orange;
 }
 
-.ion-calendar-activity {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0px;
-  font-family: 'Babbel Milliard', sans-serif;
-  line-height: 22px;
-  color: rgb(57, 65, 73);
-  white-space: normal;
-  margin: 0px;
-  // width: 1rem;
+.ion-label-progress-danger {
+  padding-left: 5px;
+  position: relative;
+  left: 0%;
+  border-left: 2px solid red;
 }
 
-.is-today {
-  background-color: #d7e3ce;
-  border: 1.5px solid #9dba88;
-  border-radius: 4px;
+.ion-label-progress-success {
+  padding-right: 5px;
+  position: relative;
+  right: 0%;
+  border-right: 2px solid green;
+}
+
+.ion-vocabulary-bar-red {
+  border-radius: 1rem 0 0 1rem;
+  width: 20%;
+  background-color: red;
+  height: 10px;
+  position: absolute;
+  left: 0%;
+  border-left: 2px solid #fff;
+}
+
+.ion-vocabulary-bar-orange {
+  width: 20%;
+  background-color: orange;
+  height: 10px;
+  position: absolute;
+  left: 20%;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+
+.ion-vocabulary-bar-green {
+  border-radius: 0 1rem 1rem 0;
+  width: 60%;
+  background-color: green;
+  height: 10px;
+  position: absolute;
+  left: 40%;
+  border-right: 2px solid #fff;
+}
+
+.ion-text-bold {
+  font-weight: bold;
+}
+
+.ion-padding-top-min {
+  padding-top: 2px;
 }
 
 .ion-display-flex {
@@ -113,6 +157,14 @@ ion-card.ion-dashboard {
   --color: #ffffff;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+ion-card.ion-dashboard-left {
+  margin-left: 0;
+}
+
+ion-card.ion-dashboard-right {
+  margin-right: 0;
 }
 
 ion-card.ion-dashboard ion-icon {

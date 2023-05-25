@@ -36,10 +36,10 @@
     <ion-button *ngIf="!displayAnswer" [disabled]="!answerSelected" color="tertiary" class="ion-margin" (click)="validate()">
       Valider
     </ion-button>
-    <ion-button *ngIf="displayAnswer" color="danger" class="ion-margin" (click)="tryAgain();;radio_group = ''">
+    <ion-button *ngIf="displayAnswer" color="danger" class="ion-margin" (click)="tryAgain()">
       Réessayer
     </ion-button>
-    <ion-button *ngIf="displayAnswer" color="lagua" class="ion-float-right ion-margin" (click)="continue();radio_group = ''">
+    <ion-button *ngIf="displayAnswer" color="lagua" class="ion-float-right ion-margin" (click)="continue()">
       Continuer
       <!-- <ion-icon slot="end" name="caret-forward-outline"></ion-icon> -->
     </ion-button>

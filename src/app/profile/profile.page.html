@@ -22,47 +22,59 @@
   <ion-grid class="ion-grid-content">
     <ion-row>
       <ion-col size="12">
-        <ion-card>
-          <ion-card-header class="ion-weekly-calendar">
-            <ion-card-title class="ion-text-center">Tendance hebdomadaire</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <div class="ion-calendar-content">
-              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 1 }">
-                <div style="color: rgb(154, 167, 179)">Lu</div>
-                <div class="ion-calendar-activity">0</div>
-              </div>
-              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 2 }">
-                <div style="color: rgb(154, 167, 179)">Ma</div>
-                <div class="ion-calendar-activity">0</div>
-              </div>
-              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 3 }">
-                <div style="color: rgb(154, 167, 179)">Me</div>
-                <div class="ion-calendar-activity">0</div>
-              </div>
-              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 4 }">
-                <div style="color: rgb(154, 167, 179)">Je</div>
-                <div class="ion-calendar-activity">0</div>
-              </div>
-              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 5 }">
-                <div style="color: rgb(154, 167, 179)">Ve</div>
-                <div class="ion-calendar-activity">0</div>
-              </div>
-              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 6 }">
-                <div style="color: rgb(154, 167, 179)">Sa</div>
-                <div class="ion-calendar-activity">0</div>
-              </div>
-              <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 7 }">
-                <div style="color: rgb(154, 167, 179)">Di</div>
-                <div class="ion-calendar-activity">0</div>
-              </div>
-            </div>
-          </ion-card-content>
-        </ion-card></ion-col>
+        <div class="ion-padding-top-min">
+          <ion-card class="ion-no-margin">
+            <ion-card-content>
+              <ion-grid>
+                <ion-row class="ion-text-bold">
+                  <ion-col class="ion-no-padding-left ion-text-left">
+                    Vocabulaire
+                  </ion-col>
+                  <ion-col class="ion-text-right">
+                    1383 mot au total
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="ion-no-padding">
+                    <div class="ion-label-progress ion-label-progress-warning">
+                      <ion-text color="warning" class="ion-text-left ion-text-bold">9%</ion-text>à apprendre
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate"
+                      data-max="100" class="ion-vocabulary-bar-red">
+                    </div>
+                    <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate"
+                      data-max="100" class="ion-vocabulary-bar-orange">
+                    </div>
+                    <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate"
+                      data-max="100" class="ion-vocabulary-bar-green">
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-label-progress-bottom-position">
+                  <ion-col size="6">
+                    <div class="ion-label-progress ion-label-progress-danger">
+                      <ion-text color="danger" class="ion-text-left ion-text-bold">17%</ion-text>à réviser
+                    </div>
+                  </ion-col>
+                  <ion-col size="6">
+                    <div class="ion-label-progress ion-label-progress-success ion-text-right">
+                      <ion-text color="success" class="ion-text-bold">74%</ion-text>appris
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-col>
       <ion-col>
         <div class="ion-display-flex">
           <div class="ion-dashboard-bloc">
-            <ion-card class="ion-dashboard">
+            <ion-card class="ion-dashboard ion-dashboard-left">
               <ion-card-header>
                 <ion-card-title>
                   <span class="ion-card-title">1</span>
@@ -75,7 +87,7 @@
             </ion-card>
           </div>
           <div class="ion-dashboard-bloc">
-            <ion-card class="ion-dashboard">
+            <ion-card class="ion-dashboard ion-dashboard-right">
               <ion-card-header>
                 <ion-card-title>
                   <span class="ion-card-title">2j 3h</span>

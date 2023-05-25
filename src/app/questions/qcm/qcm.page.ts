@@ -23,12 +23,10 @@ export class QcmPage implements OnInit {
   constructor(private questionService: QuestionService, private authentificationService: AuthentificationService) { }
 
   ngOnInit() {
+    this.questionService.nbrQuestion = this.nbrQuestion;
     this.user = this.authentificationService.user;
-    this.questionService.getQuestions(this.user?.learn?.text.toLocaleLowerCase() + '_' + this.translate + '_qcm', this.user?.review ? this.user.review : '1_1').then(value => {
-      this.questions = value?.qcm?.questions;
-      this.question = this.questions[this.nbrQuestion];
-      console.log(this.question);
-    });
+    this.questions = this.questionService.questions?.qcm?.questions;
+    this.question = this.questions[this.nbrQuestion];
   }
 
   choiceSelected(choice: any) {
@@ -43,15 +41,19 @@ export class QcmPage implements OnInit {
     this.secondChance = true;
     this.displayAnswer = false;
     this.answerSelected = undefined;
+    this.radio_group = {};
   }
 
   continue() {
     this.nbrQuestion++;
+    this.questionService.nbrQuestion++;
     this.displayAnswer = false;
     this.secondChance = false;
     this.answerSelected = undefined;
+    this.radio_group = {};
     this.question = this.questions[this.nbrQuestion];
-    // this.questionService.updateQuestion(this.user?.learn?.text.toLocaleLowerCase() + '_' + this.translate + '_qcm', this.user?.review ? this.user.review : '1_1', this.questions).then();
+    // this.questions.push(this.question);
+    // this.questionService.updateQuestion(this.user?.learn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions' , this.user?.review ? this.user.review : '1_1', this.questions).then();
   }
 
 }

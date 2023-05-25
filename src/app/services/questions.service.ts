@@ -9,6 +9,7 @@ export class QuestionService {
 
   type: string | undefined;
   questions: any | undefined;
+  nbrQuestion: number = 0;
 
   constructor(private _auth: Auth, private _firestore: Firestore) { }
 

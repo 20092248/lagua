@@ -295,3 +295,38 @@ ion-card-title .ion-card-title {
   margin-left: 10px !important;
   margin-right: 0px !important;
 }
+
+.ion-calendar-content {
+  display: flex;
+  flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  gap: 0px;
+}
+
+.ion-calendar-day {
+  display: flex;
+  flex-flow: column nowrap;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 10px;
+  gap: 16px;
+}
+
+.ion-calendar-activity {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  font-family: 'Babbel Milliard', sans-serif;
+  line-height: 22px;
+  color: rgb(57, 65, 73);
+  white-space: normal;
+  margin: 0px;
+  // width: 1rem;
+}
+
+.is-today {
+  background-color: #d7e3ce;
+  border: 1.5px solid #9dba88;
+  border-radius: 4px;
+}

@@ -21,6 +21,10 @@ const routes: Routes = [
         loadChildren: () => import('./memo/memo.module').then(m => m.MemoPageModule)
       },
       {
+        path: 'result',
+        loadChildren: () => import('./result/result.module').then( m => m.ResultPageModule)
+      },
+      {
         path: '',
         redirectTo: '/questions/type',
         pathMatch: 'full'
