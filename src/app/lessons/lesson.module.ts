@@ -2,10 +2,10 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LessonsPage } from './lessons.page';
+import { LessonPage } from './lesson.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { LessonsPageRoutingModule } from './lessons-routing.module';
+import { LessonsPageRoutingModule } from './lesson-routing.module';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { LessonsPageRoutingModule } from './lessons-routing.module';
     ExploreContainerComponentModule,
     LessonsPageRoutingModule
   ],
-  declarations: [LessonsPage]
+  declarations: [LessonPage]
 })
 export class LessonsPageModule {}

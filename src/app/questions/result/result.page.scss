@@ -1,4 +1,8 @@
-ion-thumbnail .ion-thumbnail-content{
+img {
+    margin: 15px 0;
+}
+
+ion-thumbnail .ion-thumbnail-content {
     width: 60px;
     height: 60px;
     background: var(--ion-color-lagua);
@@ -7,17 +11,40 @@ ion-thumbnail .ion-thumbnail-content{
     text-align: center;
 }
 
+div.ion-thumbnail-content h1 {
+    padding-top: 3px;
+}
+
+.item-has-start-slot {
+    top: 1px;
+    border-radius: 20px 20px 0 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+}
+
 .ion-summary {
+    padding-top: 2px;
+    position: relative;
     background: #ffffff;
     display: flex;
     justify-content: space-around;
     align-items: center;
     min-height: 50px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+}
+
+.ion-rating {
+    font-size: 24px;
+    color: #d8d8d8;
+}
+
+.ion-rating-check {
+    color: #ffd055;
 }
 
 .circle {
     position: relative;
-    font-size: 75px;
+    font-size: 65px;
     width: 1em;
     height: 1em;
     -webkit-border-radius: 50%;
@@ -26,7 +53,7 @@ ion-thumbnail .ion-thumbnail-content{
     -o-border-radius: 50%;
     border-radius: 50%;
     float: left;
-    margin: 0 0.1em 0.1em 0;
+    margin-bottom: 5px;
     background-color: #cccccc;
 }
 
@@ -58,7 +85,7 @@ ion-thumbnail .ion-thumbnail-content{
     transition-timing-function: ease-in;
 }
 
-.circle > span {
+.circle>span {
     position: absolute;
     width: 100%;
     z-index: 1;
@@ -92,19 +119,27 @@ ion-thumbnail .ion-thumbnail-content{
     clip: rect(0em, 1em, 1em, 0.5em);
 }
 
-.circle.p33 .bar {
-    -webkit-transform: rotate(118.8deg);
-    -moz-transform: rotate(118.8deg);
-    -ms-transform: rotate(118.8deg);
-    -o-transform: rotate(118.8deg);
-    transform: rotate(118.8deg);
+.circle.over-50 .slice {
+    clip: rect(auto, auto, auto, auto);
 }
 
-.circle:hover > span {
+.circle:hover>span {
     width: 3.33em;
     line-height: 3.33em;
     font-size: 0.3em;
     color: #307bbb;
+}
+
+.circle.error:hover>span {
+    color: #d43d51 !important;
+}
+
+.circle.warning:hover>span {
+    color: #f5b100 !important;
+}
+
+.circle.success:hover>span {
+    color: #76ca00 !important;
 }
 
 .circle:hover:after {
@@ -114,7 +149,7 @@ ion-thumbnail .ion-thumbnail-content{
     height: 0.92em;
 }
 
-.circle .bar {
+.circle .bar, .circle.over-50 .fill {
     position: absolute;
     border: 0.08em solid #307bbb;
     width: 100%;
@@ -132,14 +167,34 @@ ion-thumbnail .ion-thumbnail-content{
     transform: rotate(0deg);
 }
 
-.circle.error .bar {
-    border-color: #eb445a !important;
+.circle.over-50 .fill {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
-.circle.warning .bar {
-    border-color: #ffc409 !important;
+.circle.error .bar, .circle.error.over-50 .fill {
+    border-color: #d43d51 !important;
 }
 
-.circle.success .bar {
-    border-color: #2dd36f !important;
+.circle.warning .bar, .circle.warning.over-50 .fill {
+    border-color: #f5b100 !important;
+}
+
+.circle.success .bar, .circle.success.over-50 .fill {
+    border-color: #76ca00 !important;
+}
+
+.ion-circle-circle-score {
+    margin: -7px 0;
+}
+
+.ion-circle-circle-label {
+    margin-top: 7px;
+}
+
+p.ion-small-label {
+    font-size: 12px;
 }

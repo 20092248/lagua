@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { CodeLabel } from 'src/app/model/codeLabel.model';
 import { User } from 'src/app/model/user.model';
 import { AuthentificationService } from 'src/app/services/authentification.service';
-import { QuestionService } from 'src/app/services/questions.service';
+import { QuestionService } from 'src/app/services/question.service';
+import { ReviewService } from 'src/app/services/review.service';
 import { SettingService } from 'src/app/services/setting.service';
 
 @Component({
@@ -16,12 +17,13 @@ export class TypePage implements OnInit {
   translate: string = 'francais';
   user: User | undefined;
   types: CodeLabel[] = [];
-  constructor(private router: Router, private settingsService: SettingService, private questionService: QuestionService, private authentificationService: AuthentificationService) { }
+  constructor(private router: Router, private settingsService: SettingService, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService) { }
 
   ngOnInit() {
     this.user = this.authentificationService.user;
-    this.questionService.getQuestions(this.user?.learn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions', this.user?.review ? this.user.review : '1_1').then();
-    this.settingsService.getSettings('questions').then((data => {
+    const review = this.reviewService.review;
+    this.questionService.getQuestions(this.user?.learn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions', this.user?.review ? this.user.review : review?.lesson + '_' + review?.order).then();
+    this.settingsService.getSetting('questions').then((data => {
       this.types = data?.types;
     }));
   }

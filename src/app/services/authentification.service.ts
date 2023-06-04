@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from '@angular/fire/auth';
-import { doc, Firestore, getFirestore, onSnapshot, setDoc, updateDoc } from '@angular/fire/firestore';
+import { doc, getDoc, updateDoc, Firestore, getFirestore, onSnapshot, setDoc } from '@angular/fire/firestore';
 import { CodeLabel } from '../model/codeLabel.model';
 import { CodeTextTranslate } from '../model/codeTextTranslate.model';
 import { User } from '../model/user.model';
+import { ReviewService } from './review.service';
+import { forkJoin } from 'rxjs';
+import { LessonService } from './lesson.service';
+import { Review } from '../model/review.model';
+import { Lesson } from '../model/lessons.model';
+import { ResultReview } from '../model/resultReview.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,41 +18,47 @@ export class AuthentificationService {
 
   user: User = {};
 
-  constructor(private _auth: Auth, private _firestore: Firestore) { }
+  constructor(private _auth: Auth, private _firestore: Firestore, private reviewService: ReviewService, private lessonService: LessonService) { }
 
   checkUserState() {
-    if(getAuth() && getAuth().currentUser){
+    if (getAuth() && getAuth().currentUser) {
       const user = getAuth().currentUser;
       this.user.uid = user?.uid;
       this.user.email = user?.email;
       this.user.displayName = user?.displayName;
       this.user.photoURL = user?.photoURL;
-      if(user){
-        this.getInfoUser(user.uid);
-      }
     }
     return getAuth() && getAuth().currentUser;
   }
 
-  getInfoUser(uid: string) {
-    onSnapshot(doc(getFirestore(), 'users', uid), (doc) => {
-      const data = doc.data() as User;
+  async getInfoUser(uid: string) {
+    const document = await getDoc(doc(getFirestore(), 'users', uid));
+      const data = document.data() as User;
       this.user.age = data.age;
       this.user.learn = data.learn as CodeTextTranslate;
       this.user.why = data.why as CodeLabel;
       this.user.time = data.time as CodeLabel;
       this.user.level = data.level as CodeLabel;
-    });
+      this.user.review = data.review as Review;
+      this.user.lesson = data.lesson as Lesson;
+      this.user.resultReviews = data.resultReviews as ResultReview[];
+      this.user.resultLessons = data.resultLessons;
   }
 
   addInfoUser(uid: string) {
-    setDoc(doc(getFirestore(), 'users', uid), {
-      age : this.user.age,
-      learn : this.user.learn,
-      why : this.user.why,
-      time : this.user.time,
-      level : this.user.level,
-    }, { merge: true });
+    forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(([review, lesson]) => {
+      this.reviewService.getReview('A1', 1, 1).then(review => {
+        setDoc(doc(getFirestore(), 'users', uid), {
+          age: this.user.age,
+          learn: this.user.learn,
+          why: this.user.why,
+          time: this.user.time,
+          level: this.user.level,
+          review: review,
+          lesson: lesson
+        }, { merge: true });
+      });
+    });
   }
 
   async login(email: string, password: string) {
@@ -187,5 +199,18 @@ export class AuthentificationService {
       console.error(error);
     });
   }
+
+  async updateResultReview(data: any, nameObject: string, uid: string) {
+    if (!this.user.resultReviews) {
+      this.user.resultReviews = [];
+    }
+    this.user.resultReviews.push(data);
+    const userRef = doc(getFirestore(), nameObject, uid);
+    await updateDoc(userRef, {
+      review: this.reviewService.nextReview(this.user.review),
+      resultReviews: this.user.resultReviews.map((obj) => { return Object.assign({}, obj) })
+    });
+  }
+  
 
 }

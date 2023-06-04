@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LessonsPage } from './lessons.page';
+import { LessonPage } from './lesson.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: LessonsPage
+    component: LessonPage
   },
   {
     path: 'accent',

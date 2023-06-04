@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { QuestionService } from '../services/questions.service';
+import { QuestionService } from '../services/question.service';
+import { ReviewService } from '../services/review.service';
+import { ResultReview } from '../model/resultReview.model';
 
 @Component({
   selector: 'app-questions',
@@ -8,15 +10,20 @@ import { QuestionService } from '../services/questions.service';
 })
 export class QuestionsPage implements OnInit {
 
-  constructor(private questionService: QuestionService) { }
+  constructor(private questionService: QuestionService, private reviewService: ReviewService) { }
   get getType(){
     return this.questionService.type;
   }
 
   get nbrQuestion() {
-    console.log((this.questionService.nbrQuestion / this.questionService.questions?.qcm?.questions?.length) * 100);
     return (this.questionService.nbrQuestion / this.questionService.questions?.qcm?.questions?.length) * 100;
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.resetReview();
+   }
+
+   resetReview() {
+    this.reviewService.resultReview = new ResultReview();
+  }
 }

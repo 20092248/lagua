@@ -102,7 +102,7 @@
           <ion-card class="ion-dashboard">
             <ion-card-header>
               <ion-card-title>
-                <span class="ion-card-title">4</span>
+                <span class="ion-card-title">0</span>
                 <span class="ion-float-right"><ion-icon size="large" name="checkmark-outline"></ion-icon></span>
               </ion-card-title>
             </ion-card-header>
@@ -115,7 +115,7 @@
           <ion-card class="ion-dashboard">
             <ion-card-header>
               <ion-card-title>
-                <span class="ion-card-title">20</span>
+                <span class="ion-card-title">0</span>
                 <span class="ion-float-right"><ion-icon size="large" name="book-outline"></ion-icon></span>
               </ion-card-title>
             </ion-card-header>
@@ -145,7 +145,7 @@
         </ion-slides>
       </div>
 
-      <div class="ion-unlock-lesson">
+      <div class="ion-unlock-lesson" *ngIf="user?.review">
         <ion-card>
           <ion-card-header>
             <ion-card-title>C'est l'heure de réviser</ion-card-title>
@@ -188,47 +188,16 @@
       <div class="ion-unlock-lesson">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>Prochain cours à visualiser</ion-card-title>
-            <ion-card-subtitle>Cours 1 : Leçon 2 - Kwezi! 2e partie/<i>Salut !</i></ion-card-subtitle>
+            <ion-card-title>{{user?.review ? 'Prochain': 'Premier'}} cours à visualiser</ion-card-title>
+            <ion-card-subtitle>Cours {{review?.lesson}} : Leçon {{review?.order}} - {{review?.text}} / <i>{{review?.translate}}</i></ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
-            <div class="ion-custom-text">Vous allez apprendre :</div>
-            <div class="ion-custom-text">à demander à quelqu'un comment il va</div>
-            <div class="ion-custom-text">à dire que vous allez bien</div>
-            <div class="ion-custom-text">à utiliser les pronoms you et I</div>
+            <div class="ion-custom-text" *ngFor="let content of review?.contents">{{content}}</div>
           </ion-card-content>
           <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
-            fill="clear" (click)="accessToNextLesson()">Accéder au cours</ion-button>
+            fill="clear" (click)="accessToLesson()">Accéder au cours</ion-button>
         </ion-card>
       </div>
-
-      <!-- <div>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Content de vous revoir, Brady</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <h3 class="ion-subtitle-custom">Prochaine cours à visualiser</h3>
-            <div class="ion-content-lesson ion-margin-bottom">
-                <p>Découverte (A1) - Cours 1 : Leçon 2</p>
-                <p>Hi! 2e partie</p>
-                <p>Salut !</p>
-                <p>Vous allez apprendre :</p>
-                <p>- à demander à quelqu'un comment il va</p>
-                <p>- à dire que vous allez bien</p>
-                <p>à utiliser les pronoms you et I</p>
-                <ion-button>Commencer la leçon</ion-button>
-            </div>
-
-            <h3 class="ion-subtitle-custom">C'est l'heure de réviser</h3>
-            <div class="ion-content-lesson ion-margin-bottom">
-                <p>Visiualiser les précédentes leçons</p>
-                <p>Améliorer votre score en faisant des tests</p>
-                <ion-button>Réviser</ion-button>
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </div> -->
 
     </div>
   </div>

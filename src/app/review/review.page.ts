@@ -18,12 +18,12 @@ export class ReviewPage implements OnInit {
 
   ngOnInit() {
     if(!this.categories.length){
-      this.settingsService.getSettings('reviews').then((data => {
+      this.settingsService.getSetting('reviews').then((data => {
         this.categories = data.categories;        
         this.categorySelected = data.categories[0];
       }));
     }
-    this.reviewService.getReview('A1').then((data: Review[]) =>{
+    this.reviewService.getReviewsByCategory('A1').then((data: Review[]) =>{
       this.reviews = data;
     });
   }
@@ -31,7 +31,7 @@ export class ReviewPage implements OnInit {
   setCategory(code: string) {
     this.reviews = [];
     this.categorySelected = this.categories.find(c => c.code === code);
-    this.reviewService.getReview(code).then((data: Review[]) =>{
+    this.reviewService.getReviewsByCategory(code).then((data: Review[]) =>{
       this.reviews = data;
     });
   }

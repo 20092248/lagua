@@ -1,6 +1,6 @@
 import { Examples } from "./example.model";
 
-export interface Lessons {
+export interface Lesson {
     order: number;
     code: string;
     navigate: string;
