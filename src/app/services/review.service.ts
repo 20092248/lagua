@@ -12,6 +12,7 @@ export class ReviewService {
 
   reviews: Review[] = [];
   review: Review = {} as Review;
+  nextReview: Review = {} as Review;
   resultReviews: ResultReview[] = [];
   resultReview: ResultReview = new ResultReview();
 
@@ -49,20 +50,23 @@ export class ReviewService {
     });
   }
 
-  nextReview(review: Review) {
-      const reviewByCategory = this.reviews.filter(r => r.category === review.category).sort((a, b) => a.lesson - b.lesson).sort((a, b) => a.order - b.order);
-      const nbrLesson = reviewByCategory.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
-      console.log([nbrLesson.values()]);
-      // if (userReview.order === reviewByCategory.length) {
-      //   this.getReview(this.nextCategory(this.authentificationService.user.review.category), 1, 1).then((value: Review) => {
-      //     this.review = value;
-      //   });
-      // } else {
-      //   this.getReview(this.nextCategory(this.authentificationService.user.review.category), 1, 1).then((value: Review) => {
-      //     this.review = value;
-      //   });
-      // }
-    return null;
+  async findNextReview(review: Review) {
+    const reviewByCategory = this.reviews.filter(r => r.category === review.category).sort((a, b) => a.lesson - b.lesson).sort((a, b) => a.order - b.order);
+    const countLessonAndOrder = reviewByCategory.reduce((acc, e) => acc.set(e.lesson, (acc.get(e.lesson) || 0) + 1), new Map());
+    if (countLessonAndOrder.get(review.lesson) !== review.order + 1) { 
+      await this.getReview(review.category, review.lesson, review.order + 1).then((value: Review) => {
+        this.nextReview = value;
+      });
+    } else if(countLessonAndOrder.get(review.lesson + 1)) { // toutes les leçons sont terminées et il reste des cours
+      await this.getReview(review.category, review.lesson + 1, 1).then((value: Review) => {
+        this.nextReview = value;
+      });
+    } else { // toutes les leçons/cours sont terminées
+      await this.getReview(this.nextCategory(review.category), 1, 1).then((value: Review) => {
+        this.nextReview = value;
+      });
+    }
+    return this.nextReview;
   }
 
   nextCategory(category: string) {
@@ -83,7 +87,7 @@ export class ReviewService {
       default:
         break;
     }
-    return category;
+    return nextCategory;
   }
 
 }

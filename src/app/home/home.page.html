@@ -145,7 +145,7 @@
         </ion-slides>
       </div>
 
-      <div class="ion-unlock-lesson" *ngIf="user?.review">
+      <div class="ion-unlock-lesson" *ngIf="previousReviews && previousReviews.length">
         <ion-card>
           <ion-card-header>
             <ion-card-title>C'est l'heure de réviser</ion-card-title>
@@ -171,7 +171,7 @@
               </ion-header>
               <ion-content>
                 <ion-list>
-                  <ion-item detail="true" lines="full" class="ion-item-result-dictionary" *ngFor="let r of reviews; let index = index">
+                  <ion-item detail="true" lines="full" class="ion-item-result-dictionary" *ngFor="let r of previousReviews; let index = index">
                   <ion-icon name="reader-outline" slot="start"></ion-icon>
                     <ion-label class="ion-text-wrap">
                       <h3>{{r.text}}</h3>
@@ -188,7 +188,7 @@
       <div class="ion-unlock-lesson">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>{{user?.review ? 'Prochain': 'Premier'}} cours à visualiser</ion-card-title>
+            <ion-card-title>{{review?.category === 'A1' && review?.lesson === 1 && review?.order === 1 ? 'Premier': 'Prochain'}} cours à visualiser</ion-card-title>
             <ion-card-subtitle>Cours {{review?.lesson}} : Leçon {{review?.order}} - {{review?.text}} / <i>{{review?.translate}}</i></ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>

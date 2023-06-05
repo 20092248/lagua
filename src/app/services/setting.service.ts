@@ -14,7 +14,7 @@ export class SettingService {
   constructor(private _firestore: Firestore) { }
 
 
-  async getSettings(): Promise<boolean> {
+  async getSettings(): Promise<any> {
     const querySnapshot = await getDocs(query(collection(getFirestore(), 'settings')));
     querySnapshot.forEach((doc) => {
       switch (doc.id) {
@@ -30,7 +30,7 @@ export class SettingService {
       }
       console.log(doc.id, ' => ', doc.data());
     });
-    return true;
+    return {questions: this.questions, reviews: this.reviews, userInformation: this.userInformation};
   }
 
   async getSetting(document: string): Promise<any> {
