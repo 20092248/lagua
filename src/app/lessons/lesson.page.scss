@@ -2,11 +2,17 @@ ion-toolbar {
     --background: linear-gradient(#5bad77, #1a6921);
     --color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 20px 17px -17px, rgba(0, 0, 0, 0.18) 0px 10px 20px -20px;
+    border-radius: 0 0 20px 20px;
 }
 
 ion-content {
-    --background: #1a6921;
+    --background: #eef1ee;
     --color: #ffffff;
+}
+
+.ion-background-content {
+    margin-top: 10px;
+    // background-color: #eef1ee;
 }
 
 ion-card {
