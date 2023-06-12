@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from '@angular/fire/auth';
-import { doc, getDoc, updateDoc, Firestore, getFirestore, onSnapshot, setDoc } from '@angular/fire/firestore';
+import { doc, getDoc, updateDoc, Firestore, getFirestore, onSnapshot, setDoc, serverTimestamp } from '@angular/fire/firestore';
 import { CodeLabel } from '../model/codeLabel.model';
 import { CodeTextTranslate } from '../model/codeTextTranslate.model';
 import { User } from '../model/user.model';
@@ -17,6 +17,7 @@ import { ResultReview } from '../model/resultReview.model';
 export class AuthentificationService {
 
   user: User = {};
+  timer: Date = new Date();
 
   constructor(private _auth: Auth, private _firestore: Firestore, private reviewService: ReviewService, private lessonService: LessonService) { }
 
@@ -32,17 +33,20 @@ export class AuthentificationService {
   }
 
   async getInfoUser(uid: string) {
+    await this.updateDayConnected('users', uid);
     const document = await getDoc(doc(getFirestore(), 'users', uid));
-      const data = document.data() as User;
-      this.user.age = data.age;
-      this.user.learn = data.learn as CodeTextTranslate;
-      this.user.why = data.why as CodeLabel;
-      this.user.time = data.time as CodeLabel;
-      this.user.level = data.level as CodeLabel;
-      this.user.review = data.review as Review;
-      this.user.lesson = data.lesson as Lesson;
-      this.user.resultReviews = data.resultReviews as ResultReview[];
-      this.user.resultLessons = data.resultLessons;
+    const data = document.data() as User;
+    this.user.age = data.age;
+    this.user.learn = data.learn as CodeTextTranslate;
+    this.user.why = data.why as CodeLabel;
+    this.user.time = data.time as CodeLabel;
+    this.user.level = data.level as CodeLabel;
+    this.user.review = data.review as Review;
+    this.user.lesson = data.lesson as Lesson;
+    this.user.resultReviews = data.resultReviews as ResultReview[];
+    this.user.resultLessons = data.resultLessons;
+    this.user.week = data.week;
+    this.user.timerActiveConnection = data.timerActiveConnection ? data.timerActiveConnection : 0;
   }
 
   addInfoUser(uid: string) {
@@ -192,8 +196,9 @@ export class AuthentificationService {
   }
 
   async logout() {
+    this.updateDayDisconnected('users', this.user.uid ? this.user.uid : '');
     return signOut(getAuth()).then(() => {
-      this.user = {};
+      this.user = {} as User;
       console.log('sign-out successful.');
     }).catch((error) => {
       console.error(error);
@@ -211,6 +216,39 @@ export class AuthentificationService {
       resultReviews: this.user.resultReviews.map((obj) => { return Object.assign({}, obj) })
     });
   }
-  
+
+  async updateDayConnected(nameObject: string, uid: string) {
+    this.timer = new Date();
+    const userRef = doc(getFirestore(), nameObject, uid);
+    var data = {};
+    const today = new Date();
+    if (today.getUTCDay() === 0) {
+      data = { 'week.dim': { day: today.getUTCDay(), timestamp: today } }
+    } else if (today.getUTCDay() === 1) {
+      data = { 'week.lun': { day: today.getUTCDay(), timestamp: today } }
+    } else if (today.getUTCDay() === 2) {
+      data = { 'week.mar': { day: today.getUTCDay(), timestamp: today } }
+    } else if (today.getUTCDay() === 3) {
+      data = { 'week.mer': { day: today.getUTCDay(), timestamp: today } }
+    } else if (today.getUTCDay() === 4) {
+      data = { 'week.jeu': { day: today.getUTCDay(), timestamp: today } }
+    } else if (today.getUTCDay() === 5) {
+      data = { 'week.ven': { day: today.getUTCDay(), timestamp: today } }
+    } else if (today.getUTCDay() === 6) {
+      data = { 'week.sam': { day: today.getUTCDay(), timestamp: today } }
+    }
+    await updateDoc(userRef, data);
+  }
+
+  async updateDayDisconnected(nameObject: string, uid: string) {
+    const userRef = doc(getFirestore(), nameObject, uid);
+    const dateDisconnected = new Date();
+    if(this.user?.timerActiveConnection != undefined && this.user?.timerActiveConnection != null) {
+      await updateDoc(userRef, {
+        timerActiveConnection: this.user?.timerActiveConnection + (dateDisconnected.getTime() - this.timer.getTime())
+      });
+    }
+  }
+
 
 }

@@ -83,10 +83,6 @@ ion-modal {
   padding-left: 5px;
 }
 
-.ion-subtitle-custom {
-  font-weight: bold;
-}
-
 .ion-button {
   --color: #ffffff;
   --background: #1a6921;
@@ -97,23 +93,7 @@ ion-modal {
   margin-bottom: 16px;
 }
 
-.subHeader {
-  border-bottom: 0.125rem solid rgb(225, 229, 231);
-  background-color: #ffffff;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 13px 1px;
-  margin-top: 8px;
-}
-
-.headline {
-  color: #14441c;
-  font-size: 1.5rem;
-  font-weight: 400;
-  letter-spacing: normal;
-  line-height: 1.25;
-  padding: 0px 5px;
-}
-
-ion-card-content>span {
+ion-card-content > span {
   font-size: 15vw;
   justify-content: center;
   display: flex;
@@ -126,36 +106,6 @@ ion-card-content>span {
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-}
-
-.ion-vocabulary-bar-red {
-  border-radius: 1rem 0 0 1rem;
-  width: 20%;
-  background-color: red;
-  height: 10px;
-  position: absolute;
-  left: 0%;
-  border-left: 2px solid #fff;
-}
-
-.ion-vocabulary-bar-orange {
-  width: 20%;
-  background-color: orange;
-  height: 10px;
-  position: absolute;
-  left: 20%;
-  border-left: 2px solid #fff;
-  border-right: 2px solid #fff;
-}
-
-.ion-vocabulary-bar-green {
-  border-radius: 0 1rem 1rem 0;
-  width: 60%;
-  background-color: green;
-  height: 10px;
-  position: absolute;
-  left: 40%;
-  border-right: 2px solid #fff;
 }
 
 .ion-progress {
@@ -195,41 +145,6 @@ ion-card-content>span {
 .ion-text-progress {
   font-style: italic;
 }
-
-.ion-text-bold {
-  font-weight: bold;
-}
-
-.ion-label-progress-bottom-position {
-  margin-top: 5px;
-}
-
-.ion-label-progress-warning {
-  padding-left: 5px;
-  margin-top: 10px;
-  position: relative;
-  left: 20%;
-  border-left: 2px solid orange;
-}
-
-.ion-label-progress-danger {
-  padding-left: 5px;
-  position: relative;
-  left: 0%;
-  border-left: 2px solid red;
-}
-
-.ion-label-progress-success {
-  padding-right: 5px;
-  position: relative;
-  right: 0%;
-  border-right: 2px solid green;
-}
-
-.ion-no-padding-left {
-  padding-left: 0 !important;
-}
-
 
 ion-card.ion-dashboard {
   --background: #498b5f;
@@ -322,7 +237,6 @@ ion-card-title .ion-card-title {
   color: rgb(57, 65, 73);
   white-space: normal;
   margin: 0px;
-  // width: 1rem;
 }
 
 .is-today {

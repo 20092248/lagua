@@ -66,31 +66,31 @@
             <div class="ion-calendar-content">
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 1 }">
                 <div style="color: rgb(154, 167, 179)">Lu</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(1)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.lun)}}"></ion-icon></div>
               </div>
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 2 }">
                 <div style="color: rgb(154, 167, 179)">Ma</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(2)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.mar)}}"></ion-icon></div>
               </div>
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 3 }">
                 <div style="color: rgb(154, 167, 179)">Me</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(3)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.mer)}}"></ion-icon></div>
               </div>
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 4 }">
                 <div style="color: rgb(154, 167, 179)">Je</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(4)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.jeu)}}"></ion-icon></div>
               </div>
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 5 }">
                 <div style="color: rgb(154, 167, 179)">Ve</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(5)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.ven)}}"></ion-icon></div>
               </div>
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 6 }">
                 <div style="color: rgb(154, 167, 179)">Sa</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(6)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.sam)}}"></ion-icon></div>
               </div>
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 7 }">
                 <div style="color: rgb(154, 167, 179)">Di</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(7)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.dim)}}"></ion-icon></div>
               </div>
             </div>
           </ion-card-content>
@@ -102,7 +102,7 @@
           <ion-card class="ion-dashboard">
             <ion-card-header>
               <ion-card-title>
-                <span class="ion-card-title">0</span>
+                <span class="ion-card-title">{{user?.resultReviews ? user?.resultReviews?.length : 0}}</span>
                 <span class="ion-float-right"><ion-icon size="large" name="checkmark-outline"></ion-icon></span>
               </ion-card-title>
             </ion-card-header>
@@ -115,7 +115,7 @@
           <ion-card class="ion-dashboard">
             <ion-card-header>
               <ion-card-title>
-                <span class="ion-card-title">0</span>
+                <span class="ion-card-title">{{user?.resultLessons ? user?.resultLessons?.length : 0}}</span>
                 <span class="ion-float-right"><ion-icon size="large" name="book-outline"></ion-icon></span>
               </ion-card-title>
             </ion-card-header>
@@ -171,7 +171,7 @@
               </ion-header>
               <ion-content>
                 <ion-list>
-                  <ion-item detail="true" lines="full" class="ion-item-result-dictionary" *ngFor="let r of previousReviews; let index = index">
+                  <ion-item detail="true" routerLinkActive="selected" lines="full" class="ion-item-result-dictionary" *ngFor="let r of previousReviews; let index = index" (click)="accessPreviousReview(r); modal.dismiss()">
                   <ion-icon name="reader-outline" slot="start"></ion-icon>
                     <ion-label class="ion-text-wrap">
                       <h3>{{r.text}}</h3>

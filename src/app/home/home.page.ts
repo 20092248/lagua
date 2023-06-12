@@ -34,8 +34,8 @@ export class HomePage implements OnInit {
   dailyIcon: string = '';
   loading: HTMLIonLoadingElement | undefined;
 
-  constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, 
-    private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController, 
+  constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService,
+    private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
     private modalController: ModalController, private reviewService: ReviewService, private loadingService: LoadingService) {
   }
   get getTheme() {
@@ -47,13 +47,14 @@ export class HomePage implements OnInit {
     forkJoin([this.settingService.getSettings(),
     this.reviewService.getAllReviews(),
     this.lessonService.searchLessons()]).subscribe(([settings, reviews, lessons]) => {
-      const sortReviews = reviews.sort((a, b) => a.category < b.category ? -1 : 1).sort((a, b) => a.lesson - b.lesson).sort((a, b) => a.order - b.order).every(r=>{
-        if(this.user?.review && this.user?.review.category === r.category && this.user?.review.lesson === r.lesson && this.user?.review.order === r.order){
+      reviews.sort((a, b) => a.category < b.category ? -1 : 1).sort((a, b) => a.lesson - b.lesson).sort((a, b) => a.order - b.order).every(r => {
+        if (this.user?.review && this.user?.review.category === r.category && this.user?.review.lesson === r.lesson && this.user?.review.order === r.order) {
+          this.previousReviews.push(r);
           return;
         }
         this.previousReviews.push(r);
       });
-      this.reviewService.findNextReview(this.authentificationService.user.review).then(review =>{
+      this.reviewService.findNextReview(this.authentificationService.user.review).then(review => {
         this.review = review;
       });
       this.recommendedLesson = this.lessonService.getRecommendedLesson(this.user && this.user.level ? this.user.level.code : '0', lessons);
@@ -97,17 +98,25 @@ export class HomePage implements OnInit {
     });
   }
 
+  accessPreviousReview(review: Review) {
+    this.reviewService.review = review;
+    this.router.navigate(['/questions']);
+  }
+
   accessToLesson() {
     this.router.navigate(['/questions']);
   }
 
-  getDailyIcon(day: number) {
-    const currentDay = this.currentDate.getUTCDay() ? this.currentDate.getUTCDay() : 7; // cas pour dimanche
-    if (currentDay >= day) {
-      return "checkbox-outline";
-    } else {
-      return "square-outline";
+
+  getDailyIcon(infoDay: any) {
+    if (infoDay) {
+      const todayMinusOneWeek = new Date();
+      todayMinusOneWeek.setDate(todayMinusOneWeek.getDate() - 7 );
+      if (infoDay.timestamp.toDate().getTime() > todayMinusOneWeek.getTime()) {
+        return "checkbox-outline";
+      }
     }
+    return "square-outline";
   }
 
 }

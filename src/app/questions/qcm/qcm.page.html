@@ -32,14 +32,14 @@
   </ion-row>
 </ion-grid>
 <ion-footer class="ion-no-border">
-  <ion-toolbar [ngClass]="{ 'ion-text-center' : !displayAnswer || answerSelected?.answer}">
+  <ion-toolbar [ngClass]="{ 'ion-text-center' : !displayAnswer || answerSelected?.answer || secondChance }">
     <ion-button *ngIf="!displayAnswer" [disabled]="!answerSelected" color="tertiary" class="ion-margin" (click)="validate()">
       Valider
     </ion-button>
-    <ion-button *ngIf="displayAnswer && !answerSelected?.answer" color="danger" class="ion-margin" (click)="tryAgain()">
+    <ion-button *ngIf="displayAnswer && !secondChance && !answerSelected?.answer" color="danger" class="ion-margin" (click)="tryAgain()">
       Réessayer
     </ion-button>
-    <ion-button *ngIf="displayAnswer" color="lagua" [ngClass]="{ 'ion-float-right' : !answerSelected?.answer }" class="ion-margin" (click)="continue()">
+    <ion-button *ngIf="displayAnswer" color="lagua" [ngClass]="{ 'ion-float-right' : !answerSelected?.answer && !secondChance }" class="ion-margin" (click)="continue()">
       Continuer
       <!-- <ion-icon slot="end" name="caret-forward-outline"></ion-icon> -->
     </ion-button>

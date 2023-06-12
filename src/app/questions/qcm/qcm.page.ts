@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
+import { AudioService } from 'src/app/services/audio.service';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { QuestionService } from 'src/app/services/question.service';
 import { ReviewService } from 'src/app/services/review.service';
@@ -23,7 +24,7 @@ export class QcmPage implements OnInit {
   radio_group: any;
   score: number = 0;
 
-  constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService) { }
+  constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService) { }
 
   ngOnInit() {
     this.questionService.nbrQuestion = this.nbrQuestion;
@@ -41,12 +42,15 @@ export class QcmPage implements OnInit {
     this.score = 0;
     this.displayAnswer = true;
     if(this.answerSelected && this.answerSelected.answer){
+      this.audioService.play('rightAnswer');
       if(!this.secondChance){
         this.score = 10;
       } else {
         this.score = 5;
       }
-    } 
+    } else {
+      this.audioService.play('wrongAnswer');
+    }
     console.log(this.answerSelected);
   }
 

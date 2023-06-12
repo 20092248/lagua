@@ -48,20 +48,6 @@ ion-text {
   display: block;
 }
 
-.ion-profile-header {
-  height: 35%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 0.125rem solid rgb(225, 229, 231);
-  box-shadow: rgb(0 0 0 / 12%) 0px 4px 13px 1px;
-}
-
-.ion-custom-card-content {
-  font-size: 40px;
-  font-weight: bold;
-}
-
 .border-white-tabs {
   border: #ffffff solid 2px;
   background-color: #ffffff;
@@ -89,8 +75,9 @@ ion-text {
   padding-left: 5px;
   margin-top: 10px;
   position: relative;
-  left: 20%;
+  // left: 20%;
   border-left: 2px solid orange;
+  line-height: 1.25;
 }
 
 .ion-label-progress-danger {
@@ -98,6 +85,7 @@ ion-text {
   position: relative;
   left: 0%;
   border-left: 2px solid red;
+  line-height: 1.25;
 }
 
 .ion-label-progress-success {
@@ -105,11 +93,12 @@ ion-text {
   position: relative;
   right: 0%;
   border-right: 2px solid green;
+  line-height: 1.25;
 }
 
 .ion-vocabulary-bar-red {
   border-radius: 1rem 0 0 1rem;
-  width: 20%;
+  // width: 20%;
   background-color: red;
   height: 10px;
   position: absolute;
@@ -118,22 +107,22 @@ ion-text {
 }
 
 .ion-vocabulary-bar-orange {
-  width: 20%;
   background-color: orange;
+  // width: 20%;
   height: 10px;
   position: absolute;
-  left: 20%;
+  // left: 20%;
   border-left: 2px solid #fff;
   border-right: 2px solid #fff;
 }
 
 .ion-vocabulary-bar-green {
   border-radius: 0 1rem 1rem 0;
-  width: 60%;
+  // width: 60%;
   background-color: green;
   height: 10px;
   position: absolute;
-  left: 40%;
+  // left: 40%;
   border-right: 2px solid #fff;
 }
 
@@ -176,7 +165,7 @@ ion-card.ion-dashboard ion-icon {
 }
 
 ion-card-title .ion-card-title {
-  font-size: 30px;
+  font-size: 25px;
   color: #ffffff;
 }
 

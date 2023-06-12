@@ -12,11 +12,31 @@ export class ProfilePage implements OnInit {
 
   user: User | undefined;
   currentDate: Date = new Date();
+  nbrWordsToRevise: number = 0;
+  nbrWordsToLearn: number = 0;
+  nbrWordsLearned: number = 0;
+  percentWordsToRevise: number = 0;
+  percentWordsToLearn: number = 0;
+  percentWordsLearned: number = 0;
+  nbrWords: number = 0;
+  activeConnection: Date = new Date(0);
 
   constructor(private router: Router, private authentificationService: AuthentificationService) { }
 
   ngOnInit() {
     this.user = this.authentificationService.user;
+    this.user.resultReviews?.forEach(review => {
+      this.nbrWordsToRevise += review.toRevise.length;
+      this.nbrWordsToLearn += review.toLearn.length;
+      this.nbrWordsLearned += review.learned.length;
+      this.nbrWords += review.toRevise.length + review.toLearn.length + review.learned.length;
+    });
+    this.percentWordsToRevise = this.nbrWordsToRevise * 100 / this.nbrWords;
+    this.percentWordsToLearn = this.nbrWordsToLearn * 100 / this.nbrWords;
+    this.percentWordsLearned = this.nbrWordsLearned * 100 / this.nbrWords;
+    if (this.user.timerActiveConnection) {
+      this.activeConnection = new Date(this.user.timerActiveConnection);
+    }
   }
 
   getActualLevelByCode() {
@@ -34,6 +54,10 @@ export class ProfilePage implements OnInit {
     } else {
       return '';
     }
+  }
+
+  getDay(value: Date) {
+    return Math.trunc(value.getTime() / 1000 / 60 / 60 / 24);
   }
 
   logout() {
