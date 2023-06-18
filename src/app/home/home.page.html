@@ -4,7 +4,7 @@
     <ion-row>
       <ion-col size="9">
         <div class="ion-margin-start ion-padding-top">
-          <h4>Kwezi</h4>
+          <h4>Bonjour</h4>
           <h5 class="ion-subtitle">{{user?.displayName}} !</h5>
         </div>
       </ion-col>
@@ -130,7 +130,7 @@
         <ion-slides [options]="slideOpts">
           <ion-slide *ngFor="let lesson of recommendedLesson; let index = index">
             <ion-card class="ion-no-margin-bottom" [ngClass]="{'ion-no-margin-middle': !(index === 0 || index === recommendedLesson.length - 1),'ion-no-margin-right': index === 0, 'ion-no-margin-left': index === recommendedLesson.length - 1}">
-              <img alt="Silhouette of mountains" src="assets/img/home/book_{{index + 1}}.png" />
+              <img src="assets/img/home/book_{{index + 1}}.png" />
               <!-- <ion-card-header>
                 <ion-card-title>{{lesson.title}}</ion-card-title>
               </ion-card-header> -->

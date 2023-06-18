@@ -7,10 +7,11 @@ import { Lesson } from '../model/lessons.model';
   providedIn: 'root'
 })
 export class LessonService {
-  
+
   lessons: Lesson[] = [];
   lesson: Lesson = {} as Lesson;
   recommendedLesson: Lesson[] = [];
+  resultLessons: Lesson[] = [];
 
   constructor(private _firestore: Firestore) { }
 
@@ -28,10 +29,10 @@ export class LessonService {
     return this.lesson;
   }
 
-  async updateLessons(data: any, nameObject: string, uid: string) {
-    const lessonsRef = doc(getFirestore(), nameObject, uid);
-    await updateDoc(lessonsRef, {
-      lessons: data
+  async findNextLesson(lesson: Lesson) {
+    const nextOrder = lesson.order + 1;
+    return await this.getLesson(nextOrder).then((l: Lesson) => {
+      return l;
     });
   }
 

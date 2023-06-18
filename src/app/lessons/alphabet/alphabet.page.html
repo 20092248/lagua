@@ -4,7 +4,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>L'alphabet</ion-title>
-    <ion-icon class="ion-margin-end" slot="end" size="medium" name="home-outline"
+    <ion-icon class="ion-margin-end ion-home-icon" slot="end" name="home-outline"
       [routerLink]="['/tabs/home']"></ion-icon>
   </ion-toolbar>
 </ion-header>
@@ -12,60 +12,62 @@
   <p>Le comorien en général ne dispose pas encore d'alphabet officiel. Celui
     que j'ai adopté ici est celui que j'ai déjà mis en pratique dans mes différentes
     publications et qui est aujourd'hui largement répandu.</p>
-  <h2>Les voyelles</h2>
-  <p>L'anjouanais en compte cinq. Ce sont :</p>
-  <p>- i: qui se prononce à peu près comme dans le mot français pitié,
-    qu'elle soit précédée ou non par d'autres voyelles. Ex. : watiti
-    "petits" ; faida Oire fa-i-da) "profit"...</p>
-  <p>- u: qui se prononce à peu près comme le ou français dans
-    caoutchouc. Ex. : uzurl "beauté" ; putu "piment"...</p>
-  <p>- e : qui se prononce à peu près comme le é français dans péché, aérer.
-    Ex. : bele "sein" ; upeu Oire u-pe-u) "méchanceté"..., ou comme
-    le è français dans flèche, près. Ex. -lea "élever", -tseha "rire"...</p>
-  <p>- o : qui se prononce à peu près comme le o français dans moto, coche,
-    cambrioler. Ex.: popo "balle de fusil" ; pao "trèfle (jeu de
-    cartes)" ; boi Oire bo-i) "domestique"..., ou encore dans poste,
-    flore. Ex. -toa "enlever, sortir", kosa "erreur, faute"...</p>
-  <p>- a: qui se prononce comme le a français dans papa, oasis. Ex. :
-    mataba "feuille de manioc" ; -bauha (lire ba-u-ha) "éviter"...
-    Dans certains mots (qui sont pour la plupart des emprunts à l'arabe), on
-    trouve des voyelles nasalisées: elles seront alors coiffées d'un accent
-    circonflexe (^). Ex. : îdi "fête" ; ûdi "luth" ; âda "coutume"...</p>
-  <h2>Les consonnes</h2>
-  <p>Pour ne pas compliquer inutilement l'alphabet du comorien en créant des
-    signes particuliers, on a préféré employer les lettres qu'on trouve sur toutes
-    les machines à écrire. On a donc été amené parfois à utiliser pour une seule
-    consonne, deux ou trois lettres. L'anjouanais compte 40 consonnes,
-    présentées dans le tableau suivant:</p>
+  <div class="ion-padding-horizontal">
+    <h2>Les voyelles</h2>
+    <p>L'anjouanais en compte cinq. Ce sont :</p>
+    <p><b>- i</b> : qui se prononce à peu près comme dans le mot français <i>pitié</i>,
+      qu'elle soit précédée ou non par d'autres voyelles. Ex. : <span>watiti</span>
+      "petits"; <span>faida</span> lire fa-i-da) "profit"...</p>
+    <p><b>- u</b> : qui se prononce à peu près comme le <i>ou</i> français dans
+      <i>caoutchouc</i>. Ex. : <span>uzuri</span> "beauté"; <span>putu</span> "piment"...</p>
+    <p><b>- e</b> : qui se prononce à peu près comme le <i>é</i> français dans <i>péché, aérer</i>.
+      Ex. : <span>bele</span> "sein"; <span>upeu</span> lire u-pe-u) "méchanceté"..., ou comme
+      le <i>è</i> français dans <i>flèche, près</i>. Ex. <span>-lea</span> "élever", <span>-tseha</span> "rire"...</p>
+    <p><b>- o</b> : qui se prononce à peu près comme le <i>o</i> français dans <i>moto, coche,
+      cambrioler</i>. Ex.: <span>popo</span> "balle de fusil"; <span>pao</span> "trèfle (jeu de
+      cartes)"; <span>boi</span> lire bo-i) "domestique"..., ou encore dans <i>poste,
+      flore</i>. Ex. <span>-toa</span> "enlever, sortir", <span>kosa</span> "erreur, faute"...</p>
+    <p><b>- a</b> : qui se prononce comme le <i>a</i> français dans <i>papa, oasis</i>. Ex. :
+      <span>mataba</span> "feuille de manioc"; <span>-bauha</span> (lire ba-u-ha) "éviter"...
+      Dans certains mots (qui sont pour la plupart des emprunts à l'arabe), on
+      trouve des voyelles nasalisées: elles seront alors coiffées d'un accent
+      circonflexe (^). Ex. : <span>îdi</span> "fête"; <span>ûdi</span> "luth"; <span>âda</span> "coutume"...</p>
+    <h2>Les consonnes</h2>
+    <p>Pour ne pas compliquer inutilement l'alphabet du comorien en créant des
+      signes particuliers, on a préféré employer les lettres qu'on trouve sur toutes
+      les machines à écrire. On a donc été amené parfois à utiliser pour une seule
+      consonne, deux ou trois lettres. L'anjouanais compte 40 consonnes,
+      présentées dans le tableau suivant:</p>
 
-  <!-- tableau -->
+    <!-- tableau -->
 
-  <p>Ces consonnes (à l'exception des semi-consonnes "w" et "y") peuvent être
-    vélarisées. Elles reçoivent alors un "w" (ex: pw, bw, tw, ...)</p>
+    <p>Ces consonnes (à l'exception des semi-consonnes "w" et "y") peuvent être
+      vélarisées. Elles reçoivent alors un "w" (ex: pw, bw, tw, ...)</p>
 
-  <p>- Les consonnes p, t, k, f, z, j, I se prononcent à peu près comme en
-    français.</p>
-  <p>- les consonnes b et d ont deux réalisations [b] - [ɓ] et [d] - [ɗ] La réalisation
-    non-implosive se rencontre surtout dans les mots d'emprunt
-    (principalement à l'arabe). La confusion entre les deux réalisations étant
-    presque nulle, on a donc préféré ne pas les distinguer dans l'écriture.</p>
-  <p>- la consonne v se prononce à peu près comme en français .</p>
-  <p>- la consonne g se prononce toujours comme le gu français dans guide.</p>
-  <p>- la consonne th se prononce comme le th anglais dans think.</p>
-  <p>- la consonne dh correspond au th anglais dans that.</p>
-  <p>- les consonnes kh et gh sont des fricatives vélaires (sourde et sonore) qui
-    ne sont attestées en anjouanais que dans les prononciations étymologisantes.
-    Elles sont rendues la plupart du temps par h.</p>
-  <p>- la consonne sh se prononce comme le ch français dans chat ou le sh
-    anglais dans shoe. La consonne tsh correspond donc au français tch dans
-    caoutchouc.</p>
-  <p>- la consonne ny se prononce comme dans le gn français dans gagner.</p>
-  <p>- les consonnes m et n se prononce à peu près comme en français. Mais,
-    lorsqu'elles précèdent une autre consonne, elles se prononcent à peu près à
-    la manière marseillaise: tro-mper, to-mber, ta-ntacule, a-ndouille, ...
-    Toutefois, lorsque m est préfixe de classe, il se réalise comme une syllabe
-    autonome. Ex. mlongo (prononcer: m-longo) "porte".</p>
-  <p>- les consonnes ts, dz et dj ne présentent pas de difficulté particulière
-    pour les francophones.</p>
-  <p>- la consonne r est toujours roulée.</p>
+    <p>- Les consonnes p, t, k, f, z, j, I se prononcent à peu près comme en
+      français.</p>
+    <p>- les consonnes b et d ont deux réalisations [b] - [ɓ] et [d] - [ɗ] La réalisation
+      non-implosive se rencontre surtout dans les mots d'emprunt
+      (principalement à l'arabe). La confusion entre les deux réalisations étant
+      presque nulle, on a donc préféré ne pas les distinguer dans l'écriture.</p>
+    <p>- la consonne v se prononce à peu près comme en français .</p>
+    <p>- la consonne g se prononce toujours comme le gu français dans guide.</p>
+    <p>- la consonne th se prononce comme le th anglais dans think.</p>
+    <p>- la consonne dh correspond au th anglais dans that.</p>
+    <p>- les consonnes kh et gh sont des fricatives vélaires (sourde et sonore) qui
+      ne sont attestées en anjouanais que dans les prononciations étymologisantes.
+      Elles sont rendues la plupart du temps par h.</p>
+    <p>- la consonne sh se prononce comme le ch français dans chat ou le sh
+      anglais dans shoe. La consonne tsh correspond donc au français tch dans
+      caoutchouc.</p>
+    <p>- la consonne ny se prononce comme dans le gn français dans gagner.</p>
+    <p>- les consonnes m et n se prononce à peu près comme en français. Mais,
+      lorsqu'elles précèdent une autre consonne, elles se prononcent à peu près à
+      la manière marseillaise: tro-mper, to-mber, ta-ntacule, a-ndouille, ...
+      Toutefois, lorsque m est préfixe de classe, il se réalise comme une syllabe
+      autonome. Ex. mlongo (prononcer: m-longo) "porte".</p>
+    <p>- les consonnes ts, dz et dj ne présentent pas de difficulté particulière
+      pour les francophones.</p>
+    <p>- la consonne r est toujours roulée.</p>
+  </div>
 </ion-content>

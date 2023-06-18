@@ -23,19 +23,16 @@ ion-card {
 ion-card-header {
     text-align: center;
     padding: 16px 0;
-}
-
-ion-card-header.ion-unlock-lesson {
-    width: 70%;
-}
-
-ion-card-header.ion-lock-lesson {
     width: 70%;
 }
 
 ion-card-title {
     font-size: 17px;
     color: #1a6921;
+}
+
+ion-card-title.ion-lock-title {
+    color: #b2b4ba;
 }
 
 ion-card-subtitle {
@@ -85,13 +82,15 @@ ion-card-subtitle {
 
 .ion-custom-lock {
     text-align: center;
-    width: 15%;
+    width: 17.5%;
 }
 
 .ion-lock-closed {
     background: lightgray;
     padding: 7px;
     border-radius: 25px;
+    float: right;
+    font-size: 28px;
 }
 
 .headline {

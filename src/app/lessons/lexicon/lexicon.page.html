@@ -4,7 +4,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Consultation du lexique</ion-title>
-    <ion-icon class="ion-margin-end" slot="end" size="medium" name="home-outline"
+    <ion-icon class="ion-margin-end ion-home-icon" slot="end" name="home-outline"
       [routerLink]="['/tabs/home']"></ion-icon>
   </ion-toolbar>
 </ion-header>
@@ -60,4 +60,8 @@
     racine arabe n'est plus guère perçue par le locuteur comorien. Dans ce cas,
     chaque mot a été considéré comme indépendant (mais l'étymologie arabe
     reste indiquée; ex. : <span>-salimu</span> "saluer" et <span>isilamu</span> "musulman").</p>
+
+  <div class="ion-text-center ion-margin-bottom">
+    <ion-button color="lagua" (click)="saveLesson()">Terminer le cours</ion-button>
+  </div>
 </ion-content>

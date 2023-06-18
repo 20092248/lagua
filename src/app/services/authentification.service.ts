@@ -217,6 +217,21 @@ export class AuthentificationService {
     });
   }
 
+  async updateLesson(data: any, nameObject: string, uid: string) {
+    const lessonsRef = doc(getFirestore(), nameObject, uid);
+    this.lessonService.findNextLesson(this.user.lesson).then(async lesson => {
+      this.user.lesson = lesson;
+      if (!this.user.resultLessons) {
+        this.user.resultLessons = [];
+      }
+      this.user.resultLessons.push(data);
+      await updateDoc(lessonsRef, {
+        lesson: lesson,
+        resultLessons: this.user.resultLessons.map((obj) => { return Object.assign({}, obj) })
+      });
+    });
+  }
+
   async updateDayConnected(nameObject: string, uid: string) {
     this.timer = new Date();
     const userRef = doc(getFirestore(), nameObject, uid);

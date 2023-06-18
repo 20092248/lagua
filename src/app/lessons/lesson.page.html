@@ -8,27 +8,28 @@
 </ion-header>
 <ion-content [fullscreen]="true">
   <div class="ion-background-content">
-    
-    <!-- <div class="headline ion-padding-horizontal">
-      <h2>Leçon</h2>
-      <div class="ion-padding-bottom">Découverte - Cours Débutant/Intermédiaire</div>
-    </div> -->
     <div>
-      <ion-card *ngFor="let lesson of lessons" class="ion-flex" (click)="goTo(lesson.navigate)">
-        <div class="ion-size-img">
+      <ion-card *ngFor="let lesson of lessons" class="ion-flex" (click)="goTo(lesson.navigate, userLesson.order >= lesson.order)">
+        <div *ngIf="userLesson.order >= lesson.order" class="ion-size-img">
           <img class="ion-icon-src ion-float-right" width="50" src="{{lesson.src}}">
         </div>
-        <ion-card-header class="ion-unlock-lesson">
-          <ion-card-title>{{lesson.title}}</ion-card-title>
+        <div *ngIf="userLesson.order < lesson.order" class="ion-lock-lesson ion-custom-lock">
+          <ion-icon class="ion-lock-closed" name="lock-closed-outline"></ion-icon>
+        </div>
+        <ion-card-header>
+          <ion-card-title [ngClass]="{'ion-lock-title': userLesson.order < lesson.order}">{{lesson.title}}</ion-card-title>
           <ion-card-subtitle>{{lesson.subTitle}}</ion-card-subtitle>
         </ion-card-header>
-        <div class="ion-size-arrow">
-          <ion-icon size="large" color="lagua" name="chevron-forward-outline"></ion-icon>
+        <div [ngClass]="{'ion-lock-lesson': userLesson.order < lesson.order}" class="ion-size-arrow">
+          <ion-icon size="large" color="{{userLesson.order < lesson.order ? 'medium' : 'lagua'}}" name="chevron-forward-outline"></ion-icon>
         </div>
       </ion-card>
-      <!-- <ion-card class="ion-no-margin ion-flex">
-        <div class="ion-lock-lesson ion-custom-lock"><ion-icon size="large" class="ion-lock-closed" name="lock-closed-outline"></ion-icon></div>
-        <ion-card-header class="ion-lock-lesson ion-padding-horizontal">
+
+      <!-- <ion-card class="ion-flex">
+        <div class="ion-lock-lesson ion-custom-lock">
+          <ion-icon class="ion-lock-closed" name="lock-closed-outline"></ion-icon>
+        </div>
+        <ion-card-header class="ion-padding-horizontal">
           <ion-card-title>L'accent</ion-card-title>
           <ion-card-subtitle>langue accentogène, non-accentogène</ion-card-subtitle>
         </ion-card-header>
