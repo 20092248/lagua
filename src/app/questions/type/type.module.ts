@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { TypePageRoutingModule } from './type-routing.module';
 
 import { TypePage } from './type.page';
-import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
 
 @NgModule({
   imports: [
@@ -16,7 +15,6 @@ import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
     IonicModule,
     TypePageRoutingModule
   ],
-  declarations: [TypePage],
-  providers: [NativeAudio]
+  declarations: [TypePage]
 })
 export class TypePageModule {}

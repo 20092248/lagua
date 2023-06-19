@@ -16,6 +16,12 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      setTimeout(() => {
+        if (this.authentificationService.checkUserState()) {
+          console.log('on attend!!!!!!', this.router);
+        }
+        console.log('on attend!');
+      }, 2000);
     if (this.authentificationService.checkUserState()) {
       const uid = this.authentificationService.user.uid ? this.authentificationService.user.uid : '';
       return this.authentificationService.getInfoUser(uid).then(()=>{

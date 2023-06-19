@@ -25,7 +25,7 @@ export class LessonPage implements OnInit {
   }
 
   goTo(routing: string, unlocked: boolean) {
-    if(unlocked) {
+    if(true) {
       this.router.navigate(['tabs/lessons/' + routing]);
     }
   }

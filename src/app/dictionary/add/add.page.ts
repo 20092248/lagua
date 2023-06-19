@@ -32,11 +32,13 @@ export class AddPage implements OnInit {
   ngOnInit() { }
 
   addWord() {
-    console.log(this.word);
     this.controlExamples();
     this.dictionaryService.updateDictionary(this.word).then((data: any) => {
       this.wordForm.reset();
       this.displayToast();
+      if(!this.word.examples.length){
+        this.word.examples.push({ text: '', translate: '' });
+      }
     });
   }
 
