@@ -1,5 +1,5 @@
 ion-toolbar.ion-header-home {
-  --background: linear-gradient(#5bad77, #1a6921);
+  --background: linear-gradient(#9dc18c, #1a6921);
   --color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 25px -15px, rgba(0, 0, 0, 0.18) 0px 10px 10px -10px;
   height: 220px;
@@ -85,7 +85,7 @@ ion-modal {
 
 .ion-button {
   --color: #ffffff;
-  --background: #1a6921;
+  --background: #488846;
 }
 
 .ion-button.ion-button-position {
@@ -147,10 +147,17 @@ ion-card-content > span {
 }
 
 ion-card.ion-dashboard {
-  --background: #498b5f;
   --color: #ffffff;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+ion-card.ion-dashboard-left {
+  --background: #9dc18c;
+}
+
+ion-card.ion-dashboard-right {
+  --background: #9dc18c;
 }
 
 ion-card.ion-dashboard ion-icon {
@@ -190,6 +197,7 @@ ion-card-title .ion-card-title {
 
 .ion-font-weight-bold {
   font-weight: bold;
+  font-size: 13px;
 }
 
 .ion-no-margin-bottom {

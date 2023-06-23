@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
   user: User | undefined;
   slideOpts = {
     initialSlide: 0,
-    slidesPerView: 1.8,
+    slidesPerView: 2.03,
     speed: 400,
   };
   recommendedLesson: Lesson[] = [];

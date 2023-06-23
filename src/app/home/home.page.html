@@ -99,7 +99,7 @@
 
       <div class="ion-display-flex">
         <div class="ion-dashboard-bloc">
-          <ion-card class="ion-dashboard">
+          <ion-card class="ion-dashboard ion-dashboard-left">
             <ion-card-header>
               <ion-card-title>
                 <span class="ion-card-title">{{user?.resultReviews ? user?.resultReviews?.length : 0}}</span>
@@ -112,7 +112,7 @@
           </ion-card>
         </div>
         <div class="ion-dashboard-bloc">
-          <ion-card class="ion-dashboard">
+          <ion-card class="ion-dashboard ion-dashboard-right">
             <ion-card-header>
               <ion-card-title>
                 <span class="ion-card-title">{{user?.resultLessons ? user?.resultLessons?.length : 0}}</span>
@@ -130,7 +130,7 @@
         <ion-slides [options]="slideOpts">
           <ion-slide *ngFor="let lesson of recommendedLesson; let index = index">
             <ion-card class="ion-no-margin-bottom" [ngClass]="{'ion-no-margin-middle': !(index === 0 || index === recommendedLesson.length - 1),'ion-no-margin-right': index === 0, 'ion-no-margin-left': index === recommendedLesson.length - 1}">
-              <img src="assets/img/home/book_{{index + 1}}.png" />
+              <img src="assets/img/home/book_{{index + 4}}.png" />
               <!-- <ion-card-header>
                 <ion-card-title>{{lesson.title}}</ion-card-title>
               </ion-card-header> -->
