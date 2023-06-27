@@ -3,9 +3,10 @@
   <ion-grid class="ion-text-center">
     <ion-row class="ion-content-page">
       <ion-col class="ion-content">
-        <ion-content class="ion-slides-background-color">
-          <ion-slides pager="true" [options]="slideOpts">
-            <ion-slide>
+        <ion-content class="swiper-slides-background-color">
+          <swiper-container [autoplay]="autoplay" [slidesPerView]="1" [initialSlide]="0" speed="2000" pagination="true"
+            direction="vertical">
+            <swiper-slide>
               <div class="ion-full-height ion-padding-horizontal ion-margin-horizontal">
                 <div class="ion-half-plus-height ion-align-items-end">
                   <img src="assets/img/slide_1.png">
@@ -21,8 +22,8 @@
                   </div>
                 </div>
               </div>
-            </ion-slide>
-            <ion-slide>
+            </swiper-slide>
+            <swiper-slide>
               <div class="ion-full-height ion-padding-horizontal ion-margin-horizontal">
                 <div class="ion-half-plus-height ion-align-items-end">
                   <img src="assets/img/slide_5.png">
@@ -36,8 +37,8 @@
                   </div>
                 </div>
               </div>
-            </ion-slide>
-            <ion-slide>
+            </swiper-slide>
+            <swiper-slide>
               <div class="ion-full-height ion-padding-horizontal ion-margin-horizontal">
                 <div class="ion-half-plus-height ion-align-items-end">
                   <img src="assets/img/slide_4.png">
@@ -52,8 +53,8 @@
                   </div>
                 </div>
               </div>
-            </ion-slide>
-          </ion-slides>
+            </swiper-slide>
+          </swiper-container>
         </ion-content>
         <!-- <div class="ion-padding-horizontal">
           <ion-icon size="large" name="save-outline"></ion-icon>
@@ -73,6 +74,17 @@
             color="lagua">Démarrer
             l'apprentissage</ion-button>
           <ion-button [routerLink]="['../login']" expand="block" color="light">J'ai déjà un compte</ion-button>
+        </div>       
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-loading-slide">
+      <ion-col>
+        <div class="ion-full-width">
+          <div class="autoplay-progress">
+            <svg>
+              <circle class="circle" cx="24" cy="24" r="15"></circle>
+            </svg>
+          </div>
         </div>
       </ion-col>
     </ion-row>

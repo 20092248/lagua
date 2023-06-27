@@ -1,0 +1,26 @@
+ion-content {
+    --background: #eef1ee;
+}
+
+span {
+    color: #15601b;
+    font-weight: bold;
+    font-style: italic;
+}
+
+ion-icon.ion-home-icon {
+    font-size: 25px;
+}
+
+ion-row {
+    border: 1px groove;
+}
+
+.ion-grid-table {
+    padding: 0;
+    font-size: 12px;
+}
+
+.ion-line-break-anywhere {
+    line-break: anywhere;
+}

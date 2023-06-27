@@ -1,0 +1,56 @@
+ion-content {
+    --background: #eef1ee;
+}
+
+swiper-container {
+    --swiper-pagination-bullet-inactive-color: var(--ion-color-step-200, #cccccc);
+    --swiper-pagination-color: var(--ion-color-primary, #46895c);
+    --swiper-pagination-progressbar-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.25);
+    --swiper-scrollbar-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.1);
+    --swiper-scrollbar-drag-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.5);
+    --swiper-pagination-color: #46895c;
+    height: 100%;
+}
+
+span {
+    color: #15601b;
+    font-weight: bold;
+    font-style: italic;
+}
+
+ion-icon.ion-home-icon {
+    font-size: 25px;
+}
+
+ion-grid {
+    height: auto;
+    padding-left: 0;
+    padding-right: 1px;
+    padding-bottom: 0;
+}
+
+ion-row {
+    height: 31px;
+    border: 1px solid;
+}
+
+ion-row.ion-full-height {
+    height: 100%;
+}
+
+.ion-min-spacing {
+    letter-spacing: -1.5px;
+}
+
+.ion-grid-table {
+    padding: 0;
+    font-size: 12px;
+}
+
+.ion-line-break-anywhere {
+    line-break: anywhere;
+}
+
+.ion-no-border {
+    border: 0;
+}
