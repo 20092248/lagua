@@ -238,7 +238,7 @@ export class AuthentificationService {
     var data = {};
     const today = new Date();
     if (today.getUTCDay() === 0) {
-      data = { 'week.dim': { day: today.getUTCDay(), timestamp: today } }
+      data = { 'week.dim': { day: 7, timestamp: today } }
     } else if (today.getUTCDay() === 1) {
       data = { 'week.lun': { day: today.getUTCDay(), timestamp: today } }
     } else if (today.getUTCDay() === 2) {

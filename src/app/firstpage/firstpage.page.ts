@@ -24,7 +24,6 @@ export class FirstpagePage implements OnInit {
 
   autoplayTimeLeft() {
     const progressCircle = document.querySelector(".autoplay-progress svg") as HTMLElement;
-    const progressContent = document.querySelector(".autoplay-progress span") as HTMLElement;
 
     const swiperEl = document.querySelector("swiper-container");
     swiperEl?.addEventListener("autoplaytimeleft", (e: any) => {

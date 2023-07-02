@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, getFirestore, orderBy } from '@angular/fire/firestore';
-import { doc, updateDoc, getDocs, collection, query, where } from '@firebase/firestore';
+import { getDocs, collection, query, where } from '@firebase/firestore';
 import { Lesson } from '../model/lessons.model';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +17,9 @@ export class LessonService {
   async searchLessons(): Promise<Lesson[]> {
     const q = query(collection(getFirestore(), 'lessons'), orderBy('order'));
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => this.lessons.push(doc.data() as Lesson));
+    querySnapshot.forEach((doc) => {
+      this.lessons.push(doc.data() as Lesson);
+    });
     return this.lessons;
   }
 

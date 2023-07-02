@@ -9,19 +9,23 @@
           ({{c.code}})</ion-button>
       </div>
     </div>
-    <div *ngFor="let r of reviews; let index = index" class="ion-unlock-lesson" [ngClass]="{ 'ion-last-card' : index === reviews.length - 1 }">
-      <!-- <ion-icon class="ion-icon-locked" size="medium" name="lock-closed" [ngClass]="{ 'ion-first-icon' : index }"></ion-icon> -->
-      <ion-icon class="ion-icon-checked" size="medium" name="checkmark-circle" [ngClass]="{ 'ion-first-icon' : index }"></ion-icon>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>{{r.text}}</ion-card-title>
-          <ion-card-subtitle>{{r.translate}}</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-          <div class="ion-custom-text" *ngFor="let content of r.contents">{{content}}</div>
-        </ion-card-content>
-        <ion-button size="small" class="ion-button ion-button-{{categorySelected?.code | lowercase}} ion-padding-end ion-float-right ion-button-position" fill="clear">Réviser</ion-button>
-      </ion-card>
+    <div class="scrollGradient">
+      <div *ngFor="let r of reviews; let index = index" class="ion-unlock-lesson" [ngClass]="{ 'ion-last-card' : index === reviews.length - 1 }">
+        <ion-icon *ngIf="categoryLevel < codeCategorySelectedLevel || (userReview.lesson <= r.lesson && userReview.order < r.order)" class="ion-icon-locked" size="medium" name="lock-closed" [ngClass]="{ 'ion-first-icon' : index }"></ion-icon>
+        <ion-icon *ngIf="!(categoryLevel < codeCategorySelectedLevel || (userReview.lesson <= r.lesson && userReview.order < r.order))" class="ion-icon-checked" size="medium" name="checkmark-circle" [ngClass]="{ 'ion-first-icon' : index }"></ion-icon>
+        <ion-card [ngClass]="{ 'ion-card-locked' : categoryLevel < codeCategorySelectedLevel || (userReview.lesson <= r.lesson && userReview.order < r.order) }">
+          <ion-card-header>
+            <ion-card-title>{{r.text}}</ion-card-title>
+            <ion-card-subtitle>{{r.translate}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="ion-custom-text" *ngFor="let content of r.contents">{{content}}</div>
+          </ion-card-content>
+          <ion-button *ngIf="!(categoryLevel < codeCategorySelectedLevel || (userReview.lesson <= r.lesson && userReview.order < r.order))" size="small" class="ion-button ion-button-{{categorySelected?.code | lowercase}} ion-padding-end ion-float-right ion-button-position" fill="clear" (click)="accessReview(r)">
+            {{ categoryLevel === codeCategorySelectedLevel && userReview.lesson <= r.lesson && userReview.order === r.order ? 'Démarrer le cours' : 'Revoir le cours'}}
+          </ion-button>
+        </ion-card>
+      </div>
     </div>
     <!-- <div class="ion-unlock-lesson">
       <ion-icon class="ion-icon-checked" size="medium" name="checkmark-circle"></ion-icon>

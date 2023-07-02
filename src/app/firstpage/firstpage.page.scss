@@ -55,11 +55,7 @@ ion-icon {
 }
 
 .ion-footer-page {
-  height: 15%;
-}
-
-.ion-loading-slide {
-  height: 5%;
+  height: 20%;
 }
 
 .ion-subtitle-text {
@@ -105,7 +101,7 @@ ion-icon {
   height: 48px;
   font-weight: bold;
   color: #46895c;
-  margin-top: 10px;
+  margin-top: 16px;
 }
 
 .autoplay-progress svg {
@@ -119,8 +115,8 @@ ion-icon {
   stroke-width: 4px;
   stroke: #46895c;
   fill: none;
-  stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
-  stroke-dasharray: 125.6;
+  stroke-dashoffset: calc(80 * (1 - var(--progress)));
+  stroke-dasharray: 80;
   transform: rotate(-90deg);
 }
 

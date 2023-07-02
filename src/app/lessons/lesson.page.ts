@@ -15,18 +15,14 @@ export class LessonPage implements OnInit {
   lessons: Lesson[] | undefined;
   userLesson: Lesson = {} as Lesson;
 
-  constructor(private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService) {
-    console.log('coucou');
-   }
+  constructor(private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService) { }
 
   ngOnInit(): void {
     this.userLesson = this.authentificationService.user.lesson;
     this.lessons = this.lessonService.lessons;
   }
 
-  goTo(routing: string, unlocked: boolean) {
-    if(true) {
-      this.router.navigate(['tabs/lessons/' + routing]);
-    }
+  goTo(routing: string) {
+    this.router.navigate(['tabs/lessons/' + routing]);
   }
 }

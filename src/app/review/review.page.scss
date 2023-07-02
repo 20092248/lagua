@@ -43,6 +43,22 @@ ion-card-content {
   overflow-y: hidden;
   white-space: nowrap;
   padding: 0 5px;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  background: #eef1ee;
+}
+
+.scrollGradient {
+  background: 
+    linear-gradient(#eef1ee 33%, rgba(238,241,238, 0)),
+    linear-gradient(rgba(238,241,238, 0), #eef1ee 66%) 0 100%,
+    radial-gradient(farthest-side at 50% 0, rgba(34,34,34, 0.5), rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 50% 100%, rgba(34,34,34, 0.5), rgba(0,0,0,0)) 0 100%;
+  background-color: #eef1ee;
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll, scroll;
+  background-size: 100% 45px, 100% 45px, 100% 15px, 100% 15px;
 }
 
 .ion-margin-vertical-min {
@@ -145,4 +161,9 @@ ion-icon.ion-icon-locked.first-icon {
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+}
+
+.ion-card-locked {
+  filter: grayscale(0.75);
+  opacity: 0.7;
 }

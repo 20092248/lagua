@@ -90,4 +90,28 @@ export class ReviewService {
     return nextCategory;
   }
 
+  getCategoryLevel(category: string) {
+    var level = 0;
+    switch (category) {
+      case 'A1':
+        level = 0
+        break;
+      case 'A2':
+        level = 1
+        break;
+      case 'B1':
+        level = 2
+        break;
+      case 'B2':
+        level = 3
+        break;
+      case 'C1':
+        level = 4
+        break;
+      default:
+        break;
+    }
+    return level;
+  }
+
 }

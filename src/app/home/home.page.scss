@@ -2,12 +2,13 @@ ion-toolbar.ion-header-home {
   --background: linear-gradient(#9dc18c, #1a6921);
   --color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 25px -15px, rgba(0, 0, 0, 0.18) 0px 10px 10px -10px;
-  height: 220px;
+  height: 205px;
+  padding-top: 10px;
 }
 
 ion-content.ion-content-fullscreen-home {
   --background: #eef1ee;
-  --background: linear-gradient(to bottom, #eef1ee 220px, #1a6921 220px, #eef1ee 420px);
+  --background: linear-gradient(to bottom, #eef1ee 205px, #1a6921 205px, #eef1ee 420px);
 }
 
 .ion-content-home {
@@ -41,9 +42,17 @@ ion-popover {
   --offset-x: 10px;
 }
 
-ion-slide ion-card ion-card-content {
+swiper-slide ion-card ion-card-content {
   height: 83px;
   padding: 10px;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-height: 3 *23px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 5px;
 }
 
 ion-modal {
@@ -210,13 +219,13 @@ ion-card-title .ion-card-title {
 }
 
 .ion-no-margin-left {
-  margin-left: 0px !important;
-  margin-right: 10px !important;
+  margin-left: 4px !important;
+  margin-right: 6px !important;
 }
 
 .ion-no-margin-right {
-  margin-left: 10px !important;
-  margin-right: 0px !important;
+  margin-left: 6px !important;
+  margin-right: 4px !important;
 }
 
 .ion-calendar-content {
@@ -251,4 +260,9 @@ ion-card-title .ion-card-title {
   background-color: #d7e3ce;
   border: 1.5px solid #9dba88;
   border-radius: 4px;
+}
+
+.ion-lock-lesson {
+  opacity: 0.7;
+  filter: grayscale(0.75);
 }
