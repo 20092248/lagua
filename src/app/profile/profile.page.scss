@@ -5,7 +5,8 @@ ion-content {
 
 ion-grid.ion-grid-header {
   position: relative;
-  background: linear-gradient(#5bad77, #1a6921);
+  background: linear-gradient(#5bad7785, #1a6921),url('/assets/img/profile/wallpaper.jpg');
+  background-size: cover;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 25px -15px, rgba(0, 0, 0, 0.08) 0px 10px 10px -10px;
 }
 

@@ -26,6 +26,7 @@ ion-card-content {
   background: linear-gradient(#5bad77, #1a6921);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 20px 25px -15px, rgba(0, 0, 0, 0.08) 0px 10px 10px -10px;
   // border-radius: 0 0 20px 20px;
+  padding: 32px 0;
 }
 
 .headline {
@@ -35,6 +36,11 @@ ion-card-content {
   letter-spacing: normal;
   line-height: 1.25;
   padding: 0px 5px;
+}
+
+.subHeadline {
+  color: #ffffff;
+  margin: 5px 0px 5px 5px !important;
 }
 
 .ion-scroll-review {
@@ -164,6 +170,6 @@ ion-icon.ion-icon-locked.first-icon {
 }
 
 .ion-card-locked {
-  filter: grayscale(0.75);
-  opacity: 0.7;
+  filter: grayscale(0.85);
+  opacity: 0.85;
 }
