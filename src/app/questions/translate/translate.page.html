@@ -1,0 +1,39 @@
+<ion-grid>
+  <ion-row class="ion-container-translate">
+    <ion-col>
+      <h3>Traduisez la phrase</h3>
+      <div class="ion-translate">
+        <img width="30" src="{{translateSetting?.playSrc}}"/>
+        <ion-text class="ion-padding-start">Bonjour</ion-text>
+      </div>
+      </ion-col>
+  </ion-row>
+  <ion-row class="ion-container-response">
+    <ion-col>
+      <div class="ion-background-horizontal-line ion-padding-vertical">
+        <ion-chip>Default</ion-chip><ion-chip>Default</ion-chip><ion-chip>Default</ion-chip><ion-chip>Default</ion-chip>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-container-choice ion-align-items-center">
+    <ion-col>
+      <div class="ion-text-center">
+        <ion-chip>Default</ion-chip><ion-chip>Default</ion-chip><ion-chip>Default</ion-chip><ion-chip>Default</ion-chip><ion-chip>Default</ion-chip>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-footer class="ion-no-border">
+  <ion-toolbar [ngClass]="{ 'ion-text-center' : !displayAnswer || answerSelected?.answer || secondChance }">
+    <ion-button *ngIf="!displayAnswer" [disabled]="!answerSelected" color="tertiary" class="ion-margin" (click)="validate()">
+      Valider
+    </ion-button>
+    <ion-button *ngIf="displayAnswer && !secondChance && !answerSelected?.answer" color="danger" class="ion-margin" (click)="tryAgain()">
+      Réessayer
+    </ion-button>
+    <ion-button *ngIf="displayAnswer" color="lagua" [ngClass]="{ 'ion-float-right' : !answerSelected?.answer && !secondChance }" class="ion-margin" (click)="continue()">
+      Continuer
+      <!-- <ion-icon slot="end" name="caret-forward-outline"></ion-icon> -->
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

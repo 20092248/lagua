@@ -1,0 +1,36 @@
+ion-grid {
+    width: 100%;
+    padding: 5px 0;
+}
+
+ion-row.ion-container-translate {
+    padding: 0 5px;
+    height: 15%;
+    min-height: 100px;
+}
+
+ion-row.ion-container-response {
+    background-color: var(--ion-background-color);
+    height: 45%;
+    max-height: 280px;
+}
+
+ion-row.ion-container-choice {
+    height: 40%;
+}
+
+ion-chip {
+    font-size: 16px;
+}
+
+.ion-translate {
+    display: flex;
+    align-items: center;
+}
+
+.ion-background-horizontal-line {
+    height: 100%;
+    width: 100%;
+    background: url('/assets/img/questions/translate/line.png');
+    background-position-x: center;
+}
