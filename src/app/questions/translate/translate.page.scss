@@ -21,6 +21,15 @@ ion-row.ion-container-choice {
 
 ion-chip {
     font-size: 16px;
+    margin-top: 24px;
+}
+
+div.ion-background-horizontal-line ion-button {
+    font-size: 16px;
+    margin-top: 20px;
+    --padding-start: 12px;
+    --padding-end: 12px;
+    --background: #46895c;
 }
 
 .ion-translate {
@@ -33,4 +42,8 @@ ion-chip {
     width: 100%;
     background: url('/assets/img/questions/translate/line.png');
     background-position-x: center;
+}
+
+.ion-chip-custom {
+    padding-top: 5px;
 }
