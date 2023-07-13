@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Review } from '../model/review.model';
 import { ReviewService } from '../services/review.service';
 import { SettingService } from '../services/setting.service';
 import { Router } from '@angular/router';
 import { AuthentificationService } from '../services/authentification.service';
 import { User } from '../model/user.model';
-import { ToastController } from '@ionic/angular';
+import { IonContent, ScrollDetail, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-review',
@@ -21,6 +21,7 @@ export class ReviewPage implements OnInit {
   userReview: Review = {} as Review;
   category: string = 'A1';
   categoryLevel: number = 0;
+  isPinned: boolean = false;
 
   constructor(private router: Router, private settingsService: SettingService, private reviewService: ReviewService, private authentificationService: AuthentificationService, private toastController: ToastController) { }
 
@@ -54,6 +55,10 @@ export class ReviewPage implements OnInit {
   accessReview(review: Review) {
     this.reviewService.review = review;
     this.router.navigate(['/questions']);
+  }
+
+  handleScroll(ev: CustomEvent<ScrollDetail>) {
+    this.isPinned = ev.detail.scrollTop > 125;
   }
 
   async presentToast() {

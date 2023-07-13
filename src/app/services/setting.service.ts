@@ -10,6 +10,7 @@ export class SettingService {
   userInformation: any | undefined;
   questions: any | undefined;
   reviews: any | undefined;
+  profile: any | undefined;
 
   constructor(private _firestore: Firestore) { }
 
@@ -26,6 +27,9 @@ export class SettingService {
           break;
         case 'userInformation':
           this.userInformation = doc.data();
+          break;
+        case 'profile':
+          this.profile = doc.data();
           break;
       }
       console.log(doc.id, ' => ', doc.data());

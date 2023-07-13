@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user.model';
 import { AuthentificationService } from '../services/authentification.service';
+import { SettingService } from '../services/setting.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,16 +21,20 @@ export class ProfilePage implements OnInit {
   percentWordsLearned: number = 0;
   nbrWords: number = 0;
   activeConnection: Date = new Date(0);
+  score: number = 0;
+  profileSetting: any = {};
 
-  constructor(private router: Router, private authentificationService: AuthentificationService) { }
+  constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService) { }
 
   ngOnInit() {
+    this.profileSetting = this.settingService.profile;
     this.user = this.authentificationService.user;
     this.user.resultReviews?.forEach(review => {
       this.nbrWordsToRevise += review.toRevise.length;
       this.nbrWordsToLearn += review.toLearn.length;
       this.nbrWordsLearned += review.learned.length;
       this.nbrWords += review.toRevise.length + review.toLearn.length + review.learned.length;
+      this.score += (this.nbrWordsToLearn * 50) + (this.nbrWordsLearned * 100);
     });
     this.percentWordsToRevise = this.nbrWordsToRevise * 100 / this.nbrWords;
     this.percentWordsToLearn = this.nbrWordsToLearn * 100 / this.nbrWords;

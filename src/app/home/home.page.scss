@@ -1,12 +1,12 @@
 ion-toolbar.ion-header-home {
-  --background: linear-gradient(#9dc18c, #1a6921);
+  --background: linear-gradient(#5bad77, #1a6921);
   --color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 25px -15px, rgba(0, 0, 0, 0.18) 0px 10px 10px -10px;
   height: 205px;
   padding-top: 10px;
 }
 
-ion-content.ion-content-fullscreen-home {
+ion-content.ion-content-fullscreen-home { 
   --background: #eef1ee;
   --background: linear-gradient(to bottom, #eef1ee 205px, #1a6921 205px, #eef1ee 420px);
 }
@@ -94,7 +94,7 @@ ion-modal {
 
 .ion-button {
   --color: #ffffff;
-  --background: #488846;
+  --background: #1a6921;
 }
 
 .ion-button.ion-button-position {

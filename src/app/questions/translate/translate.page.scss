@@ -6,7 +6,11 @@ ion-grid {
 ion-row.ion-container-translate {
     padding: 0 5px;
     height: 15%;
-    min-height: 100px;
+    min-height: 130px;
+}
+
+ion-row.ion-container-translate ion-col {
+    box-shadow: 0 9px 6px -6px #e0e0e0;
 }
 
 ion-row.ion-container-response {
@@ -17,6 +21,7 @@ ion-row.ion-container-response {
 
 ion-row.ion-container-choice {
     height: 40%;
+    box-shadow: 0 -9px 6px -6px #e0e0e0;
 }
 
 ion-chip {
@@ -30,6 +35,20 @@ div.ion-background-horizontal-line ion-button {
     --padding-start: 12px;
     --padding-end: 12px;
     --background: #46895c;
+    --border-radius: 10px;
+}
+
+ion-button.success {
+    --background: #27a132 !important;
+}
+
+ion-button.error {
+    --background: #eb445a !important;
+}
+
+.ion-container-choice ion-button {
+    --background: #46895c;
+    --border-radius: 10px;
 }
 
 .ion-translate {
@@ -44,6 +63,7 @@ div.ion-background-horizontal-line ion-button {
     background-position-x: center;
 }
 
-.ion-chip-custom {
-    padding-top: 5px;
+.ion-translate-text {
+    font-weight: bold;
+    font-size: 18px;
 }

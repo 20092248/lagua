@@ -1,15 +1,15 @@
-<ion-content [fullscreen]="true">
+<ion-content [scrollEvents]="true" [fullscreen]="true" (ionScroll)="handleScroll($any($event))">
   <div>
     <div class="subHeader ion-text-center">
-      <h1 class="headline ion-no-margin">Apprendre <ion-icon name="library"></ion-icon></h1>
-      <p class="subHeadline">{{categorySelected?.label}} ({{categorySelected?.code}})</p>
+      <h1 class="headline ion-no-margin">Apprendre <ion-icon name="albums"></ion-icon></h1>
+      <p class="subHeadline">{{categorySelected?.label}} ({{categorySelected?.code}}) - leçon {{userReview.order}} / {{reviews.length}}</p>
     </div>
     <!-- <div class="subHeader ion-padding">
       <h1 class="headline ion-no-margin ion-text-center">{{categorySelected?.label}} ({{categorySelected?.code}})<small> - Leçon</small></h1>
     </div> -->
-    <div class="ion-scroll-review">
+    <div id="categories-menu" class="ion-scroll-review" [class.is-pinned]="isPinned">
       <div class="ion-margin-vertical-min">
-        <ion-button *ngFor="let c of categories" size="small" class="ion-button ion-button-{{c.code | lowercase}}" (click)="setCategory(c.code)">{{c.label}}
+        <ion-button *ngFor="let c of categories" size="small" class="ion-button ion-button-{{c.code | lowercase}}" [ngClass]="{'ion-button-active': categorySelected?.code === c.code}" (click)="setCategory(c.code)">{{c.label}}
           ({{c.code}})</ion-button>
       </div>
     </div>
@@ -25,7 +25,7 @@
           <ion-card-content>
             <div class="ion-custom-text" *ngFor="let content of r.contents">{{content}}</div>
           </ion-card-content>
-          <ion-button *ngIf="!(categoryLevel < codeCategorySelectedLevel || (userReview.lesson <= r.lesson && userReview.order < r.order))" size="small" class="ion-button ion-button-{{categorySelected?.code | lowercase}} ion-padding-end ion-float-right ion-button-position" fill="clear" (click)="accessReview(r)">
+          <ion-button *ngIf="!(categoryLevel < codeCategorySelectedLevel || (userReview.lesson <= r.lesson && userReview.order < r.order))" size="small" class="ion-button ion-button-active ion-padding-end ion-float-right ion-button-position" fill="clear" (click)="accessReview(r)">
             {{ categoryLevel === codeCategorySelectedLevel && userReview.lesson <= r.lesson && userReview.order === r.order ? 'Démarrer le cours' : 'Revoir le cours'}}
           </ion-button>
         </ion-card>

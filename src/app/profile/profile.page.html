@@ -2,19 +2,26 @@
   <ion-grid class="ion-grid-header">
     <ion-row class="ion-text-center ion-padding-top">
       <ion-col>
+        <h1>{{user?.displayName}}</h1>
+        <p class="ion-position-badge ion-padding-bottom">
+          <img width="32" src="{{profileSetting?.icon?.badgeSrc}}">
+          <span *ngIf="score" class="ion-padding-end-min">{{score}} Points</span>
+        </p>
         <div>
           <div class="border-white-tabs" id="popover-profil">
             <div class="img-box">
-              <img *ngIf="user?.photoURL" [src]="user?.photoURL">
-              <ion-icon class="ion-position-icon" *ngIf="!user?.photoURL" [src]="user?.photoURL" name="person-outline"></ion-icon>
+              <img id="bottom-start" *ngIf="user?.photoURL" [src]="user?.photoURL">
+              <ion-icon  id="bottom-start" class="ion-position-icon" *ngIf="!user?.photoURL" [src]="user?.photoURL"
+                name="person-outline"></ion-icon>
+                <ion-popover class="ion-padding-top ion-margin-top" trigger="bottom-start" side="bottom" alignment="center">
+                  <ng-template>
+                    <ion-content class="ion-padding">{{user?.email}}</ion-content>
+                  </ng-template>
+                </ion-popover>
             </div>
           </div>
-        </div>
-        <p>{{user?.displayName}}</p>
-        <p class="ion-no-padding ion-margin-bottom">
-          <i><span class="ion-padding-left">{{user?.email}} </span><ion-icon name="pencil-sharp"></ion-icon></i>
-        </p>
-        <p>Niveau actuel : {{getActualLevelByCode()}}</p>
+        </div>        
+        <p class="ion-padding-top">Niveau actuel : {{getActualLevelByCode()}}</p>
         <p>Langue en apprentissage : {{user?.learn?.text}} / <i>{{user?.learn?.translate}}</i></p>
       </ion-col>
     </ion-row>
@@ -36,8 +43,10 @@
                 </ion-row>
                 <ion-row>
                   <ion-col class="ion-no-padding" [ngClass]="{'ion-hide': !percentWordsToLearn}">
-                    <div class="ion-label-progress ion-label-progress-warning" [ngStyle]="{'left': percentWordsToLearn + '%'}">
-                      <ion-text color="warning" class="ion-text-left ion-text-bold">{{percentWordsToLearn}}%</ion-text>à apprendre
+                    <div class="ion-label-progress ion-label-progress-warning"
+                      [ngStyle]="{'left': percentWordsToLearn + '%'}">
+                      <ion-text color="warning" class="ion-text-left ion-text-bold">{{percentWordsToLearn}}%</ion-text>à
+                      apprendre
                     </div>
                   </ion-col>
                 </ion-row>
@@ -47,17 +56,20 @@
                       data-max="100" class="ion-vocabulary-bar-red" [ngStyle]="{'width': percentWordsToRevise + '%'}">
                     </div>
                     <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate"
-                      data-max="100" class="ion-vocabulary-bar-orange" [ngStyle]="{'width': percentWordsToLearn + '%', 'left': percentWordsToRevise + '%'}">
+                      data-max="100" class="ion-vocabulary-bar-orange"
+                      [ngStyle]="{'width': percentWordsToLearn + '%', 'left': percentWordsToRevise + '%'}">
                     </div>
                     <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate"
-                      data-max="100" class="ion-vocabulary-bar-green" [ngStyle]="{'width': percentWordsLearned + '%', 'left': (percentWordsToRevise + percentWordsToLearn) + '%'}">
+                      data-max="100" class="ion-vocabulary-bar-green"
+                      [ngStyle]="{'width': percentWordsLearned + '%', 'left': (percentWordsToRevise + percentWordsToLearn) + '%'}">
                     </div>
                   </ion-col>
                 </ion-row>
                 <ion-row class="ion-label-progress-bottom-position">
                   <ion-col size="{{percentWordsLearned ? 6 : 12}}" *ngIf="percentWordsToRevise">
                     <div class="ion-label-progress ion-label-progress-danger">
-                      <ion-text color="danger" class="ion-text-left ion-text-bold">{{percentWordsToRevise}}%</ion-text>à réviser
+                      <ion-text color="danger" class="ion-text-left ion-text-bold">{{percentWordsToRevise}}%</ion-text>à
+                      réviser
                     </div>
                   </ion-col>
                   <ion-col size="{{percentWordsToRevise ? 6 : 12}}" *ngIf="percentWordsLearned">
@@ -120,7 +132,8 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button color="lagua" expand="block" (click)="logout()"><ion-icon slot="start" name="log-out-outline"></ion-icon>Se
+        <ion-button color="lagua" expand="block" (click)="logout()"><ion-icon slot="start"
+            name="log-out-outline"></ion-icon>Se
           déconnecter</ion-button>
         <ion-button expand="block" color="danger" class="ion-margin-bottom"><ion-icon slot="start"
             name="trash-outline"></ion-icon>Supprimer

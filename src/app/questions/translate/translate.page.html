@@ -4,45 +4,34 @@
       <h3>Traduisez la phrase</h3>
       <div class="ion-translate">
         <img width="30" src="{{translateSetting?.playSrc}}"/>
-        <ion-text class="ion-padding-start">Bonjour</ion-text>
+        <ion-text class="ion-padding-start"><span class="ion-translate-text">{{question?.translate}}</span><span *ngIf="question?.description"><i> - {{question?.description}}</i></span></ion-text>
       </div>
       </ion-col>
   </ion-row>
   <ion-row class="ion-container-response">
     <ion-col>
       <div class="ion-background-horizontal-line">
-        <ion-button [disabled]="true">Default</ion-button>
-        <ion-button>Default</ion-button>
-        <ion-button>Default</ion-button>
-        <ion-button>Default</ion-button>
-        <ion-button>Default</ion-button>
-        <ion-button>Default</ion-button>
-        <ion-button>Default</ion-button>
-        <ion-button>Default</ion-button>
+        <ion-button *ngFor="let r of response; let index = index" (click)="removeWord(r, index)" [ngClass]="{ 'error' : error, 'success': !error && displayAnswer }">{{r}}</ion-button>
       </div>
     </ion-col>
   </ion-row>
   <ion-row class="ion-container-choice ion-align-items-center">
     <ion-col>
       <div class="ion-text-center">
-        <span class="ion-chip-custom"><ion-chip>Default</ion-chip></span>
-        <span class="ion-chip-custom"><ion-chip>Default</ion-chip></span>
-        <span class="ion-chip-custom"><ion-chip>Default</ion-chip></span>
-       <span class="ion-chip-custom"><ion-chip>Default</ion-chip></span>
-        <span class="ion-chip-custom"><ion-chip>Default</ion-chip></span>
+        <ion-button [disabled]="response.indexOf(c.choice) !== -1" *ngFor="let c of question?.choices; let index = index" (click)="addWord(c?.choice, index)">{{c?.choice}}</ion-button>
       </div>
     </ion-col>
   </ion-row>
 </ion-grid>
 <ion-footer class="ion-no-border">
-  <ion-toolbar [ngClass]="{ 'ion-text-center' : !displayAnswer || answerSelected?.answer || secondChance }">
-    <ion-button *ngIf="!displayAnswer" [disabled]="!answerSelected" color="tertiary" class="ion-margin" (click)="validate()">
+  <ion-toolbar [ngClass]="{ 'ion-text-center' : !displayAnswer || !error || secondChance }">
+    <ion-button *ngIf="!displayAnswer" [disabled]="!response.length" color="tertiary" class="ion-margin" (click)="validate()">
       Valider
     </ion-button>
-    <ion-button *ngIf="displayAnswer && !secondChance && !answerSelected?.answer" color="danger" class="ion-margin" (click)="tryAgain()">
+    <ion-button *ngIf="displayAnswer && !secondChance && error" [ngClass]="{ 'ion-float-left' : !secondChance }" color="danger" class="ion-margin" (click)="tryAgain()">
       Réessayer
     </ion-button>
-    <ion-button *ngIf="displayAnswer" color="lagua" [ngClass]="{ 'ion-float-right' : !answerSelected?.answer && !secondChance }" class="ion-margin" (click)="continue()">
+    <ion-button *ngIf="displayAnswer" color="lagua" [ngClass]="{ 'ion-float-right' : error && !secondChance }" class="ion-margin" (click)="continue()">
       Continuer
       <!-- <ion-icon slot="end" name="caret-forward-outline"></ion-icon> -->
     </ion-button>

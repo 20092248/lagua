@@ -21,10 +21,11 @@ export class TranslatePage implements OnInit {
   nbrQuestion: number = 0;
   displayAnswer: boolean = false;
   secondChance: boolean = false;
-  answerSelected: any | undefined;
+  error: boolean = false;
   radio_group: any;
   score: number = 0;
   translateSetting: any | undefined;
+  response: any[] = [];
 
   constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) { }
 
@@ -37,14 +38,20 @@ export class TranslatePage implements OnInit {
     this.getInfoReview();
   }
 
-  choiceSelected(choice: any) {
-    this.answerSelected = choice;
+  addWord(choice: any, index: number) {
+    this.response.push(choice);
+  }
+
+  removeWord(choice: any, index: number) {
+    this.response.splice(index, 1);
   }
 
   validate() {
     this.score = 0;
     this.displayAnswer = true;
-    if(this.answerSelected && this.answerSelected.answer){
+    const goodAnswer = this.question.choices?.find((q: any) => q.answer);
+    const myAnswer = this.response?.join(' ');
+    if(myAnswer && goodAnswer && myAnswer === goodAnswer?.choice){
       this.audioService.play('rightAnswer');
       if(!this.secondChance){
         this.score = 10;
@@ -53,14 +60,16 @@ export class TranslatePage implements OnInit {
       }
     } else {
       this.audioService.play('wrongAnswer');
+      this.error = true;
     }
-    console.log(this.answerSelected);
+    console.log(this.response);
   }
 
   tryAgain() {
     this.secondChance = true;
     this.displayAnswer = false;
-    this.answerSelected = undefined;
+    this.error = false;
+    this.response = [];
     this.radio_group = {};
   }
 
@@ -70,7 +79,8 @@ export class TranslatePage implements OnInit {
     this.questionService.nbrQuestion++;
     this.displayAnswer = false;
     this.secondChance = false;
-    this.answerSelected = undefined;
+    this.error = false;
+    this.response = [];
     this.radio_group = {};
     if(this.nbrQuestion !== this.questions.length) {
       this.question = this.questions[this.nbrQuestion];

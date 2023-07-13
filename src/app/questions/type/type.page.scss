@@ -1,5 +1,5 @@
 ion-card {
-    margin: 8% 25%;
+    margin: 4% 25%;
     padding-top: 15px;
     transition-duration: 0.1s;
 }
@@ -17,6 +17,9 @@ div.ion-position-content {
 
 img {
     position: relative;
-    width: 75px;
+    width: 65px;
+}
+
+.left {
     left: 10px;
 }

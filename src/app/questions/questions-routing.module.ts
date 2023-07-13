@@ -21,6 +21,14 @@ const routes: Routes = [
         loadChildren: () => import('./memo/memo.module').then(m => m.MemoPageModule)
       },
       {
+        path: 'translate',
+        loadChildren: () => import('./translate/translate.module').then(m => m.TranslatePageModule)
+      },
+      {
+        path: 'mix',
+        loadChildren: () => import('./mix/mix.module').then(m => m.MixPageModule)
+      },
+      {
         path: 'result',
         loadChildren: () => import('./result/result.module').then( m => m.ResultPageModule)
       },

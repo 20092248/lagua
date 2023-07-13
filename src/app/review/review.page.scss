@@ -55,6 +55,10 @@ ion-card-content {
   background: #eef1ee;
 }
 
+.is-pinned { 
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
 .scrollGradient {
   background: 
     linear-gradient(#eef1ee 33%, rgba(238,241,238, 0)),
@@ -68,8 +72,8 @@ ion-card-content {
 }
 
 .ion-margin-vertical-min {
-  margin: 10px 0 1px;
-  padding-bottom: 5px;
+  margin: 10px 0 0;
+  padding-bottom: 10px;
 }
 
 .ion-last-card {
@@ -79,7 +83,7 @@ ion-card-content {
 .ion-unlock-lesson {
   position: relative;
   border-left: 0.125rem solid rgb(147, 150, 147);
-  margin: 0.625rem 2rem 1.625rem 0px;
+  margin: 0.25rem 2rem 1.625rem 0px;
   padding-left: 10px;
   left: 1.5rem;
 }
@@ -90,18 +94,18 @@ ion-card-content {
   left: -11px;
   padding: 2px 0;
   border-radius: 12px;
-  color: rgb(48 137 133);
+  color: #1a6921;
   background-color: #eef1ee;
   background-size: contain;
 }
 
 ion-icon.ion-icon-locked {
-  position: absolute;
+  position: absolute; 
   font-size: 20px;
   left: -11px;
   padding: 2px 0;
   border-radius: 12px;
-  color: rgb(255 93 15);
+  color: #f07e47;
   background-color: #eef1ee;
   background-size: contain;
 }
@@ -120,23 +124,27 @@ ion-icon.ion-icon-locked.first-icon {
 }
 
 .ion-button-a1 {
-  --background: #1a6921;
+  --background: #9dc18c; // #1a6921;
 }
 
 .ion-button-a2 {
-  --background: #6eb523;
+  --background: #9dc18c; // #6eb523;
 }
 
 .ion-button-b1 {
-  --background: #ffc409;
+  --background: #9dc18c; // #ffc409;
 }
 
 .ion-button-b2 {
-  --background: #ff9000;
+  --background: #9dc18c; // #ff9000;
 }
 
 .ion-button-c1 {
-  --background: #ff0000;
+  --background: #9dc18c; // #ff0000;
+}
+
+.ion-button-active {
+  --background: #1a6921;
 }
 
 .ion-chatbox {
