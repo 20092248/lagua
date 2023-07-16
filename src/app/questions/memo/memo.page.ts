@@ -29,7 +29,7 @@ export class MemoPage implements OnInit {
   ngOnInit() {
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.qcm?.questions;
-    this.question = this.questions[this.nbrQuestion];
+    this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
     setTimeout(() => { this.isOpen = true }, 2000);
   }
 
@@ -45,6 +45,7 @@ export class MemoPage implements OnInit {
       this.questionService.nbrQuestion++;
       if (this.nbrQuestion !== this.questions.length) {
         this.question = this.questions[this.nbrQuestion];
+        setTimeout(() => { this.isOpen = true }, 2000);
       } else {
         this.router.navigate(['/questions/result']);
       }

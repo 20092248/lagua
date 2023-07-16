@@ -15,6 +15,7 @@ import { QcmPage } from './qcm.page';
     IonicModule,
     QcmPageRoutingModule
   ],
-  declarations: [QcmPage]
+  declarations: [QcmPage],
+  exports: [QcmPage]
 })
 export class QcmPageModule {}

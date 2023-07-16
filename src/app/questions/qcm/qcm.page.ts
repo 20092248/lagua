@@ -30,7 +30,7 @@ export class QcmPage implements OnInit {
     this.questionService.nbrQuestion = this.nbrQuestion;
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.qcm?.questions;
-    this.question = this.questions[this.nbrQuestion];
+    this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
     this.getInfoReview();
   }
 

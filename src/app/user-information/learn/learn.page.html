@@ -1,22 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Apprendre</ion-title>
-    <ion-button class="ion-margin-end" slot="end" color="light" size="small" [routerLink]="['../../login']">Se connecter</ion-button>
-  </ion-toolbar>
-</ion-header>
-<ion-content class="ion-padding">
-  <ion-list>
-    <ion-item lines="full">
-      <ion-label>Je voudrais apprendre</ion-label>
-    </ion-item>
-    <ion-item *ngFor="let l of learn" [routerLink]="['../why']" routerLinkActive="selected" lines="full" (click)="selectedItem(l)">
-      <ion-thumbnail slot="start">
-        <img src="assets/img/flag/{{l.flag}}" />
-      </ion-thumbnail>
-      <ion-label>{{l.text}} / <i>{{l.translate}}</i></ion-label>
-    </ion-item>
-  </ion-list>
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-title>Apprendre</ion-title>
+  <ion-button class="ion-margin-end" slot="end" color="light" size="small" [routerLink]="['../../login']">Se
+    connecter</ion-button>
+</ion-toolbar>
+<ion-content [fullscreen]="true">
+  <div>
+    <ion-list class="ion-speak">
+      <h4 class="ion-padding-bottom">Je parle</h4>
+      <ion-item lines="none">
+        <ion-thumbnail slot="start">
+          <img src="assets/img/flag/Flag_of_France.png" />
+        </ion-thumbnail>
+        <ion-label>Shizungu / <i>Français</i></ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-list class="ion-learn">
+      <h4 class="ion-padding-bottom">Je voudrais apprendre</h4>
+      <ion-item *ngFor="let l of learn" [routerLink]="['../why']" routerLinkActive="selected" lines="none"
+        (click)="selectedItem(l)">
+        <ion-thumbnail slot="start">
+          <img src="assets/img/flag/{{l.flag}}" />
+        </ion-thumbnail>
+        <ion-label>{{l.text}} / <i>{{l.translate}}</i></ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
