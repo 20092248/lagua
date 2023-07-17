@@ -19,9 +19,11 @@ export class SignInPage implements OnInit {
   ngOnInit() {
   }
 
-  async createUser() {
+  async signIn() {
     try {
-      const user = await this.authentificationService.createUser(this.displayName, this.email, this.password);
+      const user = await this.authentificationService.createUser(this.displayName, this.email, this.password).then((connected: boolean) => {
+        this.router.navigate(['']); //go to home page
+      });
     } catch (error) {
       console.error('Error --> ', error);
     }

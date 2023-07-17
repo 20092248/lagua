@@ -61,6 +61,7 @@ export class AuthentificationService {
           review: review,
           lesson: lesson
         }, { merge: true });
+        this.getInfoUser(uid);
       });
     });
   }
@@ -81,7 +82,7 @@ export class AuthentificationService {
         this.user.email = userCredential?.user?.email;
         this.user.uid = userCredential?.user?.uid;
         setDoc(doc(getFirestore(), 'users', this.user.uid), this.user);
-        this.login(email, password);
+        this.addInfoUser(userCredential?.user?.uid);
         return true;
       })
       .catch((error) => {

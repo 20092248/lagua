@@ -129,7 +129,7 @@
       <div class="ion-unlock-lesson">
         <swiper-container [slidesPerView]="2.05" [initialSlide]="0" speed="400">
           <swiper-slide *ngFor="let lesson of recommendedLessons; let index = index">
-            <ion-card  class="ion-no-margin-bottom" [ngClass]="{'ion-no-margin-middle': !(index === 0 || index === recommendedLessons.length - 1),'ion-no-margin-right': index === 0, 'ion-no-margin-left': index === recommendedLessons.length - 1, 'ion-lock-lesson': user?.lesson.order < lesson.order}">
+            <ion-card  class="ion-no-margin-bottom" [ngClass]="{'ion-no-margin-middle': !(index === 0 || index === recommendedLessons.length - 1),'ion-no-margin-right': index === 0, 'ion-no-margin-left': index === recommendedLessons.length - 1, 'ion-lock-lesson': user?.lesson?.order < lesson.order}">
               <img src="assets/img/home/book_{{index + 1}}.png" />
               <!-- <ion-card-header>
                 <ion-card-title>{{lesson.title}}</ion-card-title>
