@@ -36,6 +36,9 @@ export class AuthentificationService {
     await this.updateDayConnected('users', uid);
     const document = await getDoc(doc(getFirestore(), 'users', uid));
     const data = document.data() as User;
+    this.user.uid = data.uid;
+    this.user.email = data.email;
+    this.user.displayName = data.displayName;
     this.user.age = data.age;
     this.user.learn = data.learn as CodeTextTranslate;
     this.user.why = data.why as CodeLabel;
@@ -49,9 +52,9 @@ export class AuthentificationService {
     this.user.timerActiveConnection = data.timerActiveConnection ? data.timerActiveConnection : 0;
   }
 
-  addInfoUser(uid: string) {
-    forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(([review, lesson]) => {
-      this.reviewService.getReview('A1', 1, 1).then(review => {
+  async addInfoUser(uid: string) {
+    forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(async ([review, lesson]) => {
+      await this.reviewService.getReview('A1', 1, 1).then(async review => {
         setDoc(doc(getFirestore(), 'users', uid), {
           age: this.user.age,
           learn: this.user.learn,
@@ -79,6 +82,7 @@ export class AuthentificationService {
   async createUser(name: string, email: string, password: string) {
     let response = await createUserWithEmailAndPassword(getAuth(), email, password)
       .then((userCredential) => {
+        this.user.displayName = name;
         this.user.email = userCredential?.user?.email;
         this.user.uid = userCredential?.user?.uid;
         setDoc(doc(getFirestore(), 'users', this.user.uid), this.user);

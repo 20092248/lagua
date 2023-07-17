@@ -42,9 +42,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.user = this.authentificationService.user;
-    forkJoin([this.settingService.getSettings(),
-    this.reviewService.getAllReviews(),
-    this.lessonService.searchLessons()]).subscribe(([settings, reviews, lessons]) => {
+    forkJoin([this.settingService.getSettings(), this.reviewService.getAllReviews(), this.lessonService.searchLessons()]).subscribe(([settings, reviews, lessons]) => {
       this.progression = this.user && this.user.resultReviews && this.user.resultLessons ? (this.user.resultReviews?.length + this.user.resultLessons?.length) / (reviews.length + lessons.length) * 100 : 0;
       console.log(this.progression + '%');
       reviews.sort((a, b) => a.category < b.category ? -1 : 1).sort((a, b) => a.lesson - b.lesson).sort((a, b) => a.order - b.order).every(r => {

@@ -1,48 +1,51 @@
+<ion-header class="ion-no-border"><ion-toolbar>
+    <div class="logo">
+      <img class="ion-login-img" src="assets/img/connection/login_icon.png" />
+    </div>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <form #f="ngForm">
-          <div class="logo">
-            <img class="ion-login-img" src="assets/img/connection/login_icon.png" />
-          </div>
-          <div class="content">
-            <ion-item>
-              <ion-label color="light" class="ion-client-login-custom" position="stacked">Identifiant</ion-label>
-              <ion-input type="mail" class="custom" [(ngModel)]="email"
-                #emailCtrl="ngModel" name="email" ></ion-input>
-            </ion-item>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <form #f="ngForm">
+            <div class="content ion-padding-top ion-margin-top">
+              <ion-label class="ion-client-login-custom ion-padding-start" position="stacked">Identifiant</ion-label>
+              <ion-item>
+                <ion-input type="mail" class="custom" [(ngModel)]="email" #emailCtrl="ngModel" name="email"></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label color="light" class="ion-client-login-custom" position="stacked">Mot de passe</ion-label>
-              <ion-input type="password" [(ngModel)]="password"
-                #passwordCtrl="ngModel" name="password" ></ion-input>
-            </ion-item>
+              <ion-label class="ion-client-login-custom ion-padding-start" position="stacked">Mot de passe</ion-label>
+              <ion-item>
+                <ion-input type="password" [(ngModel)]="password" #passwordCtrl="ngModel" name="password"></ion-input>
+              </ion-item>
 
-            <ion-item lines="none">
-              <ion-button class="ion-password-forgot" slot="end" fill="clear">Mot de passe oublié ?</ion-button>
-            </ion-item>
-            <div class="ion-content-button">
-              <ion-button [disabled]="!f.valid" color="light" expand="block" (click)="login()">Connexion</ion-button>
+              <ion-item lines="none" class="ion-background-transparent">
+                <ion-button class="ion-password-forgot" slot="end" fill="clear">Mot de passe oublié ?</ion-button>
+              </ion-item>
+              <div class="ion-content-button">
+                <ion-button [disabled]="!f.valid" color="light" expand="block" (click)="login()">Connexion</ion-button>
+              </div>
+
+              <ion-item lines="none" class="ion-background-transparent">
+                <ion-label class="ion-text-other ion-text-center ion-client-login-custom">Ou</ion-label>
+              </ion-item>
+
+              <div class="ion-other-connection">
+                <ion-button class="ion-margin-bottom" color="facebook" expand="block" (click)="logInWithFacebook()">
+                  <ion-icon slot="start" name="logo-facebook"></ion-icon>
+                  Se connecter avec Facebook
+                </ion-button>
+                <ion-button color="google" expand="block" (click)="logInWithGoogle()">
+                  <ion-icon slot="start" name="logo-google"></ion-icon>
+                  Se connecter avec Google
+                </ion-button>
+              </div>
             </div>
-
-            <ion-item lines="none">
-              <ion-label class="ion-text-other ion-text-center ion-client-login-custom">Ou</ion-label>
-            </ion-item>
-
-            <div class="ion-other-connection">
-              <ion-button class="ion-margin-bottom" color="facebook" expand="block" (click)="logInWithFacebook()">
-                <ion-icon slot="start" name="logo-facebook"></ion-icon>
-                Se connecter avec Facebook
-              </ion-button>
-              <ion-button color="google" expand="block" (click)="logInWithGoogle()">
-                <ion-icon slot="start" name="logo-google"></ion-icon>
-                Se connecter avec Google
-              </ion-button>
-            </div>
-          </div>
-        </form>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

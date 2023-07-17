@@ -11,11 +11,11 @@
 <ion-content [fullscreen]="true">
   <div>
     <ion-list>
-      <h5>Comment jugerez-vous vos connaissances en comorien ?</h5>
+      <h5 class="ion-padding-bottom">Comment jugerez-vous vos connaissances en comorien ?</h5>
       <ion-item lines="full" *ngFor="let l of level" [routerLink]="['../../signin']" routerLinkActive="selected"
         (click)="selectedItem(l)">
         <img class="ion-icon-src" width="64" src="{{l.src}}">
-        <ion-label>{{l.label}}</ion-label>
+        <ion-label class="ion-text-wrap ion-margin-end">{{l.label}}</ion-label>
       </ion-item>
     </ion-list>
   </div>

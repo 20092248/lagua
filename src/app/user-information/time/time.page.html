@@ -15,7 +15,7 @@
       <ion-item lines="none" *ngFor="let t of time" [routerLink]="['../level']" routerLinkActive="selected"
         (click)="selectedItem(t)">
         <img class="ion-icon-src" width="64" src="{{t.src}}">
-        <ion-label>{{t.label}}</ion-label>
+        <ion-label class="ion-text-wrap ion-margin-end">{{t.label}}</ion-label>
       </ion-item>
     </ion-list>
   </div>

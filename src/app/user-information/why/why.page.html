@@ -14,7 +14,7 @@
       <h5 class="ion-padding-bottom">Pourquoi apprenez-vous le comorien ?</h5>
       <ion-item lines="none" *ngFor="let w of why" [routerLink]="['../age']" (click)="selectedItem(w)">
         <img class="ion-icon-src" width="64" src="{{w.src}}">
-        <ion-label class="ion-text-wrap">{{w.label}}</ion-label>
+        <ion-label class="ion-text-wrap ion-margin-end">{{w.label}}</ion-label>
       </ion-item>
     </ion-list>
   </div>
