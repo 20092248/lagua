@@ -1,21 +1,21 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Motivation</ion-title>
-    <ion-button class="ion-margin-end" slot="end" color="light" size="small" [routerLink]="['../../login']"
-      >Se connecter</ion-button>
+    <ion-button class="ion-margin-end" slot="end" color="light" size="small" [routerLink]="['../../login']">Se
+      connecter</ion-button>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
-  <ion-list>
-  <ion-item lines="full">
-    <ion-label>Pourquoi apprenez-vous le comorien ?</ion-label>
-  </ion-item>
-  <ion-item lines="full" *ngFor="let w of why" [routerLink]="['../age']" (click)="selectedItem(w)">
-    <img class="ion-icon-src" width="64" src="{{w.src}}">
-    <ion-label>{{w.label}}</ion-label>
-  </ion-item>
-  </ion-list>
+<ion-content [fullscreen]="true">
+  <div>
+    <ion-list>
+      <h5 class="ion-padding-bottom">Pourquoi apprenez-vous le comorien ?</h5>
+      <ion-item lines="none" *ngFor="let w of why" [routerLink]="['../age']" (click)="selectedItem(w)">
+        <img class="ion-icon-src" width="64" src="{{w.src}}">
+        <ion-label class="ion-text-wrap">{{w.label}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

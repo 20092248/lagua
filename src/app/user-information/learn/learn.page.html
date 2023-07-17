@@ -1,11 +1,13 @@
-<ion-toolbar>
-  <ion-buttons slot="start">
-    <ion-back-button></ion-back-button>
-  </ion-buttons>
-  <ion-title>Apprendre</ion-title>
-  <ion-button class="ion-margin-end" slot="end" color="light" size="small" [routerLink]="['../../login']">Se
-    connecter</ion-button>
-</ion-toolbar>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Apprendre</ion-title>
+    <ion-button class="ion-margin-end" slot="end" color="light" size="small" [routerLink]="['../../login']">Se
+      connecter</ion-button>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
   <div>
     <ion-list class="ion-speak">
@@ -20,7 +22,7 @@
     <ion-list class="ion-learn">
       <h4 class="ion-padding-bottom">Je voudrais apprendre</h4>
       <ion-item *ngFor="let l of learn" [routerLink]="['../why']" routerLinkActive="selected" lines="none"
-        (click)="selectedItem(l)">
+        [disabled]="l.code !== 'SHAN'" (click)="selectedItem(l)">
         <ion-thumbnail slot="start">
           <img src="assets/img/flag/{{l.flag}}" />
         </ion-thumbnail>
