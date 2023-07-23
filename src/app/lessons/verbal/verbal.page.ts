@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Lesson } from 'src/app/model/lessons.model';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LessonService } from 'src/app/services/lesson.service';
 
@@ -10,18 +11,26 @@ import { LessonService } from 'src/app/services/lesson.service';
 })
 export class VerbalPage implements OnInit {
 
-  constructor(private router : Router, private authentificationService: AuthentificationService, private lessonService: LessonService) { }
+  verbalLesson: Lesson = {} as Lesson;
+
+  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService) {
+    this.route.queryParams.subscribe(() => {
+      if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation()?.extras?.state) {
+        this.verbalLesson = this.router.getCurrentNavigation()?.extras?.state?.['data'] as Lesson;
+      }
+    });
+  }
 
   ngOnInit() {
   }
 
   saveLesson() {
-    if(this.authentificationService.user.uid){
-      this.authentificationService.updateLesson(this.authentificationService.user.lesson, 'users', this.authentificationService.user.uid).then(()=>{
+    if (this.authentificationService.user.uid && this.verbalLesson) {
+      this.authentificationService.updateLesson(this.verbalLesson, 'users', this.authentificationService.user.uid).then(() => {
         this.router.navigate(['/tabs/lessons']);
       });
     } else {
-      console.error('Impossible de sauvegarder sans l\'identifiant de l\'utilisateur');
+      console.error('Erreur lors de la sauvegarde de la leçon');
     }
   }
 

@@ -1,5 +1,5 @@
 //memo
-ion-grid.ion-memo {
+ion-grid {
     height: 100%;
 }
 
@@ -8,7 +8,6 @@ ion-grid.ion-memo {
         height: 50%;
         align-content: center;
         justify-content: center;
-        align-items: center;
     }
 
     ion-row:first-child {
@@ -18,22 +17,6 @@ ion-grid.ion-memo {
     ion-row:last-child {
         height: 30%;
         align-content: center;
-    }
-
-    ion-list {
-        background: transparent;
-    }
-
-    ion-item {
-        --background: transparent;
-    }
-
-    ion-item.error {
-        --border-color: #eb445a;
-    }
-
-    ion-item.success {
-        --border-color: #27a132;
     }
 
     ion-card-title {
@@ -51,52 +34,6 @@ ion-grid.ion-memo {
 
     img.ion-image-card {
         max-height: 300px;
-    }
-
-    ion-radio::part(container) {
-        border-radius: 8px;
-        border: 2px solid #ddd;
-    }
-
-    ion-radio::part(mark) {
-        background: none;
-        transition: none;
-        transform: none;
-        border-radius: 0;
-    }
-
-    ion-radio.radio-checked::part(container) {
-        background: #27a132;
-        border-color: transparent;
-    }
-
-    ion-radio.radio-checked.ion-error::part(container) {
-        background: #eb445a;
-        border-color: transparent;
-    }
-
-    ion-radio.radio-checked::part(mark) {
-        width: 6px;
-        height: 10px;
-
-        border-width: 0px 2px 2px 0px;
-        border-style: solid;
-        border-color: #fff;
-
-        transform: rotate(45deg);
-    }
-
-    .ion-text-qcm {
-        display: inline-block;
-        min-width: 50%;
-        border-radius: 4px 4px 0px 0px;
-        background-color: rgb(244, 244, 246);
-        border-width: 1px 1px 2px;
-        border-style: solid;
-        border-color: rgb(233, 234, 237) rgb(233, 234, 237) rgb(76, 180, 80);
-        border-image: initial;
-        padding: 3px;
-        min-height: 35px;
     }
 
     .ion-popover {
@@ -134,16 +71,11 @@ ion-grid.ion-memo {
     }
 }
 
-ion-grid.ion-qcm {
-    height: 100%;
-}
-
 .ion-qcm {
     ion-row {
         height: 40%;
         align-content: center;
         justify-content: center;
-        align-items: center;
     }
 
     ion-row:first-child {
@@ -225,7 +157,6 @@ ion-grid.ion-qcm {
 
 ion-grid.ion-translate {
     width: 100%;
-    height: 100%;
     padding: 5px 0;
 }
 

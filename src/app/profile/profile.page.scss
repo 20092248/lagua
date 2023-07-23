@@ -1,11 +1,11 @@
 ion-content {
-  --background: #1a6921;
+  --background: #9dc18c;
   --color: var(--ion-background-color);
 }
 
 ion-grid.ion-grid-header {
   position: relative;
-  background: linear-gradient(#5bad7785, #1a6921), url('/assets/img/profile/wallpaper.png');
+  background: linear-gradient(#55a370,#9dc18c);
   background-size: cover;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 25px -15px, rgba(0, 0, 0, 0.08) 0px 10px 10px -10px;
 }
@@ -163,7 +163,7 @@ ion-popover ion-content {
 }
 
 ion-card.ion-dashboard {
-  --background: #498b5f;
+  --background: #9dc18c;
   --color: #ffffff;
   margin-top: 0;
   margin-bottom: 0;

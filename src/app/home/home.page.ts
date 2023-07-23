@@ -22,7 +22,7 @@ register();
 })
 export class HomePage implements OnInit {
 
-  user: User | undefined;
+  user: User = {} as User;
   recommendedLessons: Lesson[] = [];
   reviews: Review[] = [];
   previousReviews: Review[] = [];
@@ -43,18 +43,19 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.user = this.authentificationService.user;
     forkJoin([this.settingService.getSettings(), this.reviewService.getAllReviews(), this.lessonService.searchLessons()]).subscribe(([settings, reviews, lessons]) => {
+      this.recommendedLessons = [];
+      this.previousReviews = [];
       this.progression = this.user && this.user.resultReviews && this.user.resultLessons ? (this.user.resultReviews?.length + this.user.resultLessons?.length) / (reviews.length + lessons.length) * 100 : 0;
-      console.log(this.progression + '%');
       reviews.sort((a, b) => a.category < b.category ? -1 : 1).sort((a, b) => a.lesson - b.lesson).sort((a, b) => a.order - b.order).every(r => {
         if (this.user?.review && this.user?.review.category === r.category && this.user?.review.lesson === r.lesson && this.user?.review.order === r.order) {
-          this.previousReviews.push(r);
           return;
         }
         this.previousReviews.push(r);
       });
-      this.reviewService.findNextReview(this.authentificationService.user.review).then(review => {
-        this.review = review;
-      });
+      this.review = this.user?.review;
+      // this.reviewService.findNextReview(this.authentificationService.user.review).then(review => {
+      //   this.review = review;
+      // });
       this.recommendedLessons = lessons; //this.lessonService.getRecommendedLesson(this.user && this.user.level ? this.user.level.code : '0', lessons);
     });
   }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthentificationService } from '../services/authentification.service';
+import { forkJoin } from 'rxjs';
+import { ReviewService } from '../services/review.service';
+import { LessonService } from '../services/lesson.service';
 
 @Component({
   selector: 'app-signin',
@@ -14,15 +17,19 @@ export class SignInPage implements OnInit {
   password: string = '123456789';
   confirmPassword: string = '123456789';
 
-  constructor(private authentificationService: AuthentificationService, private router: Router) { }
+  constructor(private authentificationService: AuthentificationService, private router: Router, private reviewService: ReviewService, private lessonService: LessonService) { }
 
   ngOnInit() {
   }
 
   async signIn() {
     try {
-      await this.authentificationService.createUser(this.displayName, this.email, this.password).then((connected: boolean) => {
-        this.router.navigate(['']); //go to home page
+      forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(([firstReview, firstLesson]) => {
+        this.authentificationService.createUser(this.displayName, this.email, this.password, firstReview, firstLesson).then((connected: boolean) => {
+          if (connected) {
+            this.router.navigate(['']); //go to home page
+          }
+        });
       });
     } catch (error) {
       console.error('Error --> ', error);
@@ -30,14 +37,22 @@ export class SignInPage implements OnInit {
   }
 
   signInWithGoogle() {
-    this.authentificationService.signinwithgoogle().then((connected: boolean) => {
-      this.router.navigate(['']); //go to home page
+    forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(([firstReview, firstLesson]) => {
+      this.authentificationService.signinwithgoogle(firstReview, firstLesson).then((connected: boolean) => {
+        if (connected) {
+          this.router.navigate(['']); //go to home page
+        }
+      });
     });
   }
 
   signInWithFacebook() {
-    this.authentificationService.signinwithfacebook().then((connected: boolean) => {
-      this.router.navigate(['']); //go to home page
+    forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(([firstReview, firstLesson]) => {
+      this.authentificationService.signinwithfacebook(firstReview, firstLesson).then((connected: boolean) => {
+        if (connected) {
+          this.router.navigate(['']); //go to home page
+        }
+      });
     });
   }
 
