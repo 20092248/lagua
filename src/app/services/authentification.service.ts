@@ -76,13 +76,15 @@ export class AuthentificationService {
   }
 
   async login(email: string, password: string) {
-    signInWithEmailAndPassword(getAuth(), email, password).then(async (userCredential) => {
+    let response = await signInWithEmailAndPassword(getAuth(), email, password).then(async (userCredential) => {
       const user = userCredential.user;
       await this.getInfoUser(user?.uid);
-    })
-      .catch((error) => {
-        console.error(error.code + ' : ' + error.message);
-      }); //connexion
+      return true;
+    }).catch((error) => {
+      console.error(error.code + ' : ' + error.message);
+      return false;
+    });
+    return response;
   }
 
   async createUser(name: string, email: string, password: string, firstReview: Review, firstLesson: Lesson) {
@@ -96,13 +98,13 @@ export class AuthentificationService {
         return true;
       })
       .catch((error) => {
-        console.error(error);
+        console.error(error.code + ' : ' + error.message);
         return false;
       });
-      if (response) {
-        responseInfoUser = await this.addInfoUser(this.user.uid, firstReview, firstLesson);
-      }
-      return response && responseInfoUser;
+    if (response) {
+      responseInfoUser = await this.addInfoUser(this.user.uid, firstReview, firstLesson);
+    }
+    return response && responseInfoUser;
   }
 
   async loginwithgoogle(): Promise<boolean> {
@@ -120,7 +122,7 @@ export class AuthentificationService {
       }).catch((error) => {
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
-        console.error(error);
+        console.error(credential + ' : ' + error.message);
         return false;
       });
     return response;
@@ -209,10 +211,10 @@ export class AuthentificationService {
         console.error(error);
         return false;
       });
-      if (response) {
-        responseInfoUser = await this.addInfoUser(this.user.uid, firstReview, firstLesson);
-      }
-      return response && responseInfoUser;
+    if (response) {
+      responseInfoUser = await this.addInfoUser(this.user.uid, firstReview, firstLesson);
+    }
+    return response && responseInfoUser;
   }
 
   async logout() {

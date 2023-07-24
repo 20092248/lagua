@@ -12,10 +12,10 @@ import { LessonService } from '../services/lesson.service';
 })
 export class SignInPage implements OnInit {
 
-  displayName: string = 'Brady';
-  email: string = 'brady91700@gmail.com';
-  password: string = '123456789';
-  confirmPassword: string = '123456789';
+  displayName: string = '';
+  email: string = '';
+  password: string = '';
+  confirmPassword: string = '';
 
   constructor(private authentificationService: AuthentificationService, private router: Router, private reviewService: ReviewService, private lessonService: LessonService) { }
 

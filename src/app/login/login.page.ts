@@ -20,18 +20,26 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    this.authentificationService.login(this.email, this.password);
+    this.authentificationService.login(this.email, this.password).then((connected: boolean) => {
+      if (connected) {
+        this.router.navigate(['']); //go to home page
+      }
+    });
   }
 
   logInWithGoogle() {
     this.authentificationService.loginwithgoogle().then((connected: boolean) => {
-      this.router.navigate(['']); //go to home page
+      if (connected) {
+        this.router.navigate(['']); //go to home page
+      }
     });
   }
 
   logInWithFacebook() {
     this.authentificationService.loginwithfacebook().then((connected: boolean) => {
-      this.router.navigate(['']); //go to home page
+      if (connected) {
+        this.router.navigate(['']); //go to home page
+      }
     });
   }
 
