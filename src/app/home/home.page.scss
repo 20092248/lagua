@@ -1,5 +1,5 @@
 ion-toolbar.ion-header-home {
-  --background: linear-gradient(#5bad77, #1a6921);
+  --background: linear-gradient(#55a370,#9dc18c);
   --color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 25px -15px, rgba(0, 0, 0, 0.18) 0px 10px 10px -10px;
   height: 205px;
@@ -8,7 +8,7 @@ ion-toolbar.ion-header-home {
 
 ion-content.ion-content-fullscreen-home { 
   --background: #eef1ee;
-  --background: linear-gradient(to bottom, #eef1ee 205px, #1a6921 205px, #eef1ee 420px);
+  --background: linear-gradient(to bottom, #eef1ee 205px, #9dc18c 205px, #eef1ee 420px);
 }
 
 .ion-content-home {
@@ -94,7 +94,7 @@ ion-modal {
 
 .ion-button {
   --color: #ffffff;
-  --background: #1a6921;
+  --background: #5bad77;
 }
 
 .ion-button.ion-button-position {
@@ -107,7 +107,7 @@ ion-card-content > span {
   justify-content: center;
   display: flex;
   align-items: center;
-  color: #1a6921;
+  color: #5bad77;
 }
 
 .ion-display-flex {
@@ -127,7 +127,7 @@ ion-card-content > span {
 .ion-range-progress {
   position: relative;
   height: 0.5rem;
-  background-color: #1a6921;
+  background-color: #5bad77;
   transition: width 0.3s ease 0s;
   border-radius: 1rem;
   animation: 2s ease 0s 1 normal none running fAHHxO;

@@ -21,16 +21,8 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
-  },
-  {
     path: 'review',
     loadChildren: () => import('./review/review.module').then(m => m.ReviewPageModule)
-  },
-  {
-    path: 'conjugation',
-    loadChildren: () => import('./lessons/conjugation/conjugation.module').then(m => m.ConjugationPageModule)
   },
   {
     path: 'firstpage',

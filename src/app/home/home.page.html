@@ -5,14 +5,14 @@
       <ion-col size="9">
         <div class="ion-margin-start">
           <h4>Bonjour</h4>
-          <h5 class="ion-subtitle">{{user?.displayName}} !</h5>
+          <h5 class="ion-subtitle">{{user.displayName}} !</h5>
         </div>
       </ion-col>
       <ion-col size="3" class="ion-padding-end ion-display-flex">
         <div class="border-white-tabs " id="popover-profil">
           <div class="img-box">
-            <img *ngIf="user?.photoURL" [src]="user?.photoURL">
-            <ion-icon size="large" *ngIf="!user?.photoURL" [src]="user?.photoURL" name="person-outline"></ion-icon>
+            <img *ngIf="user.photoURL" [src]="user.photoURL">
+            <ion-icon size="large" *ngIf="!user.photoURL" [src]="user.photoURL" name="person-outline"></ion-icon>
           </div>
         </div>
         <ion-popover trigger="popover-profil" class="ion-custom-top-popover">
@@ -20,8 +20,8 @@
             <ion-content>
               <ion-list>
                 <div class="ion-padding-horizontal">
-                  <h5 class="ion-margin-top">{{user?.displayName}}</h5>
-                  <div class="ion-margin-bottom">{{user?.email}}</div>
+                  <h5 class="ion-margin-top">{{user.displayName}}</h5>
+                  <div class="ion-margin-bottom">{{user.email}}</div>
                 </div>
                 <ion-item button (click)="goTo('/tabs/update-cv', true)"><ion-icon class="ion-padding-end"
                     name="settings-outline"></ion-icon>Paramètres</ion-item>
@@ -66,31 +66,31 @@
             <div class="ion-calendar-content">
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 1 }">
                 <div style="color: rgb(154, 167, 179)">Lu</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.lun)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.lun)}}"></ion-icon></div>
               </div>
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 2 }">
                 <div style="color: rgb(154, 167, 179)">Ma</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.mar)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.mar)}}"></ion-icon></div>
               </div>
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 3 }">
                 <div style="color: rgb(154, 167, 179)">Me</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.mer)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.mer)}}"></ion-icon></div>
               </div>
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 4 }">
                 <div style="color: rgb(154, 167, 179)">Je</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.jeu)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.jeu)}}"></ion-icon></div>
               </div>
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 5 }">
                 <div style="color: rgb(154, 167, 179)">Ve</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.ven)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.ven)}}"></ion-icon></div>
               </div>
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 6 }">
                 <div style="color: rgb(154, 167, 179)">Sa</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.sam)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.sam)}}"></ion-icon></div>
               </div>
               <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 7 }">
                 <div style="color: rgb(154, 167, 179)">Di</div>
-                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user?.week?.dim)}}"></ion-icon></div>
+                <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.dim)}}"></ion-icon></div>
               </div>
             </div>
           </ion-card-content>
@@ -102,7 +102,7 @@
           <ion-card class="ion-dashboard ion-dashboard-left">
             <ion-card-header>
               <ion-card-title>
-                <span class="ion-card-title">{{user?.resultReviews ? user?.resultReviews?.length : 0}}</span>
+                <span class="ion-card-title">{{user.resultReviews ? user.resultReviews.length : 0}}</span>
                 <span class="ion-float-right"><ion-icon size="large" name="checkmark-outline"></ion-icon></span>
               </ion-card-title>
             </ion-card-header>
@@ -115,7 +115,7 @@
           <ion-card class="ion-dashboard ion-dashboard-right">
             <ion-card-header>
               <ion-card-title>
-                <span class="ion-card-title">{{user?.resultLessons ? user?.resultLessons?.length : 0}}</span>
+                <span class="ion-card-title">{{user.resultLessons ? user.resultLessons.length : 0}}</span>
                 <span class="ion-float-right"><ion-icon size="large" name="book-outline"></ion-icon></span>
               </ion-card-title>
             </ion-card-header>
@@ -129,8 +129,8 @@
       <div class="ion-unlock-lesson">
         <swiper-container [slidesPerView]="2.05" [initialSlide]="0" speed="400">
           <swiper-slide *ngFor="let lesson of recommendedLessons; let index = index">
-            <ion-card  class="ion-no-margin-bottom" [ngClass]="{'ion-no-margin-middle': !(index === 0 || index === recommendedLessons.length - 1),'ion-no-margin-right': index === 0, 'ion-no-margin-left': index === recommendedLessons.length - 1, 'ion-lock-lesson': user?.lesson?.order < lesson.order}">
-              <img src="assets/img/home/book_{{index + 1}}.png" />
+            <ion-card  class="ion-no-margin-bottom" [ngClass]="{'ion-no-margin-middle': !(index === 0 || index === recommendedLessons.length - 1),'ion-no-margin-right': index === 0, 'ion-no-margin-left': index === recommendedLessons.length - 1, 'ion-lock-lesson': user.lesson.order < lesson.order}">
+              <img src="{{lesson.src}}" />
               <!-- <ion-card-header>
                 <ion-card-title>{{lesson.title}}</ion-card-title>
               </ion-card-header> -->
@@ -139,7 +139,7 @@
                 <div class="ion-padding-top-min">{{lesson.subTitle}}</div>
               </ion-card-content>
               <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
-                fill="clear" (click)="goToLesson('/tabs/lessons/'+lesson.navigate, user?.lesson.order >= lesson.order)">Voir la leçon</ion-button>
+                fill="clear" (click)="goToLesson('/tabs/lessons/'+lesson.navigate, user.lesson.order >= lesson.order)">Voir la leçon</ion-button>
             </ion-card>
           </swiper-slide>
         </swiper-container>

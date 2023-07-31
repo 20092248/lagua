@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, UserCredential } from '@angular/fire/auth';
 import { doc, getDoc, updateDoc, Firestore, getFirestore, onSnapshot, setDoc, serverTimestamp } from '@angular/fire/firestore';
 import { CodeLabel } from '../model/codeLabel.model';
 import { CodeTextTranslate } from '../model/codeTextTranslate.model';
@@ -16,133 +16,160 @@ import { ResultReview } from '../model/resultReview.model';
 })
 export class AuthentificationService {
 
-  user: User = {};
+  user: User = {} as User;
   timer: Date = new Date();
 
   constructor(private _auth: Auth, private _firestore: Firestore, private reviewService: ReviewService, private lessonService: LessonService) { }
 
   checkUserState() {
-    if (getAuth() && getAuth().currentUser) {
+    if (getAuth()) {
       const user = getAuth().currentUser;
-      this.user.uid = user?.uid;
-      this.user.email = user?.email;
-      this.user.displayName = user?.displayName;
-      this.user.photoURL = user?.photoURL;
+      if (user) {
+        this.user.uid = user.uid;
+        this.user.email = user.email;
+        this.user.displayName = user.displayName;
+        this.user.photoURL = user.photoURL;
+      }
     }
     return getAuth() && getAuth().currentUser;
   }
 
   async getInfoUser(uid: string) {
-    await this.updateDayConnected('users', uid);
-    const document = await getDoc(doc(getFirestore(), 'users', uid));
-    const data = document.data() as User;
-    this.user.uid = data.uid;
-    this.user.email = data.email;
-    this.user.displayName = data.displayName;
-    this.user.age = data.age;
-    this.user.learn = data.learn as CodeTextTranslate;
-    this.user.why = data.why as CodeLabel;
-    this.user.time = data.time as CodeLabel;
-    this.user.level = data.level as CodeLabel;
-    this.user.review = data.review as Review;
-    this.user.lesson = data.lesson as Lesson;
-    this.user.resultReviews = data.resultReviews as ResultReview[];
-    this.user.resultLessons = data.resultLessons;
-    this.user.week = data.week;
-    this.user.timerActiveConnection = data.timerActiveConnection ? data.timerActiveConnection : 0;
+    try {
+      await this.updateDayConnected('users', uid);
+      const document = await getDoc(doc(getFirestore(), 'users', 'a'));
+      if (document.exists()) {
+        const data = document.data() as User;
+        this.user.uid = data.uid;
+        this.user.email = data.email;
+        this.user.displayName = data.displayName;
+        this.user.age = data.age;
+        this.user.learn = data.learn as CodeTextTranslate;
+        this.user.why = data.why as CodeLabel;
+        this.user.time = data.time as CodeLabel;
+        this.user.level = data.level as CodeLabel;
+        this.user.review = data.review as Review;
+        this.user.lesson = data.lesson as Lesson;
+        this.user.resultReviews = data.resultReviews as ResultReview[];
+        this.user.resultLessons = data.resultLessons;
+        this.user.week = data.week;
+        this.user.timerActiveConnection = data.timerActiveConnection;
+        return true;
+      } else {
+        throw new Error('Utilisateur introuvable');
+      }
+    } catch (error: any) {
+      throw Error(error.message);
+    }
   }
 
-  async addInfoUser(uid: string) {
-    forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(async ([review, lesson]) => {
-      await this.reviewService.getReview('A1', 1, 1).then(async review => {
-        setDoc(doc(getFirestore(), 'users', uid), {
-          age: this.user.age,
-          learn: this.user.learn,
-          why: this.user.why,
-          time: this.user.time,
-          level: this.user.level,
-          review: review,
-          lesson: lesson
-        }, { merge: true });
-        this.getInfoUser(uid);
-      });
-    });
+  async addInfoUser(uid: string, firstReview: Review, firstLesson: Lesson) {
+    await setDoc(doc(getFirestore(), 'users', uid), {
+      uid: this.user.uid,
+      email: this.user.email,
+      displayName: this.user.displayName,
+      photoURL: this.user.photoURL ? this.user.photoURL : '',
+      age: this.user.age,
+      learn: this.user.learn,
+      why: this.user.why,
+      time: this.user.time,
+      level: this.user.level,
+      review: firstReview,
+      lesson: firstLesson,
+      resultLessons: [],
+      resultReviews: [],
+      timerActiveConnection: 0
+    }, { merge: true });
+    this.getInfoUser(uid);
+    return true;
   }
 
   async login(email: string, password: string) {
-    signInWithEmailAndPassword(getAuth(), email, password).then((userCredential) => {
+    let response = await signInWithEmailAndPassword(getAuth(), email, password).then(async (userCredential) => {
       const user = userCredential.user;
-      this.getInfoUser(user?.uid);
-    })
-      .catch((error) => {
-        console.error(error.code + ' : ' + error.message);
-      }); //connexion
+      const responseInfoUser = await this.getInfoUser(user?.uid);
+      return responseInfoUser;
+    }).catch((error) => {
+      console.error(error.code + ' : ' + error.message);
+      return false;
+    });
+    return response;
   }
 
-  async createUser(name: string, email: string, password: string) {
+  async createUser(name: string, email: string, password: string, firstReview: Review, firstLesson: Lesson) {
+    let responseInfoUser = false;
     let response = await createUserWithEmailAndPassword(getAuth(), email, password)
       .then((userCredential) => {
         this.user.displayName = name;
         this.user.email = userCredential?.user?.email;
         this.user.uid = userCredential?.user?.uid;
         setDoc(doc(getFirestore(), 'users', this.user.uid), this.user);
-        this.addInfoUser(userCredential?.user?.uid);
         return true;
       })
       .catch((error) => {
-        console.error(error);
+        console.error(error.code + ' : ' + error.message);
         return false;
       });
-    return response;
+    if (response) {
+      responseInfoUser = await this.addInfoUser(this.user.uid, firstReview, firstLesson);
+    }
+    return response && responseInfoUser;
   }
 
   async loginwithgoogle(): Promise<boolean> {
-    const provider = new GoogleAuthProvider();
-    const auth = getAuth();
-    let response = await signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential ? credential.accessToken : null;
-        // The signed-in user info.
-        this.user = result.user as User;
-        this.getInfoUser(result.user?.uid);
-        return true;
-      }).catch((error) => {
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        console.error(error);
-        return false;
-      });
-    return response;
+    try {
+      const provider = new GoogleAuthProvider();
+      const auth = getAuth();
+      let response = await signInWithPopup(auth, provider)
+        .then(async (result) => {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential ? credential.accessToken : null;
+          // The signed-in user info.
+          this.user = this.getUserCredential(result);
+          const responseInfoUser = await this.getInfoUser(result.user?.uid);
+          return responseInfoUser;
+        }).catch((error) => {
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          throw Error(error.message);
+        });
+      return response;
+    } catch (error: any) {
+      throw Error(error.message);
+    }
   }
 
-  async signinwithgoogle(): Promise<boolean> {
+  async signinwithgoogle(firstReview: Review, firstLesson: Lesson): Promise<boolean> {
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
+    let responseInfoUser = false;
     let response = await signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential ? credential.accessToken : null;
         // The signed-in user info.
-        const userData = result.user as User;
+        const userData = this.getUserCredential(result);
         this.user.uid = userData.uid;
         this.user.email = userData.email;
         this.user.displayName = userData.displayName;
         this.user.photoURL = userData.photoURL;
-        this.addInfoUser(result.user?.uid);
         return true;
       }).catch((error) => {
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
-        console.error(error);
+        console.error(credential + ' : ' + error);
         return false;
       });
-    return response;
+    if (response) {
+      responseInfoUser = await this.addInfoUser(this.user.uid, firstReview, firstLesson);
+    }
+    return response && responseInfoUser;
   }
 
   async loginwithfacebook(): Promise<boolean> {
+    try{
     const provider = new FacebookAuthProvider();
     provider.setDefaultLanguage('fr');
     provider.addScope('user_birthday');
@@ -151,25 +178,27 @@ export class AuthentificationService {
     // });
     const auth = getAuth();
     let response = await signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
         // The signed-in user info.
-        this.user = result.user as User;
+        this.user = this.getUserCredential(result);
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential ? credential.accessToken : null;
-        this.getInfoUser(result.user?.uid);
-        return true;
+        const responseInfoUser = await this.getInfoUser(result.user?.uid);
+        return responseInfoUser;
       })
       .catch((error) => {
         // The AuthCredential type that was used.
         const credential = FacebookAuthProvider.credentialFromError(error);
-        console.error(error);
-        return false;
+        throw Error(error.message);
       });
     return response;
+  } catch (error: any) {
+    throw Error(error.message);
+  }
   }
 
-  async signinwithfacebook(): Promise<boolean> {
+  async signinwithfacebook(firstReview: Review, firstLesson: Lesson): Promise<boolean> {
     const provider = new FacebookAuthProvider();
     provider.setDefaultLanguage('fr');
     provider.addScope('user_birthday');
@@ -177,10 +206,11 @@ export class AuthentificationService {
     //   'display': 'popup'
     // });
     const auth = getAuth();
+    let responseInfoUser = false;
     let response = await signInWithPopup(auth, provider)
       .then((result) => {
         // The signed-in user info.
-        const userData = result.user as User;
+        const userData = this.getUserCredential(result);
         this.user.uid = userData.uid;
         this.user.email = userData.email;
         this.user.displayName = userData.displayName;
@@ -188,7 +218,6 @@ export class AuthentificationService {
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential ? credential.accessToken : null;
-        this.addInfoUser(result.user?.uid);
         return true;
       })
       .catch((error) => {
@@ -197,7 +226,10 @@ export class AuthentificationService {
         console.error(error);
         return false;
       });
-    return response;
+    if (response) {
+      responseInfoUser = await this.addInfoUser(this.user.uid, firstReview, firstLesson);
+    }
+    return response && responseInfoUser;
   }
 
   async logout() {
@@ -210,11 +242,11 @@ export class AuthentificationService {
     });
   }
 
-  async updateResultReview(data: any, nameObject: string, uid: string) {
+  async updateResultReview(updateReview: any, nameObject: string, uid: string) {
     if (!this.user.resultReviews) {
       this.user.resultReviews = [];
     }
-    this.user.resultReviews.push(data);
+    this.user.resultReviews.push(updateReview);
     const userRef = doc(getFirestore(), nameObject, uid);
     await updateDoc(userRef, {
       review: this.reviewService.findNextReview(this.user.review),
@@ -222,19 +254,21 @@ export class AuthentificationService {
     });
   }
 
-  async updateLesson(data: any, nameObject: string, uid: string) {
+  async updateLesson(updateLesson: Lesson, nameObject: string, uid: string) {
     const lessonsRef = doc(getFirestore(), nameObject, uid);
-    this.lessonService.findNextLesson(this.user.lesson).then(async lesson => {
+    const userLessonExist = this.user.resultLessons?.find(lesson => lesson.code === updateLesson.code);
+    if (this.user.lesson && !userLessonExist) {
+      const lesson = await this.lessonService.findNextLesson(this.user.lesson);
       this.user.lesson = lesson;
       if (!this.user.resultLessons) {
         this.user.resultLessons = [];
       }
-      this.user.resultLessons.push(data);
+      this.user.resultLessons.push(updateLesson);
       await updateDoc(lessonsRef, {
         lesson: lesson,
         resultLessons: this.user.resultLessons.map((obj) => { return Object.assign({}, obj) })
       });
-    });
+    }
   }
 
   async updateDayConnected(nameObject: string, uid: string) {
@@ -263,12 +297,19 @@ export class AuthentificationService {
   async updateDayDisconnected(nameObject: string, uid: string) {
     const userRef = doc(getFirestore(), nameObject, uid);
     const dateDisconnected = new Date();
-    if(this.user?.timerActiveConnection != undefined && this.user?.timerActiveConnection != null) {
+    if (this.user?.timerActiveConnection != undefined && this.user?.timerActiveConnection != null) {
       await updateDoc(userRef, {
         timerActiveConnection: this.user?.timerActiveConnection + (dateDisconnected.getTime() - this.timer.getTime())
       });
     }
   }
 
+  getUserCredential(result: UserCredential) {
+    this.user.uid = result.user.uid;
+    this.user.email = result.user.email;
+    this.user.displayName = result.user.displayName;
+    this.user.photoURL = result.user.photoURL;
+    return this.user;
+  }
 
 }

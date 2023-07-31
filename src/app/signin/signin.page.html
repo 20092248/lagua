@@ -1,57 +1,63 @@
+<ion-header class="ion-no-border"><ion-toolbar>
+    <div class="logo">
+      <img class="ion-login-img" src="assets/img/connection/signin_icon.png" />
+    </div>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <div class="logo">
-          <img class="ion-login-img" src="assets/img/connection/signin_icon.png" />
-        </div>
-        <div class="content">
-          <ion-item>
-            <ion-label position="stacked" color="light">Pseudonyme</ion-label>
-            <ion-input color="light" type="text" class="custom" [(ngModel)]="displayName" #displayNameCtrl="ngModel"
-              name="displayName"></ion-input>
-          </ion-item>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="content ion-margin-top">
+            <ion-label position="stacked">Pseudonyme</ion-label>
+            <ion-item>
+              <ion-input type="text" class="custom" [(ngModel)]="displayName" #displayNameCtrl="ngModel"
+                name="displayName"></ion-input>
+            </ion-item>
 
-          <ion-item>
-            <ion-label position="stacked" color="light">Email</ion-label>
-            <ion-input color="light" type="mail" class="custom" [(ngModel)]="email" #emailCtrl="ngModel"
-              name="email"></ion-input>
-          </ion-item>
+            <ion-label position="stacked">Email</ion-label>
+            <ion-item>
+              <ion-input type="mail" class="custom" [(ngModel)]="email" #emailCtrl="ngModel"
+                name="email"></ion-input>
+            </ion-item>
 
-          <ion-item>
-            <ion-label position="stacked" color="light">Mot de passe</ion-label>
-            <ion-input color="light" type="password" [(ngModel)]="password" #passwordCtrl="ngModel"
-              name="password"></ion-input>
-          </ion-item>
+            <ion-label position="stacked">Mot de passe</ion-label>
+            <ion-item>
+              <ion-input type="password" [(ngModel)]="password" #passwordCtrl="ngModel"
+                name="password"></ion-input>
+            </ion-item>
 
-          <ion-item>
-            <ion-label position="stacked" color="light">Confirmer mot de passe</ion-label>
-            <ion-input color="light" type="password" [(ngModel)]="confirmPassword" #confirmPasswordCtrl="ngModel"
-              name="confirmPassword"></ion-input>
-          </ion-item>
+            <ion-label position="stacked">Confirmer mot de passe</ion-label>
+            <ion-item>
+              <ion-input type="password" [(ngModel)]="confirmPassword" #confirmPasswordCtrl="ngModel"
+                name="confirmPassword"></ion-input>
+            </ion-item>
 
-          <div class="ion-margin-start ion-bloc-error p-error" *ngIf="passwordCtrl.touched && confirmPasswordCtrl.touched && password !== confirmPassword">
-            <ion-text color="danger"><small>Mot de passe différent</small></ion-text>
+            <div class="ion-margin-start ion-bloc-error p-error"
+              *ngIf="passwordCtrl.touched && confirmPasswordCtrl.touched && password !== confirmPassword">
+              <ion-text color="danger"><small>Mot de passe différent</small></ion-text>
+            </div>
+
+            <ion-button class="ion-margin-top ion-inscription" color="lagua" expand="block" (click)="signIn()">Valider</ion-button>
+
+            <ion-item lines="none" class="ion-background-transparent">
+              <ion-label class="ion-text-other ion-text-center">Ou</ion-label>
+            </ion-item>
+
+            <div class="ion-other-inscription">
+              <ion-button class="ion-margin-bottom" color="facebook" expand="block" (click)="signInWithFacebook()">
+                <ion-icon slot="start" name="logo-facebook"></ion-icon>
+                Se connecter avec Facebook
+              </ion-button>
+              <ion-button color="google" expand="block" (click)="signInWithGoogle()">
+                <ion-icon slot="start" name="logo-google"></ion-icon>
+                Se connecter avec Google
+              </ion-button>
+            </div>
           </div>
-
-          <ion-button class="ion-margin-top" color="lagua" expand="block" (click)="signIn()">Valider</ion-button>
-
-          <ion-item lines="none">
-            <ion-label color="light" class="ion-text-other ion-text-center">Ou</ion-label>
-          </ion-item>
-          
-          <div class="ion-other-inscription">
-            <ion-button class="ion-margin-bottom" color="facebook" expand="block" (click)="signInWithFacebook()">
-              <ion-icon slot="start" name="logo-facebook"></ion-icon>
-              Se connecter avec Facebook
-            </ion-button>
-            <ion-button color="google" expand="block" (click)="signInWithGoogle()">
-              <ion-icon slot="start" name="logo-google"></ion-icon>
-              Se connecter avec Google
-            </ion-button>
-          </div>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

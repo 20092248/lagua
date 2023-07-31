@@ -1,19 +1,26 @@
 ion-content {
-  --ion-background-color: linear-gradient(#46895c, #99cfa9);
+  --background: linear-gradient(0deg, #eef1ee 70%, #46895c 70%); //linear-gradient(to bottom, #eef1ee 100px, #46895c 130px);
+}
+
+ion-content > div {
+  background: var(--ion-background-light-color);
+  border-radius: 30px 30px 0 0;
+}
+
+ion-toolbar {
+  --background: #46895c;
+  --color: white;
+  --min-height: 130px;
+}
+
+form {
+  height: 100%;
 }
 
 ion-item {
-  --ion-background-color: transparent !important;
-}
-
-.ion-bloc-error.p-error {
-  // --ion-background-color: #ffe7e6 !important;
-  // --color: #ff5757;
-  // --border-color:#ff5757;
-  // --border-width: 1px;
-  // --border-radius: 10px;
-  font-weight: bold;
-  // padding: 5px 0;
+  margin: 10px 0;
+  --background: #dfebdf;
+  --border-radius: 30px;
 }
 
 ion-grid {
@@ -28,13 +35,9 @@ ion-col {
   height: 100%;
 }
 
-ion-button {
-  --border-radius: 10px;
-}
-
 .ion-content-button ion-button {
   --border-radius: 10px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 100;
 }
 
@@ -47,11 +50,16 @@ ion-button {
 }
 
 .logo img {
-  height: 150px;
+  height: 100px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.logo {
+  position: relative;
+  height: 30%;
 }
 
 .ion-login-img {
@@ -60,17 +68,13 @@ ion-button {
   animation: 1s;
 }
 
-.logo {
-  position: relative;
-  height: 30%;
-}
-
 .content {
   height: 70%;
 }
 
 .ion-client-login-custom {
-  font-size: 16px;
+  font-size: 18px;
+  // color: #ffffff;
 }
 
 ion-label.ion-text-other {
@@ -82,7 +86,7 @@ ion-label.ion-text-other:before,
 ion-label.ion-text-other:after {
   content: "";
   flex: 1 1;
-  border-bottom: 2px solid #ffffff;
+  border-bottom: 2px solid #848484;
   margin: auto;
 }
 
@@ -94,10 +98,23 @@ ion-label.ion-text-other:after {
   margin-left: 5px;
 }
 
-.ion-other-inscription ion-button {
+ion-button.ion-password-forgot {
+  color: #848484;
+  font-size: 14px;
+}
+
+.ion-other-inscription ion-button, ion-button.ion-inscription {
   --border-radius: 10px;
 }
 
+.ion-background-transparent {
+  --background: transparent !important;
+}
+
 .item-has-focus {
-  --highlight-background: #ffffff;
+  --highlight-background: #46895c;
+}
+
+.ion-bloc-error.p-error {
+  font-weight: bold;
 }
