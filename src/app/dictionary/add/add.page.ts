@@ -25,7 +25,8 @@ export class AddPage implements OnInit {
       'exampleText1': [], 'exampleTranslate1': [],
       'exampleText2': [], 'exampleTranslate2': [],
       'exampleText3': [], 'exampleTranslate3': [],
-      'exampleText4': [], 'exampleTranslate4': []
+      'exampleText4': [], 'exampleTranslate4': [],
+      'link': []
     });
   }
 

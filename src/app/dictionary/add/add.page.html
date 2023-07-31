@@ -44,6 +44,11 @@
               name="remove-circle-outline" (click)="removeExample(index)"></ion-icon></ion-col>
         </ion-row>
       </ion-grid>
+      <ion-item>
+        <ion-label position="stacked">Lien</ion-label>
+        <ion-textarea [autoGrow]="true" placeholder="" [(ngModel)]="word.link" name="link"
+          formControlName="link"></ion-textarea>
+      </ion-item>
     </ion-list>
     <ion-button expand="block" type="submit" [disabled]="!wordForm.valid">Ajouter</ion-button>
   </form>

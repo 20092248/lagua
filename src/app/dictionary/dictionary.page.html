@@ -81,9 +81,9 @@
           <div class="ion-text-left" *ngFor="let example of w.examples; let index = index"
             [ngClass]="{'ion-margin-bottom': index === w.examples.length - 1}">
             <ion-text>{{example.translate}}</ion-text>
-            <ion-text class="ion-text-italic"><ion-text color="lagua">
-                ({{example.text}})</ion-text></ion-text>
-          </div>
+            <ion-text class="ion-text-italic"><ion-text color="lagua">({{example.text}})</ion-text></ion-text>
+          </div>          
+          <ion-button *ngIf="!w.link">Voir détail</ion-button>
         </div>
       </ion-accordion>
     </ion-accordion-group>

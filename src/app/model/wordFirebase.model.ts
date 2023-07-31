@@ -8,5 +8,6 @@ export interface FirebaseWord {
     description: string;
     phoneticText: string[];
     phoneticTranslate: string[];
+    link: string;
     examples: Examples[];
 }
