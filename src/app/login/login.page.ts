@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Plugins } from '@capacitor/core';
 import { ToastController, isPlatform } from '@ionic/angular';
 import { AuthentificationService } from '../services/authentification.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginPage implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor(private router: Router, private authentificationService: AuthentificationService, private toastController: ToastController) { }
+  constructor(private router: Router, private authentificationService: AuthentificationService, private alertService: AlertService) { }
 
   ngOnInit() {
   }
@@ -33,8 +34,7 @@ export class LoginPage implements OnInit {
         this.router.navigate(['']); //go to home page
       }
     }, error => {
-      console.error(error);
-      this.presentToast(error.message);
+      this.alertService.presentToast(error.message, 2000, 'danger');
     });
   }
 
@@ -44,18 +44,8 @@ export class LoginPage implements OnInit {
         this.router.navigate(['']); //go to home page
       }
     }, error => {
-      console.error(error);
-      this.presentToast(error.message);
+      this.alertService.presentToast(error.message, 2000, 'danger');
     });
-  }
-
-  async presentToast(message: string) {
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 2000,
-      color: 'danger'
-    });
-    toast.present();
   }
 
 }
