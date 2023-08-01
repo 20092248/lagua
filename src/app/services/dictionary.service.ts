@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore, getFirestore } from '@angular/fire/firestore';
-import { doc, getDocs, addDoc, collection, query, where, DocumentData, orderBy } from '@firebase/firestore';
+import { doc, getDoc, getDocs, addDoc, collection, query, where, DocumentData, orderBy } from '@firebase/firestore';
 import { Word } from '../model/word.model';
 import { FirebaseWord } from '../model/wordFirebase.model';
 
@@ -22,8 +22,8 @@ export class DictionaryService {
       examples: word.examples,
       phoneticText: word.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').toLocaleLowerCase().split(','),
       phoneticTranslate: word.index.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').toLocaleLowerCase().split(','),
-      link: word.link
     };
+    if(word.link) { firebaseWord.link = word.link; }
     const dictionayRef = await addDoc(collection(getFirestore(), 'shindzuani_francais_' + firstLetter), firebaseWord);
     return dictionayRef.id;
   }
@@ -37,12 +37,26 @@ export class DictionaryService {
     return words;
   }
 
-  async displayAlphabet(text: string | undefined, translate : string | undefined, alphabet: string): Promise<FirebaseWord[]> {
+  async displayAlphabet(text: string | undefined, translate: string | undefined, alphabet: string): Promise<FirebaseWord[]> {
     const q = query(collection(getFirestore(), text + '_' + translate + '_' + alphabet), orderBy('originalText', 'asc'));
     const querySnapshot = await getDocs(q);
     const words: FirebaseWord[] = [];
     querySnapshot.forEach((doc) => words.push(doc.data() as FirebaseWord));
     return words;
+  }
+
+  async displayWord(text: string | undefined, translate: string | undefined, alphabet: string, uid: string): Promise<FirebaseWord> {
+    const docRef = doc(getFirestore(), text + '_' + translate + '_' + alphabet, uid);
+    const docSnap = await getDoc(docRef);
+    try {
+      if (docSnap.exists()) {
+        return docSnap.data() as FirebaseWord;
+      } else {
+        throw new Error('Impossible de retrouver le mot recherché.');
+      }
+    } catch (error: any) {
+      throw Error(error.message);
+    }
   }
 
 }

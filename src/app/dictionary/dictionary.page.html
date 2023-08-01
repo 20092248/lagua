@@ -79,15 +79,47 @@
           <p class="ion-word-description-dictionary ion-text-italic"><q>{{w.description}}</q></p>
           <p class="ion-text-italic ion-label-example">Exemple :</p>
           <div class="ion-text-left" *ngFor="let example of w.examples; let index = index"
-            [ngClass]="{'ion-margin-bottom': index === w.examples.length - 1}">
+            [ngClass]="{'ion-margin-bottom': index === w.examples.length - 1 && !w.link}">
             <ion-text>{{example.translate}}</ion-text>
             <ion-text class="ion-text-italic"><ion-text color="lagua">({{example.text}})</ion-text></ion-text>
           </div>          
-          <ion-button *ngIf="!w.link">Voir détail</ion-button>
+          <div class="ion-margin-vertical ion-text-center">
+            <ion-button *ngIf="w.link" (click)="seeDetail(w)">Voir détail</ion-button>
+          </div>
         </div>
       </ion-accordion>
     </ion-accordion-group>
   </ion-list>
+  <ion-modal [isOpen]="isDetailDisplay" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{linkInfo.text}}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeModal()">
+              <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item lines="nones" class="ion-item-result-dictionary">
+            <ion-icon color="lagua" class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
+            <ion-label class="ion-text-wrap">
+              <p class="ion-text-italic">{{linkInfo.translate}}</p>
+              <p class="ion-word-description ion-text-italic"><q>{{linkInfo.description}}</q></p>
+              <p *ngFor="let example of linkInfo.examples">
+                <ion-text>{{example.translate}}</ion-text>
+                <ion-text class="ion-text-italic"><ion-text color="lagua">
+                    ({{example.text}})</ion-text></ion-text>
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
   <ion-fab slot="fixed" horizontal="end" vertical="bottom">
     <ion-fab-button color="lagua" [routerLink]="['add']">
       <ion-icon name="add"></ion-icon>

@@ -37,7 +37,7 @@ export class AuthentificationService {
   async getInfoUser(uid: string) {
     try {
       await this.updateDayConnected('users', uid);
-      const document = await getDoc(doc(getFirestore(), 'users', 'a'));
+      const document = await getDoc(doc(getFirestore(), 'users', uid));
       if (document.exists()) {
         const data = document.data() as User;
         this.user.uid = data.uid;

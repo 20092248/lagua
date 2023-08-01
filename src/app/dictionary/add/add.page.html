@@ -46,8 +46,8 @@
       </ion-grid>
       <ion-item>
         <ion-label position="stacked">Lien</ion-label>
-        <ion-textarea [autoGrow]="true" placeholder="" [(ngModel)]="word.link" name="link"
-          formControlName="link"></ion-textarea>
+        <ion-input placeholder="" [(ngModel)]="word.link" name="link"
+          formControlName="link"></ion-input>
       </ion-item>
     </ion-list>
     <ion-button expand="block" type="submit" [disabled]="!wordForm.valid">Ajouter</ion-button>
