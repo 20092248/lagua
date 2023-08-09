@@ -1,5 +1,5 @@
 ion-toolbar.ion-header-home {
-  --background: linear-gradient(#55a370,#9dc18c);
+  --background: #46895c;
   --color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 25px -15px, rgba(0, 0, 0, 0.18) 0px 10px 10px -10px;
   height: 205px;
@@ -8,7 +8,7 @@ ion-toolbar.ion-header-home {
 
 ion-content.ion-content-fullscreen-home { 
   --background: #eef1ee;
-  --background: linear-gradient(to bottom, #eef1ee 205px, #9dc18c 205px, #eef1ee 420px);
+  --background: linear-gradient(to bottom, #eef1ee 205px, #46895c 205px, #eef1ee 420px);
 }
 
 .ion-content-home {
@@ -94,7 +94,7 @@ ion-modal {
 
 .ion-button {
   --color: #ffffff;
-  --background: #5bad77;
+  --background: #46895c;
 }
 
 .ion-button.ion-button-position {
@@ -127,7 +127,7 @@ ion-card-content > span {
 .ion-range-progress {
   position: relative;
   height: 0.5rem;
-  background-color: #5bad77;
+  background-color: #9dc18c;
   transition: width 0.3s ease 0s;
   border-radius: 1rem;
   animation: 2s ease 0s 1 normal none running fAHHxO;
@@ -259,7 +259,7 @@ ion-card-title .ion-card-title {
 .is-today {
   background-color: #d7e3ce;
   border: 1.5px solid #9dba88;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 .ion-lock-lesson {

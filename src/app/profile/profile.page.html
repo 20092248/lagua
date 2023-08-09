@@ -93,9 +93,7 @@
                   <span class="ion-float-right"><ion-icon size="large" name="thumbs-up-outline"></ion-icon></span>
                 </ion-card-title>
               </ion-card-header>
-              <ion-card-content class="ion-card-content-level">
-                Evaluations positives
-              </ion-card-content>
+              <ion-card-content class="ion-card-content-level">Evaluations positives </ion-card-content>
             </ion-card>
           </div>
           <div class="ion-dashboard-bloc">
@@ -106,9 +104,7 @@
                   <span class="ion-float-right"><ion-icon size="large" name="stopwatch-outline"></ion-icon></span>
                 </ion-card-title>
               </ion-card-header>
-              <ion-card-content class="ion-card-content-level">
-                Temps actifs sur l'appli
-              </ion-card-content>
+              <ion-card-content class="ion-card-content-level">Temps sur l'application</ion-card-content>
             </ion-card>
           </div>
         </div>
@@ -116,7 +112,7 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-list class="ion-padding-bottom">
+        <ion-list>
           <ion-item [routerLink]="['']" routerLinkActive="selected" lines="full"><ion-icon slot="start"
               name="settings-outline"></ion-icon>Paramètres de compte
           </ion-item>
@@ -132,10 +128,10 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button color="lagua" expand="block" (click)="logout()"><ion-icon slot="start"
+        <ion-button class="ion-logout" expand="block" (click)="logout()" shape="round"><ion-icon slot="start"
             name="log-out-outline"></ion-icon>Se
           déconnecter</ion-button>
-        <ion-button expand="block" color="danger" class="ion-margin-bottom"><ion-icon slot="start"
+        <ion-button expand="block" color="danger" class="ion-margin-bottom" shape="round"><ion-icon slot="start"
             name="trash-outline"></ion-icon>Supprimer
           votre compte</ion-button>
       </ion-col>

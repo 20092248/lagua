@@ -139,7 +139,7 @@
                 <div class="ion-padding-top-min">{{lesson.subTitle}}</div>
               </ion-card-content>
               <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
-                fill="clear" (click)="goToLesson('/tabs/lessons/'+lesson.navigate, user.lesson.order >= lesson.order)">Voir la leçon</ion-button>
+                fill="clear" (click)="goToLesson('/tabs/lessons/'+lesson.navigate, user.lesson.order >= lesson.order)" shape="round">Voir la leçon</ion-button>
             </ion-card>
           </swiper-slide>
         </swiper-container>
@@ -155,7 +155,7 @@
             <div class="">Améliorer votre score en faisant des tests</div>
           </ion-card-content>
           <ion-button id="open-modal" size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
-            fill="clear" (click)="displayPreviousReviews()">Réviser</ion-button>
+            fill="clear" (click)="displayPreviousReviews()" shape="round">Réviser</ion-button>
 
             <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">
             <ng-template>
@@ -195,7 +195,7 @@
             <div class="ion-custom-text" *ngFor="let content of review?.contents">{{content}}</div>
           </ion-card-content>
           <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
-            fill="clear" (click)="accessToReview()">Accéder au cours</ion-button>
+            fill="clear" (click)="accessToReview()" shape="round">Accéder au cours</ion-button>
         </ion-card>
       </div>
 

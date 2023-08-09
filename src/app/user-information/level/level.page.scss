@@ -1,6 +1,5 @@
 ion-content {
-  // --background: #46895c;
-  --background: linear-gradient(0deg, #eef1ee 80%, #1a6921 80%); //linear-gradient(to bottom, #eef1ee 100px, #46895c 130px);
+  --background: linear-gradient(0deg, #eef1ee 80%, #46895c 80%); //linear-gradient(to bottom, #eef1ee 100px, #46895c 130px);
 }
 
 ion-content > div {
@@ -9,7 +8,7 @@ ion-content > div {
 }
 
 ion-toolbar {
-  --background: linear-gradient(#5bad77, #1a6921);
+  --background: #46895c;
   --color: white;
 
   --min-height: 100px;

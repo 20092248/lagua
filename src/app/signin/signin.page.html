@@ -29,7 +29,7 @@
             </ion-item>
 
             <ion-label position="stacked">Confirmer mot de passe</ion-label>
-            <ion-item>
+            <ion-item class="ion-margin-bottom">
               <ion-input type="password" [(ngModel)]="confirmPassword" #confirmPasswordCtrl="ngModel"
                 name="confirmPassword"></ion-input>
             </ion-item>
@@ -39,18 +39,18 @@
               <ion-text color="danger"><small>Mot de passe différent</small></ion-text>
             </div>
 
-            <ion-button class="ion-margin-top ion-inscription" color="lagua" expand="block" (click)="signIn()">Valider</ion-button>
+            <ion-button class="ion-margin-top ion-inscription" color="lagua" expand="block" (click)="signIn()" shape="round">Valider</ion-button>
 
             <ion-item lines="none" class="ion-background-transparent">
               <ion-label class="ion-text-other ion-text-center">Ou</ion-label>
             </ion-item>
 
             <div class="ion-other-inscription">
-              <ion-button class="ion-margin-bottom" color="facebook" expand="block" (click)="signInWithFacebook()">
+              <ion-button class="ion-margin-bottom" color="facebook" expand="block" (click)="signInWithFacebook()" shape="round">
                 <ion-icon slot="start" name="logo-facebook"></ion-icon>
                 Se connecter avec Facebook
               </ion-button>
-              <ion-button color="google" expand="block" (click)="signInWithGoogle()">
+              <ion-button color="google" expand="block" (click)="signInWithGoogle()" shape="round">
                 <ion-icon slot="start" name="logo-google"></ion-icon>
                 Se connecter avec Google
               </ion-button>

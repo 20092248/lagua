@@ -18,7 +18,6 @@ swiper-container {
 }
 
 ion-button {
-  --border-radius: 10px;
   font-size: 12px;
   font-weight: 100;
 }
@@ -46,8 +45,8 @@ ion-icon {
   border-radius: 20px 20px 0 0;
   position: absolute;
   width: 100%;
-  height: 56%;
-  top: 44%;
+  height: 52%;
+  top: 48%;
 }
 
 .ion-content-page {
@@ -73,13 +72,13 @@ ion-icon {
 }
 
 .ion-half-minus-height {
-  height: 45%;
+  height: 40%;
   display: flex;
   justify-content: center;
 }
 
 .ion-half-plus-height {
-  height: 55%;
+  height: 60%;
   display: flex;
   justify-content: center;
 }

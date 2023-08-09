@@ -1,11 +1,11 @@
 ion-content {
-  --background: #9dc18c;
+  --background: #46895c;
   --color: var(--ion-background-color);
 }
 
 ion-grid.ion-grid-header {
   position: relative;
-  background: linear-gradient(#55a370,#9dc18c);
+  background: #46895c;
   background-size: cover;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 25px -15px, rgba(0, 0, 0, 0.08) 0px 10px 10px -10px;
 }
@@ -203,4 +203,8 @@ ion-card-title .ion-card-title {
 
 .ion-padding-end-min {
   padding-left: 5px;
+}
+
+.ion-logout {
+  --background: #46895c;
 }

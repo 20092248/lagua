@@ -21,23 +21,23 @@
                 <ion-input type="password" [(ngModel)]="password" #passwordCtrl="ngModel" name="password"></ion-input>
               </ion-item>
 
-              <ion-item lines="none" class="ion-background-transparent">
+              <ion-item lines="none" class="ion-background-transparent ion-margin-bottom">
                 <ion-button class="ion-password-forgot" slot="end" fill="clear">Mot de passe oublié ?</ion-button>
               </ion-item>
               <div class="ion-content-button">
-                <ion-button [disabled]="!f.valid" color="light" expand="block" (click)="login()">Connexion</ion-button>
+                <ion-button [disabled]="!f.valid" color="light" expand="block" (click)="login()" shape="round">Connexion</ion-button>
               </div>
 
               <ion-item lines="none" class="ion-background-transparent">
                 <ion-label class="ion-text-other ion-text-center ion-client-login-custom">Ou</ion-label>
               </ion-item>
 
-              <div class="ion-other-connection">
-                <ion-button class="ion-margin-bottom" color="facebook" expand="block" (click)="logInWithFacebook()">
+              <div>
+                <ion-button class="ion-margin-bottom" color="facebook" expand="block" (click)="logInWithFacebook()" shape="round">
                   <ion-icon slot="start" name="logo-facebook"></ion-icon>
                   Se connecter avec Facebook
                 </ion-button>
-                <ion-button color="google" expand="block" (click)="logInWithGoogle()">
+                <ion-button color="google" expand="block" (click)="logInWithGoogle()" shape="round">
                   <ion-icon slot="start" name="logo-google"></ion-icon>
                   Se connecter avec Google
                 </ion-button>
