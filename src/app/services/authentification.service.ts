@@ -11,6 +11,8 @@ import { Review } from '../model/review.model';
 import { Lesson } from '../model/lessons.model';
 import { ResultReview } from '../model/resultReview.model';
 
+const USER_KEY = 'users';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,16 +24,7 @@ export class AuthentificationService {
   constructor(private _auth: Auth, private _firestore: Firestore, private reviewService: ReviewService, private lessonService: LessonService) { }
 
   checkUserState() {
-    if (getAuth()) {
-      const user = getAuth().currentUser;
-      if (user) {
-        this.user.uid = user.uid;
-        this.user.email = user.email;
-        this.user.displayName = user.displayName;
-        this.user.photoURL = user.photoURL;
-      }
-    }
-    return getAuth() && getAuth().currentUser;
+    return localStorage.getItem(USER_KEY);
   }
 
   async getInfoUser(uid: string) {
@@ -39,11 +32,13 @@ export class AuthentificationService {
       await this.updateDayConnected('users', uid);
       const document = await getDoc(doc(getFirestore(), 'users', uid));
       if (document.exists()) {
+        localStorage.setItem(USER_KEY, uid);
         const data = document.data() as User;
         this.user.uid = data.uid;
         this.user.email = data.email;
         this.user.displayName = data.displayName;
         this.user.age = data.age;
+        this.user.photoURL = data.photoURL;
         this.user.learn = data.learn as CodeTextTranslate;
         this.user.why = data.why as CodeLabel;
         this.user.time = data.time as CodeLabel;
@@ -169,33 +164,33 @@ export class AuthentificationService {
   }
 
   async loginwithfacebook(): Promise<boolean> {
-    try{
-    const provider = new FacebookAuthProvider();
-    provider.setDefaultLanguage('fr');
-    provider.addScope('user_birthday');
-    // provider.setCustomParameters({
-    //   'display': 'popup'
-    // });
-    const auth = getAuth();
-    let response = await signInWithPopup(auth, provider)
-      .then(async (result) => {
-        // The signed-in user info.
-        this.user = this.getUserCredential(result);
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        const credential = FacebookAuthProvider.credentialFromResult(result);
-        const accessToken = credential ? credential.accessToken : null;
-        const responseInfoUser = await this.getInfoUser(result.user?.uid);
-        return responseInfoUser;
-      })
-      .catch((error) => {
-        // The AuthCredential type that was used.
-        const credential = FacebookAuthProvider.credentialFromError(error);
-        throw Error(error.message);
-      });
-    return response;
-  } catch (error: any) {
-    throw Error(error.message);
-  }
+    try {
+      const provider = new FacebookAuthProvider();
+      provider.setDefaultLanguage('fr');
+      provider.addScope('user_birthday');
+      // provider.setCustomParameters({
+      //   'display': 'popup'
+      // });
+      const auth = getAuth();
+      let response = await signInWithPopup(auth, provider)
+        .then(async (result) => {
+          // The signed-in user info.
+          this.user = this.getUserCredential(result);
+          // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+          const credential = FacebookAuthProvider.credentialFromResult(result);
+          const accessToken = credential ? credential.accessToken : null;
+          const responseInfoUser = await this.getInfoUser(result.user?.uid);
+          return responseInfoUser;
+        })
+        .catch((error) => {
+          // The AuthCredential type that was used.
+          const credential = FacebookAuthProvider.credentialFromError(error);
+          throw Error(error.message);
+        });
+      return response;
+    } catch (error: any) {
+      throw Error(error.message);
+    }
   }
 
   async signinwithfacebook(firstReview: Review, firstLesson: Lesson): Promise<boolean> {
@@ -236,6 +231,7 @@ export class AuthentificationService {
     this.updateDayDisconnected('users', this.user.uid ? this.user.uid : '');
     return signOut(getAuth()).then(() => {
       this.user = {} as User;
+      localStorage.removeItem(USER_KEY);
       console.log('sign-out successful.');
     }).catch((error) => {
       console.error(error);
@@ -310,6 +306,10 @@ export class AuthentificationService {
     this.user.displayName = result.user.displayName;
     this.user.photoURL = result.user.photoURL;
     return this.user;
+  }
+
+  async delay(ms: number) {
+    return await new Promise(resolve => setTimeout(resolve, ms));
   }
 
 }

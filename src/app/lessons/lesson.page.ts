@@ -15,7 +15,7 @@ export class LessonPage implements OnInit {
   lessons: Lesson[] | undefined;
   userLesson: Lesson = {} as Lesson;
 
-  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService) { 
+  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService) {
     this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation()) {
         this.userLesson = this.authentificationService.user.lesson;
@@ -26,6 +26,11 @@ export class LessonPage implements OnInit {
   ngOnInit(): void {
     this.userLesson = this.authentificationService.user.lesson;
     this.lessons = this.lessonService.lessons;
+    if (!this.lessons?.length) {
+      this.lessonService.searchLessons().then(lessons => {
+        this.lessons = lessons;
+      })
+    }
   }
 
   goTo(lesson: Lesson) {

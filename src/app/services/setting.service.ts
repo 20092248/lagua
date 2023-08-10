@@ -34,7 +34,7 @@ export class SettingService {
       }
       console.log(doc.id, ' => ', doc.data());
     });
-    return { questions: this.questions, reviews: this.reviews, userInformation: this.userInformation };
+    return { questions: this.questions, reviews: this.reviews, userInformation: this.userInformation, profile: this.profile };
   }
 
   async getSetting(document: string): Promise<any> {

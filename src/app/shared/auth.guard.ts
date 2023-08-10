@@ -16,10 +16,9 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      this.delay(1000);
-      if (this.authentificationService.checkUserState()) {
-        const uid = this.authentificationService.user.uid ? this.authentificationService.user.uid : '';
-        return this.authentificationService.getInfoUser(uid).then(() => {
+      const uidConnected = this.authentificationService.checkUserState();
+      if (uidConnected) {
+        return this.authentificationService.getInfoUser(uidConnected).then(() => {
           return true;
         });
       } else {
@@ -27,9 +26,5 @@ export class AuthGuard implements CanActivate {
         this.router.navigate(['/firstpage']);
         return false;
       }
-  }
-
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
