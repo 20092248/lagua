@@ -5,7 +5,7 @@ ion-content {
 
 ion-grid.ion-grid-header {
   position: relative;
-  background: #46895c;
+  background: linear-gradient(#5da374 0%, #46895c 100%); //#46895c;
   background-size: cover;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 25px -15px, rgba(0, 0, 0, 0.08) 0px 10px 10px -10px;
 }
@@ -35,6 +35,10 @@ ion-card {
   --background: var(--ion-background-color);
   border-radius: 15px;
   height: 90%;
+}
+
+ion-button {
+  --border-radius: 10px;
 }
 
 p {

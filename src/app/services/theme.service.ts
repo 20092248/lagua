@@ -1,8 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Firestore, getFirestore } from '@angular/fire/firestore';
-import { doc, getDocs, addDoc, collection, query, where, DocumentData, orderBy } from '@firebase/firestore';
-import { Word } from '../model/word.model';
-import { FirebaseWord } from '../model/wordFirebase.model';
 
 const THEME_KEY = 'selected-app-theme';
 

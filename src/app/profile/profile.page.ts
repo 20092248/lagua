@@ -23,6 +23,7 @@ export class ProfilePage implements OnInit {
   activeConnection: Date = new Date(0);
   score: number = 0;
   profileSetting: any = {};
+  numbers: number[] = Array(10).fill(undefined, 0, 5).map((x,i)=>i);
 
   constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService) { }
 

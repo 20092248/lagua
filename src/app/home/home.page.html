@@ -1,5 +1,6 @@
 <!-- <ion-header class="ion-no-border"> -->
 <ion-toolbar class="ion-header-home">
+  <span class="square-animation" *ngFor="let number of numbers"></span>
   <ion-grid class="ion-no-margin">
     <ion-row>
       <ion-col size="9">
@@ -9,7 +10,7 @@
         </div>
       </ion-col>
       <ion-col size="3" class="ion-padding-end ion-display-flex">
-        <div class="border-white-tabs " id="popover-profil">
+        <div class="border-white-tabs" id="popover-profil">
           <div class="img-box">
             <img *ngIf="user.photoURL" [src]="user.photoURL">
             <ion-icon size="large" *ngIf="!user.photoURL" [src]="user.photoURL" name="person-outline"></ion-icon>
@@ -139,7 +140,7 @@
                 <div class="ion-padding-top-min">{{lesson.subTitle}}</div>
               </ion-card-content>
               <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
-                fill="clear" (click)="goToLesson('/tabs/lessons/'+lesson.navigate, user.lesson.order >= lesson.order)" shape="round">Voir la leçon</ion-button>
+                fill="clear" (click)="goToLesson('/tabs/lessons/'+lesson.navigate, user.lesson.order >= lesson.order)">Voir la leçon</ion-button>
             </ion-card>
           </swiper-slide>
         </swiper-container>
@@ -155,7 +156,7 @@
             <div class="">Améliorer votre score en faisant des tests</div>
           </ion-card-content>
           <ion-button id="open-modal" size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
-            fill="clear" (click)="displayPreviousReviews()" shape="round">Réviser</ion-button>
+            fill="clear" (click)="displayPreviousReviews()">Réviser</ion-button>
 
             <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">
             <ng-template>
@@ -195,7 +196,7 @@
             <div class="ion-custom-text" *ngFor="let content of review?.contents">{{content}}</div>
           </ion-card-content>
           <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
-            fill="clear" (click)="accessToReview()" shape="round">Accéder au cours</ion-button>
+            fill="clear" (click)="accessToReview()">Accéder au cours</ion-button>
         </ion-card>
       </div>
 

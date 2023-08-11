@@ -39,6 +39,7 @@ export class LoadingService {
     await this.loadingController
       .create({
             message: message,
+            spinner: 'circles'
           })
       .then(res => {
         res.present();
