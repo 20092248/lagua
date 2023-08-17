@@ -1,8 +1,6 @@
 <ion-header class="ion-no-border"><ion-toolbar>
-    <div class="logo">
-      <img class="ion-login-img" src="assets/img/connection/signin_icon.png" />
-    </div>
-  </ion-toolbar>
+  <ion-title>Inscription</ion-title>
+</ion-toolbar>
 </ion-header>
 <ion-content>
   <div>
@@ -38,8 +36,8 @@
               *ngIf="passwordCtrl.touched && confirmPasswordCtrl.touched && password !== confirmPassword">
               <ion-text color="danger"><small>Mot de passe différent</small></ion-text>
             </div>
-
-            <ion-button class="ion-margin-top ion-inscription" color="lagua" expand="block" (click)="signIn()" shape="round">Valider</ion-button>
+            <br/>
+            <ion-button class="ion-inscription" color="lagua" expand="block" (click)="signIn()" shape="round">Valider</ion-button>
 
             <ion-item lines="none" class="ion-background-transparent">
               <ion-label class="ion-text-other ion-text-center">Ou</ion-label>

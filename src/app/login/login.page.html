@@ -1,7 +1,5 @@
 <ion-header class="ion-no-border"><ion-toolbar>
-    <div class="logo">
-      <img class="ion-login-img" src="assets/img/connection/login_icon.png" />
-    </div>
+    <ion-title>Connexion</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -9,7 +7,7 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <form #f="ngForm">
+          <form #f="ngForm" class="ion-padding-top ion-margin-top">
             <div class="content ion-padding-top ion-margin-top">
               <ion-label class="ion-client-login-custom ion-padding-start" position="stacked">Identifiant</ion-label>
               <ion-item>
@@ -25,7 +23,8 @@
                 <ion-button class="ion-password-forgot" slot="end" fill="clear">Mot de passe oublié ?</ion-button>
               </ion-item>
               <div class="ion-content-button">
-                <ion-button [disabled]="!f.valid" color="light" expand="block" (click)="login()" shape="round">Connexion</ion-button>
+                <ion-button [disabled]="!f.valid" color="light" expand="block" (click)="login()"
+                  shape="round">Connexion</ion-button>
               </div>
 
               <ion-item lines="none" class="ion-background-transparent">
@@ -33,7 +32,8 @@
               </ion-item>
 
               <div>
-                <ion-button class="ion-margin-bottom" color="facebook" expand="block" (click)="logInWithFacebook()" shape="round">
+                <ion-button class="ion-margin-bottom" color="facebook" expand="block" (click)="logInWithFacebook()"
+                  shape="round">
                   <ion-icon slot="start" name="logo-facebook"></ion-icon>
                   Se connecter avec Facebook
                 </ion-button>

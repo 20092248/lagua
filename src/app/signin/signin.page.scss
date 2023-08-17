@@ -10,7 +10,6 @@ ion-content > div {
 ion-toolbar {
   --background: #46895c;
   --color: white;
-  --min-height: 130px;
 }
 
 form {
@@ -76,9 +75,8 @@ ion-col {
   height: 70%;
 }
 
-.ion-client-login-custom {
-  font-size: 18px;
-  // color: #ffffff;
+ion-label {
+  font-size: 15px;
 }
 
 ion-label.ion-text-other {
