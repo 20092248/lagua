@@ -55,16 +55,16 @@ ion-card-content {
   background: #eef1ee;
 }
 
-.is-pinned { 
+.is-pinned {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .scrollGradient {
-  background: 
-    linear-gradient(#eef1ee 33%, rgba(238,241,238, 0)),
-    linear-gradient(rgba(238,241,238, 0), #eef1ee 66%) 0 100%,
-    radial-gradient(farthest-side at 50% 0, rgba(34,34,34, 0.5), rgba(0,0,0,0)),
-    radial-gradient(farthest-side at 50% 100%, rgba(34,34,34, 0.5), rgba(0,0,0,0)) 0 100%;
+  background:
+    linear-gradient(#eef1ee 33%, rgba(238, 241, 238, 0)),
+    linear-gradient(rgba(238, 241, 238, 0), #eef1ee 66%) 0 100%,
+    radial-gradient(farthest-side at 50% 0, rgba(34, 34, 34, 0.5), rgba(0, 0, 0, 0)),
+    radial-gradient(farthest-side at 50% 100%, rgba(34, 34, 34, 0.5), rgba(0, 0, 0, 0)) 0 100%;
   background-color: #eef1ee;
   background-repeat: no-repeat;
   background-attachment: local, local, scroll, scroll;
@@ -100,7 +100,7 @@ ion-card-content {
 }
 
 ion-icon.ion-icon-locked {
-  position: absolute; 
+  position: absolute;
   font-size: 20px;
   left: -11px;
   padding: 2px 0;
@@ -121,6 +121,7 @@ ion-icon.ion-icon-locked.first-icon {
 .ion-button.ion-button-position {
   margin-top: -5px;
   margin-bottom: 16px;
+  font-size: 12px;
 }
 
 .ion-button-a1 {
@@ -145,6 +146,18 @@ ion-icon.ion-icon-locked.first-icon {
 
 .ion-button-active {
   --background: #1a6921;
+}
+
+.ion-button-words {
+  --background: #cf7448;
+}
+
+.ion-padding-min-start {
+  padding-left: 10px;
+}
+
+.ion-padding-min-end {
+  padding-right: 10px;
 }
 
 .ion-chatbox {
@@ -180,4 +193,25 @@ ion-icon.ion-icon-locked.first-icon {
 .ion-card-locked {
   filter: grayscale(0.85);
   opacity: 0.85;
+}
+
+ion-modal {
+  ion-list {
+    background: transparent;
+  }
+
+  ion-item {
+    --background: transprent;
+    font-size: 14px;
+  }
+
+  ion-title {
+    font-size: 16px;
+  }
+
+  span.ion-text {
+    color: #15601b;
+    font-weight: bold;
+    font-style: italic;
+  }
 }

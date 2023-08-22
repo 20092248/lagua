@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { AuthentificationService } from '../services/authentification.service';
 import { User } from '../model/user.model';
 import { IonContent, ScrollDetail, ToastController } from '@ionic/angular';
+import { CodeTextTranslate } from '../model/codeTextTranslate.model';
+import { QuestionService } from '../services/question.service';
 
 @Component({
   selector: 'app-review',
@@ -19,13 +21,19 @@ export class ReviewPage implements OnInit {
   categories: any[] = [];
   reviews: Review[] = [];
   userReview: Review = {} as Review;
+  userLearn: CodeTextTranslate = {} as CodeTextTranslate;
   category: string = 'A1';
   categoryLevel: number = 0;
   isPinned: boolean = false;
+  isWordsDisplay: boolean = false;
+  translate: string = 'francais';
+  words: any[] = [];
 
-  constructor(private router: Router, private settingsService: SettingService, private reviewService: ReviewService, private authentificationService: AuthentificationService, private toastController: ToastController) { }
+  constructor(private router: Router, private settingsService: SettingService, private reviewService: ReviewService, private authentificationService: AuthentificationService, 
+    private toastController: ToastController, private questionService: QuestionService) { }
 
   ngOnInit() {
+    this.userLearn = this.authentificationService.user?.learn;
     this.userReview = this.authentificationService.user?.review;
     if (!this.categories.length) {
       this.settingsService.getSetting('reviews').then((data => {
@@ -72,4 +80,15 @@ export class ReviewPage implements OnInit {
   // this.settingsService.createDocument('settings','reviews', data);
   // this.settingsService.createCollection('reviews', data);
 
+  openModal(review: Review) {
+    this.isWordsDisplay = true;
+    this.words = [];
+    this.questionService.getQuestions(this.userLearn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions', review.lesson + '_' + review.order).then(result => {
+      this.words = result.qcm.questions;
+   });
+  }
+
+  closeModal() {
+    this.isWordsDisplay = false;
+  }
 }
