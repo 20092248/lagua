@@ -2,6 +2,7 @@ import { CodeLabel } from "./codeLabel.model";
 import { CodeTextTranslate } from "./codeTextTranslate.model";
 import { Lesson } from "./lessons.model";
 import { ResultReview } from "./resultReview.model";
+import { Review } from "./review.model";
 
 export class User {
     uid: string;
@@ -13,7 +14,7 @@ export class User {
     age: CodeLabel;
     time: CodeLabel;
     level: CodeLabel;
-    review: any;
+    review: Review = {} as Review;
     resultReviews: ResultReview[];
     lesson: Lesson;
     resultLessons: Lesson[];

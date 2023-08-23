@@ -73,9 +73,11 @@
 </ion-grid>
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-button expand="block" color="lagua" class="ion-margin" (click)="saveReview()">
+    <ion-button color="danger" class="ion-margin" (click)="tryAgain()" *ngIf="star < 2.5">
+      Réssayer
+    </ion-button>
+    <ion-button expand="block" color="lagua" class="ion-margin" (click)="saveReview()" [ngClass]="{ 'ion-float-right' : star < 2.5 }">
       Terminer la leçon
-      <!-- <ion-icon slot="end" name="caret-forward-outline"></ion-icon> -->
     </ion-button>
   </ion-toolbar>
 </ion-footer>
