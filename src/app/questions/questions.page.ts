@@ -24,6 +24,7 @@ export class QuestionsPage implements OnInit {
    }
 
    resetReview() {
+    this.questionService.nbrQuestion = 0;
     this.reviewService.resultReview = new ResultReview();
   }
 }

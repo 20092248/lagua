@@ -200,6 +200,21 @@
         </ion-card>
       </div>
 
+      <div class="ion-unlock-lesson" *ngIf="previousReviews && previousReviews.length">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Acquérir du vocabulaire</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="">Visiualiser les différentes thématiques</div>
+            <div class="">Valider chaque thème pour débloquer le suivant</div>
+          </ion-card-content>
+          <ion-button id="open-modal" size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
+            fill="clear" [routerLink]="['/tabs/home']">Voir les thèmes</ion-button>
+
+        </ion-card>
+      </div>
+
     </div>
   </div>
 </ion-content>

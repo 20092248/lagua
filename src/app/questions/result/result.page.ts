@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ResultReview } from 'src/app/model/resultReview.model';
 import { Review } from 'src/app/model/review.model';
+import { AudioService } from 'src/app/services/audio.service';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { ReviewService } from 'src/app/services/review.service';
 import { SettingService } from 'src/app/services/setting.service';
@@ -25,12 +26,17 @@ export class ResultPage implements OnInit {
   ratings: number[] = Array(5).fill(undefined, 0, 5).map((x,i)=>i);
   star: number = 0;
 
-  constructor(private router: Router, private reviewService: ReviewService, private settingService: SettingService, private authentificationService: AuthentificationService) { }
+  constructor(private router: Router, private reviewService: ReviewService, private settingService: SettingService, private authentificationService: AuthentificationService, private audioService: AudioService) { }
 
   ngOnInit() {
     this.review = this.reviewService.review;
     this.score = this.reviewService.resultReview?.score ? this.reviewService.resultReview?.score * 100 / (this.reviewService.resultReview?.nbrQuestion * 10) : 0;
     this.star = this.score / 20;
+    if(this.star >= 2.5) {
+      this.audioService.play('successReview');
+    } else {
+      this.audioService.play('failReview');
+    }
     this.toRevise = this.reviewService.resultReview.toRevise?.length;
     this.scoreToRevise = 360 * (this.reviewService.resultReview.toRevise?.length / this.reviewService.resultReview?.nbrQuestion);
     this.toLearn = this.reviewService.resultReview.toLearn?.length;
@@ -57,6 +63,11 @@ export class ResultPage implements OnInit {
 
   resetReview() {
     this.reviewService.resultReview = new ResultReview();
+  }
+
+  tryAgain(){
+    this.reviewService.resultReview = new ResultReview();
+    this.router.navigate(['/questions']);
   }
 
   displayLevel() {

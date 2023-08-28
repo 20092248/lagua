@@ -123,6 +123,7 @@ export class HomePage implements OnInit {
   }
 
   accessToReview() {
+    this.reviewService.review = this.authentificationService.user.review;
     this.router.navigate(['/questions']);
   }
 
