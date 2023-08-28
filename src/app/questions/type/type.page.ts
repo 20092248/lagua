@@ -27,6 +27,7 @@ export class TypePage implements OnInit {
     this.settingsService.getSetting('questions').then((data => {
       this.types = data?.types;
     }));
+    this.getInfoReview();
     this.audioService.preload('rightAnswer', 'assets/audio/correct-choice.mp3');
     this.audioService.preload('wrongAnswer', 'assets/audio/wrong-choice.mp3');
   }
@@ -47,6 +48,12 @@ export class TypePage implements OnInit {
         this.router.navigate(['/questions/mix']);
         break;
     }
+  }
+
+  getInfoReview() {
+    this.reviewService.resultReview.category = this.reviewService.review.category;
+    this.reviewService.resultReview.lesson = this.reviewService.review.lesson;
+    this.reviewService.resultReview.order = this.reviewService.review.order;
   }
 
 }
