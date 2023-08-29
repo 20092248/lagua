@@ -31,14 +31,16 @@ export class DictionaryService {
   async updateShikomoriDictionary(word: any): Promise<string> {
     const firstLetter = word.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').substring(0, 1).toLocaleLowerCase();
     const firebaseWord: FirebaseWord = {
-      text: word.text.split(','),
-      translate: word.translate.split(','),
+      text: word.text.split(';'),
+      pluralText: word.pluralText.split(';'),
+      translate: word.translate.split(';'),
       originalText: word.text,
+      originalPluralText: word.pluralText,
       originalTranslate: word.translate,
       description: word.description ? word.description : '',
       examples: word.examples,
       phoneticText: word.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').replace(/\(.[^(]*\)/g,'').replaceAll('ɓ','b').replaceAll('ɗ','d').toLocaleLowerCase().split(','),
-      phoneticTranslate: word.index.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').replace(/\(.[^(]*\)/g,'').replaceAll('ɓ','b').replaceAll('ɗ','d').toLocaleLowerCase().split(','),
+      phoneticTranslate: word.index.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').replace(/\(.[^(]*\)/g,'').toLocaleLowerCase().split(','),
     };
     if(word.link) { firebaseWord.link = word.link; }
     const dictionayRef = await addDoc(collection(getFirestore(), 'shindzuani_francais_' + firstLetter), firebaseWord);
