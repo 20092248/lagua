@@ -3,13 +3,15 @@ import { Firestore, getFirestore } from '@angular/fire/firestore';
 import { doc, getDoc, getDocs, addDoc, collection, query, where, DocumentData, orderBy } from '@firebase/firestore';
 import { Word } from '../model/word.model';
 import { FirebaseWord } from '../model/wordFirebase.model';
+import { HttpClient } from '@angular/common/http';
+import { map, catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DictionaryService {
 
-  constructor(private _firestore: Firestore) { }
+  constructor(private _firestore: Firestore, private http: HttpClient) { }
 
   async updateDictionary(word: any): Promise<string> {
     const firstLetter = word.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').substring(0, 1).toLocaleLowerCase();
@@ -29,21 +31,20 @@ export class DictionaryService {
   }
 
   async updateShikomoriDictionary(word: any): Promise<string> {
-    const firstLetter = word.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').substring(0, 1).toLocaleLowerCase();
     const firebaseWord: FirebaseWord = {
       text: word.text.split(';'),
-      pluralText: word.pluralText.split(';'),
+      pluralText: word.pluralText ? word.pluralText.split(';') : '',
       translate: word.translate.split(';'),
       originalText: word.text,
-      originalPluralText: word.pluralText,
+      originalPluralText: word.pluralText ? word.pluralText : '',
       originalTranslate: word.translate,
       description: word.description ? word.description : '',
-      examples: word.examples,
-      phoneticText: word.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').replace(/\(.[^(]*\)/g,'').replaceAll('ɓ','b').replaceAll('ɗ','d').toLocaleLowerCase().split(','),
-      phoneticTranslate: word.index.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').replace(/\(.[^(]*\)/g,'').toLocaleLowerCase().split(','),
+      examples: word.examples ? word.examples : [],
+      phoneticText: word.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zɓɗA-Z0-9-,;() ]/g, '').replace('-a ','').replace(/\(.[^(]*\)/g,'').replaceAll('ɓ','b').replaceAll('ɗ','d').toLocaleLowerCase().split(';'),
+      phoneticTranslate: word.translate.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9'-,;()]/g, '').replace(/\(.[^(]*\)/g,'').toLocaleLowerCase().split(';'),
     };
     if(word.link) { firebaseWord.link = word.link; }
-    const dictionayRef = await addDoc(collection(getFirestore(), 'shindzuani_francais_' + firstLetter), firebaseWord);
+    const dictionayRef = await addDoc(collection(getFirestore(), 'shikomori_francais'), firebaseWord);
     return dictionayRef.id;
   }
 
@@ -76,6 +77,19 @@ export class DictionaryService {
     } catch (error: any) {
       throw Error(error.message);
     }
+  }
+
+  async translate() {
+    return this.http.post<any>('https://async.scraperapi.com/jobs', {
+      "apiKey": "7429876eeaeae2d54b62f9fcf85cf50c",
+      "url" : "https://orelc.ac/academy/ShikomoriWords/viewWord/-a%20djunga?letter=a"
+    }, {headers: {'Content-Type': 'application/json; charset=utf-8',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+    'Access-Control-Allow-Credentials': 'false'}}).subscribe(res => {
+      return res;
+    })
   }
 
 }

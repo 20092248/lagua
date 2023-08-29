@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { Examples } from 'src/app/model/example.model';
 import { DictionaryService } from 'src/app/services/dictionary.service';
+import { DICO } from './dico';
 
 @Component({
   selector: 'app-add',
@@ -30,7 +31,19 @@ export class AddPage implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.dictionaryService.translate().then(result => {
+      console.log(result);
+    })
+    // DICO.forEach(word => {
+    //   word.text = word.text.trim();
+    //   // word.pluralText = word.pluralText ? word.pluralText.trim() : null;
+    //   word.translate = word.translate.trim();
+    //   this.dictionaryService.updateShikomoriDictionary(word).then(id => {
+    //     console.log(id);
+    //   })
+    // });
+   }
 
   addWord() {
     this.controlExamples();
