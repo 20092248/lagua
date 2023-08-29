@@ -54,16 +54,16 @@ export class ReviewService {
     const reviewByCategory = this.reviews.filter(r => r.category === review.category).sort((a, b) => a.lesson - b.lesson).sort((a, b) => a.order - b.order);
     const countLessonAndOrder = reviewByCategory.reduce((acc, e) => acc.set(e.lesson, (acc.get(e.lesson) || 0) + 1), new Map());
     if (countLessonAndOrder.get(review.lesson) !== review.order + 1) { 
-      await this.getReview(review.category, review.lesson, review.order + 1).then((value: Review) => {
-        this.nextReview = value;
+      this.nextReview = await this.getReview(review.category, review.lesson, review.order + 1).then((value: Review) => {
+        return value;
       });
     } else if(countLessonAndOrder.get(review.lesson + 1)) { // toutes les leçons sont terminées et il reste des cours
-      await this.getReview(review.category, review.lesson + 1, 1).then((value: Review) => {
-        this.nextReview = value;
+      this.nextReview = await this.getReview(review.category, review.lesson + 1, 1).then((value: Review) => {
+        return value;
       });
     } else { // toutes les leçons/cours sont terminées
-      await this.getReview(this.nextCategory(review.category), 1, 1).then((value: Review) => {
-        this.nextReview = value;
+      this.nextReview = await this.getReview(this.nextCategory(review.category), 1, 1).then((value: Review) => {
+        return value;
       });
     }
     return this.nextReview;

@@ -47,7 +47,6 @@ export class MixPage implements OnInit {
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.qcm?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
-    this.getInfoReview();
 
     //translate
     this.questionService.nbrQuestion = this.nbrQuestion;
@@ -55,7 +54,6 @@ export class MixPage implements OnInit {
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.qcm?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
-    this.getInfoReview();
   }
 
   //memo
@@ -174,13 +172,6 @@ export class MixPage implements OnInit {
       this.router.navigate(['/questions/result']);
     }
     this.typeDisplay = Math.floor(Math.random() * 3);
-  }
-
-
-  getInfoReview() {
-    this.reviewService.resultReview.category = this.reviewService.review.category;
-    this.reviewService.resultReview.lesson = this.reviewService.review.lesson;
-    this.reviewService.resultReview.order = this.reviewService.review.order;
   }
 
   //translate

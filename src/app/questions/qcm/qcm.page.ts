@@ -31,7 +31,6 @@ export class QcmPage implements OnInit {
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.qcm?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
-    this.getInfoReview();
   }
 
   choiceSelected(choice: any) {
@@ -92,12 +91,6 @@ export class QcmPage implements OnInit {
       this.reviewService.resultReview.toRevise.push(toRevise);
     }
     this.reviewService.resultReview.nbrQuestion++;
-  }
-
-  getInfoReview() {
-    this.reviewService.resultReview.category = this.reviewService.review.category;
-    this.reviewService.resultReview.lesson = this.reviewService.review.lesson;
-    this.reviewService.resultReview.order = this.reviewService.review.order;
   }
 
 }

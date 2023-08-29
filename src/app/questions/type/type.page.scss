@@ -1,11 +1,15 @@
 ion-card {
-    margin: 4% 25%;
-    padding-top: 15px;
+    margin: 4% 26%;
+    padding-top: 12px;
     transition-duration: 0.1s;
 }
 
 ion-card:active {
     background: rgb(244, 244, 246);
+}
+
+ion-card-header {
+    padding: 12px 0;
 }
 
 div.ion-position-content {
@@ -17,7 +21,7 @@ div.ion-position-content {
 
 img {
     position: relative;
-    width: 65px;
+    width: 60px;
 }
 
 .left {

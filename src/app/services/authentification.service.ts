@@ -29,10 +29,10 @@ export class AuthentificationService {
 
   async getInfoUser(uid: string) {
     try {
+      localStorage.setItem(USER_KEY, uid);
       await this.updateDayConnected('users', uid);
       const document = await getDoc(doc(getFirestore(), 'users', uid));
       if (document.exists()) {
-        localStorage.setItem(USER_KEY, uid);
         const data = document.data() as User;
         this.user.uid = data.uid;
         this.user.email = data.email;
@@ -54,6 +54,7 @@ export class AuthentificationService {
         throw new Error('Utilisateur introuvable');
       }
     } catch (error: any) {
+      localStorage.removeItem(USER_KEY);
       throw Error(error.message);
     }
   }
@@ -244,8 +245,9 @@ export class AuthentificationService {
     }
     this.user.resultReviews.push(updateReview);
     const userRef = doc(getFirestore(), nameObject, uid);
+    const nextReview = await this.reviewService.findNextReview(this.user.review).then(result => { return result });
     await updateDoc(userRef, {
-      review: this.reviewService.findNextReview(this.user.review),
+      review: nextReview,
       resultReviews: this.user.resultReviews.map((obj) => { return Object.assign({}, obj) })
     });
   }
