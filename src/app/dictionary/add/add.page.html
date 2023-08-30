@@ -59,4 +59,15 @@
     <div style="width:25%" (click)="copierTexte('ó')">ó</div>
     <div style="width:25%" (click)="copierTexte('ú')">ú</div>
   </div>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+    <ion-fab-button color="tertiary" (click)="addWordInfo()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="dark" (click)="updateWordInfo()">
+      <ion-icon name="cloud-upload-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

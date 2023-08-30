@@ -4,6 +4,8 @@ import { ToastController } from '@ionic/angular';
 import { Examples } from 'src/app/model/example.model';
 import { DictionaryService } from 'src/app/services/dictionary.service';
 import { DICO } from './dico';
+import { AlertService } from 'src/app/services/alert.service';
+
 
 @Component({
   selector: 'app-add',
@@ -16,7 +18,7 @@ export class AddPage implements OnInit {
   word: any = { text: '', translate: '', index: '', description: '', examples: [{ text: '', translate: '' }] };
   examplesCount: number = 1;
 
-  constructor(private formBuilder: FormBuilder, private dictionaryService: DictionaryService, private toastController: ToastController) {
+  constructor(private formBuilder: FormBuilder, private dictionaryService: DictionaryService, private alertService: AlertService) {
     this.wordForm = this.formBuilder.group({
       'text': ['', Validators.required],
       'translate': ['', Validators.required],
@@ -31,26 +33,35 @@ export class AddPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.dictionaryService.translate().then(result => {
-      console.log(result);
-    })
-    // DICO.forEach(word => {
-    //   word.text = word.text.trim();
-    //   // word.pluralText = word.pluralText ? word.pluralText.trim() : null;
-    //   word.translate = word.translate.trim();
-    //   this.dictionaryService.updateShikomoriDictionary(word).then(id => {
-    //     console.log(id);
-    //   })
-    // });
-   }
+  ngOnInit() { }
+
+  addWordInfo() {
+    DICO.forEach(word => {
+      if (word.text && word.translate) {
+        word.text = word.text.trim();
+        word.pluralText = word.pluralText ? word.pluralText.trim() : '';
+        word.translate = word.translate.trim();
+        this.dictionaryService.updateShikomoriDictionary(word).then(id => {
+          console.log(id);
+          console.log(word);
+        })
+      }
+    });
+    this.alertService.presentToast('Les mots ont été uploadé.', 1500, 'success');
+  }
+
+  updateWordInfo() {
+    this.dictionaryService.addScrapperResponse().then(()=>{
+      this.alertService.presentToast('La définition.', 1500, 'success');
+    });
+  }
 
   addWord() {
     this.controlExamples();
     this.dictionaryService.updateDictionary(this.word).then((data: any) => {
       this.wordForm.reset();
-      this.displayToast();
-      if(!this.word.examples.length){
+      this.alertService.presentToast('Le mots ont été mis a jour.', 1500, 'success');
+      if (!this.word.examples.length) {
         this.word.examples.push({ text: '', translate: '' });
       }
     });
@@ -70,16 +81,6 @@ export class AddPage implements OnInit {
         this.word.examples.splice(index, 1);
       }
     });
-  }
-
-  async displayToast() {
-    const toast = await this.toastController.create({
-      message: 'Le mot a été affiché dans le dictionnaire.',
-      duration: 1500,
-      position: 'bottom',
-      color: 'success'
-    });
-    await toast.present();
   }
 
   copierTexte(letter: string) {
