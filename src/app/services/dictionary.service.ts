@@ -13,7 +13,7 @@ import { Observable, throwError } from 'rxjs';
 export class DictionaryService {
 
   constructor(private _firestore: Firestore, private http: HttpClient) { }
-  collection = 'shikomori_francais_ɓ'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+  collection = 'shikomori_francais_h'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -60,6 +60,8 @@ export class DictionaryService {
     const dictionayRef = await addDoc(collection(getFirestore(), 'shikomori_francais_'+firstLetter), firebaseWord);
     this.getapi(word.text, firstLetter).subscribe(scraper => {
       this.updateScraperInfo(scraper, dictionayRef.id);
+    },() => {
+      console.error(word.text);
     });
     return dictionayRef.id;
   }
@@ -74,12 +76,16 @@ export class DictionaryService {
   async addScrapperResponse(){
     const q = query(collection(getFirestore(), this.collection));
     const querySnapshot = await getDocs(q);
+    console.log(querySnapshot.size);
     querySnapshot.forEach((doc) => {
       const data = doc.data() as any;
       if(data.scraper){
-        console.log(doc.id);
-        console.log(data.scraper.response);
-        this.updateScraperInfo(data.scraper, doc.id);
+        if(!data.scraper.response){
+        this.getbody(data.scraper.id).subscribe(scraperFull =>{
+          console.log(scraperFull.response);
+          this.updateScraperInfo(scraperFull, doc.id);
+        });
+      }
       }
     });
   }
@@ -116,12 +122,15 @@ export class DictionaryService {
   }
 
   getapi(name: string, letter: string) : Observable<any> {
-    return this.http.get<any>('http://localhost:8080/api/getapi/'+name+'/'+letter, this.httpOptions).pipe(
+    return this.http.post<any>('https://async.scraperapi.com/jobs', {
+      apiKey: '7429876eeaeae2d54b62f9fcf85cf50c',
+      url: 'https://orelc.ac/academy/ShikomoriWords/viewWord/' + name + '?letter=' + letter
+    }, this.httpOptions).pipe(
       catchError(e => e));
   }
 
   getbody(api: string) {
-    return this.http.get<any>('http://localhost:8080/api/getbody/'+api, this.httpOptions).pipe(
+    return this.http.get<any>('https://async.scraperapi.com/jobs/'+api, this.httpOptions).pipe(
       catchError(e => e));
   }
 

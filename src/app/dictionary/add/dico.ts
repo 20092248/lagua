@@ -1,1746 +1,1866 @@
 export const DICO = [{
-    "text": "-ɓole",
+    "text": "-havu",
+    "pluralText": null,
+    "translate": "sec. ",
+    "null": null
+},
+{
+    "text": "-hodari",
+    "pluralText": null,
+    "translate": "agile; fort; intelligent; habile; dure; solide; ",
+    "null": null
+},
+{
+    "text": "-hu-",
+    "pluralText": null,
+    "translate": "te; t'; ",
+    "null": null
+},
+{
+    "text": "-huhuru",
+    "pluralText": null,
+    "translate": "solide; raide; ",
+    "null": null
+},
+{
+    "text": "-huu",
     "pluralText": null,
     "translate": "grand. ",
     "null": null
 },
 {
-    "text": "ɓa",
+    "text": "ha",
     "pluralText": null,
-    "translate": "car. ",
+    "translate": "par; au moyen de; chez; de façon; de manière; ",
     "null": null
 },
 {
-    "text": "ɓa-ntiti ",
-    "pluralText": "Pl. waɓa-ntiti",
-    "translate": "frère aîné. ",
-    "null": null
-},
-{
-    "text": "ɓa²",
-    "pluralText": "Pl. maɓa²",
-    "translate": "catastrophe; calamité; ",
-    "null": null
-},
-{
-    "text": "ɓa³",
-    "pluralText": "Pl. maɓa³",
-    "translate": "coup de pied. ",
-    "null": null
-},
-{
-    "text": "ɓaâdhwi",
+    "text": "ha dharba",
     "pluralText": null,
-    "translate": "certain. ",
+    "translate": "brusquement. ",
     "null": null
 },
 {
-    "text": "ɓaȃɗa",
+    "text": "ha djimla",
     "pluralText": null,
-    "translate": "après. ",
+    "translate": "en somme. ",
     "null": null
 },
 {
-    "text": "ɓaȃɗa ufariki",
+    "text": "ha ghafla",
     "pluralText": null,
-    "translate": "posthume (\"après la mort\"). ",
+    "translate": "brusquement. ",
     "null": null
 },
 {
-    "text": "ɓaala",
-    "pluralText": "Pl. maɓaala; Pl. maala; tâche.",
-    "translate": " ",
-    "null": null
-},
-{
-    "text": "ɓaandzi",
-    "pluralText": "Pl. maɓaandzi; Pl. mandzi; mandarine.",
-    "translate": " ",
-    "null": null
-},
-{
-    "text": "ɓaɓa",
-    "pluralText": "Pl. maɓaɓa",
-    "translate": "père. ",
-    "null": null
-},
-{
-    "text": "ɓaɓaɓole",
-    "pluralText": "Pl. maɓaɓaɓole",
-    "translate": "frère aîné du père; oncle; ",
-    "null": null
-},
-{
-    "text": "ɓaɓada (u-)",
+    "text": "ha haraka",
     "pluralText": null,
-    "translate": "débattre; débattre (se-); frétiller; ",
+    "translate": "en vitesse. ",
     "null": null
 },
 {
-    "text": "ɓaɓaiha (u-)",
+    "text": "ha mbapvi",
     "pluralText": null,
-    "translate": "confus (être -). ",
+    "translate": "doucement. ",
     "null": null
 },
 {
-    "text": "ɓaɓaisa (u-)",
+    "text": "ha mbwani",
+    "pluralText": null,
+    "translate": "en bas. ",
+    "null": null
+},
+{
+    "text": "ha msinaɗi",
+    "pluralText": null,
+    "translate": "sérieusement. ",
+    "null": null
+},
+{
+    "text": "ha muyo (u-)",
+    "pluralText": null,
+    "translate": "énerver . ",
+    "null": null
+},
+{
+    "text": "ha mwemweu",
+    "pluralText": null,
+    "translate": "progressivement (petit à petit.). ",
+    "null": null
+},
+{
+    "text": "ha siɓaɓu",
+    "pluralText": null,
+    "translate": "à cause. ",
+    "null": null
+},
+{
+    "text": "ha ukamilifu",
+    "pluralText": null,
+    "translate": "entièrement. ",
+    "null": null
+},
+{
+    "text": "ha unanufu",
+    "pluralText": null,
+    "translate": "clairement. ",
+    "null": null
+},
+{
+    "text": "ha upesi",
+    "pluralText": null,
+    "translate": "rapidement. ",
+    "null": null
+},
+{
+    "text": "ha upolevu",
+    "pluralText": null,
+    "translate": "lentement. ",
+    "null": null
+},
+{
+    "text": "haɓa",
+    "pluralText": null,
+    "translate": "pourquoi ?. ",
+    "null": null
+},
+{
+    "text": "haɓari",
+    "pluralText": "Pl. mahaɓari",
+    "translate": "nouvelle; information; affaire; ",
+    "null": null
+},
+{
+    "text": "Haɓasha",
+    "pluralText": null,
+    "translate": "Ethiopie. ",
+    "null": null
+},
+{
+    "text": "haɓisi",
+    "pluralText": null,
+    "translate": "pellicules (capillaire). ",
+    "null": null
+},
+{
+    "text": "hadhra",
+    "pluralText": null,
+    "translate": "présent. ",
+    "null": null
+},
+{
+    "text": "hadhwara",
+    "pluralText": null,
+    "translate": "réception; cérémonie; ",
+    "null": null
+},
+{
+    "text": "hadisi",
+    "pluralText": "Pl. mahadisi",
+    "translate": "histoire; récit; causerie; ",
+    "null": null
+},
+{
+    "text": "hadisi (u-)",
+    "pluralText": null,
+    "translate": "raconter; discuter; parler; converser; causer; ",
+    "null": null
+},
+{
+    "text": "hadja",
+    "pluralText": null,
+    "translate": "besoin. ",
+    "null": null
+},
+{
+    "text": "hadza (u-)",
+    "pluralText": null,
+    "translate": "enlever; éliminer; ",
+    "null": null
+},
+{
+    "text": "haɗa (u-)",
     "pluralText": null,
     "translate": "tromper. ",
     "null": null
 },
 {
-    "text": "ɓaɓatiti",
-    "pluralText": "Pl. maɓaɓatiti",
-    "translate": "frère cadet du père; oncle; ",
-    "null": null
-},
-{
-    "text": "ɓaɓu",
+    "text": "haɗafu",
     "pluralText": null,
-    "translate": "chapitre. ",
+    "translate": "formes. ",
     "null": null
 },
 {
-    "text": "ɓaɓuha (u-)",
+    "text": "haɗaya (u-)",
     "pluralText": null,
-    "translate": "bavarder. ",
+    "translate": "embobiner (qqun); duper; ",
     "null": null
 },
 {
-    "text": "ɓaɓusa (u-)",
+    "text": "haɗi",
     "pluralText": null,
-    "translate": "faire parler. ",
+    "translate": "torture; condamnation; punition; ",
     "null": null
 },
 {
-    "text": "ɓaɓushia (u-)",
+    "text": "haɗi (u-)",
     "pluralText": null,
-    "translate": "gronder. ",
+    "translate": "torturer; condamner; ",
     "null": null
 },
 {
-    "text": "ɓada-meso",
+    "text": "haɗile",
     "pluralText": null,
-    "translate": "après-demain. ",
+    "translate": "rosée. ",
     "null": null
 },
 {
-    "text": "ɓada-miheso",
+    "text": "Haɗithi",
     "pluralText": null,
-    "translate": "après-demain. ",
+    "translate": "Hadiths (actes et paroles du Prophète). ",
     "null": null
 },
 {
-    "text": "ɓadala",
-    "pluralText": "Pl. maɓadala",
-    "translate": "remplaçant. ",
-    "null": null
-},
-{
-    "text": "ɓadala ya",
+    "text": "hafadhwi (u-)",
     "pluralText": null,
-    "translate": "au lieu de. ",
+    "translate": "préserver; sauvegarder; ",
     "null": null
 },
 {
-    "text": "ɓadhili (u-)",
+    "text": "hafani",
     "pluralText": null,
-    "translate": "frauder. ",
+    "translate": "linceul. ",
     "null": null
 },
 {
-    "text": "ɓadjo",
-    "pluralText": "Pl. maɓadjo",
-    "translate": "éclat de bois; prison; ",
-    "null": null
-},
-{
-    "text": "ɓadwi",
+    "text": "hafiliha (u-)",
     "pluralText": null,
-    "translate": "méchant; pervers; ",
+    "translate": "affolé (être -). ",
     "null": null
 },
 {
-    "text": "ɓadza (u-)",
+    "text": "hafilisha (u-)",
     "pluralText": null,
-    "translate": "éponger. ",
+    "translate": "affoler. ",
     "null": null
 },
 {
-    "text": "ɓaɗi",
+    "text": "hafula",
     "pluralText": null,
-    "translate": "sauf. ",
+    "translate": "surprise; brusque ; ",
     "null": null
 },
 {
-    "text": "ɓaɗili (u-)",
+    "text": "haha (u-)",
     "pluralText": null,
-    "translate": "changer; échanger; ",
+    "translate": "moisir; gâter (se -); pourrir; décomposer (se -); ",
     "null": null
 },
 {
-    "text": "ɓafuta",
+    "text": "hahaya (u-)",
     "pluralText": null,
-    "translate": "taffetas; linceul; calicot; ",
+    "translate": "bégayer. ",
     "null": null
 },
 {
-    "text": "ɓaganisa (u-)",
+    "text": "hahe",
     "pluralText": null,
-    "translate": "appliquer. ",
+    "translate": "chez lui; chez elle; ",
     "null": null
 },
 {
-    "text": "ɓaguri",
-    "pluralText": "Pl. mabaguri",
-    "translate": "saladier; cuvette; ",
-    "null": null
-},
-{
-    "text": "ɓaha",
-    "pluralText": "Pl. maɓaha",
-    "translate": "femelle. ",
-    "null": null
-},
-{
-    "text": "ɓahari",
+    "text": "haho",
     "pluralText": null,
-    "translate": "océan; mer; ",
+    "translate": "chez toi. ",
     "null": null
 },
 {
-    "text": "Ɓahari ya Hinɗi",
+    "text": "hai",
     "pluralText": null,
-    "translate": "Océan Indien. ",
+    "translate": "vivant. ",
     "null": null
 },
 {
-    "text": "ɓaharia",
-    "pluralText": "Pl. maɓaharia",
-    "translate": "marin; docker; navigateur; ",
-    "null": null
-},
-{
-    "text": "ɓahasha",
+    "text": "haiɓa",
     "pluralText": null,
-    "translate": "enveloppe. ",
+    "translate": "ferveur. ",
     "null": null
 },
 {
-    "text": "ɓahashishi",
+    "text": "haina",
     "pluralText": null,
-    "translate": "pourboire; bakchich; pot-de-vin; dessous-de-table; ",
+    "translate": "chaque. ",
     "null": null
 },
 {
-    "text": "ɓahati",
+    "text": "haina hali",
     "pluralText": null,
-    "translate": "chance. ",
+    "translate": "quand même . ",
     "null": null
 },
 {
-    "text": "ɓahazazi",
-    "pluralText": "Pl. maɓahazazi",
-    "translate": "entrepreneur. ",
-    "null": null
-},
-{
-    "text": "ɓahe",
-    "pluralText": "Pl. maɓahe",
-    "translate": "homme; une personne; ",
-    "null": null
-},
-{
-    "text": "ɓahi !",
+    "text": "hairi",
     "pluralText": null,
-    "translate": "stop !. ",
+    "translate": "mieux. ",
     "null": null
 },
 {
-    "text": "ɓahi tu",
+    "text": "hakamu",
     "pluralText": null,
-    "translate": "uniquement. ",
+    "translate": "malédiction. ",
     "null": null
 },
 {
-    "text": "ɓaho",
+    "text": "haki",
     "pluralText": null,
-    "translate": "barrière; barrage; clôture; ",
+    "translate": "droit; justice; ",
     "null": null
 },
 {
-    "text": "ɓai",
+    "text": "hakika",
     "pluralText": null,
-    "translate": "mari; époux; ",
+    "translate": "certitude. ",
     "null": null
 },
 {
-    "text": "ɓaî (u-), ɓaîsha (u-)",
+    "text": "hakikisha (u-)",
     "pluralText": null,
-    "translate": "initier. ",
+    "translate": "certifier; prouver; ",
     "null": null
 },
 {
-    "text": "ɓaiɓu (u-)",
+    "text": "hakimu",
+    "pluralText": "Pl. mahakimu",
+    "translate": "juge suppléant. ",
+    "null": null
+},
+{
+    "text": "hakimu wa matafiti",
+    "pluralText": "Pl. mahakimu wa matafiti",
+    "translate": "juge d'instruction. ",
+    "null": null
+},
+{
+    "text": "hakua (u-)",
     "pluralText": null,
-    "translate": "tenter (faire subir une tentation); tromper; ensorceler; ",
+    "translate": "faucher. ",
     "null": null
 },
 {
-    "text": "ɓaike",
+    "text": "hala",
     "pluralText": null,
-    "translate": "même si. ",
+    "translate": "scorpion; attention; ",
     "null": null
 },
 {
-    "text": "ɓaikwa",
+    "text": "hala (u-)",
     "pluralText": null,
-    "translate": "même si. ",
+    "translate": "étaler. ",
     "null": null
 },
 {
-    "text": "ɓaina",
+    "text": "hala-hala",
     "pluralText": null,
-    "translate": "parmi; travers (a-); ",
+    "translate": "attention. ",
     "null": null
 },
 {
-    "text": "ɓaina (ya) ...(na)",
+    "text": "halafu",
     "pluralText": null,
-    "translate": "entre ...(et) .... ",
+    "translate": "alors; puis; après; ",
     "null": null
 },
 {
-    "text": "ɓaini (u-)",
+    "text": "halali",
     "pluralText": null,
-    "translate": "révéler. ",
+    "translate": "permis; légitime; pur; ",
     "null": null
 },
 {
-    "text": "ɓainisha (u-)",
+    "text": "halati",
     "pluralText": null,
-    "translate": "rendre public. ",
+    "translate": "erreur; faute; ",
     "null": null
 },
 {
-    "text": "ɓaishe",
+    "text": "halatwi",
     "pluralText": null,
-    "translate": "même si. ",
+    "translate": "erreur. ",
     "null": null
 },
 {
-    "text": "ɓaki (u-)",
+    "text": "hale",
     "pluralText": null,
-    "translate": "rester. ",
+    "translate": "conte; longtemps (il y a -); jadis; ",
     "null": null
 },
 {
-    "text": "ɓakia",
-    "pluralText": "Pl. maɓakia",
-    "translate": "groupe; partie; ",
-    "null": null
-},
-{
-    "text": "ɓakisha (u-)",
+    "text": "hali",
     "pluralText": null,
-    "translate": "résulter; rester; ",
+    "translate": "état; condition; situation; cher; ",
     "null": null
 },
 {
-    "text": "ɓako",
-    "pluralText": "Pl. maɓako",
-    "translate": "four; fourneau; réchaud; ",
-    "null": null
-},
-{
-    "text": "ɓako²",
-    "pluralText": "Pl. maɓako²",
-    "translate": "bonhomme; mec; type (un); ",
-    "null": null
-},
-{
-    "text": "ɓakoko",
-    "pluralText": "Pl. maɓakoko",
-    "translate": "grand-père. ",
-    "null": null
-},
-{
-    "text": "ɓakuli",
-    "pluralText": "Pl. maɓakuli",
-    "translate": "bol. ",
-    "null": null
-},
-{
-    "text": "ɓakwera",
+    "text": "halipva (u-)",
     "pluralText": null,
-    "translate": "canne; canne (de dance); ",
+    "translate": "durcir. ",
     "null": null
 },
 {
-    "text": "ɓala (u-)",
+    "text": "halisi",
     "pluralText": null,
-    "translate": "fermer; couvrir; boucher; ",
+    "translate": "particulièrement; très; vraiment; ",
     "null": null
 },
 {
-    "text": "ɓalandzi",
-    "pluralText": "Pl. maɓalandzi",
-    "translate": "mandarine. ",
-    "null": null
-},
-{
-    "text": "ɓalɓala",
+    "text": "halua",
     "pluralText": null,
-    "translate": "confusion; malentendu; ",
+    "translate": "bonbon; friandise; ",
     "null": null
 },
 {
-    "text": "ɓalia (u-)",
+    "text": "hama",
     "pluralText": null,
-    "translate": "amener; apporter; conduire; ",
+    "translate": "comme. ",
     "null": null
 },
 {
-    "text": "ɓalidza (u-)",
+    "text": "hama (u-)",
+    "pluralText": null,
+    "translate": "extraire (liquide); traire; demenager; ",
+    "null": null
+},
+{
+    "text": "hamaki",
+    "pluralText": null,
+    "translate": "colère. ",
+    "null": null
+},
+{
+    "text": "hamakisha (u-)",
+    "pluralText": null,
+    "translate": "énerver (qqun). ",
+    "null": null
+},
+{
+    "text": "hamɓa",
+    "pluralText": null,
+    "translate": "corde. ",
+    "null": null
+},
+{
+    "text": "hamɓa (u-)",
+    "pluralText": null,
+    "translate": "dire. ",
+    "null": null
+},
+{
+    "text": "hamɓia (u-)",
+    "pluralText": null,
+    "translate": "dire à . ",
+    "null": null
+},
+{
+    "text": "hami",
+    "pluralText": null,
+    "translate": "toile écrue. ",
+    "null": null
+},
+{
+    "text": "hamili",
+    "pluralText": null,
+    "translate": "grossesse. ",
+    "null": null
+},
+{
+    "text": "hamili (u-)",
+    "pluralText": null,
+    "translate": "enceinte (être -). ",
+    "null": null
+},
+{
+    "text": "hamisi (u-)",
+    "pluralText": null,
+    "translate": "ranger. ",
+    "null": null
+},
+{
+    "text": "hammwa (u-)",
+    "pluralText": null,
+    "translate": "epreindre; presser (qqch.); ",
+    "null": null
+},
+{
+    "text": "hamsa (u-)",
+    "pluralText": null,
+    "translate": "allaiter. ",
+    "null": null
+},
+{
+    "text": "hamsini",
+    "pluralText": null,
+    "translate": "cinquante. ",
+    "null": null
+},
+{
+    "text": "hamsu mia",
+    "pluralText": null,
+    "translate": "cinq cents. ",
+    "null": null
+},
+{
+    "text": "hamsumia",
+    "pluralText": null,
+    "translate": "cinq cents. ",
+    "null": null
+},
+{
+    "text": "hamu",
+    "pluralText": null,
+    "translate": "souci; tristesse; chagrin; manque; ",
+    "null": null
+},
+{
+    "text": "hamua (u-)",
+    "pluralText": null,
+    "translate": "essorer; epreindre; presser; ",
+    "null": null
+},
+{
+    "text": "hana (u-)",
+    "pluralText": null,
+    "translate": "nier; démentir; contester; ",
+    "null": null
+},
+{
+    "text": "hanale",
+    "pluralText": null,
+    "translate": "maquereau. ",
+    "null": null
+},
+{
+    "text": "hanasi",
+    "pluralText": null,
+    "translate": "serpent. ",
+    "null": null
+},
+{
+    "text": "handra",
+    "pluralText": null,
+    "translate": "premier; en premier; ",
+    "null": null
+},
+{
+    "text": "handra (u-)",
+    "pluralText": null,
+    "translate": "masser. ",
+    "null": null
+},
+{
+    "text": "handrani",
+    "pluralText": null,
+    "translate": "premièrement. ",
+    "null": null
+},
+{
+    "text": "handrilia (u-)",
+    "pluralText": null,
+    "translate": "masser. ",
+    "null": null
+},
+{
+    "text": "handza (u-)",
+    "pluralText": null,
+    "translate": "faire évaporer. ",
+    "null": null
+},
+{
+    "text": "hanɗa (u-)",
+    "pluralText": null,
+    "translate": "masser. ",
+    "null": null
+},
+{
+    "text": "hanɗani",
+    "pluralText": null,
+    "translate": "premièrement. ",
+    "null": null
+},
+{
+    "text": "hanɗisa (u-)",
+    "pluralText": null,
+    "translate": "commencer. ",
+    "null": null
+},
+{
+    "text": "hanga (u-)",
+    "pluralText": null,
+    "translate": "évaporer. ",
+    "null": null
+},
+{
+    "text": "hangu",
+    "pluralText": null,
+    "translate": "chez moi. ",
+    "null": null
+},
+{
+    "text": "hangua",
+    "pluralText": null,
+    "translate": "ocimum. ",
+    "null": null
+},
+{
+    "text": "hangua (u-)",
+    "pluralText": null,
+    "translate": "enlever les restes d'un filtrage; racler; ",
+    "null": null
+},
+{
+    "text": "haniha (u-)",
+    "pluralText": null,
+    "translate": "faire sécher ; essorer; ",
+    "null": null
+},
+{
+    "text": "hanithi",
+    "pluralText": null,
+    "translate": "effeminé. ",
+    "null": null
+},
+{
+    "text": "hankulia (u-)",
+    "pluralText": null,
+    "translate": "attraper. ",
+    "null": null
+},
+{
+    "text": "hankuliwa (u-)",
+    "pluralText": null,
+    "translate": "être attrapé. ",
+    "null": null
+},
+{
+    "text": "hantsi (u-)",
+    "pluralText": null,
+    "translate": "laisser; poser; ",
+    "null": null
+},
+{
+    "text": "hantsiwa (u-)",
+    "pluralText": null,
+    "translate": "abandonné (être); laissé (être); ",
+    "null": null
+},
+{
+    "text": "hantsiza (u-)",
+    "pluralText": null,
+    "translate": "laisser à. ",
+    "null": null
+},
+{
+    "text": "hantushi",
+    "pluralText": "Pl. mahantushi",
+    "translate": "puanteur. ",
+    "null": null
+},
+{
+    "text": "hanyo",
+    "pluralText": null,
+    "translate": "bouche; gueule; ",
+    "null": null
+},
+{
+    "text": "hanyu",
+    "pluralText": null,
+    "translate": "chez vous. ",
+    "null": null
+},
+{
+    "text": "hanyua (u-)",
+    "pluralText": null,
+    "translate": "arracher; déraciner; ",
+    "null": null
+},
+{
+    "text": "hanywa",
+    "pluralText": null,
+    "translate": "bouche. ",
+    "null": null
+},
+{
+    "text": "hapvi",
+    "pluralText": null,
+    "translate": "où. ",
+    "null": null
+},
+{
+    "text": "haraka",
+    "pluralText": null,
+    "translate": "vite; rapidement; ",
+    "null": null
+},
+{
+    "text": "haraka (u-)",
+    "pluralText": null,
+    "translate": "faire vite. ",
+    "null": null
+},
+{
+    "text": "harakisha (u-)",
+    "pluralText": null,
+    "translate": "accélérer. ",
+    "null": null
+},
+{
+    "text": "harama",
+    "pluralText": null,
+    "translate": "dépenses. ",
+    "null": null
+},
+{
+    "text": "haramu",
+    "pluralText": null,
+    "translate": "interdit (divin); illicite; illégitime; ",
+    "null": null
+},
+{
+    "text": "harara",
+    "pluralText": null,
+    "translate": "crainte; angoisse; ",
+    "null": null
+},
+{
+    "text": "haraya (u-)",
+    "pluralText": null,
+    "translate": "refuser. ",
+    "null": null
+},
+{
+    "text": "haraza (u-)",
     "pluralText": null,
     "translate": "interdire. ",
     "null": null
 },
 {
-    "text": "ɓalighi (u-)",
+    "text": "hareni",
     "pluralText": null,
-    "translate": "majeur (être-); éveillé (être -); adulte (être-); ",
+    "translate": "boucle d'oreille. ",
     "null": null
 },
 {
-    "text": "ɓalilia (u-)",
+    "text": "hari",
     "pluralText": null,
-    "translate": "envelopper; enfermer; prévenir; ",
+    "translate": "milieu; centre; on-dit; chaleur; sueur; transpiration; ",
     "null": null
 },
 {
-    "text": "ɓalozi",
-    "pluralText": "Pl. maɓalozi",
-    "translate": "ambassadeur. ",
-    "null": null
-},
-{
-    "text": "ɓama (u-)",
+    "text": "harimia (u-)",
     "pluralText": null,
-    "translate": "évanouir (s'-). ",
+    "translate": "dépenser. ",
     "null": null
 },
 {
-    "text": "ɓamba (u-)",
+    "text": "harimwa",
     "pluralText": null,
-    "translate": "envoûter; toucher; ",
+    "translate": "dans; au milieu de; ",
     "null": null
 },
 {
-    "text": "ɓambu",
-    "pluralText": "Pl. maɓambu",
-    "translate": "récompense; prix; ",
-    "null": null
-},
-{
-    "text": "ɓambwa (u-)",
+    "text": "harine",
     "pluralText": null,
-    "translate": "possédé (être -). ",
+    "translate": "boucle d'oreille. ",
     "null": null
 },
 {
-    "text": "ɓamɓa (u-)",
+    "text": "hariri",
     "pluralText": null,
-    "translate": "hypnotiser; envoûter; ",
+    "translate": "soie. ",
     "null": null
 },
 {
-    "text": "Ɓamɓao",
+    "text": "harufu",
     "pluralText": null,
-    "translate": "Bambao. ",
+    "translate": "parfum; odeur; lettre (de l'alphabet); ",
     "null": null
 },
 {
-    "text": "ɓamɓu",
-    "pluralText": "Pl. maɓamɓu",
-    "translate": "cadeau; prime; ",
-    "null": null
-},
-{
-    "text": "ɓamia (u-)",
-    "pluralText": null,
-    "translate": "abriter (s'-). ",
-    "null": null
-},
-{
-    "text": "ɓamisa (u-)",
-    "pluralText": null,
-    "translate": "assommer. ",
-    "null": null
-},
-{
-    "text": "ɓamuhe",
-    "pluralText": null,
-    "translate": "beau-père; gendre; ",
-    "null": null
-},
-{
-    "text": "ɓanara",
-    "pluralText": null,
-    "translate": "terrasse; toit (plat); ",
-    "null": null
-},
-{
-    "text": "ɓandari",
-    "pluralText": null,
-    "translate": "port. ",
-    "null": null
-},
-{
-    "text": "ɓandra",
-    "pluralText": "Pl. maɓandra",
-    "translate": "vallée; plaine; ",
-    "null": null
-},
-{
-    "text": "ɓandrishio",
-    "pluralText": "Pl. maɓandrishio",
-    "translate": "chaudron. ",
-    "null": null
-},
-{
-    "text": "ɓandzua (u-)",
-    "pluralText": null,
-    "translate": "écarter; déplacer; ",
-    "null": null
-},
-{
-    "text": "ɓandzuha (u-)",
-    "pluralText": null,
-    "translate": "écarter (s'-). ",
-    "null": null
-},
-{
-    "text": "ɓanɗa",
-    "pluralText": "Pl. maɓanɗa",
-    "translate": "salon; salle à manger; plaine; vallée; ",
-    "null": null
-},
-{
-    "text": "ɓanga",
-    "pluralText": "Pl. maɓanga",
-    "translate": "abattoir; hutte; cabane; mémorisation; cuisine; ",
-    "null": null
-},
-{
-    "text": "ɓangazo",
-    "pluralText": "Pl. maɓangazo",
-    "translate": "réunion nocturne. ",
-    "null": null
-},
-{
-    "text": "ɓange",
-    "pluralText": "Pl. maɓange",
-    "translate": "haschich. ",
-    "null": null
-},
-{
-    "text": "ɓangili",
-    "pluralText": null,
-    "translate": "bracelet. ",
-    "null": null
-},
-{
-    "text": "ɓanguzi",
-    "pluralText": "Pl. maɓanguzi",
-    "translate": "plaie; bobo; croûte (sur la peau); ",
-    "null": null
-},
-{
-    "text": "ɓangwe",
-    "pluralText": "Pl. maɓangwe",
-    "translate": "place publique; troupeau; ",
-    "null": null
-},
-{
-    "text": "ɓani (+ connectif)",
-    "pluralText": "Pl. maɓani (+ connectif)",
-    "translate": "de même taille/âge (que); génération; promotion ; ",
-    "null": null
-},
-{
-    "text": "ɓankora",
-    "pluralText": null,
-    "translate": "canne. ",
-    "null": null
-},
-{
-    "text": "ɓankorwa",
-    "pluralText": null,
-    "translate": "canne; canne (de dance); ",
-    "null": null
-},
-{
-    "text": "ɓanta",
-    "pluralText": "Pl. maɓanta",
-    "translate": "canard. ",
-    "null": null
-},
-{
-    "text": "ɓantiti",
-    "pluralText": null,
-    "translate": "grand-frère. ",
-    "null": null
-},
-{
-    "text": "ɓao",
-    "pluralText": "Pl. maɓao",
-    "translate": "planche; ardoise; pendatif; ",
-    "null": null
-},
-{
-    "text": "ɓara",
-    "pluralText": "Pl. maɓara",
-    "translate": "continent. ",
-    "null": null
-},
-{
-    "text": "ɓaraɓahi",
-    "pluralText": "Pl. maɓaraɓahi",
-    "translate": "banane. ",
-    "null": null
-},
-{
-    "text": "ɓaraɓufaka",
-    "pluralText": null,
-    "translate": "banane Frécinette. ",
-    "null": null
-},
-{
-    "text": "ɓarafu",
-    "pluralText": null,
-    "translate": "glace. ",
-    "null": null
-},
-{
-    "text": "ɓaragamu",
-    "pluralText": null,
-    "translate": "conque. ",
-    "null": null
-},
-{
-    "text": "ɓaragumu",
-    "pluralText": "Pl. maɓaragumu",
-    "translate": "conque. ",
-    "null": null
-},
-{
-    "text": "ɓaraka",
-    "pluralText": null,
-    "translate": "bénédiction. ",
-    "null": null
-},
-{
-    "text": "ɓaraza",
-    "pluralText": "Pl. maɓaraza",
-    "translate": "assemblée (chambre des députés); terrasse; ",
-    "null": null
-},
-{
-    "text": "ɓari",
-    "pluralText": "Pl. maɓari",
-    "translate": "force; courage; ",
-    "null": null
-},
-{
-    "text": "ɓariɓari",
-    "pluralText": "Pl. mabaribari",
-    "translate": "mouton. ",
-    "null": null
-},
-{
-    "text": "ɓariɗi",
-    "pluralText": null,
-    "translate": "froid. ",
-    "null": null
-},
-{
-    "text": "ɓarika",
-    "pluralText": "Pl. maɓarika",
-    "translate": "bidon (récipient). ",
-    "null": null
-},
-{
-    "text": "ɓariki (u-)",
-    "pluralText": null,
-    "translate": "bénir. ",
-    "null": null
-},
-{
-    "text": "ɓarikiha (u-)",
-    "pluralText": null,
-    "translate": "être béni. ",
-    "null": null
-},
-{
-    "text": "ɓariza",
-    "pluralText": null,
-    "translate": "bonjour . ",
-    "null": null
-},
-{
-    "text": "ɓarizi (u-)",
-    "pluralText": null,
-    "translate": "être en place; occuper; ",
-    "null": null
-},
-{
-    "text": "ɓarua",
-    "pluralText": null,
-    "translate": "lettre. ",
-    "null": null
-},
-{
-    "text": "ɓarza",
-    "pluralText": null,
-    "translate": "quoi de neuf. ",
-    "null": null
-},
-{
-    "text": "ɓasauha (u-)",
-    "pluralText": null,
-    "translate": "épanouir (s'-); éclore; ",
-    "null": null
-},
-{
-    "text": "ɓasha (u-)",
-    "pluralText": null,
-    "translate": "animer. ",
-    "null": null
-},
-{
-    "text": "ɓashasha",
-    "pluralText": null,
-    "translate": "enthousiasme; ambiance; ",
-    "null": null
-},
-{
-    "text": "ɓasi !",
-    "pluralText": null,
-    "translate": "stop !. ",
-    "null": null
-},
-{
-    "text": "ɓastwi",
-    "pluralText": "Pl. maɓastwi",
-    "translate": "plaisir. ",
-    "null": null
-},
-{
-    "text": "ɓata",
-    "pluralText": "Pl. maɓata",
-    "translate": "canard. ",
-    "null": null
-},
-{
-    "text": "ɓataɓata",
-    "pluralText": null,
-    "translate": "bananes bouillies; manioc bouilli; ",
-    "null": null
-},
-{
-    "text": "ɓatana (u-)",
-    "pluralText": null,
-    "translate": "être d'un seul morceau. ",
-    "null": null
-},
-{
-    "text": "ɓatani",
-    "pluralText": null,
-    "translate": "futile. ",
-    "null": null
-},
-{
-    "text": "ɓatata",
-    "pluralText": "Pl. maɓatata",
-    "translate": "patate douce. ",
-    "null": null
-},
-{
-    "text": "ɓati",
-    "pluralText": "Pl. maɓati",
-    "translate": "plomb (métal). ",
-    "null": null
-},
-{
-    "text": "ɓatwala",
-    "pluralText": null,
-    "translate": "banalités; inutile; ",
-    "null": null
-},
-{
-    "text": "ɓaua",
-    "pluralText": "Pl. maɓaua; Pl. maua; fleur.",
-    "translate": " ",
-    "null": null
-},
-{
-    "text": "ɓauha (u-)",
-    "pluralText": null,
-    "translate": "laisser tranquille. ",
-    "null": null
-},
-{
-    "text": "ɓavu",
-    "pluralText": "Pl. maɓavu",
-    "translate": "zone; région; côté; ",
-    "null": null
-},
-{
-    "text": "ɓavuni",
-    "pluralText": "Pl. maɓavuni",
-    "translate": "à côté . ",
-    "null": null
-},
-{
-    "text": "ɓawa",
-    "pluralText": "Pl. maɓawa",
-    "translate": "aile; omoplate; ",
-    "null": null
-},
-{
-    "text": "ɓawaɓa",
-    "pluralText": null,
-    "translate": "gond. ",
-    "null": null
-},
-{
-    "text": "ɓaya",
-    "pluralText": "Pl. maɓaya",
-    "translate": "catastrophe; calamité; ",
-    "null": null
-},
-{
-    "text": "ɓaya (u-)",
-    "pluralText": null,
-    "translate": "fermer. ",
-    "null": null
-},
-{
-    "text": "ɓaza (u-)",
-    "pluralText": null,
-    "translate": "boucher. ",
-    "null": null
-},
-{
-    "text": "ɓazari",
-    "pluralText": "Pl. maɓazari",
-    "translate": "marché (lieu commercial). ",
-    "null": null
-},
-{
-    "text": "ɓaziza (u-)",
-    "pluralText": null,
-    "translate": "empiéter . ",
-    "null": null
-},
-{
-    "text": "ɓazo",
-    "pluralText": "Pl. maɓazo",
-    "translate": "bouchon. ",
-    "null": null
-},
-{
-    "text": "ɓɓa",
-    "pluralText": "Pl. waɓaɓa",
-    "translate": "père. ",
-    "null": null
-},
-{
-    "text": "ɓe",
-    "pluralText": null,
-    "translate": "mais; car; ",
-    "null": null
-},
-{
-    "text": "ɓea",
-    "pluralText": "Pl. maɓea",
-    "translate": "génération; promotion ; ",
-    "null": null
-},
-{
-    "text": "ɓeɓea (u-)",
-    "pluralText": null,
-    "translate": "faire l'amour. ",
-    "null": null
-},
-{
-    "text": "ɓeɓeru",
-    "pluralText": "Pl. maɓeɓeru",
-    "translate": "bouc. ",
-    "null": null
-},
-{
-    "text": "ɓeedhwa",
-    "pluralText": null,
-    "translate": "découvert (nu). ",
-    "null": null
-},
-{
-    "text": "ɓega",
-    "pluralText": "Pl. maɓega",
-    "translate": "épaule. ",
-    "null": null
-},
-{
-    "text": "ɓehewa",
-    "pluralText": "Pl. maɓehewa",
-    "translate": "camp militaire. ",
-    "null": null
-},
-{
-    "text": "ɓei",
-    "pluralText": null,
-    "translate": "prix; tarif; valeur; ",
-    "null": null
-},
-{
-    "text": "ɓele",
-    "pluralText": "Pl. maɓele",
-    "translate": "mamelle; sein; ",
-    "null": null
-},
-{
-    "text": "ɓendera",
-    "pluralText": null,
-    "translate": "bandana. ",
-    "null": null
-},
-{
-    "text": "ɓenge",
-    "pluralText": "Pl. maɓenge",
-    "translate": "caisse (argent). ",
-    "null": null
-},
-{
-    "text": "ɓepare",
-    "pluralText": "Pl. maɓepare",
-    "translate": "bourgeois; capitaliste; ",
-    "null": null
-},
-{
-    "text": "ɓeramu",
-    "pluralText": null,
-    "translate": "drapeau. ",
-    "null": null
-},
-{
-    "text": "ɓeshelea",
-    "pluralText": "Pl. maɓeshelea",
-    "translate": "nostalgie; souvenir; ",
-    "null": null
-},
-{
-    "text": "ɓewe",
-    "pluralText": "Pl. maɓewe",
-    "translate": "bouc. ",
-    "null": null
-},
-{
-    "text": "ɓi",
-    "pluralText": "Pl. mai",
-    "translate": "mauvais caractère. ",
-    "null": null
-},
-{
-    "text": "ɓia",
-    "pluralText": "Pl. maɓia",
-    "translate": "bassin; jarre; ",
-    "null": null
-},
-{
-    "text": "ɓiâshara",
-    "pluralText": null,
-    "translate": "commerce; business; ",
-    "null": null
-},
-{
-    "text": "ɓiɓa",
-    "pluralText": "Pl. maɓiɓa",
-    "translate": "bide. ",
-    "null": null
-},
-{
-    "text": "ɓiɓi",
-    "pluralText": "Pl. maɓiɓi",
-    "translate": "madame; dame; ",
-    "null": null
-},
-{
-    "text": "ɓiɓi-harusi",
-    "pluralText": "Pl. maɓiɓi-harusi",
-    "translate": "épouse; mariée; ",
-    "null": null
-},
-{
-    "text": "ɓiɓo",
-    "pluralText": null,
-    "translate": "noix de cajou. ",
-    "null": null
-},
-{
-    "text": "ɓidhwaya",
-    "pluralText": null,
-    "translate": "marchandise; capital commercial; stock; ",
-    "null": null
-},
-{
-    "text": "ɓidia",
-    "pluralText": null,
-    "translate": "acharnement. ",
-    "null": null
-},
-{
-    "text": "ɓidza",
-    "pluralText": null,
-    "translate": "crasse. ",
-    "null": null
-},
-{
-    "text": "ɓiɗi",
-    "pluralText": null,
-    "translate": "énergie. ",
-    "null": null
-},
-{
-    "text": "ɓiɗi (u-)",
-    "pluralText": null,
-    "translate": "falloir. ",
-    "null": null
-},
-{
-    "text": "ɓiɗuha (u-)",
-    "pluralText": null,
-    "translate": "bouder. ",
-    "null": null
-},
-{
-    "text": "ɓiha (u-)",
-    "pluralText": null,
-    "translate": "cogner; battre; ",
-    "null": null
-},
-{
-    "text": "ɓihanya (u-)",
-    "pluralText": null,
-    "translate": "mélanger. ",
-    "null": null
-},
-{
-    "text": "ɓihizo",
-    "pluralText": "Pl. maɓihizo",
-    "translate": "forte pluie. ",
-    "null": null
-},
-{
-    "text": "ɓii",
-    "pluralText": "Pl. maɓii",
-    "translate": "fumée. ",
-    "null": null
-},
-{
-    "text": "ɓiji (u-)",
+    "text": "haruka (u-)",
     "pluralText": null,
     "translate": "plonger. ",
     "null": null
 },
 {
-    "text": "ɓila",
+    "text": "harusi",
     "pluralText": null,
-    "translate": "sans. ",
+    "translate": "mariage. ",
     "null": null
 },
 {
-    "text": "ɓila shaka",
+    "text": "hasanati",
     "pluralText": null,
-    "translate": "bien sûr. ",
+    "translate": "hassanate. ",
     "null": null
 },
 {
-    "text": "ɓilauri",
+    "text": "hasara",
     "pluralText": null,
-    "translate": "verre (matière). ",
+    "translate": "ravages; inconvénient; perte; préjudice; ",
     "null": null
 },
 {
-    "text": "ɓili",
+    "text": "hashiri",
     "pluralText": null,
-    "translate": "bille. ",
+    "translate": "réveillé; vigilant; ",
     "null": null
 },
 {
-    "text": "ɓilingani",
-    "pluralText": "Pl. maɓilingani",
-    "translate": "aubergine. ",
-    "null": null
-},
-{
-    "text": "ɓinadamu",
+    "text": "hashua (u-)",
     "pluralText": null,
-    "translate": "humain. ",
+    "translate": "arracher énergiquement. ",
     "null": null
 },
 {
-    "text": "ɓinda",
-    "pluralText": "Pl. maɓinda",
-    "translate": "fibre de coco. ",
-    "null": null
-},
-{
-    "text": "ɓindro",
+    "text": "hasiɓu",
     "pluralText": null,
-    "translate": "corde d’écorce de cocotier . ",
+    "translate": "compte. ",
     "null": null
 },
 {
-    "text": "ɓindrua (hu-)",
+    "text": "hasiɓu (u-)",
     "pluralText": null,
-    "translate": "éructer. ",
+    "translate": "compter; calculer; ",
     "null": null
 },
 {
-    "text": "ɓindrua (u-)",
+    "text": "hasiɗi (u-)",
     "pluralText": null,
-    "translate": "roter. ",
+    "translate": "envier. ",
     "null": null
 },
 {
-    "text": "ɓindrua²",
+    "text": "hasira",
     "pluralText": null,
-    "translate": "rot. ",
+    "translate": "colère. ",
     "null": null
 },
 {
-    "text": "ɓinɗua (u-)",
+    "text": "haswa",
     "pluralText": null,
-    "translate": "roter. ",
+    "translate": "essentiellement; surtout; spécialement; ",
     "null": null
 },
 {
-    "text": "ɓingu",
-    "pluralText": "Pl. maingu",
-    "translate": "ciel; nuage; ",
-    "null": null
-},
-{
-    "text": "ɓiria",
-    "pluralText": "Pl. maɓiria",
-    "translate": "passager. ",
-    "null": null
-},
-{
-    "text": "ɓiriani",
+    "text": "hata",
     "pluralText": null,
-    "translate": "riz préparé à l'indienne. ",
+    "translate": "jusque; zéro; rien; ",
     "null": null
 },
 {
-    "text": "ɓirika",
+    "text": "hatru",
     "pluralText": null,
-    "translate": "théière; bassin d'eau; ",
+    "translate": "chez nous. ",
     "null": null
 },
 {
-    "text": "ɓiswara",
+    "text": "hatua",
     "pluralText": null,
-    "translate": "sagesse. ",
+    "translate": "décret. ",
     "null": null
 },
 {
-    "text": "ɓitana",
+    "text": "hatwari",
     "pluralText": null,
-    "translate": "doublure. ",
+    "translate": "danger. ",
     "null": null
 },
 {
-    "text": "ɓitsi",
+    "text": "hatwi",
     "pluralText": null,
-    "translate": "frais (aliment); non mûr; ",
+    "translate": "écriture; signature; ",
     "null": null
 },
 {
-    "text": "ɓiyaya",
-    "pluralText": "Pl. maɓiyaya",
-    "translate": "danse traditionnelle (danser par les pêcheurs à leurs retours). ",
-    "null": null
-},
-{
-    "text": "ɓo",
+    "text": "hatwiɓu",
     "pluralText": null,
-    "translate": "oh (interj.). ",
+    "translate": "prédicateur. ",
     "null": null
 },
 {
-    "text": "ɓomba",
-    "pluralText": "Pl. maɓomba",
-    "translate": "tube. ",
-    "null": null
-},
-{
-    "text": "ɓombeo",
-    "pluralText": "Pl. maɓombeo",
-    "translate": "souhait. ",
-    "null": null
-},
-{
-    "text": "ɓombwa",
-    "pluralText": "Pl. maɓombwa",
-    "translate": "lavoir. ",
-    "null": null
-},
-{
-    "text": "ɓomɓo",
+    "text": "hau",
     "pluralText": null,
-    "translate": "objet d'occasion; usé; ",
+    "translate": "ou.. ",
     "null": null
 },
 {
-    "text": "ɓomoa (u-)",
+    "text": "haua (u-)",
     "pluralText": null,
-    "translate": "démolir. ",
+    "translate": "tourner. ",
     "null": null
 },
 {
-    "text": "ɓomu",
-    "pluralText": "Pl. maɓomu",
-    "translate": "explosif (un). ",
-    "null": null
-},
-{
-    "text": "ɓomwa (u-)",
+    "text": "hauli",
     "pluralText": null,
-    "translate": "démolir. ",
+    "translate": "commémoration. ",
     "null": null
 },
 {
-    "text": "ɓonezi",
+    "text": "hauso (u-)",
     "pluralText": null,
-    "translate": "mépris. ",
+    "translate": "laver le visage. ",
     "null": null
 },
 {
-    "text": "ɓonoɓo",
-    "pluralText": "Pl. maɓonoɓo",
-    "translate": "avocat (fruit). ",
-    "null": null
-},
-{
-    "text": "ɓora",
+    "text": "havi",
     "pluralText": null,
-    "translate": "mieux. ",
+    "translate": "où. ",
     "null": null
 },
 {
-    "text": "ɓorwa",
+    "text": "hawa",
     "pluralText": null,
-    "translate": "mieux. ",
+    "translate": "air; atmosphère; ",
     "null": null
 },
 {
-    "text": "ɓosee",
+    "text": "hawadji",
     "pluralText": null,
-    "translate": "peut-être; probablement; ",
+    "translate": "cumin. ",
     "null": null
 },
 {
-    "text": "ɓotra (u-)",
+    "text": "hawara",
     "pluralText": null,
-    "translate": "attacher; nouer; ",
+    "translate": "amant(e); maîtresse; ",
     "null": null
 },
 {
-    "text": "ɓotsi",
-    "pluralText": "Pl. maɓotsi",
-    "translate": "futile. ",
-    "null": null
-},
-{
-    "text": "ɓua (u-)",
+    "text": "hawo",
     "pluralText": null,
-    "translate": "ouvrir; puiser; ramasser (sable); ",
+    "translate": "chez eux; chez elles; ",
     "null": null
 },
 {
-    "text": "ɓuɓu",
-    "pluralText": "Pl. maɓuɓu",
-    "translate": "muet. ",
-    "null": null
-},
-{
-    "text": "ɓuɓua (u-)",
+    "text": "haya",
     "pluralText": null,
-    "translate": "fracasser; battre; broyer; ",
+    "translate": "honte; pudeur; ",
     "null": null
 },
 {
-    "text": "ɓudja",
+    "text": "hayati",
     "pluralText": null,
-    "translate": "vice. ",
+    "translate": "vie (fait de vivre). ",
     "null": null
 },
 {
-    "text": "ɓudzudza (u-)",
+    "text": "hayi",
     "pluralText": null,
-    "translate": "retourner; renverser; ",
+    "translate": "vivant. ",
     "null": null
 },
 {
-    "text": "ɓudzuha (u-)",
+    "text": "haza (u-)",
     "pluralText": null,
-    "translate": "retourner (se). ",
+    "translate": "serrer; nouer (fortement); ",
     "null": null
 },
 {
-    "text": "ɓuha (u-)",
+    "text": "hazi",
     "pluralText": null,
-    "translate": "ouvert (être -). ",
+    "translate": "travail; métier; profession; ",
     "null": null
 },
 {
-    "text": "ɓuhamu",
-    "pluralText": "Pl. maɓuhamu",
-    "translate": "cancre. ",
-    "null": null
-},
-{
-    "text": "ɓuhua (u-)",
+    "text": "hazina",
     "pluralText": null,
-    "translate": "détresser; démêler; dénouer; ",
+    "translate": "trésor. ",
     "null": null
 },
 {
-    "text": "ɓuhudza (u-)",
+    "text": "hea (u-)",
     "pluralText": null,
-    "translate": "verser; vider; ",
+    "translate": "monter; grimper; escalader; ",
     "null": null
 },
 {
-    "text": "ɓuhuo",
-    "pluralText": "Pl. maɓuhuo",
-    "translate": "fièvre; grippe; ",
-    "null": null
-},
-{
-    "text": "ɓuhuri",
+    "text": "hea uvu (u-)",
     "pluralText": null,
-    "translate": "encens. ",
+    "translate": "moisir. ",
     "null": null
 },
 {
-    "text": "ɓuku",
-    "pluralText": "Pl. maɓuku",
-    "translate": "cahier. ",
-    "null": null
-},
-{
-    "text": "ɓuledi",
-    "pluralText": "Pl. ɓuledi",
-    "translate": "petite amie. ",
-    "null": null
-},
-{
-    "text": "ɓuli",
+    "text": "heana (u-)",
     "pluralText": null,
-    "translate": "théière. ",
+    "translate": "accoupler. ",
     "null": null
 },
 {
-    "text": "ɓulia (u-)",
+    "text": "heɓu",
     "pluralText": null,
-    "translate": "délier; ouvrir à; ",
+    "translate": "comme. ",
     "null": null
 },
 {
-    "text": "ɓumbo",
-    "pluralText": "Pl. maɓumbo",
-    "translate": "mentalité; caractère (qualité ou défaut); ",
-    "null": null
-},
-{
-    "text": "ɓumɓio",
-    "pluralText": "Pl. maɓumɓio",
-    "translate": "caractère (qualité ou défaut). ",
-    "null": null
-},
-{
-    "text": "ɓumɓo",
-    "pluralText": "Pl. maɓumɓo",
-    "translate": "mentalité; caractère (qualité ou défaut); ",
-    "null": null
-},
-{
-    "text": "ɓumɓwa",
-    "pluralText": "Pl. maɓumɓwa",
-    "translate": "mentalité; caractère (qualité ou défaut); ",
-    "null": null
-},
-{
-    "text": "ɓumua (u-)",
+    "text": "hedja",
     "pluralText": null,
-    "translate": "découdre; démêler; ",
+    "translate": "pèlerinage. ",
     "null": null
 },
 {
-    "text": "ɓunarithi",
+    "text": "hedza (u-)",
     "pluralText": null,
-    "translate": "tour (de guet). ",
+    "translate": "chanter; hisser; faire montrer; monter; ",
     "null": null
 },
 {
-    "text": "ɓundjilio",
-    "pluralText": "Pl. maɓundjilio",
-    "translate": "reunion; rassemblement; ",
-    "null": null
-},
-{
-    "text": "ɓundra",
-    "pluralText": "Pl. maɓundra",
-    "translate": "étai. ",
-    "null": null
-},
-{
-    "text": "ɓundrajoma",
-    "pluralText": "Pl. maɓwindrajoma",
-    "translate": "hibou. ",
-    "null": null
-},
-{
-    "text": "ɓundri",
-    "pluralText": "Pl. maɓundri",
-    "translate": "hibou. ",
-    "null": null
-},
-{
-    "text": "ɓundru",
-    "pluralText": "Pl. maɓundru",
-    "translate": "morceau; émoussé; ",
-    "null": null
-},
-{
-    "text": "ɓunɗi-suli",
-    "pluralText": "Pl. maɓunɗi-suli",
-    "translate": "rapace. ",
-    "null": null
-},
-{
-    "text": "ɓunɗu-kudju",
-    "pluralText": "Pl. maɓunɗu-kudju",
-    "translate": "hibou. ",
-    "null": null
-},
-{
-    "text": "ɓunɗuki",
+    "text": "hela (u-)",
     "pluralText": null,
-    "translate": "pistolet; fusil; ",
+    "translate": "mesurer. ",
     "null": null
 },
 {
-    "text": "ɓunɗukudju",
-    "pluralText": "Pl. maɓunɗukudju",
-    "translate": "hibou. ",
+    "text": "hele",
+    "pluralText": null,
+    "translate": "ondes; houle; ",
     "null": null
 },
 {
-    "text": "ɓungu",
-    "pluralText": "Pl. maungu; Pl. maugu; ver; parasite; larve; microbe;",
+    "text": "heli",
+    "pluralText": null,
+    "translate": "condition; situation; état; ",
+    "null": null
+},
+{
+    "text": "hema",
+    "pluralText": null,
+    "translate": "tente. ",
+    "null": null
+},
+{
+    "text": "hendza (u-)",
+    "pluralText": null,
+    "translate": "hanter. ",
+    "null": null
+},
+{
+    "text": "hendziwa (u-)",
+    "pluralText": null,
+    "translate": "hanté (être -). ",
+    "null": null
+},
+{
+    "text": "hentsi (u-)",
+    "pluralText": null,
+    "translate": "poser; garder; ",
+    "null": null
+},
+{
+    "text": "heri",
+    "pluralText": null,
+    "translate": "bonheur; grâce divine; ",
+    "null": null
+},
+{
+    "text": "hetsi (u-)",
+    "pluralText": null,
+    "translate": "déposer; laisser; ",
+    "null": null
+},
+{
+    "text": "hetsiwa (u-)",
+    "pluralText": null,
+    "translate": "être déposé. ",
+    "null": null
+},
+{
+    "text": "heu",
+    "pluralText": null,
+    "translate": "lumière. ",
+    "null": null
+},
+{
+    "text": "heuha (u-)",
+    "pluralText": null,
+    "translate": "envoler; voler (dans les airs); ",
+    "null": null
+},
+{
+    "text": "heza (u-)",
+    "pluralText": null,
+    "translate": "chanter; hisser; ",
+    "null": null
+},
+{
+    "text": "hia (u-)",
+    "pluralText": null,
+    "translate": "bouillir. ",
+    "null": null
+},
+{
+    "text": "hiana",
+    "pluralText": null,
+    "translate": "tromperie. ",
+    "null": null
+},
+{
+    "text": "hiari",
+    "pluralText": null,
+    "translate": "choix. ",
+    "null": null
+},
+{
+    "text": "hibu (u-)",
+    "pluralText": null,
+    "translate": "préférer. ",
+    "null": null
+},
+{
+    "text": "hiɓa (u-)",
+    "pluralText": null,
+    "translate": "voler; dérober; ",
+    "null": null
+},
+{
+    "text": "hiɓu (u-)",
+    "pluralText": null,
+    "translate": "se perdre; volatiliser; disparaître; ",
+    "null": null
+},
+{
+    "text": "hidjaɓu",
+    "pluralText": null,
+    "translate": "vigil. ",
+    "null": null
+},
+{
+    "text": "hidza",
+    "pluralText": null,
+    "translate": "obscurité. ",
+    "null": null
+},
+{
+    "text": "hiɗaya Pl. ziɗaya",
+    "pluralText": "don; donation; cadeau;",
     "translate": " ",
     "null": null
 },
 {
-    "text": "ɓunguo",
-    "pluralText": "Pl. maɓunguo",
-    "translate": "désunion. ",
+    "text": "hiɗwa Pl. ziɗwa",
+    "pluralText": "insulte.",
+    "translate": " ",
     "null": null
 },
 {
-    "text": "ɓuni",
-    "pluralText": "Pl. mauni",
-    "translate": "feuille sèche de bananier; café; ",
-    "null": null
-},
-{
-    "text": "ɓunku",
-    "pluralText": "Pl. maɓunku",
-    "translate": "amas. ",
-    "null": null
-},
-{
-    "text": "ɓura",
-    "pluralText": "Pl. maɓura",
-    "translate": "criquet. ",
-    "null": null
-},
-{
-    "text": "ɓure",
+    "text": "hifadhwi",
     "pluralText": null,
-    "translate": "inutile; gratuit; ",
+    "translate": "sauvegarde; protection; ",
     "null": null
 },
 {
-    "text": "ɓuriha (u-)",
+    "text": "hifadhwi (u-)",
     "pluralText": null,
-    "translate": "taire (se -). ",
+    "translate": "préserver; proteger; sauvegarder; ",
     "null": null
 },
 {
-    "text": "ɓurisa (u-)",
+    "text": "hiko Pl. ziko",
+    "pluralText": "port de pêche.",
+    "translate": " ",
+    "null": null
+},
+{
+    "text": "hila",
     "pluralText": null,
-    "translate": "bercer. ",
+    "translate": "caprice; ruse; bêtise; ",
     "null": null
 },
 {
-    "text": "ɓuru",
+    "text": "hiliɓu (u-)",
     "pluralText": null,
-    "translate": "mais. ",
+    "translate": "séduire; berner; ",
     "null": null
 },
 {
-    "text": "ɓuruɓuru",
+    "text": "hiliki",
     "pluralText": null,
-    "translate": "rond (adj.). ",
+    "translate": "cardamome. ",
     "null": null
 },
 {
-    "text": "ɓuruɗa",
+    "text": "hima (u-)",
     "pluralText": null,
-    "translate": "fraîcheur . ",
+    "translate": "dresser (se -); lever (se -); attendre; être debout; ",
     "null": null
 },
 {
-    "text": "ɓuruɗisha (u-)",
+    "text": "himba (u-)",
     "pluralText": null,
-    "translate": "rafraîchir. ",
+    "translate": "chanter. ",
     "null": null
 },
 {
-    "text": "ɓusati",
-    "pluralText": "Pl. maɓusati",
-    "translate": "moquette. ",
-    "null": null
-},
-{
-    "text": "ɓushasha",
-    "pluralText": "Pl. maɓushasha",
-    "translate": "nauséabond ; puanteur; mauvaise haleine; ",
-    "null": null
-},
-{
-    "text": "Ɓushi",
+    "text": "himida",
     "pluralText": null,
-    "translate": "Madagascar. ",
+    "translate": "louange. ",
     "null": null
 },
 {
-    "text": "Ɓushini",
+    "text": "himiɗia (u-)",
     "pluralText": null,
-    "translate": "Madagascar. ",
+    "translate": "invoquer. ",
     "null": null
 },
 {
-    "text": "ɓushuria (u-)",
+    "text": "himilia (u-)",
     "pluralText": null,
-    "translate": "souhaiter. ",
+    "translate": "soutenir (qqun). ",
     "null": null
 },
 {
-    "text": "ɓushuti",
+    "text": "himisa (u-)",
     "pluralText": null,
-    "translate": "manteau brodé. ",
+    "translate": "maintenir debout; réveiller; ",
     "null": null
 },
 {
-    "text": "ɓustwani",
+    "text": "Hindi",
     "pluralText": null,
-    "translate": "jardin. ",
+    "translate": "Inde. ",
     "null": null
 },
 {
-    "text": "ɓusu",
-    "pluralText": "Pl. maɓusu",
-    "translate": "timide (pers.). ",
-    "null": null
-},
-{
-    "text": "ɓusu (u-)",
+    "text": "hindri",
     "pluralText": null,
-    "translate": "embrasser; biser; bisouter; ",
+    "translate": "quoi; qu'est ce que; ",
     "null": null
 },
 {
-    "text": "ɓuu",
+    "text": "hindrini",
     "pluralText": null,
-    "translate": "fruit du baobab. ",
+    "translate": "quoi. ",
     "null": null
 },
 {
-    "text": "ɓuyuɓuyu",
-    "pluralText": "Pl. maɓuyuɓuyu",
-    "translate": "toile d'araignée; voile; hidjab; ",
+    "text": "hindru Pl. zindru",
+    "pluralText": "chose; objet;",
+    "translate": " ",
     "null": null
 },
 {
-    "text": "ɓuza (u-)",
+    "text": "hini (u-)",
     "pluralText": null,
-    "translate": "changer; retourner; ",
+    "translate": "léser; tromper; ",
     "null": null
 },
 {
-    "text": "ɓuzi",
-    "pluralText": "Pl. maɓuzi",
-    "translate": "prostituée. ",
+    "text": "hino Pl. zino",
+    "pluralText": "mortier.",
+    "translate": " ",
     "null": null
 },
 {
-    "text": "ɓuzudza (u-)",
+    "text": "hinya Pl. zinya",
+    "pluralText": "clan.",
+    "translate": " ",
+    "null": null
+},
+{
+    "text": "hira (u-)",
     "pluralText": null,
-    "translate": "renverser; changer; ",
+    "translate": "appeler. ",
     "null": null
 },
 {
-    "text": "ɓuzuha (u-)",
+    "text": "hiri Pl. ziri",
+    "pluralText": "chaise.",
+    "translate": " ",
+    "null": null
+},
+{
+    "text": "hirimu",
     "pluralText": null,
-    "translate": "retourner (se). ",
+    "translate": "génération. ",
     "null": null
 },
 {
-    "text": "ɓwa ɓwa ɓwa",
+    "text": "hiriwa (u-)",
     "pluralText": null,
-    "translate": "bla bla bla. ",
+    "translate": "appeler (s'-); être appelé; ",
     "null": null
 },
 {
-    "text": "ɓwaɓwa (u-)",
+    "text": "hirizi",
     "pluralText": null,
-    "translate": "bouder. ",
+    "translate": "amulette; talisman; ",
     "null": null
 },
 {
-    "text": "ɓwaɗe",
-    "pluralText": "Pl. maɓwaɗe",
-    "translate": "maladie (grosse -). ",
-    "null": null
-},
-{
-    "text": "ɓwana",
-    "pluralText": "Pl. maɓwana",
-    "translate": "monsieur. ",
-    "null": null
-},
-{
-    "text": "ɓwana-arusi",
-    "pluralText": "Pl. maɓwana-arusi",
-    "translate": "époux; marié; ",
-    "null": null
-},
-{
-    "text": "ɓwana-harusi",
-    "pluralText": "Pl. maɓwana-harusi",
-    "translate": "époux; marié; ",
-    "null": null
-},
-{
-    "text": "ɓwandaya (u-)",
+    "text": "hirwa (u-)",
     "pluralText": null,
-    "translate": "dissimuler; camoufler; ",
+    "translate": "être appelé; appeler (s'-); ",
     "null": null
 },
 {
-    "text": "ɓwankanga",
-    "pluralText": "Pl. maɓwankanga",
-    "translate": "pièce de deux sous. ",
-    "null": null
-},
-{
-    "text": "ɓwantamu",
-    "pluralText": "Pl. maɓwantamu",
-    "translate": "gâteau de riz au coco. ",
-    "null": null
-},
-{
-    "text": "ɓwantsi",
+    "text": "hisa",
     "pluralText": null,
-    "translate": "pigeon sauvage. ",
+    "translate": "prétexte. ",
     "null": null
 },
 {
-    "text": "ɓwanyiso",
-    "pluralText": "Pl. maɓwanyiso",
-    "translate": "partage. ",
-    "null": null
-},
-{
-    "text": "ɓwara",
-    "pluralText": "Pl. maɓwara",
-    "translate": "pièce de monnaie. ",
-    "null": null
-},
-{
-    "text": "ɓwe",
-    "pluralText": "Pl. mawe",
-    "translate": "caillou; pile; pierre; ",
-    "null": null
-},
-{
-    "text": "ɓwe la utahani",
-    "pluralText": "Pl. mawe ya utahani",
-    "translate": "meule. ",
-    "null": null
-},
-{
-    "text": "ɓweni",
-    "pluralText": "Pl. maɓweni",
-    "translate": "madame. ",
-    "null": null
-},
-{
-    "text": "ɓwerere (u-)",
+    "text": "hisa (u-)",
     "pluralText": null,
-    "translate": "abonder. ",
+    "translate": "finir. ",
     "null": null
 },
 {
-    "text": "ɓwerete",
+    "text": "hisaɓu",
     "pluralText": null,
-    "translate": "mou; moelleux; ",
+    "translate": "compte; calcul; ",
     "null": null
 },
 {
-    "text": "ɓweta",
-    "pluralText": "Pl. maɓweta",
-    "translate": "malle; coffre; ",
-    "null": null
-},
-{
-    "text": "ɓwi",
+    "text": "hishima",
     "pluralText": null,
-    "translate": "zut ; oulah; oups; ",
+    "translate": "réputation; respect; ",
     "null": null
 },
 {
-    "text": "ɓwiɓwi",
+    "text": "hishimu (u-)",
     "pluralText": null,
-    "translate": "hidjab; toile d'araignée; ",
+    "translate": "respecter. ",
     "null": null
 },
 {
-    "text": "ɓwidzi",
-    "pluralText": "Pl. maɓwidzi",
-    "translate": "voleur (grand -); pillard; escroc; ",
+    "text": "hisi",
+    "pluralText": null,
+    "translate": "conscience. ",
     "null": null
 },
 {
-    "text": "ɓwindri",
-    "pluralText": "Pl. maɓwindri",
-    "translate": "hibou.",
+    "text": "hisi (u-)",
+    "pluralText": null,
+    "translate": "conscient (être -); sentir; ",
+    "null": null
+},
+{
+    "text": "hitalifiana (u-)",
+    "pluralText": null,
+    "translate": "désaccord (être -). ",
+    "null": null
+},
+{
+    "text": "hitilafu",
+    "pluralText": null,
+    "translate": "litige. ",
+    "null": null
+},
+{
+    "text": "hitsili (u-)",
+    "pluralText": null,
+    "translate": "apercevoir. ",
+    "null": null
+},
+{
+    "text": "hitswa Pl. zitswa",
+    "pluralText": "tête.",
+    "translate": " ",
+    "null": null
+},
+{
+    "text": "hizi (u-)",
+    "pluralText": null,
+    "translate": "confondre. ",
+    "null": null
+},
+{
+    "text": "ho-",
+    "pluralText": null,
+    "translate": "à; au; ",
+    "null": null
+},
+{
+    "text": "hoa (u-)",
+    "pluralText": null,
+    "translate": "laver. ",
+    "null": null
+},
+{
+    "text": "hoɓoa (u-)",
+    "pluralText": null,
+    "translate": "décrocher; briser; ",
+    "null": null
+},
+{
+    "text": "hodi",
+    "pluralText": null,
+    "translate": "puis-je entrer. ",
+    "null": null
+},
+{
+    "text": "hodja",
+    "pluralText": null,
+    "translate": "argument. ",
+    "null": null
+},
+{
+    "text": "hodza (u-)",
+    "pluralText": null,
+    "translate": "faire mal moralement; blesser moralement; ",
+    "null": null
+},
+{
+    "text": "hofu",
+    "pluralText": null,
+    "translate": "chaussette; capote (préservatif); ",
+    "null": null
+},
+{
+    "text": "hoha (u-)",
+    "pluralText": null,
+    "translate": "griller (faire -). ",
+    "null": null
+},
+{
+    "text": "hohoa (u-)",
+    "pluralText": null,
+    "translate": "balayer. ",
+    "null": null
+},
+{
+    "text": "hohora (u-)",
+    "pluralText": null,
+    "translate": "entraîner; traîner; tirer; ",
+    "null": null
+},
+{
+    "text": "hola (u-)",
+    "pluralText": null,
+    "translate": "écrire. ",
+    "null": null
+},
+{
+    "text": "hole",
+    "pluralText": null,
+    "translate": "misère. ",
+    "null": null
+},
+{
+    "text": "holea (u-)",
+    "pluralText": null,
+    "translate": "verser; résoudre; renverser; ",
+    "null": null
+},
+{
+    "text": "holiho",
+    "pluralText": null,
+    "translate": "vu que. ",
+    "null": null
+},
+{
+    "text": "homa",
+    "pluralText": null,
+    "translate": "fièvre; température; ",
+    "null": null
+},
+{
+    "text": "homa (u-)",
+    "pluralText": null,
+    "translate": "attarder; être en retard; ",
+    "null": null
+},
+{
+    "text": "homɓa (u-)",
+    "pluralText": null,
+    "translate": "lécher. ",
+    "null": null
+},
+{
+    "text": "homesa (u-)",
+    "pluralText": null,
+    "translate": "retarder. ",
+    "null": null
+},
+{
+    "text": "homoa (u-)",
+    "pluralText": null,
+    "translate": "démolir. ",
+    "null": null
+},
+{
+    "text": "hondra (u-)",
+    "pluralText": null,
+    "translate": "maigrir. ",
+    "null": null
+},
+{
+    "text": "hondze",
+    "pluralText": null,
+    "translate": "campagne. ",
+    "null": null
+},
+{
+    "text": "honɗa (u-)",
+    "pluralText": null,
+    "translate": "maigrir. ",
+    "null": null
+},
+{
+    "text": "honyoa (u-)",
+    "pluralText": null,
+    "translate": "tordre; courber; ",
+    "null": null
+},
+{
+    "text": "honyoha (u-)",
+    "pluralText": null,
+    "translate": "tordu (être -); courbé (être -); ",
+    "null": null
+},
+{
+    "text": "hora (u-)",
+    "pluralText": null,
+    "translate": "se réchauffer; rêver; ",
+    "null": null
+},
+{
+    "text": "hosa (u-)",
+    "pluralText": null,
+    "translate": "laver; nettoyer (avec de l'eau); ",
+    "null": null
+},
+{
+    "text": "hosa (u-) embua",
+    "pluralText": null,
+    "translate": "inhaler. ",
+    "null": null
+},
+{
+    "text": "hoya (u-)",
+    "pluralText": null,
+    "translate": "reposer (se -). ",
+    "null": null
+},
+{
+    "text": "hoza (u-)",
+    "pluralText": null,
+    "translate": "faire mal moralement. ",
+    "null": null
+},
+{
+    "text": "hua (u-)",
+    "pluralText": null,
+    "translate": "éplucher; grandir; peler; râper; ",
+    "null": null
+},
+{
+    "text": "huɓa",
+    "pluralText": null,
+    "translate": "envie; tentation; ",
+    "null": null
+},
+{
+    "text": "hudhu",
+    "pluralText": null,
+    "translate": "vertige. ",
+    "null": null
+},
+{
+    "text": "hudhuria (u-)",
+    "pluralText": null,
+    "translate": "présent (être -). ",
+    "null": null
+},
+{
+    "text": "hudhurisha (u-)",
+    "pluralText": null,
+    "translate": "inviter. ",
+    "null": null
+},
+{
+    "text": "hudza (u-)",
+    "pluralText": null,
+    "translate": "vendre. ",
+    "null": null
+},
+{
+    "text": "hudzisa (u-)",
+    "pluralText": null,
+    "translate": "demander; questionner; interroger; ",
+    "null": null
+},
+{
+    "text": "huɗu",
+    "pluralText": null,
+    "translate": "manque alimentaire (viande). ",
+    "null": null
+},
+{
+    "text": "huɗumu (u-)",
+    "pluralText": null,
+    "translate": "préparer. ",
+    "null": null
+},
+{
+    "text": "hugumanya (u-)",
+    "pluralText": null,
+    "translate": "rassembler. ",
+    "null": null
+},
+{
+    "text": "huhuraya (u-)",
+    "pluralText": null,
+    "translate": "durcir. ",
+    "null": null
+},
+{
+    "text": "hukma",
+    "pluralText": null,
+    "translate": "jugement. ",
+    "null": null
+},
+{
+    "text": "hukuma",
+    "pluralText": null,
+    "translate": "jugement. ",
+    "null": null
+},
+{
+    "text": "hukumu (u-)",
+    "pluralText": null,
+    "translate": "juger. ",
+    "null": null
+},
+{
+    "text": "hula (u-)",
+    "pluralText": null,
+    "translate": "acheter. ",
+    "null": null
+},
+{
+    "text": "hule",
+    "pluralText": null,
+    "translate": "loin; là; là-bas (éloign.); ",
+    "null": null
+},
+{
+    "text": "hulia",
+    "pluralText": null,
+    "translate": "bijou. ",
+    "null": null
+},
+{
+    "text": "huluka",
+    "pluralText": null,
+    "translate": "tempérament (caract. de qqun). ",
+    "null": null
+},
+{
+    "text": "huma (u-)",
+    "pluralText": null,
+    "translate": "sécher. ",
+    "null": null
+},
+{
+    "text": "humisa (u-)",
+    "pluralText": null,
+    "translate": "sécher; faire sécher ; essorer; ",
+    "null": null
+},
+{
+    "text": "humiwa (u-)",
+    "pluralText": null,
+    "translate": "surpris (être -). ",
+    "null": null
+},
+{
+    "text": "hundra (u-)",
+    "pluralText": null,
+    "translate": "trouver; obtenir; gagner; ",
+    "null": null
+},
+{
+    "text": "hundza (u-)",
+    "pluralText": null,
+    "translate": "balayer. ",
+    "null": null
+},
+{
+    "text": "huntsanya (u-)",
+    "pluralText": null,
+    "translate": "réunir. ",
+    "null": null
+},
+{
+    "text": "hunu",
+    "pluralText": null,
+    "translate": "là; ici; ",
+    "null": null
+},
+{
+    "text": "hunua (u-)",
+    "pluralText": null,
+    "translate": "déraciner; arracher; ",
+    "null": null
+},
+{
+    "text": "hunyua (u-)",
+    "pluralText": null,
+    "translate": "arracher; déraciner; ",
+    "null": null
+},
+{
+    "text": "hupva (u-)",
+    "pluralText": null,
+    "translate": "creuser. ",
+    "null": null
+},
+{
+    "text": "hupvia (u-)",
+    "pluralText": null,
+    "translate": "écoper (vider l'eau); rafler; ",
+    "null": null
+},
+{
+    "text": "huraɓu",
+    "pluralText": null,
+    "translate": "ruine. ",
+    "null": null
+},
+{
+    "text": "huru",
+    "pluralText": null,
+    "translate": "indépendant; libre; ",
+    "null": null
+},
+{
+    "text": "huruma",
+    "pluralText": null,
+    "translate": "décence. ",
+    "null": null
+},
+{
+    "text": "hushi",
+    "pluralText": null,
+    "translate": "soupir. ",
+    "null": null
+},
+{
+    "text": "husi",
+    "pluralText": null,
+    "translate": "saison sèche. ",
+    "null": null
+},
+{
+    "text": "husu (u-)",
+    "pluralText": null,
+    "translate": "relatif à (être -); concerner; ",
+    "null": null
+},
+{
+    "text": "husuɗa",
+    "pluralText": null,
+    "translate": "mauvais œil . ",
+    "null": null
+},
+{
+    "text": "husuɗi (u-)",
+    "pluralText": null,
+    "translate": "envier. ",
+    "null": null
+},
+{
+    "text": "hususwan",
+    "pluralText": null,
+    "translate": "spécialement; notamment; ",
+    "null": null
+},
+{
+    "text": "hutsia (u-)",
+    "pluralText": null,
+    "translate": "porter (un pagne). ",
+    "null": null
+},
+{
+    "text": "hutuɓa",
+    "pluralText": null,
+    "translate": "discours; prêche; sermon; ",
+    "null": null
+},
+{
+    "text": "hutuɓu (u-)",
+    "pluralText": null,
+    "translate": "prêcher. ",
+    "null": null
+},
+{
+    "text": "huva (u-)",
+    "pluralText": null,
+    "translate": "inviter. ",
+    "null": null
+},
+{
+    "text": "huvu",
+    "pluralText": null,
+    "translate": "moisissure. ",
+    "null": null
+},
+{
+    "text": "huwu",
+    "pluralText": "Pl. mahuwu",
+    "translate": "forêt; campagne; ",
+    "null": null
+},
+{
+    "text": "huyi (u-)",
+    "pluralText": null,
+    "translate": "secourir. ",
+    "null": null
+},
+{
+    "text": "huza (u-)",
+    "pluralText": null,
+    "translate": "vendre. ",
+    "null": null
+},
+{
+    "text": "huzi",
+    "pluralText": null,
+    "translate": "file. ",
+    "null": null
+},
+{
+    "text": "huzimu",
+    "pluralText": null,
+    "translate": "profondeur. ",
+    "null": null
+},
+{
+    "text": "huzuni",
+    "pluralText": null,
+    "translate": "tristesse. ",
+    "null": null
+},
+{
+    "text": "hweu",
+    "pluralText": null,
+    "translate": "blanc. ",
+    "null": null
+},
+{
+    "text": "hwii",
+    "pluralText": null,
+    "translate": "mauvais caractère. ",
+    "null": null
+},
+{
+    "text": "hwili",
+    "pluralText": null,
+    "translate": "polygamie. ",
+    "null": null
+},
+{
+    "text": "hwindji",
+    "pluralText": null,
+    "translate": "beaucoup.",
     "null": null
 }];
