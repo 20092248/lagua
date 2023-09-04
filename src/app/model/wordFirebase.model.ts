@@ -12,4 +12,5 @@ export interface FirebaseWord {
     phoneticTranslate: string[];
     link?: string;
     examples: Examples[];
+    scraper?: any;
 }
