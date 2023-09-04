@@ -1,6 +1,7 @@
 import { Examples } from "./example.model";
 
 export interface FirebaseWord {
+    uid?: string;
     text: string[];
     pluralText?: string[];
     translate: string[];

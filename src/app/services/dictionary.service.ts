@@ -103,7 +103,12 @@ export class DictionaryService {
     const q = query(collection(getFirestore(), text + '_' + translate + '_' + alphabet), orderBy('originalText', 'asc'));
     const querySnapshot = await getDocs(q);
     const words: FirebaseWord[] = [];
-    querySnapshot.forEach((doc) => words.push(doc.data() as FirebaseWord));
+    querySnapshot.forEach((doc) => {
+      const word = doc.data() as FirebaseWord;
+      word.uid = doc.id;
+      words.push(word);
+      this.getMoreDetail(word);
+    });
     return words;
   }
 
@@ -132,6 +137,138 @@ export class DictionaryService {
   getbody(api: string) {
     return this.http.get<any>('https://async.scraperapi.com/jobs/'+api, this.httpOptions).pipe(
       catchError(e => e));
+  }
+
+  getMoreDetail(word: FirebaseWord) {
+      if (word.scraper && word.scraper.response.body) {
+        const body = word.scraper.response.body;
+
+        var parser = new DOMParser();
+        var documentWord = parser.parseFromString(word.scraper.response.body, "text/html");
+        const text = documentWord.querySelectorAll('div.col-xs-8.col-sm-8')[1].querySelector('span[name="word_selection"]')?.innerHTML;
+        const plural = this.getPlural(documentWord);
+        const symbol = documentWord.querySelectorAll('div.col-xs-8.col-sm-8')[1].querySelector('span[style=""]') ? documentWord.querySelectorAll('div.col-xs-8.col-sm-8')[1].querySelector('span[style=""]')?.innerHTML?.replace(/\<.[^(]*\>/g, '').trim() : '';
+        const dialect = this.getDialect(documentWord);
+        const translates = this.getTranslates(documentWord);
+        const description = documentWord.querySelector('div.col-xs-8.col-sm-8 span[style="background-color:#ffea00;"]')?.innerHTML?.trim();
+        const examples = this.getExamples(documentWord);
+        const siblings = this.getSiblings(documentWord);
+        console.log({'text': text, 'plural': plural, 'symbol': symbol, 'dialect': dialect, 'translates': translates, 'description': description, 'examples': examples, 'siblings': siblings});
+      }
+  }
+
+  getSiblings(docWord: any) {
+    const ss: any = [];
+    const ssContainer = docWord.querySelector('div.col-xs-12.col-sm-12.infos_examples:not(.separator)')
+    if (ssContainer) {
+      const ssArray = ssContainer.innerText?.replace(' Synonymes et/ou mots transparents :· ', '').replaceAll(' ', '').split('·');
+      if (ssArray) {
+        ssArray.forEach((s: any) => {
+          const texts = this.getTexts(s.split(':')[1]);
+          const translate = s.split(':')[0];
+          ss.push({ texts: texts, translate: translate });
+        });
+      }
+    }
+    return ss;
+  }
+
+  getTexts(textValue: string) {
+    const texts: any[] = [];
+    textValue?.split(';').forEach(t => {
+      if (t) {
+        const text = t?.substring(0, t.length - 1);
+        const dialect = this.transFormDialect(t?.substring(t.length - 1));
+        texts.push({ text: text, dialect: dialect });
+      }
+    });
+    return texts;
+  }
+
+  getExamples(docWord: any) {
+    const ex: any = [];
+    const examplesText = docWord.querySelectorAll('div.col-xs-8.col-sm-8 span[style="background-color:#c0ffc0;font-style: italic;"]');
+    const examplesTranslate = docWord.querySelector('div.col-xs-8.col-sm-8 span[style="background-color:#c0e2ff;font-style: italic;"]')?.innerText;
+    if (examplesText) {
+      examplesText.forEach((e: any) => {
+        const text = e?.innerText.replaceAll(/\..[^(]*/g, '.');
+        const dialect = this.transColorDialect(e?.querySelector('span').style.color);
+        const translate = examplesTranslate;
+        ex.push({ text: text, dialect: dialect, translate: translate });
+      });
+    }
+    return ex;
+  }
+
+  getTranslates(docWord: any) {
+    const ts: any = [];
+    const translates = docWord.querySelectorAll('div.col-xs-4.col-sm-4>.col-xs-12.col-sm-12');
+    if (translates) {
+      translates.forEach((t: any) => {
+        const translate = t.querySelector('a span [style="font-weight:bold;"]')?.innerHTML;
+        const symbol = t.querySelector('a span span[style="color:#333333;"]')?.innerText;
+        const info = t.querySelector('div i span')?.innerText;
+        ts.push({ translate: translate, symbol: symbol, info: info });
+      });
+    }
+    return ts;
+  }
+
+  getPlural(docWord: any) {
+    if (docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span .word_plural')) {
+      return '';
+    } else {
+      if (docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span .word_plural6 span')) {
+        return docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span .word_plural6 span')?.innerHTML;
+      } else if (docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span .word_plural2 span')) {
+        return docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span .word_plural2 span')?.innerHTML;
+      } else if (docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span .word_plural4 span')) {
+        return docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span .word_plural4 span')?.innerHTML;
+      } else if (docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span .word_plural8 span')) {
+        return docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span .word_plural8 span')?.innerHTML;
+      } else if (docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span .word_plural610 span')) {
+        return docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span .word_plural10 span')?.innerHTML;
+      } else {
+        return '';
+      }
+    }
+  }
+
+  getDialect(docWord: any) {
+    const color = docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span[style="text-align:right;"]>span').style.color;
+    return this.transColorDialect(color);
+  }
+
+  transColorDialect(color: string) {
+    if (color === 'green') {
+      return 'ALL';
+    } else if (color === 'red') {
+      return 'SHINDZUANI';
+    } else if (color === 'rgb(26, 163, 255)') {
+      return 'SHINGAZIDZA';
+    } else if (color === 'gray') {
+      return 'SHIMAORE';
+    } else if (color === 'rgb(255, 204, 0)') {
+      return 'SHIMWALI';
+    } else {
+      return '';
+    }
+  }
+
+  transFormDialect(color: string) {
+    if (color === '●') {
+      return 'ALL';
+    } else if (color === '▲') {
+      return 'SHINDZUANI';
+    } else if (color === '◼') {
+      return 'SHINGAZIDZA';
+    } else if (color === '✧') {
+      return 'SHIMAORE';
+    } else if (color === '✽') {
+      return 'SHIMWALI';
+    } else {
+      return '';
+    }
   }
 
 }
