@@ -97,8 +97,8 @@ export class AddPage implements OnInit {
     // textSymbole : document.querySelectorAll('div.col-xs-8.col-sm-8')[1].querySelector('span[style=""]').innerHTML.replaceAll(/\<.[^(]*\>/g, '').trim()
     // dialect : document.querySelectorAll('div.col-xs-8.col-sm-8')[1].querySelector('span[style="text-align:right;"]>span').style.color
 
-    // translate : document.querySelectorAll('div.col-xs-4.col-sm-4')[1].querySelectorAll('span')[i].querySelectorAll('span')[0]      ///LIST!!!!!!!!!
-    // translateSymbole : document.querySelectorAll('div.col-xs-4.col-sm-4')[1].querySelectorAll('span')[i].querySelectorAll('span')[1].innerHTML.trim()        ///LIST!!!!!!!!!
+    // translate : document.querySelectorAll('div.col-xs-4.col-sm-4 .wordDefinitionSmall span[style="font-weight:bold;"]')     ///LIST!!!!!!!!!
+    // translateSymbole : document.querySelectorAll('div.col-xs-4.col-sm-4 .wordDefinitionSmall span[style="color:#333333;"]')        ///LIST!!!!!!!!!
     // translateInfo : document.querySelectorAll('div.col-xs-4.col-sm-4')[1].querySelectorAll('i[style="background-color:#FFB060;color:black;"]')    ///LIST!!!!!!!!!
 
     // description : document.querySelectorAll('div.col-xs-8.col-sm-8 span[style="background-color:#ffea00;"]')[0].innerHTML
@@ -109,7 +109,7 @@ export class AddPage implements OnInit {
     //    translate : document.querySelectorAll('div.col-xs-8.col-sm-8 span[style="background-color:#c0e2ff;font-style: italic;"]')[0].innerHTML
 
     // synonymes / mots transparents
-    // siblingTranslate : document.querySelectorAll('div.col-xs-12.col-sm-12.infos_examples')[0].innerHTML.replace(/\s*\<.*?\>\s*/g, '').replace('Synonymes et/ou mots transparents:· ', '').split(':')[0]
+    // siblingTranslate : document.querySelectorAll('div.col-xs-12.col-sm-12.infos_examples')[0].innerHTML.split('<br>')[i].replace(/\s*\<.*?\>\s*/g, '').split(':')[0]    //LIST!!!! à partir de 1
     // siblingTexts : document.querySelectorAll('div.col-xs-12.col-sm-12.infos_examples')[0].querySelectorAll('span:not([style])')   ---------------> LIST !!!!!!
     // siblingDialect : document.querySelectorAll('div.col-xs-12.col-sm-12.infos_examples')[0].querySelectorAll('span:not([style="color:#666666;"]):not(span[id])')   // LIST!!!!!!!!!
   }
