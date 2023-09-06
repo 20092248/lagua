@@ -13,7 +13,7 @@ import { Observable, throwError } from 'rxjs';
 export class DictionaryService {
 
   constructor(private _firestore: Firestore, private http: HttpClient) { }
-  collection = 'shikomori_francais_l'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+  collection = 'shikomori_francais_r'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -73,6 +73,21 @@ export class DictionaryService {
     });
   }
 
+  updateDetailInfo(word: any, uid: string) {
+    const firstLetter = word.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zɓɗA-ZƁƊ]/g, '').substring(0, 1).toLocaleLowerCase();
+    console.log(uid, word);
+    const dictionayRef = doc(getFirestore(), 'shikomori_francais_' + firstLetter, uid);
+    updateDoc(dictionayRef, {
+      pluralText: word.plural ? word.plural.split(';') : [],
+      originalPluralText: word.plural ? word.plural : '',
+      symbol: word.symbol ? word.symbol : '',
+      dialect: word.dialect ? word.dialect : '',
+      description: word.description ? word.description : '',
+      examples: word.examples ? word.examples : [],
+      siblings: word.siblings ? word.siblings : []
+    });
+  }
+
   async addScrapperResponse() {
     const q = query(collection(getFirestore(), this.collection));
     const querySnapshot = await getDocs(q);
@@ -82,10 +97,32 @@ export class DictionaryService {
       if (data.scraper) {
         if (!data.scraper.response) {
           this.getbody(data.scraper.id).subscribe(scraperFull => {
-            console.log(data.originalText + ':' + data.scraper?.status, scraperFull.response);
-            this.updateScraperInfo(scraperFull, doc.id);
+            if (scraperFull.response) {
+              console.log(data.originalText + ':' + data.scraper?.status, scraperFull.response);
+              this.updateScraperInfo(scraperFull, doc.id);
+            }
           });
         }
+      }
+    });
+  }
+
+  async resetScrapperApi() {
+    const q = query(collection(getFirestore(), this.collection));
+    const querySnapshot = await getDocs(q);
+    console.log(querySnapshot.size);
+    querySnapshot.forEach(async (doc) => {
+      const data = doc.data() as any;
+      if (data.scraper && !data.scraper.response) {
+        const firstLetter = data.originalText.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zɓɗA-ZƁƊ]/g, '').substring(0, 1).toLocaleLowerCase();
+        this.getapi(data.originalText, firstLetter).subscribe(scraper => {
+          if (!data.scraper.response) {
+            console.log(data.originalText + ':', scraper);
+            this.updateScraperInfo(scraper, doc.id);
+          }
+        }, () => {
+          console.error(data.originalText);
+        });
       }
     });
   }
@@ -128,7 +165,7 @@ export class DictionaryService {
 
   getapi(name: string, letter: string): Observable<any> {
     return this.http.post<any>('https://async.scraperapi.com/jobs', {
-      apiKey: '7429876eeaeae2d54b62f9fcf85cf50c',
+      apiKey: '66c080c6eb03a87751efe5975e948f17',
       url: 'https://orelc.ac/academy/ShikomoriWords/viewWord/' + name + '?letter=' + letter
     }, this.httpOptions).pipe(
       catchError(e => e));
@@ -153,7 +190,8 @@ export class DictionaryService {
       const description = documentWord.querySelector('div.col-xs-8.col-sm-8 span[style="background-color:#ffea00;"]')?.innerHTML?.trim();
       const examples = this.getExamples(documentWord);
       const siblings = this.getSiblings(documentWord);
-      console.log({ 'text': text, 'plural': plural, 'symbol': symbol, 'dialect': dialect, 'translates': translates, 'description': description, 'examples': examples, 'siblings': siblings });
+      const w = { 'text': text, 'plural': plural, 'symbol': symbol, 'dialect': dialect, 'translates': translates, 'description': description, 'examples': examples, 'siblings': siblings };
+      this.updateDetailInfo(w, word.uid ? word.uid : '');
     }
   }
 
@@ -191,9 +229,9 @@ export class DictionaryService {
     const examplesTranslate = docWord.querySelector('div.col-xs-8.col-sm-8 span[style="background-color:#c0e2ff;font-style: italic;"]')?.innerText;
     if (examplesText) {
       examplesText.forEach((e: any) => {
-        const text = e?.innerText.replaceAll(/\..[^(]*/g, '.');
-        const dialect = this.transColorDialect(e?.querySelector('span').style.color);
-        const translate = examplesTranslate;
+        const text = e?.innerText.replaceAll(/\..[^(]*/g, '.') || '';
+        const dialect = this.transColorDialect(e?.querySelector('span').style.color) || '';
+        const translate = examplesTranslate || '';
         ex.push({ text: text, dialect: dialect, translate: translate });
       });
     }
@@ -205,9 +243,9 @@ export class DictionaryService {
     const translates = docWord.querySelectorAll('div.col-xs-4.col-sm-4>.col-xs-12.col-sm-12');
     if (translates) {
       translates.forEach((t: any) => {
-        const translate = t.querySelector('a span [style="font-weight:bold;"]')?.innerHTML;
-        const symbol = t.querySelector('a span span[style="color:#333333;"]')?.innerText;
-        const info = t.querySelector('div i span')?.innerText;
+        const translate = t.querySelector('a span [style="font-weight:bold;"]')?.innerHTML || '';
+        const symbol = t.querySelector('a span span[style="color:#333333;"]')?.innerText || '';
+        const info = t.querySelector('div i span')?.innerText || '';
         ts.push({ translate: translate, symbol: symbol, info: info });
       });
     }

@@ -53,7 +53,13 @@ export class AddPage implements OnInit {
 
   updateWordInfo() {
     this.dictionaryService.addScrapperResponse().then(() => {
-      this.alertService.presentToast('La définition.', 1500, 'success');
+      this.alertService.presentToast('L\'api a été mis à jour.', 1500, 'success');
+    });
+  }
+
+  restartWordInfo() {
+    this.dictionaryService.resetScrapperApi().then(() => {
+      this.alertService.presentToast('Relancement des API.', 1500, 'success');
     });
   }
 

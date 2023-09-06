@@ -14,7 +14,7 @@ export class DictionaryPage implements OnInit {
 
   word: string = '';
   wordsFound: Word[] = [];
-  alphabet: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  alphabet: string[] = ['a', 'b', 'ɓ', 'c', 'd', 'ɗ', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
   letterSelected: string = 'a';
   isResultDisplay: boolean | undefined;
   isDetailDisplay: boolean | undefined;
