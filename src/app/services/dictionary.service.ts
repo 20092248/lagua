@@ -309,4 +309,13 @@ export class DictionaryService {
     }
   }
 
+  async renammeCollection(oldCollection: string, newCollection: string) {
+    const q = query(collection(getFirestore(), oldCollection));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (doc) => {
+      const newCollectionId = await addDoc(collection(getFirestore(), newCollection), doc);
+      console.log(newCollectionId);
+    });
+  }
+
 }
