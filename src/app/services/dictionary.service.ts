@@ -144,7 +144,7 @@ export class DictionaryService {
       const word = doc.data() as FirebaseWord;
       word.uid = doc.id;
       words.push(word);
-      this.getMoreDetail(word);
+      // this.getMoreDetail(word);
     });
     return words;
   }
@@ -307,6 +307,21 @@ export class DictionaryService {
     } else {
       return '';
     }
+  }
+
+  addNewDialectInDB() {
+    const dialect = {};
+    if(dialect === 'ALL') {
+
+    } else if(dialect === 'SHINDZUANI') {
+
+    } else if(dialect === 'SHINGAZIDZA') {
+
+    } else if(dialect === 'SHIMAORE') {
+
+    } else if(dialect === 'SHIMWALI') {
+
+    } 
   }
 
 }
