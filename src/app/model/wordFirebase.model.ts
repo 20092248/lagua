@@ -3,6 +3,7 @@ import { Examples } from "./example.model";
 export interface FirebaseWord {
     uid?: string;
     text: string[];
+    dialect?: string;
     pluralText?: string[];
     translate: string[];
     originalText: string;

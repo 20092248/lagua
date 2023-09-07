@@ -27,7 +27,7 @@ export class DictionaryPage implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authentificationService.user;
-    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected).then((words : FirebaseWord[]) => {
+    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, false).then((words : FirebaseWord[]) => {
       this.words = words;
     });
   }
@@ -46,7 +46,7 @@ export class DictionaryPage implements OnInit {
 
   changeLetter(letter: string) {
     this.letterSelected = letter;
-    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected).then((words : FirebaseWord[]) => {
+    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, true).then((words : FirebaseWord[]) => {
       this.words = words;
     });
   }

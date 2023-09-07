@@ -6,6 +6,7 @@ import { DictionaryService } from 'src/app/services/dictionary.service';
 import { DICO } from './dico';
 import { AlertService } from 'src/app/services/alert.service';
 import { FirebaseWord } from 'src/app/model/wordFirebase.model';
+import { error } from 'console';
 
 
 @Component({
@@ -45,7 +46,7 @@ export class AddPage implements OnInit {
         this.dictionaryService.updateShikomoriDictionary(word).then(id => {
           console.log(id);
           console.log(word);
-        })
+        }, () => console.error(word));
       }
     });
     this.alertService.presentToast('Les mots ont été uploadé.', 1500, 'success');

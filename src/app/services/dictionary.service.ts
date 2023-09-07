@@ -13,7 +13,7 @@ import { Observable, throwError } from 'rxjs';
 export class DictionaryService {
 
   constructor(private _firestore: Firestore, private http: HttpClient) { }
-  collection = 'shikomori_francais_r'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+  collection = 'shikomori_francais_k'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -94,15 +94,13 @@ export class DictionaryService {
     console.log(querySnapshot.size);
     querySnapshot.forEach((doc) => {
       const data = doc.data() as any;
-      if (data.scraper) {
-        if (!data.scraper.response) {
-          this.getbody(data.scraper.id).subscribe(scraperFull => {
-            if (scraperFull.response) {
-              console.log(data.originalText + ':' + data.scraper?.status, scraperFull.response);
-              this.updateScraperInfo(scraperFull, doc.id);
-            }
-          });
-        }
+      if (data.scraper && !data.scraper.response) {
+        this.getbody(data.scraper.id).subscribe(scraperFull => {
+          if (scraperFull.response) {
+            console.log(data.originalText + ':' + data.scraper?.status, scraperFull.response);
+            this.updateScraperInfo(scraperFull, doc.id);
+          }
+        });
       }
     });
   }
@@ -116,7 +114,7 @@ export class DictionaryService {
       if (data.scraper && !data.scraper.response) {
         const firstLetter = data.originalText.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zɓɗA-ZƁƊ]/g, '').substring(0, 1).toLocaleLowerCase();
         this.getapi(data.originalText, firstLetter).subscribe(scraper => {
-          if (!data.scraper.response) {
+          if (scraper) {
             console.log(data.originalText + ':', scraper);
             this.updateScraperInfo(scraper, doc.id);
           }
@@ -136,7 +134,7 @@ export class DictionaryService {
     return words;
   }
 
-  async displayAlphabet(text: string | undefined, translate: string | undefined, alphabet: string): Promise<FirebaseWord[]> {
+  async displayAlphabet(text: string | undefined, translate: string | undefined, alphabet: string, updateDetail: boolean): Promise<FirebaseWord[]> {
     const q = query(collection(getFirestore(), text + '_' + translate + '_' + alphabet), orderBy('originalText', 'asc'));
     const querySnapshot = await getDocs(q);
     const words: FirebaseWord[] = [];
@@ -144,7 +142,9 @@ export class DictionaryService {
       const word = doc.data() as FirebaseWord;
       word.uid = doc.id;
       words.push(word);
-      // this.getMoreDetail(word);
+      // if(updateDetail){
+      //   this.getMoreDetail(word);
+      // }
     });
     return words;
   }
@@ -309,28 +309,42 @@ export class DictionaryService {
     }
   }
 
-  async renammeCollection(oldCollection: string, newCollection: string) {
+  async copyCollection(oldCollection: string, newCollection: string) {
     const q = query(collection(getFirestore(), oldCollection));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach(async (doc) => {
-      const newCollectionId = await addDoc(collection(getFirestore(), newCollection), doc);
-      console.log(newCollectionId);
+      const newCollectionId = await addDoc(collection(getFirestore(), newCollection), doc.data());
+      console.log(newCollectionId.id);
     });
   }
 
-  addNewDialectInDB() {
-    const dialect = {};
-    if(dialect === 'ALL') {
+  async copyDoc(srcCollection: string, word: any) {
+    const newDocId = await addDoc(collection(getFirestore(), srcCollection), word);
+    console.log(newDocId.id);
+  }
 
-    } else if(dialect === 'SHINDZUANI') {
-
-    } else if(dialect === 'SHINGAZIDZA') {
-
-    } else if(dialect === 'SHIMAORE') {
-
-    } else if(dialect === 'SHIMWALI') {
-
-    } 
+  async addNewDialectInDB(text: string, translate: string, alphabet: string) {
+    const q = query(collection(getFirestore(), text + '_' + translate + '_' + alphabet), orderBy('originalText', 'asc'));
+    const querySnapshot = await getDocs(q);
+    const words: FirebaseWord[] = [];
+    querySnapshot.forEach((doc) => {
+      const word = doc.data() as FirebaseWord;
+      const dialect = word.dialect;
+      if (dialect === 'ALL') {
+        this.copyDoc('shingazidza_francais_' + alphabet, word);
+        this.copyDoc('shindzuani_francais_' + alphabet, word);
+        this.copyDoc('shimaore_francais_' + alphabet, word);
+        this.copyDoc('shimwali_francais_' + alphabet, word);
+      } else if (dialect === 'SHINDZUANI') {
+        this.copyDoc('shindzuani_francais_' + alphabet, word);
+      } else if (dialect === 'SHINGAZIDZA') {
+        this.copyDoc('shingazidza_francais_' + alphabet, word);
+      } else if (dialect === 'SHIMAORE') {
+        this.copyDoc('shimaore_francais_' + alphabet, word);
+      } else if (dialect === 'SHIMWALI') {
+        this.copyDoc('shimwali_francais_' + alphabet, word);
+      }
+    });
   }
 
 }
