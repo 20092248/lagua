@@ -58,11 +58,13 @@ export class DictionaryService {
     };
     if (word.link) { firebaseWord.link = word.link; }
     const dictionayRef = await addDoc(collection(getFirestore(), 'shikomori_francais_' + firstLetter), firebaseWord);
-    this.getapi(word.text, firstLetter).subscribe(scraper => {
-      this.updateScraperInfo(scraper, dictionayRef.id);
-    }, () => {
-      console.error(word.text);
-    });
+    // this.getapi(word.text, firstLetter).subscribe(scraper => {
+    //   this.updateScraperInfo(scraper, dictionayRef.id);
+    // }, () => {
+    //   console.error(word.text);
+    // });
+
+    // this.getbodyLink(word.text, firstLetter);
     return dictionayRef.id;
   }
 
@@ -176,10 +178,41 @@ export class DictionaryService {
       catchError(e => e));
   }
 
-  getMoreDetail(word: FirebaseWord) {
-    if (word.scraper && word.scraper.response.body) {
-      const body = word.scraper.response.body;
+  getbodyLink(name: string, letter: string) {
+    return this.http.get<any>('https://orelc.ac/academy/ShikomoriWords/viewWord/' + name + '?letter=' + letter, this.httpOptions).pipe(
+      catchError(error => {
+        if (error.status === 200) {
+          const word = {
+            scraper: {
+              id: 'directLink',
+              attempts: 1,
+              status: 'finished',
+              statusUrl: 'directLink',
+              url: 'https://orelc.ac/academy/ShikomoriWords/viewWord/' + name + '?letter=' + letter,
+              response: {
+                body: error.error.text,
+                credit: 1,
+                headres: this.httpOptions?.headers,
+                statusCode: error.status
+              }
+            }
+          }
+          console.log(word);
+          this.getMoreDetail(word);
+          var parser = new DOMParser();
+          var documentWord = parser.parseFromString(error.error.text, "text/html");
+          return JSON.stringify(documentWord);
+        }
+        if (error.status === 401 || error.status === 403) {
+          return throwError(error);
+        }
+        return throwError(error);
+      })
+    );
+  }
 
+  getMoreDetail(word: any) {
+    if (word.scraper && word.scraper.response.body) {
       var parser = new DOMParser();
       var documentWord = parser.parseFromString(word.scraper.response.body, "text/html");
       const text = documentWord.querySelectorAll('div.col-xs-8.col-sm-8')[1].querySelector('span[name="word_selection"]')?.innerHTML;
@@ -191,7 +224,7 @@ export class DictionaryService {
       const examples = this.getExamples(documentWord);
       const siblings = this.getSiblings(documentWord);
       const w = { 'text': text, 'plural': plural, 'symbol': symbol, 'dialect': dialect, 'translates': translates, 'description': description, 'examples': examples, 'siblings': siblings };
-      this.updateDetailInfo(w, word.uid ? word.uid : '');
+      // this.updateDetailInfo(w, word.uid ? word.uid : '');
     }
   }
 
