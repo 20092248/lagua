@@ -44,8 +44,7 @@ export class AddPage implements OnInit {
         word.pluralText = word.pluralText ? word.pluralText.trim() : '';
         word.translate = word.translate.trim();
         this.dictionaryService.updateShikomoriDictionary(word).then(id => {
-          console.log(id);
-          console.log(word);
+          console.log(id, word);
         }, () => console.error(word));
       }
     });

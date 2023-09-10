@@ -13,7 +13,7 @@ import { Observable, throwError } from 'rxjs';
 export class DictionaryService {
 
   constructor(private _firestore: Firestore, private http: HttpClient) { }
-  collection = 'shikomori_francais_k'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+  collection = 'shikomori_francais_w'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -58,13 +58,14 @@ export class DictionaryService {
     };
     if (word.link) { firebaseWord.link = word.link; }
     const dictionayRef = await addDoc(collection(getFirestore(), 'shikomori_francais_' + firstLetter), firebaseWord);
+    word.uid = dictionayRef.id;
     // this.getapi(word.text, firstLetter).subscribe(scraper => {
     //   this.updateScraperInfo(scraper, dictionayRef.id);
     // }, () => {
     //   console.error(word.text);
     // });
 
-    // this.getbodyLink(word.text, firstLetter);
+    this.getbodyLink(word, firstLetter);
     return dictionayRef.id;
   }
 
@@ -76,9 +77,8 @@ export class DictionaryService {
   }
 
   updateDetailInfo(word: any, uid: string) {
-    const firstLetter = word.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zɓɗA-ZƁƊ]/g, '').substring(0, 1).toLocaleLowerCase();
     console.log(uid, word);
-    const dictionayRef = doc(getFirestore(), 'shikomori_francais_' + firstLetter, uid);
+    const dictionayRef = doc(getFirestore(), this.collection, uid);
     updateDoc(dictionayRef, {
       pluralText: word.plural ? word.plural.split(';') : [],
       originalPluralText: word.plural ? word.plural : '',
@@ -86,7 +86,8 @@ export class DictionaryService {
       dialect: word.dialect ? word.dialect : '',
       description: word.description ? word.description : '',
       examples: word.examples ? word.examples : [],
-      siblings: word.siblings ? word.siblings : []
+      siblings: word.siblings ? word.siblings : [],
+      scraper: word.scraper ? word.scraper : {}
     });
   }
 
@@ -95,15 +96,18 @@ export class DictionaryService {
     const querySnapshot = await getDocs(q);
     console.log(querySnapshot.size);
     querySnapshot.forEach((doc) => {
-      const data = doc.data() as any;
-      if (data.scraper && !data.scraper.response) {
-        this.getbody(data.scraper.id).subscribe(scraperFull => {
-          if (scraperFull.response) {
-            console.log(data.originalText + ':' + data.scraper?.status, scraperFull.response);
-            this.updateScraperInfo(scraperFull, doc.id);
-          }
-        });
-      }
+      const word = doc.data() as any;
+      const firstLetter = word.originalText.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zɓɗA-ZƁƊ]/g, '').substring(0, 1).toLocaleLowerCase();
+      word.uid = doc.id;
+      this.getbodyLink(word, firstLetter);
+      // if (data.scraper && !data.scraper.response) {
+      //   this.getbody(data.scraper.id).subscribe(scraperFull => {
+      //     if (scraperFull.response) {
+      //       console.log(data.originalText + ':' + data.scraper?.status, scraperFull.response);
+      //       this.updateScraperInfo(scraperFull, doc.id);
+      //     }
+      //   });
+      // }
     });
   }
 
@@ -178,37 +182,28 @@ export class DictionaryService {
       catchError(e => e));
   }
 
-  getbodyLink(name: string, letter: string) {
-    return this.http.get<any>('https://orelc.ac/academy/ShikomoriWords/viewWord/' + name + '?letter=' + letter, this.httpOptions).pipe(
-      catchError(error => {
-        if (error.status === 200) {
-          const word = {
-            scraper: {
-              id: 'directLink',
-              attempts: 1,
-              status: 'finished',
-              statusUrl: 'directLink',
-              url: 'https://orelc.ac/academy/ShikomoriWords/viewWord/' + name + '?letter=' + letter,
-              response: {
-                body: error.error.text,
-                credit: 1,
-                headres: this.httpOptions?.headers,
-                statusCode: error.status
-              }
+  getbodyLink(w: any, letter: string) {
+    return this.http.get('https://orelc.ac/academy/ShikomoriWords/viewWord/' + w.text + '?letter=' + letter, { responseType: 'text' }).subscribe(
+      value => {
+        const word = {
+          uid: w.uid,
+          scraper: {
+            id: 'directLink',
+            attempts: 1,
+            status: 'finished',
+            statusUrl: 'directLink',
+            url: 'https://orelc.ac/academy/ShikomoriWords/viewWord/' + w.text + '?letter=' + letter,
+            response: {
+              body: value,
+              credit: 1,
+              headers: 'Content-Type, application/json',
+              statusCode: 200
             }
           }
-          console.log(word);
-          this.getMoreDetail(word);
-          var parser = new DOMParser();
-          var documentWord = parser.parseFromString(error.error.text, "text/html");
-          return JSON.stringify(documentWord);
         }
-        if (error.status === 401 || error.status === 403) {
-          return throwError(error);
-        }
-        return throwError(error);
-      })
-    );
+        this.getMoreDetail(word);
+      },
+      error => console.log(w.originalText, error));
   }
 
   getMoreDetail(word: any) {
@@ -223,8 +218,8 @@ export class DictionaryService {
       const description = documentWord.querySelector('div.col-xs-8.col-sm-8 span[style="background-color:#ffea00;"]')?.innerHTML?.trim();
       const examples = this.getExamples(documentWord);
       const siblings = this.getSiblings(documentWord);
-      const w = { 'text': text, 'plural': plural, 'symbol': symbol, 'dialect': dialect, 'translates': translates, 'description': description, 'examples': examples, 'siblings': siblings };
-      // this.updateDetailInfo(w, word.uid ? word.uid : '');
+      const w = { 'text': text, 'plural': plural, 'symbol': symbol, 'dialect': dialect, 'translates': translates, 'description': description, 'examples': examples, 'siblings': siblings, 'scraper': word.scraper };
+      this.updateDetailInfo(w, word.uid ? word.uid : '');
     }
   }
 
