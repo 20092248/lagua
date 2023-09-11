@@ -35,7 +35,11 @@ export class AddPage implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    // this.dictionaryService.getbodyLink({text:'nyora ya mshia', uid: 'KW1eo5ayYNBRc0aVQ18K'}, 'n');  
+    // this.dictionaryService.getbodyLink({text:'ncupa', uid: 'mNy2RCC3405T9TSg9oO6'}, 'n');
+    // this.dictionaryService.getbodyLink({text:'trama', uid: 'KW1eo5ayYNBRc0aVQ18K'}, 't');
+  }
 
   addWordInfo() {
     DICO.forEach(word => {

@@ -13,7 +13,7 @@ import { Observable, throwError } from 'rxjs';
 export class DictionaryService {
 
   constructor(private _firestore: Firestore, private http: HttpClient) { }
-  collection = 'shikomori_francais_w'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+  collection = 'shikomori_francais_t'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -183,7 +183,8 @@ export class DictionaryService {
   }
 
   getbodyLink(w: any, letter: string) {
-    return this.http.get('https://orelc.ac/academy/ShikomoriWords/viewWord/' + w.text + '?letter=' + letter, { responseType: 'text' }).subscribe(
+    const text = w.originalText ? w.originalText : w.text;
+    return this.http.get('https://orelc.ac/academy/ShikomoriWords/viewWord/' + text + '?letter=' + letter, { responseType: 'text' }).subscribe(
       value => {
         const word = {
           uid: w.uid,
@@ -192,7 +193,7 @@ export class DictionaryService {
             attempts: 1,
             status: 'finished',
             statusUrl: 'directLink',
-            url: 'https://orelc.ac/academy/ShikomoriWords/viewWord/' + w.text + '?letter=' + letter,
+            url: 'https://orelc.ac/academy/ShikomoriWords/viewWord/' + text + '?letter=' + letter,
             response: {
               body: value,
               credit: 1,
@@ -207,19 +208,23 @@ export class DictionaryService {
   }
 
   getMoreDetail(word: any) {
-    if (word.scraper && word.scraper.response.body) {
-      var parser = new DOMParser();
-      var documentWord = parser.parseFromString(word.scraper.response.body, "text/html");
-      const text = documentWord.querySelectorAll('div.col-xs-8.col-sm-8')[1].querySelector('span[name="word_selection"]')?.innerHTML;
-      const plural = this.getPlural(documentWord);
-      const symbol = documentWord.querySelectorAll('div.col-xs-8.col-sm-8')[1].querySelector('span[style=""]') ? documentWord.querySelectorAll('div.col-xs-8.col-sm-8')[1].querySelector('span[style=""]')?.innerHTML?.replace(/\<.[^(]*\>/g, '').trim() : '';
-      const dialect = this.getDialect(documentWord);
-      const translates = this.getTranslates(documentWord);
-      const description = documentWord.querySelector('div.col-xs-8.col-sm-8 span[style="background-color:#ffea00;"]')?.innerHTML?.trim();
-      const examples = this.getExamples(documentWord);
-      const siblings = this.getSiblings(documentWord);
-      const w = { 'text': text, 'plural': plural, 'symbol': symbol, 'dialect': dialect, 'translates': translates, 'description': description, 'examples': examples, 'siblings': siblings, 'scraper': word.scraper };
-      this.updateDetailInfo(w, word.uid ? word.uid : '');
+    try {
+      if (word.scraper && word.scraper.response.body) {
+        var parser = new DOMParser();
+        var documentWord = parser.parseFromString(word.scraper.response.body, "text/html");
+        const text = documentWord.querySelectorAll('div.col-xs-8.col-sm-8')[1].querySelector('span[name="word_selection"]')?.innerHTML;
+        const plural = this.getPlural(documentWord);
+        const symbol = documentWord.querySelectorAll('div.col-xs-8.col-sm-8')[1].querySelector('span[style=""]') ? documentWord.querySelectorAll('div.col-xs-8.col-sm-8')[1].querySelector('span[style=""]')?.innerHTML?.replace(/\<.[^(]*\>/g, '').trim() : '';
+        const dialect = this.getDialect(documentWord);
+        const translates = this.getTranslates(documentWord);
+        const description = documentWord.querySelector('div.col-xs-8.col-sm-8 span[style="background-color:#ffea00;"]')?.innerHTML?.trim();
+        const examples = this.getExamples(documentWord);
+        const siblings = this.getSiblings(documentWord);
+        const w = { 'text': text, 'plural': plural, 'symbol': symbol, 'dialect': dialect, 'translates': translates, 'description': description, 'examples': examples, 'siblings': siblings, 'scraper': word.scraper };
+        this.updateDetailInfo(w, word.uid ? word.uid : '');
+      }
+    } catch (error: any) {
+      console.error(word);
     }
   }
 
