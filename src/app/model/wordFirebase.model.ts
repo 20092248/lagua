@@ -1,4 +1,5 @@
 import { Examples } from "./example.model";
+import { Sibling } from "./sibling.model";
 
 export interface FirebaseWord {
     uid?: string;
@@ -6,6 +7,7 @@ export interface FirebaseWord {
     dialect?: string;
     pluralText?: string[];
     translate: string[];
+    translates?: any[];
     originalText: string;
     originalPluralText?: string;
     originalTranslate: string;
@@ -15,4 +17,5 @@ export interface FirebaseWord {
     link?: string;
     examples: Examples[];
     scraper?: any;
+    siblings: Sibling[];
 }

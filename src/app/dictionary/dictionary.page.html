@@ -72,17 +72,25 @@
           <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
           <ion-label class="ion-text-wrap">
             {{w.text}}
-            <p class="ion-text-italic">{{w.translate}}</p>
+            <p class="ion-text-italic" *ngFor="let t of w.translates; let index = index">{{t.translate}} ({{t.symbol}})
+            </p>
           </ion-label>
         </ion-item>
         <div class="ion-padding-horizontal ion-content-accordion" slot="content">
           <p class="ion-word-description-dictionary ion-text-italic"><q>{{w.description}}</q></p>
           <p class="ion-text-italic ion-label-example">Exemple :</p>
-          <div class="ion-text-left" *ngFor="let example of w.examples; let index = index"
-            [ngClass]="{'ion-margin-bottom': index === w.examples.length - 1 && !w.link}">
+          <div class="ion-text-left" *ngFor="let example of w.examples; let index = index">
             <ion-text>{{example.translate}}</ion-text>
-            <ion-text class="ion-text-italic"><ion-text color="lagua">({{example.text}})</ion-text></ion-text>
-          </div>          
+            <ion-text class="ion-text-italic" color="lagua">({{example.text}})</ion-text>
+          </div>
+          <p class="ion-text-italic ion-label-example">Mots similaires :</p>
+          <div class="ion-text-left" *ngFor="let sibling of w.siblings">
+            <div *ngFor="let w of sibling.words">
+              <ion-text>{{w.translate}}</ion-text>
+              <ion-text class="ion-text-italic" color="lagua" *ngFor="let t of w.texts">{{t.text}} -
+                {{t.dialect}}</ion-text>
+            </div>
+          </div>
           <div class="ion-margin-vertical ion-text-center">
             <ion-button *ngIf="w.link" (click)="seeDetail(w)">Voir détail</ion-button>
           </div>
