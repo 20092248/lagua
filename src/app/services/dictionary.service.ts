@@ -13,7 +13,7 @@ import { Observable, throwError } from 'rxjs';
 export class DictionaryService {
 
   constructor(private _firestore: Firestore, private http: HttpClient) { }
-  collection = 'shikomori_francais_t'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+  collection = 'shikomori_francais_a'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -78,9 +78,9 @@ export class DictionaryService {
     });
   }
 
-  updateDetailInfo(word: any, uid: string) {
-    console.log(uid, word);
-    const dictionayRef = doc(getFirestore(), this.collection, uid);
+  updateDetailInfo(word: any, uid: string, firstLetter: string) {
+    console.log(firstLetter + '->' + uid, word);
+    const dictionayRef = doc(getFirestore(), 'shikomori_francais_' + firstLetter, uid);
     updateDoc(dictionayRef, {
       pluralText: word.plural ? word.plural.split(';') : [],
       originalPluralText: word.plural ? word.plural : '',
@@ -150,9 +150,9 @@ export class DictionaryService {
       const word = doc.data() as FirebaseWord;
       word.uid = doc.id;
       words.push(word);
-      // if(updateDetail){
-      //   this.getMoreDetail(word);
-      // }
+      if (updateDetail) {
+        this.getMoreDetail(word, alphabet);
+      }
     });
     return words;
   }
@@ -204,12 +204,12 @@ export class DictionaryService {
             }
           }
         }
-        this.getMoreDetail(word);
+        this.getMoreDetail(word, letter);
       },
       error => console.log(w.originalText, error));
   }
 
-  getMoreDetail(word: any) {
+  getMoreDetail(word: any, firstletter: string) {
     try {
       if (word.scraper && word.scraper.response.body) {
         var parser = new DOMParser();
@@ -223,7 +223,7 @@ export class DictionaryService {
         const examples = this.getExamples(documentWord);
         const siblings = this.getSiblings(documentWord);
         const w = { 'text': text, 'plural': plural, 'symbol': symbol, 'dialect': dialect, 'translates': translates, 'description': description, 'examples': examples, 'siblings': siblings, 'scraper': word.scraper };
-        this.updateDetailInfo(w, word.uid ? word.uid : '');
+        this.updateDetailInfo(w, word.uid ? word.uid : '', firstletter);
       }
     } catch (error: any) {
       console.error(word);
@@ -231,28 +231,27 @@ export class DictionaryService {
   }
 
   getSiblings(docWord: any) {
-    const ss: any = [];
+    var ss: any = [];
     const ssContainer = docWord.querySelector('div.col-xs-12.col-sm-12.infos_examples:not(.separator)')
     if (ssContainer) {
       const ssArray = ssContainer.innerText?.replace(' Synonymes et/ou mots transparents :· ', '').replaceAll(' ', '').split('·');
       if (ssArray) {
         ssArray.forEach((s: any) => {
-          const texts = this.getTexts(s.split(':')[1]);
-          const translate = s.split(':')[0];
-          ss.push({ texts: texts, translate: translate });
+          const texts = this.getTexts(s.split(':')[1], s.split(':')[0]);
+          ss = texts;
         });
       }
     }
     return ss;
   }
 
-  getTexts(textValue: string) {
+  getTexts(textValue: string, translate: string) {
     const texts: any[] = [];
     textValue?.split(';').forEach(t => {
       if (t) {
         const text = t?.substring(0, t.length - 1);
         const dialect = this.transFormDialect(t?.substring(t.length - 1));
-        texts.push({ text: text, dialect: dialect });
+        texts.push({ text: text, dialect: dialect, translate: translate });
       }
     });
     return texts;

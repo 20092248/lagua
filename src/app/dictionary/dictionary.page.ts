@@ -29,7 +29,6 @@ export class DictionaryPage implements OnInit {
     this.user = this.authentificationService.user;
     this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, false).then((words : FirebaseWord[]) => {
       this.words = words;
-      console.log(words);
     });
   }
 

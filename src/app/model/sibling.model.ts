@@ -1,7 +1,5 @@
-import { SiblingText } from "./siblingText.model";
-
 export interface Sibling {
-    symbol: string;
-    texts: SiblingText[];
+    dialect: string;
+    text: string
     translate: string;
 }

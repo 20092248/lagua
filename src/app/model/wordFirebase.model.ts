@@ -18,4 +18,5 @@ export interface FirebaseWord {
     examples: Examples[];
     scraper?: any;
     siblings: Sibling[];
+    symbol?:string;
 }
