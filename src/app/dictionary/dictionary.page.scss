@@ -130,6 +130,10 @@ ion-modal {
   }
 }
 
+div.ion-text-italic > small {
+  color: var(--ion-color-step-600, #666666);
+}
+
 .ion-inline-flex {
   display: inline-flex;
 }

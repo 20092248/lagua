@@ -5,6 +5,7 @@ export interface FirebaseWord {
     uid?: string;
     text: string[];
     dialect?: string;
+    dialectValue?: string;
     pluralText?: string[];
     translate: string[];
     translates?: any[];
@@ -19,4 +20,5 @@ export interface FirebaseWord {
     scraper?: any;
     siblings: Sibling[];
     symbol?:string;
+    symbolValue?:string;
 }

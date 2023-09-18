@@ -4,6 +4,8 @@ import { Word } from '../model/word.model';
 import { FirebaseWord } from '../model/wordFirebase.model';
 import { AuthentificationService } from '../services/authentification.service';
 import { DictionaryService } from '../services/dictionary.service';
+import { CONSTANTS } from '../utils/constants';
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
 
 @Component({
   selector: 'app-dictionary',
@@ -27,7 +29,7 @@ export class DictionaryPage implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authentificationService.user;
-    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, false).then((words : FirebaseWord[]) => {
+    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
       this.words = words;
     });
   }
@@ -46,17 +48,26 @@ export class DictionaryPage implements OnInit {
 
   changeLetter(letter: string) {
     this.letterSelected = letter;
-    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, true).then((words : FirebaseWord[]) => {
+    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, true).then((words: FirebaseWord[]) => {
       this.words = words;
     });
   }
 
   seeDetail(word: FirebaseWord) {
     const firstLetter = word.phoneticTranslate[0].normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').substring(0, 1).toLocaleLowerCase();
-    this.dictionaryService.displayWord(this.user?.learn?.text.toLocaleLowerCase(), this.translate, firstLetter, word.link ? word.link : '').then((linkInfo : FirebaseWord) => {
+    this.dictionaryService.displayWord(this.user?.learn?.text.toLocaleLowerCase(), this.translate, firstLetter, word.link ? word.link : '').then((linkInfo: FirebaseWord) => {
       this.isDetailDisplay = true;
       this.linkInfo = linkInfo;
     });
+  }
+
+  onIonInfinite(ev: any) {
+    this.dictionaryService.nextWords(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected).then((words: FirebaseWord[]) => {
+      this.words = words;
+    });
+    setTimeout(() => {
+      (ev as InfiniteScrollCustomEvent).target.complete();
+    }, 500);
   }
 
   closeModal() {

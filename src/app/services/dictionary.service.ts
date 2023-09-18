@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Firestore, getFirestore } from '@angular/fire/firestore';
-import { doc, getDoc, getDocs, addDoc, collection, query, where, updateDoc, orderBy } from '@firebase/firestore';
+import { doc, getDoc, getDocs, addDoc, collection, query, where, updateDoc, orderBy, startAfter, limit, DocumentData, QueryDocumentSnapshot } from '@firebase/firestore';
 import { Word } from '../model/word.model';
 import { FirebaseWord } from '../model/wordFirebase.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
+import { CONSTANTS } from '../utils/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,8 @@ export class DictionaryService {
 
   constructor(private _firestore: Firestore, private http: HttpClient) { }
   collection = 'shikomori_francais_a'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+  words: FirebaseWord[] = [];
+  lastVisible: QueryDocumentSnapshot<DocumentData> = {} as QueryDocumentSnapshot<DocumentData>;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -143,18 +146,43 @@ export class DictionaryService {
   }
 
   async displayAlphabet(text: string | undefined, translate: string | undefined, alphabet: string, updateDetail: boolean): Promise<FirebaseWord[]> {
-    const q = query(collection(getFirestore(), text + '_' + translate + '_' + alphabet), orderBy('originalText', 'asc'));
+    this.words = []
+    this.lastVisible = {} as QueryDocumentSnapshot<DocumentData>;
+    const q = query(collection(getFirestore(), text + '_' + translate + '_' + alphabet), orderBy('originalText', 'asc'), limit(25));
     const querySnapshot = await getDocs(q);
-    const words: FirebaseWord[] = [];
+    this.lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
     querySnapshot.forEach((doc) => {
-      const word = doc.data() as FirebaseWord;
-      word.uid = doc.id;
-      words.push(word);
+      var word = this.wordComplementaryData(doc);
+      this.words.push(word);
       if (updateDetail) {
         this.getMoreDetail(word, alphabet);
       }
     });
-    return words;
+    return this.words;
+  }
+
+  async nextWords(text: string | undefined, translate: string | undefined, alphabet: string) {
+    const next = query(collection(getFirestore(), text + '_' + translate + '_' + alphabet), orderBy('originalText', 'asc'), startAfter(this.lastVisible), limit(25));
+    const querySnapshot = await getDocs(next);
+    this.lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
+    querySnapshot.forEach((doc) => {
+      var word = this.wordComplementaryData(doc);
+      this.words.push(word);
+    });
+    return this.words;
+  }
+
+  wordComplementaryData(doc: any) {
+    const word = doc.data() as FirebaseWord;
+    word.uid = doc.id;
+    word.dialectValue = word.dialect ? CONSTANTS.dialect[word.dialect] : word.dialect;
+    word.symbolValue = word.symbol ? CONSTANTS.symbol[word.symbol.replace('  ', ' ')] : word.symbol;
+    if (word.siblings) {
+      word.siblings.forEach(s => {
+        s.dialectValue = s.dialect ? CONSTANTS.dialect[s.dialect] : s.dialect;
+      });
+    }
+    return word;
   }
 
   async displayWord(text: string | undefined, translate: string | undefined, alphabet: string, uid: string): Promise<FirebaseWord> {
@@ -313,15 +341,15 @@ export class DictionaryService {
 
   transColorDialect(color: string) {
     if (color === 'green') {
-      return 'ALL';
+      return CONSTANTS.dialect['ALL'];
     } else if (color === 'red') {
-      return 'SHINDZUANI';
+      return CONSTANTS.dialect['SHINDZUANI'];
     } else if (color === 'rgb(26, 163, 255)') {
-      return 'SHINGAZIDZA';
+      return CONSTANTS.dialect['SHINGAZIDZA'];
     } else if (color === 'gray') {
-      return 'SHIMAORE';
+      return CONSTANTS.dialect['SHIMAORE'];
     } else if (color === 'rgb(255, 204, 0)') {
-      return 'SHIMWALI';
+      return CONSTANTS.dialect['SHIMWALI'];
     } else {
       return '';
     }
@@ -329,15 +357,15 @@ export class DictionaryService {
 
   transFormDialect(color: string) {
     if (color === '●') {
-      return 'ALL';
+      return CONSTANTS.dialect['ALL'];
     } else if (color === '▲') {
-      return 'SHINDZUANI';
+      return CONSTANTS.dialect['SHINDZUANI'];
     } else if (color === '◼') {
-      return 'SHINGAZIDZA';
+      return CONSTANTS.dialect['SHINGAZIDZA'];
     } else if (color === '✧') {
-      return 'SHIMAORE';
+      return CONSTANTS.dialect['SHIMAORE'];
     } else if (color === '✽') {
-      return 'SHIMWALI';
+      return CONSTANTS.dialect['SHIMWALI'];
     } else {
       return '';
     }
