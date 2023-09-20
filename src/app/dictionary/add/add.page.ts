@@ -7,6 +7,7 @@ import { DICO } from './dico';
 import { AlertService } from 'src/app/services/alert.service';
 import { FirebaseWord } from 'src/app/model/wordFirebase.model';
 import { error } from 'console';
+import { ANIMALS, CLOTHES, COLORS, FAMILY, FOOD, HOME, HUMAN_BODY, MUSIC, SCHOOLS, SEA, TOOLS, TOPICS, TREES } from './topics';
 
 
 @Component({
@@ -35,10 +36,22 @@ export class AddPage implements OnInit {
     });
   }
 
-  ngOnInit() { 
-    // this.dictionaryService.getbodyLink({text:'nyora ya mshia', uid: 'KW1eo5ayYNBRc0aVQ18K'}, 'n');  
-    // this.dictionaryService.getbodyLink({text:'ncupa', uid: 'mNy2RCC3405T9TSg9oO6'}, 'n');
+  ngOnInit() {
+    // this.dictionaryService.getbodyLink({text:'mengo%20%20mitsanu', uid: 'BWUZi7tB3cWb63IaKjUo'}, 'm');  
+    // this.dictionaryService.getbodyLink({text:'mkoroshe', uid: 'fpUQUAAihXAU8WQwg6cf'}, 'm');
     // this.dictionaryService.getbodyLink({text:'trama', uid: 'KW1eo5ayYNBRc0aVQ18K'}, 't');
+    // this.dictionaryService.updateTopic(ANIMALS, 'shimwali_francais_topics', 'animals');
+    // this.dictionaryService.updateTopic(CLOTHES, 'shimwali_francais_topics', 'clothes');
+    // this.dictionaryService.updateTopic(COLORS, 'shimwali_francais_topics', 'colors');
+    // this.dictionaryService.updateTopic(FAMILY, 'shimwali_francais_topics', 'family');
+    // this.dictionaryService.updateTopic(FOOD, 'shimwali_francais_topics', 'food');
+    // this.dictionaryService.updateTopic(HOME, 'shimwali_francais_topics', 'home');
+    // this.dictionaryService.updateTopic(HUMAN_BODY, 'shimwali_francais_topics', 'human_body');
+    // this.dictionaryService.updateTopic(MUSIC, 'shimwali_francais_topics', 'music');
+    // this.dictionaryService.updateTopic(SCHOOLS, 'shimwali_francais_topics', 'school');
+    // this.dictionaryService.updateTopic(SEA, 'shimwali_francais_topics', 'sea');
+    // this.dictionaryService.updateTopic(TOOLS, 'shimwali_francais_topics', 'tools');
+    // this.dictionaryService.updateTopic(TREES, 'shimwali_francais_topics', 'trees');
   }
 
   addWordInfo() {

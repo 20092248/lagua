@@ -91,7 +91,7 @@
               <ion-text class="ion-text-italic" color="lagua">({{example.text}})</ion-text>
             </div>
           </div>
-          <div *ngIf="w.examples && w.siblings.length">
+          <div *ngIf="w.siblings && w.siblings.length">
             <p class="ion-text-italic ion-label-example">Mots similaires :</p>
             <div class="ion-text-left" *ngFor="let sibling of w.siblings">
               <ion-text>{{sibling.translate}}</ion-text> -

@@ -20,6 +20,8 @@ export class CONSTANTS {
         ['adj. ind.']: 'adjectif indéfini',
         ['adj. num']: 'adjectif numéral',
         ['adj. comp. acc.']: 'adjectif composé accordable',
+        ['adj. n. masc.']: 'adjectif nom masculin',      
+        ['adj. subst.']: 'adjectif',  
         ['adv.']: 'adverbe',
         ['adv. ind.']: 'adverbe indéfini',
         ['adv. int.']: 'adverbe interrogatif',
@@ -45,6 +47,8 @@ export class CONSTANTS {
         ['loc.']: 'locution',
         ['m. comp.']: 'mot composé',
         ['n.']: 'nom',
+        ['n. masc.']: 'nom masculin',
+        ['n. fem.']: 'nom féminin',
         ['n. act.']: 'nom d\'action',
         ['n. comp.']: 'nom composé',
         ['n. prop.']: 'nom propre',
@@ -110,6 +114,7 @@ export class CONSTANTS {
         ['v. tra.']: 'verbe transitif',
         ['v. int.']: 'verbe intransitif',
         ['v. imp.']: 'verbe impersonnel',
+        ['c. coord.']: 'conjonction de coordination',
     };
 
 }

@@ -14,7 +14,7 @@ import { CONSTANTS } from '../utils/constants';
 export class DictionaryService {
 
   constructor(private _firestore: Firestore, private http: HttpClient) { }
-  collection = 'shikomori_francais_a'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+  collection = 'shikomori_francais_m'; //ATTENTION METTRE en --disable-web-security --> chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
   words: FirebaseWord[] = [];
   lastVisible: QueryDocumentSnapshot<DocumentData> = {} as QueryDocumentSnapshot<DocumentData>;
 
@@ -122,17 +122,19 @@ export class DictionaryService {
     console.log(querySnapshot.size);
     querySnapshot.forEach(async (doc) => {
       const data = doc.data() as any;
-      if (data.scraper && !data.scraper.response) {
-        const firstLetter = data.originalText.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zɓɗA-ZƁƊ]/g, '').substring(0, 1).toLocaleLowerCase();
-        this.getapi(data.originalText, firstLetter).subscribe(scraper => {
-          if (scraper) {
-            console.log(data.originalText + ':', scraper);
-            this.updateScraperInfo(scraper, doc.id);
-          }
-        }, () => {
-          console.error(data.originalText);
-        });
-      }
+      data.uid = doc.id;
+      const firstLetter = data.originalText.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zɓɗA-ZƁƊ]/g, '').substring(0, 1).toLocaleLowerCase();
+      this.getbodyLink(data, firstLetter);
+      // if (data.scraper && !data.scraper.response) {
+      // this.getapi(data.originalText, firstLetter).subscribe(scraper => {
+      //   if (scraper) {
+      //     console.log(data.originalText + ':', scraper);
+      //     this.updateScraperInfo(scraper, doc.id);
+      //   }
+      // }, () => {
+      //   console.error(data.originalText);
+      // });
+      // }
     });
   }
 
@@ -335,7 +337,7 @@ export class DictionaryService {
   }
 
   getDialect(docWord: any) {
-    const color = docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span[style="text-align:right;"]>span').style.color;
+    const color = docWord.querySelectorAll('div.col-xs-8.col-sm-8')[1]?.querySelector('span[style="text-align:right;"]>span')?.style?.color;
     return this.transColorDialect(color);
   }
 
@@ -383,6 +385,18 @@ export class DictionaryService {
   async copyDoc(srcCollection: string, word: any) {
     const newDocId = await addDoc(collection(getFirestore(), srcCollection), word);
     console.log(newDocId.id);
+  }
+
+  updateTopic(data: any, coll: string, topic: string) {
+    try{
+    const dictionayRef = doc(getFirestore(), coll, topic);
+    console.log(topic, data);
+    updateDoc(dictionayRef, {
+      topic: data
+    });
+  } catch(err) {
+    console.error(data);
+  }
   }
 
   async addNewDialectInDB(text: string, translate: string, alphabet: string) {
