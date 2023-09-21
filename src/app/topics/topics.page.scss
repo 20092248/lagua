@@ -10,10 +10,19 @@ ion-content {
     --color: #ffffff;
 }
 
+ion-row {
+    display: flex;
+    align-items: center;
+}
+
+ion-col.ion-arrow {
+    position: absolute;
+    font-size: 28px;
+    padding: 8px;
+    z-index: 1;
+}
+
 ul {
-    display: -webkit-box;
-    display: -moz-box;
-    display: box;
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flexbox;

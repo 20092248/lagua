@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list class="ion-no-padding ion-result-dictionary" lines="full">
+    <ion-accordion-group [multiple]="true" [value]="[displayFirstAccordion]">
+      <ion-accordion value="{{t.type}}" toggleIcon="chevron-down-outline" toggleIconSlot="end"
+        *ngFor="let t of topic; let index = index">
+        <ion-item class="ion-header-accordion" slot="header">
+          <ion-label>{{t.type}}</ion-label>
+        </ion-item>
+        <div slot="content">
+          <ion-list class="ion-no-padding" lines="full">
+            <ion-item *ngFor=" let data of t.data"><ion-label class="ion-padding-start ion-text-wrap">{{data.translate}} : <span>{{data.text}}</span></ion-label></ion-item>
+          </ion-list>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-list>
+</ion-content>

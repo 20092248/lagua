@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingService } from '../services/setting.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topics',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopicsPage implements OnInit {
 
-  constructor() { }
+  sections: any[] = [];
+
+  constructor(private router: Router, private settingService: SettingService) { }
 
   ngOnInit() {
+    this.sections = this.settingService.topics?.sections;
+    if (!this.sections) {
+      this.settingService.getSettings().then(setting => {
+        this.sections = setting?.topics?.sections;
+      })
+    }
+  }
+
+  goToDetailSection(section: any) {
+    this.router.navigate(['/tabs/topics/' + section.code]);
   }
 
 }

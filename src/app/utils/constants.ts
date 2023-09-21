@@ -1,5 +1,20 @@
 export class CONSTANTS {
 
+    public static topicDocument: { [key: string]: any } = {
+        ['ANIMAL']: {code: 'animals', value: 'Les Animaux'},
+        ['CLOTHE']: {code: 'clothes', value: 'Les vêtements'},
+        ['COLOR']: {code: 'colors', value: 'Les couleurs'},
+        ['FAMILY']: {code: 'family', value: 'La famille'},
+        ['FOOD']: {code: 'food', value: 'La nourriture'},
+        ['HOME']: {code: 'home', value: 'La maison'},
+        ['HUMAN_BODY']: {code: 'humain_body', value: 'humain_body'},
+        ['MUSIC']: {code: 'music', value: 'La musique'},
+        ['SCHOOL']: {code: 'school', value: 'L\'école'},
+        ['SEA']: {code: 'sea', value: 'La mer'},
+        ['TOOL']: {code: 'tools', value: 'Les outils'},
+        ['TREE']: {code: 'trees', value: 'Les arbres'},
+    };
+    
     public static dialect: { [key: string]: string } = {
         ['ALL']: 'Comorien (Tous les dialectes)',
         ['SHINDZUANI']: 'Anjouanais',
