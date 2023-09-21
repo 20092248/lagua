@@ -1,0 +1,65 @@
+ion-toolbar {
+    --background: #46895c;
+    --color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 20px 17px -17px, rgba(0, 0, 0, 0.18) 0px 10px 20px -20px;
+    // border-radius: 0 0 20px 20px;
+}
+
+ion-content {
+    --background: #eef1ee;
+    --color: #ffffff;
+}
+
+ul {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-lines: multiple;
+    -moz-box-lines: multiple;
+    box-lines: multiple;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    box-align: start;
+    -webkit-align-items: flex-start;
+    -moz-align-items: flex-start;
+    -ms-align-items: flex-start;
+    -o-align-items: flex-start;
+    align-items: flex-start;
+    -ms-flex-align: start;
+    -webkit-align-content: start;
+    -moz-align-content: start;
+    align-content: start;
+    -ms-flex-line-pack: start;
+    width: 100%;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    min-width: 50%;
+    max-width: 50%;
+    flex: 1;
+    position: relative;
+}
+
+.headline {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1.25;
+    padding: 0px 5px;
+}
+
+.subHeadline {
+    color: #ffffff;
+    margin: 5px 0px 5px 5px !important;
+}
