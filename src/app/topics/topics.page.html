@@ -19,7 +19,7 @@
   <ul>
     <li *ngFor="let section of sections">
       <ion-card class="ion-text-center" (click)="goToDetailSection(section)">
-        <img src="https://ionicframework.com/docs/img/demos/card-media.png" />
+        <img class="ion-padding-top ion-padding-horizontal" src="{{section?.src}}" />
         <ion-card-header>
           <ion-card-subtitle>{{section?.title}}</ion-card-subtitle>
         </ion-card-header>
