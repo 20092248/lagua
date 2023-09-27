@@ -82,6 +82,11 @@ ion-searchbar {
   border-radius: 0 10px 0 0;
 }
 
+.ion-empty-result {
+  background: linear-gradient(var(--ion-background-light-color), #fff);
+  min-height: 500px;
+}
+
 ion-list {
   background: transparent;
 }
@@ -117,6 +122,7 @@ ion-icon.ion-icon-start {
 
 ion-modal {
   --border-radius: 20px;
+
   ion-toolbar {
     --background: #ffffff;
   }
@@ -130,7 +136,7 @@ ion-modal {
   }
 }
 
-div.ion-text-italic > small {
+div.ion-text-italic>small {
   color: var(--ion-color-step-600, #666666);
 }
 

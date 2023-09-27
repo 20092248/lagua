@@ -30,7 +30,7 @@ export class ReviewPage implements OnInit {
   words: any[] = [];
 
   constructor(private router: Router, private settingsService: SettingService, private reviewService: ReviewService, private authentificationService: AuthentificationService, 
-    private toastController: ToastController, private questionService: QuestionService) { }
+    private toastController: ToastController, private questionService: QuestionService, private settingService: SettingService) { }
 
   ngOnInit() {
     this.userLearn = this.authentificationService.user?.learn;
@@ -48,6 +48,7 @@ export class ReviewPage implements OnInit {
     }
     this.reviewService.getReviewsByCategory(this.category).then((data: Review[]) => {
       this.reviews = data;
+      // this.settingService.createDocument('reviews', '0xABG8UXaN8qNIXO8Ri9', {category:data[0].category, title: '', subtitle: '', lesson: 1, src: '', data: data}).then();
     });
   }
 

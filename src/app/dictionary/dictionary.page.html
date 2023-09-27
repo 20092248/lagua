@@ -64,7 +64,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-list class="ion-no-padding ion-result-dictionary" lines="full">
+  <ion-list class="ion-no-padding ion-result-dictionary" lines="full" [ngClass]="{'ion-empty-result': !words.length}">
     <ion-accordion-group [multiple]="true">
       <ion-accordion value="{{w.text}}_{{w.translate}}" toggleIcon="chevron-down-outline" toggleIconSlot="end"
         *ngFor="let w of words">
