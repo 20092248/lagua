@@ -8,6 +8,7 @@ import { User } from '../model/user.model';
 import { IonContent, ScrollDetail, ToastController } from '@ionic/angular';
 import { CodeTextTranslate } from '../model/codeTextTranslate.model';
 import { QuestionService } from '../services/question.service';
+import { ReviewGroup } from '../model/reviewGroup.model';
 
 @Component({
   selector: 'app-review',
@@ -19,7 +20,7 @@ export class ReviewPage implements OnInit {
   categorySelected: any;
   codeCategorySelectedLevel: number = 0;
   categories: any[] = [];
-  reviews: Review[] = [];
+  reviews: ReviewGroup[] = [];
   userReview: Review = {} as Review;
   userLearn: CodeTextTranslate = {} as CodeTextTranslate;
   category: string = 'A1';
@@ -28,13 +29,15 @@ export class ReviewPage implements OnInit {
   isWordsDisplay: boolean = false;
   translate: string = 'francais';
   words: any[] = [];
+  displayAccordion: string = '';
 
-  constructor(private router: Router, private settingsService: SettingService, private reviewService: ReviewService, private authentificationService: AuthentificationService, 
+  constructor(private router: Router, private settingsService: SettingService, private reviewService: ReviewService, private authentificationService: AuthentificationService,
     private toastController: ToastController, private questionService: QuestionService, private settingService: SettingService) { }
 
   ngOnInit() {
     this.userLearn = this.authentificationService.user?.learn;
     this.userReview = this.authentificationService.user?.review;
+    this.displayAccordion = this.userReview.category + '_' + this.userReview.lesson;
     if (!this.categories.length) {
       this.settingsService.getSetting('reviews').then((data => {
         this.categories = data.categories;
@@ -46,9 +49,9 @@ export class ReviewPage implements OnInit {
       this.categoryLevel = this.reviewService.getCategoryLevel(this.category);
       this.codeCategorySelectedLevel = this.reviewService.getCategoryLevel(this.category);
     }
-    this.reviewService.getReviewsByCategory(this.category).then((data: Review[]) => {
-      this.reviews = data;
-      // this.settingService.createDocument('reviews', '0xABG8UXaN8qNIXO8Ri9', {category:data[0].category, title: '', subtitle: '', lesson: 1, src: '', data: data}).then();
+    this.reviewService.getReviewsByCategory(this.category).then((results: ReviewGroup[]) => {
+      this.reviews = results;
+      // this.settingService.createDocument('reviews', '0xABG8UXaN8qNIXO8Ri0', data[0]).then();
     });
   }
 
@@ -56,8 +59,8 @@ export class ReviewPage implements OnInit {
     this.reviews = [];
     this.codeCategorySelectedLevel = this.reviewService.getCategoryLevel(code);
     this.categorySelected = this.categories.find(c => c.code === code);
-    this.reviewService.getReviewsByCategory(code).then((data: Review[]) => {
-      this.reviews = data;
+    this.reviewService.getReviewsByCategory(code).then((results: ReviewGroup[]) => {
+      this.reviews = results;
     });
   }
 
@@ -86,7 +89,7 @@ export class ReviewPage implements OnInit {
     this.words = [];
     this.questionService.getQuestions(this.userLearn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions', review.lesson + '_' + review.order).then(result => {
       this.words = result.qcm.questions;
-   });
+    });
   }
 
   closeModal() {

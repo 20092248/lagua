@@ -13,6 +13,7 @@ import { SettingService } from '../services/setting.service';
 import { LoadingService } from '../services/loading.service';
 import { forkJoin } from 'rxjs';
 import { register } from 'swiper/element/bundle';
+import { ReviewGroup } from '../model/reviewGroup.model';
 register();
 
 @Component({
@@ -31,7 +32,7 @@ export class HomePage implements OnInit {
   dailyIcon: string = '';
   loading: HTMLIonLoadingElement | undefined;
   progression: number = 0;
-  numbers: number[] = Array(10).fill(undefined, 0, 5).map((x,i)=>i);
+  numbers: number[] = Array(10).fill(undefined, 0, 5).map((x, i) => i);
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
@@ -43,15 +44,17 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.user = this.authentificationService.user;
-    forkJoin([this.settingService.getSettings(), this.reviewService.getAllReviews(), this.lessonService.searchLessons()]).subscribe(([settings, reviews, lessons]) => {
+    forkJoin([this.settingService.getSettings(), this.reviewService.getAllReviews(), this.lessonService.searchLessons()]).subscribe(([settings, reviewsInfo, lessons]) => {
       this.recommendedLessons = [];
       this.previousReviews = [];
-      this.progression = this.user && this.user.resultReviews && this.user.resultLessons ? (this.user.resultReviews?.length + this.user.resultLessons?.length) / (reviews.length + lessons.length) * 100 : 0;
-      reviews.sort((a, b) => a.category < b.category ? -1 : 1).sort((a, b) => a.lesson - b.lesson).sort((a, b) => a.order - b.order).every(r => {
-        if (this.user?.review && this.user?.review.category === r.category && this.user?.review.lesson === r.lesson && this.user?.review.order === r.order) {
-          return;
-        }
-        this.previousReviews.push(r);
+      this.progression = this.user && this.user.resultReviews && this.user.resultLessons ? (this.user.resultReviews?.length + this.user.resultLessons?.length) / (reviewsInfo.length + lessons.length) * 100 : 0;
+      reviewsInfo.forEach(reviewInfo => {
+        reviewInfo.reviews.sort((a, b) => a.category < b.category ? -1 : 1).sort((a, b) => a.lesson - b.lesson).sort((a, b) => a.order - b.order).every(r => {
+          if (this.user?.review && this.user?.review.category === r.category && this.user?.review.lesson === r.lesson && this.user?.review.order === r.order) {
+            return;
+          }
+          this.previousReviews.push(r);
+        });
       });
       this.review = this.user?.review;
       // this.reviewService.findNextReview(this.authentificationService.user.review).then(review => {
@@ -112,8 +115,8 @@ export class HomePage implements OnInit {
   }
 
   displayPreviousReviews() {
-    this.reviewService.getReviewsByCategory('A1').then((data: Review[]) => {
-      this.reviews = data;
+    this.reviewService.getReviewsByCategory('A1').then((data: ReviewGroup[]) => {
+      // this.reviews = data;
     });
   }
 

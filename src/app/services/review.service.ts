@@ -4,13 +4,14 @@ import { doc, getDocs, updateDoc, collection, query, where } from '@firebase/fir
 import { Review } from '../model/review.model';
 import { ResultReview } from '../model/resultReview.model';
 import { AuthentificationService } from './authentification.service';
+import { ReviewGroup } from '../model/reviewGroup.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewService {
 
-  reviews: Review[] = [];
+  reviews: ReviewGroup[] = [];
   review: Review = {} as Review;
   nextReview: Review = {} as Review;
   resultReviews: ResultReview[] = [];
@@ -18,19 +19,19 @@ export class ReviewService {
 
   constructor(private _firestore: Firestore) { }
 
-  async getAllReviews(): Promise<Review[]> {
+  async getAllReviews(): Promise<ReviewGroup[]> {
     this.reviews = [];
-    const q = query(collection(getFirestore(), 'reviews'), orderBy('order'));
+    const q = query(collection(getFirestore(), 'reviews'), orderBy('category'), orderBy('lesson'));
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => this.reviews.push(doc.data() as Review));
+    querySnapshot.forEach((doc) => this.reviews.push(doc.data() as ReviewGroup));
     return this.reviews;
   }
 
-  async getReviewsByCategory(category: string): Promise<Review[]> {
+  async getReviewsByCategory(category: string): Promise<ReviewGroup[]> {
     this.reviews = [];
     const q = query(collection(getFirestore(), 'reviews'), where('category', '==', category), orderBy('lesson'));
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => this.reviews.push(doc.data() as Review));
+    querySnapshot.forEach((doc) => this.reviews.push(doc.data() as ReviewGroup));
     return this.reviews;
   }
 
