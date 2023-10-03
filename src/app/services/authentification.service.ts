@@ -246,6 +246,7 @@ export class AuthentificationService {
     this.user.resultReviews.push(updateReview);
     const userRef = doc(getFirestore(), nameObject, uid);
     const nextReview = await this.reviewService.findNextReview(this.user.review).then(result => { return result });
+    this.reviewService.getPreviousReviews(nextReview).then(() => {});    
     await updateDoc(userRef, {
       review: nextReview,
       resultReviews: this.user.resultReviews.map((obj) => { return Object.assign({}, obj) })

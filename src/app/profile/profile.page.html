@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true">
   <ion-grid class="ion-grid-header">
     <span class="square-animation" *ngFor="let number of numbers"></span>
-    <ion-row class="ion-text-center ion-padding-top">
+    <ion-row class="ion-text-center ion-padding-horizontal-min">
       <ion-col>
         <h1>{{user?.displayName}}</h1>
         <p class="ion-position-badge ion-padding-bottom">
@@ -46,7 +46,7 @@
                   <ion-col class="ion-no-padding" [ngClass]="{'ion-hide': !percentWordsToLearn}">
                     <div class="ion-label-progress ion-label-progress-warning"
                       [ngStyle]="{'left': percentWordsToLearn + '%'}">
-                      <ion-text color="warning" class="ion-text-left ion-text-bold">{{percentWordsToLearn}}%</ion-text>à
+                      <ion-text color="warning" class="ion-text-left ion-text-bold">{{percentWordsToLearn | number : '.2-2'}}%</ion-text>à
                       apprendre
                     </div>
                   </ion-col>
@@ -69,13 +69,13 @@
                 <ion-row class="ion-label-progress-bottom-position" *ngIf="user?.resultReviews?.length">
                   <ion-col size="{{percentWordsLearned ? 6 : 12}}" *ngIf="percentWordsToRevise">
                     <div class="ion-label-progress ion-label-progress-danger">
-                      <ion-text color="danger" class="ion-text-left ion-text-bold">{{percentWordsToRevise}}%</ion-text>à
+                      <ion-text color="danger" class="ion-text-left ion-text-bold">{{percentWordsToRevise | number : '.2-2'}}%</ion-text>à
                       réviser
                     </div>
                   </ion-col>
                   <ion-col size="{{percentWordsToRevise ? 6 : 12}}" *ngIf="percentWordsLearned">
                     <div class="ion-label-progress ion-label-progress-success ion-text-right">
-                      <ion-text color="success" class="ion-text-bold">{{percentWordsLearned}}%</ion-text>appris
+                      <ion-text color="success" class="ion-text-bold">{{percentWordsLearned | number : '.2-2'}}%</ion-text>appris
                     </div>
                   </ion-col>
                 </ion-row>

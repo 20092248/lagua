@@ -146,7 +146,7 @@
         </swiper-container>
       </div>
 
-      <div class="ion-unlock-lesson" *ngIf="previousReviews && previousReviews.length">
+      <div class="ion-unlock-lesson">
         <ion-card>
           <ion-card-header>
             <ion-card-title>C'est l'heure de réviser</ion-card-title>
@@ -172,7 +172,7 @@
               </ion-header>
               <ion-content>
                 <ion-list>
-                  <ion-item detail="true" routerLinkActive="selected" lines="full" class="ion-item-result-dictionary" *ngFor="let r of previousReviews; let index = index" (click)="accessPreviousReview(r); modal.dismiss()">
+                  <ion-item detail="true" routerLinkActive="selected" lines="full" class="ion-item-result-dictionary" *ngFor="let r of getPreviousReviews; let index = index" (click)="accessPreviousReview(r); modal.dismiss()">
                   <ion-icon name="reader-outline" slot="start"></ion-icon>
                     <ion-label class="ion-text-wrap">
                       <h3>{{r.text}}</h3>
@@ -189,18 +189,18 @@
       <div class="ion-unlock-lesson">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>{{review?.category === 'A1' && review?.lesson === 1 && review?.order === 1 ? 'Premier': 'Prochain'}} cours à visualiser</ion-card-title>
-            <ion-card-subtitle>Cours {{review?.lesson}} : Leçon {{review?.order}} - {{review?.text}} / <i>{{review?.translate}}</i></ion-card-subtitle>
+            <ion-card-title>{{getReview.category === 'A1' && getReview.lesson === 1 && getReview.order === 1 ? 'Premier': 'Prochain'}} cours à visualiser</ion-card-title>
+            <ion-card-subtitle>Cours {{getReview.lesson}} : Leçon {{getReview.order}} - {{getReview.text}} / <i>{{getReview.translate}}</i></ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
-            <div class="ion-custom-text" *ngFor="let content of review?.contents">{{content}}</div>
+            <div class="ion-custom-text" *ngFor="let content of getReview.contents">{{content}}</div>
           </ion-card-content>
           <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
             fill="clear" (click)="accessToReview()">Accéder au cours</ion-button>
         </ion-card>
       </div>
 
-      <div class="ion-unlock-lesson" *ngIf="previousReviews && previousReviews.length">
+      <div class="ion-unlock-lesson">
         <ion-card>
           <ion-card-header>
             <ion-card-title>Acquérir du vocabulaire</ion-card-title>

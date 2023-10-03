@@ -12,6 +12,7 @@ import { ReviewGroup } from '../model/reviewGroup.model';
 export class ReviewService {
 
   reviews: ReviewGroup[] = [];
+  previousReviews: Review[] = [];
   review: Review = {} as Review;
   nextReview: Review = {} as Review;
   resultReviews: ResultReview[] = [];
@@ -35,11 +36,30 @@ export class ReviewService {
     return this.reviews;
   }
 
+  async getPreviousReviews(review: Review): Promise<Review[]> { //category: string, lesson: number, order: number
+    this.previousReviews = [];
+    const q = query(collection(getFirestore(), 'reviews'), where('category', '==', review.category), orderBy('lesson'));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      const reviewInfo = doc.data() as ReviewGroup;
+      for (const r of reviewInfo.reviews) {
+        if (review.lesson === r.lesson && review.order === r.order) {
+          return;
+        }
+        this.previousReviews.push(r);
+      }
+    });
+    return this.previousReviews;
+  }
+
   async getReview(category: string, lesson: number, order: number): Promise<Review> {
     this.review;
-    const q = query(collection(getFirestore(), 'reviews'), where('category', '==', category), where('lesson', '==', lesson), where('order', '==', order));
+    const q = query(collection(getFirestore(), 'reviews'), where('category', '==', category), where('lesson', '==', lesson));
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => this.review = doc.data() as Review);
+    querySnapshot.forEach((doc) => {
+      const reviewInfo = doc.data();
+      this.review = reviewInfo['reviews'].find((r: any) => r.order === order) as Review
+    });
     return this.review;
   }
 
@@ -52,21 +72,29 @@ export class ReviewService {
   }
 
   async findNextReview(review: Review) {
-    const reviewByCategory = this.reviews.filter(r => r.category === review.category).sort((a, b) => a.lesson - b.lesson).sort((a, b) => a.order - b.order);
-    const countLessonAndOrder = reviewByCategory.reduce((acc, e) => acc.set(e.lesson, (acc.get(e.lesson) || 0) + 1), new Map());
-    if (countLessonAndOrder.get(review.lesson) !== review.order + 1) { 
-      this.nextReview = await this.getReview(review.category, review.lesson, review.order + 1).then((value: Review) => {
-        return value;
-      });
-    } else if(countLessonAndOrder.get(review.lesson + 1)) { // toutes les leçons sont terminées et il reste des cours
-      this.nextReview = await this.getReview(review.category, review.lesson + 1, 1).then((value: Review) => {
-        return value;
-      });
+    const reviews = this.reviews ? this.reviews.find(r => r.category === review.category && r.lesson === review.lesson)?.reviews : [];
+    const order = reviews ? reviews?.findIndex(r => r.order === review.order) : 0;
+    if (reviews && reviews.length !== order) {
+      this.nextReview = reviews[order + 1];
+    } else if (reviews && reviews.length === order && this.reviews.find(r => r.category === review.category && r.lesson === review.lesson + 1)) { // toutes les leçons sont terminées et il reste des cours
+      this.nextReview = await this.getReview(review.category, review.lesson + 1, 1).then((value: Review) => { return value; });
     } else { // toutes les leçons/cours sont terminées
-      this.nextReview = await this.getReview(this.nextCategory(review.category), 1, 1).then((value: Review) => {
-        return value;
-      });
+      this.nextReview = await this.getReview(this.nextCategory(review.category), 1, 1).then((value: Review) => { return value; });
     }
+    // const countLessonAndOrder = reviewByCategory.reduce((acc, e) => acc.set(e.lesson, (acc.get(e.lesson) || 0) + 1), new Map());
+    // if (countLessonAndOrder.get(review.lesson) !== review.order + 1) { 
+    //   this.nextReview = await this.getReview(review.category, review.lesson, review.order + 1).then((value: Review) => {
+    //     return value;
+    //   });
+    // } else if(countLessonAndOrder.get(review.lesson + 1)) { 
+    //   this.nextReview = await this.getReview(review.category, review.lesson + 1, 1).then((value: Review) => {
+    //     return value;
+    //   });
+    // } else { 
+    //   this.nextReview = await this.getReview(this.nextCategory(review.category), 1, 1).then((value: Review) => {
+    //     return value;
+    //   });
+    // }
     return this.nextReview;
   }
 
