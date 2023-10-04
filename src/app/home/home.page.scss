@@ -1,12 +1,19 @@
 ion-toolbar.ion-header-home {
-  --background: url('https://cdn.create.vista.com/api/media/medium/461309418/stock-photo-creative-prismatic-background-polygonal-green-pattern?token=') 0%;//#46895c;
+  --background: url('https://cdn.create.vista.com/api/media/medium/461309418/stock-photo-creative-prismatic-background-polygonal-green-pattern?token=') 0%; //#46895c;
   --color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 25px -15px, rgba(0, 0, 0, 0.18) 0px 10px 10px -10px;
   height: 205px;
   padding-top: 10px;
 }
 
-ion-content.ion-content-fullscreen-home { 
+@media only screen and (min-width: 1024px) {
+  ion-toolbar.ion-header-home {
+    --background: left 0% / 100% 150% no-repeat url(
+      "https://cdn.create.vista.com/api/media/medium/461309418/stock-photo-creative-prismatic-background-polygonal-green-pattern?token=");
+  }
+}
+
+ion-content.ion-content-fullscreen-home {
   --background: #eef1ee;
   --background: linear-gradient(to bottom, #eef1ee 205px, #418662 205px, #eef1ee 420px);
 }
@@ -57,6 +64,7 @@ swiper-slide ion-card ion-card-content {
 
 ion-modal {
   --border-radius: 20px;
+
   ion-toolbar {
     --background: #ffffff;
   }
@@ -75,6 +83,7 @@ ion-modal {
 
   ion-item {
     --background: transparent;
+
     ion-icon {
       padding: 10px;
       border-radius: 20px;
@@ -103,7 +112,7 @@ ion-modal {
   margin-bottom: 16px;
 }
 
-ion-card-content > span {
+ion-card-content>span {
   font-size: 15vw;
   justify-content: center;
   display: flex;
