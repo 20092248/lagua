@@ -19,7 +19,7 @@ ion-row {
 ion-row.ion-search-header {
   color: #ffffff;
   height: 191px;
-  background: url("https://cdn.create.vista.com/api/media/medium/461309418/stock-photo-creative-prismatic-background-polygonal-green-pattern?token=") 0% / 175%;
+  background: url('/assets/img/background.png') 0% / 175%;
   border-radius: 0 0 0 20px;
   ;
 }
@@ -134,6 +134,13 @@ ion-modal {
   ion-title {
     font-size: 16px;
   }
+}
+
+ion-button.ion-repeat {
+  --background: #fff;
+  --color: #1a6921;
+  --border-radius: 20px;
+  --box-shadow: 0;
 }
 
 div.ion-text-italic>small {

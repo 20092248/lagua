@@ -20,15 +20,17 @@ export class DictionaryPage implements OnInit {
   letterSelected: string = 'a';
   isResultDisplay: boolean | undefined;
   isDetailDisplay: boolean | undefined;
-  user: User | undefined;
+  user: User = {} as User;
   words: FirebaseWord[] = [];
   translate: string = 'francais';
+  text: string = '';
   linkInfo: FirebaseWord = {} as FirebaseWord;
 
   constructor(private dictionaryService: DictionaryService, private authentificationService: AuthentificationService) { }
 
   ngOnInit(): void {
     this.user = this.authentificationService.user;
+    this.text = this.user.learn.text;
     this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
       this.words = words;
     });
@@ -68,6 +70,16 @@ export class DictionaryPage implements OnInit {
     setTimeout(() => {
       (ev as InfiniteScrollCustomEvent).target.complete();
     }, 500);
+  }
+
+  changeDictionary(){
+    if(this.translate === 'francais'){
+      this.text = 'francais';
+      this.translate = this.user.learn.text;
+    } else {
+      this.text = this.user.learn.text;
+      this.translate = 'francais';
+    }
   }
 
   closeModal() {

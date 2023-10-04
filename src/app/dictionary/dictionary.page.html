@@ -54,13 +54,15 @@
     </ion-row>
     <ion-row class="ion-padding-language">
       <ion-col size="5">
-        {{user?.learn?.text}}
+        {{text | titlecase}}
       </ion-col>
       <ion-col size="2">
-        <ion-icon color="lagua" size="large" name="repeat-outline"></ion-icon>
+        <ion-button class="ion-repeat" (click)="changeDictionary()">
+          <ion-icon size="large" name="repeat-outline"></ion-icon> 
+        </ion-button>
       </ion-col>
       <ion-col size="5">
-        {{user?.learn?.translate}}
+        {{translate | titlecase}}
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -78,7 +80,7 @@
         </ion-item>
         <div class="ion-padding-horizontal ion-content-accordion" slot="content">
           <div *ngIf="w.dialect" class="ion-text-italic"><small>Dialecte : {{w.dialectValue}}</small></div>
-          <div *ngIf="w.text" class="ion-text-italic"><small>{{this.user?.learn?.text}} : {{w.text}} <span *ngIf="w.symbolValue">({{w.symbolValue}})</span></small></div>
+          <div *ngIf="w.text" class="ion-text-italic"><small>{{this.user.learn.text}} : {{w.text}} <span *ngIf="w.symbolValue">({{w.symbolValue}})</span></small></div>
           <div *ngIf="w.translate" class="ion-text-italic"><small>Français : </small><small *ngFor="let t of w.translate; let index = index"><span *ngIf="t">{{t}}</span><span *ngIf="index !== w.translate.length - 1">, </span></small><small *ngIf="w.translate.length"> : {{w.dialectValue}}</small></div>
           <p *ngIf="w.pluralText && w.pluralText.length" class="ion-word-description-dictionary ion-text-italic">
             <span *ngFor="let plural of w.pluralText">{{plural}} </span>
