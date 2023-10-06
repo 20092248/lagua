@@ -260,6 +260,28 @@ export class DictionaryService {
     }
   }
 
+  getMoreDetailFr(word: any, firstletter: string) {
+    try {
+      if (word.scraper && word.scraper.response.body) {
+        // document.querySelectorAll('.box.col-xs-12 > div.col-xs-12.col-sm-12:not(.divider)')
+        var parser = new DOMParser();
+        var documentWord = parser.parseFromString(word.scraper.response.body, "text/html");
+        const text = documentWord.querySelectorAll('div.col-xs-12.col-sm-12.divider > .col-xs-8.col-sm-8 > a > span')[0].innerHTML?.trim();
+        const plural = '';
+        const symbol = documentWord.querySelectorAll('div.col-xs-12.col-sm-12.divider > .col-xs-8.col-sm-8 > span')[0].innerHTML?.trim();
+        const dialect = '';
+        const translates = '';
+        const description = '';
+        const examples = '';
+        const siblings = '';
+        const w = { 'text': text, 'plural': plural, 'symbol': symbol, 'dialect': dialect, 'translates': translates, 'description': description, 'examples': examples, 'siblings': siblings, 'scraper': word.scraper };
+        this.updateDetailInfo(w, word.uid ? word.uid : '', firstletter);
+      }
+    } catch (error: any) {
+      console.error(word);
+    }
+  }
+
   getSiblings(docWord: any) {
     var ss: any = [];
     const ssContainer = docWord.querySelector('div.col-xs-12.col-sm-12.infos_examples:not(.separator)')
