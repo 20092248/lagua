@@ -74,6 +74,26 @@ export class DictionaryService {
     return dictionayRef.id;
   }
 
+  async updateFrenchDictionary(word: any): Promise<string> {
+    const firstLetter = word.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zɓɗA-ZƁƊ]/g, '').substring(0, 1).toLocaleLowerCase();
+    const firebaseWord: FirebaseWord = {
+      text: word.text.split(';'),
+      translate: word.translate.split(';'),
+      originalText: word.text,
+      originalTranslate: word.translate,
+      description: word.description ? word.description : '',
+      examples: word.examples ? word.examples : [],
+      siblings: [],
+      phoneticText: word.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zɓɗA-ZƁƊ0-9-,;() ]/g, '').replace('-a ', '').replace('-', '').replace(/\(.[^(]*\)/g, '').replaceAll('ɓ', 'b').replaceAll('ɗ', 'd').toLocaleLowerCase().split(';'),
+      phoneticTranslate: word.translate.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zɓɗA-ZƁƊ0-9'-,;() ]/g, '').replace(/\(.[^(]*\)/g, '').replaceAll(' ', ';').toLocaleLowerCase().split(';'),
+    };
+    if (word.link) { firebaseWord.link = word.link; }
+    const dictionayRef = await addDoc(collection(getFirestore(), 'francais_shikomori_' + firstLetter), firebaseWord);
+    word.uid = dictionayRef.id;
+    this.getbodyLinkFr(word, firstLetter);
+    return dictionayRef.id;
+  }
+
   updateScraperInfo(scrapper: any, id: string) {
     const dictionayRef = doc(getFirestore(), this.collection, id);
     updateDoc(dictionayRef, {
@@ -85,6 +105,22 @@ export class DictionaryService {
     console.log(firstLetter + '->' + uid, word);
     const dictionayRef = doc(getFirestore(), 'shikomori_francais_' + firstLetter, uid);
     updateDoc(dictionayRef, {
+      pluralText: word.plural ? word.plural.split(';') : [],
+      originalPluralText: word.plural ? word.plural : '',
+      symbol: word.symbol ? word.symbol : '',
+      dialect: word.dialect ? word.dialect : '',
+      description: word.description ? word.description : '',
+      examples: word.examples ? word.examples : [],
+      siblings: word.siblings ? word.siblings : [],
+      scraper: word.scraper ? word.scraper : {}
+    });
+  }
+
+  updateDetailInfoFr(word: any, uid: string, firstLetter: string) {
+    console.log(firstLetter + '->' + uid, word);
+    const dictionayRef = doc(getFirestore(), 'francais_shikomori_' + firstLetter, uid);
+    updateDoc(dictionayRef, {
+      translates: word.translates ? word.translates :  [],
       pluralText: word.plural ? word.plural.split(';') : [],
       originalPluralText: word.plural ? word.plural : '',
       symbol: word.symbol ? word.symbol : '',
@@ -239,6 +275,31 @@ export class DictionaryService {
       error => console.log(w.originalText, error));
   }
 
+  getbodyLinkFr(w: any, letter: string) {
+    const text = w.originalText ? w.originalText : w.text;
+    return this.http.get('https://orelc.ac/academy/FrenchWords/viewWord/' + text + '?letter=' + letter, { responseType: 'text' }).subscribe(
+      value => {
+        const word = {
+          uid: w.uid,
+          scraper: {
+            id: 'directLink',
+            attempts: 1,
+            status: 'finished',
+            statusUrl: 'directLink',
+            url: 'https://orelc.ac/academy/FrenchWords/viewWord/' + text + '?letter=' + letter,
+            response: {
+              body: value,
+              credit: 1,
+              headers: 'Content-Type, application/json',
+              statusCode: 200
+            }
+          }
+        }
+        this.getMoreDetailFr(word, letter);
+      },
+      error => console.log(w.originalText, error));
+  }
+
   getMoreDetail(word: any, firstletter: string) {
     try {
       if (word.scraper && word.scraper.response.body) {
@@ -263,19 +324,14 @@ export class DictionaryService {
   getMoreDetailFr(word: any, firstletter: string) {
     try {
       if (word.scraper && word.scraper.response.body) {
-        // document.querySelectorAll('.box.col-xs-12 > div.col-xs-12.col-sm-12:not(.divider)')
         var parser = new DOMParser();
         var documentWord = parser.parseFromString(word.scraper.response.body, "text/html");
         const text = documentWord.querySelectorAll('div.col-xs-12.col-sm-12.divider > .col-xs-8.col-sm-8 > a > span')[0].innerHTML?.trim();
-        const plural = '';
         const symbol = documentWord.querySelectorAll('div.col-xs-12.col-sm-12.divider > .col-xs-8.col-sm-8 > span')[0].innerHTML?.trim();
-        const dialect = '';
-        const translates = '';
-        const description = '';
-        const examples = '';
-        const siblings = '';
-        const w = { 'text': text, 'plural': plural, 'symbol': symbol, 'dialect': dialect, 'translates': translates, 'description': description, 'examples': examples, 'siblings': siblings, 'scraper': word.scraper };
-        this.updateDetailInfo(w, word.uid ? word.uid : '', firstletter);
+        const dialect = 'FRENCH';
+        const translates = this.getTranslatesFr(documentWord);
+        const w = { 'text': text, 'symbol': symbol, 'dialect': dialect, 'translates': translates, 'scraper': word.scraper };
+        this.updateDetailInfoFr(w, word.uid ? word.uid : '', firstletter);
       }
     } catch (error: any) {
       console.error(word);
@@ -333,6 +389,19 @@ export class DictionaryService {
         const symbol = t.querySelector('a span span[style="color:#333333;"]')?.innerText || '';
         const info = t.querySelector('div i span')?.innerText || '';
         ts.push({ translate: translate, symbol: symbol, info: info });
+      });
+    }
+    return ts;
+  }
+
+  getTranslatesFr(docWord: any) {
+    const ts: any = [];
+    const translates = docWord.querySelectorAll('.box.col-xs-12 > div.col-xs-12.col-sm-12:not(.divider)');
+    if (translates) {
+      translates.forEach((t: any) => {
+        const translate = t.querySelector('.col-xs-6.col-sm-6').innerText.replace(/[,;]$/,'') || '';
+        const dialect = this.transColorDialect(t.querySelector('span > span').style.color);
+        ts.push({ translate: translate, dialect: dialect });
       });
     }
     return ts;

@@ -58,9 +58,8 @@ export class AddPage implements OnInit {
     DICO.forEach(word => {
       if (word.text && word.translate) {
         word.text = word.text.trim();
-        word.pluralText = word.pluralText ? word.pluralText.trim() : '';
         word.translate = word.translate.trim();
-        this.dictionaryService.updateShikomoriDictionary(word).then(id => {
+        this.dictionaryService.updateFrenchDictionary(word).then(id => {
           console.log(id, word);
         }, () => console.error(word));
       }

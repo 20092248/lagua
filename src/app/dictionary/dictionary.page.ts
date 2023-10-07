@@ -50,7 +50,7 @@ export class DictionaryPage implements OnInit {
 
   changeLetter(letter: string) {
     this.letterSelected = letter;
-    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, true).then((words: FirebaseWord[]) => {
+    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
       this.words = words;
     });
   }
@@ -76,9 +76,15 @@ export class DictionaryPage implements OnInit {
     if(this.translate === 'francais'){
       this.text = 'francais';
       this.translate = this.user.learn.text;
+      this.dictionaryService.displayAlphabet('francais', 'shikomori', this.letterSelected, false).then((words: FirebaseWord[]) => {
+        this.words = words;
+      });
     } else {
       this.text = this.user.learn.text;
       this.translate = 'francais';
+      this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
+        this.words = words;
+      });
     }
   }
 
