@@ -74,14 +74,14 @@
           <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
           <ion-label class="ion-text-wrap">
             {{w.text}} <small>({{w.symbol}})</small>
-            <p class="ion-text-italic" *ngFor="let t of w.translates">{{t.translate}} ({{t.symbol}})
+            <p class="ion-text-italic" *ngFor="let t of w.translates">{{t.translate}} (<span *ngIf="t.symbol">{{t.symbol}}</span><span *ngIf="t.dialect">{{t.dialect}}</span>)
             </p>
           </ion-label>
         </ion-item>
         <div class="ion-padding-horizontal ion-content-accordion" slot="content">
-          <div *ngIf="w.dialect" class="ion-text-italic"><small>Dialecte : {{w.dialectValue}}</small></div>
-          <div *ngIf="w.text" class="ion-text-italic"><small>{{this.user.learn.text}} : {{w.text}} <span *ngIf="w.symbolValue">({{w.symbolValue}})</span></small></div>
-          <div *ngIf="w.translate" class="ion-text-italic"><small>Français : </small><small *ngFor="let t of w.translate; let index = index"><span *ngIf="t">{{t}}</span><span *ngIf="index !== w.translate.length - 1">, </span></small><small *ngIf="w.translate.length"> : {{w.dialectValue}}</small></div>
+          <div *ngIf="w.dialect" class="ion-text-italic"><small>Dialecte : {{w.dialect}}</small></div>
+          <div *ngIf="w.text" class="ion-text-italic"><small>{{text | titlecase}} : {{w.text}} <span *ngIf="w.symbolValue">({{w.symbolValue}})</span></small></div>
+          <div *ngIf="w.translate" class="ion-text-italic"><small>{{translate | titlecase}} : </small><small *ngFor="let t of w.translate; let index = index"><span *ngIf="t">{{t}}</span><span *ngIf="index !== w.translate.length - 1 && t">, </span></small></div>
           <p *ngIf="w.pluralText && w.pluralText.length" class="ion-word-description-dictionary ion-text-italic">
             <span *ngFor="let plural of w.pluralText">{{plural}} </span>
           </p>
@@ -97,7 +97,7 @@
             <p class="ion-text-italic ion-label-example">Mots similaires :</p>
             <div class="ion-text-left" *ngFor="let sibling of w.siblings">
               <ion-text>{{sibling.translate}}</ion-text> -
-              <ion-text class="ion-text-italic" color="lagua">{{sibling.text}} ({{sibling.dialectValue}})</ion-text>
+              <ion-text class="ion-text-italic" color="lagua">{{sibling.text}} ({{sibling.dialect}})</ion-text>
             </div>
           </div>
           <div class="ion-margin-vertical ion-text-center">

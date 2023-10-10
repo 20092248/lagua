@@ -21,6 +21,7 @@ export class CONSTANTS {
         ['SHINGAZIDZA']: 'Grand-comorien',
         ['SHIMAORE']: 'Mahorais',
         ['SHIMWALI']: 'Mohélien',
+        ['FRENCH']: 'Français',
     };
 
     public static symbol: { [key: string]: string } = {

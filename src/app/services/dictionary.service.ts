@@ -105,6 +105,7 @@ export class DictionaryService {
     console.log(firstLetter + '->' + uid, word);
     const dictionayRef = doc(getFirestore(), 'shikomori_francais_' + firstLetter, uid);
     updateDoc(dictionayRef, {
+      translates: word.translates ? word.translates :  [],
       pluralText: word.plural ? word.plural.split(';') : [],
       originalPluralText: word.plural ? word.plural : '',
       symbol: word.symbol ? word.symbol : '',
@@ -328,7 +329,7 @@ export class DictionaryService {
         var documentWord = parser.parseFromString(word.scraper.response.body, "text/html");
         const text = documentWord.querySelectorAll('div.col-xs-12.col-sm-12.divider > .col-xs-8.col-sm-8 > a > span')[0].innerHTML?.trim();
         const symbol = documentWord.querySelectorAll('div.col-xs-12.col-sm-12.divider > .col-xs-8.col-sm-8 > span')[0].innerHTML?.trim();
-        const dialect = 'FRENCH';
+        const dialect = CONSTANTS.dialect['FRENCH'];
         const translates = this.getTranslatesFr(documentWord);
         const w = { 'text': text, 'symbol': symbol, 'dialect': dialect, 'translates': translates, 'scraper': word.scraper };
         this.updateDetailInfoFr(w, word.uid ? word.uid : '', firstletter);

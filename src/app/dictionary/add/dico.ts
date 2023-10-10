@@ -1,1470 +1,2795 @@
 export const DICO = [{
-    "text": "-a",
-    "pluralText": null,
-    "translate": "à; de; ",
+    "text": "à",
+    "translate": "-a; la; ho-; pva; ",
     "null": null
 },
 {
-    "text": "-a âiɓu",
-    "pluralText": null,
-    "translate": "immoral (d'-); obscène (d'-); ",
+    "text": "à cause",
+    "translate": "ha siɓaɓu ",
     "null": null
 },
 {
-    "text": "-a ɓei",
-    "pluralText": null,
-    "translate": "précieux. ",
+    "text": "à cause de",
+    "translate": "mana; maâna; ",
     "null": null
 },
 {
-    "text": "-a dhwahiri",
-    "pluralText": null,
-    "translate": "public (patent). ",
+    "text": "à côté",
+    "translate": "ɓavuni ",
     "null": null
 },
 {
-    "text": "-a djunga",
-    "pluralText": null,
-    "translate": "grandiose. ",
+    "text": "à côté de",
+    "translate": "fungwa; kariɓu na; mwa; ",
     "null": null
 },
 {
-    "text": "-a djuu",
-    "pluralText": null,
-    "translate": "en haut. ",
+    "text": "à droite",
+    "translate": "-a kumeni ",
     "null": null
 },
 {
-    "text": "-a dunia",
-    "pluralText": null,
-    "translate": "mondial. ",
+    "text": "à eux",
+    "translate": "-ahao ",
     "null": null
 },
 {
-    "text": "-a ɗaima",
-    "pluralText": null,
-    "translate": "éternel. ",
+    "text": "à l'étranger",
+    "translate": "manga ",
     "null": null
 },
 {
-    "text": "-a ɗini",
-    "pluralText": null,
-    "translate": "religieux. ",
+    "text": "à l'intérieur",
+    "translate": "moni ",
     "null": null
 },
 {
-    "text": "-a ɗiwara",
-    "pluralText": null,
-    "translate": "rond. ",
+    "text": "à l’extérieur",
+    "translate": "mondze ",
     "null": null
 },
 {
-    "text": "-a fardhwi",
-    "pluralText": null,
-    "translate": "nécessaire. ",
+    "text": "à la fin",
+    "translate": "muhalasi ",
     "null": null
 },
 {
-    "text": "-a hadhwari",
-    "pluralText": null,
-    "translate": "vert. ",
+    "text": "à la Mecque",
+    "translate": "Kaaba ",
     "null": null
 },
 {
-    "text": "-a hanɗa",
-    "pluralText": null,
-    "translate": "premier; en premier; ",
+    "text": "à lui",
+    "translate": "-ahahe ",
     "null": null
 },
 {
-    "text": "-a inswafi",
-    "pluralText": null,
-    "translate": "sincère; authentique; ",
+    "text": "à moi",
+    "translate": "-ahangu ",
     "null": null
 },
 {
-    "text": "-a kawaiɗa",
-    "pluralText": null,
-    "translate": "normal; général (adj.); ",
+    "text": "à nous",
+    "translate": "-ahatru ",
     "null": null
 },
 {
-    "text": "-a khatwari",
-    "pluralText": null,
-    "translate": "dangereux. ",
+    "text": "à peu près",
+    "translate": "kaɗiri ",
     "null": null
 },
 {
-    "text": "-a kinafsia",
-    "pluralText": null,
-    "translate": "intime; personnel; ",
+    "text": "à toi",
+    "translate": "-ahaho ",
     "null": null
 },
 {
-    "text": "-a kinantsi",
-    "pluralText": null,
-    "translate": "socialiste. ",
+    "text": "à vous",
+    "translate": "-ahanyu ",
     "null": null
 },
 {
-    "text": "-a kumeni",
-    "pluralText": null,
-    "translate": "à droite. ",
+    "text": "abaissement",
+    "translate": "mshushio; mnyamiso; ",
     "null": null
 },
 {
-    "text": "-a lagha",
-    "pluralText": null,
-    "translate": "sans gravité. ",
+    "text": "abaisser",
+    "translate": "shusha (u-); ɗaridza (u-); ",
     "null": null
 },
 {
-    "text": "-a mahakama",
-    "pluralText": null,
-    "translate": "judiciaire. ",
+    "text": "abandon",
+    "translate": "mlishio ",
     "null": null
 },
 {
-    "text": "-a mani maitsi",
-    "pluralText": null,
-    "translate": "vert. ",
+    "text": "abandonné",
+    "translate": "djilele ",
     "null": null
 },
 {
-    "text": "-a mbiliju",
-    "pluralText": null,
-    "translate": "jumeaux. ",
+    "text": "abandonné (être)",
+    "translate": "hantsiwa (u-); lishiwa (u-); ",
     "null": null
 },
 {
-    "text": "-a mbwani",
-    "pluralText": null,
-    "translate": "en bas. ",
+    "text": "abandonner",
+    "translate": "rantsi (u-); latsa (u-); lisha (u-); trokomedza (u-); ",
     "null": null
 },
 {
-    "text": "-a mɓilini",
-    "pluralText": null,
-    "translate": "jumeaux. ",
+    "text": "abasourdir",
+    "translate": "fusa makio (u-) ",
     "null": null
 },
 {
-    "text": "-a milele",
-    "pluralText": null,
-    "translate": "éternel. ",
+    "text": "abattoir",
+    "translate": "ɓanga ",
     "null": null
 },
 {
-    "text": "-a mnyo",
-    "pluralText": null,
-    "translate": "sale; sel; ",
+    "text": "abattre",
+    "translate": "wua (u-) ",
     "null": null
 },
 {
-    "text": "-a mshindzi",
-    "pluralText": null,
-    "translate": "basique; élémentaire; ",
+    "text": "abcès",
+    "translate": "pumɓa; mazimɓa; ",
     "null": null
 },
 {
-    "text": "-a msingi",
-    "pluralText": null,
-    "translate": "élémentaire. ",
+    "text": "abdomen",
+    "translate": "mimba; mimɓa; ",
     "null": null
 },
 {
-    "text": "-a nane",
-    "pluralText": null,
-    "translate": "huitème. ",
+    "text": "abécédaire",
+    "translate": "ɗara ",
     "null": null
 },
 {
-    "text": "-a ne",
-    "pluralText": null,
-    "translate": "quatrième. ",
+    "text": "abécédaire (arabe)",
+    "translate": "kurwasa ",
     "null": null
 },
 {
-    "text": "-a nkuɗi",
-    "pluralText": null,
-    "translate": "sale. ",
+    "text": "abeille",
+    "translate": "nyoshi ",
     "null": null
 },
 {
-    "text": "-a nne",
-    "pluralText": null,
-    "translate": "quatrième. ",
+    "text": "abeille charpentière",
+    "translate": "vomezi ",
     "null": null
 },
 {
-    "text": "-a ntrontro",
-    "pluralText": null,
-    "translate": "sale. ",
+    "text": "abîme",
+    "translate": "ngama ",
     "null": null
 },
 {
-    "text": "-a nyumeni",
-    "pluralText": null,
-    "translate": "nouveau. ",
+    "text": "abîmer",
+    "translate": "menya (u-) ",
     "null": null
 },
 {
-    "text": "-a peu",
-    "pluralText": null,
-    "translate": "méchant. ",
+    "text": "abîmer (s'-)",
+    "translate": "menyeha (u-) ",
     "null": null
 },
 {
-    "text": "-a pvili",
-    "pluralText": null,
-    "translate": "deuxième. ",
+    "text": "abject",
+    "translate": "-risifu ",
     "null": null
 },
 {
-    "text": "-a ranɗaru",
-    "pluralText": null,
-    "translate": "sixième. ",
+    "text": "abjurer",
+    "translate": "rutaɗi (u-) ",
     "null": null
 },
 {
-    "text": "-a raru",
-    "pluralText": null,
-    "translate": "troisième. ",
+    "text": "abjurer (foi)",
+    "translate": "kafiriha (u-) ",
     "null": null
 },
 {
-    "text": "-a rutuɓa",
-    "pluralText": null,
-    "translate": "humide. ",
+    "text": "ablation",
+    "translate": "mtsindzo ",
     "null": null
 },
 {
-    "text": "-a saɓa",
-    "pluralText": null,
-    "translate": "septième. ",
+    "text": "ablutions",
+    "translate": "udhu ",
     "null": null
 },
 {
-    "text": "-a shiliju",
-    "pluralText": null,
-    "translate": "rural. ",
+    "text": "ablutions (faire ses -)",
+    "translate": "tawaza (u-) ",
     "null": null
 },
 {
-    "text": "-a shingo",
-    "pluralText": null,
-    "translate": "sale. ",
+    "text": "aboiement",
+    "translate": "ndrasi ",
     "null": null
 },
 {
-    "text": "-a taraâfu",
-    "pluralText": null,
-    "translate": "obscène (d'-). ",
+    "text": "aboli (être -)",
+    "translate": "laluha (u-) ",
     "null": null
 },
 {
-    "text": "-a trotro",
-    "pluralText": null,
-    "translate": "sale. ",
+    "text": "abolir",
+    "translate": "lalua (u-) ",
     "null": null
 },
 {
-    "text": "-a truru",
-    "pluralText": null,
-    "translate": "joli. ",
+    "text": "abolition",
+    "translate": "mlaluho ",
     "null": null
 },
 {
-    "text": "-a tsanu",
-    "pluralText": null,
-    "translate": "cinquième. ",
+    "text": "abondance",
+    "translate": "utelele ",
     "null": null
 },
 {
-    "text": "-a tsongole",
-    "pluralText": null,
-    "translate": "pointu. ",
+    "text": "abondant",
+    "translate": "telele ",
     "null": null
 },
 {
-    "text": "-a uɓora",
-    "pluralText": null,
-    "translate": "parfait; de qualité; ",
+    "text": "abonder",
+    "translate": "ɓwerere (u-) ",
     "null": null
 },
 {
-    "text": "-a udjamaa",
-    "pluralText": null,
-    "translate": "socialiste. ",
+    "text": "abonné",
+    "translate": "mlagidza ",
     "null": null
 },
 {
-    "text": "-a urale",
-    "pluralText": null,
-    "translate": "infertile. ",
+    "text": "abonnement",
+    "translate": "mpvio; malagidzo; ",
     "null": null
 },
 {
-    "text": "-a usikitifu",
-    "pluralText": null,
-    "translate": "macabre. ",
+    "text": "abonner",
+    "translate": "lagidza (u-); lagiza (u-); ",
     "null": null
 },
 {
-    "text": "-a vuhuru",
-    "pluralText": null,
-    "translate": "tiède. ",
+    "text": "aboyer",
+    "translate": "ra marasi (u-) ",
     "null": null
 },
 {
-    "text": "-a zaiɗi",
-    "pluralText": null,
-    "translate": "supplémentaire. ",
+    "text": "abri",
+    "translate": "paya ",
     "null": null
 },
 {
-    "text": "-ahahe",
-    "pluralText": null,
-    "translate": "à lui; son; sa; le sien; la sienne; les siens; ",
+    "text": "abriter (s'-)",
+    "translate": "ɓamia (u-) ",
     "null": null
 },
 {
-    "text": "-ahaho",
-    "pluralText": null,
-    "translate": "à toi; ton; ta; le tien; la tienne; les tiens; ",
+    "text": "abscence",
+    "translate": "mpuzo ",
     "null": null
 },
 {
-    "text": "-ahangu",
-    "pluralText": null,
-    "translate": "à moi; mon; ma; le mien; la mienne; les miens; ",
+    "text": "absolument",
+    "translate": "tamam ",
     "null": null
 },
 {
-    "text": "-ahanyu",
-    "pluralText": null,
-    "translate": "à vous; le votre; la votre; les vôtres; ",
+    "text": "acacia",
+    "translate": "mufumgu ",
     "null": null
 },
 {
-    "text": "-ahao",
-    "pluralText": null,
-    "translate": "à eux; le leur; la leur; les leurs; ",
+    "text": "accabler de reproches",
+    "translate": "kinyushia (u-) ",
     "null": null
 },
 {
-    "text": "-ahatru",
-    "pluralText": null,
-    "translate": "à nous; nos; le notre; la notre; les nôtres; ",
+    "text": "accélérer",
+    "translate": "harakisha (u-) ",
     "null": null
 },
 {
-    "text": "-ahawo",
-    "pluralText": null,
-    "translate": "leur; leurs; ",
+    "text": "accepter",
+    "translate": "kiri (u-); kuɓali (u-); wekea (u-); ",
     "null": null
 },
 {
-    "text": "-ahe",
-    "pluralText": null,
-    "translate": "son; sa; sien; ",
+    "text": "accepter en dépit de",
+    "translate": "turuku (u-) ",
     "null": null
 },
 {
-    "text": "-aho",
-    "pluralText": null,
-    "translate": "ton; ta; tien; ",
+    "text": "accident",
+    "translate": "adjali ",
     "null": null
+}/*,
+{
+    "text": "acclamation",
+    "translate": "shime ",
+    "null": null
+},
+{
+    "text": "acclimater",
+    "translate": "zweza (u-) ",
+    "null": null
+},
+{
+    "text": "accompagnement",
+    "translate": "mɗungano ",
+    "null": null
+},
+{
+    "text": "accompagnement (protéiné d'un plat)",
+    "translate": "ireo; shireo; ",
+    "null": null
+},
+{
+    "text": "accompagner",
+    "translate": "ɗungamana (u-) ",
+    "null": null
+},
+{
+    "text": "accomplir",
+    "translate": "renɗa (u-); rendra (u-); ",
+    "null": null
+},
+{
+    "text": "accord",
+    "translate": "mwafaka ",
+    "null": null
+},
+{
+    "text": "accorder Sa clémence (Dieu)",
+    "translate": "rehemu (u-) ",
+    "null": null
+},
+{
+    "text": "accords",
+    "translate": "mkataɓa ",
+    "null": null
+},
+{
+    "text": "accoster",
+    "translate": "pahua (u-) ",
+    "null": null
+},
+{
+    "text": "accouchement",
+    "translate": "uzazi; udzazi; mzao; ",
+    "null": null
+},
+{
+    "text": "accoucher",
+    "translate": "zaya (u-); dzaa (u-); dzaya (u-); ",
+    "null": null
+},
+{
+    "text": "accoucheuse",
+    "translate": "mzalisi ",
+    "null": null
+},
+{
+    "text": "accoupler",
+    "translate": "tseleya (u-); heana (u-); ",
+    "null": null
+},
+{
+    "text": "accoupler (faire s'-)",
+    "translate": "tselesa (u-) ",
+    "null": null
+},
+{
+    "text": "accoutrement",
+    "translate": "mvao; mpindrio; ",
+    "null": null
+},
+{
+    "text": "accrocher",
+    "translate": "lemɓeza (u-); lembedza (u-); lemɓeledza (u-); susulidza (u-); rungiha (u-); ",
+    "null": null
+},
+{
+    "text": "accrocher (s')",
+    "translate": "sika (u-) ",
+    "null": null
+},
+{
+    "text": "accroître",
+    "translate": "ziɗisha (u-) ",
+    "null": null
+},
+{
+    "text": "accueillir ( un passager)",
+    "translate": "pvahua (u-) ",
+    "null": null
+},
+{
+    "text": "accueillir (un invité de marque)",
+    "translate": "kariɓisha (u-); lahiki (u-); vahua (u-); kariɓisa (u-); andjia (u-); ",
+    "null": null
+},
+{
+    "text": "accueillir avec respect",
+    "translate": "yezi (u-) ",
+    "null": null
+},
+{
+    "text": "accumuler",
+    "translate": "angulidza (u-); ngulidza (u-); ",
+    "null": null
+},
+{
+    "text": "accusation",
+    "translate": "tuhuma ",
+    "null": null
+},
+{
+    "text": "accuser",
+    "translate": "tuhumu (u-); swania (u-); kadzia (u-); ",
+    "null": null
+},
+{
+    "text": "acéré",
+    "translate": "uhali ",
+    "null": null
+},
+{
+    "text": "achard",
+    "translate": "ancari; ncari; cari; ",
+    "null": null
+},
+{
+    "text": "acharné (pers.)",
+    "translate": "mpviavu ",
+    "null": null
+},
+{
+    "text": "acharnement",
+    "translate": "ɓidia ",
+    "null": null
+},
+{
+    "text": "acharner à",
+    "translate": "fanya ɓiɗia (u-) ",
+    "null": null
+},
+{
+    "text": "achat",
+    "translate": "mhulo; ununuzi; ",
+    "null": null
+},
+{
+    "text": "acheter",
+    "translate": "hula (u-); nunua (u-); ",
+    "null": null
+},
+{
+    "text": "acheter pour",
+    "translate": "nunulia (u-) ",
+    "null": null
+},
+{
+    "text": "acheteur",
+    "translate": "mnunuzi ",
+    "null": null
+},
+{
+    "text": "achever",
+    "translate": "timizi (u-); malidza (u-); timidza (u-); tsimidza (u-); kamilisha (u-); ",
+    "null": null
+},
+{
+    "text": "acide",
+    "translate": "nkali ",
+    "null": null
+},
+{
+    "text": "acidité",
+    "translate": "uhali ",
+    "null": null
+},
+{
+    "text": "acquiescer",
+    "translate": "ɗundjiha (u-) ",
+    "null": null
+},
+{
+    "text": "acte",
+    "translate": "itrenɗwa; shitrendrwa; ",
+    "null": null
+},
+{
+    "text": "acte de mariage (devant le cadi)",
+    "translate": "mafungidzo ",
+    "null": null
+},
+{
+    "text": "actif",
+    "translate": "mtarufu ",
+    "null": null
+},
+{
+    "text": "action",
+    "translate": "itrenɗwa; shitrenɗwa; shitrendrwa; ",
+    "null": null
+},
+{
+    "text": "activer (qqun)",
+    "translate": "surusha (u-) ",
+    "null": null
+},
+{
+    "text": "addition (opération arithmétique)",
+    "translate": "mdjimliso hisaɓu ",
+    "null": null
+},
+{
+    "text": "additionner",
+    "translate": "endjeza (u-) ",
+    "null": null
+},
+{
+    "text": "adepte",
+    "translate": "muruɗi ",
+    "null": null
+},
+{
+    "text": "adéquat",
+    "translate": "mufiɗu ",
+    "null": null
+},
+{
+    "text": "adieu",
+    "translate": "kwaheri ",
+    "null": null
+},
+{
+    "text": "adjectif",
+    "translate": "swifa ",
+    "null": null
+},
+{
+    "text": "admettre",
+    "translate": "kuɓali (u-) ",
+    "null": null
+},
+{
+    "text": "administration",
+    "translate": "sirikali ",
+    "null": null
+},
+{
+    "text": "administré (un)",
+    "translate": "raîa ",
+    "null": null
+},
+{
+    "text": "administrer",
+    "translate": "tawalia (u-) ",
+    "null": null
+},
+{
+    "text": "administrer (gérer)",
+    "translate": "swarifu (u-) ",
+    "null": null
+},
+{
+    "text": "adolescence",
+    "translate": "ushaɓaɓi ",
+    "null": null
+},
+{
+    "text": "adolescence (chez la femme)",
+    "translate": "undru wa mararudjuu ",
+    "null": null
+},
+{
+    "text": "adolescent",
+    "translate": "shaɓaɓi; fihitsi; ",
+    "null": null
+},
+{
+    "text": "adolescent (chez la femme)",
+    "translate": "mndru wa mararudjuu ",
+    "null": null
+},
+{
+    "text": "adoptif",
+    "translate": "nkambo; nkaɓu; ",
+    "null": null
+},
+{
+    "text": "adoration",
+    "translate": "iɓaɗa ",
+    "null": null
+},
+{
+    "text": "adosser (s'-)",
+    "translate": "ɗemea (u-) ",
+    "null": null
+},
+{
+    "text": "adoucir",
+    "translate": "lainisha (u-) ",
+    "null": null
+},
+{
+    "text": "adresse",
+    "translate": "adiresi ",
+    "null": null
+},
+{
+    "text": "adulte",
+    "translate": "guzi; mdaɗe; ",
+    "null": null
+},
+{
+    "text": "adulte (être-)",
+    "translate": "ɓalighi (u-) ",
+    "null": null
+},
+{
+    "text": "adultère",
+    "translate": "zina ",
+    "null": null
+},
+{
+    "text": "affaiblir",
+    "translate": "ledjea (u-) ",
+    "null": null
+},
+{
+    "text": "affaire",
+    "translate": "shuhuli; ɓiashara; haɓari; ",
+    "null": null
+},
+{
+    "text": "affairement",
+    "translate": "mbwiri ",
+    "null": null
+},
+{
+    "text": "affairer (s'-)",
+    "translate": "shapiha (u-) ",
+    "null": null
+},
+{
+    "text": "affecter",
+    "translate": "sikitisha (u-) ",
+    "null": null
+},
+{
+    "text": "affection",
+    "translate": "nyandzo; mahaba; ",
+    "null": null
+},
+{
+    "text": "affiche",
+    "translate": "ilani ",
+    "null": null
+},
+{
+    "text": "affliction",
+    "translate": "djuɗi ",
+    "null": null
+},
+{
+    "text": "affolé (être -)",
+    "translate": "hafiliha (u-) ",
+    "null": null
+},
+{
+    "text": "affolé (pers.)",
+    "translate": "mhafilifu ",
+    "null": null
+},
+{
+    "text": "affolement",
+    "translate": "uhafilifu; ushangavu; ",
+    "null": null
+},
+{
+    "text": "affoler",
+    "translate": "djusa muo (u-); hafilisha (u-); ",
+    "null": null
+},
+{
+    "text": "affront",
+    "translate": "ziɓwii; ncamwa; ",
+    "null": null
+},
+{
+    "text": "affront (faire un -)",
+    "translate": "nakisi (u-) ",
+    "null": null
+},
+{
+    "text": "affronter",
+    "translate": "gaɓili (u-); kaɓili (u-); kingia (u-); ",
+    "null": null
+},
+{
+    "text": "afin de",
+    "translate": "ile ",
+    "null": null
+},
+{
+    "text": "afin que",
+    "translate": "ili; pare²; ",
+    "null": null
+},
+{
+    "text": "africain",
+    "translate": "mmrima ",
+    "null": null
+},
+{
+    "text": "Afrique",
+    "translate": "Afrika; Murima; ",
+    "null": null
+},
+{
+    "text": "Afrique du Sud",
+    "translate": "Afrika Ya Kusini ",
+    "null": null
+},
+{
+    "text": "agave",
+    "translate": "kitsani ",
+    "null": null
+},
+{
+    "text": "âge",
+    "translate": "mwaha; muhuu; muhu; ",
+    "null": null
+},
+{
+    "text": "agence",
+    "translate": "wakala; iɗara; ",
+    "null": null
+},
+{
+    "text": "agenouiller",
+    "translate": "sudjuɗia (u-) ",
+    "null": null
+},
+{
+    "text": "agent commercial du transport",
+    "translate": "disho ",
+    "null": null
+},
+{
+    "text": "agent de police",
+    "translate": "pulisi ",
+    "null": null
+},
+{
+    "text": "agent du palais",
+    "translate": "mna-djumɓe ",
+    "null": null
+},
+{
+    "text": "aggraver",
+    "translate": "zorosa (u-) ",
+    "null": null
+},
+{
+    "text": "agile",
+    "translate": "-hodari ",
+    "null": null
+},
+{
+    "text": "agitation",
+    "translate": "taharaki ",
+    "null": null
+},
+{
+    "text": "agiter",
+    "translate": "raraya (u-); tsuha (u-); tsuga (u-); ",
+    "null": null
+},
+{
+    "text": "agneau",
+    "translate": "mna-gondzi ",
+    "null": null
+},
+{
+    "text": "agrafe",
+    "translate": "kulaɓu ",
+    "null": null
+},
+{
+    "text": "agrandir",
+    "translate": "letsa (u-) ",
+    "null": null
+},
+{
+    "text": "agréable (goût)",
+    "translate": "ladha; lada; ",
+    "null": null
+},
+{
+    "text": "agrément",
+    "translate": "lada ",
+    "null": null
+},
+{
+    "text": "agresser",
+    "translate": "vamia (u-) ",
+    "null": null
+},
+{
+    "text": "agresseur",
+    "translate": "mvamizi ",
+    "null": null
+},
+{
+    "text": "agriculteur",
+    "translate": "mlimi ",
+    "null": null
+},
+{
+    "text": "agriculture",
+    "translate": "ɗima; ulimadji; ndrima; ",
+    "null": null
+},
+{
+    "text": "Aïd",
+    "translate": "îdi ",
+    "null": null
+},
+{
+    "text": "aide",
+    "translate": "msaâɗa; musada; msada; ",
+    "null": null
+},
+{
+    "text": "aider",
+    "translate": "saiɗia (u-); umɓisa (u-); vidza (u-); saidi (u-); ",
+    "null": null
+},
+{
+    "text": "aigle",
+    "translate": "khwezi; bunɗi; ",
+    "null": null
+},
+{
+    "text": "aigrette",
+    "translate": "niniɓwa ",
+    "null": null
+},
+{
+    "text": "aigrir",
+    "translate": "tahayari (u-) ",
+    "null": null
+},
+{
+    "text": "aiguille",
+    "translate": "sindanu; sindzano; sindzanu; ",
+    "null": null
+},
+{
+    "text": "aiguiser (un couteau)",
+    "translate": "nua (u-); sudza (u-); ",
+    "null": null
+},
+{
+    "text": "ail",
+    "translate": "itrungu thwaumu; shirungu mvuje; shirungu (mvudje); shirungu-fuje; shirungu-vuje; shirungu-vudje; ",
+    "null": null
+},
+{
+    "text": "aile",
+    "translate": "piho; ɓawa; triho; ",
+    "null": null
+},
+{
+    "text": "ailleurs",
+    "translate": "ndze ",
+    "null": null
+},
+{
+    "text": "aimant",
+    "translate": "asmaku; simaku; ",
+    "null": null
+},
+{
+    "text": "aimer",
+    "translate": "pvendza (u-); tsaha (u-); andza (u-); vendza (u-); ",
+    "null": null
+},
+{
+    "text": "aimer l'un l'autre",
+    "translate": "vendzana (u-) ",
+    "null": null
+},
+{
+    "text": "aîné",
+    "translate": "zuki ",
+    "null": null
+},
+{
+    "text": "ainsi",
+    "translate": "yapvo; apvo; ",
+    "null": null
+},
+{
+    "text": "air",
+    "translate": "hawa ",
+    "null": null
+},
+{
+    "text": "aisance",
+    "translate": "masterehe ",
+    "null": null
+},
+{
+    "text": "aise (être à l'-)",
+    "translate": "sterehi (u-) ",
+    "null": null
+},
+{
+    "text": "aisselle",
+    "translate": "kapwa ",
+    "null": null
+},
+{
+    "text": "ajourné (être -)",
+    "translate": "udziwa (u-) ",
+    "null": null
+},
+{
+    "text": "ajourner",
+    "translate": "udza (u-) ",
+    "null": null
+},
+{
+    "text": "ajouter",
+    "translate": "endjeza (u-); engedza (u-); ",
+    "null": null
+},
+{
+    "text": "ajouter (s' -)",
+    "translate": "engedzeha (u-) ",
+    "null": null
+},
+{
+    "text": "ajuster",
+    "translate": "linga (u-) ",
+    "null": null
+},
+{
+    "text": "alarmer",
+    "translate": "naɗi (u-) ",
+    "null": null
+},
+{
+    "text": "albinos",
+    "translate": "shema; shana; ",
+    "null": null
+},
+{
+    "text": "alcool",
+    "translate": "nvinyo; alikoli; vinyu; ",
+    "null": null
+},
+{
+    "text": "algie",
+    "translate": "mshipa ",
+    "null": null
+},
+{
+    "text": "algue",
+    "translate": "jani ",
+    "null": null
+},
+{
+    "text": "aligner",
+    "translate": "ɗundzanya (u-); linganyisa (u-); linganisa (u-); ",
+    "null": null
+},
+{
+    "text": "aligner (s'-)",
+    "translate": "lingana (u-) ",
+    "null": null
+},
+{
+    "text": "aliment",
+    "translate": "zio ",
+    "null": null
+},
+{
+    "text": "alimentation",
+    "translate": "mlo; mliso; ",
+    "null": null
+},
+{
+    "text": "allaiter",
+    "translate": "hamsa (u-) ",
+    "null": null
+},
+{
+    "text": "allé chercher",
+    "translate": "roshea (u-) ",
+    "null": null
+},
+{
+    "text": "alléger",
+    "translate": "angupva (u-) ",
+    "null": null
+},
+{
+    "text": "allemand",
+    "translate": "mƊaci; shiDjeremani; muDjeremani; Ɗaci; ",
+    "null": null
+},
+{
+    "text": "aller",
+    "translate": "enɗa (u-); endra (u-); ",
+    "null": null
+},
+{
+    "text": "aller à pieds",
+    "translate": "endra (u-) ha mindru ",
+    "null": null
+},
+{
+    "text": "aller de-ci de-là",
+    "translate": "fuhafuha (u-) ",
+    "null": null
+},
+{
+    "text": "aller ensemble",
+    "translate": "zungulihana (u-) ",
+    "null": null
+},
+{
+    "text": "allergie",
+    "translate": "miko ",
+    "null": null
+},
+{
+    "text": "allonger",
+    "translate": "letsa (u-); laza (u-); ladza (u-); omboa (u-); ombodza (u-); ",
+    "null": null
+},
+{
+    "text": "allonger (s'-)",
+    "translate": "nyongoha (u-) ",
+    "null": null
+},
+{
+    "text": "allons",
+    "translate": "narenɗe ! ",
+    "null": null
+},
+{
+    "text": "allumage",
+    "translate": "mpatso ",
+    "null": null
+},
+{
+    "text": "allumer",
+    "translate": "patsa (u-); vudza (u-); uniha (hw-); ",
+    "null": null
+},
+{
+    "text": "allumette",
+    "translate": "iɓiriti; shiɓiriti; ",
+    "null": null
+},
+{
+    "text": "allumeur",
+    "translate": "ipatso ",
+    "null": null
+},
+{
+    "text": "allure",
+    "translate": "djenɗo ",
+    "null": null
+},
+{
+    "text": "aloe vera",
+    "translate": "shizia mlili; konyoɗe; ",
+    "null": null
+},
+{
+    "text": "aloès",
+    "translate": "kitani ",
+    "null": null
+},
+{
+    "text": "alors",
+    "translate": "wadjau; halafu; ",
+    "null": null
+},
+{
+    "text": "alphabet",
+    "translate": "alifuɓe; ɗara; ",
+    "null": null
+},
+{
+    "text": "alphabétiser",
+    "translate": "alfuɓesha (u-) ",
+    "null": null
+},
+{
+    "text": "aluminium",
+    "translate": "garando ",
+    "null": null
+},
+{
+    "text": "amadouer",
+    "translate": "fwaria (u-) ",
+    "null": null
+},
+{
+    "text": "amande (gage de paiement)",
+    "translate": "mau ",
+    "null": null
+},
+{
+    "text": "amant",
+    "translate": "hawara ",
+    "null": null
+},
+{
+    "text": "amarante (folong)",
+    "translate": "debere ",
+    "null": null
+},
+{
+    "text": "amarrer",
+    "translate": "fungatsa (u-) ",
+    "null": null
+},
+{
+    "text": "amas",
+    "translate": "pumɓa; ɓunku; gudza; ",
+    "null": null
+},
+{
+    "text": "amasser",
+    "translate": "ngulidza (u-) ",
+    "null": null
+},
+{
+    "text": "ambassadeur",
+    "translate": "ɓalozi ",
+    "null": null
+},
+{
+    "text": "amberique",
+    "translate": "ntsandzi; tsandzi; ",
+    "null": null
+},
+{
+    "text": "ambiance",
+    "translate": "ɓashasha; mshago; ",
+    "null": null
+},
+{
+    "text": "ambiguïté",
+    "translate": "tahaludhi ",
+    "null": null
+},
+{
+    "text": "ambitionner",
+    "translate": "kusuɗi (u-) ",
+    "null": null
+},
+{
+    "text": "ambre",
+    "translate": "amɓari ",
+    "null": null
+},
+{
+    "text": "ambrevade",
+    "translate": "ntsuzi; tsuzi; ",
+    "null": null
+},
+{
+    "text": "âme",
+    "translate": "roho; moyo; muwo; ",
+    "null": null
+},
+{
+    "text": "améliorer (s'-)",
+    "translate": "rengelea (u-) ",
+    "null": null
+},
+{
+    "text": "amende",
+    "translate": "mau; shinye; ",
+    "null": null
+},
+{
+    "text": "amende (divorce)",
+    "translate": "kulô ",
+    "null": null
+},
+{
+    "text": "amener",
+    "translate": "ɓalia (u-) ",
+    "null": null
+},
+{
+    "text": "Amérique",
+    "translate": "Marekani ",
+    "null": null
+},
+{
+    "text": "amertume",
+    "translate": "nyungo; utungu; nyongo; shinyongo; ",
+    "null": null
+},
+{
+    "text": "ami",
+    "translate": "mwandzani; munyawe; ",
+    "null": null
+},
+{
+    "text": "amitié",
+    "translate": "uwandzani ",
+    "null": null
+},
+{
+    "text": "amnistier",
+    "translate": "swamili (u-) ",
+    "null": null
+},
+{
+    "text": "amoindrir",
+    "translate": "shashiza (u-) ",
+    "null": null
+},
+{
+    "text": "amollir",
+    "translate": "rembedza (u-) ",
+    "null": null
+},
+{
+    "text": "amollir (s'-)",
+    "translate": "rembea (u-) ",
+    "null": null
+},
+{
+    "text": "amour",
+    "translate": "nyandzo; mahaba; pendo; mahaɓa; pendzo; ",
+    "null": null
+},
+{
+    "text": "amour-propre",
+    "translate": "kirahi ",
+    "null": null
+},
+{
+    "text": "amoureux",
+    "translate": "mhimbi ",
+    "null": null
+},
+{
+    "text": "ampleur",
+    "translate": "upezo ",
+    "null": null
+},
+{
+    "text": "ampoule (aux mains)",
+    "translate": "truhu; dzungua; ",
+    "null": null
+},
+{
+    "text": "ampoule (électrique)",
+    "translate": "taya; ampulu; ",
+    "null": null
+},
+{
+    "text": "amulette",
+    "translate": "hirizi ",
+    "null": null
+},
+{
+    "text": "amusement",
+    "translate": "urembo ",
+    "null": null
+},
+{
+    "text": "amuser",
+    "translate": "sakariha (u-); angadza (u-); langadza (u-); tarua (u-); ",
+    "null": null
+},
+{
+    "text": "an",
+    "translate": "mwaha ",
+    "null": null
+},
+{
+    "text": "anacardier",
+    "translate": "mbibo; mkoroshe; ",
+    "null": null
+},
+{
+    "text": "analyse",
+    "translate": "mtsantsauo ",
+    "null": null
+},
+{
+    "text": "analyser",
+    "translate": "tafiti (u-); tsantsaua (u-); ",
+    "null": null
+},
+{
+    "text": "analyste",
+    "translate": "mtafiti ",
+    "null": null
+},
+{
+    "text": "ananas",
+    "translate": "mnanasi; nanasi; ",
+    "null": null
+},
+{
+    "text": "ancêtre (d'une lignée)",
+    "translate": "koo; djaɗi; ",
+    "null": null
+},
+{
+    "text": "ancien",
+    "translate": "mhale ",
+    "null": null
+},
+{
+    "text": "ancre",
+    "translate": "nanga ",
+    "null": null
+},
+{
+    "text": "âne",
+    "translate": "pundra; mpundra; ",
+    "null": null
+},
+{
+    "text": "anéantir",
+    "translate": "angamia (u-) ",
+    "null": null
+},
+{
+    "text": "anéantissement",
+    "translate": "uangamivu ",
+    "null": null
+},
+{
+    "text": "anecdote",
+    "translate": "kiswa ",
+    "null": null
+},
+{
+    "text": "anémier",
+    "translate": "jelea (u-) ",
+    "null": null
+},
+{
+    "text": "ânerie",
+    "translate": "mafelewaka ",
+    "null": null
+},
+{
+    "text": "anesthésier",
+    "translate": "leza (u-) ",
+    "null": null
+},
+{
+    "text": "ange",
+    "translate": "ɗaika ",
+    "null": null
+},
+{
+    "text": "anglais",
+    "translate": "shiNgereza; muNgereza; ",
+    "null": null
+},
+{
+    "text": "anglais (pers.)",
+    "translate": "mngereza ",
+    "null": null
+},
+{
+    "text": "angle",
+    "translate": "mbeɓe; mpemɓe; ",
+    "null": null
+},
+{
+    "text": "Angleterre",
+    "translate": "Ngerezani ",
+    "null": null
+},
+{
+    "text": "angoisse",
+    "translate": "harara ",
+    "null": null
+},
+{
+    "text": "anguille",
+    "translate": "mhungu; muhunga; mhunga; ",
+    "null": null
+},
+{
+    "text": "animal",
+    "translate": "inyama; shinyama; ",
+    "null": null
+},
+{
+    "text": "animateur",
+    "translate": "mshangirizi ",
+    "null": null
+},
+{
+    "text": "animateur de soirée",
+    "translate": "mɓasha ",
+    "null": null
+},
+{
+    "text": "animer",
+    "translate": "ɓasha (u-); tsatsarusa (u-); ",
+    "null": null
+},
+{
+    "text": "animer (s'-)",
+    "translate": "tsatsaruha (u-) ",
+    "null": null
+},
+{
+    "text": "Anjouan",
+    "translate": "Ndzuani ",
+    "null": null
+},
+{
+    "text": "anjouanais",
+    "translate": "shiNdzuani; mNdzuani; ",
+    "null": null
+},
+{
+    "text": "anneau",
+    "translate": "mbere ",
+    "null": null
+},
+{
+    "text": "année",
+    "translate": "mwaha ",
+    "null": null
+},
+{
+    "text": "année dernière",
+    "translate": "mwaha djana ",
+    "null": null
+},
+{
+    "text": "année prochaine",
+    "translate": "mwahani ",
+    "null": null
+},
+{
+    "text": "annonce",
+    "translate": "mdjulizo ",
+    "null": null
+},
+{
+    "text": "annoncer",
+    "translate": "tekeleza (u-) ",
+    "null": null
+},
+{
+    "text": "annulaire (doigt)",
+    "translate": "sha ya pere ",
+    "null": null
+},
+{
+    "text": "annulation",
+    "translate": "mfutro ",
+    "null": null
+},
+{
+    "text": "annuler",
+    "translate": "futra (u-) ",
+    "null": null
+},
+{
+    "text": "anse",
+    "translate": "kio ",
+    "null": null
+},
+{
+    "text": "antimoine",
+    "translate": "wandza ",
+    "null": null
+},
+{
+    "text": "antisèche",
+    "translate": "patri ",
+    "null": null
 },
 {
-    "text": "-alazimu",
-    "pluralText": null,
-    "translate": "indispensable; nécessaire; obligatoire; ",
+    "text": "août",
+    "translate": "Utu ",
     "null": null
 },
 {
-    "text": "-ambamba",
-    "pluralText": null,
-    "translate": "mince; étroit; ",
+    "text": "apaiser",
+    "translate": "truliza (u-); trulidza (u-); ",
     "null": null
 },
 {
-    "text": "-angavu",
-    "pluralText": null,
-    "translate": "dur. ",
+    "text": "apaiser (s'-)",
+    "translate": "trulia (u-) ",
     "null": null
 },
 {
-    "text": "-angina",
-    "pluralText": null,
-    "translate": "autre. ",
+    "text": "apercevoir",
+    "translate": "hitsili (u-) ",
     "null": null
 },
 {
-    "text": "-angu",
-    "pluralText": null,
-    "translate": "simple; léger; facile; ",
+    "text": "aplanir",
+    "translate": "vandra (u-) ",
     "null": null
 },
 {
-    "text": "-anyu",
-    "pluralText": null,
-    "translate": "votre; vos; ",
+    "text": "aplatir",
+    "translate": "malala (u-); teresa (u-); vandra (u-); ",
     "null": null
 },
 {
-    "text": "-asaya",
-    "pluralText": null,
-    "translate": "autre. ",
+    "text": "aplatissement",
+    "translate": "mmalazo ",
     "null": null
 },
 {
-    "text": "-atru",
-    "pluralText": null,
-    "translate": "notre; nos; ",
+    "text": "aplomb",
+    "translate": "maswa ",
     "null": null
 },
 {
-    "text": "-atsongoha",
-    "pluralText": null,
-    "translate": "pointu. ",
+    "text": "apparaître",
+    "translate": "pvenuha (u-); dhwahiri (u-); venuha (u-); ",
     "null": null
 },
 {
-    "text": "-awo",
-    "pluralText": null,
-    "translate": "leur; leurs; ",
+    "text": "apparence",
+    "translate": "surwaya; surwa; ",
     "null": null
 },
 {
-    "text": "â'â",
-    "pluralText": null,
-    "translate": "Non ! Ce n'est pas cela.. ",
+    "text": "apparent",
+    "translate": "dhwahiri; -pvenufu; ",
     "null": null
 },
 {
-    "text": "âa",
-    "pluralText": null,
-    "translate": "non. ",
+    "text": "apparition",
+    "translate": "mwoniho; mpvenuho; ",
     "null": null
 },
 {
-    "text": "aɓaɗan",
-    "pluralText": null,
-    "translate": "jamais. ",
+    "text": "appartement",
+    "translate": "ɗaho; nɗani; ɗago; ndrani; ",
     "null": null
 },
 {
-    "text": "aɓi (u-)",
-    "pluralText": null,
-    "translate": "empiler. ",
+    "text": "appât",
+    "translate": "shambo; travo; shamɓo; shambwe; shambwi; ",
     "null": null
 },
 {
-    "text": "aɓiria",
-    "pluralText": "Pl. maaɓiria",
-    "translate": "passager. ",
+    "text": "appauvrir",
+    "translate": "faitisha (u-) ",
     "null": null
 },
 {
-    "text": "aɓuɗu (u-)",
-    "pluralText": null,
-    "translate": "vénérer. ",
+    "text": "appel",
+    "translate": "mparo ",
     "null": null
 },
 {
-    "text": "aɓuyati",
-    "pluralText": null,
-    "translate": "vers (poésie). ",
+    "text": "appeler",
+    "translate": "para (u-); ira (u-); hira (u-); ",
     "null": null
 },
 {
-    "text": "adabii",
-    "pluralText": "Pl. maadabii",
-    "translate": "délicat (pers.). ",
+    "text": "appeler (en criant)",
+    "translate": "shemeza (u-); shemeledza (u-); shemelea (u-); ",
     "null": null
 },
 {
-    "text": "adani",
-    "pluralText": null,
-    "translate": "l'appel à la prière. ",
+    "text": "appeler (s'-)",
+    "translate": "parana (u-); hiriwa (u-); hirwa (u-); ",
     "null": null
 },
 {
-    "text": "âdha",
-    "pluralText": null,
-    "translate": "ennui. ",
+    "text": "appeler à la prière",
+    "translate": "adhini (u-); wadhini (u-); wadini (u-); ",
     "null": null
 },
 {
-    "text": "adhana",
-    "pluralText": null,
-    "translate": "l'appel à la prière. ",
+    "text": "applaudir",
+    "translate": "rema kotsi (u-) ",
     "null": null
 },
 {
-    "text": "adhani",
-    "pluralText": null,
-    "translate": "l'appel à la prière. ",
+    "text": "applaudissement",
+    "translate": "kotsi; sama; ",
     "null": null
 },
 {
-    "text": "adhiɓu",
-    "pluralText": null,
-    "translate": "embêter; chambrer; enquiquiner; ",
+    "text": "appliquer",
+    "translate": "ɓaganisa (u-); pvaha (u-); ",
     "null": null
 },
 {
-    "text": "adhini (u-)",
-    "pluralText": null,
-    "translate": "appeler à la prière. ",
+    "text": "apporter",
+    "translate": "ɓalia (u-); vinga (u-); pvinga (u-); ",
     "null": null
 },
 {
-    "text": "adhuhuri",
-    "pluralText": null,
-    "translate": "prière de midi. ",
+    "text": "apporter à",
+    "translate": "veleshea (u-); vingia (u-); ",
     "null": null
 },
 {
-    "text": "adiana (u-)",
-    "pluralText": null,
-    "translate": "promettre. ",
+    "text": "apprécier (favorablement)",
+    "translate": "swifu (u-); sifu (u-); ",
     "null": null
 },
 {
-    "text": "adiɓu",
-    "pluralText": null,
-    "translate": "embêter. ",
+    "text": "appréhender",
+    "translate": "zela (u-) ",
     "null": null
 },
 {
-    "text": "adiresi",
-    "pluralText": null,
-    "translate": "adresse. ",
+    "text": "apprendre",
+    "translate": "soma (u-); funɗishia (u-); fundrisa (u-); ",
     "null": null
 },
 {
-    "text": "adjaɓu",
-    "pluralText": null,
-    "translate": "étrange; étonnant; ",
+    "text": "apprendre (ses leçons)",
+    "translate": "twali (u-) ",
     "null": null
 },
 {
-    "text": "adjali",
-    "pluralText": null,
-    "translate": "accident. ",
+    "text": "apprenti",
+    "translate": "mna-shiyoni ",
     "null": null
 },
 {
-    "text": "adjalini",
-    "pluralText": null,
-    "translate": "dans l'accident. ",
+    "text": "apprêter à",
+    "translate": "pania (u-) ",
     "null": null
 },
 {
-    "text": "adjiri (u-)",
-    "pluralText": null,
-    "translate": "faire louer. ",
+    "text": "approcher",
+    "translate": "tsengelea (u-); kuruɓisha (u-); ",
     "null": null
 },
 {
-    "text": "âdui",
-    "pluralText": "Pl. maâdui",
-    "translate": "ennemi. ",
+    "text": "approcher (discrètement)",
+    "translate": "kukulia (u-) ",
     "null": null
 },
 {
-    "text": "âɗa",
-    "pluralText": null,
-    "translate": "coutume; mariage (grand -); ",
+    "text": "approcher (s'-)",
+    "translate": "tsengelea (u-); kariɓu (u-); kuruɓia (u-); djelea (u-); tsengea (u-); ",
     "null": null
 },
 {
-    "text": "âɗa na mila",
-    "pluralText": null,
-    "translate": "us et coutume. ",
+    "text": "approcher pour combattre",
+    "translate": "temegea (u-) ",
     "null": null
 },
 {
-    "text": "aɗaɓia",
-    "pluralText": "Pl. maaɗaɓia",
-    "translate": "respectueux. ",
+    "text": "approprier (s'-)",
+    "translate": "djimilikisha (u-); miliki (u-); ",
     "null": null
 },
 {
-    "text": "aɗaɓu",
-    "pluralText": null,
-    "translate": "politesse. ",
+    "text": "appui",
+    "translate": "simɓishio ",
     "null": null
 },
 {
-    "text": "aɗaɓu nfu",
-    "pluralText": null,
-    "translate": "irrespect. ",
+    "text": "appuyer",
+    "translate": "simɓishia (u-); sinya (u-); ",
     "null": null
 },
 {
-    "text": "afa",
-    "pluralText": null,
-    "translate": "est-ce que. ",
+    "text": "appuyer (s'-)",
+    "translate": "wamia (u-) ",
     "null": null
 },
 {
-    "text": "afdhwali",
-    "pluralText": null,
-    "translate": "mieux (vaut -). ",
+    "text": "appuyer (s')",
+    "translate": "ɗemea (u-) ",
     "null": null
 },
 {
-    "text": "afiha (u-)",
-    "pluralText": null,
-    "translate": "échapper. ",
+    "text": "après",
+    "translate": "ɓaȃɗa; halafu; nyuma; isa; ",
     "null": null
 },
 {
-    "text": "Afrika",
-    "pluralText": null,
-    "translate": "Afrique. ",
+    "text": "après ça",
+    "translate": "nyuma ya ",
     "null": null
 },
 {
-    "text": "Afrika Ya Kusini",
-    "pluralText": null,
-    "translate": "Afrique du Sud. ",
+    "text": "après-demain",
+    "translate": "ushao; mronɗo; ɓada-meso; mrondro; ɓada-miheso; ",
     "null": null
 },
 {
-    "text": "âfu",
-    "pluralText": null,
-    "translate": "jasmin. ",
+    "text": "après-midi",
+    "translate": "djio; mutsana; jio; ",
     "null": null
 },
 {
-    "text": "âfu (u-)",
-    "pluralText": null,
-    "translate": "préserver (en parlant de Dieu). ",
+    "text": "après-midi (dans l'-)",
+    "translate": "ujoni ",
     "null": null
 },
 {
-    "text": "afudhwali",
-    "pluralText": null,
-    "translate": "mieux (vaut -). ",
+    "text": "arabe",
+    "translate": "shiAraɓu; mwAraɓu; sharaɓu; ",
     "null": null
 },
 {
-    "text": "aghalabu",
-    "pluralText": null,
-    "translate": "en général. ",
+    "text": "Arabie",
+    "translate": "Araɓu ",
     "null": null
 },
 {
-    "text": "agizo",
-    "pluralText": "Pl. maagizo",
-    "translate": "commande (d'un produit). ",
+    "text": "arachide",
+    "translate": "nkundre; ndjugu; ",
     "null": null
 },
 {
-    "text": "âhâ",
-    "pluralText": null,
-    "translate": "Non ! Ce n'est pas cela.. ",
+    "text": "arachide (plant.)",
+    "translate": "mdjugu; mudjugu; ",
     "null": null
 },
 {
-    "text": "âhadi",
-    "pluralText": null,
-    "translate": "promesse. ",
+    "text": "araignée",
+    "translate": "trandra-ɓwiɓwi; trandra-marandre; shikadza-ɗago; trandra-ɓui; tranɗa-maranɗe; shidagoɗago; shikadza-pa; shitrandra-ɓuiɓui; ",
     "null": null
 },
 {
-    "text": "âhaɗi",
-    "pluralText": null,
-    "translate": "promesse. ",
+    "text": "arbitrage",
+    "translate": "mreso; unamuzi; ",
     "null": null
 },
 {
-    "text": "ahalaɓu",
-    "pluralText": null,
-    "translate": "généralement; souvent; d'habitude; ",
+    "text": "arbitraire",
+    "translate": "mdhulumifu ",
     "null": null
 },
 {
-    "text": "âiɓiha (u-)",
-    "pluralText": null,
-    "translate": "honnir. ",
+    "text": "arbitre",
+    "translate": "mresadji ",
     "null": null
 },
 {
-    "text": "âiɓisha (u-)",
-    "pluralText": null,
-    "translate": "honte (faire -). ",
+    "text": "arbitrer",
+    "translate": "namza (u-) ",
     "null": null
 },
 {
-    "text": "âiɓu",
-    "pluralText": null,
-    "translate": "scandale; déshonneur; honte; ",
+    "text": "arbre",
+    "translate": "mri; mwiri; muri; ",
     "null": null
 },
 {
-    "text": "aidhia (u-)",
-    "pluralText": null,
-    "translate": "évoquer; conseiller; ",
+    "text": "arbre à ambrevades",
+    "translate": "mutsuzi; mtsuzi; ",
     "null": null
 },
 {
-    "text": "ain-al-bahar",
-    "pluralText": null,
-    "translate": "horizon. ",
+    "text": "arbre à cornichons",
+    "translate": "mhadju ",
     "null": null
 },
 {
-    "text": "aina",
-    "pluralText": null,
-    "translate": "espèce. ",
+    "text": "arbre à pain",
+    "translate": "mfuriapa; muframpe; mfurampe; mvuriapa; ",
     "null": null
 },
 {
-    "text": "akhira",
-    "pluralText": null,
-    "translate": "l'au-delà. ",
+    "text": "arbuste jasmin",
+    "translate": "mwâfu ",
     "null": null
 },
 {
-    "text": "akhirani",
-    "pluralText": null,
-    "translate": "dans l'au-delà. ",
+    "text": "arc",
+    "translate": "utra ",
     "null": null
 },
 {
-    "text": "akhlaɓu",
-    "pluralText": null,
-    "translate": "généralement. ",
+    "text": "arc-en-ciel",
+    "translate": "ulima-ntezo; muka-kamba; mzia nkamba; ulima-ntasa; ",
     "null": null
 },
 {
-    "text": "âkiɓa",
-    "pluralText": null,
-    "translate": "économique; économie; ",
+    "text": "archipel",
+    "translate": "masiwa ",
     "null": null
 },
 {
-    "text": "âkiɓani",
-    "pluralText": null,
-    "translate": "dans l'économie. ",
+    "text": "ardoise",
+    "translate": "ɓao ",
     "null": null
 },
 {
-    "text": "akika",
-    "pluralText": null,
-    "translate": "certitude. ",
+    "text": "aréquier",
+    "translate": "mpvopvoo; muvovoo; ",
     "null": null
 },
 {
-    "text": "âkili",
-    "pluralText": null,
-    "translate": "intelligence. ",
+    "text": "arête",
+    "translate": "shiɓa; muɓa; ",
     "null": null
 },
 {
-    "text": "âkilisha (u-)",
-    "pluralText": null,
-    "translate": "cultiver (en parlant d'être vivant). ",
+    "text": "argent",
+    "translate": "mapesa; marike; mpesa; pesa; ",
     "null": null
 },
 {
-    "text": "al-marhum",
-    "pluralText": null,
-    "translate": "feu (untel). ",
+    "text": "argent (métal)",
+    "translate": "fedha; feda; ",
     "null": null
 },
 {
-    "text": "al-muraɗi",
-    "pluralText": null,
-    "translate": "en tout cas. ",
+    "text": "argent (monnaie)",
+    "translate": "fedha; feda; ",
     "null": null
 },
 {
-    "text": "ala",
-    "pluralText": null,
-    "translate": "instrument (de musique). ",
+    "text": "argent (unité de compte)",
+    "translate": "riali ",
     "null": null
 },
 {
-    "text": "ala (u-)",
-    "pluralText": null,
-    "translate": "luire. ",
+    "text": "argile",
+    "translate": "ulongo ",
     "null": null
 },
 {
-    "text": "alahulia",
-    "pluralText": null,
-    "translate": "misanthropie. ",
+    "text": "argile blanche",
+    "translate": "kawe ",
     "null": null
 },
 {
-    "text": "alakini",
-    "pluralText": null,
-    "translate": "même si; bien que; ",
+    "text": "argile rouge",
+    "translate": "ɗongo ",
     "null": null
 },
 {
-    "text": "âlalhafla",
-    "pluralText": null,
-    "translate": "subitement. ",
+    "text": "arguer",
+    "translate": "gongeana fikra (u-) ",
     "null": null
 },
 {
-    "text": "alama",
-    "pluralText": null,
-    "translate": "emblème; signe; marque; ",
+    "text": "argument",
+    "translate": "maoni; hodja; ",
     "null": null
 },
 {
-    "text": "âlama.",
-    "pluralText": null,
-    "translate": "marque. ",
+    "text": "argumenter",
+    "translate": "shinɗana (u-) ",
     "null": null
 },
 {
-    "text": "alami",
-    "pluralText": null,
-    "translate": "douleur; souffrance; ",
+    "text": "aristocrate",
+    "translate": "kaɓaila ",
     "null": null
 },
 {
-    "text": "alasiri",
-    "pluralText": null,
-    "translate": "la prière du milieu de l'après-midi. ",
+    "text": "arme (de guerre)",
+    "translate": "shombo sha nkondro ",
     "null": null
 },
 {
-    "text": "alesha",
-    "pluralText": null,
-    "translate": "la prière du soir. ",
+    "text": "arme à feu",
+    "translate": "mzinga ",
     "null": null
 },
 {
-    "text": "alfadjiri",
-    "pluralText": null,
-    "translate": "aube. ",
+    "text": "armée",
+    "translate": "djeshi ",
     "null": null
 },
 {
-    "text": "alfu",
-    "pluralText": null,
-    "translate": "mille. ",
+    "text": "armoire",
+    "translate": "biro; bife; ",
     "null": null
 },
 {
-    "text": "alfuɓesha (u-)",
-    "pluralText": null,
-    "translate": "alphabétiser. ",
+    "text": "arnaquer (se faire -)",
+    "translate": "ravwa (u-) ",
     "null": null
 },
 {
-    "text": "âli",
-    "pluralText": null,
-    "translate": "cher. ",
+    "text": "arpenteur",
+    "translate": "mpvimadji ",
     "null": null
 },
 {
-    "text": "ali (u-)",
-    "pluralText": null,
-    "translate": "manger. ",
+    "text": "arquer",
+    "translate": "limba (u-); limɓa (u-); ",
     "null": null
 },
 {
-    "text": "alifu",
-    "pluralText": null,
-    "translate": "mille. ",
+    "text": "arracher",
+    "translate": "pua (u-); foɓoa (u-); hunua (u-); rurumua (u-); vagua (u-); hanyua (u-); hunyua (u-); rundrumua (u-); tsodza (u-); ",
     "null": null
 },
 {
-    "text": "alifuɓe",
-    "pluralText": null,
-    "translate": "alphabet. ",
+    "text": "arracher énergiquement",
+    "translate": "hashua (u-) ",
     "null": null
 },
 {
-    "text": "aliha (u-)",
-    "pluralText": null,
-    "translate": "exploser. ",
+    "text": "arrangement",
+    "translate": "mkarakara; mlekezo; ",
     "null": null
 },
 {
-    "text": "alikoli",
-    "pluralText": null,
-    "translate": "alcool. ",
+    "text": "arranger",
+    "translate": "lekeza (u-); rengeledza (u-); lekedza (u-); ",
     "null": null
 },
 {
-    "text": "alimisha (u-)",
-    "pluralText": null,
-    "translate": "former. ",
+    "text": "arranger (s'-)",
+    "translate": "rengelea (u-) ",
     "null": null
 },
 {
-    "text": "allakulihali",
-    "pluralText": null,
-    "translate": "de toute manière. ",
+    "text": "arrêter",
+    "translate": "udza (u-); zia (u-); zwia (u-); ziia (u-); ",
     "null": null
 },
 {
-    "text": "almasi",
-    "pluralText": null,
-    "translate": "diamant. ",
+    "text": "arrêter de (parler)",
+    "translate": "rua (u-) ",
     "null": null
 },
 {
-    "text": "amali",
-    "pluralText": null,
-    "translate": "occupation. ",
+    "text": "arrêter de têter",
+    "translate": "funga dziya (u-) ",
     "null": null
 },
 {
-    "text": "amana",
-    "pluralText": null,
-    "translate": "gage. ",
+    "text": "arrière",
+    "translate": "ɗingo ",
     "null": null
 },
 {
-    "text": "amani",
-    "pluralText": null,
-    "translate": "paix (bien être); tranquillité; ",
+    "text": "arrière grand-mère",
+    "translate": "dada ",
     "null": null
 },
 {
-    "text": "amba",
-    "pluralText": null,
-    "translate": "que (conj.). ",
+    "text": "arrière-arrière-arrière-petit-enfant",
+    "translate": "shikaɗonɗo ",
     "null": null
 },
 {
-    "text": "amɓa (u-)",
-    "pluralText": null,
-    "translate": "dire. ",
+    "text": "arriver",
+    "translate": "waswili (u-); wasili (u-); ",
     "null": null
 },
 {
-    "text": "amɓa ndraɓo (u-)",
-    "pluralText": null,
-    "translate": "mentir. ",
+    "text": "arriver à temps",
+    "translate": "wahi (u-) ",
     "null": null
 },
 {
-    "text": "amɓari",
-    "pluralText": null,
-    "translate": "ambre. ",
+    "text": "arrogance",
+    "translate": "kiɓuri; udjonefu; fudhuli; ",
     "null": null
 },
 {
-    "text": "amɓeseye",
-    "pluralText": null,
-    "translate": "peut-être. ",
+    "text": "arrogant",
+    "translate": "tale; mdjonefu; mtezefu-sheri; ",
     "null": null
 },
 {
-    "text": "amɓia (u-)",
-    "pluralText": null,
-    "translate": "dire à . ",
+    "text": "arrondir",
+    "translate": "ɗiwarisha (u-) ",
     "null": null
 },
 {
-    "text": "amɓoseye",
-    "pluralText": null,
-    "translate": "peut-être. ",
+    "text": "art",
+    "translate": "swanaa ",
     "null": null
 },
 {
-    "text": "amini",
-    "pluralText": null,
-    "translate": "serment. ",
+    "text": "art culinaire",
+    "translate": "upisi ",
     "null": null
 },
 {
-    "text": "amini (u-)",
-    "pluralText": null,
-    "translate": "croire. ",
+    "text": "art de l'éloquence",
+    "translate": "ufaswaha ",
     "null": null
 },
 {
-    "text": "ampulu",
-    "pluralText": null,
-    "translate": "ampoule (électrique). ",
+    "text": "artère",
+    "translate": "mzi ",
     "null": null
 },
 {
-    "text": "amri",
-    "pluralText": null,
-    "translate": "ordre; domaine de souveraineté; ",
+    "text": "article de loi",
+    "translate": "kanuni ",
     "null": null
 },
 {
-    "text": "amrisha (u-)",
-    "pluralText": null,
-    "translate": "ordonner. ",
+    "text": "article de presse",
+    "translate": "nakala ",
     "null": null
 },
 {
-    "text": "amrishiwa (u-)",
-    "pluralText": null,
-    "translate": "être ordonné . ",
+    "text": "articulation",
+    "translate": "shifungo; ningo; mbinguo; ",
     "null": null
 },
 {
-    "text": "amru",
-    "pluralText": null,
-    "translate": "domaine de souveraineté; ordre; ",
+    "text": "articulations",
+    "translate": "shiga² ",
     "null": null
 },
 {
-    "text": "amurisha (u-)",
-    "pluralText": null,
-    "translate": "ordonner. ",
+    "text": "artisan",
+    "translate": "swanaa; fundi; sarumaya; ",
     "null": null
 },
 {
-    "text": "amwesa",
-    "pluralText": null,
-    "translate": "puis; ensuite; ",
+    "text": "artisant",
+    "translate": "sarmaya ",
     "null": null
 },
 {
-    "text": "ancari",
-    "pluralText": null,
-    "translate": "achard. ",
+    "text": "artocarpe",
+    "translate": "mfuriapa; mfurampe; mvuriapa; ",
     "null": null
 },
 {
-    "text": "andamana (u-)",
-    "pluralText": null,
-    "translate": "défiler (manifester). ",
+    "text": "as",
+    "translate": "re ",
     "null": null
 },
 {
-    "text": "andjia (u-)",
-    "pluralText": null,
-    "translate": "accueillir (un invité de marque). ",
+    "text": "ascaris",
+    "translate": "kare; jongwe; mdjongwe; mjongwe; ",
     "null": null
 },
 {
-    "text": "andra mwa (u-)",
-    "pluralText": null,
-    "translate": "bâiller. ",
+    "text": "ascendance",
+    "translate": "uzale ",
     "null": null
 },
 {
-    "text": "andrisa (u-)",
-    "pluralText": null,
-    "translate": "commencer. ",
+    "text": "ascendance maternelle",
+    "translate": "inya ",
     "null": null
 },
 {
-    "text": "andrua (u-)",
-    "pluralText": null,
-    "translate": "racler. ",
+    "text": "ascension du Prophète",
+    "translate": "Miradji ",
     "null": null
 },
 {
-    "text": "andza (u-)",
-    "pluralText": null,
-    "translate": "vouloir; aimer; ",
+    "text": "aspect",
+    "translate": "surwaya ",
     "null": null
 },
 {
-    "text": "andza meo (u-)",
-    "pluralText": null,
-    "translate": "bâiller. ",
+    "text": "aspirer",
+    "translate": "vura (u-); vuɓa (u-); ",
     "null": null
 },
 {
-    "text": "andzeledza (u-)",
-    "pluralText": null,
-    "translate": "épeler. ",
+    "text": "assaisonner",
+    "translate": "unga (u-) ",
     "null": null
 },
 {
-    "text": "andzi",
-    "pluralText": null,
-    "translate": "entonnoir. ",
+    "text": "assassin",
+    "translate": "katili ",
     "null": null
 },
 {
-    "text": "andziha (u-)",
-    "pluralText": null,
-    "translate": "écrire. ",
+    "text": "assemblée",
+    "translate": "trengwe ",
     "null": null
 },
 {
-    "text": "anɗisa (u-)",
-    "pluralText": null,
-    "translate": "commencer. ",
+    "text": "assemblée (chambre des députés)",
+    "translate": "ɓaraza ",
     "null": null
 },
 {
-    "text": "anfia",
-    "pluralText": null,
-    "translate": "santé. ",
+    "text": "assemblée (groupe de personne)",
+    "translate": "djamaa ",
     "null": null
 },
 {
-    "text": "angadza (u-)",
-    "pluralText": null,
-    "translate": "jouer; amuser; distraire; ",
+    "text": "assembler",
+    "translate": "tsanganya (u-); kusanya (u-); tsanganisa (u-); tsanganyisa (u-); ",
     "null": null
 },
 {
-    "text": "angalia (u-)",
-    "pluralText": null,
-    "translate": "regarder. ",
+    "text": "asseoir (s'-)",
+    "translate": "kantsi (u-); ketsi (u-); kentsi (u-); ",
     "null": null
 },
 {
-    "text": "angamia (u-)",
-    "pluralText": null,
-    "translate": "écrouler; anéantir; ",
+    "text": "asservir",
+    "translate": "kaɗamiza (u-) ",
     "null": null
 },
 {
-    "text": "angaria (u-)",
-    "pluralText": null,
-    "translate": "rejoindre (qqun). ",
+    "text": "assez",
+    "translate": "kiasi ",
     "null": null
 },
 {
-    "text": "angaza (u-)",
-    "pluralText": null,
-    "translate": "rayonner; briller; distraire; ",
+    "text": "assiette",
+    "translate": "sahani; shanu; isahani; shano; shisahani; shiya; ",
     "null": null
 },
 {
-    "text": "angedza (u-)",
-    "pluralText": null,
-    "translate": "augmenter. ",
+    "text": "assiette (petite -)",
+    "translate": "isahani; shisahani; ",
     "null": null
 },
 {
-    "text": "angiha (u-)",
-    "pluralText": null,
-    "translate": "écrire. ",
+    "text": "assise",
+    "translate": "mkontsi ",
     "null": null
 },
 {
-    "text": "anguha (u-)",
-    "pluralText": null,
-    "translate": "partir de; provenir; ",
+    "text": "assistance",
+    "translate": "trengwe; msaâɗa; muumɓiso; ",
     "null": null
 },
 {
-    "text": "angulidza (u-)",
-    "pluralText": null,
-    "translate": "accumuler; rassembler; ",
+    "text": "assistant",
+    "translate": "msaiɗizi ",
     "null": null
 },
 {
-    "text": "angupva (u-)",
-    "pluralText": null,
-    "translate": "alléger. ",
+    "text": "assister",
+    "translate": "vidza (u-) ",
     "null": null
 },
 {
-    "text": "angusa (u-)",
-    "pluralText": null,
-    "translate": "simplifier; faciliter; ",
+    "text": "association",
+    "translate": "shama; cama; ",
     "null": null
 },
 {
-    "text": "aniɗi",
-    "pluralText": null,
-    "translate": "désir. ",
+    "text": "associer",
+    "translate": "shiriki (u-) ",
     "null": null
 },
 {
-    "text": "aniɗi (u-)",
-    "pluralText": null,
-    "translate": "envier. ",
+    "text": "associer (s'-)",
+    "translate": "shirikiana (u-) ",
     "null": null
 },
 {
-    "text": "aniha (u-)",
-    "pluralText": null,
-    "translate": "mettre au soleil.; s'étendre; ",
+    "text": "associer Dieu",
+    "translate": "shiriki (u-) ",
     "null": null
 },
 {
-    "text": "anihwa (u-)",
-    "pluralText": null,
-    "translate": "être exposé au soleil. ",
+    "text": "associer²",
+    "translate": "mshiriki ",
     "null": null
 },
 {
-    "text": "anishia (u-)",
-    "pluralText": null,
-    "translate": "étendre à. ",
+    "text": "assommer",
+    "translate": "vuɓamisa (u-); ɓamisa (u-); ",
     "null": null
 },
 {
-    "text": "ankulia (u-)",
-    "pluralText": null,
-    "translate": "attraper. ",
+    "text": "assortir",
+    "translate": "linga (u-) ",
     "null": null
 },
 {
-    "text": "antri",
-    "pluralText": null,
-    "translate": "fil à pêche. ",
+    "text": "assoupir",
+    "translate": "ɗema (u-) ",
     "null": null
 },
 {
-    "text": "anua (u-)",
-    "pluralText": null,
-    "translate": "retirer du soleil.. ",
+    "text": "asthme",
+    "translate": "pefu ",
     "null": null
 },
 {
-    "text": "anyisa (u-)",
-    "pluralText": null,
-    "translate": "partager; diviser; ",
+    "text": "astiquer",
+    "translate": "shugua (u-) ",
     "null": null
 },
 {
-    "text": "apvaha",
-    "pluralText": null,
-    "translate": "maintenant. ",
+    "text": "astrologue",
+    "translate": "mwalimu ",
     "null": null
 },
 {
-    "text": "apvasa",
-    "pluralText": null,
-    "translate": "maintenant. ",
+    "text": "astuce",
+    "translate": "makri ",
     "null": null
 },
 {
-    "text": "apvasa ino",
-    "pluralText": null,
-    "translate": "maintenant. ",
+    "text": "atchoumer",
+    "translate": "sammwa (u-) ",
     "null": null
 },
 {
-    "text": "apvasa inu",
-    "pluralText": null,
-    "translate": "maintenant. ",
+    "text": "atelier",
+    "translate": "shiwanɗa ",
     "null": null
 },
 {
-    "text": "apvasa pvani/ avasa vani",
-    "pluralText": null,
-    "translate": "maintenant. ",
+    "text": "atmosphère",
+    "translate": "hawa ",
     "null": null
 },
 {
-    "text": "apvo",
-    "pluralText": null,
-    "translate": "ainsi. ",
+    "text": "atome",
+    "translate": "icenkwa ",
     "null": null
 },
 {
-    "text": "Araɓu",
-    "pluralText": null,
-    "translate": "Arabie. ",
+    "text": "atout (jeu de cartes)",
+    "translate": "turufu ",
     "null": null
 },
 {
-    "text": "ârama",
-    "pluralText": null,
-    "translate": "dépenses. ",
+    "text": "âtre",
+    "translate": "dziho ",
     "null": null
 },
 {
-    "text": "arɓa mia",
-    "pluralText": null,
-    "translate": "quatre cents. ",
+    "text": "atrocité",
+    "translate": "mkaswa ",
     "null": null
 },
 {
-    "text": "arɓaini",
-    "pluralText": null,
-    "translate": "quarante. ",
+    "text": "attache",
+    "translate": "mfungo ",
     "null": null
 },
 {
-    "text": "arɓamia",
-    "pluralText": null,
-    "translate": "quatre cents. ",
+    "text": "attacher",
+    "translate": "funga (u-); ɓotra (u-); ",
     "null": null
 },
 {
-    "text": "ardhwi",
-    "pluralText": null,
-    "translate": "terre (sol). ",
+    "text": "attaque",
+    "translate": "shamɓulio ",
     "null": null
 },
 {
-    "text": "âri",
-    "pluralText": null,
-    "translate": "fierté; stimulation; ",
+    "text": "attaquer",
+    "translate": "shamɓulia (u-) ",
     "null": null
 },
 {
-    "text": "aria (u-)",
-    "pluralText": null,
-    "translate": "couver. ",
+    "text": "attarder",
+    "translate": "homa (u-); tavela (u-); ",
     "null": null
 },
 {
-    "text": "aridi (u-)",
-    "pluralText": null,
-    "translate": "réciter. ",
+    "text": "atteindre (qqch.)",
+    "translate": "pvemɓea (u-) ",
     "null": null
 },
 {
-    "text": "ârifia (u-)",
-    "pluralText": null,
-    "translate": "informer. ",
+    "text": "atteindre la maturité",
+    "translate": "dzinya (u-) ",
     "null": null
 },
 {
-    "text": "ârifu (u-)",
-    "pluralText": null,
-    "translate": "informer. ",
+    "text": "attendre",
+    "translate": "hima (u-); linɗa (u-); midza (u-); lindra (u-); yindra (u-); ",
     "null": null
 },
 {
-    "text": "arudhwi",
-    "pluralText": null,
-    "translate": "terre (sol); terrain dégagé; ",
+    "text": "attente",
+    "translate": "mlinɗio ",
     "null": null
 },
 {
-    "text": "asanta",
-    "pluralText": null,
-    "translate": "merci beaucoup. ",
+    "text": "attention",
+    "translate": "hala-hala; hala; ",
     "null": null
 },
 {
-    "text": "ashe",
-    "pluralText": null,
-    "translate": "non (pas du tout !). ",
+    "text": "attention !",
+    "translate": "fahamu ! ",
     "null": null
 },
 {
-    "text": "âshiki",
-    "pluralText": null,
-    "translate": "passion. ",
+    "text": "attention (faire -)",
+    "translate": "tahadhari (u-); fahamu (u-); tahadhwari (u-); ",
     "null": null
 },
 {
-    "text": "asihazi",
-    "pluralText": null,
-    "translate": "saison des pluies. ",
+    "text": "atterrir (avion)",
+    "translate": "trua (u-) ",
     "null": null
 },
 {
-    "text": "asili",
-    "pluralText": null,
-    "translate": "origine. ",
+    "text": "attestation",
+    "translate": "stishihaɗa ",
     "null": null
 },
 {
-    "text": "asmaku",
-    "pluralText": null,
-    "translate": "aimant. ",
+    "text": "attier",
+    "translate": "mkonokono ",
     "null": null
 },
 {
-    "text": "asuɓuhi",
-    "pluralText": null,
-    "translate": "aube; prière de l'aube; matinée; ",
+    "text": "attirer",
+    "translate": "zaini (u-) ",
     "null": null
 },
 {
-    "text": "asuɓwihi",
-    "pluralText": null,
-    "translate": "matinée. ",
+    "text": "attiser le feu",
+    "translate": "tsetsea (u-) ",
     "null": null
 },
 {
-    "text": "âswi (u-)",
-    "pluralText": null,
-    "translate": "désobéir; blasphémer; pêcher; ",
+    "text": "attitude étrangère",
+    "translate": "udjeni ",
     "null": null
 },
 {
-    "text": "aswili",
-    "pluralText": null,
-    "translate": "époque ancienne; jadis; origine; ",
+    "text": "attraper",
+    "translate": "gamatra (u-); ankulia (u-); hankulia (u-); ",
     "null": null
 },
 {
-    "text": "ata",
-    "pluralText": null,
-    "translate": "jusque; tellement; ",
+    "text": "attrister",
+    "translate": "tria hamu (u-) ",
     "null": null
 },
 {
-    "text": "atsokao",
-    "pluralText": null,
-    "translate": "quiconque. ",
+    "text": "attroupement",
+    "translate": "kungumanyo; sindzo; ",
     "null": null
 },
 {
     "text": "au",
-    "pluralText": null,
-    "translate": "ou.. ",
+    "translate": "ho- ",
     "null": null
 },
 {
-    "text": "avasa",
-    "pluralText": null,
-    "translate": "maintenant. ",
+    "text": "au bout",
+    "translate": "co ",
     "null": null
 },
 {
-    "text": "âvio",
-    "pluralText": null,
-    "translate": "avion. ",
+    "text": "au ciel",
+    "translate": "djaragani ",
     "null": null
 },
 {
-    "text": "awali",
-    "pluralText": null,
-    "translate": "priorité. ",
+    "text": "au large (mer)",
+    "translate": "maze ",
     "null": null
 },
 {
-    "text": "aya",
-    "pluralText": null,
-    "translate": "verset. ",
+    "text": "au lieu de",
+    "translate": "raha na; ɓadala ya; ",
     "null": null
 },
 {
-    "text": "azima (u-)",
-    "pluralText": null,
-    "translate": "prêter (argent). ",
+    "text": "au milieu de",
+    "translate": "harimwa ",
     "null": null
 },
 {
-    "text": "azimia (u-)",
-    "pluralText": null,
-    "translate": "déterminer à; décider; ",
+    "text": "au moyen de",
+    "translate": "ha ",
     "null": null
 },
 {
-    "text": "azimio",
-    "pluralText": "Pl. maazimio",
-    "translate": "décision. ",
+    "text": "au Nord",
+    "translate": "kibulani ",
     "null": null
 },
 {
-    "text": "âziri (u-)",
-    "pluralText": null,
-    "translate": "maltraiter; torturer; gronder; ",
+    "text": "au sujet de",
+    "translate": "uhusu ",
     "null": null
 },
 {
-    "text": "âzma",
-    "pluralText": null,
-    "translate": "initiative; décision;",
+    "text": "au-dessous",
+    "translate": "utsini ",
     "null": null
-}];
+},
+{
+    "text": "au-revoir",
+    "translate": "kwaheri; lala-unono; ",
+    "null": null
+},
+{
+    "text": "aube",
+    "translate": "alfadjiri; asuɓuhi; ",
+    "null": null
+},
+{
+    "text": "aubergine",
+    "translate": "ɗemba; bengani; ɓilingani; ",
+    "null": null
+},
+{
+    "text": "aucun",
+    "translate": "ko; kapvu; ",
+    "null": null
+},
+{
+    "text": "audace",
+    "translate": "maswa ",
+    "null": null
+},
+{
+    "text": "audacieux",
+    "translate": "sudjaâ; kari-ndrongo; sudjaî; ",
+    "null": null
+},
+{
+    "text": "auditeur",
+    "translate": "mwishilizi ",
+    "null": null
+},
+{
+    "text": "augmenter",
+    "translate": "engedza (u-); angedza (u-); ",
+    "null": null
+},
+{
+    "text": "augmenter (s')",
+    "translate": "engedzeha (u-); endjeziha (u-); ",
+    "null": null
+},
+{
+    "text": "aujourd'hui",
+    "translate": "lelo; leo; ",
+    "null": null
+},
+{
+    "text": "aumône",
+    "translate": "zaka; sadaka; tasadaki; ",
+    "null": null
+},
+{
+    "text": "auparavant",
+    "translate": "kaɓulia ",
+    "null": null
+},
+{
+    "text": "auprès",
+    "translate": "mbeli ",
+    "null": null
+},
+{
+    "text": "aura",
+    "translate": "uvuhuri ",
+    "null": null
+},
+{
+    "text": "auriculaire (doigt)",
+    "translate": "sha ya pwitsi ",
+    "null": null
+},
+{
+    "text": "aussi",
+    "translate": "wadjau; wajau; ",
+    "null": null
+},
+{
+    "text": "aussitôt",
+    "translate": "kamwe ",
+    "null": null
+},
+{
+    "text": "auteur",
+    "translate": "mwandzishi; mwangisi; ",
+    "null": null
+},
+{
+    "text": "authentique",
+    "translate": "-a inswafi ",
+    "null": null
+},
+{
+    "text": "autochtone",
+    "translate": "mtoro ",
+    "null": null
+},
+{
+    "text": "autonome",
+    "translate": "-kinaivu ",
+    "null": null
+},
+{
+    "text": "autonome (pers.)",
+    "translate": "mdjitosho ",
+    "null": null
+},
+{
+    "text": "autorisation",
+    "translate": "ruhusa ",
+    "null": null
+},
+{
+    "text": "autoriser",
+    "translate": "ruhusu (u-) ",
+    "null": null
+},
+{
+    "text": "autorité",
+    "translate": "utawalifu ",
+    "null": null
+},
+{
+    "text": "autorité administratif",
+    "translate": "ezi; yezi; ",
+    "null": null
+},
+{
+    "text": "autre",
+    "translate": "-asaya; -ndrwadjina; -angina; ",
+    "null": null
+},
+{
+    "text": "autrefois",
+    "translate": "zamani ",
+    "null": null
+},
+{
+    "text": "autruche",
+    "translate": "mɓuni ",
+    "null": null
+},
+{
+    "text": "aux cieux",
+    "translate": "djaragani ",
+    "null": null
+},
+{
+    "text": "auxiliaire verbal",
+    "translate": "isaiɗio sha zitrenɗwa; shisaiɗio sha zitrenɗwa; ",
+    "null": null
+},
+{
+    "text": "avaler",
+    "translate": "meza (u-); medza (u-); gomea (u-); gomelea (u-); gogomea (u-); ",
+    "null": null
+},
+{
+    "text": "avancer",
+    "translate": "trenɗe (u-); endra (u-) mbeli; ",
+    "null": null
+},
+{
+    "text": "avant",
+    "translate": "hale; kaɓla; ",
+    "null": null
+},
+{
+    "text": "avant goût",
+    "translate": "mufraɗi ",
+    "null": null
+},
+{
+    "text": "avant-goût",
+    "translate": "cezo ɓoneso ",
+    "null": null
+},
+{
+    "text": "avant-hier",
+    "translate": "djuzi; vozuzi; zuzi; pvodjuzi; pvozuzi; ",
+    "null": null
+},
+{
+    "text": "avantage",
+    "translate": "manufaâ; nafuû; ",
+    "null": null
+},
+{
+    "text": "avantager",
+    "translate": "vendzelea (u-) ",
+    "null": null
+},
+{
+    "text": "avantages",
+    "translate": "manufa ",
+    "null": null
+},
+{
+    "text": "avare",
+    "translate": "mtrutru; mhuhuru; ",
+    "null": null
+},
+{
+    "text": "avarice",
+    "translate": "upeu; uɓahilifu; uɓaruzuli; ",
+    "null": null
+},
+{
+    "text": "avec",
+    "translate": "na ",
+    "null": null
+},
+{
+    "text": "avenir",
+    "translate": "usoni ",
+    "null": null
+},
+{
+    "text": "avenir (demander l'- )",
+    "translate": "sahili (u-) ",
+    "null": null
+},
+{
+    "text": "avertir",
+    "translate": "fahamisha (u-) ",
+    "null": null
+},
+{
+    "text": "aveugle",
+    "translate": "mfumatso ",
+    "null": null
+},
+{
+    "text": "aveugler",
+    "translate": "zusa (u-) ",
+    "null": null
+},
+{
+    "text": "avide",
+    "translate": "ndzahu; mpupa; ",
+    "null": null
+},
+{
+    "text": "avidité",
+    "translate": "upupa; undzahu; ",
+    "null": null
+},
+{
+    "text": "avilir",
+    "translate": "dhili (u-) ",
+    "null": null
+},
+{
+    "text": "avion",
+    "translate": "âvio; ndrege; ",
+    "null": null
+},
+{
+    "text": "aviron",
+    "translate": "kasia ",
+    "null": null
+},
+{
+    "text": "avis",
+    "translate": "shauri ",
+    "null": null
+},
+{
+    "text": "avocat (fruit)",
+    "translate": "ɓonoɓo; zavoka; zavuka; ",
+    "null": null
+},
+{
+    "text": "avocatier",
+    "translate": "mbonobo ",
+    "null": null
+},
+{
+    "text": "avoir",
+    "translate": "kaya na (u-); para (u-); ka na (u-); ",
+    "null": null
+},
+{
+    "text": "avoir (des difficultés)",
+    "translate": "taâɓiha (u-) ",
+    "null": null
+},
+{
+    "text": "avoir (sommeil)",
+    "translate": "sindzia (u-) ",
+    "null": null
+},
+{
+    "text": "avoir assez (en -)",
+    "translate": "tubu (u-) ",
+    "null": null
+},
+{
+    "text": "avoir besoin",
+    "translate": "kana hadja (u-) ",
+    "null": null
+},
+{
+    "text": "avoir du temps",
+    "translate": "wahi (u-) ",
+    "null": null
+},
+{
+    "text": "avoir fait faire",
+    "translate": "fanyisiwa (u-) ",
+    "null": null
+},
+{
+    "text": "avoir l'air",
+    "translate": "fana (u-) ",
+    "null": null
+},
+{
+    "text": "avoir la diarrhée",
+    "translate": "vuja (u-) ",
+    "null": null
+},
+{
+    "text": "avoir la lèpre",
+    "translate": "eneha (u-) ",
+    "null": null
+},
+{
+    "text": "avoir la peau fripée de froid",
+    "translate": "firiha (u-) ",
+    "null": null
+},
+{
+    "text": "avoir mal",
+    "translate": "koza (u-); kodza (u-); ",
+    "null": null
+},
+{
+    "text": "avoir peur de",
+    "translate": "ria (u-) ",
+    "null": null
+},
+{
+    "text": "avoir pitié de",
+    "translate": "pvwereha (u-) ",
+    "null": null
+},
+{
+    "text": "avoir pitié de (qqn)",
+    "translate": "pvoreha (u-) ",
+    "null": null
+},
+{
+    "text": "avorter",
+    "translate": "tsomoa (u-); tsoa (u-); ",
+    "null": null
+},
+{
+    "text": "ayant",
+    "translate": "-endza; mwendza;",
+    "null": null
+}*/];
