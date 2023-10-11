@@ -34,9 +34,7 @@ export class HomePage implements OnInit {
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
-    private modalController: ModalController, private reviewService: ReviewService, private loadingService: LoadingService, private toastController: ToastController) {
-    console.log('coucou');
-  }
+    private modalController: ModalController, private reviewService: ReviewService, private loadingService: LoadingService, private toastController: ToastController) { }
   get getTheme() {
     return this.themeService.themeMode;
   }

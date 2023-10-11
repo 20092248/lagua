@@ -37,8 +37,8 @@ export class AddPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.dictionaryService.getbodyLink({text:'mengo%20%20mitsanu', uid: 'BWUZi7tB3cWb63IaKjUo'}, 'm');  
-    // this.dictionaryService.getbodyLink({text:'mkoroshe', uid: 'fpUQUAAihXAU8WQwg6cf'}, 'm');
+    // this.dictionaryService.getbodyLinkFr({text:'dresser%20%20(se%20-)', uid: 'sRqaWJqwkismBs5JWoQe'}, 'd');  
+    // this.dictionaryService.getbodyLinkFr({text:'cherché%20(être%20%20-)', uid: 'LbVMYRmV5P8myGmLc89d'}, 'c');
     // this.dictionaryService.getbodyLink({text:'trama', uid: 'KW1eo5ayYNBRc0aVQ18K'}, 't');
     // this.dictionaryService.updateTopic(ANIMALS, 'shimwali_francais_topics', 'animals');
     // this.dictionaryService.updateTopic(CLOTHES, 'shimwali_francais_topics', 'clothes');
@@ -51,7 +51,7 @@ export class AddPage implements OnInit {
     // this.dictionaryService.updateTopic(SCHOOLS, 'shimwali_francais_topics', 'school');
     // this.dictionaryService.updateTopic(SEA, 'shimwali_francais_topics', 'sea');
     // this.dictionaryService.updateTopic(TOOLS, 'shimwali_francais_topics', 'tools');
-    // this.dictionaryService.updateTopic(TREES, 'shimwali_francais_topics', 'trees');
+    // this.dictionaryService.updateTopic(TREES, 'shimwali_francais_topics', 'trees'); c'est lequel ?, c'est lesquels ?, c'est où ?, c'est qui ?
   }
 
   addWordInfo() {

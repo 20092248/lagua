@@ -46,7 +46,7 @@
           </div>
           <div class="ion-scroll-review">
             <div class="ion-margin-vertical-min">
-              <ion-button *ngFor="let letter of alphabet" (click)="changeLetter(letter)">{{letter}}</ion-button>
+              <ion-button *ngFor="let letter of alphabet" [ngClass]="{'ion-hide': translate !== 'francais' && (letter === 'ɓ' || letter === 'ɗ')}" (click)="changeLetter(letter)">{{letter}}</ion-button>
             </div>
           </div>
         </div>
@@ -74,14 +74,15 @@
           <ion-icon class="ion-icon-start" name="ellipse" slot="start"></ion-icon>
           <ion-label class="ion-text-wrap">
             {{w.text}} <small>({{w.symbol}})</small>
-            <p class="ion-text-italic" *ngFor="let t of w.translates">{{t.translate}} (<span *ngIf="t.symbol">{{t.symbol}}</span><span *ngIf="t.dialect">{{t.dialect}}</span>)
-            </p>
+            <div *ngIf="w.dialect !== 'Français'"><p class="ion-text-italic" *ngFor="let t of w.translates">{{t.translate}} (<span *ngIf="t.symbol">{{t.symbol}}</span><span *ngIf="t.dialect">{{t.dialect}}</span>)</p></div>
+            <div *ngIf="w.dialect === 'Français'"><p class="ion-text-italic" *ngFor="let t of w.translates" [ngClass]="{'ion-hide': t && !(t.dialect === user.learn.translate || t.dialect === 'Comorien (Tous les dialectes)')}">{{t.translate}} (<span *ngIf="t.symbol">{{t.symbol}}</span><span *ngIf="t.dialect">{{t.dialect}}</span>)</p></div>
           </ion-label>
         </ion-item>
         <div class="ion-padding-horizontal ion-content-accordion" slot="content">
           <div *ngIf="w.dialect" class="ion-text-italic"><small>Dialecte : {{w.dialect}}</small></div>
           <div *ngIf="w.text" class="ion-text-italic"><small>{{text | titlecase}} : {{w.text}} <span *ngIf="w.symbolValue">({{w.symbolValue}})</span></small></div>
-          <div *ngIf="w.translate" class="ion-text-italic"><small>{{translate | titlecase}} : </small><small *ngFor="let t of w.translate; let index = index"><span *ngIf="t">{{t}}</span><span *ngIf="index !== w.translate.length - 1 && t">, </span></small></div>
+          <div *ngIf="w.translate && w.dialect !== 'Français'" class="ion-text-italic"><small>{{translate | titlecase}} : </small><small *ngFor="let t of w.translate; let index = index"><span *ngIf="t">{{t}}</span><span *ngIf="index !== w.translate.length - 1 && t">, </span></small></div>
+          <div *ngIf="w.translates && w.dialect === 'Français'" class="ion-text-italic"><small>{{translate | titlecase}} : </small><small *ngFor="let t of w.translates; let index = index"><span *ngIf="t && (t.dialect === user.learn.translate || t.dialect === 'Comorien (Tous les dialectes)')">{{t.translate}}</span><span *ngIf="index + 1 !== (w.translates?.length) && t && (t.dialect === user.learn.translate || t.dialect === 'Comorien (Tous les dialectes)')">, </span></small></div>
           <p *ngIf="w.pluralText && w.pluralText.length" class="ion-word-description-dictionary ion-text-italic">
             <span *ngFor="let plural of w.pluralText">{{plural}} </span>
           </p>
@@ -140,7 +141,7 @@
       </ion-content>
     </ng-template>
   </ion-modal>
-  <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom" *ngIf="user.email === 'brady91700@gmail.com' || user.email === 'bradyabd@gmail.com'">
     <ion-fab-button color="lagua" [routerLink]="['add']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

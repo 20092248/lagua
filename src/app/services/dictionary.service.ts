@@ -102,7 +102,6 @@ export class DictionaryService {
   }
 
   updateDetailInfo(word: any, uid: string, firstLetter: string) {
-    console.log(firstLetter + '->' + uid, word);
     const dictionayRef = doc(getFirestore(), 'shikomori_francais_' + firstLetter, uid);
     updateDoc(dictionayRef, {
       translates: word.translates ? word.translates :  [],
@@ -118,7 +117,6 @@ export class DictionaryService {
   }
 
   updateDetailInfoFr(word: any, uid: string, firstLetter: string) {
-    console.log(firstLetter + '->' + uid, word);
     const dictionayRef = doc(getFirestore(), 'francais_shikomori_' + firstLetter, uid);
     updateDoc(dictionayRef, {
       translates: word.translates ? word.translates :  [],
@@ -383,11 +381,11 @@ export class DictionaryService {
 
   getTranslates(docWord: any) {
     const ts: any = [];
-    const translates = docWord.querySelectorAll('div.col-xs-4.col-sm-4>.col-xs-12.col-sm-12');
+    const translates = docWord.querySelectorAll('div.col-xs-4.col-sm-4>.col-xs-12.col-sm-12 > a');
     if (translates) {
       translates.forEach((t: any) => {
-        const translate = t.querySelector('a span [style="font-weight:bold;"]')?.innerHTML || '';
-        const symbol = t.querySelector('a span span[style="color:#333333;"]')?.innerText || '';
+        const translate = t.querySelector('span [style="font-weight:bold;"]')?.innerHTML || '';
+        const symbol = t.querySelector('span span[style="color:#333333;"]')?.innerText || '';
         const info = t.querySelector('div i span')?.innerText || '';
         ts.push({ translate: translate, symbol: symbol, info: info });
       });

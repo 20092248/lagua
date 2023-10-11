@@ -23,15 +23,15 @@ export class DictionaryPage implements OnInit {
   user: User = {} as User;
   words: FirebaseWord[] = [];
   translate: string = 'francais';
-  text: string = '';
+  text: string = 'shikomori';
   linkInfo: FirebaseWord = {} as FirebaseWord;
 
   constructor(private dictionaryService: DictionaryService, private authentificationService: AuthentificationService) { }
 
   ngOnInit(): void {
     this.user = this.authentificationService.user;
-    this.text = this.user.learn.text;
-    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
+    // this.text = this.user.learn.text;
+    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/this.text, this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
       this.words = words;
     });
   }
@@ -50,7 +50,7 @@ export class DictionaryPage implements OnInit {
 
   changeLetter(letter: string) {
     this.letterSelected = letter;
-    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
+    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/this.text, this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
       this.words = words;
     });
   }
@@ -64,7 +64,7 @@ export class DictionaryPage implements OnInit {
   }
 
   onIonInfinite(ev: any) {
-    this.dictionaryService.nextWords(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected).then((words: FirebaseWord[]) => {
+    this.dictionaryService.nextWords(/*this.user?.learn?.text.toLocaleLowerCase()*/this.text, this.translate, this.letterSelected).then((words: FirebaseWord[]) => {
       this.words = words;
     });
     setTimeout(() => {
@@ -75,17 +75,14 @@ export class DictionaryPage implements OnInit {
   changeDictionary(){
     if(this.translate === 'francais'){
       this.text = 'francais';
-      this.translate = this.user.learn.text;
-      this.dictionaryService.displayAlphabet('francais', 'shikomori', this.letterSelected, false).then((words: FirebaseWord[]) => {
-        this.words = words;
-      });
+      this.translate = 'shikomori'; //this.user.learn.text;
     } else {
-      this.text = this.user.learn.text;
+      this.text = 'shikomori'; //this.user.learn.text;
       this.translate = 'francais';
-      this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/'shikomori', this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
-        this.words = words;
-      });
     }
+    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/this.text, this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
+      this.words = words;
+    });
   }
 
   closeModal() {

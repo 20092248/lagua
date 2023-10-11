@@ -36,7 +36,6 @@ export class SettingService {
           this.topics = doc.data();
           break;
       }
-      console.log(doc.id, ' => ', doc.data());
     });
     return { questions: this.questions, reviews: this.reviews, userInformation: this.userInformation, profile: this.profile, topics: this.topics };
   }
