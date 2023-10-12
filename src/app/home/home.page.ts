@@ -30,7 +30,6 @@ export class HomePage implements OnInit {
   dailyIcon: string = '';
   loading: HTMLIonLoadingElement | undefined;
   progression: number = 0;
-  numbers: number[] = Array(10).fill(undefined, 0, 5).map((x, i) => i);
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,

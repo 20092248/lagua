@@ -37,8 +37,8 @@ export class AddPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.dictionaryService.getbodyLinkFr({text:'dresser%20%20(se%20-)', uid: 'sRqaWJqwkismBs5JWoQe'}, 'd');  
-    // this.dictionaryService.getbodyLinkFr({text:'cherché%20(être%20%20-)', uid: 'LbVMYRmV5P8myGmLc89d'}, 'c');
+    // this.dictionaryService.getbodyLinkFr({text:'faire%20ses%20%20adieux', uid: 'OUiX5rGxbgZ508Z3BlwM'}, 'f');  
+    // this.dictionaryService.getbodyLinkFr({text:'endommagé%20(être%20%20-)', uid: 'WvjGB2DJMgKIQoVpQQcm'}, 'e');
     // this.dictionaryService.getbodyLink({text:'trama', uid: 'KW1eo5ayYNBRc0aVQ18K'}, 't');
     // this.dictionaryService.updateTopic(ANIMALS, 'shimwali_francais_topics', 'animals');
     // this.dictionaryService.updateTopic(CLOTHES, 'shimwali_francais_topics', 'clothes');

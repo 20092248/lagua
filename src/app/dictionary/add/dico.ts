@@ -1,1965 +1,1575 @@
 export const DICO = [{
-    "text": "d'abord",
-    "translate": "randzi; rangu; rabuzi; ",
+    "text": "face",
+    "translate": "uso ",
     "null": null
 },
 {
-    "text": "d'habitude",
-    "translate": "ahalaɓu ",
+    "text": "face-à-face",
+    "translate": "kalawadala ",
     "null": null
 },
 {
-    "text": "dame",
-    "translate": "ɓiɓi ",
+    "text": "fâcher",
+    "translate": "kasiri (u-) ",
     "null": null
 },
 {
-    "text": "damner",
-    "translate": "laani (u-) ",
+    "text": "fâcher (qlq'un)",
+    "translate": "kasiria (u-) ",
     "null": null
 },
 {
-    "text": "danger",
-    "translate": "khatwari; hatwari; mambo; ",
+    "text": "facile",
+    "translate": "-angu; ndzangu; nyangu; ",
     "null": null
 },
 {
-    "text": "dangereux",
-    "translate": "-a khatwari ",
+    "text": "facilitation",
+    "translate": "mwanguso ",
     "null": null
 },
 {
-    "text": "dans",
-    "translate": "moni; harimwa; ",
+    "text": "facilité",
+    "translate": "wangu ",
     "null": null
 },
 {
-    "text": "dans l'accident",
-    "translate": "adjalini ",
+    "text": "faciliter",
+    "translate": "sahilisha (u-); angusa (u-); ",
     "null": null
 },
 {
-    "text": "dans l'au-delà",
-    "translate": "akhirani ",
+    "text": "façon",
+    "translate": "namna; heli; namuna; ",
     "null": null
 },
 {
-    "text": "dans l'économie",
-    "translate": "âkiɓani ",
+    "text": "façonner",
+    "translate": "panga (u-); paranga (u-); ",
     "null": null
 },
 {
-    "text": "dans la cuisine",
-    "translate": "pani ",
+    "text": "faculté (opportunité)",
+    "translate": "wasaya ",
     "null": null
 },
 {
-    "text": "danse",
-    "translate": "ngoma; mzino; muzino; ",
+    "text": "fade",
+    "translate": "mbwadza ",
     "null": null
 },
 {
-    "text": "danse traditionnelle (danser par les pêcheurs à leurs retours)",
-    "translate": "ɓiyaya ",
+    "text": "fagot",
+    "translate": "nkuni; kuni; ",
     "null": null
 },
 {
-    "text": "danse traditionnelle avec des pilons",
-    "translate": "waɗaha ",
+    "text": "faible",
+    "translate": "-ledjevu; mbonya; ",
     "null": null
 },
 {
-    "text": "danser",
-    "translate": "zina (u-) ",
+    "text": "faible (chose) ",
+    "translate": "nɗemevu ",
     "null": null
 },
 {
-    "text": "dard",
-    "translate": "ncora; cora; ",
+    "text": "faible (pers.)",
+    "translate": "mledjevu ",
     "null": null
 },
 {
-    "text": "dard (abeille)",
-    "translate": "nvuna; vuna; ",
+    "text": "faiblesse",
+    "translate": "uledjevu ",
     "null": null
 },
 {
-    "text": "datte",
-    "translate": "ntreɗe; ntrendre; trendre; ",
+    "text": "faillite ",
+    "translate": "faiti ",
     "null": null
 },
 {
-    "text": "dauphin",
-    "translate": "fumɓa-nɗudju; fumba-ndruju; mbamba-ɗaɗi; ",
+    "text": "faim (gén.)",
+    "translate": "ndzaya; ndza; ",
     "null": null
 },
 {
-    "text": "daurade",
-    "translate": "pandje ",
+    "text": "fainéant",
+    "translate": "fenya; vwiri; ",
     "null": null
 },
 {
-    "text": "davantage",
-    "translate": "zaiɗi ",
+    "text": "faire",
+    "translate": "renɗa (u-); fanya (u-); rendra (u-); ",
     "null": null
 },
 {
-    "text": "de",
-    "translate": "-a ",
+    "text": "faire (des nattes de cheveux)",
+    "translate": "suka (u-) ",
     "null": null
 },
 {
-    "text": "dé (à coudre)",
-    "translate": "kustuɓani ",
+    "text": "faire (se -)",
+    "translate": "fanyishiha (u-) ",
     "null": null
 },
 {
-    "text": "de bon matin",
-    "translate": "mapema ",
+    "text": "faire (un effort)",
+    "translate": "sana (u-) ",
     "null": null
 },
 {
-    "text": "de façon",
-    "translate": "ha ",
+    "text": "faire (vite)",
+    "translate": "simamia (u-) ",
     "null": null
 },
 {
-    "text": "de l'avant",
-    "translate": "usoni ",
+    "text": "faire aplatir",
+    "translate": "malaza (u-) ",
     "null": null
 },
 {
-    "text": "de manière",
-    "translate": "ha ",
+    "text": "faire apprendre",
+    "translate": "fundrisa (u-) ",
     "null": null
 },
 {
-    "text": "de même taille/âge (que)",
-    "translate": "ɓani (+ connectif) ",
+    "text": "faire asseoir",
+    "translate": "ketsisa (u-) ",
     "null": null
 },
 {
-    "text": "de plus",
-    "translate": "iruɗi ",
+    "text": "faire brûler",
+    "translate": "vudza (u-) ",
     "null": null
 },
 {
-    "text": "de qualité",
-    "translate": "-a uɓora ",
+    "text": "faire caca",
+    "translate": "kaka (u-) ",
     "null": null
 },
 {
-    "text": "de toute manière",
-    "translate": "allakulihali ",
+    "text": "faire connaissance",
+    "translate": "jiliana (u-) ",
     "null": null
 },
 {
-    "text": "déambuler",
-    "translate": "lenga (u-) ",
+    "text": "faire coucher",
+    "translate": "laza (u-); ladza (u-); ",
     "null": null
 },
 {
-    "text": "débardeur",
-    "translate": "shamisi; kapwandingo; ",
+    "text": "faire dire à",
+    "translate": "lagidza (u-) ",
     "null": null
 },
 {
-    "text": "débarquer",
-    "translate": "pahua (u-) ",
+    "text": "faire éclater ",
+    "translate": "walisa (u-) ",
     "null": null
 },
 {
-    "text": "débattre",
-    "translate": "shinɗana (u-); ɓaɓada (u-); ",
+    "text": "faire entrer",
+    "translate": "kariɓisa (u-) ",
     "null": null
 },
 {
-    "text": "débattre (se-)",
-    "translate": "tapala (u-); ɓaɓada (u-); babadja (u-); ",
+    "text": "faire épouser",
+    "translate": "fungidza (u-) ",
     "null": null
 },
 {
-    "text": "débauche",
-    "translate": "ufasiki ",
+    "text": "faire évaporer",
+    "translate": "handza (u-) ",
     "null": null
 },
 {
-    "text": "débile",
-    "translate": "cuyi; gau; ",
+    "text": "faire expliquer",
+    "translate": "eledzewa (u-) ",
     "null": null
 },
 {
-    "text": "débiteur",
-    "translate": "mkopesadji ",
+    "text": "faire exprès",
+    "translate": "pvendza (u-); kusuɗi (u-); fanya (u-) kusudi; ",
     "null": null
 },
 {
-    "text": "déborder",
-    "translate": "kupva (u-) ",
+    "text": "faire face",
+    "translate": "gaɓili (u-); kaɓili (u-); ",
     "null": null
 },
 {
-    "text": "debout",
-    "translate": "mɓwiɓwi ",
+    "text": "faire faire",
+    "translate": "fanyisa (u-) ",
     "null": null
 },
 {
-    "text": "débris",
-    "translate": "ntahara ",
-    "null": null
-},
-{
-    "text": "débrouillard",
-    "translate": "mtsasi ",
-    "null": null
-},
-{
-    "text": "débrouiller",
-    "translate": "duburia (u-); djitapilia (u-); ",
-    "null": null
-},
-{
-    "text": "début",
-    "translate": "mwanɗo ",
-    "null": null
-},
-{
-    "text": "début d'après-midi",
-    "translate": "mtsana ",
-    "null": null
-},
-{
-    "text": "débutant",
-    "translate": "mvia ",
-    "null": null
-},
-{
-    "text": "décade",
-    "translate": "mongo ",
-    "null": null
-},
-{
-    "text": "décéder",
-    "translate": "fariki (u-) ",
-    "null": null
-},
-{
-    "text": "décence",
-    "translate": "huruma ",
-    "null": null
-},
-{
-    "text": "déception",
-    "translate": "utukivu ",
-    "null": null
-},
-{
-    "text": "déchaîner",
-    "translate": "lamuha (u-) ",
-    "null": null
-},
-{
-    "text": "déchaîner (se)",
-    "translate": "djunɗuha (u-) ",
-    "null": null
-},
-{
-    "text": "décharge",
-    "translate": "juju; puringa; jaju; ",
-    "null": null
-},
-{
-    "text": "décharger",
-    "translate": "pvahua (u-) ",
-    "null": null
-},
-{
-    "text": "décharger un véhicule",
-    "translate": "kariɓisha (u-); lahiki (u-); vahua (u-); ",
-    "null": null
-},
-{
-    "text": "déchet",
-    "translate": "djaya; tsaha; ja; jaya; ",
-    "null": null
-},
-{
-    "text": "déchirer",
-    "translate": "nambua (u-); rarua (u-); randrua (u-); ranɗua (u-); radrua (u-); ",
-    "null": null
-},
-{
-    "text": "déchu (être -)",
-    "translate": "rehwa (u-) ",
-    "null": null
-},
-{
-    "text": "décider",
-    "translate": "tamkua (u-); azimia (u-); tamka (u-); ",
-    "null": null
-},
-{
-    "text": "décider (se -)",
-    "translate": "luha (u-) ",
-    "null": null
-},
-{
-    "text": "décision",
-    "translate": "azimio; âzma; khatua; ",
-    "null": null
-},
-{
-    "text": "déclarer",
-    "translate": "tekeleza (u-) ",
-    "null": null
-},
-{
-    "text": "déclencher",
-    "translate": "ra (hu-) ",
-    "null": null
-},
-{
-    "text": "déclin",
-    "translate": "nakama ",
-    "null": null
-},
-{
-    "text": "décoller",
-    "translate": "wambuha (u-) ",
-    "null": null
-},
-{
-    "text": "décomposer (se -)",
-    "translate": "haha (u-); gaga (u-); ",
-    "null": null
-},
-{
-    "text": "déconcerté (être -)",
-    "translate": "zingamanyiha (u-) ",
-    "null": null
-},
-{
-    "text": "déconner",
-    "translate": "pua mwaha (u-) ",
-    "null": null
-},
-{
-    "text": "décontenancé (être -)",
-    "translate": "wafiliha (u-) ",
-    "null": null
-},
-{
-    "text": "décorateur de mariage",
-    "translate": "mpambe ",
-    "null": null
-},
-{
-    "text": "décoration",
-    "translate": "truru ",
-    "null": null
-},
-{
-    "text": "décorer",
-    "translate": "daidza (u-); tahanasi (u-); pvindza (u-); ",
-    "null": null
-},
-{
-    "text": "découdre",
-    "translate": "ɓumua (u-); fumua (u-); ",
-    "null": null
-},
-{
-    "text": "découper",
-    "translate": "dukua (u-) ",
-    "null": null
-},
-{
-    "text": "découvert (nu)",
-    "translate": "ɓeedhwa ",
-    "null": null
-},
-{
-    "text": "découvrir",
-    "translate": "funukua (u-) ",
-    "null": null
-},
-{
-    "text": "décret",
-    "translate": "hatua ",
-    "null": null
-},
-{
-    "text": "décrire",
-    "translate": "swifu (u-) ",
-    "null": null
-},
-{
-    "text": "décrocher",
-    "translate": "hoɓoa (u-) ",
-    "null": null
-},
-{
-    "text": "dédaigner",
-    "translate": "onea (u-) ",
-    "null": null
-},
-{
-    "text": "dedain",
-    "translate": "kiɓuri ",
-    "null": null
-},
-{
-    "text": "dedans",
-    "translate": "moni ",
-    "null": null
-},
-{
-    "text": "dédier",
-    "translate": "tamania (u-) ",
-    "null": null
-},
-{
-    "text": "défaire",
-    "translate": "fungua (u-); fumua (u-); ",
-    "null": null
-},
-{
-    "text": "défaite",
-    "translate": "mfuɗo; mrasiɓu; ",
-    "null": null
-},
-{
-    "text": "défaut",
-    "translate": "mushkila ",
-    "null": null
-},
-{
-    "text": "défendre",
-    "translate": "ɗafiî (u-); dafuû (hu-); ",
-    "null": null
-},
-{
-    "text": "défense",
-    "translate": "difaî ",
-    "null": null
-},
-{
-    "text": "déféquer",
-    "translate": "nya (hu-); kaka (u-); ",
-    "null": null
-},
-{
-    "text": "défi",
-    "translate": "dharau; matereo; shao; ",
-    "null": null
-},
-{
-    "text": "défier",
-    "translate": "torea (u-); darau (u-); ",
-    "null": null
-},
-{
-    "text": "défiler (manifester)",
-    "translate": "andamana (u-) ",
-    "null": null
-},
-{
-    "text": "défit",
-    "translate": "darau; matoreo; ",
-    "null": null
-},
-{
-    "text": "defloration",
-    "translate": "matsamidzo ",
-    "null": null
-},
-{
-    "text": "déflorer",
-    "translate": "tsamia (u-) ",
-    "null": null
-},
-{
-    "text": "déformer",
-    "translate": "voroa (u-); pvoroa (u-); ",
-    "null": null
-},
-{
-    "text": "défraîchir",
-    "translate": "pvariha (u-) ",
-    "null": null
-},
-{
-    "text": "défricher",
-    "translate": "tsenga (u-) ",
-    "null": null
-},
-{
-    "text": "défunt",
-    "translate": "marehemu ",
-    "null": null
-},
-{
-    "text": "dégouliner",
-    "translate": "nona (u-) ",
-    "null": null
-},
-{
-    "text": "dégoût",
-    "translate": "utukivu ",
-    "null": null
-},
-{
-    "text": "dégoûtant",
-    "translate": "-ɗuɗufu muo ",
-    "null": null
-},
-{
-    "text": "dégoûter",
-    "translate": "rungamia (u-); tselea (u-); ",
-    "null": null
-},
-{
-    "text": "dégouter (qqun)",
-    "translate": "tukiza (u-); ɗuɗusa (u-); ",
-    "null": null
-},
-{
-    "text": "degré",
-    "translate": "daradja ",
-    "null": null
-},
-{
-    "text": "dégringoler",
-    "translate": "vangaruha (u-) ",
-    "null": null
-},
-{
-    "text": "dégueulasse",
-    "translate": "-canfu ",
-    "null": null
-},
-{
-    "text": "dégueulasse (pers.)",
-    "translate": "mcanfu; mcafi; ",
-    "null": null
-},
-{
-    "text": "déguster",
-    "translate": "kumɓara (u-) ",
-    "null": null
-},
-{
-    "text": "déhanché",
-    "translate": "mnuɓi ",
-    "null": null
-},
-{
-    "text": "déhancher ",
-    "translate": "minuha (u-) ",
-    "null": null
-},
-{
-    "text": "dehors",
-    "translate": "pvondze; mondze; mwendze; pwendze; ",
-    "null": null
-},
-{
-    "text": "déjà",
-    "translate": "ɗingohi; kamwe; madza; ɗingosi; -paro-; ",
-    "null": null
-},
-{
-    "text": "déjeuneur",
-    "translate": "mfunguzi ",
-    "null": null
-},
-{
-    "text": "délai",
-    "translate": "pandza ",
-    "null": null
-},
-{
-    "text": "délégation",
-    "translate": "ndrume; udjumbe; ",
-    "null": null
-},
-{
-    "text": "délégué",
-    "translate": "mdjumɓe ",
-    "null": null
-},
-{
-    "text": "délicat (pers.)",
-    "translate": "adabii ",
-    "null": null
-},
-{
-    "text": "délicatesse",
-    "translate": "uvole ",
-    "null": null
-},
-{
-    "text": "délice",
-    "translate": "tamu ",
-    "null": null
-},
-{
-    "text": "delicieux",
-    "translate": "na ladha; na tamu; ",
-    "null": null
-},
-{
-    "text": "délicieux (être -)",
-    "translate": "djipva (u-) ",
-    "null": null
-},
-{
-    "text": "délier",
-    "translate": "fungua (u-); ɓulia (u-); ",
-    "null": null
-},
-{
-    "text": "délinquance",
-    "translate": "ufudjari ",
-    "null": null
-},
-{
-    "text": "délinquant",
-    "translate": "fudjari ",
-    "null": null
-},
-{
-    "text": "délivrance",
-    "translate": "wongofu ",
-    "null": null
-},
-{
-    "text": "délivrer",
-    "translate": "ra huri (hu-); komboa (u-); ongoa (u-); ",
-    "null": null
-},
-{
-    "text": "déluge",
-    "translate": "tufani ",
-    "null": null
-},
-{
-    "text": "demain",
-    "translate": "mauɗu; meso; ",
-    "null": null
-},
-{
-    "text": "demande en mariage",
-    "translate": "poso; trumidzo; ",
-    "null": null
-},
-{
-    "text": "demander",
-    "translate": "uzisa (u-); udzisa (u-); dzisa (u-); hudzisa (u-); ",
-    "null": null
-},
-{
-    "text": "demander à Dieu",
-    "translate": "omɓa (u-); omba (u-); ",
-    "null": null
-},
-{
-    "text": "demander en mariage",
-    "translate": "posa (u-) ",
-    "null": null
-},
-{
-    "text": "démanger",
-    "translate": "wawa (u-) ",
-    "null": null
-},
-{
-    "text": "démarche",
-    "translate": "mwenɗo; mwendro; ",
-    "null": null
-},
-{
-    "text": "démêler",
-    "translate": "ɓumua (u-); tratrua (u-); ɓuhua (u-); ",
-    "null": null
-},
-{
-    "text": "déménagement",
-    "translate": "ipvesi; mhamo; ",
-    "null": null
-},
-{
-    "text": "déménager",
-    "translate": "hama (u-) ",
-    "null": null
-},
-{
-    "text": "démentir",
-    "translate": "hana (u-) ",
-    "null": null
-},
-{
-    "text": "démerder",
-    "translate": "djitapilia (u-) ",
-    "null": null
-},
-{
-    "text": "demeure",
-    "translate": "kazi; makao; ",
-    "null": null
-},
-{
-    "text": "demi",
-    "translate": "nusu ",
-    "null": null
-},
-{
-    "text": "démissionner",
-    "translate": "djiuzulu (u-) ",
-    "null": null
-},
-{
-    "text": "démolir",
-    "translate": "homoa (u-); ranganya (u-); ɓomwa (u-); komoa (u-); djomoa (u-); gomoa (u-); ɓomoa (u-); ",
-    "null": null
-},
-{
-    "text": "démolissement",
-    "translate": "mhoɓoo ",
-    "null": null
-},
-{
-    "text": "démonter",
-    "translate": "traua (u-) ",
-    "null": null
-},
-{
-    "text": "dengue (maladie)",
-    "translate": "kotri ",
-    "null": null
-},
-{
-    "text": "dénoncer",
-    "translate": "vumɓua (u-) ",
-    "null": null
-},
-{
-    "text": "dénoncer (au maître)",
-    "translate": "saliti (u-) ",
-    "null": null
-},
-{
-    "text": "dénouer",
-    "translate": "fungua (u-); ɓuhua (u-); ",
-    "null": null
-},
-{
-    "text": "dent",
-    "translate": "dinyo; dzinyo; ",
-    "null": null
-},
-{
-    "text": "dent cassée",
-    "translate": "pule ",
-    "null": null
-},
-{
-    "text": "dents du bonheur ",
-    "translate": "fulamdji ",
-    "null": null
-},
-{
-    "text": "départ",
-    "translate": "mlawo ",
-    "null": null
-},
-{
-    "text": "dépasser",
-    "translate": "tsendza (u-); shiya (u-); ",
-    "null": null
-},
-{
-    "text": "dépecer",
-    "translate": "tsuna (u-); ɗukua (u-); tuna (u-); ",
-    "null": null
-},
-{
-    "text": "dépêcher (se -)",
-    "translate": "pveza (u-); saruha (u-); papiza (u-); shepveza (u-); simamia (u-); duburia (u-); ",
-    "null": null
-},
-{
-    "text": "dépendre de",
-    "translate": "tegemea (u-) ",
-    "null": null
-},
-{
-    "text": "dépenser",
-    "translate": "harimia (u-) ",
-    "null": null
-},
-{
-    "text": "dépenses",
-    "translate": "ârama; harama; ",
-    "null": null
-},
-{
-    "text": "dépérir",
-    "translate": "nyengea (u-) ",
-    "null": null
-},
-{
-    "text": "dépiauter",
-    "translate": "tsuna (u-); tunya (u-); ",
-    "null": null
-},
-{
-    "text": "déplacé",
-    "translate": "mbotro ",
-    "null": null
-},
-{
-    "text": "déplacer",
-    "translate": "ɓandzua (u-); tsedza (u-); ",
-    "null": null
-},
-{
-    "text": "déplaire à",
-    "translate": "tukia (u-) ",
-    "null": null
-},
-{
-    "text": "deplumer",
-    "translate": "vadzua (u-) ",
-    "null": null
-},
-{
-    "text": "déposer",
-    "translate": "hetsi (u-); kadza (u-); ",
-    "null": null
-},
-{
-    "text": "déposer (une charge)",
-    "translate": "trua (u-) ",
-    "null": null
-},
-{
-    "text": "dépôt d'ordures",
-    "translate": "burdaji ",
-    "null": null
-},
-{
-    "text": "dépotoir",
-    "translate": "jaju ",
-    "null": null
-},
-{
-    "text": "dépouiller",
-    "translate": "tsuna (u-); tuna (u-); tunya (u-); ",
-    "null": null
-},
-{
-    "text": "depuis",
-    "translate": "raili; randzi; rangu; nyangu; raɓu; ",
-    "null": null
-},
-{
-    "text": "déraciner",
-    "translate": "hunua (u-); rurumua (u-); hanyua (u-); hunyua (u-); rundrumua (u-); ",
-    "null": null
-},
-{
-    "text": "déranger (mettre en désordre)",
-    "translate": "ɗanganya (u-) ",
-    "null": null
-},
-{
-    "text": "dernier",
-    "translate": "dodonye ",
-    "null": null
-},
-{
-    "text": "dernière pierre de la tombe",
-    "translate": "ntsaho ",
-    "null": null
-},
-{
-    "text": "dérober",
-    "translate": "pvoha (u-); hiɓa (u-); ",
-    "null": null
-},
-{
-    "text": "déroulement",
-    "translate": "upvirilizi ",
-    "null": null
-},
-{
-    "text": "dérouler",
-    "translate": "zungua (u-) ",
-    "null": null
-},
-{
-    "text": "derrière",
-    "translate": "nyuma; mengoni; ɗingoni; ",
-    "null": null
-},
-{
-    "text": "désaccord ",
-    "translate": "umavu mwelewano ",
-    "null": null
-},
-{
-    "text": "désaccord (être -)",
-    "translate": "hitalifiana (u-) ",
-    "null": null
-},
-{
-    "text": "désagréable",
-    "translate": "mtukifu ",
-    "null": null
-},
-{
-    "text": "désastre",
-    "translate": "kafa ",
-    "null": null
-},
-{
-    "text": "descendre",
-    "translate": "siha (u-); shuka (u-); ",
-    "null": null
-},
-{
-    "text": "descendre (faire -)",
-    "translate": "shukidza (u-) ",
-    "null": null
-},
-{
-    "text": "description",
-    "translate": "swifa ",
-    "null": null
-},
-{
-    "text": "désensorceler",
-    "translate": "gangua (u-) ",
-    "null": null
-},
-{
-    "text": "désert",
-    "translate": "djangwa ",
-    "null": null
-},
-{
-    "text": "désespoir ",
-    "translate": "umavu twamaya ",
-    "null": null
-},
-{
-    "text": "déshabiller",
-    "translate": "tsua (u-); tua (u-); ",
-    "null": null
-},
-{
-    "text": "désherber",
-    "translate": "kokotsa (u-) ",
-    "null": null
-},
-{
-    "text": "déshonneur",
-    "translate": "âiɓu ",
-    "null": null
-},
-{
-    "text": "déshonorer",
-    "translate": "pua sheo (u-) ",
-    "null": null
-},
-{
-    "text": "désir",
-    "translate": "aniɗi; ushauku; matamani; ",
-    "null": null
-},
-{
-    "text": "desirer",
-    "translate": "tamani (u-) ",
-    "null": null
-},
-{
-    "text": "désister (se)",
-    "translate": "djivura (u-) ",
-    "null": null
-},
-{
-    "text": "désobéir",
-    "translate": "âswi (u-) ",
-    "null": null
-},
-{
-    "text": "désobéissance",
-    "translate": "maâswi ",
-    "null": null
-},
-{
-    "text": "désordre",
-    "translate": "ɗahasha ",
-    "null": null
-},
-{
-    "text": "désosser",
-    "translate": "sunua (u-) ",
-    "null": null
-},
-{
-    "text": "dessin",
-    "translate": "sinamu; komba; komɓa; ",
-    "null": null
-},
-{
-    "text": "dessin animé",
-    "translate": "pifu; matoktok; ",
-    "null": null
-},
-{
-    "text": "dessoûler",
-    "translate": "leuha (u-) ",
-    "null": null
-},
-{
-    "text": "dessous",
-    "translate": "ntsini ",
-    "null": null
-},
-{
-    "text": "dessous-de-table",
-    "translate": "ɓahashishi ",
-    "null": null
-},
-{
-    "text": "dessus",
-    "translate": "pvodjuu; uju; ",
-    "null": null
-},
-{
-    "text": "destin",
-    "translate": "ɗasturi; kudurwa; ",
-    "null": null
-},
-{
-    "text": "destiné (être -)",
-    "translate": "umɓiwa (u-) ",
-    "null": null
-},
-{
-    "text": "destinée",
-    "translate": "nyora ",
-    "null": null
-},
-{
-    "text": "destiner",
-    "translate": "kusuɗia (u-) ",
-    "null": null
-},
-{
-    "text": "désunion",
-    "translate": "ɓunguo ",
-    "null": null
-},
-{
-    "text": "désunir",
-    "translate": "farikisha (u-) ",
-    "null": null
-},
-{
-    "text": "détacher",
-    "translate": "wambuha (u-); fungua (u-); ",
-    "null": null
-},
-{
-    "text": "détail",
-    "translate": "reza ",
-    "null": null
-},
-{
-    "text": "détective",
-    "translate": "pistikuli ",
-    "null": null
-},
-{
-    "text": "détendre",
-    "translate": "ledjeza (u-) ",
-    "null": null
-},
-{
-    "text": "détendu",
-    "translate": "dzedze ",
-    "null": null
-},
-{
-    "text": "détention",
-    "translate": "zifungo ",
-    "null": null
-},
-{
-    "text": "détenu (être -)",
-    "translate": "sikiha (u-) ",
-    "null": null
-},
-{
-    "text": "déterminer à",
-    "translate": "azimia (u-) ",
-    "null": null
-},
-{
-    "text": "déterrer",
-    "translate": "futsua (u-) ",
-    "null": null
-},
-{
-    "text": "détestable",
-    "translate": "mtukifu ",
-    "null": null
-},
-{
-    "text": "détester",
-    "translate": "tukia (u-); yenga (u-); ",
-    "null": null
-},
-{
-    "text": "détournement",
-    "translate": "widzi ",
-    "null": null
-},
-{
-    "text": "détourner de (se -)",
-    "translate": "finyushia (u-) ",
-    "null": null
-},
-{
-    "text": "détresser",
-    "translate": "ɓuhua (u-) ",
-    "null": null
-},
-{
-    "text": "détritus",
-    "translate": "saha ",
-    "null": null
-},
-{
-    "text": "détruire",
-    "translate": "ranganya (u-); menya (u-); gomoa (u-); ",
-    "null": null
-},
-{
-    "text": "dette",
-    "translate": "ɗene; deni; ",
-    "null": null
-},
-{
-    "text": "deuil",
-    "translate": "tranga; iɗa; ",
-    "null": null
-},
-{
-    "text": "deux",
-    "translate": "mbili; mɓili; ",
-    "null": null
-},
-{
-    "text": "deux (dénombrables)",
-    "translate": "-ili ",
-    "null": null
-},
-{
-    "text": "deux cents",
-    "translate": "madjana maili; miateni; ",
-    "null": null
-},
-{
-    "text": "deux mille",
-    "translate": "zihwi zili ",
-    "null": null
-},
-{
-    "text": "deuxième",
-    "translate": "-a pvili ",
-    "null": null
-},
-{
-    "text": "devancer",
-    "translate": "trenɗe (u-); kadimia (u-); trenɗea (u-); ",
-    "null": null
-},
-{
-    "text": "devant",
-    "translate": "usoni; mbeli; umbeli; ",
-    "null": null
-},
-{
-    "text": "développement",
-    "translate": "maendreleo; maenɗeleo; ",
-    "null": null
-},
-{
-    "text": "développer",
-    "translate": "enɗelea (u-); endrelea (u-); ",
-    "null": null
-},
-{
-    "text": "devenir",
-    "translate": "renɗeha (u-) ",
-    "null": null
-},
-{
-    "text": "devenir propre",
-    "translate": "-rahafu ",
-    "null": null
-},
-{
-    "text": "déverser",
-    "translate": "tsomoa (u-); pahua (u-); ",
-    "null": null
-},
-{
-    "text": "devin",
-    "translate": "mcwai; mwalimu; ",
-    "null": null
-},
-{
-    "text": "déviner",
-    "translate": "elesa (u-) ",
-    "null": null
-},
-{
-    "text": "devinette",
-    "translate": "ndzinyo ",
-    "null": null
-},
-{
-    "text": "devise",
-    "translate": "msimu ",
-    "null": null
-},
-{
-    "text": "devoir",
-    "translate": "lazimu (u-) ",
-    "null": null
-},
-{
-    "text": "devoir de l'argent",
-    "translate": "iya (u-) ",
-    "null": null
-},
-{
-    "text": "dévorer",
-    "translate": "noga (u-) ",
-    "null": null
-},
-{
-    "text": "diable",
-    "translate": "Shetwani ",
-    "null": null
-},
-{
-    "text": "dialect",
-    "translate": "lugha; luha; ",
-    "null": null
-},
-{
-    "text": "diamant",
-    "translate": "almasi ",
-    "null": null
-},
-{
-    "text": "diarrhée",
-    "translate": "wendro; diare; mɓahuma; pudza; ",
-    "null": null
-},
-{
-    "text": "diastème",
-    "translate": "fulamdji ",
-    "null": null
-},
-{
-    "text": "dictionnaire",
-    "translate": "kamusi ",
-    "null": null
-},
-{
-    "text": "dicton",
-    "translate": "urongozi ",
-    "null": null
-},
-{
-    "text": "Dieu",
-    "translate": "Mnyezi Mngu; Mungu; Mwenyezi Mngu; Mola; Mngu; ",
-    "null": null
-},
-{
-    "text": "Dieu Tout-puissant",
-    "translate": "Mnyezi Mngu; Mwenyezi Mngu; ",
-    "null": null
-},
-{
-    "text": "différence",
-    "translate": "tafauti ",
-    "null": null
-},
-{
-    "text": "différencier",
-    "translate": "tafautisha (u-) ",
-    "null": null
-},
-{
-    "text": "différend ",
-    "translate": "umavu mwelewano ",
-    "null": null
-},
-{
-    "text": "différent",
-    "translate": "tafauti; mɓali; mbali; ",
-    "null": null
-},
-{
-    "text": "difficile",
-    "translate": "-dziro; ndziro; -dzitro; ",
-    "null": null
-},
-{
-    "text": "difficulté",
-    "translate": "taâɓu; udziro; mambo; taɓu; ",
-    "null": null
-},
-{
-    "text": "difficulté (physique)",
-    "translate": "shiɗa ",
-    "null": null
-},
-{
-    "text": "diffuser",
-    "translate": "shaîshi (u-); trangaza (u-); ",
-    "null": null
-},
-{
-    "text": "diffusion",
-    "translate": "tangazo ",
-    "null": null
-},
-{
-    "text": "digne de confiance",
-    "translate": "mwaminifu ",
-    "null": null
-},
-{
-    "text": "dimanche",
-    "translate": "mfumbili; mufumovili; mfumopvili; ",
-    "null": null
-},
-{
-    "text": "dimension",
-    "translate": "upezo ",
-    "null": null
-},
-{
-    "text": "diminuer",
-    "translate": "pvunguza (u-); vungua (u-); vungudza (u-); pvugua (u-); pvungudza (u-); ",
-    "null": null
-},
-{
-    "text": "diminuer (être-)",
-    "translate": "vunguha (u-); pvuguha (u-); ",
-    "null": null
-},
-{
-    "text": "diminuer le feu",
-    "translate": "tsotsoa (u-) ",
-    "null": null
-},
-{
-    "text": "diminution",
-    "translate": "mpvunguzo ",
-    "null": null
-},
-{
-    "text": "dinde",
-    "translate": "kulukulu ",
-    "null": null
-},
-{
-    "text": "dingue",
-    "translate": "mdjufumuwo; cuyi; ",
-    "null": null
-},
-{
-    "text": "diplôme",
-    "translate": "stishihaɗa ",
-    "null": null
-},
-{
-    "text": "dire",
-    "translate": "rongoa (u-); amɓa (u-); hamɓa (u-); ",
-    "null": null
-},
-{
-    "text": "dire à ",
-    "translate": "amɓia (u-) ; hamɓia (u-); ",
-    "null": null
-},
-{
-    "text": "dire au revoir",
-    "translate": "laha (u-); laga (u-); ",
-    "null": null
-},
-{
-    "text": "directeur",
-    "translate": "muɗiri ",
-    "null": null
-},
-{
-    "text": "direction",
-    "translate": "dira; ɗira; ",
-    "null": null
-},
-{
-    "text": "direction de la Mecque",
-    "translate": "Kibla ",
-    "null": null
-},
-{
-    "text": "dires",
-    "translate": "nyamɓo ",
-    "null": null
-},
-{
-    "text": "dirigeant",
-    "translate": "mkizi-mbeli; mtarumu; ",
-    "null": null
-},
-{
-    "text": "dirigeant (haut)",
-    "translate": "dhwamana muhu ",
-    "null": null
-},
-{
-    "text": "diriger",
-    "translate": "tarumu (u-) ",
-    "null": null
-},
-{
-    "text": "discerner",
-    "translate": "maizi (u-) ",
-    "null": null
-},
-{
-    "text": "discours",
-    "translate": "hutuɓa ",
-    "null": null
-},
-{
-    "text": "discrédit",
-    "translate": "dharau; darau; matoreo; ",
-    "null": null
-},
-{
-    "text": "discréditer",
-    "translate": "sidjini (u-) ",
-    "null": null
-},
-{
-    "text": "discrétion",
-    "translate": "usitirifu ",
-    "null": null
-},
-{
-    "text": "discussion (débat)",
-    "translate": "madjaɗiliano ",
-    "null": null
-},
-{
-    "text": "discuter",
-    "translate": "hadisi (u-) ",
-    "null": null
-},
-{
-    "text": "disoudre",
-    "translate": "tsetsemwa (u-) ",
-    "null": null
-},
-{
-    "text": "disparaître",
-    "translate": "trawa (u-); tswa (hu-); hiɓu (u-); fotsoha (u-); pvambaya (u-); tsonyea (u-); tsuria (u-); ",
-    "null": null
-},
-{
-    "text": "disparaître (mourir)",
-    "translate": "fariki (u-) ",
-    "null": null
-},
-{
-    "text": "disperser",
-    "translate": "tsamɓaza (u-); tsampua (u-); tsamɓadza (u-); tsabadza (u-); tsambadza (u-); tsayua (u-); ",
-    "null": null
-},
-{
-    "text": "disperser (se -)",
-    "translate": "tsamɓalia (u-); samɓalia (u-); ",
-    "null": null
-},
-{
-    "text": "disponibilité",
-    "translate": "nafasi ",
-    "null": null
-},
-{
-    "text": "dispute",
-    "translate": "umani ",
-    "null": null
-},
-{
-    "text": "disputer (se -)",
-    "translate": "mana (u-); shindrana (u-); shinɗana (u-); ",
-    "null": null
-},
-{
-    "text": "dissimuler",
-    "translate": "ɓwandaya (u-); sitiri (u-); ",
-    "null": null
-},
-{
-    "text": "dissolution",
-    "translate": "mlaluho ",
-    "null": null
-},
-{
-    "text": "dissoudre",
+    "text": "faire fondre",
     "translate": "lalua (u-) ",
     "null": null
 },
 {
-    "text": "dissoudre (se-)",
-    "translate": "tsetsemeha (u-) ",
+    "text": "faire griller pour",
+    "translate": "oshea (u-) ",
     "null": null
 },
 {
-    "text": "dissuasion",
-    "translate": "itriso ",
+    "text": "faire l'amour",
+    "translate": "romɓa (u-); ɓeɓea (u-); ",
     "null": null
 },
 {
-    "text": "distance",
-    "translate": "male ",
+    "text": "faire l'éloge",
+    "translate": "vumiza (u-) ",
     "null": null
 },
 {
-    "text": "distinct",
-    "translate": "mɓali; mbali; ",
+    "text": "faire la cuisine",
+    "translate": "piha (u-) ",
     "null": null
 },
 {
-    "text": "distinction",
-    "translate": "tafauti ",
+    "text": "faire la toilette",
+    "translate": "pamba (u-) ",
     "null": null
 },
 {
-    "text": "distinguer",
-    "translate": "shuhuɗia (u-) ",
+    "text": "faire le tour",
+    "translate": "zungulia (u-) ",
     "null": null
 },
 {
-    "text": "distraire",
-    "translate": "angaza (u-); angadza (u-); ",
+    "text": "faire louer",
+    "translate": "adjiri (u-); wadjirisa (u-) ; ",
     "null": null
 },
 {
-    "text": "distribuer de la nourriture",
-    "translate": "eleha (u-) ",
+    "text": "faire mal à",
+    "translate": "rwa (u-) ",
     "null": null
 },
 {
-    "text": "distributeur (pers.)",
-    "translate": "mhanɗazi ",
+    "text": "faire mal moralement",
+    "translate": "hoza (u-); hodza (u-); ",
     "null": null
 },
 {
-    "text": "divaguer",
-    "translate": "vambaja (u-) ",
+    "text": "faire manger",
+    "translate": "lisa (u-) ",
     "null": null
 },
 {
-    "text": "divination (faire de la -)",
-    "translate": "rema fali (u-) ",
+    "text": "faire marier",
+    "translate": "lodza (u-) ",
     "null": null
 },
 {
-    "text": "diviser",
-    "translate": "anyisa (u-); tsampua (u-); kasimu (u-); santsua (u-); wanisa (u-); ",
+    "text": "faire montrer",
+    "translate": "hedza (u-) ",
     "null": null
 },
 {
-    "text": "divorce",
-    "translate": "twalaka; mtwalaka; ",
+    "text": "faire naufrage",
+    "translate": "rora (u-) ",
     "null": null
 },
 {
-    "text": "divorcer",
-    "translate": "fungua (u-); funguliwa (u-); ",
+    "text": "faire parler",
+    "translate": "ɓaɓusa (u-) ",
     "null": null
 },
 {
-    "text": "divorcer (homme)",
-    "translate": "twalaki (u-) ",
+    "text": "faire partir",
+    "translate": "trusa (u-) ",
     "null": null
 },
 {
-    "text": "dix",
-    "translate": "kume; kumi; ",
+    "text": "faire peur",
+    "translate": "risidza (u-); risiza (u-); ",
     "null": null
 },
 {
-    "text": "dix huit",
-    "translate": "kume na nane; kumi na nane; ",
+    "text": "faire peur à",
+    "translate": "marusa (u-) ",
     "null": null
 },
 {
-    "text": "dix neuf",
-    "translate": "kume na shenɗa; kumi na shenɗa; kumi na shendra; ",
+    "text": "faire plaisir",
+    "translate": "jividza (u-); furahisha (u-); ",
     "null": null
 },
 {
-    "text": "dix sept",
-    "translate": "kume na nfukare; kumi na saɓa; ",
+    "text": "faire pleurer",
+    "translate": "lidza (u-) ",
     "null": null
 },
 {
-    "text": "dizaine",
-    "translate": "mongo ",
+    "text": "faire pour",
+    "translate": "fanyia (u-) ",
     "null": null
 },
 {
-    "text": "djellaba",
-    "translate": "nkandzu ",
+    "text": "faire remplir ",
+    "translate": "coma (u-) ",
     "null": null
 },
 {
-    "text": "Djibouti",
-    "translate": "Djiɓuti ",
+    "text": "faire respirer une fumigation au sheredzo ",
+    "translate": "eredza (u-) ",
     "null": null
 },
 {
-    "text": "djinn",
-    "translate": "sera ",
+    "text": "faire rôtir",
+    "translate": "oha (u-) ",
     "null": null
 },
 {
-    "text": "djinns",
-    "translate": "masera² ",
+    "text": "faire rougir",
+    "translate": "unkuɗisa (hu-) ",
     "null": null
 },
 {
-    "text": "docile",
-    "translate": "mwekevu ",
+    "text": "faire savoir",
+    "translate": "judza (u-) ",
     "null": null
 },
 {
-    "text": "docker",
-    "translate": "ɓaharia; bardera; ",
+    "text": "faire sécher ",
+    "translate": "humisa (u-); haniha (u-) ; ",
     "null": null
 },
 {
-    "text": "docteur",
-    "translate": "twaɓiɓu; duktera; dukutera; ",
+    "text": "faire ses adieux",
+    "translate": "laha (u-); laga (u-); ",
     "null": null
 },
 {
-    "text": "doigt",
-    "translate": "sha; shaya; ",
+    "text": "faire un bain de bouche",
+    "translate": "tsutsua (u-); kutsua (u-); tutua (u-); ",
     "null": null
 },
 {
-    "text": "doigts de la main",
-    "translate": "maya ",
+    "text": "faire un caprice",
+    "translate": "zimbidza (u-) ",
     "null": null
 },
 {
-    "text": "domaine",
-    "translate": "mva ",
+    "text": "faire un coup d'état",
+    "translate": "pvinɗua (u-) ",
     "null": null
 },
 {
-    "text": "domaine de souveraineté",
-    "translate": "amri; amru; ",
+    "text": "faire un crédit",
+    "translate": "para (u-); kopa (u-); ",
     "null": null
 },
 {
-    "text": "domestique",
-    "translate": "mrumwa; mdjahazi; boi; mdjakazi; ",
+    "text": "faire vite",
+    "translate": "haraka (u-) ",
     "null": null
 },
 {
-    "text": "domicile",
-    "translate": "kazi; makao; ",
+    "text": "faire voyager",
+    "translate": "safiridza (u-) ",
     "null": null
 },
 {
-    "text": "don",
-    "translate": "hiɗaya; sadaka; tasadaki; ",
+    "text": "fais gaffe ! ",
+    "translate": "fahamu ! ",
     "null": null
 },
 {
-    "text": "don de Dieu",
-    "translate": "neêma ",
+    "text": "faiseur",
+    "translate": "mfanyizi ",
     "null": null
 },
 {
-    "text": "don du ciel",
-    "translate": "riziki; ridhiki; ",
+    "text": "fait (d'entendre)",
+    "translate": "ukizi ",
     "null": null
 },
 {
-    "text": "donation",
-    "translate": "hiɗaya; mpvo; ",
+    "text": "fait (être -)",
+    "translate": "fanyiha (u-) ",
     "null": null
 },
 {
-    "text": "donc",
-    "translate": "halafu ",
+    "text": "fait par (être-)",
+    "translate": "fanyilwa (u-) ",
     "null": null
 },
 {
-    "text": "donner",
-    "translate": "nika (u-); pva (hu-); va (hu-); ",
+    "text": "falloir",
+    "translate": "ɓiɗi (u-); lazimu (u-); ",
     "null": null
 },
 {
-    "text": "donner (fessée)",
-    "translate": "capa (u-) ",
+    "text": "famille",
+    "translate": "dhul-arhamu; djamaa; mdjemaza; udjama; kina; mudjemaza; mdjamaza; ",
     "null": null
 },
 {
-    "text": "donner (se -)",
-    "translate": "djihupvia (u-) ",
+    "text": "famille maternelle",
+    "translate": "usheni² ",
     "null": null
 },
 {
-    "text": "Donner de l'argent par exhibition",
-    "translate": "cuza (u-) ",
+    "text": "famille parentèle",
+    "translate": "nɗuhuze ",
     "null": null
 },
 {
-    "text": "donner la nausée",
-    "translate": "ɗuɗusa muo (u-) ",
+    "text": "famille paternelle",
+    "translate": "umeni² ",
     "null": null
 },
 {
-    "text": "donner un coup de main",
-    "translate": "unga (u-) muhono ",
+    "text": "famine",
+    "translate": "twauni; twaani; ",
     "null": null
 },
 {
-    "text": "donner une promesse",
-    "translate": "nika miâdi (u-) ",
+    "text": "fantôme",
+    "translate": "djini; gini; ",
     "null": null
 },
 {
-    "text": "dont",
-    "translate": "ikao ",
+    "text": "fantôme (\"shivuli sha mufu\")",
+    "translate": "shivuli ",
     "null": null
 },
 {
-    "text": "dorade coryphène",
-    "translate": "mbasi maranga ",
+    "text": "fard",
+    "translate": "gwena ",
     "null": null
 },
 {
-    "text": "dorloter",
-    "translate": "tutuɓia (u-) ",
+    "text": "fardeau",
+    "translate": "mdzo ",
     "null": null
 },
 {
-    "text": "dormir",
-    "translate": "siuha (u-); kuha (u-); sindzia (u-); ",
+    "text": "farine",
+    "translate": "unga ",
     "null": null
 },
 {
-    "text": "dos",
-    "translate": "ɗingo; mengo; ",
+    "text": "farouche",
+    "translate": "mpandzi ",
     "null": null
 },
 {
-    "text": "dot",
-    "translate": "mahari ",
+    "text": "fasciner",
+    "translate": "suɓia (u-) ",
     "null": null
 },
 {
-    "text": "douaire",
-    "translate": "mahari ",
+    "text": "fatigue",
+    "translate": "ulemevu ",
     "null": null
 },
 {
-    "text": "double",
-    "translate": "patra; patsa; ",
+    "text": "fatiguer",
+    "translate": "lemedza (u-) ",
     "null": null
 },
 {
-    "text": "doublure",
-    "translate": "ɓitana ",
+    "text": "fauchage",
+    "translate": "mfakuo; mfwakuo; ",
     "null": null
 },
 {
-    "text": "doucement",
-    "translate": "ha mbapvi; volevole; vole; mpolempole; mbolembole; ",
+    "text": "fauché (être -)",
+    "translate": "fwakulwa (u-) ",
     "null": null
 },
 {
-    "text": "douceur",
-    "translate": "wangavu ",
+    "text": "faucher",
+    "translate": "fwakua (u-); fakua (u-); vakua (u-); hakua (u-); ",
     "null": null
 },
 {
-    "text": "doucher",
-    "translate": "yela (u-) ",
+    "text": "faucon",
+    "translate": "ipvanga; shimpanga; shipanga; ",
     "null": null
 },
 {
-    "text": "douleur",
-    "translate": "ndroso; alami; shikodza; ",
+    "text": "faufiler",
+    "translate": "walala (u-) ",
     "null": null
 },
 {
-    "text": "doute",
-    "translate": "taradudi; shaka; ",
+    "text": "faute",
+    "translate": "kosa; halati; ",
     "null": null
 },
 {
-    "text": "doux",
-    "translate": "laini ",
+    "text": "fauter",
+    "translate": "kosa (u-) ",
     "null": null
 },
 {
-    "text": "douze",
-    "translate": "kume na mbili; kumi na mbili; ",
+    "text": "fauteuil",
+    "translate": "fute ",
     "null": null
 },
 {
-    "text": "draguer",
-    "translate": "trongoza (u-) ",
+    "text": "fauvette",
+    "translate": "perashwa ",
     "null": null
 },
 {
-    "text": "dragueur",
-    "translate": "muzinzi ",
+    "text": "favorable",
+    "translate": "maswilaha ",
     "null": null
 },
 {
-    "text": "drame",
-    "translate": "kafa ",
+    "text": "favoriser",
+    "translate": "vendzelea (u-) ",
     "null": null
 },
 {
-    "text": "drap",
-    "translate": "ɗara ",
+    "text": "favoriser (qqun)",
+    "translate": "pvendzelea (u-) ",
     "null": null
 },
 {
-    "text": "drapeau",
-    "translate": "ɓeramu ",
+    "text": "favoritisme",
+    "translate": "pendzeleo ",
     "null": null
 },
 {
-    "text": "dressage",
-    "translate": "mhimiso ",
+    "text": "féconder",
+    "translate": "tseya (u-) ",
     "null": null
 },
 {
-    "text": "dressement",
-    "translate": "mdjuho ",
+    "text": "fécondité",
+    "translate": "uzazi ",
     "null": null
 },
 {
-    "text": "dresser",
-    "translate": "nyongoa (u-) ",
+    "text": "feignasse",
+    "translate": "vwiri ",
     "null": null
 },
 {
-    "text": "dresser (se -)",
-    "translate": "hima (u-) ",
+    "text": "feinte",
+    "translate": "ncenga ",
     "null": null
 },
 {
-    "text": "droit",
-    "translate": "haki ",
+    "text": "feinter",
+    "translate": "urandza (u-) ",
     "null": null
 },
 {
-    "text": "droit (être)",
-    "translate": "nyongoha (u-) ",
+    "text": "félicitation",
+    "translate": "ongera ",
     "null": null
 },
 {
-    "text": "droite (à -)",
-    "translate": "umeni; kumeni; upanɗe wa mhono mme; ",
+    "text": "félicité",
+    "translate": "feresheo ",
     "null": null
 },
 {
-    "text": "droiture ",
-    "translate": "uhalalifu; uôgofu; ",
+    "text": "féliciter",
+    "translate": "fereshea (u-) ",
     "null": null
 },
 {
-    "text": "dromadaire",
-    "translate": "ngamia ",
+    "text": "femelle",
+    "translate": "-she; mtsamba; ndzishe; nɗishe; nce; ɓaha; ",
     "null": null
 },
 {
-    "text": "drongo",
-    "translate": "marimuɗu; kwasiru; ",
+    "text": "feminin",
+    "translate": "#NOM? ",
     "null": null
 },
 {
-    "text": "du",
-    "translate": "mo ",
+    "text": "féminité",
+    "translate": "ushe ",
     "null": null
 },
 {
-    "text": "dugong",
-    "translate": "nguva ",
+    "text": "femme",
+    "translate": "mndru-mshe; mshe; mushe; mutrumama; mntru-mshe; mntrumama; mndru-mdadze; ",
     "null": null
 },
 {
-    "text": "duper",
-    "translate": "ganga (u-); haɗaya (u-); laɓa (u-); ",
+    "text": "fendre",
+    "translate": "pasua (u-); santsua (u-); ",
     "null": null
 },
 {
-    "text": "duperie",
-    "translate": "mhaɗayo ",
+    "text": "fenêtre",
+    "translate": "ɗirisha; shiɓaka; teteza; dirisha; ",
     "null": null
 },
 {
-    "text": "dur",
-    "translate": "-angavu; ndzangavu; ",
+    "text": "fente",
+    "translate": "ufa; gantra; ",
     "null": null
 },
 {
-    "text": "dur à cuire",
-    "translate": "mbiavu ",
+    "text": "féodalisme",
+    "translate": "umilanantsi ",
     "null": null
 },
 {
-    "text": "durcir",
-    "translate": "halipva (u-); huhuraya (u-); ",
+    "text": "fer",
+    "translate": "shuma ",
     "null": null
 },
 {
-    "text": "dure",
-    "translate": "-hodari ",
+    "text": "fer (métal)",
+    "translate": "fera ",
     "null": null
 },
 {
-    "text": "durée de vie",
-    "translate": "umuri ",
+    "text": "fer à repasser",
+    "translate": "pasi; fera; ",
     "null": null
 },
 {
-    "text": "dynastie",
-    "translate": "nasla ",
+    "text": "ferme",
+    "translate": "djaɗiɗi ",
+    "null": null
+},
+{
+    "text": "fermenter",
+    "translate": "canca (u-); gaga (u-); ",
+    "null": null
+},
+{
+    "text": "fermer",
+    "translate": "ɓaya (u-); ɓala (u-); ",
+    "null": null
+},
+{
+    "text": "fermeture",
+    "translate": "mɓayo ",
+    "null": null
+},
+{
+    "text": "ferrer (poisson)",
+    "translate": "rosa (u-) ",
+    "null": null
+},
+{
+    "text": "fértilité",
+    "translate": "uzazi ",
+    "null": null
+},
+{
+    "text": "ferveur",
+    "translate": "pupa; haiɓa; ",
+    "null": null
+},
+{
+    "text": "fesse",
+    "translate": "ɗufi; ndzu; muvumo; ",
+    "null": null
+},
+{
+    "text": "festin",
+    "translate": "panɗu; fista; caki; ",
+    "null": null
+},
+{
+    "text": "festivité",
+    "translate": "shuhuli; shughuli; mahafala; ",
+    "null": null
+},
+{
+    "text": "fête",
+    "translate": "shuhuli; mahafala; ",
+    "null": null
+},
+{
+    "text": "fétide",
+    "translate": "hantushi ",
+    "null": null
+},
+{
+    "text": "feu",
+    "translate": "mdro; mro; moro; ",
+    "null": null
+},
+{
+    "text": "feu (untel)",
+    "translate": "al-marhum ",
+    "null": null
+},
+{
+    "text": "feuille",
+    "translate": "uwani; wani²; ",
+    "null": null
+},
+{
+    "text": "feuille de papier",
+    "translate": "loho ",
+    "null": null
+},
+{
+    "text": "feuille de taro",
+    "translate": "yombo; feleki-majimbi; womɓo; ",
+    "null": null
+},
+{
+    "text": "feuille sèche de bananier",
+    "translate": "ɓuni; peve; goda; ",
+    "null": null
+},
+{
+    "text": "fève",
+    "translate": "triɓwa ",
+    "null": null
+},
+{
+    "text": "février",
+    "translate": "fevriye ",
+    "null": null
+},
+{
+    "text": "fiancer",
+    "translate": "rumidza (u-) ",
+    "null": null
+},
+{
+    "text": "fibre de coco",
+    "translate": "ɓinda; pinɗo; pindro; ",
+    "null": null
+},
+{
+    "text": "fibre de raphia",
+    "translate": "nɗaya ",
+    "null": null
+},
+{
+    "text": "ficelle",
+    "translate": "uzi ",
+    "null": null
+},
+{
+    "text": "fidèle",
+    "translate": "twaa ",
+    "null": null
+},
+{
+    "text": "fiente",
+    "translate": "madzi ",
+    "null": null
+},
+{
+    "text": "fierté",
+    "translate": "udjira; âri; ufahari; kirahi; ",
+    "null": null
+},
+{
+    "text": "fierté (caractère)",
+    "translate": "kiɓuri ",
+    "null": null
+},
+{
+    "text": "fièvre",
+    "translate": "ɓuhuo; moro; homa; ndrerema; ",
+    "null": null
+},
+{
+    "text": "figue",
+    "translate": "tini ",
+    "null": null
+},
+{
+    "text": "figuier de barbarie",
+    "translate": "mkasketi ",
+    "null": null
+},
+{
+    "text": "figure",
+    "translate": "surwaya; surwa; ",
+    "null": null
+},
+{
+    "text": "figure du shigoma (se laisser tomber sur les genoux)",
+    "translate": "wara ",
+    "null": null
+},
+{
+    "text": "fil",
+    "translate": "pondzi; uzi; mbondzi; pwendzi; ",
+    "null": null
+},
+{
+    "text": "fil à pêche",
+    "translate": "antri; misi; ",
+    "null": null
+},
+{
+    "text": "fil d'or",
+    "translate": "uzi wa zari ",
+    "null": null
+},
+{
+    "text": "fil de pêche",
+    "translate": "nuzi ",
+    "null": null
+},
+{
+    "text": "file",
+    "translate": "gwe; huzi; ",
+    "null": null
+},
+{
+    "text": "file (indienne)",
+    "translate": "mlahatra ",
+    "null": null
+},
+{
+    "text": "file d'attente",
+    "translate": "mronɗo; mraɓata; ",
+    "null": null
+},
+{
+    "text": "filet de pêche",
+    "translate": "wavu ",
+    "null": null
+},
+{
+    "text": "filet de pêche en tissu",
+    "translate": "djarifa ",
+    "null": null
+},
+{
+    "text": "filière",
+    "translate": "mbawa ",
+    "null": null
+},
+{
+    "text": "fille",
+    "translate": "mwana-mshe; binti; mwanamtsa mutrumama; mwana mwa mdrumshe; mtrumama; ",
+    "null": null
+},
+{
+    "text": "fils",
+    "translate": "mwanamtsa mutruɓaɓa ",
+    "null": null
+},
+{
+    "text": "filtrage",
+    "translate": "utsuzi ",
+    "null": null
+},
+{
+    "text": "filtre",
+    "translate": "itsudjio ",
+    "null": null
+},
+{
+    "text": "filtrer",
+    "translate": "tsudja (u-); tsuja (u-); ",
+    "null": null
+},
+{
+    "text": "fin",
+    "translate": "ukomo; mwiso; ",
+    "null": null
+},
+{
+    "text": "finalement",
+    "translate": "muhalasi ",
+    "null": null
+},
+{
+    "text": "finir",
+    "translate": "timizi (u-); hisa (u-); sha (hu-); malidza (u-); koma (u-); isa (u-); timidza (u-); tsimidza (u-); ",
+    "null": null
+},
+{
+    "text": "fiole",
+    "translate": "shitsuva; itsuva; shitupa; ",
+    "null": null
+},
+{
+    "text": "fiou",
+    "translate": "ntswi ",
+    "null": null
+},
+{
+    "text": "fissure",
+    "translate": "gantra ",
+    "null": null
+},
+{
+    "text": "fissurer",
+    "translate": "sheleha (u-) ",
+    "null": null
+},
+{
+    "text": "flac d'eau",
+    "translate": "idziwa ",
+    "null": null
+},
+{
+    "text": "flacon",
+    "translate": "shitsuva; itsuva; shitupa; ",
+    "null": null
+},
+{
+    "text": "flamme",
+    "translate": "ɗimi; jenge; ",
+    "null": null
+},
+{
+    "text": "flanc",
+    "translate": "mbafu; uwavu; ",
+    "null": null
+},
+{
+    "text": "flâner",
+    "translate": "raraya (u-); tanga (u-); rara (u-); ",
+    "null": null
+},
+{
+    "text": "flaque",
+    "translate": "dzia ",
+    "null": null
+},
+{
+    "text": "flasque (pers.)",
+    "translate": "mboreha ",
+    "null": null
+},
+{
+    "text": "flatter",
+    "translate": "swifu (u-); fwaria (u-); sifu (u-); ",
+    "null": null
+},
+{
+    "text": "flatterie",
+    "translate": "ufwarizi ",
+    "null": null
+},
+{
+    "text": "flatteur",
+    "translate": "mfwarizi ",
+    "null": null
+},
+{
+    "text": "flatulence",
+    "translate": "shungulia ",
+    "null": null
+},
+{
+    "text": "flèche",
+    "translate": "fumu; fumo; ",
+    "null": null
+},
+{
+    "text": "flétrir",
+    "translate": "pvariha (u-) ",
+    "null": null
+},
+{
+    "text": "fleur",
+    "translate": "ɓaua; fulera; fu; ",
+    "null": null
+},
+{
+    "text": "fleur de bananier",
+    "translate": "ndroɓwe; troɓwa; ",
+    "null": null
+},
+{
+    "text": "fleur de l'âge (la)",
+    "translate": "ushaɓaɓi ",
+    "null": null
+},
+{
+    "text": "flirt poussé",
+    "translate": "gurua ",
+    "null": null
+},
+{
+    "text": "flotter",
+    "translate": "elela (u-); pepea (u-); ",
+    "null": null
+},
+{
+    "text": "flou",
+    "translate": "mavwara; janga; ",
+    "null": null
+},
+{
+    "text": "flûte",
+    "translate": "firimbi ",
+    "null": null
+},
+{
+    "text": "foetus",
+    "translate": "saha ",
+    "null": null
+},
+{
+    "text": "foi",
+    "translate": "imani ",
+    "null": null
+},
+{
+    "text": "foie",
+    "translate": "nye; shinye; ",
+    "null": null
+},
+{
+    "text": "fois",
+    "translate": "nkaɗo; mara; kira; ",
+    "null": null
+},
+{
+    "text": "folie",
+    "translate": "udjufumuo; masera²; masera; udjufu-moo; udjufu-muwo; ",
+    "null": null
+},
+{
+    "text": "foncer (garnir) ",
+    "translate": "trisa (u-) ",
+    "null": null
+},
+{
+    "text": "fonctionner",
+    "translate": "enɗa (u-); kiri (u-); ",
+    "null": null
+},
+{
+    "text": "fond",
+    "translate": "kundru ",
+    "null": null
+},
+{
+    "text": "fond de teint",
+    "translate": "cake ",
+    "null": null
+},
+{
+    "text": "fondation d'une maison",
+    "translate": "msingi; mshindji; ",
+    "null": null
+},
+{
+    "text": "fondement",
+    "translate": "gayo; msingi; musingi; mshindji; ",
+    "null": null
+},
+{
+    "text": "fondre",
+    "translate": "tsentsemha (u-); laluha (u-); tsetsemeha (u-); tsetsemwa (u-); ",
+    "null": null
+},
+{
+    "text": "force",
+    "translate": "nvuu; nguvu; ɓari; ",
+    "null": null
+},
+{
+    "text": "force (du piment par exemple)",
+    "translate": "uhali ",
+    "null": null
+},
+{
+    "text": "forcer",
+    "translate": "lazimisha (u-) ",
+    "null": null
+},
+{
+    "text": "forêt",
+    "translate": "djiva; msiru; huwu; mpaharo; shitsaha; ",
+    "null": null
+},
+{
+    "text": "forgeron",
+    "translate": "mufua-shuma; mfua-shuma; ",
+    "null": null
+},
+{
+    "text": "forme physique",
+    "translate": "swiha ",
+    "null": null
+},
+{
+    "text": "former",
+    "translate": "panga (u-); alimisha (u-); ylimisha (u-); ",
+    "null": null
+},
+{
+    "text": "formes",
+    "translate": "haɗafu ",
+    "null": null
+},
+{
+    "text": "fornicateur",
+    "translate": "mzindzi ",
+    "null": null
+},
+{
+    "text": "fornication",
+    "translate": "zina ",
+    "null": null
+},
+{
+    "text": "forniquer",
+    "translate": "zina (u-); malii (u-); ",
+    "null": null
+},
+{
+    "text": "fort",
+    "translate": "-hodari; muhali; muhodari; -kali; ",
+    "null": null
+},
+{
+    "text": "fort (concentrer)",
+    "translate": "kali ",
+    "null": null
+},
+{
+    "text": "forte pluie",
+    "translate": "ɓihizo ",
+    "null": null
+},
+{
+    "text": "fortune",
+    "translate": "mali ",
+    "null": null
+},
+{
+    "text": "fosse",
+    "translate": "ngama; gali; igali; ",
+    "null": null
+},
+{
+    "text": "fossette",
+    "translate": "gali; igali; ",
+    "null": null
+},
+{
+    "text": "fossoyeur",
+    "translate": "mtsimɓi ",
+    "null": null
+},
+{
+    "text": "fou",
+    "translate": "sera; mdjufumuwo; mdjufumuyo; mwendza-masera; ",
+    "null": null
+},
+{
+    "text": "foudi des Comores",
+    "translate": "mbera-gobo ",
+    "null": null
+},
+{
+    "text": "foudre",
+    "translate": "raâɗu; raâdi; radi; ",
+    "null": null
+},
+{
+    "text": "fouet",
+    "translate": "nkasuho; kamba; shengwe; ",
+    "null": null
+},
+{
+    "text": "fouet (cuisine)",
+    "translate": "mcapu ",
+    "null": null
+},
+{
+    "text": "fouet (en palme de cocotiers)",
+    "translate": "nkasua ",
+    "null": null
+},
+{
+    "text": "fouetter",
+    "translate": "shapa (u-) ",
+    "null": null
+},
+{
+    "text": "fouetter (les oeufs)",
+    "translate": "raɓi (u-) ",
+    "null": null
+},
+{
+    "text": "fougère",
+    "translate": "kudju; korai; kandzi; ",
+    "null": null
+},
+{
+    "text": "fouiller",
+    "translate": "unɗua (u-) ",
+    "null": null
+},
+{
+    "text": "foulard",
+    "translate": "kishali; fulari; ",
+    "null": null
+},
+{
+    "text": "foule",
+    "translate": "fidjo ",
+    "null": null
+},
+{
+    "text": "fouler",
+    "translate": "gaɗa (u-); rwaria (u-); ",
+    "null": null
+},
+{
+    "text": "founingo des Comores (pigeon)",
+    "translate": "ninga ",
+    "null": null
+},
+{
+    "text": "four",
+    "translate": "fuɓa; ɓako; ",
+    "null": null
+},
+{
+    "text": "fourchette",
+    "translate": "mkoɓe wa manyo; fursheti; forsheti; furusheti; ",
+    "null": null
+},
+{
+    "text": "fourgonner",
+    "translate": "tsetsea (u-) ",
+    "null": null
+},
+{
+    "text": "fourmi",
+    "translate": "nyantsu; ntsutsuhu; tsutsuhu; ",
+    "null": null
+},
+{
+    "text": "fourmi de pavé",
+    "translate": "trungua; ku manyo; ",
+    "null": null
+},
+{
+    "text": "fourmiller",
+    "translate": "fa mandzi (hu-) ",
+    "null": null
+},
+{
+    "text": "fournaise",
+    "translate": "dziho ",
+    "null": null
+},
+{
+    "text": "fourneau",
+    "translate": "fuɓa; ɓako; ",
+    "null": null
+},
+{
+    "text": "fourreau",
+    "translate": "wala ",
+    "null": null
+},
+{
+    "text": "fourrière",
+    "translate": "gabio ",
+    "null": null
+},
+{
+    "text": "fracassage",
+    "translate": "mfufuo; mɓuɓuo; ",
+    "null": null
+},
+{
+    "text": "fracasser",
+    "translate": "ɓuɓua (u-) ",
+    "null": null
+},
+{
+    "text": "fraction",
+    "translate": "sehemu; fuvu; ",
+    "null": null
+},
+{
+    "text": "fragile",
+    "translate": "mna (f.c. de mwana) ",
+    "null": null
+},
+{
+    "text": "fraîcheur ",
+    "translate": "ɓuruɗa; buruda; uɓurudifu; mazimi; ",
+    "null": null
+},
+{
+    "text": "frais (aliment)",
+    "translate": "-itsi; ɓitsi; ",
+    "null": null
+},
+{
+    "text": "français",
+    "translate": "shiFarantsa; mFarantsa; muFarantsa; ",
+    "null": null
+},
+{
+    "text": "France",
+    "translate": "Farantsa ",
+    "null": null
+},
+{
+    "text": "franchir",
+    "translate": "shia (u-); tupa (u-); ",
+    "null": null
+},
+{
+    "text": "franchir en sautant",
+    "translate": "umba (u-); tumpa (u-); ",
+    "null": null
+},
+{
+    "text": "francophonie",
+    "translate": "ufarantsa ",
+    "null": null
+},
+{
+    "text": "frange (tissu)",
+    "translate": "upinɗo ",
+    "null": null
+},
+{
+    "text": "frapper",
+    "translate": "rema (u-); wua (u-); ",
+    "null": null
+},
+{
+    "text": "frapper (se -)",
+    "translate": "remana (u-) ",
+    "null": null
+},
+{
+    "text": "fraternité",
+    "translate": "unanya; unyanya; ",
+    "null": null
+},
+{
+    "text": "frauder",
+    "translate": "ɓadhili (u-) ",
+    "null": null
+},
+{
+    "text": "fraudeur",
+    "translate": "mɓadhilifu ",
+    "null": null
+},
+{
+    "text": "frayeur",
+    "translate": "itriso; ushangivu; fazaâ; ",
+    "null": null
+},
+{
+    "text": "fréquemment",
+    "translate": "dahari ",
+    "null": null
+},
+{
+    "text": "frère",
+    "translate": "mwananya; mwananya mutruɓaɓa; ",
+    "null": null
+},
+{
+    "text": "frère / soeur (mon / ma -)",
+    "translate": "mwanama ",
+    "null": null
+},
+{
+    "text": "frère aîné",
+    "translate": "ɓa-ntiti ",
+    "null": null
+},
+{
+    "text": "frère aîné du père",
+    "translate": "ɓaɓaɓole ",
+    "null": null
+},
+{
+    "text": "frère cadet du père",
+    "translate": "ɓaɓatiti ",
+    "null": null
+},
+{
+    "text": "frétiller",
+    "translate": "ɓaɓada (u-) ",
+    "null": null
+},
+{
+    "text": "friandise",
+    "translate": "halua; bombo; ",
+    "null": null
+},
+{
+    "text": "frigidaire",
+    "translate": "Nyungu ya baranfu ",
+    "null": null
+},
+{
+    "text": "frigo",
+    "translate": "firigo ",
+    "null": null
+},
+{
+    "text": "frimer",
+    "translate": "pviaza (u-); ringa (u-); ",
+    "null": null
+},
+{
+    "text": "frire",
+    "translate": "pvisa (u-); visa (u-); ",
+    "null": null
+},
+{
+    "text": "frissonner",
+    "translate": "sisimha (u-); susumuha (u-); ɗiɗima (u-); ",
+    "null": null
+},
+{
+    "text": "froid",
+    "translate": "ɓariɗi; mazimi; ",
+    "null": null
+},
+{
+    "text": "froid (avoir -)",
+    "translate": "ziliza (u-) ",
+    "null": null
+},
+{
+    "text": "froissement",
+    "translate": "kundzo ",
+    "null": null
+},
+{
+    "text": "froisser",
+    "translate": "kuta (u-); funyari (u-); kota (u-); ",
+    "null": null
+},
+{
+    "text": "frôler",
+    "translate": "sua (u-) ",
+    "null": null
+},
+{
+    "text": "froncer",
+    "translate": "sinya (u-) ",
+    "null": null
+},
+{
+    "text": "front",
+    "translate": "uso; komo; ukoa; ",
+    "null": null
+},
+{
+    "text": "frontière",
+    "translate": "mpaka; mwiano; mupaka; ",
+    "null": null
+},
+{
+    "text": "frotter",
+    "translate": "singa (u-); gurua (u-); kilikitsa (u-); shugua (u-); gudzua (u-); sugua (u-); ",
+    "null": null
+},
+{
+    "text": "frousse",
+    "translate": "uhara ",
+    "null": null
+},
+{
+    "text": "fruit",
+    "translate": "trunɗa; trundra; ",
+    "null": null
+},
+{
+    "text": "fruit à pain",
+    "translate": "friapa; frampe; vuriapa; furiapa; ",
+    "null": null
+},
+{
+    "text": "fruit du baobab",
+    "translate": "buyu; ɓuu; ",
+    "null": null
+},
+{
+    "text": "fruit du jévi",
+    "translate": "sakua ",
+    "null": null
+},
+{
+    "text": "fruit du mfurefure",
+    "translate": "furefure ",
+    "null": null
+},
+{
+    "text": "fuel",
+    "translate": "gashi ",
+    "null": null
+},
+{
+    "text": "fuir",
+    "translate": "trawa (u-); pvambaya (u-); ",
+    "null": null
+},
+{
+    "text": "fuite",
+    "translate": "utrazi ",
+    "null": null
+},
+{
+    "text": "fumée",
+    "translate": "djosi; mosi; mwesi; ɓii; fuɓi; ",
+    "null": null
+},
+{
+    "text": "fumer",
+    "translate": "vura (u-) ",
+    "null": null
+},
+{
+    "text": "furoncle",
+    "translate": "shiwi; shupvwi; shuwi; ",
+    "null": null
+},
+{
+    "text": "fusil",
+    "translate": "ɓunɗuki ",
+    "null": null
+},
+{
+    "text": "fût",
+    "translate": "ntange ",
+    "null": null
+},
+{
+    "text": "futé (enfant)",
+    "translate": "mna-idjuruzi ",
+    "null": null
+},
+{
+    "text": "futile",
+    "translate": "ɓatani; mafitsi; ɓotsi; ",
+    "null": null
+},
+{
+    "text": "futilité",
+    "translate": "malambe ",
+    "null": null
+},
+{
+    "text": "futur",
+    "translate": "usoni ",
+    "null": null
+},
+{
+    "text": "fuyard",
+    "translate": "mtrazi; mutoro; ",
     "null": null
 }];

@@ -55,7 +55,7 @@ ion-text {
 }
 
 .img-box img {
-  min-height: 100px;
+  min-height: 96px;
 }
 
 ion-popover {
@@ -76,7 +76,7 @@ ion-popover ion-content {
 
 .border-white-tabs {
   border: #ffffff solid 2px;
-  background-color: #ffffff;
+  background-color: #9dc18c;
   border-radius: 50%;
   width: 104px;
   height: 104px;
@@ -84,10 +84,12 @@ ion-popover ion-content {
 }
 
 .img-box {
+  position: relative;
+  top: 2px;
   border-radius: 50%;
   overflow: hidden;
-  height: 100px;
-  width: 100px;
+  height: 96px;
+  width: 96px;
   background-color: #cccfcb;
   margin-left: auto;
   margin-right: auto;
