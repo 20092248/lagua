@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from '../model/user.model';
 import { AuthentificationService } from '../services/authentification.service';
 import { SettingService } from '../services/setting.service';
+import { Utils } from '../utils/utils';
 
 @Component({
   selector: 'app-profile',
@@ -23,17 +24,19 @@ export class ProfilePage implements OnInit {
   activeConnection: Date = new Date(0);
   score: number = 0;
   profileSetting: any = {};
+  initial: string = '';
 
   constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService) { }
 
   ngOnInit() {
     this.profileSetting = this.settingService.profile;
-    if(!this.profileSetting){
+    if (!this.profileSetting) {
       this.settingService.getSettings().then(setting => {
         this.profileSetting = setting.profile;
       });
     }
     this.user = this.authentificationService.user;
+    this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
     this.user.resultReviews?.forEach(review => {
       this.nbrWordsToRevise += review.toRevise.length;
       this.nbrWordsToLearn += review.toLearn.length;

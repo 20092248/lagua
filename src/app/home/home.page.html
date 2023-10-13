@@ -12,7 +12,7 @@
         <div class="border-white-tabs" id="popover-profil">
           <div class="img-box">
             <img *ngIf="user.photoURL" [src]="user.photoURL">
-            <ion-icon size="large" *ngIf="!user.photoURL" [src]="user.photoURL" name="person-outline"></ion-icon>
+            <div *ngIf="!user.photoURL">{{initial}}</div>
           </div>
         </div>
         <ion-popover trigger="popover-profil" class="ion-custom-top-popover">

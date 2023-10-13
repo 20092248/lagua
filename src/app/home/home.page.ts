@@ -14,6 +14,7 @@ import { LoadingService } from '../services/loading.service';
 import { forkJoin } from 'rxjs';
 import { register } from 'swiper/element/bundle';
 import { ReviewGroup } from '../model/reviewGroup.model';
+import { Utils } from '../utils/utils';
 register();
 
 @Component({
@@ -30,6 +31,7 @@ export class HomePage implements OnInit {
   dailyIcon: string = '';
   loading: HTMLIonLoadingElement | undefined;
   progression: number = 0;
+  initial: string = '';
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
@@ -48,6 +50,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.user = this.authentificationService.user;
+    this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
     forkJoin([this.settingService.getSettings(), this.reviewService.getAllReviews(), this.lessonService.searchLessons()]).subscribe(([settings, reviewsInfo, lessons]) => {
       this.recommendedLessons = [];
       this.progression = this.user && this.user.resultReviews && this.user.resultLessons ? (this.user.resultReviews?.length + this.user.resultLessons?.length) / (this.getReviewsLength(reviewsInfo) + lessons.length) * 100 : 0;
@@ -116,7 +119,7 @@ export class HomePage implements OnInit {
   }
 
   displayPreviousReviews() {
-    this.reviewService.getPreviousReviews(this.getReview).then(() => {});
+    this.reviewService.getPreviousReviews(this.getReview).then(() => { });
   }
 
   accessPreviousReview(review: Review) {
