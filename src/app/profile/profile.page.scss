@@ -206,6 +206,11 @@ ion-card-title .ion-card-title {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0px;
+}
+
+.ion-no-margin-top {
+  margin-top: 0px;
 }
 
 .ion-padding-end-min {
