@@ -75,7 +75,7 @@
           <ion-label class="ion-text-wrap">
             {{w.text}} <small>({{w.symbol}})</small>
             <div *ngIf="w.dialect !== 'Français'"><p class="ion-text-italic" *ngFor="let t of w.translates">{{t.translate}} (<span *ngIf="t.symbol">{{t.symbol}}</span><span *ngIf="t.dialect">{{t.dialect}}</span>)</p></div>
-            <div *ngFor="let t of w.translates"><p class="ion-text-italic" *ngIf="w.dialect === 'Français'" [ngClass]="{'ion-lagua': t && !(t.dialect === user.learn.translate || t.dialect === 'Comorien (Tous les dialectes)')}">{{t.translate}} (<span *ngIf="t.symbol">{{t.symbol}}</span><span *ngIf="t.dialect">{{t.dialect}}</span>)</p></div>
+            <div *ngFor="let t of w.translates"><p class="ion-text-italic" *ngIf="w.dialect === 'Français'" [ngClass]="{'ion-lagua': t && !(t.dialect === user.learn.translate || t.dialect === 'Comorien (Tous les dialectes)')}">{{t.translate}} - <span *ngIf="t.symbol">{{t.symbol}}</span><span *ngIf="t.dialect">{{t.dialect}}</span></p></div>
           </ion-label>
         </ion-item>
         <div class="ion-padding-horizontal ion-content-accordion" slot="content">

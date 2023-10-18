@@ -4,7 +4,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Consultation du lexique</ion-title>
-    <ion-icon class="ion-margin-end ion-home-icon" slot="end" name="home-outline"
+    <ion-icon class="ion-margin-end ion-close-icon" slot="end" name="close-outline"
       [routerLink]="['/tabs/home']"></ion-icon>
   </ion-toolbar>
 </ion-header>
@@ -13,55 +13,87 @@
     les dictionnaires usuels du swahili (Sacleux, Johnson,...), langue dont la
     structure est assez proche de celle du <i>shindzuani</i>. Ce classement opère un
     compromis :</p>
-  <div class="ion-padding-horizontal">
-    <p>- Les noms sont à rechercher à leur forme complète (telle qu'elle est
-      réalisée au singulier pour les noms qui connaissent une opposition
-      singulier/pluriel). Ainsi, on trouvera à son ordre alphabétique le nom <span>mntru</span>
-      "homme, être humain", mais non pas le pluriel correspondant <span>wantru</span>. Ils
-      seront immédiatement suivis entre parenthèses, soit du préfixe du pluriel suivi
-      d'un tiret, soit de la forme complète de leur pluriel en cas de contraction ou
-      d'alternance consonantique; dans le cas où le singulier et le pluriel
-      présentent la même forme, le nom sera suivi d'un tiret placé entre
-      parenthèses. S'il n'y a qu'une classe attestée, elle sera précisée.</p>
-    <p>- Pour les verbes, un classement à la forme de l'infinitif, qui a un préfixe
-      <span>hu-</span>, aurait conduit à les classer tous sous la lettre H. On a donc remplacé ce
-      préfixe par un trait d'union, et classé les verbes selon l'initiale de leur racine.
-      Ainsi <span>huliva</span> "payer" est à rechercher sous <span>-liva</span> à la lettre L.</p>
-    <p>- Les noms dérivés des racines verbales selon une dérivation régulière,
-      comme <span>malivo</span> "paiement, salaire" se trouvent par exception à ce qui a été
-      dit au paragraphe précédent, sous le verbe correspondant (par exemple ici
-      sous <span>-liva</span>). mais on trouvera à son ordre alphabétique <span>malivo</span>, avec un
-      renvoi à <span>-liva</span>.</p>
-    <p>- Parmi les adjectifs, certains sont invariables. Les autres peu nombreux
-      mais très usuels ne sont réalisés qu'avec un accord de classe avec le nom qui
-      les commande, accord qui se fait par le moyen d'un préfixe. Ils ne peuvent
-      donc être classés que sous leur racine, qui sera précédée d'un trait d'union
-      indiquant la place d'un préfixe d'accord. Ainsi l'adjectif qui signifie "bon"
-      apparaît comme <span>mwema</span> dans <span>mntru mwema</span> "un homme bon" et comme
-      mema dans <span>maji mema</span> "de la bonne eau", etc. On le trouvera sous la forme
-      <span>-ema</span>, à la lettre E. Dans le cas où l'accord ne fonctionne pas de façon
-      régulière, ou en cas d'alternance consonantique, l'entrée sera suivie
-      immédiatement, entre parenthèses, de la forme accordée, avec l'indication de
-      la classe.</p>
-    <p>- Il en sera de même pour les démonstratifs et les autres déterminants
-      susceptibles de recevoir des accords de classe.</p>
-    <p>- Les autres catégories de mots sont invariables (par exemple <span>tsena</span> "à
-      nouveau", <span>kula</span> "chaque"). Ils ne posent donc aucun problème de classement.
-      - Le lexique du shtndzuani compte un très grand nombre d'emprunts à
-      l'arabe, la plupart bien intégrés. Ils ont parfois posé un problème de
-      classement. Quand une famille étymologique de mots issus de la même
-      racine arabe reste assez clairement perçue comme une famille pour les
-      locuteurs, on a préféré les grouper sous un même article; néanmoins dans ce
-      cas, des renvois permettent au lecteur de trouver le mot s'il le cherche à son
-      ordre alphabétique (exemple <span>daima</span> "continuellement, sans arrêt" et <span>-dumu</span>
-      "durer").</p>
+
+  <div>
+    <ion-accordion-group [multiple]="true" [value]="['nom']">
+      <ion-accordion value="nom" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item lines="none" slot="header">
+          <ion-label class="ion-text-wrap">Les noms</ion-label>
+        </ion-item>
+        <div class="ion-padding-horizontal" slot="content">
+          <p>Les noms sont à rechercher à leur forme complète (telle qu'elle est
+            réalisée au singulier pour les noms qui connaissent une opposition
+            singulier/pluriel). Ainsi, on trouvera à son ordre alphabétique le nom <span>mntru</span>
+            "homme, être humain", mais non pas le pluriel correspondant <span>wantru</span>. Ils
+            seront immédiatement suivis entre parenthèses, soit du préfixe du pluriel suivi
+            d'un tiret, soit de la forme complète de leur pluriel en cas de contraction ou
+            d'alternance consonantique; dans le cas où le singulier et le pluriel
+            présentent la même forme, le nom sera suivi d'un tiret placé entre
+            parenthèses. S'il n'y a qu'une classe attestée, elle sera précisée.</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="verbe" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item lines="none" slot="header">
+          <ion-label class="ion-text-wrap">Les verbes</ion-label>
+        </ion-item>
+        <div class="ion-padding-horizontal" slot="content">
+          <p>Pour les verbes, un classement à la forme de l'infinitif, qui a un préfixe
+            <span>hu-</span>, aurait conduit à les classer tous sous la lettre H. On a donc remplacé ce
+            préfixe par un trait d'union, et classé les verbes selon l'initiale de leur racine.
+            Ainsi <span>huliva</span> "payer" est à rechercher sous <span>-liva</span> à la lettre L.
+          </p>
+          <p>Les noms dérivés des racines verbales selon une dérivation régulière,
+            comme <span>malivo</span> "paiement, salaire" se trouvent par exception à ce qui a été
+            dit au paragraphe précédent, sous le verbe correspondant (par exemple ici
+            sous <span>-liva</span>). mais on trouvera à son ordre alphabétique <span>malivo</span>, avec un
+            renvoi à <span>-liva</span>.</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="adjectif" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item lines="none" slot="header">
+          <ion-label class="ion-text-wrap">Les adjectifs</ion-label>
+        </ion-item>
+        <div class="ion-padding-horizontal" slot="content">
+          <p>Parmi les adjectifs, certains sont invariables. Les autres peu nombreux
+            mais très usuels ne sont réalisés qu'avec un accord de classe avec le nom qui
+            les commande, accord qui se fait par le moyen d'un préfixe. Ils ne peuvent
+            donc être classés que sous leur racine, qui sera précédée d'un trait d'union
+            indiquant la place d'un préfixe d'accord. Ainsi l'adjectif qui signifie "bon"
+            apparaît comme <span>mwema</span> dans <span>mntru mwema</span> "un homme bon" et comme
+            mema dans <span>maji mema</span> "de la bonne eau", etc. On le trouvera sous la forme
+            <span>-ema</span>, à la lettre E. Dans le cas où l'accord ne fonctionne pas de façon
+            régulière, ou en cas d'alternance consonantique, l'entrée sera suivie
+            immédiatement, entre parenthèses, de la forme accordée, avec l'indication de
+            la classe.
+          </p>
+          <p>Il en sera de même pour les démonstratifs et les autres déterminants
+            susceptibles de recevoir des accords de classe.</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="autre" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item lines="none" slot="header">
+          <ion-label class="ion-text-wrap">Autre</ion-label>
+        </ion-item>
+        <div class="ion-padding-horizontal" slot="content">
+          <p>Les autres catégories de mots sont invariables (par exemple <span>tsena</span> "à
+            nouveau", <span>kula</span> "chaque"). Ils ne posent donc aucun problème de classement.
+            - Le lexique du shtndzuani compte un très grand nombre d'emprunts à
+            l'arabe, la plupart bien intégrés. Ils ont parfois posé un problème de
+            classement. Quand une famille étymologique de mots issus de la même
+            racine arabe reste assez clairement perçue comme une famille pour les
+            locuteurs, on a préféré les grouper sous un même article; néanmoins dans ce
+            cas, des renvois permettent au lecteur de trouver le mot s'il le cherche à son
+            ordre alphabétique (exemple <span>daima</span> "continuellement, sans arrêt" et <span>-dumu</span>
+            "durer").</p>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
   </div>
   <p>Dans quelques cas, la parenté qui relie ces emprunts issus de la même
     racine arabe n'est plus guère perçue par le locuteur comorien. Dans ce cas,
     chaque mot a été considéré comme indépendant (mais l'étymologie arabe
     reste indiquée; ex. : <span>-salimu</span> "saluer" et <span>isilamu</span> "musulman").</p>
-
   <div class="ion-text-center ion-margin-bottom">
-    <ion-button color="lagua" (click)="saveLesson()">Terminer le cours</ion-button>
+    <ion-button (click)="saveLesson()">Terminer le cours</ion-button>
   </div>
 </ion-content>

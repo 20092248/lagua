@@ -4,7 +4,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Les classes nominales</ion-title>
-    <ion-icon class="ion-margin-end" slot="end" size="medium" name="home-outline"
+    <ion-icon class="ion-margin-end ion-close-icon" slot="end" size="medium" name="close-outline"
       [routerLink]="['/tabs/home']"></ion-icon>
   </ion-toolbar>
 </ion-header>
@@ -16,219 +16,287 @@
     qui dépendent du nom s'accordent avec lui en recevant un préfixe spécifique.</p>
   <p>La répartition des noms en classes se fait souvent par paire en opposition
     de nombre. En suivant la convention adoptée par la linguistique bantoue, je
-    vais énumérer les classes nominales en anjouanais:</p>
-  <p>1) Classes 1-2 : dans ces deux classes, ne figurent que les humains. Ces
-    classes sont caractérisées par les préfixes <span>mu-</span> (ou <span>m-</span> et <span>mw-</span> lorsque la
-    racine commence par une voyelle) au singulier et <span>wa-</span> (ou <span>w-</span> lorsque la racine
-    commence également par une voyelle) au pluriel. Ex. :</p>
-  <ion-grid class="ion-text-center">
-    <ion-row>
-      <ion-col><span>muntru</span> (ou <span>mntru</span>) "personne"</ion-col>
-      <ion-col><span>wantru</span> "personnes"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>mlozi</span> "pêcheur"</ion-col>
-      <ion-col><span>walozi</span> "pêcheurs"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>mwana</span> "enfant"</ion-col>
-      <ion-col><span>wana</span> "enfants"</ion-col>
-    </ion-row>
-  </ion-grid>
-  <p><i>Remarque</i> : la classe 1 comprend une sous-classe que l'on nommera
-    la. Dans cette catégorie, caractérisée par l'absence de préfixe, ne
-    figurent également que des humains, des noms de métier, de
-    parenté. Ex. : <span>fundi</span> "enseignant, artisan", <span>shemedji</span> "beau-frère",
-    <span>shofera</span> "chauffeur", <span>bwení</span> "madame",... Ces mots forment leur
-    pluriel en classe 6 (voir ci-dessous).</p>
-  <p>2) classes 3-4 : Elles sont caractérisées par les préfixes <span>mu-</span> (ou <span>m-</span> et <span>mw-</span> lorsque
-    la racine commence par une voyelle) au singulier et <span>mi-</span> (ou <span>m-</span> lorsque
-    la racine commence également par une voyelle) au pluriel. On trouve
-    dans ces deux classes, des noms d'arbres et des noms divers. Ex. :</p>
-  <ion-grid class="ion-text-center">
-    <ion-row>
-      <ion-col><span>mnadzí</span> "cocotier"</ion-col>
-      <ion-col><span>minadzí</span> "cocotiers"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>mwirí</span> "arbre"</ion-col>
-      <ion-col><span>mirí</span> "arbres"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>mhono</span> "main"</ion-col>
-      <ion-col><span>mihono</span> "mains"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>mwezi</span> "mois"</ion-col>
-      <ion-col><span>mezi</span> "mois"</ion-col>
-    </ion-row>
-  </ion-grid>
-  <p>3) classes 5-6 : Elles sont caractérisées par les préfixes <span>dzi-</span> (dans deux
-    mots seulement: <span>dzinyo</span> "dent" et <span>dzitso</span> "oeil") ou par une absence de
-    préfIxe (<span>ø-</span>) au singulier et <span>ma-</span> au pluriel. On y trouve des mots désignant
-    des termes de parenté, des parties du corps et divers, beaucoup de mots
-    d'emprunt. Ex. :</p>
-  <ion-grid class="ion-text-center">
-    <ion-row>
-      <ion-col><span>dzinyo</span> "dent"</ion-col>
-      <ion-col><span>manyo</span> "dents"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>dzitso</span> "oeil"</ion-col>
-      <ion-col><span>matso</span> "yeux"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>kara</span> "nid"</ion-col>
-      <ion-col><span>mahara</span> "nids"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>paja</span> "cuisse"</ion-col>
-      <ion-col><span>mavaja</span> "cuisses"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>dao</span> "natte"</ion-col>
-      <ion-col><span>malao</span> "nattes"</ion-col>
-    </ion-row>
-  </ion-grid>
-  <p><i>Remarque</i> : dans la classe 6, figure le pluriel des mots de la classe
-    la : <span>mafundi</span> "enseignants, artisans", <span>mazemedji</span> "beaux-frères",
-    <span>mazofera</span> "chauffeurs", <span>mabweni</span> "dames",... On y trouve
-    également des noms de liquide, des collectifs: <span>maji</span> "eau, liquide,
-    jus", <span>matrá</span> "huile", <span>ma</span> "ensemble de doigts", <span>masiwá</span> "archipel".</p>
-  <p>4) classes 7-8 : On trouve ici des noms divers dont les préfixes de classe
-    sont <span>shi-</span> (ou <span>sh-</span> lorsque la racine commence par une voyelle) au singulier,
-    et <span>zi-</span> (ou <span>z-</span> lorsque la racine commence par une voyelle) :</p>
-  <ion-grid class="ion-text-center">
-    <ion-row>
-      <ion-col><span>shitswá</span> "tête"</ion-col>
-      <ion-col><span>zitswá</span> "têtes"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>shintru</span> "chose"</ion-col>
-      <ion-col><span>zintru</span> "choses"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>shombo</span> "outil"</ion-col>
-      <ion-col><span>zombo</span> "outils"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>shuma</span> "métal"</ion-col>
-      <ion-col><span>zuma</span> "métaux"</ion-col>
-    </ion-row>
-  </ion-grid>
-  <p><i>Remarque</i> : la classe 7 comprend également des mots désignant des
-    noms de langue ou de manière, sans forme de pluriel en classe 8.
-    Ex. : <span>shindzuani</span> "anjouanais, manière anjouanaise", <span>shifarantsa</span>
-    "français, manière française", <span>shisawahili</span> "swahili", <span>shibushí</span>
-    "malgache, manière malgache"...</p>
-  <p>5) classe 9-10 : Ces deux classes ont le même préfixe <span>n-</span> homorganique
-    (<span>m-</span> devant <i>p</i> et <i>b</i>, <span>ny-</span> lorsque la racine commence par une voyelle, et <span>n-</span> dans
-    les autres cas), <span>ø-</span> devant les consonnes labio-dentales <i>f</i> et <i>v</i>, et devant
-    beaucoup de mots d'emprunt. On trouve dans ces classes des noms de fruits,
-    d'animaux et des noms divers. Ex. :</p>
-  <ion-grid class="ion-text-center">
-    <ion-row>
-      <ion-col><span>ntrovi</span> "banane"</ion-col>
-      <ion-col><span>ntrovi</span> "bananes"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>manga</span> "mangue"</ion-col>
-      <ion-col><span>manga</span> "mangues"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>nadzí</span> "noix de coco"</ion-col>
-      <ion-col><span>nadzí</span> "noix de coco"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>mpuhu</span> "souris"</ion-col>
-      <ion-col><span>mpuhu</span> "souris"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>mbuzi</span> "chèvre"</ion-col>
-      <ion-col><span>mbuzi</span> "chèvres"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>fi</span> "poisson"</ion-col>
-      <ion-col><span>fi</span> "poissons"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>vua</span> "pluie"</ion-col>
-      <ion-col><span>vua</span> "pluies"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>hazi</span> "travail"</ion-col>
-      <ion-col><span>hazi</span> "travaux"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>âvió</span> "avion"</ion-col>
-      <ion-col><span>âvió</span> "avions"</ion-col>
-    </ion-row>
-  </ion-grid>
-  <p>6) classe 11 : on trouve dans cette classe des noms divers commençant par
-    le préftxe <span>u-</span> (ou <span>w-</span> lorsque la racine commence par une voyelle). Les mots
-    désignant des objets concrets, forment leur pluriel soit en classe 10, soit en
-    classe 6. Ex. :</p>
-  <ion-grid class="ion-text-center">
-    <ion-row>
-      <ion-col><span>utseo</span> "van"</ion-col>
-      <ion-col><span>ntseo</span> "vans" (cl.lO)</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>upanga</span> "sabre"</ion-col>
-      <ion-col><span>mpanga</span> "sabres" (cl.lO)</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>ulili</span> "lit"</ion-col>
-      <ion-col><span>malili</span> "lits" (cl.6)</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>waswia</span> "conseil"</ion-col>
-      <ion-col><span>nyasia</span> "conseils" (cl.lO)</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>wango</span> "bord"</ion-col>
-      <ion-col><span>nyango</span> "bords" (cl.10)</ion-col>
-    </ion-row>
-  </ion-grid>
-  <span>Les mots désignant des abstractions n'ont pas de pluriel</span>
-  <ion-grid class="ion-text-center">
-    <ion-row>
-      <ion-col><span>ujuzi</span> "connaissance"</ion-col>
-      <ion-col><span>ulibwavu</span> "grandeur"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>uzuri</span> "beauté"</ion-col>
-      <ion-col><span>utiti</span> "petitesse"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>weu</span> "blancheur, clarté"</ion-col>
-      <ion-col><span>wema</span> "bonté"</ion-col>
-    </ion-row>
-  </ion-grid>
-  <p>7) classe 15 : c'est la classe des inftnitifs, avec comme préftxe de classe:
-    <span>hu-</span> (<span>hw-</span> lorsque la racine verbale commence par une voyelle). Les inftnitifs
-    n'ont pas de pluriel. Ex. :</p>
-  <ion-grid class="ion-text-center">
-    <ion-row>
-      <ion-col><span>hujá</span> "venir"</ion-col>
-      <ion-col><span>hunwá</span> "boire"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>husomesa</span> "enseigner"</ion-col>
-      <ion-col><span>huona</span> "voir"</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><span>hwendrá</span> "aller, marcher"</ion-col>
-      <ion-col><span>hwanyisa</span> "partager"</ion-col>
-    </ion-row>
-  </ion-grid>
-  <p>On se souviendra que les verbes sont classés non pas sous <i>hu-</i> ou <i>hw-</i>
-    mais à l'ordre alphabétique de leur racine.</p>
-  <p>8) classes locatives 16, 17, 18 : ces classes, qui jouent un certain rôle
-    grammatical, ne comportent qu'un seul nom indépendant <span>vahanu</span> ou
-    <span>vwahanu</span> "endroit" (de classe 16).</p>
+    vais énumérer les classes nominales en anjouanais :</p>
+
+  <ion-accordion-group [multiple]="true" [value]="['1_2']">
+    <ion-accordion value="1_2" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+      <ion-item lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Classes 1-2</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>Dans ces deux classes, ne figurent que les humains. Ces
+          classes sont caractérisées par les préfixes <span>mu-</span> (ou <span>m-</span> et <span>mw-</span> lorsque
+          la
+          racine commence par une voyelle) au singulier et <span>wa-</span> (ou <span>w-</span> lorsque la racine
+          commence également par une voyelle) au pluriel. Ex. :</p>
+        <ion-grid class="ion-text-center">
+          <ion-row>
+            <ion-col><span>muntru</span> (ou <span>mntru</span>) "personne"</ion-col>
+            <ion-col><span>wantru</span> "personnes"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>mlozi</span> "pêcheur"</ion-col>
+            <ion-col><span>walozi</span> "pêcheurs"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>mwana</span> "enfant"</ion-col>
+            <ion-col><span>wana</span> "enfants"</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <p><i>Remarque</i> : la classe 1 comprend une sous-classe que l'on nommera
+        la. Dans cette catégorie, caractérisée par l'absence de préfixe, ne
+        figurent également que des humains, des noms de métier, de
+        parenté. Ex. : <span>fundi</span> "enseignant, artisan", <span>shemedji</span> "beau-frère",
+        <span>shofera</span> "chauffeur", <span>bwení</span> "madame",... Ces mots forment leur
+        pluriel en classe 6 (voir ci-dessous).
+      </p>
+    </ion-accordion>
+    <ion-accordion value="3_4" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+      <ion-item lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Classes 3-4</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>Elles sont caractérisées par les préfixes <span>mu-</span> (ou <span>m-</span> et
+          <span>mw-</span> lorsque
+          la racine commence par une voyelle) au singulier et <span>mi-</span> (ou <span>m-</span> lorsque
+          la racine commence également par une voyelle) au pluriel. On trouve
+          dans ces deux classes, des noms d'arbres et des noms divers. Ex. :
+        </p>
+        <ion-grid class="ion-text-center">
+          <ion-row>
+            <ion-col><span>mnadzí</span> "cocotier"</ion-col>
+            <ion-col><span>minadzí</span> "cocotiers"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>mwirí</span> "arbre"</ion-col>
+            <ion-col><span>mirí</span> "arbres"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>mhono</span> "main"</ion-col>
+            <ion-col><span>mihono</span> "mains"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>mwezi</span> "mois"</ion-col>
+            <ion-col><span>mezi</span> "mois"</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="5_6" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+      <ion-item lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Classes 5-6</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>Elles sont caractérisées par les préfixes <span>dzi-</span> (dans deux
+          mots seulement: <span>dzinyo</span> "dent" et <span>dzitso</span> "oeil") ou par une absence de
+          préfIxe (<span>ø-</span>) au singulier et <span>ma-</span> au pluriel. On y trouve des mots désignant
+          des termes de parenté, des parties du corps et divers, beaucoup de mots
+          d'emprunt. Ex. :</p>
+        <ion-grid class="ion-text-center">
+          <ion-row>
+            <ion-col><span>dzinyo</span> "dent"</ion-col>
+            <ion-col><span>manyo</span> "dents"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>dzitso</span> "oeil"</ion-col>
+            <ion-col><span>matso</span> "yeux"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>kara</span> "nid"</ion-col>
+            <ion-col><span>mahara</span> "nids"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>paja</span> "cuisse"</ion-col>
+            <ion-col><span>mavaja</span> "cuisses"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>dao</span> "natte"</ion-col>
+            <ion-col><span>malao</span> "nattes"</ion-col>
+          </ion-row>
+        </ion-grid>
+        <p><i>Remarque</i> : dans la classe 6, figure le pluriel des mots de la classe
+          la : <span>mafundi</span> "enseignants, artisans", <span>mazemedji</span> "beaux-frères",
+          <span>mazofera</span> "chauffeurs", <span>mabweni</span> "dames",... On y trouve
+          également des noms de liquide, des collectifs: <span>maji</span> "eau, liquide,
+          jus", <span>matrá</span> "huile", <span>ma</span> "ensemble de doigts", <span>masiwá</span> "archipel".
+        </p>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="7_8" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+      <ion-item lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Classes 7-8</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>On trouve ici des noms divers dont les préfixes de classe
+          sont <span>shi-</span> (ou <span>sh-</span> lorsque la racine commence par une voyelle) au singulier,
+          et <span>zi-</span> (ou <span>z-</span> lorsque la racine commence par une voyelle) :</p>
+        <ion-grid class="ion-text-center">
+          <ion-row>
+            <ion-col><span>shitswá</span> "tête"</ion-col>
+            <ion-col><span>zitswá</span> "têtes"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>shintru</span> "chose"</ion-col>
+            <ion-col><span>zintru</span> "choses"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>shombo</span> "outil"</ion-col>
+            <ion-col><span>zombo</span> "outils"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>shuma</span> "métal"</ion-col>
+            <ion-col><span>zuma</span> "métaux"</ion-col>
+          </ion-row>
+        </ion-grid>
+        <p><i>Remarque</i> : la classe 7 comprend également des mots désignant des
+          noms de langue ou de manière, sans forme de pluriel en classe 8.
+          Ex. : <span>shindzuani</span> "anjouanais, manière anjouanaise", <span>shifarantsa</span>
+          "français, manière française", <span>shisawahili</span> "swahili", <span>shibushí</span>
+          "malgache, manière malgache"...</p>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="9_10" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+      <ion-item lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Classes 9-10</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>Ces deux classes ont le même préfixe <span>n-</span> homorganique
+          (<span>m-</span> devant <i>p</i> et <i>b</i>, <span>ny-</span> lorsque la racine commence par une voyelle, et
+          <span>n-</span> dans
+          les autres cas), <span>ø-</span> devant les consonnes labio-dentales <i>f</i> et <i>v</i>, et devant
+          beaucoup de mots d'emprunt. On trouve dans ces classes des noms de fruits,
+          d'animaux et des noms divers. Ex. :
+        </p>
+        <ion-grid class="ion-text-center">
+          <ion-row>
+            <ion-col><span>ntrovi</span> "banane"</ion-col>
+            <ion-col><span>ntrovi</span> "bananes"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>manga</span> "mangue"</ion-col>
+            <ion-col><span>manga</span> "mangues"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>nadzí</span> "noix de coco"</ion-col>
+            <ion-col><span>nadzí</span> "noix de coco"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>mpuhu</span> "souris"</ion-col>
+            <ion-col><span>mpuhu</span> "souris"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>mbuzi</span> "chèvre"</ion-col>
+            <ion-col><span>mbuzi</span> "chèvres"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>fi</span> "poisson"</ion-col>
+            <ion-col><span>fi</span> "poissons"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>vua</span> "pluie"</ion-col>
+            <ion-col><span>vua</span> "pluies"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>hazi</span> "travail"</ion-col>
+            <ion-col><span>hazi</span> "travaux"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>âvió</span> "avion"</ion-col>
+            <ion-col><span>âvió</span> "avions"</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="11" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+      <ion-item lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Classes 11</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>On trouve dans cette classe des noms divers commençant par
+          le préftxe <span>u-</span> (ou <span>w-</span> lorsque la racine commence par une voyelle). Les mots
+          désignant des objets concrets, forment leur pluriel soit en classe 10, soit en
+          classe 6. Ex. :</p>
+        <ion-grid class="ion-text-center">
+          <ion-row>
+            <ion-col><span>utseo</span> "van"</ion-col>
+            <ion-col><span>ntseo</span> "vans" (cl.lO)</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>upanga</span> "sabre"</ion-col>
+            <ion-col><span>mpanga</span> "sabres" (cl.lO)</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>ulili</span> "lit"</ion-col>
+            <ion-col><span>malili</span> "lits" (cl.6)</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>waswia</span> "conseil"</ion-col>
+            <ion-col><span>nyasia</span> "conseils" (cl.lO)</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>wango</span> "bord"</ion-col>
+            <ion-col><span>nyango</span> "bords" (cl.10)</ion-col>
+          </ion-row>
+        </ion-grid>
+        <span>Les mots désignant des abstractions n'ont pas de pluriel</span>
+        <ion-grid class="ion-text-center">
+          <ion-row>
+            <ion-col><span>ujuzi</span> "connaissance"</ion-col>
+            <ion-col><span>ulibwavu</span> "grandeur"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>uzuri</span> "beauté"</ion-col>
+            <ion-col><span>utiti</span> "petitesse"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>weu</span> "blancheur, clarté"</ion-col>
+            <ion-col><span>wema</span> "bonté"</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="15" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+      <ion-item lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Classes 15</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>C'est la classe des infinitifs, avec comme préftxe de classe:
+          <span>hu-</span> (<span>hw-</span> lorsque la racine verbale commence par une voyelle). Les inftnitifs
+          n'ont pas de pluriel. Ex. :
+        </p>
+        <ion-grid class="ion-text-center">
+          <ion-row>
+            <ion-col><span>hujá</span> "venir"</ion-col>
+            <ion-col><span>hunwá</span> "boire"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>husomesa</span> "enseigner"</ion-col>
+            <ion-col><span>huona</span> "voir"</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><span>hwendrá</span> "aller, marcher"</ion-col>
+            <ion-col><span>hwanyisa</span> "partager"</ion-col>
+          </ion-row>
+        </ion-grid>
+        <p>On se souviendra que les verbes sont classés non pas sous <i>hu-</i> ou <i>hw-</i>
+          mais à l'ordre alphabétique de leur racine.</p>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="16_17_18" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+      <ion-item lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Classes 16-17-18</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>Ces classes, qui jouent un certain rôle
+          grammatical, ne comportent qu'un seul nom indépendant <span>vahanu</span> ou
+          <span>vwahanu</span> "endroit" (de classe 16).
+        </p>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
 
   <div class="ion-text-center ion-margin-bottom">
-    <ion-button color="lagua" (click)="saveLesson()">Terminer le cours</ion-button>
+    <ion-button (click)="saveLesson()">Terminer le cours</ion-button>
   </div>
 </ion-content>

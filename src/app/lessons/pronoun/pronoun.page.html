@@ -4,284 +4,301 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Les pronoms</ion-title>
-    <ion-icon class="ion-margin-end" slot="end" size="medium" name="home-outline"
+    <ion-icon class="ion-margin-end ion-close-icon" slot="end" size="medium" name="close-outline"
       [routerLink]="['/tabs/home']"></ion-icon>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
-  <h3>1) les pronoms allocutifs :</h3>
-  <p>Ce sont les pronoms qui représentent les personnes participant au
-    discours. Le <i>shindzuani</i> en connaît deux types, résumés dans le tableau
-    suivant:</p>
-  <!-- tableaux -->
-  <ion-grid class="ion-text-center">
-    <ion-row class="ion-no-border ion-full-height">
-      <ion-col class="ion-no-padding" size="4">
-        <ion-grid>
-          <ion-row>
-            <ion-col></ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col></ion-col>
-          </ion-row>
-          <ion-row class="ion-multiple-line ion-align-items-center">
-            <ion-col class="ion-min-spacing">1ère pers. sg.</ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col class="ion-min-spacing">2e pers. sg.</ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col class="ion-min-spacing">1ère pers. pl.</ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col class="ion-min-spacing">2e pers. pl.</ion-col>
+  <ion-accordion-group [multiple]="true" [value]="['allocutifs']">
+    <ion-accordion value="allocutifs" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+      <ion-item class="ion-margin-top" lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Les pronoms allocutifs</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>Ce sont les pronoms qui représentent les personnes participant au
+          discours. Le <i>shindzuani</i> en connaît deux types, résumés dans le tableau
+          suivant:</p>
+        <!-- tableaux -->
+        <ion-grid class="ion-text-center">
+          <ion-row class="ion-no-border ion-full-height">
+            <ion-col class="ion-no-padding" size="4">
+              <ion-grid>
+                <ion-row>
+                  <ion-col></ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col></ion-col>
+                </ion-row>
+                <ion-row class="ion-multiple-line ion-align-items-center">
+                  <ion-col class="ion-min-spacing">1ère pers. sg.</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="ion-min-spacing">2e pers. sg.</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="ion-min-spacing">1ère pers. pl.</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="ion-min-spacing">2e pers. pl.</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+            <ion-col class="ion-no-padding" size="8">
+              <swiper-container pagination="true">
+                <swiper-slide>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>autonomes</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row class="ion-multiple-line ion-align-items-center">
+                      <ion-col><span>wami</span> "moi"</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col><span>wawe</span> "toi"</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col><span>wasi</span> "nous" *</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col><span>wanuy</span> "vous"</ion-col>
+                    </ion-row>
+                    <ion-row class="ion-no-border">
+                    </ion-row>
+                  </ion-grid>
+                </swiper-slide>
+                <swiper-slide>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>non-autonomes</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>sujet</ion-col>
+                      <ion-col>object</ion-col>
+                    </ion-row>
+                    <ion-row class="ion-multiple-line ion-align-items-center">
+                      <ion-col><span>ni-</span> "je"<br />
+                        <span>tsi-</span> "je" (acc.)<br />
+                        <span>tsi-</span> "je (conditionnel
+                        négatif)</ion-col>
+                      <ion-col><span>-ni-</span> "me, moi"</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col><span>u-</span> "tu"</ion-col>
+                      <ion-col><span>-hu-</span> "te, toi"</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col><span>ri-</span> "nous"</ion-col>
+                      <ion-col><span>ri-</span> "nous"</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col><span>mu-</span> "vous"</ion-col>
+                      <ion-col><span>mu-...ni</span> "vous"</ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </swiper-slide>
+              </swiper-container>
+            </ion-col>
           </ion-row>
         </ion-grid>
-      </ion-col>
-      <ion-col class="ion-no-padding" size="8">
-        <swiper-container pagination="true">
-          <swiper-slide>
-            <ion-grid>
-              <ion-row>
-                <ion-col>autonomes</ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col></ion-col>
-              </ion-row>
-              <ion-row class="ion-multiple-line ion-align-items-center">
-                <ion-col><span>wami</span> "moi"</ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col><span>wawe</span> "toi"</ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col><span>wasi</span> "nous" *</ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col><span>wanuy</span> "vous"</ion-col>
-              </ion-row>
-              <ion-row class="ion-no-border">
-              </ion-row>
-            </ion-grid>
-          </swiper-slide>
-          <swiper-slide>
-            <ion-grid>
-              <ion-row>
-                <ion-col>non-autonomes</ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col>sujet</ion-col>
-                <ion-col>object</ion-col>
-              </ion-row>
-              <ion-row class="ion-multiple-line ion-align-items-center">
-                <ion-col><span>ni-</span> "je"<br />
-                  <span>tsi-</span> "je" (acc.)<br />
-                  <span>tsi-</span> "je (conditionnel
-                  négatif)</ion-col>
-                <ion-col><span>-ni-</span> "me, moi"</ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col><span>u-</span> "tu"</ion-col>
-                <ion-col><span>-hu-</span> "te, toi"</ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col><span>ri-</span> "nous"</ion-col>
-                <ion-col><span>ri-</span> "nous"</ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col><span>mu-</span> "vous"</ion-col>
-                <ion-col><span>mu-...ni</span> "vous"</ion-col>
-              </ion-row>
-            </ion-grid>
-          </swiper-slide>
-        </swiper-container>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <p>* Les jeunes (jusqu'à une vingtaine d'années) disent <i>watru</i></p>
-  <p class="ion-padding-horizontal">Dans le classement du lexique, on ne trouvera que les formes
-    autonomes; les autres ont été considérées comme des variantes de ces
-    formes.</p>
-  <h3>2) les pronoms substitutifs:</h3>
-  <div class="ion-padding-horizontal">
-    <p>Ici, on a également deux types: les autonomes et
-      autonomes (ces derniers figurent dans le tableau de
-      précédente: ce sont les préfixes verbaux).</p>
+        <p>* Les jeunes (jusqu'à une vingtaine d'années) disent <i>watru</i></p>
+        <p class="ion-padding-horizontal">Dans le classement du lexique, on ne trouvera que les formes
+          autonomes; les autres ont été considérées comme des variantes de ces
+          formes.</p>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="substitutifs" class="ion-margin-bottom" toggleIcon="chevron-down-outline"
+      toggleIconSlot="end">
+      <ion-item lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Les pronoms substitutifs</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>Ici, on a également deux types: les autonomes et
+          autonomes (ces derniers figurent dans le tableau de
+          précédente: ce sont les préfixes verbaux).</p>
 
-    <p>Tableau d'accords des pronoms substitutifs autonomes</p>
-    <ion-grid class="ion-text-center">
-      <ion-row>
-        <ion-col>classes</ion-col>
-        <ion-col>sens: lui, elle, eux, elles</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>1</ion-col>
-        <ion-col>waye</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>2</ion-col>
-        <ion-col>wawo</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>3</ion-col>
-        <ion-col>uwo</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>4</ion-col>
-        <ion-col>uyo</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>5</ion-col>
-        <ion-col>ulo</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>6</ion-col>
-        <ion-col>uyo</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>7</ion-col>
-        <ion-col>usho</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>8</ion-col>
-        <ion-col>uzo</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>9</ion-col>
-        <ion-col>uyo</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>10</ion-col>
-        <ion-col>uzo</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>11</ion-col>
-        <ion-col>uwo</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>15</ion-col>
-        <ion-col>uyo</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>16</ion-col>
-        <ion-col>uvo</ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-  <p>3) les présentatifs :</p>
-  <div class="ion-padding-horizontal">
-    <p>Comme pour les démonstratifs, les présenta tifs connaissent trois
-      degrés: <i>proche, intermédiatre et élotgné</i>. Le premier peut être traduit
-      par votct, le ou la ou les votci, Le deuxième et le troisième par <i>voilà, le</i>
-      ou <i>la voilà, les voilà</i>. Voici les principaux accords:</p>
-    <ion-grid class="ion-text-center ion-min-spacing">
-      <ion-row>
-        <ion-col>classes</ion-col>
-        <ion-col>proches</ion-col>
-        <ion-col>intermédiaires</ion-col>
-        <ion-col>éloignés</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>1</ion-col>
-        <ion-col>tsíwani</ion-col>
-        <ion-col>tsiwo</ion-col>
-        <ion-col>tsule</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>2</ion-col>
-        <ion-col>tsáwani</ion-col>
-        <ion-col>tsáwo</ion-col>
-        <ion-col>tsáwale</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>3</ion-col>
-        <ion-col>tsíwani</ion-col>
-        <ion-col>tsiwo</ion-col>
-        <ion-col>tsule</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>4</ion-col>
-        <ion-col>tsíyani</ion-col>
-        <ion-col>tsiyo</ion-col>
-        <ion-col>tsile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>5</ion-col>
-        <ion-col>tsílani</ion-col>
-        <ion-col>tsilo</ion-col>
-        <ion-col>tsílile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>6</ion-col>
-        <ion-col>tsáyani</ion-col>
-        <ion-col>tsayo</ion-col>
-        <ion-col>tsáyale</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>7</ion-col>
-        <ion-col>tsíslani</ion-col>
-        <ion-col>tsisho</ion-col>
-        <ion-col>tsíslile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>8</ion-col>
-        <ion-col>tsízani</ion-col>
-        <ion-col>tsizo</ion-col>
-        <ion-col>tsízile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>9</ion-col>
-        <ion-col>tsíyani</ion-col>
-        <ion-col>tsiyo</ion-col>
-        <ion-col>tsile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>10</ion-col>
-        <ion-col>tsízani</ion-col>
-        <ion-col>tsizo</ion-col>
-        <ion-col>tsízile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>11</ion-col>
-        <ion-col>tsíwani</ion-col>
-        <ion-col>tsiwo</ion-col>
-        <ion-col>tsule</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>15</ion-col>
-        <ion-col>tsíyani</ion-col>
-        <ion-col>tsiyo</ion-col>
-        <ion-col>tsile</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>16</ion-col>
-        <ion-col>tsáwani</ion-col>
-        <ion-col>tsavo</ion-col>
-        <ion-col>tsávwale</ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center">
-        <ion-col>1ere pers.<br/> sg.</ion-col>
-        <ion-col size="6">tsami "me voici"</ion-col>
-        <ion-col></ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center">
-        <ion-col>2e pers.<br/> sg.</ion-col>
-        <ion-col size="6">tsawe "te voila"</ion-col>
-        <ion-col></ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center">
-        <ion-col>1ere pers.<br/> pl.</ion-col>
-        <ion-col size="6">tsasi "nous voici"</ion-col>
-        <ion-col></ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center">
-        <ion-col>2e pers.<br/> pl.</ion-col>
-        <ion-col size="6">tsanyu "vous voilà"</ion-col>
-        <ion-col></ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+        <p>Tableau d'accords des pronoms substitutifs autonomes</p>
+        <ion-grid class="ion-text-center">
+          <ion-row>
+            <ion-col>classes</ion-col>
+            <ion-col>sens: lui, elle, eux, elles</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>1</ion-col>
+            <ion-col>waye</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>2</ion-col>
+            <ion-col>wawo</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>3</ion-col>
+            <ion-col>uwo</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>4</ion-col>
+            <ion-col>uyo</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>5</ion-col>
+            <ion-col>ulo</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>6</ion-col>
+            <ion-col>uyo</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>7</ion-col>
+            <ion-col>usho</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>8</ion-col>
+            <ion-col>uzo</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>9</ion-col>
+            <ion-col>uyo</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>10</ion-col>
+            <ion-col>uzo</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>11</ion-col>
+            <ion-col>uwo</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>15</ion-col>
+            <ion-col>uyo</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>16</ion-col>
+            <ion-col>uvo</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="présentatifs" class="ion-margin-bottom" toggleIcon="chevron-down-outline"
+      toggleIconSlot="end">
+      <ion-item lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Les présentatifs</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>Comme pour les démonstratifs, les présenta tifs connaissent trois
+          degrés: <i>proche, intermédiatre et élotgné</i>. Le premier peut être traduit
+          par votct, le ou la ou les votci, Le deuxième et le troisième par <i>voilà, le</i>
+          ou <i>la voilà, les voilà</i>. Voici les principaux accords:</p>
+        <ion-grid class="ion-text-center ion-min-spacing">
+          <ion-row>
+            <ion-col>classes</ion-col>
+            <ion-col>proches</ion-col>
+            <ion-col>intermédiaires</ion-col>
+            <ion-col>éloignés</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>1</ion-col>
+            <ion-col>tsíwani</ion-col>
+            <ion-col>tsiwo</ion-col>
+            <ion-col>tsule</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>2</ion-col>
+            <ion-col>tsáwani</ion-col>
+            <ion-col>tsáwo</ion-col>
+            <ion-col>tsáwale</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>3</ion-col>
+            <ion-col>tsíwani</ion-col>
+            <ion-col>tsiwo</ion-col>
+            <ion-col>tsule</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>4</ion-col>
+            <ion-col>tsíyani</ion-col>
+            <ion-col>tsiyo</ion-col>
+            <ion-col>tsile</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>5</ion-col>
+            <ion-col>tsílani</ion-col>
+            <ion-col>tsilo</ion-col>
+            <ion-col>tsílile</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>6</ion-col>
+            <ion-col>tsáyani</ion-col>
+            <ion-col>tsayo</ion-col>
+            <ion-col>tsáyale</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>7</ion-col>
+            <ion-col>tsíslani</ion-col>
+            <ion-col>tsisho</ion-col>
+            <ion-col>tsíslile</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>8</ion-col>
+            <ion-col>tsízani</ion-col>
+            <ion-col>tsizo</ion-col>
+            <ion-col>tsízile</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>9</ion-col>
+            <ion-col>tsíyani</ion-col>
+            <ion-col>tsiyo</ion-col>
+            <ion-col>tsile</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>10</ion-col>
+            <ion-col>tsízani</ion-col>
+            <ion-col>tsizo</ion-col>
+            <ion-col>tsízile</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>11</ion-col>
+            <ion-col>tsíwani</ion-col>
+            <ion-col>tsiwo</ion-col>
+            <ion-col>tsule</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>15</ion-col>
+            <ion-col>tsíyani</ion-col>
+            <ion-col>tsiyo</ion-col>
+            <ion-col>tsile</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>16</ion-col>
+            <ion-col>tsáwani</ion-col>
+            <ion-col>tsavo</ion-col>
+            <ion-col>tsávwale</ion-col>
+          </ion-row>
+          <ion-row class="ion-align-items-center">
+            <ion-col>1ere pers.<br /> sg.</ion-col>
+            <ion-col size="6">tsami "me voici"</ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+          <ion-row class="ion-align-items-center">
+            <ion-col>2e pers.<br /> sg.</ion-col>
+            <ion-col size="6">tsawe "te voila"</ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+          <ion-row class="ion-align-items-center">
+            <ion-col>1ere pers.<br /> pl.</ion-col>
+            <ion-col size="6">tsasi "nous voici"</ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+          <ion-row class="ion-align-items-center">
+            <ion-col>2e pers.<br /> pl.</ion-col>
+            <ion-col size="6">tsanyu "vous voilà"</ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-accordion></ion-accordion-group>
   <div class="ion-text-center ion-margin-vertical">
-    <ion-button color="lagua" (click)="saveLesson()">Terminer le cours</ion-button>
+    <ion-button (click)="saveLesson()">Terminer le cours</ion-button>
   </div>
 </ion-content>

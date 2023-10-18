@@ -1,935 +1,756 @@
-export const DICO = [{
-    "text": "gaffe (marine)",
-    "translate": "mpondro ",
-    "null": null
-},
-{
-    "text": "gage",
-    "translate": "rahani; amana; ",
-    "null": null
-},
-{
-    "text": "gagner",
-    "translate": "fuzu (u-); hundra (u-); shindra (u-); faulu (u-); ",
-    "null": null
-},
-{
-    "text": "gain",
-    "translate": "nafuû; manufa; ",
-    "null": null
-},
-{
-    "text": "galet",
-    "translate": "kawe; ntsiɗawe; ntsindrawe; ",
-    "null": null
-},
-{
-    "text": "galette",
-    "translate": "muhare ",
-    "null": null
-},
-{
-    "text": "galette de blé en forme de spirale",
-    "translate": "beredre; kuskuma; beredje; mardufu; ",
-    "null": null
-},
-{
-    "text": "galop",
-    "translate": "shoti ",
-    "null": null
-},
-{
-    "text": "galoper",
-    "translate": "toa shoti (u-) ",
-    "null": null
-},
-{
-    "text": "gambader",
-    "translate": "ruka (u-) ",
-    "null": null
-},
-{
-    "text": "gamin",
-    "translate": "motro; mwanamtsa; ",
-    "null": null
-},
-{
-    "text": "gandoura",
-    "translate": "nkandu; kandzu; nkandzu; ",
-    "null": null
-},
-{
-    "text": "ganglion",
-    "translate": "maɓura ",
-    "null": null
-},
-{
-    "text": "garantir",
-    "translate": "dhwamini (u-) ",
-    "null": null
-},
-{
-    "text": "garçon",
-    "translate": "mwana-mme; mntruɓaɓa; mwana mwa mdruɓaɓa; mtruɓaɓa; ",
-    "null": null
-},
-{
-    "text": "garde manger",
-    "translate": "magazâ ",
-    "null": null
-},
-{
-    "text": "garder",
-    "translate": "godjea (u-); kalantsiza (u-); hentsi (u-); ",
-    "null": null
-},
-{
-    "text": "garder (qqch)",
-    "translate": "shishia (u-) ",
-    "null": null
-},
-{
-    "text": "garder (un enfant)",
-    "translate": "miliza (u-) ",
-    "null": null
-},
-{
-    "text": "gardien",
-    "translate": "mgodjezi; mtunduzi; ",
-    "null": null
-},
-{
-    "text": "gardien de but",
-    "translate": "goli ",
-    "null": null
-},
-{
-    "text": "gargariser",
-    "translate": "tsutsua (u-); tutua (u-); ",
-    "null": null
-},
-{
-    "text": "gargouille",
-    "translate": "sululu ",
-    "null": null
-},
-{
-    "text": "gargoulette",
-    "translate": "kuzi; mtsungi; ",
-    "null": null
-},
-{
-    "text": "gasoil",
-    "translate": "gazuali ",
-    "null": null
-},
-{
-    "text": "gaspillage",
-    "translate": "ufisiɗifu; israfi; uɓadirifu; ",
-    "null": null
-},
-{
-    "text": "gaspiller",
-    "translate": "filisi (u-); fisidi (u-); tsampua (u-); ",
-    "null": null
-},
-{
-    "text": "gâteau",
-    "translate": "mkatre; mhare; muhare; gato; ",
-    "null": null
-},
-{
-    "text": "gâteau à",
-    "translate": "mkatre wa ",
-    "null": null
-},
-{
-    "text": "gâteau de pâte fine",
-    "translate": "karara ",
-    "null": null
-},
-{
-    "text": "gâteau de riz au caramel",
-    "translate": "gudugudu ",
-    "null": null
-},
-{
-    "text": "gâteau de riz au coco",
-    "translate": "ɓwantamu ",
-    "null": null
-},
-{
-    "text": "gâter",
-    "translate": "tutuɓia (u-) ",
-    "null": null
-},
-{
-    "text": "gâter (se -)",
-    "translate": "haha (u-); gaga (u-); ",
-    "null": null
-},
-{
-    "text": "gauche",
-    "translate": "potro; mbotro; ",
-    "null": null
-},
-{
-    "text": "gauche (à -)",
-    "translate": "usheni; potroni; upanɗe wa mhono mshe; ",
-    "null": null
-},
+export const DICO = [
 {
-    "text": "gaucherie",
-    "translate": "mapatro; upotro; ",
+    "text": "tomber goutte à goutte",
+    "translate": "nona (u-)",
     "null": null
 },
 {
-    "text": "gauler",
-    "translate": "rusha (u-) ",
+    "text": "ton",
+    "translate": "waho; -ahaho; yaho; laho; -aho; zaho;",
     "null": null
 },
 {
-    "text": "gay",
-    "translate": "mfiradji ",
+    "text": "tondeuse",
+    "translate": "tendezi",
     "null": null
 },
 {
-    "text": "gazelle",
-    "translate": "mpaya ",
+    "text": "tong",
+    "translate": "gomu",
     "null": null
 },
 {
-    "text": "géant",
-    "translate": "djindru ",
+    "text": "tonne",
+    "translate": "tani",
     "null": null
 },
 {
-    "text": "gecko",
-    "translate": "kasangwe ",
+    "text": "tonneau",
+    "translate": "ntange",
     "null": null
 },
 {
-    "text": "gecko gris",
-    "translate": "nkafiri ",
+    "text": "tonnerre",
+    "translate": "guguma; guguru; mguguma;",
     "null": null
 },
 {
-    "text": "gémir",
-    "translate": "shemeza (u-); ulula (hw-); ",
+    "text": "tontine",
+    "translate": "mtsango; shikoa;",
     "null": null
 },
 {
-    "text": "gémissement",
-    "translate": "ikiki ",
+    "text": "torcher",
+    "translate": "pangua (u-)",
     "null": null
 },
 {
-    "text": "gencive",
-    "translate": "ɗuli ",
+    "text": "torchon",
+    "translate": "pono",
     "null": null
 },
 {
-    "text": "gendarme",
-    "translate": "jandarmu ",
+    "text": "tordre",
+    "translate": "voroa (u-); kitsa (u-); honyoa (u-); pvoroa (u-);",
     "null": null
 },
 {
-    "text": "gendre",
-    "translate": "mha; ɓamuhe; muhe; ",
+    "text": "tordu (être -)",
+    "translate": "honyoha (u-)",
     "null": null
 },
 {
-    "text": "gêne",
-    "translate": "matswandzi ",
+    "text": "tornade",
+    "translate": "muvumbi; ivuma-ntsi; shivuma-ntsi; uzi-mui;",
     "null": null
 },
 {
-    "text": "généalogie",
-    "translate": "ukoo; shadjar; ",
+    "text": "torse",
+    "translate": "shifuɓa",
     "null": null
 },
 {
-    "text": "général (adj.)",
-    "translate": "#NOM? ",
+    "text": "tort",
+    "translate": "kosa",
     "null": null
 },
 {
-    "text": "généralement",
-    "translate": "ahalaɓu; kawaiɗa; akhlaɓu; ",
+    "text": "tortue",
+    "translate": "nyamɓa",
     "null": null
 },
 {
-    "text": "généraliser",
-    "translate": "hamara (u-) ",
+    "text": "tortue marine",
+    "translate": "kasa; nkasa;",
     "null": null
 },
 {
-    "text": "génération",
-    "translate": "ɓea; hirimu; ɓani (+ connectif); ",
+    "text": "torture",
+    "translate": "haɗi; îzara.; shitriko;",
     "null": null
 },
 {
-    "text": "genette (chat)",
-    "translate": "ngava ",
+    "text": "torturer",
+    "translate": "haɗi (u-); âziri (u-);",
     "null": null
 },
 {
-    "text": "genou",
-    "translate": "gungunu; gunguno; ɗõndro; gunguni; ",
+    "text": "tôt",
+    "translate": "kaɓula; na mapema; mapema;",
     "null": null
 },
 {
-    "text": "genre",
-    "translate": "kalte; kina; ",
+    "text": "total",
+    "translate": "djimla; îdadi;",
     "null": null
 },
 {
-    "text": "Genre musical de sonorité arabe et africaine . (litt. \"joie par la musique\" en arabe)",
-    "translate": "twarab ",
+    "text": "totalisation",
+    "translate": "mdjimliso",
     "null": null
 },
 {
-    "text": "gens",
-    "translate": "mndru; mutru; ",
+    "text": "totaliser",
+    "translate": "djimlisa (u-); djumlisa (u-);",
     "null": null
 },
 {
-    "text": "gentil",
-    "translate": "-ema; mwema; ",
+    "text": "toucher",
+    "translate": "komia (u-); ɓamba (u-); komea (u-);",
     "null": null
 },
 {
-    "text": "germer",
-    "translate": "mea (u-) ",
+    "text": "touffe",
+    "translate": "pudju",
     "null": null
 },
 {
-    "text": "gestion",
-    "translate": "swarafa ",
+    "text": "touiller",
+    "translate": "pvinɗua (u-); pvia (u-); vindrua (u-);",
     "null": null
 },
 {
-    "text": "ghee",
-    "translate": "samli ",
+    "text": "toujours",
+    "translate": "ɗaima; dahari;",
     "null": null
 },
 {
-    "text": "ghi",
-    "translate": "samli ",
+    "text": "toupie",
+    "translate": "ntrenge",
     "null": null
 },
 {
-    "text": "gifle",
-    "translate": "pi; mɓee; ",
+    "text": "tour",
+    "translate": "mvwaɗo; dzunguho;",
     "null": null
 },
 {
-    "text": "gifle (grande -)",
-    "translate": "uɓee ",
+    "text": "tour (de guet)",
+    "translate": "ɓunarithi",
     "null": null
 },
 {
-    "text": "gilet",
-    "translate": "sukutri ",
+    "text": "tour (rang successif)",
+    "translate": "zamu; saɓiki;",
     "null": null
 },
 {
-    "text": "gingembre",
-    "translate": "singizu; ntsingiziu; ntsingiziwi; ",
+    "text": "tourbillon",
+    "translate": "vuhuo; vua-ntsi; ivuma-ntsi; shivuma-ntsi; uzi-mui;",
     "null": null
 },
 {
-    "text": "girafe",
-    "translate": "zarafa; mɓuzi ya mpaya; ",
+    "text": "touriste",
+    "translate": "mdjeni; mgeni;",
     "null": null
 },
 {
-    "text": "girelle échiquier",
-    "translate": "ndrwiyi ",
+    "text": "tourment",
+    "translate": "mswiɓa",
     "null": null
 },
 {
-    "text": "girofier",
-    "translate": "mkarafu; mkanrafu; ",
+    "text": "tournant",
+    "translate": "ipvero",
     "null": null
 },
 {
-    "text": "girofle",
-    "translate": "nkarafu; karafu; nkaranfu; ",
+    "text": "tourne-disque",
+    "translate": "santuri",
     "null": null
 },
 {
-    "text": "giroflier",
-    "translate": "mkaranfu ",
+    "text": "tourner",
+    "translate": "tsihitsa (u-); haua (u-); zindza (u-); zinga (u-); pera (u-);",
     "null": null
 },
 {
-    "text": "glace",
-    "translate": "ɓarafu ",
+    "text": "tourner (faire -)",
+    "translate": "zindza (u-)",
     "null": null
 },
 {
-    "text": "glaire",
-    "translate": "kanguzi; ɗoho; ",
+    "text": "tourner (se -)",
+    "translate": "kauha (u-); vingiriha (u-);",
     "null": null
 },
 {
-    "text": "glissade",
-    "translate": "ntselesi; ntrelezi; ",
+    "text": "tourner la tête",
+    "translate": "sheuha (u-)",
     "null": null
 },
 {
-    "text": "glissage",
-    "translate": "mleleso ",
+    "text": "tourner le dos",
+    "translate": "finyua (u-)",
     "null": null
 },
 {
-    "text": "glissant (être -)",
-    "translate": "releha (u-) ",
+    "text": "tourner vers",
+    "translate": "kaushia (u-)",
     "null": null
 },
 {
-    "text": "glisser",
-    "translate": "releha (u-); lelesa (u-); relea (u-); ",
+    "text": "tournis",
+    "translate": "uɗu",
     "null": null
 },
 {
-    "text": "glisser (faire -)",
-    "translate": "relesa (u-) ",
+    "text": "tourterelle",
+    "translate": "shikuru; iɗuɗu; keukeu;",
     "null": null
 },
 {
-    "text": "gloire",
-    "translate": "utukufu ",
+    "text": "tous",
+    "translate": "piya; -ontsi;",
     "null": null
 },
 {
-    "text": "glorieux",
-    "translate": "#NOM? ",
+    "text": "tousser",
+    "translate": "kohoa (u-); kohola (u-);",
     "null": null
 },
 {
-    "text": "glorifier",
-    "translate": "tukuza (u-) ",
+    "text": "tout",
+    "translate": "piya; -ontsi; -otsi; pia;",
     "null": null
 },
 {
-    "text": "glu",
-    "translate": "urovu; uronvu; ",
+    "text": "tout à fait",
+    "translate": "kaɓisa",
     "null": null
 },
 {
-    "text": "gober",
-    "translate": "ruliha (u-) ",
+    "text": "tout de suite",
+    "translate": "kamwe",
     "null": null
 },
 {
-    "text": "godasse",
-    "translate": "koshi ",
+    "text": "tout le temps",
+    "translate": "yama yama",
     "null": null
 },
 {
-    "text": "goinfre",
-    "translate": "mɗishe ",
+    "text": "tout va bien !",
+    "translate": "za fetre!",
     "null": null
 },
 {
-    "text": "goinfrer",
-    "translate": "dedza (u-) ",
+    "text": "toute",
+    "translate": "-ontsi",
     "null": null
 },
 {
-    "text": "gomme",
-    "translate": "gomu ",
+    "text": "toutes",
+    "translate": "piya",
     "null": null
 },
 {
-    "text": "gond",
-    "translate": "ɓawaɓa ",
+    "text": "toux",
+    "translate": "nkoa; kohola; nkohoa;",
     "null": null
 },
 {
-    "text": "gonfler",
-    "translate": "zimɓa (u-); zimba (u-); ",
+    "text": "trace d'eau",
+    "translate": "ntavu",
     "null": null
 },
 {
-    "text": "gorge",
-    "translate": "komio; umio; gandzi; ",
+    "text": "tradition",
+    "translate": "mila; kitaɓi; kataɓi;",
     "null": null
 },
 {
-    "text": "gorgée",
-    "translate": "msingo ",
+    "text": "traducteur",
+    "translate": "karani; mkalimani;",
     "null": null
 },
 {
-    "text": "gorille",
-    "translate": "gorili ",
+    "text": "traduire",
+    "translate": "tafsiri (u-); taradjamu (u-); fasiri (u-);",
     "null": null
 },
 {
-    "text": "gosier",
-    "translate": "nkoromeo ",
+    "text": "trafic",
+    "translate": "mkarakara",
     "null": null
 },
 {
-    "text": "gouffre",
-    "translate": "ngama ",
+    "text": "trahir",
+    "translate": "rutaɗi (u-); fitini (u-);",
     "null": null
 },
 {
-    "text": "gourde",
-    "translate": "kuju; kudju; shitsuva; ntsuva; ",
+    "text": "traîner",
+    "translate": "hohora (u-); gogora (u-);",
     "null": null
 },
 {
-    "text": "gourdin",
-    "translate": "igongo ",
+    "text": "traire",
+    "translate": "hama (u-)",
     "null": null
 },
 {
-    "text": "gourmand",
-    "translate": "mlidji; nyanyi; mlizi; mzwaifu; mɗifu; mlamo; ",
+    "text": "trait",
+    "translate": "msitiri; mradzo; mustari;",
     "null": null
 },
 {
-    "text": "gousse",
-    "translate": "kandre; mhaɓa; ",
+    "text": "trait de caractère",
+    "translate": "feli; ifeli; shifeli;",
     "null": null
 },
 {
-    "text": "gousset",
-    "translate": "kumba; kumɓa; cucu; ",
+    "text": "trait sous une lettre arabe",
+    "translate": "kasiri",
     "null": null
 },
 {
-    "text": "goût",
-    "translate": "ladha; lada; ",
+    "text": "trait sur une lettre arabe",
+    "translate": "fataha",
     "null": null
 },
 {
-    "text": "goûter",
-    "translate": "rona (u-); laulia (u-); lauza (u-); dhuku (u-); ",
+    "text": "traité ",
+    "translate": "mkataɓa; mkantrio;",
     "null": null
 },
 {
-    "text": "goutte (d'eau)",
-    "translate": "tonyo ",
+    "text": "traître",
+    "translate": "mnafiki; munafiki;",
     "null": null
 },
 {
-    "text": "goutte (de pluie)",
-    "translate": "trosi ",
+    "text": "traîtrise",
+    "translate": "unafiki",
     "null": null
 },
 {
-    "text": "goutte d'eau",
-    "translate": "trone; trono; ɗoza; trona; tronyo; ",
+    "text": "tranchant",
+    "translate": "uhali",
     "null": null
 },
 {
-    "text": "gouvernail",
-    "translate": "usukani; usuka; ",
+    "text": "tranche",
+    "translate": "itimbi",
     "null": null
 },
 {
-    "text": "gouvernement",
-    "translate": "sirikali ",
+    "text": "trancher",
+    "translate": "tsindza (u-); katra (u-);",
     "null": null
 },
 {
-    "text": "gouverner",
-    "translate": "tawalia (u-) ",
+    "text": "tranquiliser",
+    "translate": "truliza (u-); trulidza (u-);",
     "null": null
 },
 {
-    "text": "goyave",
-    "translate": "pwera; pera; ",
+    "text": "tranquilité",
+    "translate": "salama; utrulivu; usalama;",
     "null": null
 },
 {
-    "text": "goyave de Chine",
-    "translate": "ntsongoma; tsongoma; ",
+    "text": "tranquille",
+    "translate": "mutrulivu",
     "null": null
 },
 {
-    "text": "goyave-fraise",
-    "translate": "ntsongoma; tsongoma; ",
+    "text": "tranquille (être-)",
+    "translate": "trulia (u-)",
     "null": null
 },
 {
-    "text": "goyavier",
-    "translate": "mpvera; mpera; mpwera; mvwera; ",
+    "text": "tranquillité",
+    "translate": "amani; umakinifu;",
     "null": null
 },
 {
-    "text": "goyavier fraise",
-    "translate": "mtsongoma ",
+    "text": "transe",
+    "translate": "djadhba; djadhiɓa;",
     "null": null
 },
 {
-    "text": "grâce (bénédiction accordée par Dieu)",
-    "translate": "uzaɗe ",
+    "text": "transformer (se -)",
+    "translate": "gauha (u-); sunguha (u-);",
     "null": null
 },
 {
-    "text": "grâce divine",
-    "translate": "neêma; kheri; heri; ",
+    "text": "transpiration",
+    "translate": "djifiri; hari;",
     "null": null
 },
 {
-    "text": "grain",
-    "translate": "ntruɗa; mbia; ntrundra; mɓia; ",
+    "text": "transporter",
+    "translate": "pvahidza (u-)",
     "null": null
 },
 {
-    "text": "grain de café (coquillage)",
-    "translate": "nkaure ",
+    "text": "trapu",
+    "translate": "igasi",
     "null": null
 },
 {
-    "text": "graine",
-    "translate": "mbeu; mɓeu; ",
+    "text": "travail",
+    "translate": "hazi; mwamala;",
     "null": null
 },
 {
-    "text": "graisse",
-    "translate": "mafura; matra; ",
+    "text": "travail agricole",
+    "translate": "mlimo",
     "null": null
 },
 {
-    "text": "grammaire",
-    "translate": "nahau ",
+    "text": "travailler",
+    "translate": "fanya hazi (u-); fanya (u-) hazi;",
     "null": null
 },
 {
-    "text": "grand",
-    "translate": "mle; -huu; -ɓole; muɓole; muhuu; muhu; -libwavu; -ku; nku; -liɓwavu; ",
+    "text": "travailleur",
+    "translate": "mfanyizi hazi; mfanya-hazi;",
     "null": null
 },
 {
-    "text": "grand frère",
-    "translate": "zuki ",
+    "text": "travers (a-)",
+    "translate": "ɓaina",
     "null": null
 },
 {
-    "text": "grand plat",
-    "translate": "djimsi ",
+    "text": "traverser",
+    "translate": "shia (u-); shilia (u-); tupa (u-);",
     "null": null
 },
 {
-    "text": "grand-comorien",
-    "translate": "mNgazidja; shiNgazidja; ",
+    "text": "trébucher",
+    "translate": "kuwala (u-); kwala (u-);",
     "null": null
 },
 {
-    "text": "grand-frère",
-    "translate": "ɓantiti ",
+    "text": "trèfle",
+    "translate": "pao",
     "null": null
 },
 {
-    "text": "grand-mère",
-    "translate": "koko ",
+    "text": "treize",
+    "translate": "kume na ndraru; kumi na ndraru;",
     "null": null
 },
 {
-    "text": "grand-père",
-    "translate": "mɓaye; ɓakoko; ",
+    "text": "tremblement",
+    "translate": "ndrindrindra",
     "null": null
 },
 {
-    "text": "grande sœur",
-    "translate": "zuki ",
+    "text": "trembler",
+    "translate": "rindrindra (u-); riritra (u-); ɗiɗima (u-); ririntra (u-); ririndra (u-); dridrima ( u-);",
     "null": null
 },
 {
-    "text": "Grande-Comore",
-    "translate": "Ngazidja ",
+    "text": "trempage",
+    "translate": "mpatso",
     "null": null
 },
 {
-    "text": "grandeur",
-    "translate": "ulibwavu; utukufu; uhuwu; uhuyu; uhuu; uhu; ubole; uliɓwavu; ",
+    "text": "trempé (être -)",
+    "translate": "rerema (u-); lowama (u-);",
     "null": null
 },
 {
-    "text": "grandiose",
-    "translate": "#NOM? ",
+    "text": "tremper",
+    "translate": "patsa (u-); loza (u-); lodza (u-);",
     "null": null
 },
 {
-    "text": "grandir",
-    "translate": "hua (u-); trendra (u-); ",
+    "text": "tremper (être -)",
+    "translate": "loloma (u-); loama (u-);",
     "null": null
 },
 {
-    "text": "grappe",
-    "translate": "sazi; sangari; ",
+    "text": "tremper (laisser -)",
+    "translate": "leha (u-)",
     "null": null
 },
 {
-    "text": "gras",
-    "translate": "#NOM? ",
+    "text": "trente",
+    "translate": "thalathini; mengo miraru;",
     "null": null
 },
 {
-    "text": "gratter",
-    "translate": "pvaya (u-); kua (u-); garua (u-); vaa (u-); jarua; ",
+    "text": "trépied",
+    "translate": "ulio",
     "null": null
 },
 {
-    "text": "gratter (le sol)",
-    "translate": "fukua (u-) ",
+    "text": "très",
+    "translate": "naɗi; swafi; halisi; kaɓisa; nadi;",
     "null": null
 },
 {
-    "text": "gratter (se -)",
-    "translate": "djikua (u-) ",
+    "text": "trésor",
+    "translate": "hazina; ɗafine;",
     "null": null
 },
 {
-    "text": "grattoir (métallique)",
-    "translate": "msasa; shihosa; ",
+    "text": "tresse",
+    "translate": "msuko; masuko;",
     "null": null
 },
 {
-    "text": "gratuit",
-    "translate": "ɓure ",
+    "text": "tressé (être -)",
+    "translate": "sukwa (u-)",
     "null": null
 },
 {
-    "text": "gratuité",
-    "translate": "uɓure ",
+    "text": "tresser",
+    "translate": "suka (u-); kitsa (u-); pvahasa (u-); pvahatsa (u-);",
     "null": null
 },
 {
-    "text": "graver",
-    "translate": "nakshi (u-) ",
+    "text": "tresses cours et plaqués faisant penser aux clous de girofle",
+    "translate": "nkarafu; nkaranfu;",
     "null": null
 },
 {
-    "text": "gravure",
-    "translate": "nakshi ",
+    "text": "tresseur",
+    "translate": "msuki",
     "null": null
 },
 {
-    "text": "grenade (fruit)",
-    "translate": "trunɗa-pepo; trundra-pepvoni; trunɗa-tamu; ",
+    "text": "trêve",
+    "translate": "uvumzi",
     "null": null
 },
 {
-    "text": "grenier",
-    "translate": "fidji; nkanya; kanya; nkanywa; ",
+    "text": "triangle",
+    "translate": "mpemɓendraru; mpemɓentraru;",
     "null": null
 },
 {
-    "text": "grenouille",
-    "translate": "shiwatrotro; ntsirevu; cura; ",
+    "text": "tribu",
+    "translate": "kaɓila",
     "null": null
 },
 {
-    "text": "grève",
-    "translate": "mtsutsuho ",
+    "text": "tricher",
+    "translate": "shusha (u-)",
     "null": null
 },
 {
-    "text": "griffe",
-    "translate": "nkofu; fuu; kofu; ",
+    "text": "tricot",
+    "translate": "fulana; triko; tiriko;",
     "null": null
 },
 {
-    "text": "griffer",
-    "translate": "nanfua (u-) ",
+    "text": "trier",
+    "translate": "tsungua (u-)",
     "null": null
 },
 {
-    "text": "gril",
-    "translate": "uma ",
+    "text": "trifouiller",
+    "translate": "tamɓwaria (u-); tambara (u-); vaɗua (u-); gaɗua (hu-);",
     "null": null
 },
 {
-    "text": "grillade",
-    "translate": "vule; djosho; ",
+    "text": "tripoter",
+    "translate": "tamɓwaria (u-); vaɗua (u-); tsefera (u-); gaɗua (hu-);",
     "null": null
 },
 {
-    "text": "griller",
-    "translate": "oha (u-) ",
+    "text": "trisomique",
+    "translate": "mongoli",
     "null": null
 },
 {
-    "text": "griller (faire -)",
-    "translate": "hoha (u-) ",
+    "text": "trognon",
+    "translate": "konyo; vidi;",
     "null": null
 },
 {
-    "text": "grimper",
-    "translate": "pandra (u-); hea (u-); ",
+    "text": "trois",
+    "translate": "ndraru; ntraru; traru; -raru;",
     "null": null
 },
 {
-    "text": "grippe",
-    "translate": "ɓuhuo ",
+    "text": "trois cents",
+    "translate": "madjana mararu; thalatha mia;",
     "null": null
 },
 {
-    "text": "gris",
-    "translate": "mosi ",
+    "text": "trois-cents",
+    "translate": "thalathamia",
     "null": null
 },
 {
-    "text": "grive",
-    "translate": "nakushiru ",
+    "text": "troisième",
+    "translate": "-a raru",
     "null": null
 },
 {
-    "text": "gronder",
-    "translate": "ra mafula (hu-); âziri (u-); nguruma (u-); ɓaɓushia (u-); ",
+    "text": "trompe",
+    "translate": "djudju",
     "null": null
 },
 {
-    "text": "gros",
-    "translate": "-nene; -tronga; ",
+    "text": "tromper",
+    "translate": "nasa (u-); nyanganya (u-); ɓaɓaisa (u-); ɓaiɓu (u-); ganga (u-); ɗanganya (u-); hini (u-); tratra (u-); haɗa (u-);",
     "null": null
 },
 {
-    "text": "gros (pers.)",
-    "translate": "mnene ",
+    "text": "tromper (se -)",
+    "translate": "ɗanganyiha (u-); pvewa (u-); gangiha (u-); tratriha (u-);",
     "null": null
 },
 {
-    "text": "gros citron",
-    "translate": "vuraɓa; vuɓara; ",
+    "text": "tromperie",
+    "translate": "uhaɗazi; hiana;",
     "null": null
 },
 {
-    "text": "gros mot",
-    "translate": "neno ",
+    "text": "trompette",
+    "translate": "tarumbeta",
     "null": null
 },
 {
-    "text": "gros thym",
-    "translate": "nyaɗomɓwe; parauve; parauvi; ",
+    "text": "trompeur",
+    "translate": "mhaɗazi",
     "null": null
 },
 {
-    "text": "grosse faim",
-    "translate": "mcemba ",
+    "text": "trône",
+    "translate": "fitako",
     "null": null
 },
 {
-    "text": "grossesse",
-    "translate": "hamili; mimba; ",
+    "text": "trop",
+    "translate": "naɗi; thuma; nadi;",
     "null": null
 },
 {
-    "text": "grosseur",
-    "translate": "utronga; unene; unerefu; ",
+    "text": "trou",
+    "translate": "dzodzo; ɗodjo; foro; tsotso; fuho; gumbo;",
     "null": null
 },
 {
-    "text": "grossière (pers.)",
-    "translate": "mcambara ",
+    "text": "trouble",
+    "translate": "shahaɗa",
     "null": null
 },
 {
-    "text": "grossir",
-    "translate": "nenepva (u-); nera (u-); nyera (u-); ",
+    "text": "troué",
+    "translate": "foroha (u-)",
     "null": null
 },
 {
-    "text": "grotte",
-    "translate": "panga ",
+    "text": "troué (être -)",
+    "translate": "fuha (u-)",
     "null": null
 },
 {
-    "text": "groupe",
-    "translate": "ɓakia; kaumu; pungo; inkuɗi; ",
+    "text": "trouer",
+    "translate": "dzodza (u-); foroa (u-); tsotsa (u-);",
     "null": null
 },
 {
-    "text": "groupe (de gens)",
-    "translate": "djaniɓu ",
+    "text": "troupe",
+    "translate": "kaumu",
     "null": null
 },
 {
-    "text": "grue",
-    "translate": "lingi ",
+    "text": "troupeau",
+    "translate": "pashe; ɓangwe; dzizi;",
     "null": null
 },
 {
-    "text": "guêpe",
-    "translate": "mvu; vungo-vungo; ",
+    "text": "trouver",
+    "translate": "hundra (u-); para (u-);",
     "null": null
 },
 {
-    "text": "guérir",
-    "translate": "pvona (u-); para shikali (u-); vona (u-); vonesa (u-); ",
+    "text": "trouver (se -)",
+    "translate": "parihana (u-)",
     "null": null
 },
 {
-    "text": "guérison",
-    "translate": "shikali ",
+    "text": "trouver pour",
+    "translate": "paria (u-)",
     "null": null
 },
 {
-    "text": "guérisseur",
-    "translate": "mwalimu ",
+    "text": "truc",
+    "translate": "ndrongo",
     "null": null
 },
 {
-    "text": "guerre",
-    "translate": "nkoɗo; nkondro; kondro; ",
+    "text": "truelle",
+    "translate": "sutru",
     "null": null
 },
 {
-    "text": "guerrier",
-    "translate": "soroɗa; msa-mpanga; ",
+    "text": "tube",
+    "translate": "ɓomba",
     "null": null
 },
 {
-    "text": "guetter",
-    "translate": "tramia (u-) ",
+    "text": "tubercule",
+    "translate": "mitru; vundro;",
     "null": null
 },
 {
-    "text": "gueule",
-    "translate": "hanyo ",
+    "text": "tuberculose",
+    "translate": "nkaya",
     "null": null
 },
 {
-    "text": "gueunille",
-    "translate": "mbuni. ",
+    "text": "tuer",
+    "translate": "songa (u-); wua (u-); wula (u-); ra (u-) hitswa;",
     "null": null
 },
 {
-    "text": "guide",
-    "translate": "mongozi ",
+    "text": "tuerie",
+    "translate": "usongadji",
     "null": null
 },
 {
-    "text": "guidée",
-    "translate": "uokovu ",
+    "text": "tueur",
+    "translate": "msongadji; muuadji; mrwa-hitswa;",
     "null": null
 },
 {
-    "text": "guider",
-    "translate": "ongoza (u-); okoa (u-); ",
+    "text": "tuile",
+    "translate": "toli",
     "null": null
 },
 {
-    "text": "guigne",
-    "translate": "lagini ",
+    "text": "turban",
+    "translate": "kiemɓa; nkemba; nkemɓa; kemba;",
     "null": null
 },
 {
-    "text": "guitare",
-    "translate": "gambusi; gitari; ",
+    "text": "tuyau",
+    "translate": "mupira; tiyo;",
     "null": null
 },
 {
-    "text": "gypse",
-    "translate": "djasi ",
+    "text": "type (un)",
+    "translate": "mvulana; ɓako²;",
     "null": null
 }];
