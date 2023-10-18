@@ -51,6 +51,7 @@ export class AuthentificationService {
         this.user.timerActiveConnection = data.timerActiveConnection;
         return true;
       } else {
+        this.logout(false);
         throw new Error('Utilisateur introuvable');
       }
     } catch (error: any) {
@@ -228,8 +229,10 @@ export class AuthentificationService {
     return response && responseInfoUser;
   }
 
-  async logout() {
-    this.updateDayDisconnected('users', this.user.uid ? this.user.uid : '');
+  async logout(disconnect: boolean) {
+    if(disconnect){
+      this.updateDayDisconnected('users', this.user.uid ? this.user.uid : '');
+    }
     return signOut(getAuth()).then(() => {
       this.user = {} as User;
       localStorage.removeItem(USER_KEY);

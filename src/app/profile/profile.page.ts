@@ -75,7 +75,7 @@ export class ProfilePage implements OnInit {
   }
 
   logout() {
-    this.authentificationService.logout().then(() => {
+    this.authentificationService.logout(true).then(() => {
       this.router.navigate(['/firstpage']);
     });
   }

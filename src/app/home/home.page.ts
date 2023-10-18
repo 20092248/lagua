@@ -59,7 +59,7 @@ export class HomePage implements OnInit {
   }
 
   logout() {
-    this.authentificationService.logout().then(() => {
+    this.authentificationService.logout(true).then(() => {
       this.goTo('/firstpage', true);
     });
   }

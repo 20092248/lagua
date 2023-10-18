@@ -20,7 +20,7 @@ export class TabsPage implements OnInit {
   }
 
   logout() {
-    this.authentification.logout().then(() => {
+    this.authentification.logout(true).then(() => {
       this.goTo('/firstPage');
     });
   }
