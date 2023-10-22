@@ -30,11 +30,13 @@ export class ReviewPage implements OnInit {
   translate: string = 'francais';
   words: any[] = [];
   displayAccordion: string = '';
+  user: User = {} as User;
 
   constructor(private router: Router, private settingsService: SettingService, private reviewService: ReviewService, private authentificationService: AuthentificationService,
     private toastController: ToastController, private questionService: QuestionService, private settingService: SettingService) { }
 
   ngOnInit() {
+    this.user = this.authentificationService.user;
     this.userLearn = this.authentificationService.user?.learn;
     this.userReview = this.authentificationService.user?.review;
     this.displayAccordion = this.userReview.category + '_' + this.userReview.lesson;

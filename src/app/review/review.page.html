@@ -99,4 +99,9 @@
       </ion-card>
     </div> -->
   </div>
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom" *ngIf="user.email === 'brady91700@gmail.com' || user.email === 'bradyabd@gmail.com'">
+    <ion-fab-button color="lagua" [routerLink]="['add']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
