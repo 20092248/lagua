@@ -89,7 +89,7 @@ export class ReviewPage implements OnInit {
   openModal(review: Review) {
     this.isWordsDisplay = true;
     this.words = [];
-    this.questionService.getQuestions(this.userLearn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions', review.lesson + '_' + review.order).then(result => {
+    this.questionService.getQuestions(this.userLearn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions', review.category + '_' + review.lesson + '_' + review.order).then(result => {
       this.words = result.qcm.questions;
     });
   }

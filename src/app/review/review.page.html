@@ -85,23 +85,15 @@
         </div>
       </ion-accordion>
     </ion-accordion-group>
-    <!-- <div class="ion-unlock-lesson">
-      <ion-icon class="ion-icon-checked" size="medium" name="checkmark-circle"></ion-icon>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>Card Title</ion-card-title>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-          Here's a small text description for the card content. Nothing more, nothing less.
-        </ion-card-content>
-        <ion-button fill="clear">Action 1</ion-button>
-      </ion-card>
-    </div> -->
   </div>
   <ion-fab slot="fixed" horizontal="end" vertical="bottom" *ngIf="user.email === 'brady91700@gmail.com' || user.email === 'bradyabd@gmail.com'">
-    <ion-fab-button color="lagua" [routerLink]="['add']">
-      <ion-icon name="add"></ion-icon>
+    <ion-fab-button color="lagua" [routerLink]="['add-review']">
+      <ion-icon name="file-tray-stacked"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab slot="fixed" horizontal="start" vertical="bottom" *ngIf="user.email === 'brady91700@gmail.com' || user.email === 'bradyabd@gmail.com'">
+    <ion-fab-button color="lagua" [routerLink]="['add-lesson']">
+      <ion-icon name="file-tray-full"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>

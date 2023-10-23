@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>addReview</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ajouter un cours</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <form [formGroup]="form" class="ion-padding-bottom" (ngSubmit)="addReview();">
+    <ion-list>
+      <ion-item>
+        <ion-label>Ajouter un cours *</ion-label>
+        <ion-input placeholder="collection..." [(ngModel)]="collection.name" name="collection" formControlName="collection"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Depuis la source *</ion-label>
+        <ion-input placeholder="source..." [(ngModel)]="collection.name" name="collection" formControlName="collection"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="block" type="submit">Ajouter cours</ion-button>
+  </form>
 </ion-content>

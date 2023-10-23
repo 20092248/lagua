@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Firestore, getFirestore } from '@angular/fire/firestore';
-import { doc, getDoc, getDocs, addDoc, collection, query, where, updateDoc, orderBy, startAfter, limit, DocumentData, QueryDocumentSnapshot } from '@firebase/firestore';
+import { setDoc, doc, getDoc, getDocs, addDoc, collection, query, where, updateDoc, orderBy, startAfter, limit, DocumentData, QueryDocumentSnapshot } from '@firebase/firestore';
 import { Word } from '../model/word.model';
 import { FirebaseWord } from '../model/wordFirebase.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { CONSTANTS } from '../utils/constants';
+import { Firestore, getFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -104,7 +104,7 @@ export class DictionaryService {
   updateDetailInfo(word: any, uid: string, firstLetter: string) {
     const dictionayRef = doc(getFirestore(), 'shikomori_francais_' + firstLetter, uid);
     updateDoc(dictionayRef, {
-      translates: word.translates ? word.translates :  [],
+      translates: word.translates ? word.translates : [],
       pluralText: word.plural ? word.plural.split(';') : [],
       originalPluralText: word.plural ? word.plural : '',
       symbol: word.symbol ? word.symbol : '',
@@ -119,7 +119,7 @@ export class DictionaryService {
   updateDetailInfoFr(word: any, uid: string, firstLetter: string) {
     const dictionayRef = doc(getFirestore(), 'francais_shikomori_' + firstLetter, uid);
     updateDoc(dictionayRef, {
-      translates: word.translates ? word.translates :  [],
+      translates: word.translates ? word.translates : [],
       pluralText: word.plural ? word.plural.split(';') : [],
       originalPluralText: word.plural ? word.plural : '',
       symbol: word.symbol ? word.symbol : '',
@@ -398,7 +398,7 @@ export class DictionaryService {
     const translates = docWord.querySelectorAll('.box.col-xs-12 > div.col-xs-12.col-sm-12:not(.divider)');
     if (translates) {
       translates.forEach((t: any) => {
-        const translate = t.querySelector('.col-xs-6.col-sm-6').innerText.replace(/[,;]$/,'') || '';
+        const translate = t.querySelector('.col-xs-6.col-sm-6').innerText.replace(/[,;]$/, '') || '';
         const dialect = this.transColorDialect(t.querySelector('span > span').style.color);
         ts.push({ translate: translate, dialect: dialect });
       });
@@ -466,8 +466,9 @@ export class DictionaryService {
   async copyCollection(oldCollection: string, newCollection: string) {
     const q = query(collection(getFirestore(), oldCollection));
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach(async (doc) => {
-      const newCollectionId = await addDoc(collection(getFirestore(), newCollection), doc.data());
+    querySnapshot.forEach(async (document) => {
+      const newCollectionId = await addDoc(collection(getFirestore(), newCollection), document.data());
+      // await setDoc(doc(getFirestore(), 'shindzuani_francais_questions', 'A1_' + document.id), document.data());
       console.log(newCollectionId.id);
     });
   }
@@ -478,15 +479,15 @@ export class DictionaryService {
   }
 
   updateTopic(data: any, coll: string, topic: string) {
-    try{
-    const dictionayRef = doc(getFirestore(), coll, topic);
-    console.log(topic, data);
-    updateDoc(dictionayRef, {
-      topic: data
-    });
-  } catch(err) {
-    console.error(data);
-  }
+    try {
+      const dictionayRef = doc(getFirestore(), coll, topic);
+      console.log(topic, data);
+      updateDoc(dictionayRef, {
+        topic: data
+      });
+    } catch (err) {
+      console.error(data);
+    }
   }
 
   async addNewDialectInDB(text: string, translate: string, alphabet: string) {

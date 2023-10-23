@@ -23,7 +23,7 @@ export class TypePage implements OnInit {
   ngOnInit() {
     this.user = this.authentificationService.user;
     const review = this.reviewService.review;
-    this.questionService.getQuestions(this.user?.learn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions', review.lesson + '_' + review.order).then();
+    this.questionService.getQuestions(this.user?.learn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions', review.category + '_' + review.lesson + '_' + review.order).then();
     this.settingsService.getSetting('questions').then((data => {
       this.types = data?.types;
     }));

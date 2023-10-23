@@ -9,8 +9,12 @@ const routes: Routes = [
     component: ReviewPage
   },
   {
-    path: 'add',
+    path: 'add-review',
     loadChildren: () => import('./add-review/add-review.module').then( m => m.AddReviewPageModule)
+  },
+  {
+    path: 'add-lesson',
+    loadChildren: () => import('./add-lesson/add-lesson.module').then( m => m.AddLessonsPageModule)
   }
 ];
 

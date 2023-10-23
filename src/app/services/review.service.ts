@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, getFirestore, orderBy } from '@angular/fire/firestore';
+import { Firestore, addDoc, getFirestore, orderBy, setDoc } from '@angular/fire/firestore';
 import { doc, getDocs, updateDoc, collection, query, where } from '@firebase/firestore';
 import { Review } from '../model/review.model';
 import { ResultReview } from '../model/resultReview.model';
@@ -96,6 +96,17 @@ export class ReviewService {
     //   });
     // }
     return this.nextReview;
+  }
+
+  async copyCollection(oldCollection: string, category: string, review: string) {
+    const q = query(collection(getFirestore(), oldCollection));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (document) => {
+      const id = document.id.split('_');
+      if(document.id.indexOf(category) !== -1){
+        await setDoc(doc(getFirestore(), 'shindzuani_francais_questions', id[0] + '_' + review + '_' + id[1]), document.data());
+      }
+    });
   }
 
   nextCategory(category: string) {
