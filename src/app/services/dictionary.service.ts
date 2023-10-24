@@ -468,7 +468,6 @@ export class DictionaryService {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach(async (document) => {
       const newCollectionId = await addDoc(collection(getFirestore(), newCollection), document.data());
-      // await setDoc(doc(getFirestore(), 'shindzuani_francais_questions', 'A1_' + document.id), document.data());
       console.log(newCollectionId.id);
     });
   }

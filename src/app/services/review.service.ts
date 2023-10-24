@@ -98,14 +98,27 @@ export class ReviewService {
     return this.nextReview;
   }
 
-  async copyCollection(oldCollection: string, category: string, review: string) {
-    const q = query(collection(getFirestore(), oldCollection));
+  async copyCollection(collectionSrc: string, category: string, review: string, sourceCategory: string, sourceLesson: string) {
+    const q = query(collection(getFirestore(), collectionSrc));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach(async (document) => {
       const id = document.id.split('_');
-      if(document.id.indexOf(category) !== -1){
-        await setDoc(doc(getFirestore(), 'shindzuani_francais_questions', id[0] + '_' + review + '_' + id[1]), document.data());
+      const collectionAndLesson = sourceCategory + '_' + sourceLesson;
+      if (collectionAndLesson.indexOf(category) !== -1) {
+        await setDoc(doc(getFirestore(), collectionSrc, category + '_' + review + '_' + id[2]), document.data());
       }
+    });
+  }
+
+  async copyDoc(srcCollection: string, category: string, lesson: number, sourceCategory: string, sourceLesson: number) {
+    const q = query(collection(getFirestore(), srcCollection), where('category', '==', sourceCategory), where('lesson', '==', sourceLesson));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (document) => {
+      const newData = document.data();
+      newData['category'] = category;
+      newData['lesson'] = lesson;      
+      const newCollectionId = await addDoc(collection(getFirestore(), srcCollection), newData);
+      console.log(newCollectionId.id);
     });
   }
 

@@ -8,17 +8,34 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="form" class="ion-padding-bottom" (ngSubmit)="addReview();">
+  <form [formGroup]="formReview" class="ion-padding-bottom" (ngSubmit)="addReview();">
     <ion-list>
       <ion-item>
         <ion-label>Ajouter un cours *</ion-label>
-        <ion-input placeholder="collection..." [(ngModel)]="collection.name" name="collection" formControlName="collection"></ion-input>
+        <ion-input placeholder="ex : A1" [(ngModel)]="category" name="category" formControlName="category"></ion-input>
+        <ion-input placeholder="ex : 2" [(ngModel)]="lesson" name="lesson" formControlName="lesson"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Depuis la source *</ion-label>
-        <ion-input placeholder="source..." [(ngModel)]="collection.name" name="collection" formControlName="collection"></ion-input>
+        <ion-input placeholder="A1" [(ngModel)]="fromCategory" name="fromCategory" formControlName="fromCategory"></ion-input>
+        <ion-input placeholder="1" [(ngModel)]="fromLesson" name="fromLesson" formControlName="fromLesson"></ion-input>
       </ion-item>
     </ion-list>
-    <ion-button expand="block" type="submit">Ajouter cours</ion-button>
+    <ion-button color="dark" expand="block" type="submit">Ajouter cours</ion-button>
+  </form>
+  <form [formGroup]="formMenu" class="ion-padding-vertical" (ngSubmit)="addMenu();">
+    <ion-list>
+      <ion-item>
+        <ion-label>Ajouter un menu *</ion-label>
+        <ion-input placeholder="ex : A1" [(ngModel)]="category" name="category" formControlName="category"></ion-input>
+        <ion-input placeholder="ex : 2" type="number" [(ngModel)]="lesson" name="lesson" formControlName="lesson"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Depuis la source *</ion-label>
+        <ion-input placeholder="A1" [(ngModel)]="fromCategory" name="fromCategory" formControlName="fromCategory"></ion-input>
+        <ion-input placeholder="1" type="number" [(ngModel)]="fromLesson" name="fromLesson" formControlName="fromLesson"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button color="dark" expand="block" type="submit">Ajouter menu</ion-button>
   </form>
 </ion-content>
