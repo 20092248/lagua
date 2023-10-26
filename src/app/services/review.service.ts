@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, getFirestore, orderBy, setDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, getDoc, getFirestore, orderBy, setDoc } from '@angular/fire/firestore';
 import { doc, getDocs, updateDoc, collection, query, where } from '@firebase/firestore';
 import { Review } from '../model/review.model';
 import { ResultReview } from '../model/resultReview.model';
@@ -98,6 +98,16 @@ export class ReviewService {
     return this.nextReview;
   }
 
+  async updateLessonInReview(collectionSrc: string, category: string, lesson: string, order: string, sourceCategory: string, sourceLesson: string, sourceOrder: string) {
+    const sourceQuestion = await getDoc(doc(getFirestore(), collectionSrc, sourceCategory + '_' + sourceLesson + '_' + sourceOrder));
+    const questionRef = doc(getFirestore(), collectionSrc, category + '_' + lesson + '_' + order);
+    const question = await getDoc(questionRef);
+    const qcm = question.data();
+    await updateDoc(questionRef, {
+      qcm: qcm
+    });
+  }
+
   async copyCollection(collectionSrc: string, category: string, review: string, sourceCategory: string, sourceLesson: string) {
     const q = query(collection(getFirestore(), collectionSrc));
     const querySnapshot = await getDocs(q);
@@ -116,7 +126,7 @@ export class ReviewService {
     querySnapshot.forEach(async (document) => {
       const newData = document.data();
       newData['category'] = category;
-      newData['lesson'] = lesson;      
+      newData['lesson'] = lesson;
       const newCollectionId = await addDoc(collection(getFirestore(), srcCollection), newData);
       console.log(newCollectionId.id);
     });

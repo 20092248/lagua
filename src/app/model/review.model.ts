@@ -5,4 +5,5 @@ export interface Review {
     text: string;
     translate: string;
     contents: string;
+    score: number;
 }

@@ -31,6 +31,7 @@ export class ReviewPage implements OnInit {
   words: any[] = [];
   displayAccordion: string = '';
   user: User = {} as User;
+  flagSrc: string = '';
 
   constructor(private router: Router, private settingsService: SettingService, private reviewService: ReviewService, private authentificationService: AuthentificationService,
     private toastController: ToastController, private questionService: QuestionService, private settingService: SettingService) { }
@@ -44,6 +45,7 @@ export class ReviewPage implements OnInit {
       this.settingsService.getSetting('reviews').then((data => {
         this.categories = data.categories;
         this.categorySelected = data.categories[0];
+        this.flagSrc = data.flag;
       }));
     }
     if (this.userReview?.category) {

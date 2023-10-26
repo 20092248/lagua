@@ -3,10 +3,26 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Ajouter une leçon</ion-title>
+    <ion-title>Ajouter des leçons</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <form [formGroup]="formLesson" class="ion-padding-bottom" (ngSubmit)="addLesson();">
+    <ion-list>
+      <ion-item>
+        <ion-label>Ajouter des leçons dans *</ion-label>
+        <ion-input placeholder="ex : A1" [(ngModel)]="category" name="category" formControlName="category"></ion-input>
+        <ion-input placeholder="ex : 1" [(ngModel)]="lesson" name="lesson" formControlName="lesson"></ion-input>
+        <ion-input placeholder="ex : 1" [(ngModel)]="order" name="order" formControlName="order"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Depuis la source *</ion-label>
+        <ion-input placeholder="A1" [(ngModel)]="fromCategory" name="fromCategory" formControlName="fromCategory"></ion-input>
+        <ion-input placeholder="1" [(ngModel)]="fromLesson" name="fromLesson" formControlName="fromLesson"></ion-input>
+        <ion-input placeholder="1" [(ngModel)]="fromOrder" name="fromOrder" formControlName="fromOrder"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button color="dark" expand="block" type="submit">Ajouter cours</ion-button>
+  </form>
 </ion-content>

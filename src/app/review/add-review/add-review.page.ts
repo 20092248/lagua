@@ -27,11 +27,11 @@ export class AddReviewPage implements OnInit {
   }
 
   addReview() {
-    this.reviewService.copyCollection('shindzuani_francais_questions', this.category, String(this.lesson), this.fromCategory, String(this.fromLesson))
+    this.reviewService.copyCollection('shindzuani_francais_questions', this.category, String(this.lesson), this.fromCategory, String(this.fromLesson));
   }
 
   addMenu() {
-    this.reviewService.copyDoc('reviews', this.category, this.lesson, this.fromCategory, this.fromLesson)
+    this.reviewService.copyDoc('reviews', this.category, this.lesson, this.fromCategory, this.fromLesson);
   }
 
 }

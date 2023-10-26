@@ -37,14 +37,14 @@
             <ion-card
               [ngClass]="{ 'ion-card-locked' : categoryLevel < codeCategorySelectedLevel || (userReview.lesson <= r.lesson && userReview.order < r.order) }">
               <ion-card-header>
-                <ion-card-title>{{r.text}}</ion-card-title>
+                <ion-card-title>{{r.text}}<img *ngIf="r.score" class="ion-float-right" src="{{flagSrc}}"/></ion-card-title>
                 <ion-card-subtitle>{{r.translate}}</ion-card-subtitle>
               </ion-card-header>
               <ion-card-content>
                 <div class="ion-custom-text" *ngFor="let content of r.contents">{{content}}</div>
               </ion-card-content>
               <ion-button
-                *ngIf="!(categoryLevel < codeCategorySelectedLevel || (userReview.lesson <= r.lesson && userReview.order < r.order))"
+                *ngIf="!(categoryLevel < codeCategorySelectedLevel || (userReview.lesson <= r.lesson && userReview.order <= r.order))"
                 size="small"
                 class="ion-button ion-button-words ion-padding-min-start ion-float-left ion-button-position"
                 fill="clear" (click)="openModal(r)">

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { DictionaryService } from 'src/app/services/dictionary.service';
+import { ReviewService } from 'src/app/services/review.service';
 
 @Component({
   selector: 'app-add-lesson',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddLessonPage implements OnInit {
 
-  constructor() { }
+  formLesson: FormGroup;
+  category: string = '';
+  lesson: number = 0;
+  order: number = 0;
+  fromCategory: string = 'A1';
+  fromLesson: number = 1;
+  fromOrder: number = 1;
+
+  constructor(private dictionaryService: DictionaryService, private reviewService: ReviewService, private formBuilder: FormBuilder) {
+    this.formLesson = this.formBuilder.group({ 'category': [''], 'lesson': [0], 'order': [0], 'fromCategory': ['A1'], 'fromLesson': [1], 'fromOrder': [0] });
+  }
 
   ngOnInit() {
+    // this.dictionaryService.copyCollection('shindzuani_francais_questions', '');
+  }
+
+  addLesson() {
+    this.reviewService.updateLessonInReview('shindzuani_francais_questions', this.category, String(this.lesson), String(this.order), this.fromCategory, String(this.fromLesson), String(this.fromOrder));
   }
 
 }
