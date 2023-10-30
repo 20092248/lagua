@@ -30,7 +30,8 @@
                 <ion-item button (click)="goTo('/tabs/account', true)"><ion-icon class="ion-padding-end"
                     name="flag-outline"></ion-icon>Mes langues</ion-item>
                 <ion-item (click)="changeMode()"><ion-icon name="brush-outline" class="ion-padding-end">
-                  </ion-icon>Thème {{getTheme === 'moon' ? 'sombre' : 'clair'}}<ion-icon name="{{getTheme}}" slot="end"></ion-icon></ion-item>
+                  </ion-icon>Thème {{getTheme === 'moon' ? 'sombre' : 'clair'}}<ion-icon name="{{getTheme}}"
+                    slot="end"></ion-icon></ion-item>
                 <ion-item button lines="none" detail="false" (click)="logout()"><ion-icon class="ion-padding-end"
                     name="log-out-outline"></ion-icon>Déconnexion</ion-item>
               </ion-list>
@@ -44,7 +45,8 @@
         <p class="ion-text-progress">Votre progression</p>
         <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate" data-max="100"
           class="ion-progress">
-          <div data-state="indeterminate" data-max="100" class="ion-range-progress" [ngStyle]="{'width': progression+'%'}">
+          <div data-state="indeterminate" data-max="100" class="ion-range-progress"
+            [ngStyle]="{'width': progression+'%'}">
             <span class="ion-position-cursor">{{progression | number: '1.0-0'}}%</span>
           </div>
         </div>
@@ -127,19 +129,22 @@
       </div>
 
       <div class="ion-unlock-lesson">
-        <swiper-container [slidesPerView]="2.05" [initialSlide]="0" speed="400">
+        <swiper-container [slidesPerView]="2.5" [initialSlide]="0" speed="400">
           <swiper-slide *ngFor="let lesson of recommendedLessons; let index = index">
-            <ion-card  class="ion-no-margin-bottom" [ngClass]="{'ion-no-margin-middle': !(index === 0 || index === recommendedLessons.length - 1),'ion-no-margin-right': index === 0, 'ion-no-margin-left': index === recommendedLessons.length - 1, 'ion-lock-lesson': user.lesson.order < lesson.order}">
+            <ion-card class="ion-no-margin-bottom"
+              [ngClass]="{'ion-no-margin-middle': !(index === 0 || index === recommendedLessons.length - 1),'ion-no-margin-right': index === 0, 'ion-no-margin-left': index === recommendedLessons.length - 1, 'ion-lock-lesson': user.lesson.order < lesson.order}">
               <img src="{{lesson.src}}" />
               <!-- <ion-card-header>
                 <ion-card-title>{{lesson.title}}</ion-card-title>
               </ion-card-header> -->
               <ion-card-content>
                 <div class="ion-font-weight-bold">{{lesson.title}}</div>
-                <div class="ion-padding-top-min">{{lesson.subTitle}}</div>
+                <div class="ion-padding-top-min ion-font-size-small">{{lesson.subTitle}}</div>
               </ion-card-content>
               <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
-                fill="clear" (click)="goToLesson('/tabs/lessons/'+lesson.navigate, user.lesson.order >= lesson.order)">Voir la leçon</ion-button>
+                fill="clear"
+                (click)="goToLesson('/tabs/lessons/'+lesson.navigate, user.lesson.order >= lesson.order)">Voir la
+                leçon</ion-button>
             </ion-card>
           </swiper-slide>
         </swiper-container>
@@ -154,10 +159,11 @@
             <div class="">Visiualiser les précédentes leçons</div>
             <div class="">Améliorer votre score en faisant des tests</div>
           </ion-card-content>
-          <ion-button id="open-modal" size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
-            fill="clear" (click)="displayPreviousReviews()">Réviser</ion-button>
+          <ion-button id="open-modal" size="small"
+            class="ion-button ion-padding-end ion-float-right ion-button-position" fill="clear"
+            (click)="displayPreviousReviews()">Réviser</ion-button>
 
-            <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">
+          <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">
             <ng-template>
               <ion-header>
                 <ion-toolbar>
@@ -171,8 +177,10 @@
               </ion-header>
               <ion-content>
                 <ion-list>
-                  <ion-item detail="true" routerLinkActive="selected" lines="full" class="ion-item-result-dictionary" *ngFor="let r of getPreviousReviews; let index = index" (click)="accessPreviousReview(r); modal.dismiss()">
-                  <ion-icon name="reader-outline" slot="start"></ion-icon>
+                  <ion-item detail="true" routerLinkActive="selected" lines="full" class="ion-item-result-dictionary"
+                    *ngFor="let r of getPreviousReviews; let index = index"
+                    (click)="accessPreviousReview(r); modal.dismiss()">
+                    <ion-icon name="reader-outline" slot="start"></ion-icon>
                     <ion-label class="ion-text-wrap">
                       <h3>{{r.text}}</h3>
                       <p>{{r.translate}}</p>
@@ -188,14 +196,16 @@
       <div class="ion-unlock-lesson">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>{{getReview.category === 'A1' && getReview.lesson === 1 && getReview.order === 1 ? 'Premier': 'Prochain'}} cours à visualiser</ion-card-title>
-            <ion-card-subtitle>Cours {{getReview.lesson}} : Leçon {{getReview.order}} - {{getReview.text}} / <i>{{getReview.translate}}</i></ion-card-subtitle>
+            <ion-card-title>{{getReview.category === 'A1' && getReview.lesson === 1 && getReview.order === 1 ?
+              'Premier': 'Prochain'}} cours à visualiser</ion-card-title>
+            <ion-card-subtitle>Cours {{getReview.lesson}} : Leçon {{getReview.order}} - {{getReview.text}} /
+              <i>{{getReview.translate}}</i></ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
             <div class="ion-custom-text" *ngFor="let content of getReview.contents">{{content}}</div>
           </ion-card-content>
-          <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
-            fill="clear" (click)="accessToReview()">Accéder au cours</ion-button>
+          <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position" fill="clear"
+            (click)="accessToReview()">Accéder au cours</ion-button>
         </ion-card>
       </div>
 
@@ -208,8 +218,9 @@
             <div class="">Visiualiser les différentes thématiques</div>
             <div class="">Valider chaque thème pour débloquer le suivant</div>
           </ion-card-content>
-          <ion-button id="open-modal" size="small" class="ion-button ion-padding-end ion-float-right ion-button-position"
-            fill="clear" [routerLink]="['/tabs/topics']">Voir les thèmes</ion-button>
+          <ion-button id="open-modal" size="small"
+            class="ion-button ion-padding-end ion-float-right ion-button-position" fill="clear"
+            [routerLink]="['/tabs/topics']">Voir les thèmes</ion-button>
 
         </ion-card>
       </div>
