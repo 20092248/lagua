@@ -1,5 +1,5 @@
 ion-toolbar {
-    --background: #46895c;
+    --background: url(/assets/img/background.png) 0% / 130%;
     --color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 20px 17px -17px, rgba(0, 0, 0, 0.18) 0px 10px 20px -20px;
     // border-radius: 0 0 20px 20px;
@@ -45,7 +45,7 @@ ul {
     -ms-flex-align: start;
     -webkit-align-content: start;
     -moz-align-content: start;
-    align-content: start;
+    align-content: flex-start;
     -ms-flex-line-pack: start;
     width: 100%;
     padding: 0;

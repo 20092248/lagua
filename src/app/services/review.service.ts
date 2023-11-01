@@ -113,6 +113,18 @@ export class ReviewService {
     });
   }
 
+  async moveOneLessonToPosition(collectionSrc: string, document: string, position: number) {
+    const questionRef = doc(getFirestore(), collectionSrc, document);
+    const question = await getDoc(questionRef);
+    const data = question.data() as any;
+    console.log('destination', data.reviews);
+    data.reviews.splice(position, 0, data.reviews[position]);
+    console.log('ajout', data.reviews);
+    await updateDoc(questionRef, {
+      'reviews': data.reviews
+    });
+  }
+
   async copyCollection(collectionSrc: string, category: string, review: string, sourceCategory: string, sourceLesson: string) {
     const q = query(collection(getFirestore(), collectionSrc));
     const querySnapshot = await getDocs(q);

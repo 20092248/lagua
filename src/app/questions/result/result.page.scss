@@ -80,7 +80,7 @@ div.ion-thumbnail-content h1 {
     transition-timing-function: ease-in;
 }
 
-.circle > span {
+.circle>span {
     position: absolute;
     width: 100%;
     z-index: 1;
@@ -144,7 +144,8 @@ div.ion-thumbnail-content h1 {
     height: 0.92em;
 }
 
-.circle .bar, .circle.over-50 .fill {
+.circle .bar,
+.circle.over-50 .fill {
     position: absolute;
     border: 0.08em solid #307bbb;
     width: 100%;
@@ -170,15 +171,18 @@ div.ion-thumbnail-content h1 {
     transform: rotate(180deg);
 }
 
-.circle.error .bar, .circle.error.over-50 .fill {
+.circle.error .bar,
+.circle.error.over-50 .fill {
     border-color: #d43d51 !important;
 }
 
-.circle.warning .bar, .circle.warning.over-50 .fill {
+.circle.warning .bar,
+.circle.warning.over-50 .fill {
     border-color: #f5b100 !important;
 }
 
-.circle.success .bar, .circle.success.over-50 .fill {
+.circle.success .bar,
+.circle.success.over-50 .fill {
     border-color: #76ca00 !important;
 }
 
@@ -192,4 +196,13 @@ div.ion-thumbnail-content h1 {
 
 p.ion-small-label {
     font-size: 12px;
+}
+
+.ion-display-block {
+    display: block;
+}
+
+.ion-lose-review {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
 }

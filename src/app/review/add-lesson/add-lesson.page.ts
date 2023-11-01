@@ -17,9 +17,11 @@ export class AddLessonPage implements OnInit {
   fromCategory: string = 'A1';
   fromLesson: number = 1;
   fromOrder: number = 2;
+  position: number = 0;
+  document: string= '0xABG8UXaN8qNIXO8Ri0';
 
   constructor(private dictionaryService: DictionaryService, private reviewService: ReviewService, private formBuilder: FormBuilder) {
-    this.formLesson = this.formBuilder.group({ 'category': [''], 'lesson': [0], 'order': [0], 'fromCategory': ['A1'], 'fromLesson': [0], 'fromOrder': [0] });
+    this.formLesson = this.formBuilder.group({ 'category': [''], 'lesson': [0], 'order': [0], 'fromCategory': ['A1'], 'fromLesson': [0], 'fromOrder': [0], 'position': [0], document: [''] });
   }
 
   ngOnInit() {
@@ -28,6 +30,10 @@ export class AddLessonPage implements OnInit {
 
   addLesson() {
     this.reviewService.updateLessonInReview('shindzuani_francais_questions', this.category, String(this.lesson), String(this.order), this.fromCategory, String(this.fromLesson), String(this.fromOrder));
+  }
+
+  moveOneLessonTo() {
+    this.reviewService.moveOneLessonToPosition('reviews', this.document, this.position);
   }
 
 }
