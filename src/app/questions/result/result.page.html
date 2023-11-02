@@ -1,8 +1,9 @@
+<app-firework></app-firework>
 <ion-grid>
   <ion-row class="ion-text-center">
     <ion-col>
       <div>
-        <h1>Félicitation!</h1>
+        <h1>{{star < scoreToReach ? 'Essaye encore...' : 'Félicitation!'}}</h1>
         <h3 class="ion-no-margin">Vous avez terminé la leçon {{review?.order}}</h3>
       </div>
     </ion-col>
@@ -10,7 +11,7 @@
   <ion-row class="ion-text-center ion-justify-content-center">
     <ion-col size="7">
       <div>
-        <img src="https://cdn-icons-png.flaticon.com/512/5393/5393749.png"/>
+        <img src="https://cdn-icons-png.flaticon.com/512/5393/5393749.png" [ngClass]="{'ion-lose-review': star < scoreToReach}"/> 
       </div>
     </ion-col>
   </ion-row>
@@ -20,7 +21,7 @@
         <ion-item lines="none">
           <ion-thumbnail slot="start">
             <div class="ion-thumbnail-content">
-              <h3 class="ion-no-margin">{{score | number : '.2-2'}}</h3>
+              <h3 class="ion-no-margin">{{score | number : '.0-2'}}</h3>
               <div>Score</div>
             </div>
           </ion-thumbnail>
@@ -73,10 +74,10 @@
 </ion-grid>
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-button color="danger" class="ion-margin" (click)="tryAgain()" *ngIf="star < 2.5">
+    <ion-button color="danger" class="ion-margin" (click)="tryAgain()" *ngIf="star < scoreToReach" [ngClass]="{ 'ion-display-block' : star < scoreToReach && scoreToReach !== 2.5}">
       Réssayer
     </ion-button>
-    <ion-button expand="block" color="lagua" class="ion-margin" (click)="saveReview()" [ngClass]="{ 'ion-float-right' : star < 2.5 }">
+    <ion-button *ngIf="scoreToReach === 2.5 || star >= scoreToReach" expand="block" color="lagua" class="ion-margin" (click)="saveReview()" [ngClass]="{ 'ion-float-right' : star < scoreToReach }">
       Terminer la leçon
     </ion-button>
   </ion-toolbar>

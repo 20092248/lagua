@@ -25,6 +25,7 @@ export class ResultPage implements OnInit {
   scoreLearned: number = 0;
   ratings: number[] = Array(5).fill(undefined, 0, 5).map((x,i)=>i);
   star: number = 0;
+  scoreToReach: number = 2.5;
 
   constructor(private router: Router, private reviewService: ReviewService, private settingService: SettingService, private authentificationService: AuthentificationService, private audioService: AudioService) { }
 
@@ -32,7 +33,8 @@ export class ResultPage implements OnInit {
     this.review = this.reviewService.review;
     this.score = this.reviewService.resultReview?.score ? this.reviewService.resultReview?.score * 100 / (this.reviewService.resultReview?.nbrQuestion * 10) : 0;
     this.star = this.score / 20;
-    if(this.star >= 2.5) {
+    this.scoreToReach = this.reviewService.review.score ? this.reviewService.review.score / 20 : this.scoreToReach;
+    if(this.star >= this.scoreToReach) {
       this.audioService.play('successReview');
     } else {
       this.audioService.play('failReview');

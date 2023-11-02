@@ -17,12 +17,24 @@
         <ion-input placeholder="ex : 1" [(ngModel)]="order" name="order" formControlName="order"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Depuis la source *</ion-label>
+        <ion-label>La source *</ion-label>
         <ion-input placeholder="A1" [(ngModel)]="fromCategory" name="fromCategory" formControlName="fromCategory"></ion-input>
         <ion-input placeholder="1" [(ngModel)]="fromLesson" name="fromLesson" formControlName="fromLesson"></ion-input>
         <ion-input placeholder="1" [(ngModel)]="fromOrder" name="fromOrder" formControlName="fromOrder"></ion-input>
       </ion-item>
     </ion-list>
     <ion-button color="dark" expand="block" type="submit">Ajouter cours</ion-button>
+  </form>
+
+  <br/><br/><br/><br/>
+  <form [formGroup]="formLesson" class="ion-padding-bottom" (ngSubmit)="moveOneLessonTo();">
+    <ion-list>
+      <ion-item>
+        <ion-label>Ajouter/Déplacer leçon dans *</ion-label>
+        <ion-input placeholder="ex : 0xABG8UXaN8qNIXO8Ri0" [(ngModel)]="document" name="document" formControlName="document"></ion-input>
+        <ion-input placeholder="position : 1" [(ngModel)]="position" name="position" formControlName="position"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button color="dark" expand="block" type="submit">Déplacer leçon</ion-button>
   </form>
 </ion-content>

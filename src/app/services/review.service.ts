@@ -102,9 +102,26 @@ export class ReviewService {
     const sourceQuestion = await getDoc(doc(getFirestore(), collectionSrc, sourceCategory + '_' + sourceLesson + '_' + sourceOrder));
     const questionRef = doc(getFirestore(), collectionSrc, category + '_' + lesson + '_' + order);
     const question = await getDoc(questionRef);
-    const qcm = question.data();
+    const sourceData = sourceQuestion.data() as any;
+    const data = question.data() as any;
+    console.log('source', sourceData.qcm.questions);
+    console.log('destination', data.qcm.questions);
+    const merge = data.qcm.questions.concat(sourceData.qcm.questions);
+    console.log('ajout', merge);
     await updateDoc(questionRef, {
-      qcm: qcm
+      'qcm.questions': merge
+    });
+  }
+
+  async moveOneLessonToPosition(collectionSrc: string, document: string, position: number) {
+    const questionRef = doc(getFirestore(), collectionSrc, document);
+    const question = await getDoc(questionRef);
+    const data = question.data() as any;
+    console.log('destination', data.reviews);
+    data.reviews.splice(position, 0, data.reviews[position]);
+    console.log('ajout', data.reviews);
+    await updateDoc(questionRef, {
+      'reviews': data.reviews
     });
   }
 
