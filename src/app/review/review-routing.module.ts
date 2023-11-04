@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'add-lesson',
     loadChildren: () => import('./add-lesson/add-lesson.module').then( m => m.AddLessonsPageModule)
+  },
+  {
+    path: 'modify-review/:id',
+    loadChildren: () => import('./modify-review/modify-review.module').then( m => m.ModifyReviewPageModule)
   }
 ];
 

@@ -99,4 +99,8 @@ export class ReviewPage implements OnInit {
   closeModal() {
     this.isWordsDisplay = false;
   }
+
+  goToModifyReview(category: string, lesson: number, order: number) {
+    this.router.navigate(['/tabs/review/modify-review/' + category + '_' + lesson + '_' + order]);
+  }
 }
