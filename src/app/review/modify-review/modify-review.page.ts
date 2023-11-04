@@ -25,14 +25,12 @@ export class ModifyReviewPage implements OnInit {
     if (paramModifyReview) {
       this.questionService.getQuestions(this.user?.learn?.text.toLocaleLowerCase() + '_' + 'francais_questions', paramModifyReview).then(result =>{
         this.questions = result.qcm.questions;
-        console.log(this.questions);
       });
     }
   }
 
-  saveReview(questions: any){
+  saveReview(){
     console.log(this.questions);
-    console.log(questions);
   }
 
 }
