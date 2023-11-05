@@ -1,4 +1,4 @@
-<app-firework></app-firework>
+<app-firework *ngIf="star >= scoreToReach"></app-firework>
 <ion-grid>
   <ion-row class="ion-text-center">
     <ion-col>
@@ -11,7 +11,7 @@
   <ion-row class="ion-text-center ion-justify-content-center">
     <ion-col size="7">
       <div>
-        <img src="https://cdn-icons-png.flaticon.com/512/5393/5393749.png" [ngClass]="{'ion-lose-review': star < scoreToReach}"/> 
+        <img src="{{trophySrc}}" [ngClass]="{'ion-lose-review': star < scoreToReach}"/> 
       </div>
     </ion-col>
   </ion-row>

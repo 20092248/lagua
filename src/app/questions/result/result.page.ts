@@ -26,6 +26,7 @@ export class ResultPage implements OnInit {
   ratings: number[] = Array(5).fill(undefined, 0, 5).map((x,i)=>i);
   star: number = 0;
   scoreToReach: number = 2.5;
+  trophySrc: string='';
 
   constructor(private router: Router, private reviewService: ReviewService, private settingService: SettingService, private authentificationService: AuthentificationService, private audioService: AudioService) { }
 
@@ -48,6 +49,11 @@ export class ResultPage implements OnInit {
     if (!this.categories.length) {
       this.settingService.getSetting('reviews').then((data: any) => {
         this.categories = data.categories;
+      });
+    }
+    if(!this.trophySrc) {
+      this.settingService.getSetting('questions').then((data: any) => {
+        this.trophySrc = data.result.src;
       });
     }
   }

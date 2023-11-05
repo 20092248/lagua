@@ -1,12 +1,15 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>Modifier une leçon</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 <div class="ion-border ion-padding-horizontal" *ngFor="let q of questions; let index = index">
-  <p>Question n°{{index + 1}}</p>
+  <h4>Question n°{{index + 1}} <ion-icon class="ion-padding-end" name="add-circle-outline" (click)="addQuestion(index)"></ion-icon><ion-icon name="trash-outline" (click)="removeQuestion(index)"></ion-icon></h4>
   <ion-item>
     <ion-label>Description</ion-label>
     <ion-input value="{{q.description}}" [(ngModel)]="q.description"></ion-input>
@@ -26,7 +29,7 @@
   <div class="ion-margin" *ngFor="let c of q.choices">
     <ion-item>
       <ion-label>Réponse</ion-label>
-      <ion-input value="{{c.answer}}" [(ngModel)]="c.answer"></ion-input>
+      <ion-toggle slot="end" [checked]="c.answer" [(ngModel)]="c.answer"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-label>Choix</ion-label>
