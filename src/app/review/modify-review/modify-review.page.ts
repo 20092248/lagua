@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ActionSheetController } from '@ionic/angular';
 import { User } from 'src/app/model/user.model';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthentificationService } from 'src/app/services/authentification.service';
@@ -20,21 +21,18 @@ export class ModifyReviewPage implements OnInit {
   questions: any[] = [];
   paramModifyReview: string = '';
   constructor(private route: ActivatedRoute, private reviewService: ReviewService, private questionService: QuestionService, private authentificationService: AuthentificationService,
-    private alertService: AlertService) { }
+    private alertService: AlertService, private actionSheetCtrl: ActionSheetController) { }
 
   ngOnInit() {
     this.user = this.authentificationService.user;
     this.paramModifyReview = this.route.snapshot.paramMap.get('id') || '';
-      this.questionService.getQuestions(this.user?.learn?.text.toLocaleLowerCase() + '_' + 'francais_questions', this.paramModifyReview).then(result =>{
-        this.questions = result.qcm.questions;
-      });
+    this.questionService.getQuestions(this.user?.learn?.text.toLocaleLowerCase() + '_' + 'francais_questions', this.paramModifyReview).then(result => {
+      this.questions = result.qcm.questions;
+    });
   }
 
-  saveReview(){
-    console.log(this.questions);
-    // this.questionService.updateQuestion(this.user?.learn?.text.toLocaleLowerCase() + '_' + 'francais_questions', this.paramModifyReview, this.questions).then(result=>{
-    //   this.alertService.presentToast('La mise à jour a été effectué.', 1000, 'success');
-    // }, () => this.alertService.presentToast('Erreur lors de la mise à jour du questionnaire.', 1000, 'error'));
+  saveReview() {
+    this.confirmActionSheet();
   }
 
   addQuestion(index: number) {
@@ -43,6 +41,38 @@ export class ModifyReviewPage implements OnInit {
 
   removeQuestion(index: number) {
     this.questions.splice(index, 1);
+  }
+
+  async confirmActionSheet() {
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'Confirmer la modification',
+      subHeader: JSON.stringify(this.questions, (key, value) => key === 'img' || key === 'choices' || key === 'description' ? undefined : value),
+      buttons: [
+        {
+          text: 'Confirmer',
+          role: 'confirm',
+          data: {
+            action: 'confirm',
+          },
+        },
+        {
+          text: 'Annuler',
+          role: 'cancel',
+          data: {
+            action: 'cancel',
+          },
+        },
+      ],
+    });
+
+    await actionSheet.present();
+
+    const result = await actionSheet.onDidDismiss();
+    if (result.role === 'confirm') {
+      this.questionService.updateQuestion(this.user?.learn?.text.toLocaleLowerCase() + '_' + 'francais_questions', this.paramModifyReview, this.questions).then(() => {
+        this.alertService.presentToast('La mise à jour a été effectué.', 1000, 'success');
+      }, () => this.alertService.presentToast('Erreur lors de la mise à jour du questionnaire.', 1000, 'error'));
+    }
   }
 
 }

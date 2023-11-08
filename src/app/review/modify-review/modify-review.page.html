@@ -26,7 +26,7 @@
     <ion-label>Traduction</ion-label>
     <ion-input value="{{q.translate}}" [(ngModel)]="q.translate"></ion-input>
   </ion-item>
-  <div class="ion-margin" *ngFor="let c of q.choices">
+  <div class="ion-margin-horizontal" *ngFor="let c of q.choices">
     <ion-item>
       <ion-label>Réponse</ion-label>
       <ion-toggle slot="end" [checked]="c.answer" [(ngModel)]="c.answer"></ion-toggle>
