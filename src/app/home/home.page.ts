@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController, PopoverController, ToastController } from '@ionic/angular';
+import { LoadingController, PopoverController, RefresherCustomEvent, ToastController } from '@ionic/angular';
 import { Lesson } from '../model/lessons.model';
 import { User } from '../model/user.model';
 import { AuthentificationService } from '../services/authentification.service';
@@ -15,6 +15,7 @@ import { forkJoin } from 'rxjs';
 import { register } from 'swiper/element/bundle';
 import { ReviewGroup } from '../model/reviewGroup.model';
 import { Utils } from '../utils/utils';
+import { AlertService } from '../services/alert.service';
 register();
 
 @Component({
@@ -33,7 +34,7 @@ export class HomePage implements OnInit {
   progression: number = 0;
   initial: string = '';
 
-  constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService,
+  constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
     private modalController: ModalController, private reviewService: ReviewService, private loadingService: LoadingService, private toastController: ToastController) { }
   get getTheme() {
@@ -75,7 +76,7 @@ export class HomePage implements OnInit {
     if (lessonUnlock) {
       this.router.navigate([routing]);
     } else {
-      this.presentToast();
+      this.alertService.presentToast('Impossible de visualiser cette leçon.', 2000, 'danger');
     }
   }
 
@@ -89,23 +90,9 @@ export class HomePage implements OnInit {
     return length;
   }
 
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: 'Impossible de visualiser cette leçon.',
-      duration: 2000,
-      position: 'bottom',
-      color: 'danger'
-    });
-
-    await toast.present();
-  }
-
-  async showLoading() {
-    this.loadingService.present('Récupération des données utilisateur...');
-  }
-
-  async stopLoading() {
-    this.loadingService.dismiss();
+  handleRefresh(event: any) {
+    this.ngOnInit();
+    event.target.complete();
   }
 
   changeMode() {

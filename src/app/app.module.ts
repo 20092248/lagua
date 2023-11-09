@@ -30,7 +30,7 @@ import { environment } from 'src/environments/environment';
     provideDatabase(() => getDatabase()),
     provideStorage(() => getStorage()), 
     provideAuth(() => getAuth(initializeApp(environment.firebase))),
-    provideAnalytics(() => getAnalytics()),
+    provideAnalytics(() => getAnalytics(initializeApp(environment.firebase))),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
