@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { setDoc, doc, getDoc, getDocs, addDoc, collection, query, where, updateDoc, orderBy, startAfter, limit, DocumentData, QueryDocumentSnapshot } from '@firebase/firestore';
-import { Word } from '../model/word.model';
+import { doc, getDoc, getDocs, addDoc, collection, query, where, updateDoc, orderBy, startAfter, limit, DocumentData, QueryDocumentSnapshot } from '@firebase/firestore';
 import { FirebaseWord } from '../model/wordFirebase.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';

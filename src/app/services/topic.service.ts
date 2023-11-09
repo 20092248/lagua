@@ -9,8 +9,6 @@ const THEME_KEY = 'selected-app-theme';
 })
 export class TopicService {
 
-  themeMode: string | undefined;
-
   constructor(private _firestore: Firestore) { }
 
   async getTopic(document: string) {

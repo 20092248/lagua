@@ -7,8 +7,8 @@ import { doc, Firestore, getDoc, getFirestore, updateDoc } from '@angular/fire/f
 })
 export class QuestionService {
 
-  type: string | undefined;
-  questions: any | undefined;
+  type: string = '';
+  questions: any = {};
   nbrQuestion: number = 0;
 
   constructor(private _auth: Auth, private _firestore: Firestore) { }
@@ -28,7 +28,7 @@ export class QuestionService {
   async updateQuestion(collection: string, document: string, data: any[]): Promise<any> {
     const docRef = doc(getFirestore(), collection, document);
     await updateDoc(docRef, {
-      qcm: {questions : data }
+      qcm: { questions: data }
     });
   }
 }

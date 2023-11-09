@@ -7,11 +7,11 @@ import { doc, getDoc, collection, setDoc, addDoc, query, getDocs } from '@fireba
 })
 export class SettingService {
 
-  userInformation: any | undefined;
-  questions: any | undefined;
-  reviews: any | undefined;
-  profile: any | undefined;
-  topics: any | undefined;
+  userInformation: any = {};
+  questions: any = {};
+  reviews: any = {};
+  profile: any = {};
+  topics: any = {};
 
   constructor(private _firestore: Firestore) { }
 
@@ -41,7 +41,7 @@ export class SettingService {
   }
 
   async getSetting(document: string): Promise<any> {
-    var settingsReview: any | undefined;
+    var settingsReview: any = {};
     const docRef = doc(getFirestore(), 'settings', document);
     const docSnap = await getDoc(docRef);
 

@@ -3,7 +3,6 @@ import { Firestore, addDoc, getDoc, getFirestore, orderBy, setDoc } from '@angul
 import { doc, getDocs, updateDoc, collection, query, where } from '@firebase/firestore';
 import { Review } from '../model/review.model';
 import { ResultReview } from '../model/resultReview.model';
-import { AuthentificationService } from './authentification.service';
 import { ReviewGroup } from '../model/reviewGroup.model';
 
 @Injectable({
@@ -15,7 +14,6 @@ export class ReviewService {
   previousReviews: Review[] = [];
   review: Review = {} as Review;
   nextReview: Review = {} as Review;
-  resultReviews: ResultReview[] = [];
   resultReview: ResultReview = new ResultReview();
 
   constructor(private _firestore: Firestore) { }

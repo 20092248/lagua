@@ -7,13 +7,13 @@ const THEME_KEY = 'selected-app-theme';
 })
 export class ThemeService {
 
-  themeMode: string | undefined;
+  themeMode: string = '';
 
   constructor() {
     this.themeMode = this.themeMode ? this.themeMode : 'moon';
    }
 
-  setAppTheme(theme: string | undefined) {
+  setAppTheme(theme: string) {
     if (theme === 'moon') {
       this.themeMode = 'sunny';
       document.body.classList.add('dark');

@@ -5,7 +5,6 @@ import { CodeLabel } from '../model/codeLabel.model';
 import { CodeTextTranslate } from '../model/codeTextTranslate.model';
 import { User } from '../model/user.model';
 import { ReviewService } from './review.service';
-import { forkJoin } from 'rxjs';
 import { LessonService } from './lesson.service';
 import { Review } from '../model/review.model';
 import { Lesson } from '../model/lessons.model';

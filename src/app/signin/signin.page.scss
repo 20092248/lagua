@@ -1,18 +1,23 @@
 ion-content {
-  --background: linear-gradient(0deg, #eef1ee 70%, #46895c 70%); //linear-gradient(to bottom, #eef1ee 100px, #46895c 130px);
+  --background: #46895c; //linear-gradient(0deg, #eef1ee 70%, #46895c 70%); //linear-gradient(to bottom, #eef1ee 100px, #46895c 130px);
 }
 
 ion-content>div {
   background: var(--ion-background-light-color);
   border-radius: 30px 30px 0 0;
+  height: 100%;
 }
 
 ion-toolbar {
   --background: #46895c;
   --color: white;
-
+  --min-height: 80px;
   --padding-top: 20px;
   --padding-bottom: 20px;
+}
+
+ion-icon.ion-login-icon {
+  color: #386a49;
 }
 
 form {
@@ -20,17 +25,13 @@ form {
 }
 
 ion-item {
-  padding: 5px 0 12px;
-  --background: #dfebdf;
-  --border-radius: 30px;
+  padding: 10px 0 10px;
+  --background: #eef1ee; // #dfebdf;
+  // --border-radius: 30px;
 }
 
 ion-input {
   min-height: 45px !important;
-}
-
-ion-grid {
-  height: 100%;
 }
 
 ion-row {
@@ -45,37 +46,6 @@ ion-col {
   --border-radius: 10px;
   font-size: 16px;
   font-weight: 100;
-}
-
-.logo ion-icon {
-  font-size: 10em;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.logo img {
-  height: 100px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.logo {
-  position: relative;
-  height: 30%;
-}
-
-.ion-login-img {
-  height: 70%;
-  filter: invert(1);
-  animation: 1s;
-}
-
-.content {
-  height: 70%;
 }
 
 ion-label {
