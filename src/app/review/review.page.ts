@@ -30,16 +30,18 @@ export class ReviewPage implements OnInit {
   translate: string = 'francais';
   words: any[] = [];
   displayAccordion: string = '';
-  user: User = {} as User;
   flagSrc: string = '';
 
   constructor(private router: Router, private settingsService: SettingService, private reviewService: ReviewService, private authentificationService: AuthentificationService,
     private toastController: ToastController, private questionService: QuestionService, private settingService: SettingService) { }
 
+    get user() {
+      return this.authentificationService.user;
+    }
+
   ngOnInit() {
-    this.user = this.authentificationService.user;
-    this.userLearn = this.authentificationService.user?.learn;
-    this.userReview = this.authentificationService.user?.review;
+    this.userLearn = this.user.learn;
+    this.userReview = this.user.review;
     this.displayAccordion = this.userReview.category + '_' + this.userReview.lesson;
     if (!this.categories.length) {
       this.settingsService.getSetting('reviews').then((data => {
@@ -48,7 +50,7 @@ export class ReviewPage implements OnInit {
         this.flagSrc = data.flag;
       }));
     }
-    if (this.userReview?.category) {
+    if (this.userReview.category) {
       this.category = this.userReview.category;
       this.categoryLevel = this.reviewService.getCategoryLevel(this.category);
       this.codeCategorySelectedLevel = this.reviewService.getCategoryLevel(this.category);

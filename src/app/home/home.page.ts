@@ -25,69 +25,46 @@ register();
 })
 export class HomePage implements OnInit {
 
-  user: User = {} as User;
-  recommendedLessons: Lesson[] = [];
-  reviews: Review[] = [];
   currentDate: Date = new Date();
-  dailyIcon: string = '';
-  loading: HTMLIonLoadingElement | undefined;
   progression: number = 0;
   initial: string = '';
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
     private modalController: ModalController, private reviewService: ReviewService, private loadingService: LoadingService, private toastController: ToastController) { }
-  get getTheme() {
+
+  get theme() {
     return this.themeService.themeMode;
   }
-
-  get getPreviousReviews() {
+  get previousReviews() {
     return this.reviewService.previousReviews;
   }
-
-  get getReview() {
-    return this.authentificationService.user.review;
+  set setReview(review: any) {
+    this.reviewService.review = review;
+  }
+  get user() {
+    return this.authentificationService.user;
+  }
+  get recommendedLessons() {
+    return this.lessonService.lessons;
   }
 
   ngOnInit() {
-    this.user = this.authentificationService.user;
     this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
     forkJoin([this.settingService.getSettings(), this.reviewService.getAllReviews(), this.lessonService.searchLessons()]).subscribe(([settings, reviewsInfo, lessons]) => {
-      this.recommendedLessons = [];
-      this.progression = this.user && this.user.resultReviews && this.user.resultLessons ? (this.user.resultReviews?.length + this.user.resultLessons?.length) / (this.getReviewsLength(reviewsInfo) + lessons.length) * 100 : 0;
-      this.recommendedLessons = lessons;
+      this.progression = this.user && this.user.resultReviews && this.user.resultLessons ? (this.user.resultReviews?.length + this.user.resultLessons?.length) / (Utils.getReviewsLength(reviewsInfo) + lessons.length) * 100 : 0;
     });
   }
 
-  logout() {
-    this.authentificationService.logout(true).then(() => {
-      this.goTo('/firstpage', true);
-    });
-  }
-
-  goTo(routing: string, dissmissPopover: boolean) {
-    this.router.navigate([routing]);
-    if (dissmissPopover) {
-      this.dismissPopover();
-    }
-  }
-
-  goToLesson(routing: string, lessonUnlock: boolean) {
+  goTo(routing: string, lessonUnlock: boolean, dismissPopover: boolean) {
     if (lessonUnlock) {
       this.router.navigate([routing]);
+      if (dismissPopover) {
+        this.dismissPopover();
+      }
     } else {
       this.alertService.presentToast('Impossible de visualiser cette leçon.', 2000, 'danger');
     }
-  }
-
-  getReviewsLength(reviewsInfo: ReviewGroup[]) {
-    var length = 0;
-    reviewsInfo.forEach(reviewInfo => {
-      reviewInfo.reviews.forEach(r => {
-        length += 1;
-      })
-    });
-    return length;
   }
 
   handleRefresh(event: any) {
@@ -96,7 +73,7 @@ export class HomePage implements OnInit {
   }
 
   changeMode() {
-    this.themeService.setAppTheme(this.getTheme);
+    this.themeService.setAppTheme(this.theme);
   }
 
   dismissPopover() {
@@ -106,19 +83,24 @@ export class HomePage implements OnInit {
   }
 
   displayPreviousReviews() {
-    this.reviewService.getPreviousReviews(this.getReview).then(() => { });
+    this.reviewService.getPreviousReviews(this.user.review).then(() => { });
   }
 
   accessPreviousReview(review: Review) {
-    this.reviewService.review = review;
+    this.setReview(review);
     this.router.navigate(['/questions']);
   }
 
   accessToReview() {
-    this.reviewService.review = this.authentificationService.user.review;
+    this.setReview(this.authentificationService.user.review);
     this.router.navigate(['/questions']);
   }
 
+  logout() {
+    this.authentificationService.logout(true).then(() => {
+      this.goTo('/firstpage', false, true);
+    });
+  }
 
   getDailyIcon(infoDay: any) {
     if (infoDay) {

@@ -23,14 +23,14 @@
                   <h5 class="ion-margin-top">{{user.displayName}}</h5>
                   <div class="ion-margin-bottom">{{user.email}}</div>
                 </div>
-                <ion-item button (click)="goTo('/tabs/update-cv', true)"><ion-icon class="ion-padding-end"
+                <ion-item button (click)="goTo('/tabs/update-cv', false, true)"><ion-icon class="ion-padding-end"
                     name="settings-outline"></ion-icon>Paramètres</ion-item>
-                <ion-item button (click)="goTo('/tabs/recrute', true)"><ion-icon class="ion-padding-end"
+                <ion-item button (click)="goTo('/tabs/recrute', false, true)"><ion-icon class="ion-padding-end"
                     name="bar-chart-outline"></ion-icon>Mon activité</ion-item>
-                <ion-item button (click)="goTo('/tabs/account', true)"><ion-icon class="ion-padding-end"
+                <ion-item button (click)="goTo('/tabs/account', false, true)"><ion-icon class="ion-padding-end"
                     name="flag-outline"></ion-icon>Mes langues</ion-item>
                 <ion-item (click)="changeMode()"><ion-icon name="brush-outline" class="ion-padding-end">
-                  </ion-icon>Thème {{getTheme === 'moon' ? 'sombre' : 'clair'}}<ion-icon name="{{getTheme}}"
+                  </ion-icon>Thème {{theme === 'moon' ? 'sombre' : 'clair'}}<ion-icon name="{{theme}}"
                     slot="end"></ion-icon></ion-item>
                 <ion-item button lines="none" detail="false" (click)="logout()"><ion-icon class="ion-padding-end"
                     name="log-out-outline"></ion-icon>Déconnexion</ion-item>
@@ -137,16 +137,13 @@
             <ion-card class="ion-no-margin-bottom"
               [ngClass]="{'ion-no-margin-middle': !(index === 0 || index === recommendedLessons.length - 1),'ion-no-margin-right': index === 0, 'ion-no-margin-left': index === recommendedLessons.length - 1, 'ion-lock-lesson': user.lesson.order < lesson.order}">
               <img src="{{lesson.src}}" />
-              <!-- <ion-card-header>
-                <ion-card-title>{{lesson.title}}</ion-card-title>
-              </ion-card-header> -->
               <ion-card-content>
                 <div class="ion-font-weight-bold">{{lesson.title}}</div>
                 <div class="ion-padding-top-min ion-font-size-small">{{lesson.subTitle}}</div>
               </ion-card-content>
               <ion-button size="small"
                 class="ion-button ion-button-lesson ion-padding-end ion-float-right ion-button-position" fill="clear"
-                (click)="goToLesson('/tabs/lessons/'+lesson.navigate, user.lesson.order >= lesson.order)">Voir la
+                (click)="goTo('/tabs/lessons/'+lesson.navigate, user.lesson.order >= lesson.order, false)">Voir la
                 leçon</ion-button>
             </ion-card>
           </swiper-slide>
@@ -181,7 +178,7 @@
               <ion-content>
                 <ion-list>
                   <ion-item detail="true" routerLinkActive="selected" lines="full" class="ion-item-result-dictionary"
-                    *ngFor="let r of getPreviousReviews; let index = index"
+                    *ngFor="let r of previousReviews; let index = index"
                     (click)="accessPreviousReview(r); modal.dismiss()">
                     <ion-icon name="reader-outline" slot="start"></ion-icon>
                     <ion-label class="ion-text-wrap">
@@ -199,13 +196,13 @@
       <div class="ion-unlock-lesson">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>{{getReview.category === 'A1' && getReview.lesson === 1 && getReview.order === 1 ?
+            <ion-card-title>{{user.review.category === 'A1' && user.review.lesson === 1 && user.review.order === 1 ?
               'Premier': 'Prochain'}} cours à visualiser</ion-card-title>
-            <ion-card-subtitle>Cours {{getReview.lesson}} : Leçon {{getReview.order}} - {{getReview.text}} /
-              <i>{{getReview.translate}}</i></ion-card-subtitle>
+            <ion-card-subtitle>Cours {{user.review.lesson}} : Leçon {{user.review.order}} - {{user.review.text}} /
+              <i>{{user.review.translate}}</i></ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
-            <div class="ion-custom-text" *ngFor="let content of getReview.contents">{{content}}</div>
+            <div class="ion-custom-text" *ngFor="let content of user.review.contents">{{content}}</div>
           </ion-card-content>
           <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position" fill="clear"
             (click)="accessToReview()">Accéder au cours</ion-button>

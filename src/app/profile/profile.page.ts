@@ -12,7 +12,6 @@ import { Utils } from '../utils/utils';
 })
 export class ProfilePage implements OnInit {
 
-  user: User | undefined;
   currentDate: Date = new Date();
   nbrWordsToRevise: number = 0;
   nbrWordsToLearn: number = 0;
@@ -28,6 +27,10 @@ export class ProfilePage implements OnInit {
 
   constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService) { }
 
+  get user() {
+    return this.authentificationService.user;
+  }
+
   ngOnInit() {
     this.profileSetting = this.settingService.profile;
     if (!this.profileSetting) {
@@ -35,7 +38,6 @@ export class ProfilePage implements OnInit {
         this.profileSetting = setting.profile;
       });
     }
-    this.user = this.authentificationService.user;
     this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
     this.user.resultReviews?.forEach(review => {
       this.nbrWordsToRevise += review.toRevise.length;

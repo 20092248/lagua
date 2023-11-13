@@ -1,3 +1,5 @@
+import { ReviewGroup } from "../model/reviewGroup.model";
+
 export class Utils {
 
     static getInitial(displayName: string) {
@@ -8,5 +10,15 @@ export class Utils {
             return displayName.substring(0, 2).toLocaleUpperCase();
         }
     }
+
+    static getReviewsLength(reviewsInfo: ReviewGroup[]) {
+        var length = 0;
+        reviewsInfo.forEach(reviewInfo => {
+          reviewInfo.reviews.forEach(() => {
+            length += 1;
+          })
+        });
+        return length;
+      }
 
 }

@@ -9,7 +9,6 @@ export class LessonService {
 
   lessons: Lesson[] = [];
   lesson: Lesson = {} as Lesson;
-  resultLessons: Lesson[] = [];
 
   constructor(private _firestore: Firestore) { }
 
