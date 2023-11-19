@@ -6,6 +6,7 @@ import { AuthentificationService } from '../services/authentification.service';
 import { DictionaryService } from '../services/dictionary.service';
 import { CONSTANTS } from '../utils/constants';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-dictionary',
@@ -26,12 +27,14 @@ export class DictionaryPage implements OnInit {
   text: string = 'shikomori';
   linkInfo: FirebaseWord = {} as FirebaseWord;
 
-  constructor(private dictionaryService: DictionaryService, private authentificationService: AuthentificationService) { }
+  constructor(private dictionaryService: DictionaryService, private authentificationService: AuthentificationService, private loadingService: LoadingService) { }
 
   ngOnInit(): void {
     this.user = this.authentificationService.user;
     // this.text = this.user.learn.text;
+    this.loadingService.present('Chargement...');
     this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/this.text, this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
+      this.loadingService.dismiss();
       this.words = words;
     });
   }

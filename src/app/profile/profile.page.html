@@ -2,7 +2,7 @@
   <ion-grid class="ion-grid-header">
     <ion-row class="ion-text-center ion-padding-horizontal-min">
       <ion-col>
-        <h1>{{user?.displayName}}</h1>
+        <h1>{{user.displayName}}</h1>
         <p class="ion-position-badge ion-padding-bottom">
           <img width="32" src="{{profileSetting?.icon?.badgeSrc}}">
           <span class="ion-padding-end-min">{{score}} Points</span>
@@ -10,18 +10,18 @@
         <div>
           <div class="border-white-tabs" id="popover-profil">
             <div class="img-box">
-              <img id="bottom-start" *ngIf="user?.photoURL" [src]="user?.photoURL">
+              <img id="bottom-start" *ngIf="user?.photoURL" [src]="user.photoURL">
               <div id="bottom-start" class="ion-position-icon" *ngIf="!user?.photoURL">{{initial}}</div>
                 <ion-popover class="ion-padding-top ion-margin-top" trigger="bottom-start" side="bottom" alignment="center">
                   <ng-template>
-                    <ion-content class="ion-padding">{{user?.email}}</ion-content>
+                    <ion-content class="ion-padding">{{user.email}}</ion-content>
                   </ng-template>
                 </ion-popover>
             </div>
           </div>
         </div>        
         <p class="ion-padding-top ion-no-margin-top">Niveau actuel : {{getActualLevelByCode()}}</p>
-        <p>Langue en apprentissage : {{user?.learn?.text}} / <i>{{user?.learn?.translate}}</i></p>
+        <p>Langue en apprentissage : {{user.learn.text}} / <i>{{user.learn.translate}}</i></p>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -1,12 +1,8 @@
 <ion-content [scrollEvents]="true" [fullscreen]="true" (ionScroll)="handleScroll($any($event))">
-  <div>
     <div class="subHeader ion-text-center">
       <h1 class="headline ion-no-margin">Apprendre <ion-icon name="albums"></ion-icon></h1>
       <p class="subHeadline">{{categorySelected?.label}} ({{categorySelected?.code}}) - {{reviews.length}} leçon(s)</p>
     </div>
-    <!-- <div class="subHeader ion-padding">
-      <h1 class="headline ion-no-margin ion-text-center">{{categorySelected?.label}} ({{categorySelected?.code}})<small> - Leçon</small></h1>
-    </div> -->
     <div id="categories-menu" class="ion-scroll-review" [class.is-pinned]="isPinned">
       <div class="ion-margin-vertical-min">
         <ion-button *ngFor="let c of categories" size="small" class="ion-button ion-button-{{c.code | lowercase}}"
@@ -14,7 +10,7 @@
           ({{c.code}})</ion-button>
       </div>
     </div>
-    <ion-accordion-group [value]="[displayAccordion]">
+    <ion-accordion-group [value]="[displayAccordion]" [multiple]="true">
       <ion-accordion value="{{data.category}}_{{data.lesson}}" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end"
         *ngFor="let data of reviews">
         <ion-item lines="none" slot="header" class="ion-accordion-header">
@@ -85,15 +81,4 @@
         </div>
       </ion-accordion>
     </ion-accordion-group>
-  </div>
-  <!-- <ion-fab slot="fixed" horizontal="end" vertical="bottom" *ngIf="user.email === 'brady91700@gmail.com' || user.email === 'bradyabd@gmail.com'">
-    <ion-fab-button size="small" color="lagua" [routerLink]="['add-review']">
-      <ion-icon name="file-tray-stacked"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-fab slot="fixed" horizontal="start" vertical="bottom" *ngIf="user.email === 'brady91700@gmail.com' || user.email === 'bradyabd@gmail.com'">
-    <ion-fab-button size="small" color="lagua" [routerLink]="['add-lesson']">
-      <ion-icon name="file-tray-full"></ion-icon>
-    </ion-fab-button>
-  </ion-fab> -->
 </ion-content>

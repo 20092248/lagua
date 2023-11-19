@@ -4,6 +4,8 @@ import { Lesson } from '../model/lessons.model';
 import { LessonService } from '../services/lesson.service';
 import { AuthentificationService } from '../services/authentification.service';
 import { User } from '../model/user.model';
+import { LoadingController } from '@ionic/angular';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-lesson',
@@ -12,7 +14,7 @@ import { User } from '../model/user.model';
 })
 export class LessonPage implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService, private loadingService: LoadingService) { }
 
   get userLesson() {
     return this.authentificationService.user.lesson;
@@ -26,8 +28,10 @@ export class LessonPage implements OnInit {
 
   ngOnInit(): void {
     if (!this.lessons.length) {
+      this.loadingService.present('Chargement...');
       this.lessonService.searchLessons().then(lessons => {
-        this.setLessons(lessons);
+        this.loadingService.dismiss();
+        this.setLessons = lessons;
       })
     }
   }

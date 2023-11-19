@@ -6,29 +6,30 @@ import { LoadingController } from '@ionic/angular';
 })
 export class LoadingService {
 
+  loading: HTMLIonLoadingElement = {} as HTMLIonLoadingElement;
+  isExist: boolean = false;
+
   constructor(public loadingController: LoadingController) { }
 
   async present(message: string) {
-    // Dismiss all pending loaders before creating the new one
-    await this.dismiss();
-
-    await this.loadingController
+    this.loading = await this.loadingController
       .create({
-            message: message,
-            spinner: 'circles'
-          })
-      .then(res => {
-        res.present();
+        message: message,
+        spinner: 'circles'
       });
+
+    this.loading.present().then(() => {
+      this.isExist = true;
+    });
   }
 
   /**
    * Dismiss all the pending loaders, if any
    */
   async dismiss() {
-    while (await this.loadingController.getTop() !== undefined) {
+    setTimeout(async () => {
       await this.loadingController.dismiss();
-    }
+    }, 400);
   }
-  
+
 }

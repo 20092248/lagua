@@ -9,6 +9,7 @@ import { IonContent, ScrollDetail, ToastController } from '@ionic/angular';
 import { CodeTextTranslate } from '../model/codeTextTranslate.model';
 import { QuestionService } from '../services/question.service';
 import { ReviewGroup } from '../model/reviewGroup.model';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-review',
@@ -33,7 +34,7 @@ export class ReviewPage implements OnInit {
   flagSrc: string = '';
 
   constructor(private router: Router, private settingsService: SettingService, private reviewService: ReviewService, private authentificationService: AuthentificationService,
-    private toastController: ToastController, private questionService: QuestionService, private settingService: SettingService) { }
+    private toastController: ToastController, private questionService: QuestionService, private settingService: SettingService, private loadingService: LoadingService) { }
 
     get user() {
       return this.authentificationService.user;
@@ -55,7 +56,9 @@ export class ReviewPage implements OnInit {
       this.categoryLevel = this.reviewService.getCategoryLevel(this.category);
       this.codeCategorySelectedLevel = this.reviewService.getCategoryLevel(this.category);
     }
+    this.loadingService.present('Chargement...');
     this.reviewService.getReviewsByCategory(this.category).then((results: ReviewGroup[]) => {
+      this.loadingService.dismiss();
       this.reviews = results;
       // this.settingService.createDocument('reviews', '0xABG8UXaN8qNIXO8Ri0', data[0]).then();
     });

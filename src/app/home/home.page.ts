@@ -51,7 +51,9 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
+    this.loadingService.present('Chargement...');
     forkJoin([this.settingService.getSettings(), this.reviewService.getAllReviews(), this.lessonService.searchLessons()]).subscribe(([settings, reviewsInfo, lessons]) => {
+        this.loadingService.dismiss();
       this.progression = this.user && this.user.resultReviews && this.user.resultLessons ? (this.user.resultReviews?.length + this.user.resultLessons?.length) / (Utils.getReviewsLength(reviewsInfo) + lessons.length) * 100 : 0;
     });
   }
