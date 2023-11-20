@@ -20,9 +20,9 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const uidConnected = this.authentificationService.checkUserState();
       if (uidConnected) {
-        this.loadingService.present('Chargement...');
+        // this.loadingService.present('Chargement...');
         return this.authentificationService.getInfoUser(uidConnected).then(() => {
-          this.loadingService.dismiss();
+          // this.loadingService.dismiss();
           return true;
         });
       } else {
