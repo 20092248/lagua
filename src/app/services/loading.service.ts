@@ -19,16 +19,14 @@ export class LoadingService {
         spinner: 'circles'
       });
 
-    this.loading.present().then(() => {
-      this.isExist = true;
-    });
+    await this.loading.present();
   }
 
   /**
    * Dismiss all the pending loaders, if any
    */
   async dismiss() {
-    const customInterval = interval(200).pipe(
+    const customInterval = interval(0).pipe(
       take(10), //take only the first 10 values interval 200ms (10 secondes)
       finalize(async() => this.dismissIfLoadingPresent()) // Execute when the observable completes or unsubscribe
     );
