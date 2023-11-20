@@ -28,6 +28,8 @@ export class HomePage implements OnInit {
   currentDate: Date = new Date();
   progression: number = 0;
   initial: string = '';
+  previousReviewLoaded: boolean = false;
+  previousReviewLoadedLength: number[] = []; 
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
@@ -51,6 +53,8 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
+    const numberPreviousReview = this.user.resultReviews ? this.user.resultReviews.length : 0;
+    this.previousReviewLoadedLength = Array(numberPreviousReview).fill(undefined, 0, numberPreviousReview).map((x,i)=>i);
     this.loadingService.present('Chargement...');
     forkJoin([this.settingService.getSettings(), this.reviewService.getAllReviews(), this.lessonService.searchLessons()]).subscribe(([settings, reviewsInfo, lessons]) => {
         this.loadingService.dismiss();
@@ -85,16 +89,17 @@ export class HomePage implements OnInit {
   }
 
   displayPreviousReviews() {
-    this.reviewService.getPreviousReviews(this.user.review).then(() => { });
+    this.previousReviewLoaded = false;
+    this.reviewService.getPreviousReviews(this.user.review).then(() => { this.previousReviewLoaded = true; });
   }
 
   accessPreviousReview(review: Review) {
-    this.setReview(review);
+    this.setReview = review;
     this.router.navigate(['/questions']);
   }
 
   accessToReview() {
-    this.setReview(this.authentificationService.user.review);
+    this.setReview = this.authentificationService.user.review;
     this.router.navigate(['/questions']);
   }
 

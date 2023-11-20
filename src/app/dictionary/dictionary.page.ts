@@ -26,6 +26,9 @@ export class DictionaryPage implements OnInit {
   translate: string = 'francais';
   text: string = 'shikomori';
   linkInfo: FirebaseWord = {} as FirebaseWord;
+  wordsLoaded: boolean = false;
+  wordsLength: number[] = Array(8).fill(undefined, 0, 8).map((x,i)=>i);
+
 
   constructor(private dictionaryService: DictionaryService, private authentificationService: AuthentificationService, private loadingService: LoadingService) { }
 
@@ -35,6 +38,7 @@ export class DictionaryPage implements OnInit {
     this.loadingService.present('Chargement...');
     this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/this.text, this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
       this.loadingService.dismiss();
+      this.wordsLoaded = true;
       this.words = words;
     });
   }
@@ -52,8 +56,10 @@ export class DictionaryPage implements OnInit {
   }
 
   changeLetter(letter: string) {
+    this.wordsLoaded = false;
     this.letterSelected = letter;
     this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/this.text, this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
+      this.wordsLoaded = true;
       this.words = words;
     });
   }
@@ -76,6 +82,8 @@ export class DictionaryPage implements OnInit {
   }
 
   changeDictionary(){
+    this.letterSelected = this.verifyLetterSelected();
+    this.wordsLoaded = false;
     if(this.translate === 'francais'){
       this.text = 'francais';
       this.translate = 'shikomori'; //this.user.learn.text;
@@ -84,8 +92,19 @@ export class DictionaryPage implements OnInit {
       this.translate = 'francais';
     }
     this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/this.text, this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
+      this.wordsLoaded = true;
       this.words = words;
     });
+  }
+
+  verifyLetterSelected() {
+    if(this.letterSelected === 'ɓ') {
+      return 'b';
+    } else if(this.letterSelected === 'ɗ') {
+      return 'd';
+    } else {
+      return this.letterSelected;
+    }
   }
 
   closeModal() {

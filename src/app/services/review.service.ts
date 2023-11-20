@@ -41,10 +41,9 @@ export class ReviewService {
     querySnapshot.forEach((doc) => {
       const reviewInfo = doc.data() as ReviewGroup;
       for (const r of reviewInfo.reviews) {
-        if (review.lesson === r.lesson && review.order === r.order) {
-          return;
+        if (review.lesson === r.lesson && review.order > r.order) {
+          this.previousReviews.push(r);
         }
-        this.previousReviews.push(r);
       }
     });
     return this.previousReviews;

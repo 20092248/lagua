@@ -93,6 +93,11 @@ ion-list {
 
 ion-item.ion-item-result-dictionary {
   --background: transprent;
+
+  > ion-skeleton-text {
+    margin: 10px 0 5px;
+    --border-radius: 9999px;
+  }
 }
 
 ion-accordion {

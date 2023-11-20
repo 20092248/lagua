@@ -176,17 +176,29 @@
                 </ion-toolbar>
               </ion-header>
               <ion-content>
-                <ion-list>
+                <ion-list *ngIf="previousReviewLoaded">
                   <ion-item detail="true" routerLinkActive="selected" lines="full" class="ion-item-result-dictionary"
                     *ngFor="let r of previousReviews; let index = index"
                     (click)="accessPreviousReview(r); modal.dismiss()">
-                    <ion-icon name="reader-outline" slot="start"></ion-icon>
+                    <ion-icon name="lock-open-outline" slot="start"></ion-icon>
                     <ion-label class="ion-text-wrap">
                       <h3>{{r.text}}</h3>
                       <p>{{r.translate}}</p>
                     </ion-label>
                   </ion-item>
                 </ion-list>
+
+                <ion-list *ngIf="!previousReviewLoaded">
+                  <ion-item lines="full" class="ion-item-result-dictionary"
+                    *ngFor="let previousReview of previousReviewLoadedLength">
+                    <ion-skeleton-text [animated]="true" style="width: 50px; height: 50px"></ion-skeleton-text>
+                    <ion-label class="ion-margin-start">
+                      <h3><ion-skeleton-text [animated]="true" style="width: 50%;"></ion-skeleton-text></h3>
+                      <p><ion-skeleton-text [animated]="true" style="width: 40%;"></ion-skeleton-text></p>
+                    </ion-label>
+                  </ion-item>
+                </ion-list>
+
               </ion-content>
             </ng-template>
           </ion-modal>

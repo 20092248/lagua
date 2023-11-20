@@ -86,9 +86,19 @@ ion-modal {
     ion-icon {
       padding: 10px;
       border-radius: 20px;
-      background: var(--ion-background-color);
+      background: #9dc18c;
+      color: #fff;
+    }
+
+    > ion-skeleton-text {
+      --border-radius: 9999px;
     }
   }
+}
+
+ion-skeleton-text {
+  --background: rgb(112 198 117);
+  --background-rgb: 112, 198, 117;
 }
 
 .ion-padding-top-min {
