@@ -26,11 +26,12 @@ export class LoadingService {
    * Dismiss all the pending loaders, if any
    */
   async dismiss() {
-    const customInterval = interval(0).pipe(
-      take(10), //take only the first 10 values interval 200ms (10 secondes)
-      finalize(async() => this.dismissIfLoadingPresent()) // Execute when the observable completes or unsubscribe
-    );
-    this.choice = customInterval.subscribe(async () => this.dismissIfLoadingPresent());
+    await this.loading.dismiss();
+    // const customInterval = interval(0).pipe(
+    //   take(10), //take only the first 10 values interval 200ms (10 secondes)
+    //   finalize(async() => this.dismissIfLoadingPresent()) // Execute when the observable completes or unsubscribe
+    // );
+    // this.choice = customInterval.subscribe(async () => this.dismissIfLoadingPresent());
   }
 
   async dismissIfLoadingPresent() {
