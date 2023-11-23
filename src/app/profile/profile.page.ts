@@ -33,7 +33,7 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.profileSetting = this.settingService.profile;
-    if (!this.profileSetting) {
+    if (JSON.stringify(this.profileSetting) === '{}') {
       this.settingService.getSettings().then(setting => {
         this.profileSetting = setting.profile;
       });

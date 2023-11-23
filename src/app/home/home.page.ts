@@ -29,7 +29,8 @@ export class HomePage implements OnInit {
   progression: number = 0;
   initial: string = '';
   previousReviewLoaded: boolean = false;
-  previousReviewLoadedLength: number[] = []; 
+  previousReviewLoadedLength: number[] = [];
+  setting: any = {};
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
@@ -56,8 +57,9 @@ export class HomePage implements OnInit {
     const numberPreviousReview = this.user.resultReviews ? this.user.resultReviews.length : 0;
     this.previousReviewLoadedLength = Array(numberPreviousReview).fill(undefined, 0, numberPreviousReview).map((x,i)=>i);
     this.loadingService.present('Chargement...');
-    forkJoin([this.settingService.getSettings(), this.reviewService.getAllReviews(), this.lessonService.searchLessons()]).subscribe(([settings, reviewsInfo, lessons]) => {
+    forkJoin([this.settingService.getSettings(), this.reviewService.getAllReviews(), this.lessonService.searchLessons()]).subscribe(([setting, reviewsInfo, lessons]) => {
         this.loadingService.dismiss();
+        this.setting = setting;
       this.progression = this.user && this.user.resultReviews && this.user.resultLessons ? (this.user.resultReviews?.length + this.user.resultLessons?.length) / (Utils.getReviewsLength(reviewsInfo) + lessons.length) * 100 : 0;
     });
   }

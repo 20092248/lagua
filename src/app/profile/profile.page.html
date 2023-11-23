@@ -10,7 +10,7 @@
         <div>
           <div class="border-white-tabs" id="popover-profil">
             <div class="img-box">
-              <img id="bottom-start" *ngIf="user?.photoURL" [src]="user.photoURL">
+              <img id="bottom-start" *ngIf="user?.photoURL" [src]="user.photoURL || profileSetting.icon?.unknownUserSrc">
               <div id="bottom-start" class="ion-position-icon" *ngIf="!user?.photoURL">{{initial}}</div>
                 <ion-popover class="ion-padding-top ion-margin-top" trigger="bottom-start" side="bottom" alignment="center">
                   <ng-template>

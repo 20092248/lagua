@@ -11,7 +11,7 @@
       <ion-col size="3" class="ion-padding-end ion-display-flex">
         <div class="border-white-tabs" id="popover-profil">
           <div class="img-box">
-            <img *ngIf="user.photoURL" [src]="user.photoURL">
+            <img *ngIf="user.photoURL" [src]="user.photoURL || setting.profile.icon.unknownUserSrc">
             <div *ngIf="!user.photoURL">{{initial}}</div>
           </div>
         </div>
