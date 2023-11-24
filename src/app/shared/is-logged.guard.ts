@@ -15,7 +15,12 @@ export class IsLoggedGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.authentificationService.checkUserState()) {
+    return this.isLoggedGuard();
+  }
+
+  async isLoggedGuard() {
+    const uid = await this.authentificationService.isConnected();
+    if(uid){
       this.router.navigate(['']);
       return false;
     } else {

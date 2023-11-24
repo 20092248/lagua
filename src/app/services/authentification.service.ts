@@ -9,6 +9,9 @@ import { LessonService } from './lesson.service';
 import { Review } from '../model/review.model';
 import { Lesson } from '../model/lessons.model';
 import { ResultReview } from '../model/resultReview.model';
+import { finalize, take, interval, Subscription, lastValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
+import { LoadingService } from './loading.service';
 
 const USER_KEY = 'users';
 
@@ -19,16 +22,41 @@ export class AuthentificationService {
 
   user: User = {} as User;
   timer: Date = new Date();
+  choice: Subscription | undefined;
 
-  constructor(private _auth: Auth, private _firestore: Firestore, private reviewService: ReviewService, private lessonService: LessonService) { }
+  constructor(private _auth: Auth, private _firestore: Firestore,
+    private reviewService: ReviewService, private lessonService: LessonService, private loadingService: LoadingService) { }
 
-  checkUserState() {
-    return localStorage.getItem(USER_KEY);
+  async isConnected() {
+    const customInterval = interval(200).pipe(
+      take(10), //take only the first 10 values interval 200ms (10 secondes)
+      finalize(() => this.checkUser()) // Execute when the observable completes or unsubscribe
+    );
+    const finalNumber = await lastValueFrom(customInterval);
+    return this.user ? this.user.uid : '';
+  }
+
+  checkUser() {
+    if (getAuth()) {
+      const user = getAuth().currentUser;
+      if (user) {
+        this.user.uid = user.uid;
+        this.user.email = user.email;
+        this.user.displayName = user.displayName;
+        this.user.photoURL = user.photoURL;
+        this.stopTimer();
+      }
+    }
+  }
+
+  stopTimer() {
+    this.choice?.unsubscribe();
+    this.choice = undefined; // Clear the timeoutId
   }
 
   async getInfoUser(uid: string) {
     try {
-      localStorage.setItem(USER_KEY, uid);
+      // localStorage.setItem(USER_KEY, uid);
       await this.updateDayConnected('users', uid);
       const document = await getDoc(doc(getFirestore(), 'users', uid));
       if (document.exists()) {
@@ -54,7 +82,7 @@ export class AuthentificationService {
         throw new Error('Utilisateur introuvable');
       }
     } catch (error: any) {
-      localStorage.removeItem(USER_KEY);
+      // localStorage.removeItem(USER_KEY);
       throw Error(error.message);
     }
   }
@@ -229,12 +257,12 @@ export class AuthentificationService {
   }
 
   async logout(disconnect: boolean) {
-    if(disconnect){
+    if (disconnect) {
       this.updateDayDisconnected('users', this.user.uid ? this.user.uid : '');
     }
     return signOut(getAuth()).then(() => {
       this.user = {} as User;
-      localStorage.removeItem(USER_KEY);
+      // localStorage.removeItem(USER_KEY);
       console.log('sign-out successful.');
     }).catch((error) => {
       console.error(error);
@@ -248,7 +276,7 @@ export class AuthentificationService {
     this.user.resultReviews.push(updateReview);
     const userRef = doc(getFirestore(), nameObject, uid);
     const nextReview = await this.reviewService.findNextReview(this.user.review).then(result => { return result });
-    this.reviewService.getPreviousReviews(nextReview).then(() => {});    
+    this.reviewService.getPreviousReviews(nextReview).then(() => { });
     await updateDoc(userRef, {
       review: nextReview,
       resultReviews: this.user.resultReviews.map((obj) => { return Object.assign({}, obj) })

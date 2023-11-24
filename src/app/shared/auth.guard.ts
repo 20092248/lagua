@@ -18,17 +18,20 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const uidConnected = this.authentificationService.checkUserState();
-      if (uidConnected) {
-        this.loadingService.present('Chargement...');
-        return this.authentificationService.getInfoUser(uidConnected).then(() => {
+      return this.authGuard();
+  }
+
+  async authGuard() {
+    const uid = await this.authentificationService.isConnected();
+    if(uid){
+      this.loadingService.present('Chargement...');
+        return this.authentificationService.getInfoUser(uid).then(() => {
           this.loadingService.dismiss();
           return true;
-        });
-      } else {
-        // RedirectTo log in
-        this.router.navigate(['/firstpage']);
-        return false;
-      }
+        }, () => { this.loadingService.dismiss(); return false; });
+    } else {
+      this.router.navigate(['/firstpage']);
+      return false;
+    }
   }
 }

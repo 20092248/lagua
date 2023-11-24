@@ -107,7 +107,7 @@ export class HomePage implements OnInit {
 
   logout() {
     this.authentificationService.logout(true).then(() => {
-      this.goTo('/firstpage', false, true);
+      this.goTo('/firstpage', true, true);
     });
   }
 
