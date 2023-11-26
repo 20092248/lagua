@@ -27,23 +27,6 @@ export class LoadingService {
    */
   async dismiss() {
     await this.loading.dismiss();
-    // const customInterval = interval(0).pipe(
-    //   take(10), //take only the first 10 values interval 200ms (10 secondes)
-    //   finalize(async() => this.dismissIfLoadingPresent()) // Execute when the observable completes or unsubscribe
-    // );
-    // this.choice = customInterval.subscribe(async () => this.dismissIfLoadingPresent());
-  }
-
-  async dismissIfLoadingPresent() {
-    if (JSON.stringify(this.loading) !== '{}') {
-      await this.loading.dismiss();
-      this.stopTimer();
-    }
-  }
-
-  stopTimer() {
-    this.choice?.unsubscribe();
-    this.choice = undefined; // Clear the timeoutId
   }
 
 }

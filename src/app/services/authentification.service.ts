@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, UserCredential } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, signInWithCredential, signOut, UserCredential, getRedirectResult } from '@angular/fire/auth';
 import { doc, getDoc, updateDoc, Firestore, getFirestore, onSnapshot, setDoc, serverTimestamp } from '@angular/fire/firestore';
 import { CodeLabel } from '../model/codeLabel.model';
 import { CodeTextTranslate } from '../model/codeTextTranslate.model';
@@ -10,9 +10,15 @@ import { Review } from '../model/review.model';
 import { Lesson } from '../model/lessons.model';
 import { ResultReview } from '../model/resultReview.model';
 import { finalize, take, interval, Subscription, lastValueFrom } from 'rxjs';
-import { Router } from '@angular/router';
 import { LoadingService } from './loading.service';
-
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { FacebookLogin, FacebookLoginResponse } from '@capacitor-community/facebook-login';
+import { Platform } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { CONSTANTS } from '../utils/constants';
+import { AlertService } from './alert.service';
+const FACEBOOK_PERMISSIONS = ['email', 'user_birthday', 'user_photos', 'user_gender',];
 const USER_KEY = 'users';
 
 @Injectable({
@@ -24,12 +30,13 @@ export class AuthentificationService {
   timer: Date = new Date();
   choice: Subscription | undefined;
 
-  constructor(private _auth: Auth, private _firestore: Firestore,
-    private reviewService: ReviewService, private lessonService: LessonService, private loadingService: LoadingService) { }
+  constructor(private _auth: Auth, private _firestore: Firestore, private platform: Platform, private http: HttpClient,
+    private reviewService: ReviewService, private lessonService: LessonService, private loadingService: LoadingService,
+    private alertService: AlertService) { }
 
   async isConnected() {
     const customInterval = interval(200).pipe(
-      take(10), //take only the first 10 values interval 200ms (10 secondes)
+      take(5), //take only the first 5 values interval 200ms (1 secondes)
       finalize(() => this.checkUser()) // Execute when the observable completes or unsubscribe
     );
     const finalNumber = await lastValueFrom(customInterval);
@@ -44,14 +51,10 @@ export class AuthentificationService {
         this.user.email = user.email;
         this.user.displayName = user.displayName;
         this.user.photoURL = user.photoURL;
-        this.stopTimer();
+        this.choice?.unsubscribe();
+        this.choice = undefined; // Clear the timeoutId
       }
     }
-  }
-
-  stopTimer() {
-    this.choice?.unsubscribe();
-    this.choice = undefined; // Clear the timeoutId
   }
 
   async getInfoUser(uid: string) {
@@ -79,11 +82,12 @@ export class AuthentificationService {
         return true;
       } else {
         this.logout(false);
-        throw new Error('Utilisateur introuvable');
+        this.alertService.presentToastWithIcon(CONSTANTS.NOT_SIGNIN, 2000, 'danger', 'alert-circle-outline');
+        throw Error(CONSTANTS.NOT_SIGNIN);
       }
     } catch (error: any) {
       // localStorage.removeItem(USER_KEY);
-      throw Error(error.message);
+      throw Error(error);
     }
   }
 
@@ -140,9 +144,48 @@ export class AuthentificationService {
     return response && responseInfoUser;
   }
 
-  async loginwithgoogle(): Promise<boolean> {
+  async loginWithGoogle() {
+    if (this.platform.is('capacitor')) {
+      return this.loginwithgoogleCapacitor();
+    } else {
+      return this.loginWithGoogleFirebase();
+    }
+  }
+
+  async loginwithgoogleCapacitor() {
+    try {
+      const user = await GoogleAuth.signIn();
+      if (user) {
+        // Sign in with credential from the Google user.
+        let response = await signInWithCredential(getAuth(), GoogleAuthProvider.credential(user.authentication.idToken))
+          .then(async (result) => {
+            // const access_token = await result.user.getIdToken();
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential ? credential.accessToken : null;
+            // The signed-in user info.
+            this.user = this.getUserCredential(result);
+            const responseInfoUser = await this.getInfoUser(result.user?.uid);
+            return responseInfoUser;
+          })
+          .catch((error) => {
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            throw Error(error.message);
+          });
+        return response;
+      } else {
+        return false;
+      }
+    } catch (error: any) {
+      throw Error(error.message);
+    }
+  }
+
+  async loginWithGoogleFirebase(): Promise<boolean> {
     try {
       const provider = new GoogleAuthProvider();
+      provider.addScope('profile');
+      provider.addScope('email');
       const auth = getAuth();
       let response = await signInWithPopup(auth, provider)
         .then(async (result) => {
@@ -164,7 +207,15 @@ export class AuthentificationService {
     }
   }
 
-  async signinwithgoogle(firstReview: Review, firstLesson: Lesson): Promise<boolean> {
+  async signInWithGoogle(firstReview: Review, firstLesson: Lesson) {
+    if (this.platform.is('capacitor')) {
+      return this.signinWithGoogleCapacitor(firstReview, firstLesson);
+    } else {
+      return this.signinWithGoogleFirebase(firstReview, firstLesson);
+    }
+  }
+
+  async signinWithGoogleCapacitor(firstReview: Review, firstLesson: Lesson): Promise<boolean> {
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
     let responseInfoUser = false;
@@ -192,24 +243,87 @@ export class AuthentificationService {
     return response && responseInfoUser;
   }
 
-  async loginwithfacebook(): Promise<boolean> {
+  async signinWithGoogleFirebase(firstReview: Review, firstLesson: Lesson): Promise<boolean> {
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+    let responseInfoUser = false;
+    let response = await signInWithPopup(auth, provider)
+      .then(async (result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential ? credential.accessToken : null;
+        // The signed-in user info.
+        const userData = this.getUserCredential(result);
+        this.user.uid = userData.uid;
+        this.user.email = userData.email;
+        this.user.displayName = userData.displayName;
+        this.user.photoURL = userData.photoURL;
+        return true;
+      }).catch((error) => {
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.error(credential + ' : ' + error);
+        return false;
+      });
+    if (response) {
+      responseInfoUser = await this.addInfoUser(this.user.uid, firstReview, firstLesson);
+    }
+    return response && responseInfoUser;
+  }
+
+  async loginWithFacebook() {
+    if (this.platform.is('capacitor')) {
+      return this.loginWithFacebookCapacitor();
+    } else {
+      return this.loginWithFacebookFirebase();
+    }
+  }
+
+  async loginWithFacebookCapacitor(): Promise<boolean> {
+    const result = await (FacebookLogin.login({ permissions: FACEBOOK_PERMISSIONS })) as FacebookLoginResponse;
+    if (result.accessToken && result.accessToken.token) {
+      let response = await signInWithCredential(getAuth(), FacebookAuthProvider.credential(result.accessToken.token))
+        .then(async (result) => {
+            this.user = this.getUserCredential(result);
+            const responseInfoUser = await this.getInfoUser(result.user?.uid);
+            return responseInfoUser;
+        })
+        .catch((error) => {
+          FacebookAuthProvider.credentialFromError(error);
+          throw Error(error.message);
+        });
+        return response;
+    } else {
+      console.error('Impossible de récupérer l\'utilisateur Facebook');
+      return false;
+    }
+    //   this.loadFacebookUserData(result.accessToken);
+    // } else if (result.accessToken && !result.accessToken.userId) {
+    //   this.getFacebookCurrentToken();
+    // } else {
+    //   console.error('Impossible de récupérer l\'utilisateur Facebook');
+    // }
+  }
+
+  async loginWithFacebookFirebase(): Promise<boolean> {
     try {
       const provider = new FacebookAuthProvider();
       provider.setDefaultLanguage('fr');
       provider.addScope('user_birthday');
-      // provider.setCustomParameters({
-      //   'display': 'popup'
-      // });
       const auth = getAuth();
       let response = await signInWithPopup(auth, provider)
         .then(async (result) => {
-          // The signed-in user info.
-          this.user = this.getUserCredential(result);
-          // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-          const credential = FacebookAuthProvider.credentialFromResult(result);
-          const accessToken = credential ? credential.accessToken : null;
-          const responseInfoUser = await this.getInfoUser(result.user?.uid);
-          return responseInfoUser;
+          if (result) {
+            // The signed-in user info.
+            this.user = this.getUserCredential(result);
+            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+            // const credential = FacebookAuthProvider.credentialFromResult(result);
+            // const accessToken = credential ? credential.accessToken : null;
+            const responseInfoUser = await this.getInfoUser(result.user?.uid);
+            return responseInfoUser;
+          } else {
+            return false;
+          }
         })
         .catch((error) => {
           // The AuthCredential type that was used.
@@ -222,7 +336,15 @@ export class AuthentificationService {
     }
   }
 
-  async signinwithfacebook(firstReview: Review, firstLesson: Lesson): Promise<boolean> {
+  async signinWithFacebook(firstReview: Review, firstLesson: Lesson) {
+    if (this.platform.is('capacitor')) {
+      return this.signinWithFacebookCapacitor(firstReview, firstLesson);
+    } else {
+      return this.signinWithFacebookFirebase(firstReview, firstLesson);
+    }
+  }
+
+  async signinWithFacebookCapacitor(firstReview: Review, firstLesson: Lesson): Promise<boolean> {
     const provider = new FacebookAuthProvider();
     provider.setDefaultLanguage('fr');
     provider.addScope('user_birthday');
@@ -256,8 +378,69 @@ export class AuthentificationService {
     return response && responseInfoUser;
   }
 
+  async signinWithFacebookFirebase(firstReview: Review, firstLesson: Lesson): Promise<boolean> {
+    const provider = new FacebookAuthProvider();
+    provider.setDefaultLanguage('fr');
+    provider.addScope('user_birthday');
+    // provider.setCustomParameters({
+    //   'display': 'popup'
+    // });
+    const auth = getAuth();
+    let responseInfoUser = false;
+    let response = await signInWithPopup(auth, provider)
+      .then((result) => {
+        // The signed-in user info.
+        const userData = this.getUserCredential(result);
+        this.user.uid = userData.uid;
+        this.user.email = userData.email;
+        this.user.displayName = userData.displayName;
+        this.user.photoURL = userData.photoURL;
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const accessToken = credential ? credential.accessToken : null;
+        return true;
+      })
+      .catch((error) => {
+        // The AuthCredential type that was used.
+        const credential = FacebookAuthProvider.credentialFromError(error);
+        console.error(error);
+        return false;
+      });
+    if (response) {
+      responseInfoUser = await this.addInfoUser(this.user.uid, firstReview, firstLesson);
+    }
+    return response && responseInfoUser;
+  }
+
+  async loadFacebookUserData(accessToken: any) {
+    try {
+      const url = 'https://graph.facebook.com/' + accessToken.userId + '?fields=id,name,picture.width(720),birthday,email&access_token=' + accessToken.token;
+      const facebookUserDataObservale = this.http.post(url, {}).pipe(catchError((e) => { console.error(e); throw e; }));
+      const facebookUserData = await lastValueFrom(facebookUserDataObservale) as any;
+      const userData = this.getFacebookUserCredential(facebookUserData);
+      const login = this.login(userData.email || '', userData.uid);
+      return login;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
+
+  async getFacebookCurrentToken() {
+    var facebookUserData = null;
+    const result = await (FacebookLogin.getCurrentAccessToken());
+    if (result.accessToken) {
+      facebookUserData = this.loadFacebookUserData(result.accessToken);
+      await signInWithCredential(getAuth(), FacebookAuthProvider.credential(result.accessToken.token))
+        .then(async (result) => {
+          console.log(result);
+        }, e => console.error(e));
+    }
+    return facebookUserData;
+  }
+
   async logout(disconnect: boolean) {
-    if (disconnect) {
+    if (disconnect && getAuth().currentUser) {
       this.updateDayDisconnected('users', this.user.uid ? this.user.uid : '');
     }
     return signOut(getAuth()).then(() => {
@@ -301,26 +484,30 @@ export class AuthentificationService {
   }
 
   async updateDayConnected(nameObject: string, uid: string) {
-    this.timer = new Date();
-    const userRef = doc(getFirestore(), nameObject, uid);
-    var data = {};
-    const today = new Date();
-    if (today.getUTCDay() === 0) {
-      data = { 'week.dim': { day: 7, timestamp: today } }
-    } else if (today.getUTCDay() === 1) {
-      data = { 'week.lun': { day: today.getUTCDay(), timestamp: today } }
-    } else if (today.getUTCDay() === 2) {
-      data = { 'week.mar': { day: today.getUTCDay(), timestamp: today } }
-    } else if (today.getUTCDay() === 3) {
-      data = { 'week.mer': { day: today.getUTCDay(), timestamp: today } }
-    } else if (today.getUTCDay() === 4) {
-      data = { 'week.jeu': { day: today.getUTCDay(), timestamp: today } }
-    } else if (today.getUTCDay() === 5) {
-      data = { 'week.ven': { day: today.getUTCDay(), timestamp: today } }
-    } else if (today.getUTCDay() === 6) {
-      data = { 'week.sam': { day: today.getUTCDay(), timestamp: today } }
+    try {
+      this.timer = new Date();
+      const userRef = doc(getFirestore(), nameObject, uid);
+      var data = {};
+      const today = new Date();
+      if (today.getUTCDay() === 0) {
+        data = { 'week.dim': { day: 7, timestamp: today } }
+      } else if (today.getUTCDay() === 1) {
+        data = { 'week.lun': { day: today.getUTCDay(), timestamp: today } }
+      } else if (today.getUTCDay() === 2) {
+        data = { 'week.mar': { day: today.getUTCDay(), timestamp: today } }
+      } else if (today.getUTCDay() === 3) {
+        data = { 'week.mer': { day: today.getUTCDay(), timestamp: today } }
+      } else if (today.getUTCDay() === 4) {
+        data = { 'week.jeu': { day: today.getUTCDay(), timestamp: today } }
+      } else if (today.getUTCDay() === 5) {
+        data = { 'week.ven': { day: today.getUTCDay(), timestamp: today } }
+      } else if (today.getUTCDay() === 6) {
+        data = { 'week.sam': { day: today.getUTCDay(), timestamp: today } }
+      }
+      await updateDoc(userRef, data);
+    } catch (error) {
+      console.log(error);
     }
-    await updateDoc(userRef, data);
   }
 
   async updateDayDisconnected(nameObject: string, uid: string) {
@@ -340,6 +527,15 @@ export class AuthentificationService {
     this.user.photoURL = result.user.photoURL;
     return this.user;
   }
+
+  getFacebookUserCredential(result: any) {
+    this.user.uid = result.id;
+    this.user.email = result.email;
+    this.user.displayName = result.name;
+    this.user.photoURL = result.picture && result.picture.data ? result.picture.data.url : '';
+    return this.user;
+  }
+
 
   async delay(ms: number) {
     return await new Promise(resolve => setTimeout(resolve, ms));

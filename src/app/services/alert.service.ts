@@ -16,4 +16,14 @@ export class AlertService {
     });
     toast.present();
   }
+
+  async presentToastWithIcon(message: string, duration: number, type: string, icon: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: duration,
+      color: type,
+      icon: icon
+    });
+    toast.present();
+  }
 }

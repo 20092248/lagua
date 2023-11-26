@@ -19,7 +19,7 @@ export class SignInPage implements OnInit {
   confirmPassword: string = '';
 
   constructor(private authentificationService: AuthentificationService, private router: Router, 
-    private reviewService: ReviewService, private lessonService: LessonService, private platform: Platform) { }
+    private reviewService: ReviewService, private lessonService: LessonService) { }
 
   ngOnInit() {
   }
@@ -39,31 +39,23 @@ export class SignInPage implements OnInit {
   }
 
   signInWithGoogle() {
-    if (this.platform.is('capacitor')) {
-
-    } else {
       forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(([firstReview, firstLesson]) => {
-        this.authentificationService.signinwithgoogle(firstReview, firstLesson).then((connected: boolean) => {
+        this.authentificationService.signInWithGoogle(firstReview, firstLesson).then((connected: boolean) => {
           if (connected) {
             this.router.navigate(['']); //go to home page
           }
         });
       });
-    }
   }
 
   signInWithFacebook() {
-    if (this.platform.is('capacitor')) {
-
-    } else {
       forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(([firstReview, firstLesson]) => {
-        this.authentificationService.signinwithfacebook(firstReview, firstLesson).then((connected: boolean) => {
+        this.authentificationService.signinWithFacebook(firstReview, firstLesson).then((connected: boolean) => {
           if (connected) {
             this.router.navigate(['']); //go to home page
           }
         });
       });
-    }
   }
 
 }

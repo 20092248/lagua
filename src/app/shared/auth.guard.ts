@@ -28,7 +28,10 @@ export class AuthGuard implements CanActivate {
         return this.authentificationService.getInfoUser(uid).then(() => {
           this.loadingService.dismiss();
           return true;
-        }, () => { this.loadingService.dismiss(); return false; });
+        }, () => {
+          this.loadingService.dismiss(); 
+          return false; 
+        });
     } else {
       this.router.navigate(['/firstpage']);
       return false;

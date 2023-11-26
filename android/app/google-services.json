@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "137499573111",
+    "project_id": "lagua-shikomori",
+    "storage_bucket": "lagua-shikomori.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137499573111:android:bff782af63ad5507807f72",
+        "android_client_info": {
+          "package_name": "com.project.lagua"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137499573111-jcprv17aligf1q8f5enak80pd03fkcd7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE2M7XDScAFEBhEYHNmkZ5wPMFXgykoQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "137499573111-jcprv17aligf1q8f5enak80pd03fkcd7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

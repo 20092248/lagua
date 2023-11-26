@@ -4,4 +4,7 @@
     <string name="title_activity_main">Lagua</string>
     <string name="package_name">com.project.lagua</string>
     <string name="custom_url_scheme">com.project.lagua</string>
+    <string name="server_client_id">137499573111-meej832h37i4cpploc0dfvmmeel974eu.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">771703417822238</string>
+    <string name="facebook_client_token">fb771703417822238</string>
 </resources>
