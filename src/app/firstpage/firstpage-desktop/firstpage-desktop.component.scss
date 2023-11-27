@@ -1,18 +1,126 @@
 div.ion-desktop-content {
     height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: url('https://i.postimg.cc/SxPt8CW7/zayn.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Comfortaa', cursive;
+
 }
 
 ion-grid {
     height: 100%;
+
     .ion-header {
         height: 8%;
+        top: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        // position: fixed;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+
+        div.logo {
+            width: 20%;
+            color: #fff;
+        }
+
+        nav {
+            width: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+
+        nav ul {
+            width: 80%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+        }
+
+        nav ul li {
+            color: #fff;
+            margin: 8px;
+            cursor: pointer;
+            padding: 3px;
+            list-style: none;
+            font-weight: 900;
+            font-family: 'Comfortaa', cursive;
+            border-bottom: 2px solid transparent;
+            letter-spacing: 2px;
+            transition: 200ms ease-in-out;
+        }
+
+        nav ul li:hover {
+            border-bottom: 2px solid #fff;
+        }
+
+        nav .logo h1 {
+            font-weight: 900;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        nav .logo h1 span {
+            font-weight: 100;
+        }
     }
+
     .ion-content {
         height: 90%;
-        .ion-mobile-content {
+        .ion-left-content {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            z-index: 100;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+
+            .main h1 {
+                color: #fff;
+                font-size: 135px;
+                font-weight: 100;
+                font-family: 'Roboto', sans-serif;
+            }
+            .main p {
+                color: #fff;
+                font-size: 17px;
+                font-weight: 900;
+                margin-top: 30px;
+                letter-spacing: 1px;
+            }
+        }
+
+        .ion-right-content {
             background: #46895c;
         }
     }
+
     .ion-footer {
         height: 2%;
     }

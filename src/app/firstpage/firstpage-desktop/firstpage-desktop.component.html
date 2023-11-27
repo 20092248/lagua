@@ -1,14 +1,38 @@
 <div class="ion-desktop-content">
   <ion-grid class="ion-no-padding">
     <ion-row class="ion-header">
-      <ion-col>LOGO -> LANGUE FR & KM </ion-col>
+      <ion-col>
+        <nav>
+          <div class="logo">
+            <h1>Lagua <span> | shikomori</span></h1>
+          </div>
+          <ul class="pages">
+            <li>A propos</li>
+            <li>Lien utiles</li>
+            <li>Contact</li>
+            <li>drapeau français</li>
+          </ul>
+        </nav>
+      </ion-col>
     </ion-row>
     <ion-row class="ion-content">
-      <ion-col>BLOC 1</ion-col>
-      <ion-col class="ion-mobile-content"><app-firstpage-mobile [isMobile]="isMobile"></app-firstpage-mobile></ion-col>
+      <ion-col class="ion-left-content">
+        <div class="main">
+          <h1 class="aqua"><i class="fas fa-headphones-alt"></i></h1>
+          <!-- TYPER END -->
+          <div class="line"></div>
+          <p>“When words fail music speaks.” ― Irena Huang.</p>
+        </div>
+      </ion-col>
+      <ion-col class="ion-right-content">
+        <app-firstpage-mobile [isMobile]="isMobile"></app-firstpage-mobile>
+      </ion-col>
     </ion-row>
     <ion-row class="ion-footer">
-      <ion-col>FOOTER</ion-col>
+      <ion-col>
+        <p>Made with <i class="material-icons">favorite</i> by <a target="_blank" href="https://twitter.com/faahim01"
+            target="_blank">Fahim</a></p>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </div>

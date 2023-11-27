@@ -14,7 +14,7 @@ export class FirstpagePage implements OnInit {
   constructor(private platform: Platform) { }
 
   ngOnInit() {
-    this.isMobile = this.platform.is('desktop') ? false : true;
+    this.isMobile = this.platform.is('desktop') || this.platform.is('tablet') ? false : true;
   }
 
 }
