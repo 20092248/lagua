@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingService } from '../services/setting.service';
 import { register } from 'swiper/element/bundle';
+import { Platform } from '@ionic/angular';
 register();
 @Component({
   selector: 'app-firstpage',
@@ -9,28 +9,12 @@ register();
 })
 export class FirstpagePage implements OnInit {
 
-  autoplay: any = {
-    delay: 6000,
-    pauseOnMouseEnter: true,
-  };
-  countupBegin: number = 6;
+  isMobile: boolean | undefined;
 
-  constructor(private settingsService: SettingService) { }
+  constructor(private platform: Platform) { }
 
   ngOnInit() {
-    this.autoplayTimeLeft();
-    this.settingsService.getUserInformation().then();
-  }
-
-  autoplayTimeLeft() {
-    const progressCircle = document.querySelector(".autoplay-progress svg") as HTMLElement;
-
-    const swiperEl = document.querySelector("swiper-container");
-    swiperEl?.addEventListener("autoplaytimeleft", (e: any) => {
-      const [swiper, time, progress] = e.detail;
-      const p = 1 - progress as unknown
-      progressCircle?.style.setProperty("--progress", p as string);
-    });
+    this.isMobile = this.platform.is('desktop') ? false : true;
   }
 
 }

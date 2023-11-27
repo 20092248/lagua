@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { FirstpagePageRoutingModule } from './firstpage-routing.module';
 
 import { FirstpagePage } from './firstpage.page';
+import { FirstpageMobileComponentModule } from './firstpage-mobile/firstpage-mobile.module';
+import { FirstpageDesktopComponentModule } from './firstpage-desktop/firstpage-desktop.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FirstpagePageRoutingModule
+    FirstpagePageRoutingModule,
+    FirstpageMobileComponentModule,
+    FirstpageDesktopComponentModule
   ],
   declarations: [FirstpagePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
