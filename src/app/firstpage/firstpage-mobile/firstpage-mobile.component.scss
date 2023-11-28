@@ -22,6 +22,11 @@ ion-grid {
     height: 100%;
 }
 
+ion-grid.ion-desktop-background {
+    background: linear-gradient(to bottom, #46895c 48%, #74a884 48%);
+    border-radius: 20px;
+}
+
 ion-col.ion-content {
     display: flex;
     justify-content: center;
@@ -38,7 +43,7 @@ img {
 
 .ion-mobile-background-color {
     --background: #46895c;
-  }
+}
 
 .ion-second-background {
     background: #74a884;
@@ -60,6 +65,11 @@ img {
 .ion-subtitle-text {
     line-height: 1.5rem;
     font-size: 18px;
+}
+
+.ion-small-text {
+    font-size: 85%;
+    line-height: 1.25;
 }
 
 .swiper-pagination-bullet {

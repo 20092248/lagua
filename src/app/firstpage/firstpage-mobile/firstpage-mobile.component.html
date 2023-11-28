@@ -1,5 +1,5 @@
-<div class="ion-second-background"></div>
-<ion-grid class="ion-text-center">
+<div *ngIf="isMobile" class="ion-second-background"></div>
+<ion-grid class="ion-text-center" [ngClass]="{'ion-desktop-background': !isMobile}">
   <ion-row class="ion-content-page">
     <ion-col class="ion-content">
       <ion-content class="swiper-slides-background-color">
@@ -12,7 +12,7 @@
               </div>
               <div class="ion-half-minus-height ion-align-items-center">
                 <div>
-                  <p class="ion-subtitle-text">Apprenez les mots dont vous avez vraiment besoin, quand vous en avez
+                  <p class="ion-subtitle-text" [ngClass]="{'ion-small-text': !isMobile}">Apprenez les mots dont vous avez vraiment besoin, quand vous en avez
                     besoin
                   </p>
                   <p><small>Vous apprenez de facon plus rapide et plus intelligente en découvrant d'abord les mots les
@@ -29,7 +29,7 @@
               </div>
               <div class="ion-half-minus-height ion-align-items-center">
                 <div>
-                  <p class="ion-subtitle-text">Apprenez selon votre rythme
+                  <p class="ion-subtitle-text" [ngClass]="{'ion-small-text': !isMobile}">Apprenez selon votre rythme
                   </p>
                   <p><small>Intégrez facilement les leçons dans votre quotidien avec la possibilité de réviser les
                       cours déjà visionnées</small></p>
@@ -44,7 +44,7 @@
               </div>
               <div class="ion-half-minus-height ion-align-items-center">
                 <div>
-                  <p class="ion-subtitle-text">Recherchez des mots et expressions grâce à notre dictionnaire
+                  <p class="ion-subtitle-text" [ngClass]="{'ion-small-text': !isMobile}">Recherchez des mots et expressions grâce à notre dictionnaire
                   </p>
                   <p><small>L'équipe Lagua est heureux de vous mettre à disposition le meilleur dictionnaire avec plus
                       de 100
@@ -55,24 +55,15 @@
           </swiper-slide>
         </swiper-container>
       </ion-content>
-      <!-- <div class="ion-padding-horizontal">
-          <ion-icon size="large" name="save-outline"></ion-icon>
-          <p class="ion-subtitle-text">Apprenez les mots dont vous avez vraiment besoin, quand vous en avez besoin</p>
-          <small>Vous apprenez de facon plus rapide et plus intelligente en découvrant d'abord les mots les plus
-            fréquents utilisés dans une langue</small>
-        </div> -->
     </ion-col>
   </ion-row>
   <ion-row class="ion-footer-page">
     <ion-col>
       <div>
-        <!-- <div>
-            2
-          </div> -->
-        <ion-button [routerLink]="['../user-information/learn']" [disabled]="!isMobile" class="ion-margin-bottom" expand="block" color="lagua"
+        <ion-button (click)="goTo('../../user-information/learn')" [disabled]="!isMobile" class="ion-margin-bottom" expand="block" color="lagua"
           shape="round">Démarrer
           l'apprentissage</ion-button>
-        <ion-button [routerLink]="['../login']" [disabled]="!isMobile" expand="block" color="light" shape="round">J'ai déjà un
+        <ion-button (click)="goTo('../../login')" [disabled]="!isMobile" expand="block" color="light" shape="round">J'ai déjà un
           compte</ion-button>
       </div>
       <div class="ion-full-width">

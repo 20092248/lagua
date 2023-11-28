@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { SettingService } from 'src/app/services/setting.service';
 
@@ -16,7 +17,7 @@ export class FirstpageMobileComponent implements OnInit {
   countupBegin: number = 6;
   @Input() isMobile: boolean | undefined;
 
-  constructor(private settingsService: SettingService, private platform: Platform) { }
+  constructor(private settingsService: SettingService, private platform: Platform, private router: Router) { }
 
   ngOnInit() {
     this.autoplayTimeLeft();
@@ -32,6 +33,10 @@ export class FirstpageMobileComponent implements OnInit {
       const p = 1 - progress as unknown
       progressCircle?.style.setProperty("--progress", p as string);
     });
+  }
+
+  goTo(route: string) {
+    this.router.navigate([route]);
   }
 
 }

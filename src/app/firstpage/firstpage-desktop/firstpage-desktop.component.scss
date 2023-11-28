@@ -3,44 +3,32 @@ div.ion-desktop-content {
     width: 100%;
     margin: 0;
     padding: 0;
-    background: url('https://i.postimg.cc/SxPt8CW7/zayn.png');
+    background: url('/assets/img/background.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    font-family: 'Comfortaa', cursive;
-
 }
 
 ion-grid {
     height: 100%;
 
     .ion-header {
-        height: 8%;
-        top: 0;
-        display: -webkit-box;
-        display: -ms-flexbox;
+        height: 10%;
         display: flex;
-        // position: fixed;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
         justify-content: center;
 
         div.logo {
-            width: 20%;
+            width: 30%;
             color: #fff;
         }
 
         nav {
             width: 100%;
-            display: -webkit-box;
-            display: -ms-flexbox;
             display: flex;
         }
 
         nav ul {
-            width: 80%;
-            display: -webkit-box;
-            display: -ms-flexbox;
+            width: 70%;
             display: flex;
             -ms-flex-wrap: wrap;
             flex-wrap: wrap;
@@ -62,8 +50,7 @@ ion-grid {
             cursor: pointer;
             padding: 3px;
             list-style: none;
-            font-weight: 900;
-            font-family: 'Comfortaa', cursive;
+            font-weight: 600;
             border-bottom: 2px solid transparent;
             letter-spacing: 2px;
             transition: 200ms ease-in-out;
@@ -84,10 +71,11 @@ ion-grid {
     }
 
     .ion-content {
-        height: 90%;
+        height: 84%;
+
         .ion-left-content {
-            display: -webkit-box;
-            display: -ms-flexbox;
+
+
             display: flex;
             z-index: 100;
             -webkit-box-align: center;
@@ -103,25 +91,151 @@ ion-grid {
 
             .main h1 {
                 color: #fff;
-                font-size: 135px;
+                font-size: 60px;
                 font-weight: 100;
+                letter-spacing: 1px;
                 font-family: 'Roboto', sans-serif;
+
+                .word {
+                    opacity: 0;
+                    position: absolute;
+                    width: 100%;
+                    text-align: center;
+                    top: 30%;
+                }
+
+                .w1 {
+                    animation: w1anim 20s infinite;
+                }
+
+                .w2 {
+                    animation: w2anim 20s infinite;
+                }
+
+                .w3 {
+                    animation: w3anim 20s infinite;
+                }
+
+                .w4 {
+                    animation: w4anim 20s infinite;
+                }
+
+                .w5 {
+                    animation: w5anim 20s infinite;
+                }
+
+                @keyframes w1anim {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    10% {
+                        opacity: 1;
+                    }
+
+                    20% {
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes w2anim {
+                    20% {
+                        opacity: 0;
+                    }
+
+                    30% {
+                        opacity: 1;
+                    }
+
+                    40% {
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes w3anim {
+                    40% {
+                        opacity: 0;
+                    }
+
+                    50% {
+                        opacity: 1;
+                    }
+
+                    60% {
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes w4anim {
+                    60% {
+                        opacity: 0;
+                    }
+
+                    70% {
+                        opacity: 1;
+                    }
+
+                    80% {
+                        opacity: 0;
+                    }
+                }
+
+                @keyframes w5anim {
+                    80% {
+                        opacity: 0;
+                    }
+
+                    90% {
+                        opacity: 1;
+                    }
+
+                    100% {
+                        opacity: 0;
+                    }
+                }
             }
+
+            .main h4 {
+                color: #fff;
+                font-size: 15px;
+                font-weight: 900;
+                letter-spacing: 1px;
+            }
+
             .main p {
                 color: #fff;
-                font-size: 17px;
-                font-weight: 900;
-                margin-top: 30px;
+                font-size: 15px;
+                font-weight: 600;
                 letter-spacing: 1px;
             }
         }
 
         .ion-right-content {
-            background: #46895c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            div.ion-mobile-content {
+                background: url('/assets/img/home/phone-frame.png') no-repeat;
+                background-size: 100% 100%;
+                width: 52%;
+                height: 85%;
+                padding: 1.5% 1.9%;
+                font-size: 85%;
+            }
         }
     }
 
     .ion-footer {
-        height: 2%;
+        height: 6%;
+        color: #fff;
+
+        div {
+            .ion-developper {
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+            }
+        }
     }
 }

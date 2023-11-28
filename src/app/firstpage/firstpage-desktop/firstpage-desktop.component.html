@@ -1,37 +1,54 @@
 <div class="ion-desktop-content">
   <ion-grid class="ion-no-padding">
     <ion-row class="ion-header">
-      <ion-col>
+      <ion-col class="ion-margin-horizontal">
         <nav>
           <div class="logo">
-            <h1>Lagua <span> | shikomori</span></h1>
+            <h1>Lagua <span> | shikomori </span><img [src]="homeSetting.icon?.comorosFlag" /></h1>
           </div>
           <ul class="pages">
             <li>A propos</li>
             <li>Lien utiles</li>
             <li>Contact</li>
-            <li>drapeau français</li>
+            <li><img [src]="homeSetting.icon?.frenchFlag" /></li>
           </ul>
         </nav>
       </ion-col>
     </ion-row>
     <ion-row class="ion-content">
-      <ion-col class="ion-left-content">
+      <ion-col size="6" class="ion-left-content">
         <div class="main">
-          <h1 class="aqua"><i class="fas fa-headphones-alt"></i></h1>
+          <h1 class="ion-text-center">
+            <div class="word w1">SHINGAZIDJA</div>
+            <div class="word w2">SHINDJUANI</div>
+            <div class="word w3">SHIMAORE</div>
+            <div class="word w4">SHIMWALI</div>
+            <div class="word w5">LAGUA <img [src]="homeSetting.icon?.learn" width="64"/></div>
+          </h1>
           <!-- TYPER END -->
           <div class="line"></div>
-          <p>“When words fail music speaks.” ― Irena Huang.</p>
+          <div class="ion-padding ion-margin ion-text-center">
+            <h4 class="ion-margin-bottom">Prêt à enrichir votre vocabulaire ou à apprendre le comorien facilement ?</h4>
+            <p>
+              Grâce à l'application Lagua, vous pouvez parler ou apprendre le grand comorien, l'anjouanais, le mahorais
+              et le mohélien... à votre propre rythme.</p>
+          </div>
+          <div class="ion-text-center">
+            <img class="ion-padding-end" [src]="homeSetting.icon?.android" height="70px" />
+            <img class="ion-padding-start" [src]="homeSetting.icon?.apk" height="70px" />
+          </div>
         </div>
       </ion-col>
-      <ion-col class="ion-right-content">
-        <app-firstpage-mobile [isMobile]="isMobile"></app-firstpage-mobile>
+      <ion-col size="6" class="ion-right-content">
+        <div class="ion-mobile-content">
+          <app-firstpage-mobile [isMobile]="isMobile"></app-firstpage-mobile>
+        </div>
       </ion-col>
     </ion-row>
-    <ion-row class="ion-footer">
+    <ion-row class="ion-footer ion-text-center">
       <ion-col>
-        <p>Made with <i class="material-icons">favorite</i> by <a target="_blank" href="https://twitter.com/faahim01"
-            target="_blank">Fahim</a></p>
+        <div>Made with <img class="ion-margin-horizontal" [src]="homeSetting.icon?.heartFlag" width="28" /> by <span
+            class="ion-developper">Brady Abderemane</span></div>
       </ion-col>
     </ion-row>
   </ion-grid>

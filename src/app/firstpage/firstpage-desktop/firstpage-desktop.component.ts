@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SettingService } from 'src/app/services/setting.service';
 
 @Component({
   selector: 'app-firstpage-desktop',
@@ -8,8 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FirstpageDesktopComponent implements OnInit {
 
   isMobile: boolean = false;
-  constructor() { }
+  homeSetting: any = {};
+  constructor(private settingService: SettingService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.settingService.getSettings().then(setting => {
+      this.homeSetting = setting.home;
+    });
+  }
 
 }

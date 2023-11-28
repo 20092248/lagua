@@ -12,6 +12,7 @@ export class SettingService {
   reviews: any = {};
   profile: any = {};
   topics: any = {};
+  home: any = {};
 
   constructor(private _firestore: Firestore) { }
 
@@ -35,9 +36,12 @@ export class SettingService {
         case 'topics':
           this.topics = doc.data();
           break;
+        case 'home':
+          this.home = doc.data();
+          break;
       }
     });
-    return { questions: this.questions, reviews: this.reviews, userInformation: this.userInformation, profile: this.profile, topics: this.topics };
+    return { questions: this.questions, reviews: this.reviews, userInformation: this.userInformation, profile: this.profile, topics: this.topics, home: this.home };
   }
 
   async getSetting(document: string): Promise<any> {
