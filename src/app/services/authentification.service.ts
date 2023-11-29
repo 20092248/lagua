@@ -40,7 +40,7 @@ export class AuthentificationService {
       finalize(() => this.checkUser()) // Execute when the observable completes or unsubscribe
     );
     const finalNumber = await lastValueFrom(customInterval);
-    return this.user ? this.user.uid : '';
+    return this.user ? this.user.uid : ''; //'pbgYnF7NvXRWvZdBNDYfNzzITdw1'
   }
 
   checkUser() {
@@ -506,7 +506,7 @@ export class AuthentificationService {
       }
       await updateDoc(userRef, data);
     } catch (error) {
-      console.log(error);
+      throw Error(CONSTANTS.UPDATE_DAY_CONNECTED_KO);
     }
   }
 
