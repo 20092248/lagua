@@ -44,9 +44,15 @@ ion-grid {
                     border-bottom: 2px solid #fff;
                 }
             }
+            ul.ion-minHeight {
+                margin-top: 0px;
+            }
             .logo h1 {
                 font-weight: 900;
                 font-family: 'Roboto', sans-serif;
+            }
+            .logo h1.ion-minHeight {
+                margin-top: 10px;
             }
             .logo h1 span {
                 font-weight: 100;
@@ -139,8 +145,12 @@ ion-grid {
                 width: 52%;
                 max-width: 400px;
                 height: 85%;
-                padding: 1.5% 1.9%;
+                max-height: 750px;
+                padding: 1.5%;
                 font-size: 85%;
+            }
+            div.ion-mobile-content.ion-minHeight {
+                height: 100%;
             }
         }
     }

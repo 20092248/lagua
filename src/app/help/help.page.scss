@@ -1,0 +1,18 @@
+ion-content {
+    --background: #eef1ee;
+}
+
+ion-content>div {
+    background: var(--ion-background-light-color);
+}
+
+ion-toolbar {
+    --background: url(/assets/img/background.png) 0% / 130%;
+    --color: white;
+    --min-height: 80px;
+}
+
+ion-list {
+    background-color: transparent;
+    width: 100%;
+}

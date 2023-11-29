@@ -133,7 +133,8 @@ export class CONSTANTS {
         ['c. coord.']: 'conjonction de coordination',
     };
 
-    public static LOGIN_KO = 'Une erreur est survenu lors de la connexion. Veuillez réessayer ultérieurement.';
+    public static LOGIN_KO = 'Une erreur est survenue lors de la connexion. Veuillez réessayer ultérieurement.';
     public static NOT_SIGNIN = 'Veuillez créer un compte avant de vous connecter.';
+    public static UPDATE_DAY_CONNECTED_KO = 'Une erreur est survenue lors de la connexion de l\'utilisateur.';
 
 }

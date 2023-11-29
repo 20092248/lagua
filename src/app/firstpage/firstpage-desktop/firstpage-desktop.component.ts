@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
 import { SettingService } from 'src/app/services/setting.service';
 
 @Component({
@@ -9,10 +10,12 @@ import { SettingService } from 'src/app/services/setting.service';
 export class FirstpageDesktopComponent implements OnInit {
 
   isMobile: boolean = false;
+  heightWindow: number = 0;
   homeSetting: any = {};
-  constructor(private settingService: SettingService) { }
+  constructor(private settingService: SettingService, private platform: Platform) { }
 
   ngOnInit() {
+    this.heightWindow = this.platform.height();
     this.settingService.getSettings().then(setting => {
       this.homeSetting = setting.home;
     });

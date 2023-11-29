@@ -56,7 +56,16 @@ const routes: Routes = [
         loadChildren: () => import('./user-information/age/age.module').then(m => m.AgePageModule)
       }
     ]
+  },
+  {
+    path: 'parameter',
+    loadChildren: () => import('./parameter/parameter.module').then( m => m.ParameterPageModule)
+  },
+  {
+    path: 'help',
+    loadChildren: () => import('./help/help.module').then( m => m.HelpPageModule)
   }
+
 
 
 

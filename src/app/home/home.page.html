@@ -23,12 +23,12 @@
                   <h5 class="ion-margin-top">{{user.displayName}}</h5>
                   <div class="ion-margin-bottom">{{user.email}}</div>
                 </div>
-                <ion-item button (click)="goTo('/tabs/update-cv', false, true)"><ion-icon class="ion-padding-end"
+                <ion-item button (click)="goTo('../parameter', true, true)"><ion-icon class="ion-padding-end"
                     name="settings-outline"></ion-icon>Paramètres</ion-item>
-                <ion-item button (click)="goTo('/tabs/recrute', false, true)"><ion-icon class="ion-padding-end"
-                    name="bar-chart-outline"></ion-icon>Mon activité</ion-item>
-                <ion-item button (click)="goTo('/tabs/account', false, true)"><ion-icon class="ion-padding-end"
-                    name="flag-outline"></ion-icon>Mes langues</ion-item>
+                <ion-item button><ion-icon class="ion-padding-end"
+                    name="stats-chart-outline"></ion-icon>Mes objectifs</ion-item>
+                <!-- <ion-item button (click)="goTo('/tabs/account', false, true)"><ion-icon class="ion-padding-end"
+                    name="flag-outline"></ion-icon>Mes langues</ion-item> -->
                 <ion-item (click)="changeMode()"><ion-icon name="brush-outline" class="ion-padding-end">
                   </ion-icon>Thème {{theme === 'moon' ? 'sombre' : 'clair'}}<ion-icon name="{{theme}}"
                     slot="end"></ion-icon></ion-item>

@@ -4,9 +4,9 @@
       <ion-col class="ion-margin-horizontal">
         <nav>
           <div class="logo">
-            <h1>Lagua <span> | shikomori </span><img [src]="homeSetting.icon?.comorosFlag" /></h1>
+            <h1 [ngClass]="{'ion-minHeight': heightWindow <= 600 }">Lagua <span> | shikomori </span><img [src]="homeSetting.icon?.comorosFlag" /></h1>
           </div>
-          <ul class="pages">
+          <ul class="pages" [ngClass]="{'ion-minHeight': heightWindow <= 600 }">
             <li>A propos</li>
             <li>Lien utiles</li>
             <li>Contact</li>
@@ -40,7 +40,7 @@
         </div>
       </ion-col>
       <ion-col size="6" class="ion-right-content">
-        <div class="ion-mobile-content">
+        <div class="ion-mobile-content" [ngClass]="{'ion-minHeight': heightWindow <= 600 }">
           <app-firstpage-mobile [isMobile]="isMobile"></app-firstpage-mobile>
         </div>
       </ion-col>
