@@ -115,7 +115,7 @@
           <ion-item [routerLink]="['../../parameter']" routerLinkActive="selected" lines="full"><ion-icon slot="start"
               name="settings-outline"></ion-icon>Paramètres de compte
           </ion-item>
-          <ion-item [routerLink]="['']" routerLinkActive="selected" lines="full"><ion-icon slot="start"
+          <ion-item (click)="share()" lines="full" class="ion-share"><ion-icon slot="start"
               name="people-outline"></ion-icon>Invite des
             amis
           </ion-item>

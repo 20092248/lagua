@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../model/user.model';
+import { Share } from '@capacitor/share';
 import { AuthentificationService } from '../services/authentification.service';
 import { SettingService } from '../services/setting.service';
 import { Utils } from '../utils/utils';
+import { CONSTANTS } from '../utils/constants';
 
 @Component({
   selector: 'app-profile',
@@ -74,6 +75,15 @@ export class ProfilePage implements OnInit {
 
   getDay(value: Date) {
     return Math.trunc(value.getTime() / 1000 / 60 / 60 / 24);
+  }
+
+  async share(){
+    await Share.share({
+      title: CONSTANTS.SHARE_MSG_TITLE,
+      text: CONSTANTS.SHARE_MSG_OBJECT,
+      url: 'https://lagua-shikomori.firebaseapp.com/',
+      dialogTitle: 'Partager via...',
+    });
   }
 
   logout() {

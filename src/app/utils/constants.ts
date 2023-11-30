@@ -1,5 +1,10 @@
 export class CONSTANTS {
-
+    
+    public static LOGIN_KO = 'Une erreur est survenue lors de la connexion. Veuillez réessayer ultérieurement.';
+    public static NOT_SIGNIN = 'Veuillez créer un compte avant de vous connecter.';
+    public static UPDATE_DAY_CONNECTED_KO = 'Une erreur est survenue lors de la connexion de l\'utilisateur.';
+    public static SHARE_MSG_TITLE = 'Essaie ça !';
+    public static SHARE_MSG_OBJECT = 'J\'utilise une application d\'apprentissage linguistique appelée Lagua et je pense qu\'elle pourrait te plaire aussi. Suis ce lien si tu veux en savoir plus : https://lagua-shikomori.web.app. Cette application m\'aide à apprendre plus vite et elle est très amusante !'
     public static topicDocument: { [key: string]: any } = {
         ['ANIMAL']: {code: 'animals', value: 'Les animaux'},
         ['CLOTHE']: {code: 'clothes', value: 'Les vêtements'},
@@ -13,8 +18,7 @@ export class CONSTANTS {
         ['SEA']: {code: 'sea', value: 'La mer'},
         ['TOOL']: {code: 'tools', value: 'Les outils'},
         ['TREE']: {code: 'trees', value: 'Les arbres'},
-    };
-    
+    };    
     public static dialect: { [key: string]: string } = {
         ['ALL']: 'Comorien (Tous les dialectes)',
         ['SHINDZUANI']: 'Anjouanais',
@@ -23,7 +27,6 @@ export class CONSTANTS {
         ['SHIMWALI']: 'Mohélien',
         ['FRENCH']: 'Français',
     };
-
     public static symbol: { [key: string]: string } = {
         ['acc.']: 'accordable',
         ['adj.']: 'adjectif',
@@ -132,9 +135,4 @@ export class CONSTANTS {
         ['v. imp.']: 'verbe impersonnel',
         ['c. coord.']: 'conjonction de coordination',
     };
-
-    public static LOGIN_KO = 'Une erreur est survenue lors de la connexion. Veuillez réessayer ultérieurement.';
-    public static NOT_SIGNIN = 'Veuillez créer un compte avant de vous connecter.';
-    public static UPDATE_DAY_CONNECTED_KO = 'Une erreur est survenue lors de la connexion de l\'utilisateur.';
-
 }

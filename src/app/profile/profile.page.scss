@@ -32,6 +32,11 @@ ion-item {
   --background: transparent;
 }
 
+ion-item.ion-share:hover {
+  --background: #e5e8e5;
+  cursor: pointer;
+}
+
 ion-card {
   --background: var(--ion-background-color);
   border-radius: 15px;
