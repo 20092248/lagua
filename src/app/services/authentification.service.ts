@@ -483,10 +483,10 @@ export class AuthentificationService {
     }
   }
 
-  async updateDayConnected(nameObject: string, uid: string) {
+  async updateDayConnected(collection: string, uid: string) {
     try {
       this.timer = new Date();
-      const userRef = doc(getFirestore(), nameObject, uid);
+      const userRef = doc(getFirestore(), collection, uid);
       var data = {};
       const today = new Date();
       if (today.getUTCDay() === 0) {
@@ -504,7 +504,7 @@ export class AuthentificationService {
       } else if (today.getUTCDay() === 6) {
         data = { 'week.sam': { day: today.getUTCDay(), timestamp: today } }
       }
-      await updateDoc(userRef, data);
+      setTimeout(() => updateDoc(userRef, data), 1000);
     } catch (error) {
       throw Error(CONSTANTS.UPDATE_DAY_CONNECTED_KO);
     }

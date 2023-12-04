@@ -16,6 +16,7 @@ export class LoadingService {
     this.loading = await this.loadingController
       .create({
         message: message,
+        duration: 5000,
         spinner: 'circles'
       });
 
@@ -26,7 +27,9 @@ export class LoadingService {
    * Dismiss all the pending loaders, if any
    */
   async dismiss() {
-    await this.loading.dismiss();
+    if(this.loading){
+      await this.loading.dismiss();
+    }
   }
 
 }
