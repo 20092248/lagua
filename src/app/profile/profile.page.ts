@@ -81,7 +81,7 @@ export class ProfilePage implements OnInit {
     await Share.share({
       title: CONSTANTS.SHARE_MSG_TITLE,
       text: CONSTANTS.SHARE_MSG_OBJECT,
-      url: 'https://lagua-shikomori.firebaseapp.com/',
+      url: 'https://lagua-shikomori.firebaseapp.com',
       dialogTitle: 'Partager via...',
     });
   }

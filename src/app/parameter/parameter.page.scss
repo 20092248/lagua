@@ -24,3 +24,20 @@ ion-list-header {
 ion-item {
     --background: #eef1ee;
 }
+
+ion-item.ion-logout {
+    cursor: pointer;
+}
+
+ion-label.ion-stacked-label{
+    font-size: 20px;
+}
+
+ion-input {
+    --color: #666666;
+    font-size: 14px;
+}
+
+.item-has-focus {
+    --highlight-background: #46895c;
+  }
