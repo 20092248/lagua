@@ -65,36 +65,6 @@ const routes: Routes = [
     path: 'help',
     loadChildren: () => import('./help/help.module').then( m => m.HelpPageModule)
   }
-
-
-
-
-
-
-  // {
-  //   path: 'firstpage',
-  //   loadChildren: () => import('./firstpage/firstpage.module').then( m => m.FirstpagePageModule)
-  // },
-  // {
-  //   path: 'user-information/learn',
-  //   loadChildren: () => import('./user-information/learn/learn.module').then( m => m.LearnPageModule)
-  // },
-  // {
-  //   path: 'level',
-  //   loadChildren: () => import('./user-information/level/level.module').then( m => m.LevelPageModule)
-  // },
-  // {
-  //   path: 'from',
-  //   loadChildren: () => import('./user-information/from/from.module').then( m => m.FromPageModule)
-  // },
-  // {
-  //   path: 'why',
-  //   loadChildren: () => import('./user-information/why/why.module').then( m => m.WhyPageModule)
-  // },
-  // {
-  //   path: 'age',
-  //   loadChildren: () => import('./user-information/age/age.module').then( m => m.AgePageModule)
-  // }
 ];
 @NgModule({
   imports: [

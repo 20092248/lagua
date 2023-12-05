@@ -32,6 +32,10 @@ const routes: Routes = [
         loadChildren: () => import('../topics/topics.module').then( m => m.TopicsPageModule)
       },
       {
+        path: 'dialog',
+        loadChildren: () => import('../dialog/dialog.module').then( m => m.DialogPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'

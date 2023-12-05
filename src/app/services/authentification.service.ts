@@ -59,9 +59,9 @@ export class AuthentificationService {
 
   async getInfoUser(uid: string) {
     try {
-      // localStorage.setItem(USER_KEY, uid);
-      await this.updateDayConnected('users', uid);
+      localStorage.setItem(USER_KEY, uid);
       const document = await getDoc(doc(getFirestore(), 'users', uid));
+      this.updateDayConnected('users', uid);
       if (document.exists()) {
         const data = document.data() as User;
         this.user.uid = data.uid;
@@ -86,7 +86,7 @@ export class AuthentificationService {
         throw Error(CONSTANTS.NOT_SIGNIN);
       }
     } catch (error: any) {
-      // localStorage.removeItem(USER_KEY);
+      localStorage.removeItem(USER_KEY);
       throw Error(error);
     }
   }
@@ -159,17 +159,13 @@ export class AuthentificationService {
         // Sign in with credential from the Google user.
         let response = await signInWithCredential(getAuth(), GoogleAuthProvider.credential(user.authentication.idToken))
           .then(async (result) => {
-            // const access_token = await result.user.getIdToken();
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential ? credential.accessToken : null;
-            // The signed-in user info.
+            GoogleAuthProvider.credentialFromResult(result);
             this.user = this.getUserCredential(result);
             const responseInfoUser = await this.getInfoUser(result.user?.uid);
             return responseInfoUser;
           })
           .catch((error) => {
-            const credential = GoogleAuthProvider.credentialFromError(error);
+            GoogleAuthProvider.credentialFromError(error);
             throw Error(error.message);
           });
         return response;
@@ -189,16 +185,12 @@ export class AuthentificationService {
       const auth = getAuth();
       let response = await signInWithPopup(auth, provider)
         .then(async (result) => {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          const token = credential ? credential.accessToken : null;
-          // The signed-in user info.
+          GoogleAuthProvider.credentialFromResult(result);
           this.user = this.getUserCredential(result);
           const responseInfoUser = await this.getInfoUser(result.user?.uid);
           return responseInfoUser;
         }).catch((error) => {
-          // The AuthCredential type that was used.
-          const credential = GoogleAuthProvider.credentialFromError(error);
+          GoogleAuthProvider.credentialFromError(error);
           throw Error(error.message);
         });
       return response;
@@ -221,20 +213,11 @@ export class AuthentificationService {
     let responseInfoUser = false;
     let response = await signInWithPopup(auth, provider)
       .then(async (result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential ? credential.accessToken : null;
-        // The signed-in user info.
-        const userData = this.getUserCredential(result);
-        this.user.uid = userData.uid;
-        this.user.email = userData.email;
-        this.user.displayName = userData.displayName;
-        this.user.photoURL = userData.photoURL;
+        GoogleAuthProvider.credentialFromResult(result);
+        this.user = this.getUserCredential(result);
         return true;
       }).catch((error) => {
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        console.error(credential + ' : ' + error);
+        GoogleAuthProvider.credentialFromError(error);
         return false;
       });
     if (response) {
@@ -249,20 +232,11 @@ export class AuthentificationService {
     let responseInfoUser = false;
     let response = await signInWithPopup(auth, provider)
       .then(async (result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential ? credential.accessToken : null;
-        // The signed-in user info.
-        const userData = this.getUserCredential(result);
-        this.user.uid = userData.uid;
-        this.user.email = userData.email;
-        this.user.displayName = userData.displayName;
-        this.user.photoURL = userData.photoURL;
+        GoogleAuthProvider.credentialFromResult(result);
+        this.user = this.getUserCredential(result);
         return true;
       }).catch((error) => {
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        console.error(credential + ' : ' + error);
+        GoogleAuthProvider.credentialFromError(error);
         return false;
       });
     if (response) {
@@ -297,12 +271,6 @@ export class AuthentificationService {
       console.error('Impossible de récupérer l\'utilisateur Facebook');
       return false;
     }
-    //   this.loadFacebookUserData(result.accessToken);
-    // } else if (result.accessToken && !result.accessToken.userId) {
-    //   this.getFacebookCurrentToken();
-    // } else {
-    //   console.error('Impossible de récupérer l\'utilisateur Facebook');
-    // }
   }
 
   async loginWithFacebookFirebase(): Promise<boolean> {
@@ -314,11 +282,8 @@ export class AuthentificationService {
       let response = await signInWithPopup(auth, provider)
         .then(async (result) => {
           if (result) {
-            // The signed-in user info.
             this.user = this.getUserCredential(result);
-            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-            // const credential = FacebookAuthProvider.credentialFromResult(result);
-            // const accessToken = credential ? credential.accessToken : null;
+            FacebookAuthProvider.credentialFromResult(result);
             const responseInfoUser = await this.getInfoUser(result.user?.uid);
             return responseInfoUser;
           } else {
@@ -326,8 +291,7 @@ export class AuthentificationService {
           }
         })
         .catch((error) => {
-          // The AuthCredential type that was used.
-          const credential = FacebookAuthProvider.credentialFromError(error);
+          FacebookAuthProvider.credentialFromError(error);
           throw Error(error.message);
         });
       return response;
@@ -348,27 +312,16 @@ export class AuthentificationService {
     const provider = new FacebookAuthProvider();
     provider.setDefaultLanguage('fr');
     provider.addScope('user_birthday');
-    // provider.setCustomParameters({
-    //   'display': 'popup'
-    // });
     const auth = getAuth();
     let responseInfoUser = false;
     let response = await signInWithPopup(auth, provider)
       .then((result) => {
-        // The signed-in user info.
-        const userData = this.getUserCredential(result);
-        this.user.uid = userData.uid;
-        this.user.email = userData.email;
-        this.user.displayName = userData.displayName;
-        this.user.photoURL = userData.photoURL;
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        const credential = FacebookAuthProvider.credentialFromResult(result);
-        const accessToken = credential ? credential.accessToken : null;
+        this.user = this.getUserCredential(result);
+        FacebookAuthProvider.credentialFromResult(result);
         return true;
       })
       .catch((error) => {
-        // The AuthCredential type that was used.
-        const credential = FacebookAuthProvider.credentialFromError(error);
+        FacebookAuthProvider.credentialFromError(error);
         console.error(error);
         return false;
       });
@@ -382,27 +335,17 @@ export class AuthentificationService {
     const provider = new FacebookAuthProvider();
     provider.setDefaultLanguage('fr');
     provider.addScope('user_birthday');
-    // provider.setCustomParameters({
-    //   'display': 'popup'
-    // });
     const auth = getAuth();
     let responseInfoUser = false;
     let response = await signInWithPopup(auth, provider)
       .then((result) => {
-        // The signed-in user info.
+        FacebookAuthProvider.credentialFromResult(result);
         const userData = this.getUserCredential(result);
-        this.user.uid = userData.uid;
-        this.user.email = userData.email;
-        this.user.displayName = userData.displayName;
-        this.user.photoURL = userData.photoURL;
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        const credential = FacebookAuthProvider.credentialFromResult(result);
-        const accessToken = credential ? credential.accessToken : null;
+        FacebookAuthProvider.credentialFromResult(result);
         return true;
       })
       .catch((error) => {
-        // The AuthCredential type that was used.
-        const credential = FacebookAuthProvider.credentialFromError(error);
+        FacebookAuthProvider.credentialFromError(error);
         console.error(error);
         return false;
       });
@@ -412,40 +355,13 @@ export class AuthentificationService {
     return response && responseInfoUser;
   }
 
-  async loadFacebookUserData(accessToken: any) {
-    try {
-      const url = 'https://graph.facebook.com/' + accessToken.userId + '?fields=id,name,picture.width(720),birthday,email&access_token=' + accessToken.token;
-      const facebookUserDataObservale = this.http.post(url, {}).pipe(catchError((e) => { console.error(e); throw e; }));
-      const facebookUserData = await lastValueFrom(facebookUserDataObservale) as any;
-      const userData = this.getFacebookUserCredential(facebookUserData);
-      const login = this.login(userData.email || '', userData.uid);
-      return login;
-    } catch (e) {
-      console.error(e);
-      return false;
-    }
-  }
-
-  async getFacebookCurrentToken() {
-    var facebookUserData = null;
-    const result = await (FacebookLogin.getCurrentAccessToken());
-    if (result.accessToken) {
-      facebookUserData = this.loadFacebookUserData(result.accessToken);
-      await signInWithCredential(getAuth(), FacebookAuthProvider.credential(result.accessToken.token))
-        .then(async (result) => {
-          console.log(result);
-        }, e => console.error(e));
-    }
-    return facebookUserData;
-  }
-
   async logout(disconnect: boolean) {
     if (disconnect && getAuth().currentUser) {
       this.updateDayDisconnected('users', this.user.uid ? this.user.uid : '');
     }
     return signOut(getAuth()).then(() => {
       this.user = {} as User;
-      // localStorage.removeItem(USER_KEY);
+      localStorage.removeItem(USER_KEY);
       console.log('sign-out successful.');
     }).catch((error) => {
       console.error(error);
@@ -504,7 +420,7 @@ export class AuthentificationService {
       } else if (today.getUTCDay() === 6) {
         data = { 'week.sam': { day: today.getUTCDay(), timestamp: today } }
       }
-      setTimeout(() => updateDoc(userRef, data), 1000);
+      await updateDoc(userRef, data);
     } catch (error) {
       throw Error(CONSTANTS.UPDATE_DAY_CONNECTED_KO);
     }
@@ -534,11 +450,6 @@ export class AuthentificationService {
     this.user.displayName = result.name;
     this.user.photoURL = result.picture && result.picture.data ? result.picture.data.url : '';
     return this.user;
-  }
-
-
-  async delay(ms: number) {
-    return await new Promise(resolve => setTimeout(resolve, ms));
   }
 
 }
