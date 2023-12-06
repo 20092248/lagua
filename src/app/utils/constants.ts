@@ -5,6 +5,12 @@ export class CONSTANTS {
     public static UPDATE_DAY_CONNECTED_KO = 'Une erreur est survenue lors de la connexion de l\'utilisateur.';
     public static SHARE_MSG_TITLE = 'Essaie ça !';
     public static SHARE_MSG_OBJECT = 'J\'utilise une application d\'apprentissage linguistique appelée Lagua et je pense qu\'elle pourrait te plaire aussi. Suis ce lien si tu veux en savoir plus : https://lagua-shikomori.web.app. Cette application m\'aide à apprendre plus vite et elle est très amusante !'
+    public static transcodeDialect: { [key: string]: string } = {
+        ['SHAN']: 'shindzuani',
+        ['SHGC']: 'shingazidza',
+        ['MAOR']: 'shimaore',
+        ['MOHE']: 'shimwali'
+    };
     public static topicDocument: { [key: string]: any } = {
         ['ANIMAL']: {code: 'animals', value: 'Les animaux'},
         ['CLOTHE']: {code: 'clothes', value: 'Les vêtements'},

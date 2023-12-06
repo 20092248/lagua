@@ -1,5 +1,3 @@
-export const TOPICS = [];
-
 export const ANIMALS = [{
     type: 'Animaux sauvages',
     data: [{
