@@ -488,6 +488,16 @@ export class DictionaryService {
     }
   }
 
+  updateDialog(data: any, coll: string) {
+    try {
+      console.log(data);
+      // const dialogId = addDoc(collection(getFirestore(), coll), {dialogs : data});
+
+    } catch (err) {
+      console.error(data);
+    }
+  }
+
   async addNewDialectInDB(text: string, translate: string, alphabet: string) {
     const q = query(collection(getFirestore(), text + '_' + translate + '_' + alphabet), orderBy('originalText', 'asc'));
     const querySnapshot = await getDocs(q);

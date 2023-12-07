@@ -7,7 +7,8 @@ import { DICO } from './dico';
 import { AlertService } from 'src/app/services/alert.service';
 import { FirebaseWord } from 'src/app/model/wordFirebase.model';
 import { error } from 'console';
-import { ANIMALS, CLOTHES, COLORS, FAMILY, FOOD, HOME, HUMAN_BODY, MUSIC, SCHOOLS, SEA, TOOLS, TOPICS, TREES } from './topics';
+import { ANIMALS, CLOTHES, COLORS, FAMILY, FOOD, HOME, HUMAN_BODY, MUSIC, SCHOOLS, SEA, TOOLS, TREES } from './topics';
+import { DIALOG } from './dialog';
 
 
 @Component({
@@ -37,6 +38,9 @@ export class AddPage implements OnInit {
   }
 
   ngOnInit() {
+    DIALOG.forEach(d=>{
+      this.dictionaryService.updateDialog(d, 'dialogs');
+    });
     // this.dictionaryService.getbodyLinkFr({text:'réveiller', uid: 'XRU3Z2S8R6307XJXuSLi'}, 'r');  
     // this.dictionaryService.getbodyLinkFr({text:'réveiller%20%20brusquement', uid: 'luiCApszkNXIcn2mL4iY'}, 'r');
     // this.dictionaryService.getbodyLink({text:'trama', uid: 'KW1eo5ayYNBRc0aVQ18K'}, 't');
