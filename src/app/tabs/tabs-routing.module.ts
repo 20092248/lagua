@@ -32,8 +32,8 @@ const routes: Routes = [
         loadChildren: () => import('../topics/topics.module').then( m => m.TopicsPageModule)
       },
       {
-        path: 'dialog',
-        loadChildren: () => import('../dialog/dialog.module').then( m => m.DialogPageModule)
+        path: 'dialogs',
+        loadChildren: () => import('../dialogs/dialogs.module').then( m => m.DialogsPageModule)
       },
       {
         path: '',

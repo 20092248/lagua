@@ -38,9 +38,9 @@ export class AddPage implements OnInit {
   }
 
   ngOnInit() {
-    DIALOG.forEach(d=>{
-      this.dictionaryService.updateDialog(d, 'dialogs');
-    });
+    // DIALOG.forEach(d=>{
+    //   this.dictionaryService.updateDialog(d, 'dialogs');
+    // });
     // this.dictionaryService.getbodyLinkFr({text:'réveiller', uid: 'XRU3Z2S8R6307XJXuSLi'}, 'r');  
     // this.dictionaryService.getbodyLinkFr({text:'réveiller%20%20brusquement', uid: 'luiCApszkNXIcn2mL4iY'}, 'r');
     // this.dictionaryService.getbodyLink({text:'trama', uid: 'KW1eo5ayYNBRc0aVQ18K'}, 't');
