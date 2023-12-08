@@ -16,9 +16,10 @@
         </ion-item>
         <div slot="content">
           <ion-list class="ion-no-padding ion-margin-bottom" lines="full">
-            <ion-item class="ion-item-content" *ngFor=" let data of d.data" (click)="goToDetail(data)">
+            <ion-item class="ion-item-content" *ngFor=" let data of d.data">
               <ion-label class="ion-padding-start ion-text-wrap">{{data.label}}</ion-label>
-              <ion-icon slot="end" name="chatbox-ellipses-outline"></ion-icon>
+              <ion-icon (click)="modifyDetail(data)" slot="end" name="pencil-outline" *ngIf="user.email === 'brady91700@gmail.com' || user.email === 'bradyabd@gmail.com'"></ion-icon>
+              <ion-icon (click)="goToDetail(data)" slot="end" name="chatbox-ellipses-outline"></ion-icon>
             </ion-item>
           </ion-list>
         </div>

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Modifier un dialogue <ion-icon class="ion-padding-end" name="add-circle-outline" (click)="addChat(0)"></ion-icon></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="ion-border ion-padding-horizontal" *ngFor="let c of chats; let index = index">
+  <h4>Message n°{{index + 1}} <ion-icon class="ion-padding-end" name="add-circle-outline" (click)="addChat(index)"></ion-icon><ion-icon name="trash-outline" (click)="removeChat(index)"></ion-icon></h4>
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-input value="{{c.date}}" [(ngModel)]="c.date"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>User ID</ion-label>
+    <ion-input value="{{c.userId}}" [(ngModel)]="c.userId"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>User Name</ion-label>
+    <ion-input value="{{c.userName}}" [(ngModel)]="c.userName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Sender ID</ion-label>
+    <ion-input value="{{c.senderId}}" [(ngModel)]="c.senderId"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Sender Name</ion-label>
+    <ion-input value="{{c.senderName}}" [(ngModel)]="c.senderName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Translate</ion-label>
+    <ion-input value="{{c.translate}}" [(ngModel)]="c.translate"></ion-input>
+  </ion-item>
+  <div class="ion-margin-horizontal">
+    <ion-item>
+      <ion-label>Shindzuani</ion-label>
+      <ion-input value="{{c.text?.shindzuani}}" [(ngModel)]="c.text.shindzuani"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Shingazidja</ion-label>
+      <ion-input value="{{c.text?.shingazidja}}" [(ngModel)]="c.text.shingazidja"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Shimwali</ion-label>
+      <ion-input value="{{c.text?.shimwali}}" [(ngModel)]="c.text.shimwali"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Shimaoré</ion-label>
+      <ion-input value="{{c.text?.shimaore}}" [(ngModel)]="c.text.shimaore"></ion-input>
+    </ion-item>
+  </div>
+</div>
+<div class="ion-text-center">
+  <ion-button (click)="saveDialogs()">VALIDER</ion-button>
+</div>
+</ion-content>

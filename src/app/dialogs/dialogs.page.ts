@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DialogService } from '../services/dialog.service';
 import { Router } from '@angular/router';
 import { AuthentificationService } from '../services/authentification.service';
-import { CONSTANTS } from '../utils/constants';
 import { Utils } from '../utils/utils';
+import { User } from '../model/user.model';
 
 @Component({
   selector: 'app-dialogs',
@@ -14,10 +14,12 @@ export class DialogsPage implements OnInit {
 
   dialogs: any[] = [];
   displayFirstAccordion: string = '';
+  user: User = {} as User;
 
   constructor(private router: Router, private authentificationService: AuthentificationService, private dialogService: DialogService) { }
 
   ngOnInit() {
+    this.user = this.authentificationService.user;
     const category = Utils.getCategoryExtended(this.authentificationService.user.review.category);
       this.dialogService.getDialogs(category).then(dialogs => {
         this.dialogs = dialogs;
@@ -27,6 +29,10 @@ export class DialogsPage implements OnInit {
 
   goToDetail(dialogCode: any) {
     this.router.navigate(['/tabs/dialogs/' + dialogCode.code]);
+  }
+
+  modifyDetail(dialogCode: any) {
+    this.router.navigate(['/tabs/dialogs/modify-review/' + dialogCode.code]);
   }
 
 }

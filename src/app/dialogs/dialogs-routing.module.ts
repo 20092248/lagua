@@ -10,6 +10,9 @@ const routes: Routes = [
   }, {
     path: ':dialogs',
     loadChildren: () => import('./detail/detail.module').then(m => m.DetailPageModule)
+  }, {
+    path: 'modify-review/:id',
+    loadChildren: () => import('./modify-dialog/modify-dialog.module').then( m => m.ModifyDialogPageModule)
   }
 ];
 

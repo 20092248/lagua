@@ -45,7 +45,7 @@ export class ModifyReviewPage implements OnInit {
 
   async confirmActionSheet() {
     const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Confirmer la modification',
+      header: 'Confirmer la modification ?',
       subHeader: JSON.stringify(this.questions, (key, value) => key === 'img' || key === 'choices' || key === 'description' ? undefined : value),
       buttons: [
         {
