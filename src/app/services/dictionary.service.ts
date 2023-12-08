@@ -490,10 +490,11 @@ export class DictionaryService {
 
   updateDialog(data: any, coll: string) {
     try {
-      console.log(data);
-      // const dialogId = addDoc(collection(getFirestore(), coll), {dialogs : data});
+      const dialogId = addDoc(collection(getFirestore(), coll), data);
+      console.log(dialogId, data);
 
     } catch (err) {
+      console.error(err);
       console.error(data);
     }
   }

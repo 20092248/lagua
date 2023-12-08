@@ -729,7 +729,7 @@ export const DIALOG = [{
         "code": "B1_B2_10_8",
         "label": "Chez le fromager 3/3",
         "order": 8
-    }, ,
+    },
     {
         "code": "B1_B2_10_9",
         "label": "Chez le poissonnier",

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Dialogue</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list class="ion-no-padding ion-result-dictionary" lines="full">
+    <ion-accordion-group class="ion-margin-vertical" [multiple]="true" [value]="[displayFirstAccordion]">
+      <ion-accordion value="{{d.type}}" toggleIcon="chevron-down-outline" toggleIconSlot="end"
+        *ngFor="let d of dialogs; let index = index">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label>{{d.type}}</ion-label>
+        </ion-item>
+        <div slot="content">
+          <ion-list class="ion-no-padding ion-margin-bottom" lines="full">
+            <ion-item class="ion-item-content" *ngFor=" let data of d.data" (click)="goToDetail(data)">
+              <ion-label class="ion-padding-start ion-text-wrap">{{data.label}}</ion-label>
+              <ion-icon slot="end" name="chatbox-ellipses-outline"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-list>
+</ion-content>

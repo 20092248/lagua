@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DialogPageRoutingModule } from './dialog-routing.module';
+import { DialogsPageRoutingModule } from './dialogs-routing.module';
 
-import { DialogPage } from './dialog.page';
+import { DialogsPage } from './dialogs.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DialogPageRoutingModule
+    DialogsPageRoutingModule
   ],
-  declarations: [DialogPage]
+  declarations: [DialogsPage]
 })
-export class DialogPageModule {}
+export class DialogsPageModule {}
