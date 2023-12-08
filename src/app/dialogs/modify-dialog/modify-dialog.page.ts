@@ -15,20 +15,7 @@ export class ModifyDialogPage implements OnInit {
 
   user: User = {} as User;
   chats: any[] = [];
-  chat: any = {
-    date: '',
-    userId: '',
-    userName: '',
-    senderId: '',
-    senderName: '',
-    translate: '',
-    text: {
-        shindzuani: '',
-        shingazidja: '',
-        shimwali: '',
-        shimaore: '',
-    },
-}
+  chat: any = { date: '', userId: '', userName: '', senderId: '', senderName: '', translate: '', text: { shindzuani: '', shingazidja: '', shimwali: '', shimaore: '', } };
   paramModifyReview: string = '';
   constructor(private route: ActivatedRoute, private dialogService: DialogService, private actionSheetCtrl: ActionSheetController, private alertService: AlertService) { }
 
@@ -38,7 +25,7 @@ export class ModifyDialogPage implements OnInit {
   }
 
   addChat(index: number) {
-    if(this.chats.length){
+    if (this.chats.length) {
       this.chats.splice(index + 1, 0, this.chats[index]);
     } else {
       this.chats.splice(index + 1, 0, this.chat);
