@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CHAT } from 'src/app/dictionary/add/chat';
+import { User } from 'src/app/model/user.model';
+import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailPage implements OnInit {
 
-  constructor() { }
+  user: User = {} as User;
+  chats: any[] = [];
+  chat: any = { date: '', userId: '', userName: '', senderId: '', senderName: '', translate: '', text: { shindzuani: '', shingazidja: '', shimwali: '', shimaore: '', } };
+  paramModifyReview: string = '';
+  constructor(private dialogService: DialogService) { }
 
   ngOnInit() {
+    this.chats = CHAT;
   }
 
 }
