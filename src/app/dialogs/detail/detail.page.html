@@ -1,16 +1,53 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Conversation</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- <div>
-    <div class="chat-bubble {{chatMessage.type === messageType.MSG_REQ ? 'right' : 'left'}}">
-      <div class="message">{{chatMessage.message}}</div>
-      <div class="message-detail" style="float:right">
-        <span>coucou</span>
-      </div>
+  <div class="ion-margin-top">
+    <div class="wrapper">
+      <ul>
+        <li *ngFor="let c of chats" [ngClass]="c.userId === '1' ? 'ion-li-left': 'ion-li-right'">
+          <div class="ion-position-icon"
+            [ngClass]="c.userId === '1' ? 'ion-position-icon-left': 'ion-position-icon-right'">
+            {{getInitial(c.userName)}}</div>
+          <div class="ion-chat-content">
+            <ion-label class="ion-name">{{c.userName}}</ion-label>
+            <ion-label class="ion-text">{{c.translate}}</ion-label>
+            <ion-label class="ion-line"></ion-label>
+            <ion-label class="ion-translate">{{getDialectText(c.text)}}</ion-label>
+          </div>
+        </li>
+        <!-- <li>
+          <div class="ion-position-icon ion-position-icon-right">LC</div>
+          <div class="ion-chat-content">
+            <ion-label class="ion-name">Le client :</ion-label>
+            <ion-label class="ion-text">Oui, à quelle le meeting?</ion-label>
+            <ion-label class="ion-line"></ion-label>
+            <ion-label class="ion-translate">Yes,what time suits you?</ion-label>
+          </div>
+        </li>
+        <li>yes,what time suits you?</li>
+        <li>i was thinking after lunch,i have a meeting in the morning</li>
+        <li>maybe another day?</li>
+        <li>that's all right,what's about you? what are you going to do?</li>
+        <li>i have no idea,go out for a walk or watching tv in home</li>
+        <li>hello,are we meeting today?</li>
+        <li>yes,what time suits you?</li>
+        <li>i was thinking after lunch,i have a meeting in the morning</li>
+        <li>maybe another day?</li>
+        <li>that's all right,what's about you? what are you going to do?</li>
+        <li>i have no idea,go out for a walk or watching tv in home</li> -->
+      </ul>
+      <ion-label class="ion-text-other">Fin de la discussion</ion-label>
     </div>
-  </div> -->
+  </div>
+  <div>
+    <ion-label class="ion-text-other">Fin de la discussion</ion-label>
+  </div>
+  <ion-label class="ion-text-other">Fin de la discussion</ion-label>
 </ion-content>
