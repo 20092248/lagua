@@ -25,8 +25,8 @@
                 </div>
                 <ion-item button (click)="goTo('../parameter', true, true)"><ion-icon class="ion-padding-end"
                     name="settings-outline"></ion-icon>Paramètres</ion-item>
-                <ion-item button><ion-icon class="ion-padding-end"
-                    name="stats-chart-outline"></ion-icon>Mes objectifs</ion-item>
+                <ion-item button><ion-icon class="ion-padding-end" name="stats-chart-outline"></ion-icon>Mes
+                  objectifs</ion-item>
                 <!-- <ion-item button (click)="goTo('/tabs/account', false, true)"><ion-icon class="ion-padding-end"
                     name="flag-outline"></ion-icon>Mes langues</ion-item> -->
                 <ion-item (click)="changeMode()"><ion-icon name="brush-outline" class="ion-padding-end">
@@ -134,8 +134,9 @@
       <div class="ion-unlock-lesson">
         <swiper-container [slidesPerView]="2.5" [initialSlide]="0" speed="400">
           <swiper-slide *ngFor="let lesson of recommendedLessons; let index = index">
-            <ion-card class="ion-no-margin-bottom"
+            <ion-card (click)="goTo('/tabs/lessons/'+lesson.navigate, user.lesson.order >= lesson.order, false)" class="ion-activatable ion-no-margin-bottom"
               [ngClass]="{'ion-no-margin-middle': !(index === 0 || index === recommendedLessons.length - 1),'ion-no-margin-right': index === 0, 'ion-no-margin-left': index === recommendedLessons.length - 1, 'ion-lock-lesson': user.lesson.order < lesson.order}">
+              <ion-ripple-effect></ion-ripple-effect>
               <img src="{{lesson.src}}" />
               <ion-card-content>
                 <div class="ion-font-weight-bold">{{lesson.title}}</div>
@@ -151,22 +152,23 @@
       </div>
 
       <div class="ion-unlock-lesson">
-        <ion-card>
+        <ion-card class="ion-activatable" [routerLink]="['/tabs/dialogs']">
+          <ion-ripple-effect></ion-ripple-effect>
           <ion-card-header>
-            <ion-card-title>Dialogue - niveau débutant</ion-card-title>
+            <ion-card-title>Dialogue - niveau {{levelDialog | lowercase}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <div class="">Lire des situations de la vie de tous les jours</div>
             <div class="">Conseiller de voir les dialogues avant les exercices</div>
           </ion-card-content>
-          <ion-button size="small"
-            class="ion-button ion-padding-end ion-float-right ion-button-position" fill="clear"
+          <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position" fill="clear"
             [routerLink]="['/tabs/dialogs']">Voir les dialogues</ion-button>
         </ion-card>
       </div>
 
       <div class="ion-unlock-lesson">
-        <ion-card>
+        <ion-card class="ion-activatable" id="open-modal" (click)="displayPreviousReviews()">
+          <ion-ripple-effect></ion-ripple-effect>
           <ion-card-header>
             <ion-card-title>C'est l'heure de réviser</ion-card-title>
           </ion-card-header>
@@ -218,7 +220,8 @@
       </div>
 
       <div class="ion-unlock-lesson">
-        <ion-card>
+        <ion-card class="ion-activatable" (click)="accessToReview()">
+          <ion-ripple-effect></ion-ripple-effect>
           <ion-card-header>
             <ion-card-title>{{user.review.category === 'A1' && user.review.lesson === 1 && user.review.order === 1 ?
               'Premier': 'Prochain'}} cours à visualiser</ion-card-title>
@@ -234,7 +237,8 @@
       </div>
 
       <div class="ion-unlock-lesson">
-        <ion-card>
+        <ion-card class="ion-activatable" [routerLink]="['/tabs/topics']">
+          <ion-ripple-effect></ion-ripple-effect>
           <ion-card-header>
             <ion-card-title>Acquérir du vocabulaire</ion-card-title>
           </ion-card-header>
@@ -242,8 +246,7 @@
             <div class="">Visiualiser les différentes thématiques</div>
             <div class="">Valider chaque thème pour débloquer le suivant</div>
           </ion-card-content>
-          <ion-button size="small"
-            class="ion-button ion-padding-end ion-float-right ion-button-position" fill="clear"
+          <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position" fill="clear"
             [routerLink]="['/tabs/topics']">Voir les thèmes</ion-button>
         </ion-card>
       </div>

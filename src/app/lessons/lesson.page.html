@@ -9,7 +9,8 @@
 <ion-content [fullscreen]="true">
   <div class="ion-background-content">
     <div>
-      <ion-card *ngFor="let lesson of lessons" class="ion-flex" (click)="goTo(lesson)">
+      <ion-card *ngFor="let lesson of lessons" class="ion-activatable ion-flex" (click)="goTo(lesson)">
+        <ion-ripple-effect></ion-ripple-effect>
         <div *ngIf="userLesson.order >= lesson.order" class="ion-size-img">
           <img class="ion-icon-src ion-float-right" src="{{lesson.src}}">
         </div>

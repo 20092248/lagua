@@ -6,6 +6,7 @@ import { AuthentificationService } from '../services/authentification.service';
 import { User } from '../model/user.model';
 import { LoadingController } from '@ionic/angular';
 import { LoadingService } from '../services/loading.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-lesson',
@@ -14,7 +15,7 @@ import { LoadingService } from '../services/loading.service';
 })
 export class LessonPage implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService, private loadingService: LoadingService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService, private loadingService: LoadingService, private alertService: AlertService) { }
 
   get userLesson() {
     return this.authentificationService.user.lesson;
@@ -37,9 +38,13 @@ export class LessonPage implements OnInit {
   }
 
   goTo(lesson: Lesson) {
-    const navigationExtras: NavigationExtras = {
-      state: { data: lesson }
-    };
-    this.router.navigate(['tabs/lessons/' + lesson.navigate], navigationExtras);
+    if (this.userLesson.order >= lesson.order) {
+      const navigationExtras: NavigationExtras = {
+        state: { data: lesson }
+      };
+      this.router.navigate(['tabs/lessons/' + lesson.navigate], navigationExtras);
+    } else {
+      this.alertService.presentToast('Débloquer les précedentes leçons avant d\'accéder à la leçon "' + lesson.title + '".', 3000, 'lagua');
+    }
   }
 }

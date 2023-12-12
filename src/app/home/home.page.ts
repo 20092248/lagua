@@ -31,6 +31,7 @@ export class HomePage implements OnInit {
   previousReviewLoaded: boolean = false;
   previousReviewLoadedLength: number[] = [];
   setting: any = {};
+  levelDialog: string = '';
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
@@ -60,6 +61,7 @@ export class HomePage implements OnInit {
     forkJoin([this.settingService.getSettings(), this.reviewService.getAllReviews(), this.lessonService.searchLessons()]).subscribe(([setting, reviewsInfo, lessons]) => {
         this.loadingService.dismiss();
         this.setting = setting;
+        this.levelDialog = Utils.getLevelDialog(this.setting.reviews?.categories, this.user.review?.category);
       this.progression = this.user && this.user.resultReviews && this.user.resultLessons ? (this.user.resultReviews?.length + this.user.resultLessons?.length) / (Utils.getReviewsLength(reviewsInfo) + lessons.length) * 100 : 0;
     });
   }
@@ -71,7 +73,7 @@ export class HomePage implements OnInit {
         this.dismissPopover();
       }
     } else {
-      this.alertService.presentToast('Impossible de visualiser cette leçon.', 2000, 'danger');
+      this.alertService.presentToast('Débloquer les précedentes leçons avant d\'accéder à la leçon.', 3000, 'lagua');
     }
   }
 

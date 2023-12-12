@@ -31,4 +31,12 @@ export class Utils {
     return categoryExtended;
   }
 
+  static getLevelDialog(categories: any[], code: string) {
+    if(categories && categories.length) {
+      const category = categories.find(c => c.code === code);
+      return category?.label;
+    }
+    return '';
+  }
+
 }

@@ -18,7 +18,8 @@
 <ion-content [fullscreen]="true">
   <ul>
     <li *ngFor="let section of sections">
-      <ion-card class="ion-text-center" (click)="goToDetailSection(section)">
+      <ion-card class="ion-activatable ion-text-center" (click)="goToDetailSection(section)">
+        <ion-ripple-effect></ion-ripple-effect>
         <img class="ion-padding-top ion-padding-horizontal" src="{{section?.src}}" />
         <ion-card-header>
           <ion-card-subtitle>{{section?.title}}</ion-card-subtitle>
