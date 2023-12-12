@@ -4,6 +4,11 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Conversation</ion-title>
+    <ion-buttons slot="end" *ngIf="user.email === 'brady91700@gmail.com' || user.email === 'bradyabd@gmail.com'">
+      <ion-button (click)="modifyDetail()">
+        <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -22,32 +27,10 @@
             <ion-label class="ion-translate">{{getDialectText(c.text)}}</ion-label>
           </div>
         </li>
-        <!-- <li>
-          <div class="ion-position-icon ion-position-icon-right">LC</div>
-          <div class="ion-chat-content">
-            <ion-label class="ion-name">Le client :</ion-label>
-            <ion-label class="ion-text">Oui, à quelle le meeting?</ion-label>
-            <ion-label class="ion-line"></ion-label>
-            <ion-label class="ion-translate">Yes,what time suits you?</ion-label>
-          </div>
-        </li>
-        <li>yes,what time suits you?</li>
-        <li>i was thinking after lunch,i have a meeting in the morning</li>
-        <li>maybe another day?</li>
-        <li>that's all right,what's about you? what are you going to do?</li>
-        <li>i have no idea,go out for a walk or watching tv in home</li>
-        <li>hello,are we meeting today?</li>
-        <li>yes,what time suits you?</li>
-        <li>i was thinking after lunch,i have a meeting in the morning</li>
-        <li>maybe another day?</li>
-        <li>that's all right,what's about you? what are you going to do?</li>
-        <li>i have no idea,go out for a walk or watching tv in home</li> -->
       </ul>
-      <ion-label class="ion-text-other">Fin de la discussion</ion-label>
     </div>
   </div>
-  <div>
-    <ion-label class="ion-text-other">Fin de la discussion</ion-label>
+  <div class="ion-margin-horizontal ion-end-conversation">
+    <ion-label class="ion-text-center ion-line" color="medium">Fin de la discussion</ion-label>
   </div>
-  <ion-label class="ion-text-other">Fin de la discussion</ion-label>
 </ion-content>

@@ -25,7 +25,6 @@ export class ParameterPage implements OnInit {
   ngOnInit() {
     this.theme
     this.user = this.authentificationService.user;
-    console.log(this.user);
     this.settingsService.getSetting('reviews').then((data => {
       this.categorie = data.categories.find((c: any) => c.code === this.user.review.category);
     }));

@@ -10,6 +10,7 @@ const THEME_KEY = 'selected-app-theme';
 export class DialogService {
 
   dialogs: any[] = [];
+  chats: any = {};
 
   constructor(private _firestore: Firestore) { }
 
@@ -18,6 +19,16 @@ export class DialogService {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => this.dialogs.push(doc.data()));
     return this.dialogs;
+  }
+
+  async getChats(collection: string, document: string): Promise<any> {
+    const chatRef = doc(getFirestore(), collection, document);
+    const docSnap = await getDoc(chatRef);
+    if (docSnap.exists()) {
+      const dialog = docSnap.data();
+      this.chats = dialog['chats'] ? dialog['chats'] : [];
+    }
+    return this.chats;
   }
 
   async updateChats(collection: string, document: string, data: any[]): Promise<any> {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CHAT } from 'src/app/dialogs/detail/chat';
 import { User } from 'src/app/model/user.model';
 import { AuthentificationService } from 'src/app/services/authentification.service';
@@ -18,11 +19,18 @@ export class DetailPage implements OnInit {
   chat: any = { date: '', userId: '', userName: '', senderId: '', senderName: '', translate: '', text: { shindzuani: '', shingazidja: '', shimwali: '', shimaore: '', } };
   paramModifyReview: string = '';
 
-  constructor(private dialogService: DialogService, private authentificationService: AuthentificationService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private dialogService: DialogService, private authentificationService: AuthentificationService) { }
 
   ngOnInit() {
-    this.chats = CHAT;
+    this.paramModifyReview = this.route.snapshot.paramMap.get('dialog') || '';
+    this.dialogService.getChats(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview).then(dialog => {
+      this.chats = dialog.length ? dialog : CHAT;
+    });
     this.user = this.authentificationService.user;
+  }
+
+  modifyDetail() {
+    this.router.navigate(['/tabs/dialogs/modify-review/' + this.paramModifyReview]);
   }
 
   getInitial(name: string) {

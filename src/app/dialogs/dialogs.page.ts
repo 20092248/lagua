@@ -31,8 +31,4 @@ export class DialogsPage implements OnInit {
     this.router.navigate(['/tabs/dialogs/' + dialogCode.code]);
   }
 
-  modifyDetail(dialogCode: any) {
-    this.router.navigate(['/tabs/dialogs/modify-review/' + dialogCode.code]);
-  }
-
 }

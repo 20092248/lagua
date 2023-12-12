@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: DialogsPage
   }, {
-    path: ':dialogs',
+    path: ':dialog',
     loadChildren: () => import('./detail/detail.module').then(m => m.DetailPageModule)
   }, {
     path: 'modify-review/:id',

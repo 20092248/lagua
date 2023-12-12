@@ -14,32 +14,35 @@ div.ion-chat-content {
 
 div.ion-position-icon {
     position: absolute;
-    font-size: 28px;
-    padding: 1px 5px;
+    font-size: 26px;
+    padding: 2px 8px;
     border-radius: 50px;
 }
 
 div.ion-position-icon-left {
     background: #bed5bb;
     color: #818057;
-    left: -80px;
+    left: -75px;
 }
 
 div.ion-position-icon-right {
     background: #f5f6f9;
     border: 1px solid;
     color: #818057;
-    right: -80px;
+    right: -75px;
 }
 
-ul,
-li {
+ul,li {
     list-style-type: none;
+}
+
+.wrapper {
+    display: flex;
 }
 
 .wrapper ul {
     margin: 0 auto;
-    padding-right: 30px;
+    padding: 0px 16px;
 }
 
 .wrapper ul li {
@@ -54,12 +57,12 @@ li {
 
 .wrapper ul li.ion-li-left {
     float: left;
-    margin-left: 80px;
+    margin-left: 75px;
 }
 
 .wrapper ul li.ion-li-right {
     float: right;
-    margin-right: 80px;
+    margin-right: 75px;
     background-color: rgb(183 229 175 / 30%);
 }
 
@@ -98,6 +101,7 @@ li {
 
 ion-label {
     display: block;
+    font-size: 13px;
 }
 
 ion-label.ion-name {
@@ -118,10 +122,21 @@ ion-label.ion-line:after {
     border-bottom: 1px solid #848484;
     padding-top: 1px;
     padding-bottom: 1px;
+    margin: auto;
 }
 
 ion-label.ion-translate {
     font-style: italic;
     color: #46895c;
     font-weight: bold;
+}
+
+.ion-end-conversation > ion-label.ion-text-center:before {
+    margin-right: 5px;
+    border-bottom: 1.5px solid #92949c;
+}
+
+.ion-end-conversation > ion-label.ion-text-center:after {
+    margin-left: 5px;
+    border-bottom: 1.5px solid #92949c;
 }
