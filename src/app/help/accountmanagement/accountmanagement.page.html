@@ -1,9 +1,115 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>accountmanagement</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Gestion des comptes</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <h2>Qu'est-ce que Lagua ?</h2>
+  <ion-list class="ion-no-padding ion-result-dictionary" lines="full">
+    <ion-accordion-group [multiple]="true" [value]="['info']">
+      <ion-accordion value="info" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label class="ion-text-wrap">Comment changer les informations de l’utilisateur ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Pour changer ton nom d’utilisateur, connecte-toi à ton compte Busuu sur notre site Internet et clique sur
+            l'onglet profil. Clique ensuite sur « Paramètre du compte » pour modifier les infos du compte et
+            enregistre-le.</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="config" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label class="ion-text-wrap">Configurer les langues que je parle</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Pour aider les autres utilisateurs en corrigeant leurs exercices, tu peux indiquer les langues que tu
+            parles et ton niveau pour chacune d’elles.</p>
+          <p>Tu peux le faire sur notre site Internet ou sur nos applications mobiles.</p>
+          <p>Sélectionne les langues parlées et indique ton niveau.</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="abonnement" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label class="ion-text-wrap">Qu’est-ce que abonnement Premium ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Busuu propose des cours gratuits. Cependant, si tu souhaites progresser plus et plus vite, sache que notre
+            abonnement Premium propose des fonctionnalités supplémentaires pour améliorer ton expérience.</p>
+          <p>Ce que comprennent nos formules Premium :</p>
+          <ul>
+            <li>Zéro publicité : profite d’une expérience d’apprentissage sans aucune interruption publicitaire.</li>
+            <li>Un contenu entièrement accessible : passe des leçons et suis le cours dans l’ordre qui te convient le
+              mieux.</li>
+            <li>La Révision intelligente : révise le vocabulaire et la grammaire tout au long de ton apprentissage. Nous
+              te conseillons les mots ou les sujets à revoir au bon moment, tu n’as donc plus à t’en soucier !</li>
+            <li>Des leçons réservées aux membres Premium : accède à d’autres cours spécial voyages, prononciation et
+              bien plus encore.</li>
+          </ul>
+          <p>Pour plus d’informations sur les formules Premium et les tarifs, clique ici.</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="souscrire" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label class="ion-text-wrap">Comment souscrire un abonnement Premium ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Souscrire un abonnement Premium sur le site Internet ou sur l'application :</p>
+          <ul>
+            <li>1.</li>
+            <li>2.</li>
+            <li>3.</li>
+            <li>4.</li>
+          </ul>
+          <p>Lorsque tu souscris un abonnement Premium, tu peux switcher entre le site internet(mobile) ou l'application
+          </p>
+          <p>Chez Busuu, nous savons que les choses peuvent changer. C’est pour cette raison que nous proposons une
+            garantie de remboursement sous 14 jours pour ton premier paiement. Attention, cette garantie ne s’applique
+            pas aux renouvellements automatiques ou aux autres cycles de facturation. Pour bénéficier de cette garantie
+            de remboursement, contacte-nous !</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="paiement" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label class="ion-text-wrap">Quels sont les moyens de paiement acceptés ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Si tu t’abonnes sur notre site Internet depuis un ordinateur de bureau ou un ordinateur portable, sache que
+            nous acceptons la plupart des cartes bancaires ainsi que PayPal. Les devises suivantes sont acceptées :</p>
+          <ul>
+            <li>Euro (EUR)</li>
+            <li>Paypal</li>
+          </ul>
+          <p>Tu utilises un appareil mobile ? Pas de problème ! Tu peux utiliser Apple Pay, pour les portables sous
+            Google Pay pour les appareils Android.</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="telephone" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label class="ion-text-wrap">Peut-on vous contacter par téléphone ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Pour aider le plus de monde possible, nous proposons une assistance par e-mail. De cette façon, nous avons
+            la possibilité de vérifier les informations et d'apporter notre soutien sans vous faire attendre au bout du
+            fil.</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="telephone" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label class="ion-text-wrap">Où puis-je consulter les Conditions générales et la Politique de
+            confidentialité de Lagua ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Les Conditions générales de Lagua sont consultables à l'adresse suivante :
+            https://lagua-shikomori.web.app/terms.</p>
+          <p>Lagua prend votre vie privée très au sérieux et s'engage à la protéger.</p>
+          <p>Pour obtenir plus d'informations à ce sujet, consultez notre Politique de confidentialité à l'adresse
+            suivante : https://lagua-shikomori.web.app/privacy.</p>
+          <p>Pour toute question, n'hésitez pas à nous contacter l'equipe lagua</p>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-list>
 </ion-content>

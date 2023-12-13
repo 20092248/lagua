@@ -7,18 +7,87 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <h2>Qu'est-ce que Lagua ?</h2>
   <ion-list class="ion-no-padding ion-result-dictionary" lines="full">
-    <ion-accordion-group class="ion-margin-vertical" [multiple]="true" [value]="['']">
-      <ion-accordion value="TITLE" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+    <ion-accordion-group [multiple]="true" [value]="['a_propos']">
+      <ion-accordion value="a_propos" toggleIcon="chevron-down-outline" toggleIconSlot="end">
         <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
-          <ion-label>TITLE</ion-label>
+          <ion-label class="ion-text-wrap">À propos de Lagua</ion-label>
         </ion-item>
-        <div slot="content">
-          <ion-list class="ion-no-padding ion-margin-bottom" lines="full">
-            <ion-item class="ion-item-content">
-              <ion-label class="ion-padding-start ion-text-wrap">CONTENT</ion-label>
-            </ion-item>
-          </ion-list>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Lagua est une plateforme d'apprentissage linguistique en autonomie qui veille à transmettre à ses utilisateurs
+          des bases solides par le biais de cours simplifiés et de leçons brèves et focalisées. Comment fonctionne Lagua ?</p>
+          <ul>
+            <li>Accès gratuit ou abonnement Premium : tu peux t'inscrire et apprendre gratuitement ou souscrire un abonnement Premium pour profiter de fonctionnalités supplémentaires.</li>
+            <li>Choix de la langue : sélectionne le dialecte que tu souhaites apprendre et démarre ton apprentissage.</li>
+          </ul>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="structure" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label class="ion-text-wrap">Structure des cours</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Nos cours sont conçus pour offrir un cadre d'apprentissage des langues en toute autonomie. Nous proposons :</p>
+          <ul>
+            <li>Leçons courtes : nos leçons permettent d'acquérir du vocabulaire utile lors de petites séances de 3 à 5 minutes.</li>
+            <li>Un apprentissage ciblé : chaque leçon aborde un sujet précis, par exemple savoir se présenter ou voyager.</li>
+            <li>Un contenu développé par des experts : nos cours ont été conçus par des experts linguistiques qui utilisent des méthodes d'enseignement efficaces.</li>
+          </ul>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="utiliser" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label class="ion-text-wrap">Comment utiliser Lagua ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Lagua étant accessible sur différents appareils, tu disposes d'une grande flexibilité. Découvre ci-dessous les conditions nécessaires pour utiliser Lagua :</p>
+          <ul>
+            <li>Android : vérifie les conditions sur notre application dans le Google Play Store.</li>
+            <li>macOS et Windows : tu dois utiliser un navigateur comme Chrome (2 dernières versions), Firefox (2 dernières versions) ou Safari (version 10 et +).</li>
+          </ul>
+          <p>Quel que soit l'appareil choisi, tes progrès seront synchronisés dans ton compte Lagua. Il te suffit pour cela d'utiliser les mêmes identifiants de connexion pour pouvoir changer d'appareil en fonction de tes besoins.</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="probleme" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label class="ion-text-wrap">Résolution de problèmes</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Si tu rencontres des problèmes concernant la synchronisation de ta progression ou ton abonnement, suis les étapes ci-dessous :</p>
+          <ul>
+            <li>1.Déconnecte-toi de Lagua</li>
+            <li>2.Ferme complètement l'application</li>
+            <li>3.Connecte-toi à nouveau</li>
+            <li>4.Si le problème persiste, envoie un mail à l'équipe Lagua</li>
+          </ul>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="contact" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label class="ion-text-wrap">Je voudrais contacter Lagua pour obtenir de l'aide ou des informations. Comment faire ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Envoie un e-mail à notre équipe teams@lagua.com ou complète le formulaire ici.</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="telephone" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label class="ion-text-wrap">Peut-on vous contacter par téléphone ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Pour aider le plus de monde possible, nous proposons une assistance par e-mail. De cette façon, nous avons la possibilité de vérifier les informations et d'apporter notre soutien sans vous faire attendre au bout du fil.</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="telephone" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion ion-margin-bottom" slot="header">
+          <ion-label class="ion-text-wrap">Où puis-je consulter les Conditions générales et la Politique de confidentialité de Lagua ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Les Conditions générales de Lagua sont consultables à l'adresse suivante : https://lagua-shikomori.web.app/terms.</p>
+          <p>Lagua prend votre vie privée très au sérieux et s'engage à la protéger.</p>
+          <p>Pour obtenir plus d'informations à ce sujet, consultez notre Politique de confidentialité à l'adresse suivante : https://lagua-shikomori.web.app/privacy.</p>
+          <p>Pour toute question, n'hésitez pas à nous contacter l'equipe lagua</p>
         </div>
       </ion-accordion>
     </ion-accordion-group>
