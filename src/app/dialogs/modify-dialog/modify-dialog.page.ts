@@ -18,12 +18,14 @@ export class ModifyDialogPage implements OnInit {
   chats: any[] = [];
   chat: any = { userId: '', userName: '', translate: '', text: { shindzuani: '', shingazidja: '', shimwali: '', shimaore: '', } };
   paramModifyReview: string = '';
+  dialogExist: boolean = false;
   constructor(private route: ActivatedRoute, private dialogService: DialogService, private actionSheetCtrl: ActionSheetController, private alertService: AlertService) { }
 
   ngOnInit() {
     this.paramModifyReview = this.route.snapshot.paramMap.get('id') || '';
     this.dialogService.getChats(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview).then(dialog => {
       this.chats = dialog.length ? dialog : CHAT;
+      this.dialogExist = dialog.length ? true : false;
     });
   }
 
@@ -44,8 +46,9 @@ export class ModifyDialogPage implements OnInit {
   }
 
   async confirmActionSheet() {
+    const exist = this.dialogExist ? 'modification' : 'création';
     const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Confirmer la modification ?',
+      header: 'Confirmer la ' + exist + ' dans ' + this.paramModifyReview + ' ?',
       subHeader: JSON.stringify(this.chats, (key, value) => key === 'userId' || key === 'text' ? undefined : value),
       buttons: [
         {
@@ -69,9 +72,15 @@ export class ModifyDialogPage implements OnInit {
 
     const result = await actionSheet.onDidDismiss();
     if (result.role === 'confirm') {
-      this.dialogService.updateChats(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview, this.chats).then(() => {
-        this.alertService.presentToast('La mise à jour a été effectué.', 1000, 'success');
-      }, () => this.alertService.presentToast('Erreur lors de la mise à jour du questionnaire.', 1000, 'error'));
+      if (this.dialogExist) {
+        this.dialogService.updateChats(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview, this.chats).then(() => {
+          this.alertService.presentToast('La mise à jour a été effectué.', 1000, 'success');
+        }, () => this.alertService.presentToast('Erreur lors de la mise à jour du questionnaire.', 1000, 'danger'));
+      } else {
+        this.dialogService.createChats(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview, this.chats).then(() => {
+          this.alertService.presentToast('La mise à jour a été effectué.', 1000, 'success');
+        }, () => this.alertService.presentToast('Erreur lors de la mise à jour du questionnaire.', 1000, 'danger'));
+      }
     }
   }
 

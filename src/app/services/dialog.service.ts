@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { collection, doc, getDoc, getDocs, getFirestore, orderBy, query, updateDoc, where } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, setDoc, getFirestore, orderBy, query, updateDoc, where } from 'firebase/firestore';
 
 const THEME_KEY = 'selected-app-theme';
 
@@ -34,6 +34,13 @@ export class DialogService {
   async updateChats(collection: string, document: string, data: any[]): Promise<any> {
     const docRef = doc(getFirestore(), collection, document);
     await updateDoc(docRef, {
+      chats: data
+    });
+  }
+
+  async createChats(collection: string, document: string, data: any[]): Promise<any> {
+    const docRef = doc(getFirestore(), collection, document);
+    await setDoc(docRef, {
       chats: data
     });
   }

@@ -23,8 +23,8 @@
           <div class="ion-chat-content">
             <ion-label class="ion-name">{{c.userName}}</ion-label>
             <ion-label class="ion-text">{{c.translate}}</ion-label>
-            <ion-label class="ion-line"></ion-label>
-            <ion-label class="ion-translate">{{getDialectText(c.text)}}</ion-label>
+            <ion-label class="ion-line" *ngIf="getDialectText(c.text)"></ion-label>
+            <ion-label class="ion-translate" *ngIf="getDialectText(c.text)">{{getDialectText(c.text)}}</ion-label>
           </div>
         </li>
       </ul>
