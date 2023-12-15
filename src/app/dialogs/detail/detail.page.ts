@@ -21,7 +21,13 @@ export class DetailPage implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private dialogService: DialogService, private authentificationService: AuthentificationService) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  ionViewWillEnter() {
+    this.initialize();
+  }
+
+  initialize() {
     this.paramModifyReview = this.route.snapshot.paramMap.get('dialog') || '';
     this.dialogService.getChats(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview).then(dialog => {
       this.chats = dialog.length ? dialog : CHAT;
