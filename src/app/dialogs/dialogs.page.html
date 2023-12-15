@@ -7,6 +7,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <ion-segment value="{{category}}">    
+    <ion-segment-button *ngFor="let c of segments" value="{{c.code}}" (click)="changeCategoryDialog(c.code)">{{c.label}}</ion-segment-button>
+  </ion-segment>
   <ion-list class="ion-no-padding ion-result-dictionary" lines="full">
     <ion-accordion-group class="ion-margin-vertical" [multiple]="true" [value]="[displayFirstAccordion]">
       <ion-accordion value="{{d.type}}" toggleIcon="chevron-down-outline" toggleIconSlot="end"

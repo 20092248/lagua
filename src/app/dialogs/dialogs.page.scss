@@ -12,6 +12,13 @@ ion-toolbar {
     --min-height: 80px;
 }
 
+ion-segment {
+    border-bottom: 1px #acacac solid;
+    ion-segment-button {
+        width: 50%;
+    }
+}
+
 ion-list {
     background-color: transparent;
     width: 100%;

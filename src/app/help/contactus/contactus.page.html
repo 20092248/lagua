@@ -1,9 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>contactus</ion-title>
+    <ion-title>Envoyer une demande</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Adresse mail *</ion-label>
+      <ion-input placeholder=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Ma question concerne *</ion-label>
+      <ion-select interface="popover" placeholder="-">
+        <ion-select-option value="Pré-achat">Pré-achat</ion-select-option>
+        <ion-select-option value="Mon abonnement premium">Mon abonnement premium</ion-select-option>
+        <ion-select-option value="Un problème technique">Un problème technique</ion-select-option>
+        <ion-select-option value="Des commentaires / suggestions">Des commentaires / suggestions</ion-select-option>
+        <ion-select-option value="Autre">Autre</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Sujet *</ion-label>
+      <ion-input placeholder=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Description *</ion-label>
+      <ion-textarea placeholder="" rows="4"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block">Envoyer</ion-button>
 </ion-content>

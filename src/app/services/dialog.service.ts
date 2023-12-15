@@ -15,6 +15,7 @@ export class DialogService {
   constructor(private _firestore: Firestore) { }
 
   async getDialogs(category: string) {
+    this.dialogs = [];
     const q = query(collection(getFirestore(), 'dialogs'), where('category', '==', category), orderBy('order', 'asc'));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => this.dialogs.push(doc.data()));
