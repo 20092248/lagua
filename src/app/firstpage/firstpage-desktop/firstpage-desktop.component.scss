@@ -29,6 +29,9 @@ ion-grid {
                 align-items: center;
                 flex-direction: row;
                 justify-content: flex-end;
+                ion-button {
+                    --background: #46895c;
+                }
                 li {
                     color: #fff;
                     margin: 8px;
@@ -42,6 +45,9 @@ ion-grid {
                 }
                 li:hover {
                     border-bottom: 2px solid #fff;
+                }
+                li.ion-button-connexion:hover {
+                    border-bottom: 2px solid transparent;
                 }
             }
             ul.ion-minHeight {

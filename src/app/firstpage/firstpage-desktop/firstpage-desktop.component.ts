@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { SettingService } from 'src/app/services/setting.service';
 
@@ -12,13 +13,17 @@ export class FirstpageDesktopComponent implements OnInit {
   isMobile: boolean = false;
   heightWindow: number = 0;
   homeSetting: any = {};
-  constructor(private settingService: SettingService, private platform: Platform) { }
+  constructor(private router: Router, private settingService: SettingService, private platform: Platform) { }
 
   ngOnInit() {
     this.heightWindow = this.platform.height();
     this.settingService.getSettings().then(setting => {
       this.homeSetting = setting.home;
     });
+  }
+
+  goTo(route: string) {
+    this.router.navigate([route]);
   }
 
 }

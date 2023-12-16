@@ -15,7 +15,7 @@ export class FirstpagePage implements OnInit {
   constructor(private platform: Platform, @Optional() private routerOutlet?: IonRouterOutlet) { }
 
   ngOnInit() {
-    console.log('platform' + this.platform.platforms() + 'width : ' + this.platform.width() + 'height : ' + this.platform.height());
+    console.log('platform : ' + this.platform.platforms() + ', width : ' + this.platform.width() + ', height : ' + this.platform.height());
     this.isMobile = this.platform.is('desktop') || (this.platform.width() > 820 && this.platform.width() > this.platform.height()) ? false : true;
     this.platform.backButton.subscribeWithPriority(-1, () => {
       if (!this.routerOutlet?.canGoBack()) {
