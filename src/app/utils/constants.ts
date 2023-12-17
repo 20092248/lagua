@@ -1,5 +1,7 @@
 export class CONSTANTS {
     public static EMAIL_API_KEY = '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';
+    public static URL_SEND_GRID = 'https://api.sendgrid.com/v3/mail/send';
+    public static TEAM_LAGUA_EMAIL = 'lagua.shikomori@gmail.com';
     public static LOGIN_KO = 'Une erreur est survenue lors de la connexion. Veuillez réessayer ultérieurement.';
     public static NOT_SIGNIN = 'Veuillez créer un compte avant de vous connecter.';
     public static UPDATE_DAY_CONNECTED_KO = 'Une erreur est survenue lors de la connexion de l\'utilisateur.';
