@@ -35,7 +35,9 @@
               "src/theme/variables.scss",
               "src/global.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/smtp.js"
+            ]
           },
           "configurations": {
             "production": {
