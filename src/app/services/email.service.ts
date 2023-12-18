@@ -11,6 +11,14 @@ export class EmailService {
   constructor(private alertService: AlertService) { }
 
   sendEmail(to: string, subject: string, text: string) {
+    // this.http.post(CONSTANTS.URL_SEND_GRID, {
+    //   personalizations: [{ to: [{ email: to }] }],
+    //   from: { from: CONSTANTS.TEAM_LAGUA_EMAIL },
+    //   subject: subject,
+    //   content: [{ type: 'text/plain', value: text }],
+    // }, this.httpOptions).subscribe(() => {
+    //   this.alertService.presentToast('Votre message a été envoyé.', 3000, 'success');
+    // });
     Email.send({
       SecureToken: '7c063671-d48e-4020-b796-891ecc9bbfc4',
       // Host: 'smtp.gmail.com',
