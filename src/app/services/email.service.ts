@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CONSTANTS } from '../utils/constants';
 import { AlertService } from './alert.service';
+import { User } from '../model/user.model';
+import { Utils } from '../utils/utils';
 declare let Email: any;
 
 @Injectable({
@@ -10,24 +12,20 @@ export class EmailService {
 
   constructor(private alertService: AlertService) { }
 
-  sendEmail(infoContact: any) {
+  sendEmail(infoContact: any, user: User) {
     var data = {
       SecureToken: '7c063671-d48e-4020-b796-891ecc9bbfc4',
       // Host: 'smtp.gmail.com',
       // Username: CONSTANTS.TEAM_LAGUA_EMAIL,
       // Password: '6B171CB1BFE2E2D2F144552FC7A773B4616D',
-      To: infoContact.to,
+      To: CONSTANTS.TEAM_LAGUA_EMAIL,
       From: CONSTANTS.TEAM_LAGUA_EMAIL,
-      Subject: infoContact.subject,
-      Body: infoContact.text,
+      Subject: infoContact.question + ' : ' + infoContact.subject,
+      Body: infoContact.description.replaceAll('\n', '<br/>')
+      // Attachments: [infoContact.attachment ? { name: infoContact.attachment.name, data: infoContact.attachment }: null],
     };
-    if(infoContact.attachment) {
-      data.Body.Attachments = [];
-      data.Body.Attachments.push({name: '', data: ''}); // A FAIRE
-    }
-    Email.send(data).then(() => this.alertService.presentToast('Votre message a été envoyé.', 3000, 'success'))
-    .error(() => this.alertService.presentToast(CONSTANTS.SEND_EMAIL_KO, 3000, 'success'));
-CONSTANTS
+    Email.send(data).then(() => this.alertService.presentToast('Votre message a été envoyé.', 3000, 'success'));
+    CONSTANTS
   }
 
 }

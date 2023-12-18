@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/model/user.model';
 import { AlertService } from 'src/app/services/alert.service';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 import { EmailService } from 'src/app/services/email.service';
 import { SettingService } from 'src/app/services/setting.service';
 
@@ -15,20 +17,23 @@ export class ContactusPage implements OnInit {
   filesIsSelected: boolean = false;
   icon: string = '';
   parameter: any = {};
-  contactForm: FormGroup = {} as FormGroup;
-  contact: any = {mail: '', question: null, subject: '', description: '', attachment: null};
+  contactForm: FormGroup;
+  contact: any = { mail: '', question: '', subject: '', description: '', attachment: null };
+  user: User = {} as User;
 
-  constructor(private formBuilder: FormBuilder, private emailService: EmailService, private alertService: AlertService, private settingService: SettingService) { }
-
-  ngOnInit() {
+  constructor(private formBuilder: FormBuilder, private authentificationService: AuthentificationService, private emailService: EmailService, private alertService: AlertService, private settingService: SettingService) {
     this.contactForm = this.formBuilder.group({
-      'mail': ['', Validators.required],
+      'mail': ['', [Validators.required, Validators.email]],
       'question': ['', Validators.required],
       'subject': ['', Validators.required],
-      'description': ['', Validators.required],
-      'attachment': []
-    });    this.parameter = this.settingService.parameter;
-    if(JSON.stringify(this.parameter) === '{}'){
+      'description': ['', Validators.required]
+    });
+  }
+
+  ngOnInit() {
+    this.user = this.authentificationService.user;
+    this.parameter = this.settingService.parameter;
+    if (JSON.stringify(this.parameter) === '{}') {
       this.settingService.getSetting('parameter').then(parameter => {
         this.parameter = parameter;
       })
@@ -36,21 +41,26 @@ export class ContactusPage implements OnInit {
   }
 
   sendEmail() {
-    this.emailService.sendEmail(this.contact);
+    console.log(this.contactForm.value);
+    if (this.contactForm.valid) {
+      this.emailService.sendEmail(this.contact, this.user);
+    }
   }
 
   onFileInput(event: any) {
     this.selectedFiles = this.selectFile(event);
     if (this.isSelectFilesDoc(this.selectedFiles[0])) {
       this.filesIsSelected = true;
+      this.contact.attachment = this.selectedFiles[0];
       this.icon = this.getIcon(this.selectedFiles[0].type);
     } else {
       this.filesIsSelected = false;
+      this.contact.attachment = null;
       this.alertService.presentToast('Le format du document est invalide.', 3000, 'danger');
     }
   }
 
-  private isSelectFilesDoc(doc: any) {
+  isSelectFilesDoc(doc: any) {
     return doc.type === 'application/pdf'
       || doc.type === 'application/msword'
       || doc.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
@@ -58,18 +68,23 @@ export class ContactusPage implements OnInit {
       || doc.type === 'image/png';
   }
 
-  private selectFile(event: any) {
+  removeAttachment() {
+    this.filesIsSelected = false;
+    this.contact.attachment = null;
+  }
+
+  selectFile(event: any) {
     return event.target.files;
   }
 
   getIcon(type: string) {
-    if(type === 'application/pdf'){
+    if (type === 'application/pdf') {
       return this.parameter.icon.pdf;
-    } else if(type === 'application/msword' ||type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'){
+    } else if (type === 'application/msword' || type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
       return this.parameter.icon.doc;
-    } else if(type === 'image/png'){
+    } else if (type === 'image/png') {
       return this.parameter.icon.png;
-    } else if(type === 'image/jpeg'){
+    } else if (type === 'image/jpeg') {
       return this.parameter.icon.jpg;
     }
   }

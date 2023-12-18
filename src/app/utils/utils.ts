@@ -1,3 +1,4 @@
+import { Observable, ReplaySubject } from "rxjs";
 import { ReviewGroup } from "../model/reviewGroup.model";
 
 export class Utils {
@@ -23,20 +24,32 @@ export class Utils {
 
   static getCategoryExtended(category: string) {
     var categoryExtended = 'A1_A2';
-    if(category === 'A1' || category == 'A2') {
+    if (category === 'A1' || category == 'A2') {
       categoryExtended = 'A1_A2';
-    } else if(category === 'B1' || category == 'B2') {
+    } else if (category === 'B1' || category == 'B2') {
       categoryExtended = 'B1_B2';
     }
     return categoryExtended;
   }
 
   static getLevelDialog(categories: any[], code: string) {
-    if(categories && categories.length) {
+    if (categories && categories.length) {
       const category = categories.find(c => c.code === code);
       return category?.label;
     }
     return '';
+  }
+
+  static async convertFile(file: File) {
+    const result = new ReplaySubject<string>(1);
+    const reader = new FileReader();
+    reader.readAsBinaryString(file);
+    reader.onload = (event) => {
+      if (event?.target?.result) {
+        result.next(btoa(event.target.result.toString()));
+      }
+    }
+    return result;
   }
 
 }
