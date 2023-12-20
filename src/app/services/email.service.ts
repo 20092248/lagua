@@ -12,7 +12,11 @@ export class EmailService {
 
   constructor(private alertService: AlertService) { }
 
-  sendEmail(infoContact: any, user: User) {
+  async sendEmail(infoContact: any, user: User) {
+    const attachment = infoContact.attachment ? [{
+      name : infoContact.attachment.name,
+      path : await Utils.convertFileToDataUri(infoContact.attachment)
+    }] : null;
     var data = {
       SecureToken: '7c063671-d48e-4020-b796-891ecc9bbfc4',
       // Host: 'smtp.gmail.com',
@@ -21,11 +25,10 @@ export class EmailService {
       To: CONSTANTS.TEAM_LAGUA_EMAIL,
       From: CONSTANTS.TEAM_LAGUA_EMAIL,
       Subject: infoContact.question + ' : ' + infoContact.subject,
-      Body: infoContact.description.replaceAll('\n', '<br/>')
-      // Attachments: [infoContact.attachment ? { name: infoContact.attachment.name, data: infoContact.attachment }: null],
+      Body: infoContact.description.replaceAll('\n', '<br/>'),
+      Attachments: attachment,
     };
     Email.send(data).then(() => this.alertService.presentToast('Votre message a été envoyé.', 3000, 'success'));
-    CONSTANTS
   }
 
 }

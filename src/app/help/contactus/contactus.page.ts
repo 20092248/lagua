@@ -18,7 +18,7 @@ export class ContactusPage implements OnInit {
   icon: string = '';
   parameter: any = {};
   contactForm: FormGroup;
-  contact: any = { mail: '', question: '', subject: '', description: '', attachment: null };
+  contact: any = { mail: 'brady91700@gmail.com', question: 'Pré-achat', subject: 'a', description: 'b', attachment: null };
   user: User = {} as User;
 
   constructor(private formBuilder: FormBuilder, private authentificationService: AuthentificationService, private emailService: EmailService, private alertService: AlertService, private settingService: SettingService) {

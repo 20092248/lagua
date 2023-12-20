@@ -40,16 +40,32 @@ export class Utils {
     return '';
   }
 
-  static async convertFile(file: File) {
-    const result = new ReplaySubject<string>(1);
-    const reader = new FileReader();
-    reader.readAsBinaryString(file);
-    reader.onload = (event) => {
-      if (event?.target?.result) {
-        result.next(btoa(event.target.result.toString()));
-      }
-    }
-    return result;
+  static async convertFileToDataUri(file: File) {
+    // var fileReader = new FileReader();
+    // const fileInfo = fileReader.readAsDataURL(file);
+    var dataUri = '';
+    const promise = new Promise((resolve, reject) => {
+      var reader = new FileReader();
+      reader.readAsBinaryString(file);
+      reader.onload = () => {
+        dataUri = "data:" + file.type + ";base64," + btoa(reader.result as string);
+      };
+      reader.onerror = function (error) {
+        console.warn(error);
+        reject('Erreur lors de la convertion de la pièce jointe.');
+      };
+      reader.onloadend= function(){
+        resolve(dataUri)
+      };
+    });
+    const fileInfo = await Promise.resolve(promise);
+    return fileInfo;
+  }
+
+  static generateAttachnment(attachment: File) {
+    var fileURL = window.URL.createObjectURL(attachment);
+    window.open(fileURL);
+    return fileURL;
   }
 
 }
