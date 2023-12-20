@@ -1,5 +1,6 @@
 import { Observable, ReplaySubject } from "rxjs";
 import { ReviewGroup } from "../model/reviewGroup.model";
+import { User } from "../model/user.model";
 
 export class Utils {
 
@@ -43,22 +44,18 @@ export class Utils {
   static async convertFileToDataUri(file: File) {
     // var fileReader = new FileReader();
     // const fileInfo = fileReader.readAsDataURL(file);
-    var dataUri = '';
-    const promise = new Promise((resolve, reject) => {
+    const dataUri = new Promise((resolve, reject) => {
       var reader = new FileReader();
       reader.readAsBinaryString(file);
       reader.onload = () => {
-        dataUri = "data:" + file.type + ";base64," + btoa(reader.result as string);
+        resolve("data:" + file.type + ";base64," + btoa(reader.result as string));
       };
       reader.onerror = function (error) {
         console.warn(error);
         reject('Erreur lors de la convertion de la pièce jointe.');
       };
-      reader.onloadend= function(){
-        resolve(dataUri)
-      };
     });
-    const fileInfo = await Promise.resolve(promise);
+    const fileInfo = await Promise.resolve(dataUri);
     return fileInfo;
   }
 
@@ -68,4 +65,7 @@ export class Utils {
     return fileURL;
   }
 
+  static addUserInfo(user: User) {
+    return user ? '\n\nUserId : '+ user.uid + '\nNom : '+ user.displayName +'\nEmail' + user.email : '';
+ }
 }

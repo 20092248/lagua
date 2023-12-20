@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { CONSTANTS } from '../utils/constants';
 import { AlertService } from './alert.service';
 import { User } from '../model/user.model';
+import emailjs from '@emailjs/browser';
 import { Utils } from '../utils/utils';
-import { getDownloadURL, getStorage, ref } from '@angular/fire/storage';
 declare let Email: any;
 
 @Injectable({
@@ -11,31 +11,23 @@ declare let Email: any;
 })
 export class EmailService {
 
-  constructor(private _storage: Storage, private alertService: AlertService) { }
+  constructor(private alertService: AlertService) { }
 
-  async sendEmail(infoContact: any, user: User) {
-    const img = await this.getImage();
-    const attachment = infoContact.attachment ? [{
-      name: infoContact.attachment.name,
-      path: img, //await Utils.convertFileToDataUri(infoContact.attachment)
-    }] : null;
-    var data = {
-      SecureToken: '7c063671-d48e-4020-b796-891ecc9bbfc4',
-      // Host: 'smtp.gmail.com',
-      // Username: CONSTANTS.TEAM_LAGUA_EMAIL,
-      // Password: '6B171CB1BFE2E2D2F144552FC7A773B4616D',
-      To: CONSTANTS.TEAM_LAGUA_EMAIL,
-      From: CONSTANTS.TEAM_LAGUA_EMAIL,
-      Subject: infoContact.question + ' : ' + infoContact.subject,
-      Body: infoContact.description.replaceAll('\n', '<br/>'),
-      Attachments: attachment,
+  async sendEmailJs(infoContact: any, user: User, addAttachment: boolean) {
+    const templateParams = {
+      to_email: CONSTANTS.TEAM_LAGUA_EMAIL,
+      from_name: CONSTANTS.TEAM_LAGUA_NAME,
+      subject: infoContact.question + ' : ' + infoContact.subject + '(' + infoContact.mail + ')',
+      message: infoContact.description + Utils.addUserInfo(user),
+      content: infoContact.attachment && addAttachment ? await Utils.convertFileToDataUri(infoContact.attachment) : null
     };
-    Email.send(data).then(() => this.alertService.presentToast('Votre message a été envoyé.', 3000, 'success'));
-  }
-
-  async getImage() {
-    return await getDownloadURL(ref(getStorage(), '/settings/lessons/book_1.png'))
-      .then((url) => { return url });
+    emailjs.send('service_9zwb5dc', 'template_l5012pe', templateParams, 'FO89YWCo-XOmSAsSs')
+      .then((response) => {
+        this.alertService.presentToast('Votre message a été envoyé.', 3000, 'success');
+      }, (err) => {
+        console.warn(err);
+        this.sendEmailJs(infoContact, user, false);
+      });
   }
 
 }

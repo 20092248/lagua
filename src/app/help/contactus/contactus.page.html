@@ -43,7 +43,7 @@
           <ion-label class="ion-font-size">{{filesIsSelected && selectedFiles && selectedFiles[0] ? 'Retirer le fichier' : 'Ajouter un fichier'}}</ion-label>
           <div (click)="fileInput.click()">
             <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
-            <div>extension accepté : .pdf, .png, .jpg, .doc, .docx</div>
+            <div>extension accepté : .pdf, .png, .jpg, .doc, .docx (taille max 50kb)</div>
             <ion-icon *ngIf="!filesIsSelected" size="large" name="cloud-upload-outline"
               class="ion-margin-top"></ion-icon>
             <div *ngIf="filesIsSelected && selectedFiles && selectedFiles[0]">
