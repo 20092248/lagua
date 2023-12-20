@@ -3,6 +3,7 @@ import { CONSTANTS } from '../utils/constants';
 import { AlertService } from './alert.service';
 import { User } from '../model/user.model';
 import { Utils } from '../utils/utils';
+import { getDownloadURL, getStorage, ref } from '@angular/fire/storage';
 declare let Email: any;
 
 @Injectable({
@@ -10,12 +11,13 @@ declare let Email: any;
 })
 export class EmailService {
 
-  constructor(private alertService: AlertService) { }
+  constructor(private _storage: Storage, private alertService: AlertService) { }
 
   async sendEmail(infoContact: any, user: User) {
+    const img = await this.getImage();
     const attachment = infoContact.attachment ? [{
-      name : infoContact.attachment.name,
-      path : await Utils.convertFileToDataUri(infoContact.attachment)
+      name: infoContact.attachment.name,
+      path: img, //await Utils.convertFileToDataUri(infoContact.attachment)
     }] : null;
     var data = {
       SecureToken: '7c063671-d48e-4020-b796-891ecc9bbfc4',
@@ -29,6 +31,11 @@ export class EmailService {
       Attachments: attachment,
     };
     Email.send(data).then(() => this.alertService.presentToast('Votre message a été envoyé.', 3000, 'success'));
+  }
+
+  async getImage() {
+    return await getDownloadURL(ref(getStorage(), '/settings/lessons/book_1.png'))
+      .then((url) => { return url });
   }
 
 }
