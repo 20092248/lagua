@@ -2,8 +2,27 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /{document=**} {
-      allow read, write: if
-          request.time < timestamp.date(2024, 3, 15);
+      allow read: if isLoggedIn();
+      allow write: if isAdmin();
+    }
+    match /users/{userId}/{documents=**} {
+      allow read, write: if isLoggedInWithUserId(userId);
+    }
+    match /settings/{document=**} {
+      allow read: if true;
     }
   }
+  
+  function isLoggedIn() {
+  	return request.auth != null;
+  }
+  
+  function isLoggedInWithUserId(userId) {
+  	return request.auth != null && request.auth.uid == userId;
+  }
+  
+  function isAdmin() {
+  	return request.auth != null && (request.auth.token.email == 'bradyabd@gmail.com' || request.auth.token.email == 'brady91700@gmail.com'  || request.auth.token.email == 'lagua.shikomori@gmail.com');
+  }
+  
 }
