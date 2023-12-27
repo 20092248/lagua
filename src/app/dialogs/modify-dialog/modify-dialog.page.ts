@@ -17,6 +17,7 @@ export class ModifyDialogPage implements OnInit {
   user: User = {} as User;
   chats: any[] = [];
   chat: any = { userId: '', userName: '', translate: '', text: { shindzuani: '', shingazidja: '', shimwali: '', shimaore: '', } };
+  text: string = '';
   paramModifyReview: string = '';
   dialogExist: boolean = false;
   constructor(private route: ActivatedRoute, private dialogService: DialogService, private actionSheetCtrl: ActionSheetController, private alertService: AlertService) { }
@@ -24,9 +25,14 @@ export class ModifyDialogPage implements OnInit {
   ngOnInit() {
     this.paramModifyReview = this.route.snapshot.paramMap.get('id') || '';
     this.dialogService.getChats(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview).then(dialog => {
-      this.chats = dialog.length ? dialog : CHAT;
+      this.chats = dialog.chats?.length ? dialog.chats : CHAT;
       this.dialogExist = dialog.length ? true : false;
     });
+  }
+  
+  ionViewWillEnter(){
+    this.dialogExist = false;
+    this.paramModifyReview = this.route.snapshot.paramMap.get('id') || '';
   }
 
   addChat(index: number) {
@@ -84,6 +90,10 @@ export class ModifyDialogPage implements OnInit {
     }
   }
 
-  // document.querySelectorAll(".fusion-text.fusion-text-2 p")[13].querySelector("b")
+  downloadChat(){
+    this.dialogService.updatebodyLinkFr(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview, this.text, this.dialogExist).then(() => {
+      this.alertService.presentToast('La mise à jour a été effectué.', 1000, 'success');
+    }, () => this.alertService.presentToast('Erreur lors de la mise à jour du questionnaire.', 1000, 'danger'));
+  }
 
 }

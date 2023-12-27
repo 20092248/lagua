@@ -15,22 +15,25 @@ import { Utils } from 'src/app/utils/utils';
 export class DetailPage implements OnInit {
 
   user: User = {} as User;
-  chats: any[] = [];
+  infoChats: any = {};
   chat: any = { date: '', userId: '', userName: '', senderId: '', senderName: '', translate: '', text: { shindzuani: '', shingazidja: '', shimwali: '', shimaore: '', } };
   paramModifyReview: string = '';
 
   constructor(private route: ActivatedRoute, private router: Router, private dialogService: DialogService, private authentificationService: AuthentificationService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log('ngOnInit');
+   }
 
-  ionViewWillEnter() {
+   ionViewWillEnter() {
+    console.log('ionViewWillEnter');
     this.initialize();
   }
 
   initialize() {
     this.paramModifyReview = this.route.snapshot.paramMap.get('dialog') || '';
     this.dialogService.getChats(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview).then(dialog => {
-      this.chats = dialog.length ? dialog : CHAT;
+      this.infoChats = JSON.stringify(dialog) !== '{}' ? dialog : CHAT;
     });
     this.user = this.authentificationService.user;
   }

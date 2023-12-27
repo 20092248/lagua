@@ -14,9 +14,10 @@
 
 <ion-content>
   <div class="ion-margin-top">
+    <p class="ion-margin-horizontal ion-text-center ion-small-size" *ngIf="infoChats.situation">Situation : {{infoChats.situation}}</p>
     <div class="wrapper">
       <ul>
-        <li *ngFor="let c of chats" [ngClass]="c.userId === '1' ? 'ion-li-left': 'ion-li-right'">
+        <li *ngFor="let c of infoChats.chats" [ngClass]="c.userId === '1' ? 'ion-li-left': 'ion-li-right'">
           <div class="ion-position-icon"
             [ngClass]="c.userId === '1' ? 'ion-position-icon-left': 'ion-position-icon-right'">
             {{getInitial(c.userName)}}</div>

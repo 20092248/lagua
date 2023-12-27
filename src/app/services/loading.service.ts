@@ -16,7 +16,7 @@ export class LoadingService {
     this.loading = await this.loadingController
       .create({
         message: message,
-        duration: 5000,
+        duration: 3000,
         spinner: 'circles'
       });
 
