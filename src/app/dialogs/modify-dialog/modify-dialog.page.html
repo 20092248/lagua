@@ -52,6 +52,10 @@
 
   <div class="ion-text-center ion-margin-top">
     <ion-item>
+      <ion-label position="stacked" color="primary">Situation</ion-label>
+      <ion-input [(ngModel)]="situation" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label position="stacked" color="primary">Link</ion-label>
       <ion-textarea [autoGrow]="true" [(ngModel)]="text" placeholder="" rows="7"></ion-textarea>
     </ion-item>

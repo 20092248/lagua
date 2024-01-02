@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Conversation</ion-title>
+    <ion-title>{{infoChats.title ? infoChats.title : 'Conversation' }}</ion-title>
     <ion-buttons slot="end" *ngIf="user.email === 'brady91700@gmail.com' || user.email === 'bradyabd@gmail.com'">
       <ion-button (click)="modifyDetail()">
         <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
@@ -17,12 +17,12 @@
     <p class="ion-margin-horizontal ion-text-center ion-small-size" *ngIf="infoChats.situation">Situation : {{infoChats.situation}}</p>
     <div class="wrapper">
       <ul>
-        <li *ngFor="let c of infoChats.chats" [ngClass]="c.userId === '1' ? 'ion-li-left': 'ion-li-right'">
+        <li *ngFor="let c of infoChats.chats" [ngClass]="c.userId === '1' || infoChats.onlySentences ? 'ion-li-left': 'ion-li-right'">
           <div class="ion-position-icon"
-            [ngClass]="c.userId === '1' ? 'ion-position-icon-left': 'ion-position-icon-right'">
+            [ngClass]="c.userId === '1' || infoChats.onlySentences ? 'ion-position-icon-left': 'ion-position-icon-right'">
             {{getInitial(c.userName)}}</div>
           <div class="ion-chat-content">
-            <ion-label class="ion-name">{{c.userName}}</ion-label>
+            <ion-label class="ion-name" *ngIf="!infoChats.onlySentences">{{c.userName}}</ion-label>
             <ion-label class="ion-text">{{c.translate}}</ion-label>
             <ion-label class="ion-line" *ngIf="getDialectText(c.text)"></ion-label>
             <ion-label class="ion-translate" *ngIf="getDialectText(c.text)">{{getDialectText(c.text)}}</ion-label>

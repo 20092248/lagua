@@ -34,26 +34,32 @@ export class DialogService {
     return this.chats;
   }
 
-  async updateChats(collection: string, document: string, data: any[]): Promise<any> {
+  async updateChats(collection: string, document: string, data: any[], situation: string): Promise<any> {
     const docRef = doc(getFirestore(), collection, document);
     await updateDoc(docRef, {
+      situation: situation,
       chats: data
     });
   }
 
-  async createChats(collection: string, document: string, data: any[]): Promise<any> {
+  async createChats(collection: string, document: string, data: any[], situation: string): Promise<any> {
     const docRef = doc(getFirestore(), collection, document);
     await setDoc(docRef, {
+      situation: situation,
       chats: data
     });
   }
 
-  updatebodyLinkFr(collection: string, document: string, text: string, dialogExist: boolean) {
+  updatebodyLinkFr(collection: string, document: string, text: string, situation: string, dialogExist: boolean) {
     const chats: any[] = [];
+    var userNameOrigin = '';
     text.split('\n').filter(t => t).forEach((t, i) => {
+      if(i === 0) {
+        userNameOrigin = t.split(':')[0].trim();
+      }
       if (t) {
         const chat = {
-          userId: !(i % 2) ? '1' : '2',
+          userId: userNameOrigin === t.split(':')[0].trim() ? '1' : '2',
           userName: t.split(':')[0].trim(),
           translate: t.split(':')[1].trim(),
           text: {
@@ -67,9 +73,9 @@ export class DialogService {
       }
     });
     if(dialogExist){
-      this.updateChats(collection, document, chats);
+      this.updateChats(collection, document, chats, situation);
     } else {
-      this.createChats(collection, document, chats);
+      this.createChats(collection, document, chats, situation);
     }
     return Promise.resolve(true);
     // return this.http.get(link, { responseType: 'text' }).subscribe(
