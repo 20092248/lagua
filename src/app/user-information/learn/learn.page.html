@@ -14,7 +14,7 @@
       <h4 class="ion-padding-bottom">Je parle</h4>
       <ion-item lines="none">
         <ion-thumbnail slot="start">
-          <img src="assets/img/flag/Flag_of_France.png" />
+          <img alt="Drapeau français" [src]="frenchFlag" />
         </ion-thumbnail>
         <ion-label>Shizungu / <i>Français</i></ion-label>
       </ion-item>
@@ -24,7 +24,7 @@
       <ion-item *ngFor="let l of learn" [routerLink]="['../why']" routerLinkActive="selected" lines="none"
         [disabled]="l.code !== 'SHAN'" (click)="selectedItem(l)">
         <ion-thumbnail slot="start">
-          <img src="assets/img/flag/{{l.flag}}" />
+          <img alt="{{l.text}}" [src]="l.flag" />
         </ion-thumbnail>
         <ion-label>{{l.text}} / <i>{{l.translate}}</i></ion-label>
       </ion-item>

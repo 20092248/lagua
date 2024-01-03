@@ -10,12 +10,14 @@ import { SettingService } from 'src/app/services/setting.service';
 })
 export class LearnPage implements OnInit {
 
-  learn: CodeTextTranslate[] | undefined;
+  learn: CodeTextTranslate[] = [];
+  frenchFlag: string | undefined;
 
   constructor(private settingService: SettingService, private authentificationService: AuthentificationService) { }
 
   ngOnInit() {
-    this.learn = this.settingService.userInformation?.learn;
+    this.learn = this.settingService.userInformation?.learn.filter((f: CodeTextTranslate) => f.code !== 'FREN');
+    this.frenchFlag = this.settingService.userInformation.learn.find((f: CodeTextTranslate) => f.code === 'FREN')?.flag;
   }
 
   selectedItem(learnSelected: CodeTextTranslate) {

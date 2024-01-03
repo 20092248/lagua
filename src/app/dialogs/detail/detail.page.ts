@@ -21,12 +21,9 @@ export class DetailPage implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private dialogService: DialogService, private authentificationService: AuthentificationService) { }
 
-  ngOnInit() {
-    console.log('ngOnInit');
-   }
+  ngOnInit() { }
 
    ionViewWillEnter() {
-    console.log('ionViewWillEnter');
     this.initialize();
   }
 

@@ -14,9 +14,11 @@ ion-tab-bar ion-icon {
 }
 
 .tab-selected {
-  color: #15601b;
+  color: #fff;
   font-weight: bold;
   font-size: 13px;
+  background: #619d69;
+  border-radius: 25px 25px 0 0;
 }
 
 ion-tabs {

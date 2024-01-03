@@ -30,4 +30,15 @@ export class EmailService {
       });
   }
 
+  sendEmail(infoContact: any) {
+    var data = {
+      SecureToken: '7c063671-d48e-4020-b796-891ecc9bbfc4',
+      To: CONSTANTS.TEAM_LAGUA_EMAIL,
+      From: CONSTANTS.TEAM_LAGUA_EMAIL,
+      Subject: infoContact.question + ' : ' + infoContact.subject + '(' + infoContact.mail + ')',
+      Body: infoContact.description.replaceAll('\n', '<br/>')
+    };
+    Email.send(data).then(() => this.alertService.presentToast('Votre message a été envoyé.', 3000, 'success'));
+  }
+
 }
