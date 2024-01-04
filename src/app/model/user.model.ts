@@ -9,6 +9,7 @@ export class User {
     email: string | null;
     displayName: string | null;
     photoURL: string | null;
+    dialectSelected: CodeTextTranslate;
     learn: CodeTextTranslate;
     why: CodeLabel;
     age: CodeLabel;
@@ -21,12 +22,13 @@ export class User {
     week: any;
     timerActiveConnection: number;
 
-    constructor(uid: string, email: string, displayName: string, photoURL: string, learn: CodeTextTranslate, 
+    constructor(uid: string, email: string, displayName: string, photoURL: string, dialectSelected: CodeTextTranslate, learn: CodeTextTranslate,
         why: CodeLabel, age: CodeLabel, time: CodeLabel, level: CodeLabel, lesson: Lesson, timerActiveConnection: number) {
         this.uid = uid;
         this.email = email;
         this.displayName = displayName;
         this.photoURL = photoURL;
+        this.dialectSelected = dialectSelected;
         this.resultReviews = [];
         this.resultLessons = [];
         this.learn = learn;

@@ -101,6 +101,11 @@ ion-skeleton-text {
   --background-rgb: 112, 198, 117;
 }
 
+ion-list-header {
+  font-weight: bold;
+  height: 45px;
+}
+
 .ion-padding-top-min {
   padding-top: 2px;
 }
@@ -297,6 +302,16 @@ ion-card-title .ion-card-title {
   font-size: 90%;
 }
 
-.ion-objective-content {
-  border-bottom: 1px solid #e8e8e8;
+.ion-accordion-content {
+  border-bottom: 1px solid #cbcbcb;
+}
+
+.ion-other-dialect {
+  ion-avatar {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  ion-label {
+    margin: 0;
+  }
 }

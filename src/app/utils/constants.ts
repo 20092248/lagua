@@ -10,6 +10,7 @@ export class CONSTANTS {
     public static SHARE_MSG_TITLE = 'Essaie ça !';
     public static SHARE_MSG_OBJECT = 'J\'utilise une application d\'apprentissage linguistique appelée Lagua et je pense qu\'elle pourrait te plaire aussi. Suis ce lien si tu veux en savoir plus : https://lagua-shikomori.web.app. Cette application m\'aide à apprendre plus vite et elle est très amusante !'
     public static COLLECTION_DIALOG = 'shikomori_francais_dialogs';
+    public static FRENCH_DIALECT = 'FREN';
     public static transcodeDialect: { [key: string]: string } = {
         ['SHAN']: 'shindzuani',
         ['SHGC']: 'shingazidza',

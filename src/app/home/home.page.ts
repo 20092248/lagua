@@ -16,6 +16,8 @@ import { register } from 'swiper/element/bundle';
 import { ReviewGroup } from '../model/reviewGroup.model';
 import { Utils } from '../utils/utils';
 import { AlertService } from '../services/alert.service';
+import { CodeTextTranslate } from '../model/codeTextTranslate.model';
+import { CONSTANTS } from '../utils/constants';
 register();
 
 @Component({
@@ -32,6 +34,7 @@ export class HomePage implements OnInit {
   previousReviewLoadedLength: number[] = [];
   setting: any = {};
   levelDialog: string = '';
+  otherDialects: CodeTextTranslate[] = [];
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
@@ -56,13 +59,14 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
     const numberPreviousReview = this.user.resultReviews ? this.user.resultReviews.length : 0;
-    this.previousReviewLoadedLength = Array(numberPreviousReview).fill(undefined, 0, numberPreviousReview).map((x,i)=>i);
+    this.previousReviewLoadedLength = Array(numberPreviousReview).fill(undefined, 0, numberPreviousReview).map((x, i) => i);
     this.loadingService.present('Chargement...');
     forkJoin([this.settingService.getSettings(), this.reviewService.getAllReviews(), this.lessonService.searchLessons()]).subscribe(([setting, reviewsInfo, lessons]) => {
-        this.loadingService.dismiss();
-        this.setting = setting;
-        this.levelDialog = Utils.getLevelDialog(this.setting.reviews?.categories, this.user.review?.category);
+      this.loadingService.dismiss();
+      this.setting = setting;
+      this.levelDialog = Utils.getLevelDialog(this.setting.reviews?.categories, this.user.review?.category);
       this.progression = this.user && this.user.resultReviews && this.user.resultLessons ? (this.user.resultReviews?.length + this.user.resultLessons?.length) / (Utils.getReviewsLength(reviewsInfo) + lessons.length) * 100 : 0;
+      this.otherDialects = setting.userInformation.learn.filter((d: CodeTextTranslate) => d.code !== CONSTANTS.FRENCH_DIALECT && d.code !== this.user.dialectSelected.code);
     });
   }
 
@@ -105,6 +109,10 @@ export class HomePage implements OnInit {
   accessToReview() {
     this.setReview = this.authentificationService.user.review;
     this.router.navigate(['/questions']);
+  }
+
+  changeDialect(data: CodeTextTranslate) {
+    console.log(data);
   }
 
   logout() {

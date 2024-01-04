@@ -68,6 +68,7 @@ export class AuthentificationService {
         this.user.email = data.email;
         this.user.displayName = data.displayName;
         this.user.age = data.age;
+        this.user.dialectSelected = data.dialectSelected;
         this.user.photoURL = data.photoURL;
         this.user.learn = data.learn as CodeTextTranslate;
         this.user.why = data.why as CodeLabel;
@@ -96,6 +97,7 @@ export class AuthentificationService {
       uid: this.user.uid,
       email: this.user.email,
       displayName: this.user.displayName,
+      dialectSelected: this.user.dialectSelected,
       photoURL: this.user.photoURL ? this.user.photoURL : '',
       age: this.user.age,
       learn: this.user.learn,
