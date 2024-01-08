@@ -122,26 +122,29 @@ export class HomePage implements OnInit {
   }
 
   changeDialect(data: CodeTextTranslate) {
-    console.log(data);
-    this.alertService.presentAlertWithRadio('Comment jugerez-vous vos connaissances en ' + CONSTANTS.transcodeDialectLabelWithoutNoun[this.user.dialectSelected.code] + '? ', this.setting.userInformation.level).then(result => {
-      this.alertService.presentActionSheetConfirmation('Confirmation', 'Êtes-vous sûr de vouloir changer de dialecte?').then(result => {
-        if (result.role === 'selected') {
-          const learn = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].learn };
-          const why = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].why };
-          const age = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].age };
-          const time = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].time };
+    this.alertService.presentAlertWithRadio('Comment jugerez-vous vos connaissances en ' + CONSTANTS.transcodeDialectLabelWithoutNoun[data.code] + '? ', this.setting.userInformation.level).then(result => {
+      if (result.role === 'validate' && result.data.values) {
+        this.alertService.presentActionSheetConfirmation('Confirmation', 'Êtes-vous sûr de vouloir changer de dialecte?').then(result => {
+          if (result.role === 'selected') {
+            const learn = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].learn };
+            const why = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].why };
+            const age = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].age };
+            const time = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].time };
 
-          this.authentificationService.dialect = Utils.findDialect(data.code);
-          this.authentificationService.user.dialectSelected = data;
-          if (!this.authentificationService.user.dialects[this.authentificationService.dialect]) {
-            this.authentificationService.user.dialects[this.authentificationService.dialect] = {} as Dialect;
-            this.authentificationService.user.dialects[this.authentificationService.dialect].learn = data;
-            this.authentificationService.user.dialects[this.authentificationService.dialect].resultReviews = [];
-            this.authentificationService.user.dialects[this.authentificationService.dialect].resultLessons = [];
+            this.authentificationService.dialect = Utils.findDialect(data.code);
+            this.authentificationService.user.dialectSelected = data;
+            if (!this.authentificationService.user.dialects[this.authentificationService.dialect]) {
+              this.authentificationService.user.dialects[this.authentificationService.dialect] = {} as Dialect;
+              this.authentificationService.user.dialects[this.authentificationService.dialect].learn = data;
+              this.authentificationService.user.dialects[this.authentificationService.dialect].resultReviews = [];
+              this.authentificationService.user.dialects[this.authentificationService.dialect].resultLessons = [];
+            }
+            this.router.navigate(['../why']);
           }
-          this.router.navigate(['../why']);
-        }
-      });
+        });
+      } else if(result.role === 'validate' && !result.data.values) {
+        this.alertService.presentToast(CONSTANTS.CHOICE_DIALECT_MISSING, 3000, 'danger');
+      }
     });
   }
 

@@ -58,12 +58,24 @@ export class AlertService {
   async presentAlertWithRadio(header: string, levels: CodeLabel[]) {
     const inputs: AlertInput[] = [];
     levels.forEach(input => {
-      inputs.push({ label: input.label, value: input.code, type: 'radio' });
+      inputs.push({ label: input.label, value: input.code, type: 'radio', cssClass: 'ion-alert-radio-element', });
     });
     const alert = await this.alertController.create({
       subHeader: header,
-      buttons: ['OK'],
+      buttons: [
+        {
+          text: 'Annuler',
+          role: 'cancel',
+          cssClass: 'alert-button-cancel',
+        },
+        {
+          text: 'Valider',
+          role: 'validate',
+          cssClass: 'alert-button-confirm',
+        },
+      ],
       inputs: inputs,
+      cssClass: 'ion-home-alert'
     });
 
     await alert.present();

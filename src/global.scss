@@ -28,3 +28,13 @@
 ion-toast {
   --border-radius: 16px;
 }
+
+ion-alert.ion-home-alert {
+  --min-width : 320px;
+  .ion-alert-radio-element .alert-radio-label{
+    font-size: 14px;
+  }
+  button.alert-button.alert-button-cancel {
+    color: var(--ion-color-danger);
+  }
+}
