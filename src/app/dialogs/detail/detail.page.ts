@@ -44,7 +44,7 @@ export class DetailPage implements OnInit {
   }
 
   getDialectText(text: any) {
-    return text[CONSTANTS.transcodeDialect[this.user.learn.code]];
+    return text[CONSTANTS.transcodeDialect[this.user.dialectSelected.code]];
   }
 
 }

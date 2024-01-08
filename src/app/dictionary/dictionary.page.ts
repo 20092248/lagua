@@ -7,6 +7,8 @@ import { DictionaryService } from '../services/dictionary.service';
 import { CONSTANTS } from '../utils/constants';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import { LoadingService } from '../services/loading.service';
+import { DialectEnum } from '../model/dialect.enum';
+import { Dialect } from '../model/dialect.model';
 
 @Component({
   selector: 'app-dictionary',
@@ -22,6 +24,8 @@ export class DictionaryPage implements OnInit {
   isResultDisplay: boolean | undefined;
   isDetailDisplay: boolean | undefined;
   user: User = {} as User;
+  dialect: DialectEnum = DialectEnum.SHGC;
+  userDialect: Dialect = {} as Dialect;
   words: FirebaseWord[] = [];
   translate: string = 'francais';
   text: string = 'shikomori';
@@ -29,11 +33,12 @@ export class DictionaryPage implements OnInit {
   wordsLoaded: boolean = false;
   wordsLength: number[] = Array(8).fill(undefined, 0, 8).map((x,i)=>i);
 
-
   constructor(private dictionaryService: DictionaryService, private authentificationService: AuthentificationService, private loadingService: LoadingService) { }
 
   ngOnInit(): void {
     this.user = this.authentificationService.user;
+    this.dialect = this.authentificationService.dialect;
+    this.userDialect = this.user.dialects[this.dialect];
     // this.text = this.user.learn.text;
     this.loadingService.present('Chargement...');
     this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/this.text, this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
@@ -66,7 +71,7 @@ export class DictionaryPage implements OnInit {
 
   seeDetail(word: FirebaseWord) {
     const firstLetter = word.phoneticTranslate[0].normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9,]/g, '').substring(0, 1).toLocaleLowerCase();
-    this.dictionaryService.displayWord(this.user?.learn?.text.toLocaleLowerCase(), this.translate, firstLetter, word.link ? word.link : '').then((linkInfo: FirebaseWord) => {
+    this.dictionaryService.displayWord(this.userDialect?.learn?.text.toLocaleLowerCase(), this.translate, firstLetter, word.link ? word.link : '').then((linkInfo: FirebaseWord) => {
       this.isDetailDisplay = true;
       this.linkInfo = linkInfo;
     });

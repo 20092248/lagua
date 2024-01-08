@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CodeLabel } from 'src/app/model/codeLabel.model';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { SettingService } from 'src/app/services/setting.service';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-age',
@@ -19,7 +20,8 @@ export class AgePage implements OnInit {
   }
 
   selectedItem(ageSelected: CodeLabel) {
-    this.authentificationService.user.age = ageSelected;
+    const dialect = this.authentificationService.dialect;
+    this.authentificationService.user.dialects[dialect].age = ageSelected;
   }
 
 }

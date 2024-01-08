@@ -17,6 +17,18 @@ export class CONSTANTS {
         ['MAOR']: 'shimaore',
         ['MOHE']: 'shimwali'
     };
+    public static transcodeDialectLabel: { [key: string]: string } = {
+        ['SHAN']: 'l\'anjouanais',
+        ['SHGC']: 'le grand-comorien',
+        ['MAOR']: 'le mahorais',
+        ['MOHE']: 'le mohélien'
+    };
+    public static transcodeDialectLabelWithoutNoun: { [key: string]: string } = {
+        ['SHAN']: 'anjouanais',
+        ['SHGC']: 'grand-comorien',
+        ['MAOR']: 'mahorais',
+        ['MOHE']: 'mohélien'
+    };
     public static topicDocument: { [key: string]: any } = {
         ['ANIMAL']: {code: 'animals', value: 'Les animaux'},
         ['CLOTHE']: {code: 'clothes', value: 'Les vêtements'},

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
+import { DialectEnum } from 'src/app/model/dialect.enum';
+import { Dialect } from 'src/app/model/dialect.model';
 import { User } from 'src/app/model/user.model';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthentificationService } from 'src/app/services/authentification.service';
@@ -18,6 +20,8 @@ export class ModifyReviewPage implements OnInit {
   lesson: number = 0;
   order: number = 0;
   user: User = {} as User;
+  dialect: DialectEnum = DialectEnum.SHGC;
+  userDialect: Dialect = {} as Dialect;
   questions: any[] = [];
   paramModifyReview: string = '';
   constructor(private route: ActivatedRoute, private reviewService: ReviewService, private questionService: QuestionService, private authentificationService: AuthentificationService,
@@ -25,8 +29,10 @@ export class ModifyReviewPage implements OnInit {
 
   ngOnInit() {
     this.user = this.authentificationService.user;
+    this.dialect = this.authentificationService.dialect;
+    this.userDialect = this.user.dialects[this.dialect];
     this.paramModifyReview = this.route.snapshot.paramMap.get('id') || '';
-    this.questionService.getQuestions(this.user?.learn?.text.toLocaleLowerCase() + '_' + 'francais_questions', this.paramModifyReview).then(result => {
+    this.questionService.getQuestions(this.userDialect.learn?.text.toLocaleLowerCase() + '_' + 'francais_questions', this.paramModifyReview).then(result => {
       this.questions = result.qcm.questions;
     });
   }
@@ -69,7 +75,7 @@ export class ModifyReviewPage implements OnInit {
 
     const result = await actionSheet.onDidDismiss();
     if (result.role === 'confirm') {
-      this.questionService.updateQuestion(this.user?.learn?.text.toLocaleLowerCase() + '_' + 'francais_questions', this.paramModifyReview, this.questions).then(() => {
+      this.questionService.updateQuestion(this.userDialect.learn?.text.toLocaleLowerCase() + '_' + 'francais_questions', this.paramModifyReview, this.questions).then(() => {
         this.alertService.presentToast('La mise à jour a été effectué.', 1000, 'success');
       }, () => this.alertService.presentToast('Erreur lors de la mise à jour du questionnaire.', 1000, 'error'));
     }

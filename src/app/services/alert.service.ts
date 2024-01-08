@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { ActionSheetController, AlertController, AlertInput, LoadingController, ToastController } from '@ionic/angular';
+import { CodeLabel } from '../model/codeLabel.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlertService {
 
-  constructor(private toastController: ToastController) { }
-  
+  constructor(private toastController: ToastController, private actionSheetController: ActionSheetController, private alertController: AlertController) { }
+
   async presentToast(message: string, duration: number, type: string) {
     const toast = await this.toastController.create({
       message: message,
@@ -26,4 +27,47 @@ export class AlertService {
     });
     toast.present();
   }
+
+  async presentActionSheetConfirmation(header: string, subHeader: string) {
+    const actionSheet = await this.actionSheetController.create({
+      header: header,
+      subHeader: subHeader,
+      buttons: [
+        {
+          text: 'Oui',
+          icon: 'checkmark-outline',
+          role: 'selected',
+          data: {
+            action: 'confirm',
+          },
+        },
+        {
+          text: 'Non',
+          role: 'cancel',
+          icon: 'close-outline',
+          data: {
+            action: 'cancel',
+          },
+        },
+      ],
+    });
+    await actionSheet.present();
+    return await actionSheet.onDidDismiss();
+  }
+
+  async presentAlertWithRadio(header: string, levels: CodeLabel[]) {
+    const inputs: AlertInput[] = [];
+    levels.forEach(input => {
+      inputs.push({ label: input.label, value: input.code, type: 'radio' });
+    });
+    const alert = await this.alertController.create({
+      subHeader: header,
+      buttons: ['OK'],
+      inputs: inputs,
+    });
+
+    await alert.present();
+    return await alert.onDidDismiss();
+  }
+
 }

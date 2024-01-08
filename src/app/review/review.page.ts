@@ -36,13 +36,19 @@ export class ReviewPage implements OnInit {
   constructor(private router: Router, private settingsService: SettingService, private reviewService: ReviewService, private authentificationService: AuthentificationService,
     private toastController: ToastController, private questionService: QuestionService, private settingService: SettingService, private loadingService: LoadingService) { }
 
-    get user() {
-      return this.authentificationService.user;
-    }
+  get user() {
+    return this.authentificationService.user;
+  }
+  get dialect() {
+    return this.authentificationService.dialect;
+  }
+  get userDialect() {
+    return this.user.dialects[this.dialect];
+  }
 
   ngOnInit() {
-    this.userLearn = this.user.learn;
-    this.userReview = this.user.review;
+    this.userLearn = this.userDialect.learn;
+    this.userReview = this.userDialect.review;
     this.displayAccordion = this.userReview.category + '_' + this.userReview.lesson;
     if (!this.categories.length) {
       this.settingsService.getSetting('reviews').then((data => {

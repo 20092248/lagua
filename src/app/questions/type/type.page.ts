@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CodeLabel } from 'src/app/model/codeLabel.model';
+import { DialectEnum } from 'src/app/model/dialect.enum';
+import { Dialect } from 'src/app/model/dialect.model';
 import { User } from 'src/app/model/user.model';
 import { AudioService } from 'src/app/services/audio.service';
 import { AuthentificationService } from 'src/app/services/authentification.service';
@@ -16,14 +18,18 @@ import { SettingService } from 'src/app/services/setting.service';
 export class TypePage implements OnInit {
 
   translate: string = 'francais';
-  user: User | undefined;
+  user: User = {} as User;
+  dialect: DialectEnum = DialectEnum.SHGC;
+  userDialect: Dialect = {} as Dialect;
   types: CodeLabel[] = [];
   constructor(private router: Router, private settingsService: SettingService, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService) { }
 
   ngOnInit() {
     this.user = this.authentificationService.user;
+    this.dialect = this.authentificationService.dialect;
+    this.userDialect = this.user.dialects[this.dialect];
     const review = this.reviewService.review;
-    this.questionService.getQuestions(this.user?.learn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions', review.category + '_' + review.lesson + '_' + review.order).then();
+    this.questionService.getQuestions(this.userDialect.learn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions', review.category + '_' + review.lesson + '_' + review.order).then();
     this.settingsService.getSetting('questions').then((data => {
       this.types = data?.types;
     }));

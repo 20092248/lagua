@@ -8,6 +8,12 @@ service cloud.firestore {
     match /users/{userId}/{documents=**} {
       allow read, write: if isLoggedInWithUserId(userId);
     }
+    match /reviews/{document=**} {
+      allow read: if true;
+    }
+    match /lessons/{document=**} {
+      allow read: if true;
+    }
     match /settings/{document=**} {
       allow read: if true;
     }

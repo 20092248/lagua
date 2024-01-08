@@ -31,6 +31,12 @@ export class ProfilePage implements OnInit {
   get user() {
     return this.authentificationService.user;
   }
+  get dialect() {
+    return this.authentificationService.dialect;
+  }
+  get userDialect() {
+    return this.user.dialects[this.dialect];
+  }
 
   ngOnInit() {
     this.profileSetting = this.settingService.profile;
@@ -40,14 +46,14 @@ export class ProfilePage implements OnInit {
       });
     }
     this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
-    this.user.resultReviews?.forEach(review => {
+    this.userDialect.resultReviews?.forEach(review => {
       this.nbrWordsToRevise += review.toRevise.length;
       this.nbrWordsToLearn += review.toLearn.length;
       this.nbrWordsLearned += review.learned.length;
       this.nbrWords += review.toRevise.length + review.toLearn.length + review.learned.length;
       this.score += (this.nbrWordsToLearn * 50) + (this.nbrWordsLearned * 100);
     });
-    this.score += this.user.resultLessons.length * 100;
+    this.score += this.userDialect.resultLessons.length * 100;
     this.percentWordsToRevise = this.nbrWordsToRevise * 100 / this.nbrWords;
     this.percentWordsToLearn = this.nbrWordsToLearn * 100 / this.nbrWords;
     this.percentWordsLearned = this.nbrWordsLearned * 100 / this.nbrWords;
@@ -57,7 +63,7 @@ export class ProfilePage implements OnInit {
   }
 
   getActualLevelByCode() {
-    const code = this.user?.level?.code;
+    const code = this.userDialect?.level?.code;
     if (code === '0') {
       return 'Découverte';
     } else if (code === '1') {

@@ -18,6 +18,8 @@ import { Utils } from '../utils/utils';
 import { AlertService } from '../services/alert.service';
 import { CodeTextTranslate } from '../model/codeTextTranslate.model';
 import { CONSTANTS } from '../utils/constants';
+import { Dialect } from '../model/dialect.model';
+import { Dialects } from '../model/dialects.model';
 register();
 
 @Component({
@@ -35,6 +37,7 @@ export class HomePage implements OnInit {
   setting: any = {};
   levelDialog: string = '';
   otherDialects: CodeTextTranslate[] = [];
+  dialectLearned: string = '';
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
@@ -52,21 +55,28 @@ export class HomePage implements OnInit {
   get user() {
     return this.authentificationService.user;
   }
+  get dialect() {
+    return this.authentificationService.dialect;
+  }
+  get userDialect() {
+    return this.user.dialects[this.dialect];
+  }
   get recommendedLessons() {
     return this.lessonService.lessons;
   }
 
   ngOnInit() {
     this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
-    const numberPreviousReview = this.user.resultReviews ? this.user.resultReviews.length : 0;
+    const numberPreviousReview = this.userDialect.resultReviews ? this.userDialect.resultReviews.length : 0;
     this.previousReviewLoadedLength = Array(numberPreviousReview).fill(undefined, 0, numberPreviousReview).map((x, i) => i);
     this.loadingService.present('Chargement...');
     forkJoin([this.settingService.getSettings(), this.reviewService.getAllReviews(), this.lessonService.searchLessons()]).subscribe(([setting, reviewsInfo, lessons]) => {
       this.loadingService.dismiss();
       this.setting = setting;
-      this.levelDialog = Utils.getLevelDialog(this.setting.reviews?.categories, this.user.review?.category);
-      this.progression = this.user && this.user.resultReviews && this.user.resultLessons ? (this.user.resultReviews?.length + this.user.resultLessons?.length) / (Utils.getReviewsLength(reviewsInfo) + lessons.length) * 100 : 0;
+      this.levelDialog = Utils.getLevelDialog(this.setting.reviews?.categories, this.userDialect.review?.category);
+      this.progression = this.user && this.userDialect.resultReviews && this.userDialect.resultLessons ? (this.userDialect.resultReviews?.length + this.userDialect.resultLessons?.length) / (Utils.getReviewsLength(reviewsInfo) + lessons.length) * 100 : 0;
       this.otherDialects = setting.userInformation.learn.filter((d: CodeTextTranslate) => d.code !== CONSTANTS.FRENCH_DIALECT && d.code !== this.user.dialectSelected.code);
+      this.dialectLearned = CONSTANTS.transcodeDialectLabel[this.user.dialectSelected.code];
     });
   }
 
@@ -98,7 +108,7 @@ export class HomePage implements OnInit {
 
   displayPreviousReviews() {
     this.previousReviewLoaded = false;
-    this.reviewService.getPreviousReviews(this.user.review).then(() => { this.previousReviewLoaded = true; });
+    this.reviewService.getPreviousReviews(this.userDialect.review).then(() => { this.previousReviewLoaded = true; });
   }
 
   accessPreviousReview(review: Review) {
@@ -107,12 +117,32 @@ export class HomePage implements OnInit {
   }
 
   accessToReview() {
-    this.setReview = this.authentificationService.user.review;
+    this.setReview = this.userDialect.review;
     this.router.navigate(['/questions']);
   }
 
   changeDialect(data: CodeTextTranslate) {
     console.log(data);
+    this.alertService.presentAlertWithRadio('Comment jugerez-vous vos connaissances en ' + CONSTANTS.transcodeDialectLabelWithoutNoun[this.user.dialectSelected.code] + '? ', this.setting.userInformation.level).then(result => {
+      this.alertService.presentActionSheetConfirmation('Confirmation', 'Êtes-vous sûr de vouloir changer de dialecte?').then(result => {
+        if (result.role === 'selected') {
+          const learn = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].learn };
+          const why = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].why };
+          const age = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].age };
+          const time = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].time };
+
+          this.authentificationService.dialect = Utils.findDialect(data.code);
+          this.authentificationService.user.dialectSelected = data;
+          if (!this.authentificationService.user.dialects[this.authentificationService.dialect]) {
+            this.authentificationService.user.dialects[this.authentificationService.dialect] = {} as Dialect;
+            this.authentificationService.user.dialects[this.authentificationService.dialect].learn = data;
+            this.authentificationService.user.dialects[this.authentificationService.dialect].resultReviews = [];
+            this.authentificationService.user.dialects[this.authentificationService.dialect].resultLessons = [];
+          }
+          this.router.navigate(['../why']);
+        }
+      });
+    });
   }
 
   logout() {
@@ -135,6 +165,10 @@ export class HomePage implements OnInit {
       }
     }
     return "square-outline";
+  }
+
+  displayUnknownUser() {
+    this.user.photoURL = this.setting.profile.icon.unknownUserSrc;
   }
 
 }

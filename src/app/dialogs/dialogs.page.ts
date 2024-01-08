@@ -5,6 +5,7 @@ import { AuthentificationService } from '../services/authentification.service';
 import { Utils } from '../utils/utils';
 import { User } from '../model/user.model';
 import { LoadingService } from '../services/loading.service';
+import { CONSTANTS } from '../utils/constants';
 
 @Component({
   selector: 'app-dialogs',
@@ -23,7 +24,8 @@ export class DialogsPage implements OnInit {
 
   ngOnInit() {
     this.user = this.authentificationService.user;
-    this.category = Utils.getCategoryExtended(this.authentificationService.user.review.category);
+    const dialect = Utils.findDialect(this.user.dialectSelected.code);
+    this.category = Utils.getCategoryExtended(this.user.dialects[dialect].review.category);
     this.dialogService.getDialogs(this.category).then(dialogs => {
       this.dialogs = dialogs;
       this.displayFirstAccordion = this.dialogs && this.dialogs.length ? this.dialogs[0].type : '';

@@ -4,6 +4,8 @@ import { AuthentificationService } from '../services/authentification.service';
 import { User } from '../model/user.model';
 import { SettingService } from '../services/setting.service';
 import { ThemeService } from '../services/theme.service';
+import { DialectEnum } from '../model/dialect.enum';
+import { Dialect } from '../model/dialect.model';
 
 @Component({
   selector: 'app-parameter',
@@ -13,6 +15,8 @@ import { ThemeService } from '../services/theme.service';
 export class ParameterPage implements OnInit {
 
   user: User = {} as User;
+  dialect: DialectEnum = DialectEnum.SHGC;
+  userDialect: Dialect = {} as Dialect;
   categorie: any;
 
   constructor(private router: Router, private authentificationService: AuthentificationService,
@@ -25,8 +29,10 @@ export class ParameterPage implements OnInit {
   ngOnInit() {
     this.theme
     this.user = this.authentificationService.user;
+    this.dialect = this.authentificationService.dialect;
+    this.userDialect = this.user.dialects[this.dialect];
     this.settingsService.getSetting('reviews').then((data => {
-      this.categorie = data.categories.find((c: any) => c.code === this.user.review.category);
+      this.categorie = data.categories.find((c: any) => c.code === this.userDialect.review.category);
     }));
   }
 

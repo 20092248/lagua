@@ -18,6 +18,8 @@ import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { CONSTANTS } from '../utils/constants';
 import { AlertService } from './alert.service';
+import { Utils } from '../utils/utils';
+import { DialectEnum } from '../model/dialect.enum';
 const FACEBOOK_PERMISSIONS = ['email', 'user_birthday', 'user_photos', 'user_gender',];
 const USER_KEY = 'users';
 
@@ -29,6 +31,7 @@ export class AuthentificationService {
   user: User = {} as User;
   timer: Date = new Date();
   choice: Subscription | undefined;
+  dialect: DialectEnum = DialectEnum.SHGC;
 
   constructor(private _auth: Auth, private _firestore: Firestore, private platform: Platform, private http: HttpClient,
     private reviewService: ReviewService, private lessonService: LessonService, private loadingService: LoadingService,
@@ -39,7 +42,7 @@ export class AuthentificationService {
       take(5), //take only the first 5 values interval 200ms (1 secondes)
       finalize(() => this.checkUser()) // Execute when the observable completes or unsubscribe
     );
-    const finalNumber = await lastValueFrom(customInterval);
+    await lastValueFrom(customInterval);
     return this.user ? this.user.uid : ''; //'pbgYnF7NvXRWvZdBNDYfNzzITdw1'
   }
 
@@ -48,9 +51,9 @@ export class AuthentificationService {
       const user = getAuth().currentUser;
       if (user) {
         this.user.uid = user.uid;
-        this.user.email = user.email;
-        this.user.displayName = user.displayName;
-        this.user.photoURL = user.photoURL;
+        this.user.email = Utils.valueNotNull(user.email);
+        this.user.displayName = Utils.valueNotNull(user.displayName);
+        this.user.photoURL = Utils.valueNotNull(user.photoURL);
         this.choice?.unsubscribe();
         this.choice = undefined; // Clear the timeoutId
       }
@@ -67,19 +70,12 @@ export class AuthentificationService {
         this.user.uid = data.uid;
         this.user.email = data.email;
         this.user.displayName = data.displayName;
-        this.user.age = data.age;
-        this.user.dialectSelected = data.dialectSelected;
         this.user.photoURL = data.photoURL;
-        this.user.learn = data.learn as CodeTextTranslate;
-        this.user.why = data.why as CodeLabel;
-        this.user.time = data.time as CodeLabel;
-        this.user.level = data.level as CodeLabel;
-        this.user.review = data.review as Review;
-        this.user.lesson = data.lesson as Lesson;
-        this.user.resultReviews = data.resultReviews as ResultReview[];
-        this.user.resultLessons = data.resultLessons;
+        this.user.dialects = data.dialects;
+        this.user.dialectSelected = data.dialectSelected;
         this.user.week = data.week;
         this.user.timerActiveConnection = data.timerActiveConnection;
+        this.dialect = Utils.findDialect(this.user.dialectSelected.code);
         return true;
       } else {
         this.logout(false);
@@ -93,21 +89,14 @@ export class AuthentificationService {
   }
 
   async addInfoUser(uid: string, firstReview: Review, firstLesson: Lesson) {
+    this.addFirstReviewAndFirstLessonInDialect(firstReview, firstLesson);
     await setDoc(doc(getFirestore(), 'users', uid), {
       uid: this.user.uid,
       email: this.user.email,
       displayName: this.user.displayName,
-      dialectSelected: this.user.dialectSelected,
       photoURL: this.user.photoURL ? this.user.photoURL : '',
-      age: this.user.age,
-      learn: this.user.learn,
-      why: this.user.why,
-      time: this.user.time,
-      level: this.user.level,
-      review: firstReview,
-      lesson: firstLesson,
-      resultLessons: [],
-      resultReviews: [],
+      dialectSelected: this.user.dialectSelected,
+      dialects: this.user.dialects,
       timerActiveConnection: 0
     }, { merge: true });
     this.getInfoUser(uid);
@@ -129,9 +118,9 @@ export class AuthentificationService {
   async createUser(name: string, email: string, password: string, firstReview: Review, firstLesson: Lesson) {
     let responseInfoUser = false;
     let response = await createUserWithEmailAndPassword(getAuth(), email, password)
-      .then((userCredential) => {
+      .then((userCredential: UserCredential) => {
         this.user.displayName = name;
-        this.user.email = userCredential?.user?.email;
+        this.user.email = Utils.valueNotNull(userCredential.user.email);
         this.user.uid = userCredential?.user?.uid;
         setDoc(doc(getFirestore(), 'users', this.user.uid), this.user);
         return true;
@@ -260,15 +249,15 @@ export class AuthentificationService {
     if (result.accessToken && result.accessToken.token) {
       let response = await signInWithCredential(getAuth(), FacebookAuthProvider.credential(result.accessToken.token))
         .then(async (result) => {
-            this.user = this.getUserCredential(result);
-            const responseInfoUser = await this.getInfoUser(result.user?.uid);
-            return responseInfoUser;
+          this.user = this.getUserCredential(result);
+          const responseInfoUser = await this.getInfoUser(result.user?.uid);
+          return responseInfoUser;
         })
         .catch((error) => {
           FacebookAuthProvider.credentialFromError(error);
           throw Error(error.message);
         });
-        return response;
+      return response;
     } else {
       console.error('Impossible de récupérer l\'utilisateur Facebook');
       return false;
@@ -359,7 +348,7 @@ export class AuthentificationService {
 
   async logout(disconnect: boolean) {
     if (disconnect && getAuth().currentUser) {
-      this.updateDayDisconnected('users', this.user.uid ? this.user.uid : '');
+      this.updateDayDisconnected('users', Utils.valueNotNull(this.user.uid));
     }
     return signOut(getAuth()).then(() => {
       this.user = {} as User;
@@ -371,32 +360,34 @@ export class AuthentificationService {
   }
 
   async updateResultReview(updateReview: any, nameObject: string, uid: string) {
-    if (!this.user.resultReviews) {
-      this.user.resultReviews = [];
+    const dialectUser = this.user.dialects[this.dialect];
+    if (!dialectUser.resultReviews) {
+      dialectUser.resultReviews = [];
     }
-    this.user.resultReviews.push(updateReview);
+    dialectUser.resultReviews.push(updateReview);
     const userRef = doc(getFirestore(), nameObject, uid);
-    const nextReview = await this.reviewService.findNextReview(this.user.review).then(result => { return result });
+    const nextReview = await this.reviewService.findNextReview(dialectUser.review).then(result => { return result });
     this.reviewService.getPreviousReviews(nextReview).then(() => { });
     await updateDoc(userRef, {
       review: nextReview,
-      resultReviews: this.user.resultReviews.map((obj) => { return Object.assign({}, obj) })
+      resultReviews: dialectUser.resultReviews.map((obj) => { return Object.assign({}, obj) })
     });
   }
 
   async updateLesson(updateLesson: Lesson, nameObject: string, uid: string) {
+    const dialectUser = this.user.dialects[this.dialect];
     const lessonsRef = doc(getFirestore(), nameObject, uid);
-    const userLessonExist = this.user.resultLessons?.find(lesson => lesson.code === updateLesson.code);
-    if (this.user.lesson && !userLessonExist) {
-      const lesson = await this.lessonService.findNextLesson(this.user.lesson);
-      this.user.lesson = lesson;
-      if (!this.user.resultLessons) {
-        this.user.resultLessons = [];
+    const userLessonExist = dialectUser.resultLessons?.find(lesson => lesson.code === updateLesson.code);
+    if (dialectUser.lesson && !userLessonExist) {
+      const lesson = await this.lessonService.findNextLesson(dialectUser.lesson);
+      dialectUser.lesson = lesson;
+      if (!dialectUser.resultLessons) {
+        dialectUser.resultLessons = [];
       }
-      this.user.resultLessons.push(updateLesson);
+      dialectUser.resultLessons.push(updateLesson);
       await updateDoc(lessonsRef, {
         lesson: lesson,
-        resultLessons: this.user.resultLessons.map((obj) => { return Object.assign({}, obj) })
+        resultLessons: dialectUser.resultLessons.map((obj) => { return Object.assign({}, obj) })
       });
     }
   }
@@ -440,9 +431,9 @@ export class AuthentificationService {
 
   getUserCredential(result: UserCredential) {
     this.user.uid = result.user.uid;
-    this.user.email = result.user.email;
-    this.user.displayName = result.user.displayName;
-    this.user.photoURL = result.user.photoURL;
+    this.user.email = Utils.valueNotNull(result.user.email);
+    this.user.displayName = Utils.valueNotNull(result.user.displayName);
+    this.user.photoURL = Utils.valueNotNull(result.user.photoURL);
     return this.user;
   }
 
@@ -452,6 +443,12 @@ export class AuthentificationService {
     this.user.displayName = result.name;
     this.user.photoURL = result.picture && result.picture.data ? result.picture.data.url : '';
     return this.user;
+  }
+
+  addFirstReviewAndFirstLessonInDialect(firstReview: Review, firstLesson: Lesson) {
+    const dialect = Utils.findDialect(this.user.dialectSelected.code);
+    this.user.dialects[dialect].review = firstReview;
+    this.user.dialects[dialect].lesson = firstLesson;
   }
 
 }

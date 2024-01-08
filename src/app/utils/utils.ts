@@ -1,6 +1,7 @@
 import { Observable, ReplaySubject } from "rxjs";
 import { ReviewGroup } from "../model/reviewGroup.model";
 import { User } from "../model/user.model";
+import { DialectEnum } from "../model/dialect.enum";
 
 export class Utils {
 
@@ -66,6 +67,15 @@ export class Utils {
   }
 
   static addUserInfo(user: User) {
-    return user ? '\n\nUserId : '+ user.uid + '\nNom : '+ user.displayName +'\nEmail' + user.email : '';
- }
+    return user ? '\n\nUserId : ' + user.uid + '\nNom : ' + user.displayName + '\nEmail' + user.email : '';
+  }
+
+  static findDialect(key: string) {
+    return key && (key === 'SHAN' || key === 'SHAN' || key === 'SHAN' || key === 'SHAN') ? DialectEnum[key] : DialectEnum['SHGC'];
+  };
+
+  static valueNotNull(value: string | null) {
+    return value ? value : '';
+  }
+
 }

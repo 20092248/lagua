@@ -17,8 +17,12 @@ export class LessonPage implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService, private loadingService: LoadingService, private alertService: AlertService) { }
 
+  get dialect() {
+    return this.authentificationService.dialect;
+  }
+
   get userLesson() {
-    return this.authentificationService.user.lesson;
+    return this.authentificationService.user.dialects[this.dialect].lesson;
   }
   get lessons() {
     return this.lessonService.lessons;
