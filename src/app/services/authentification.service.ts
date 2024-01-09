@@ -103,6 +103,15 @@ export class AuthentificationService {
     return true;
   }
 
+  async addDialect(uid: string) {
+    await setDoc(doc(getFirestore(), 'users', uid), {
+      dialectSelected: this.user.dialectSelected,
+      dialects: this.user.dialects,
+    }, { merge: true });
+    this.getInfoUser(uid);
+    return true;
+  }
+
   async login(email: string, password: string) {
     let response = await signInWithEmailAndPassword(getAuth(), email, password).then(async (userCredential) => {
       const user = userCredential.user;

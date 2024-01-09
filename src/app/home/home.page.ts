@@ -20,6 +20,7 @@ import { CodeTextTranslate } from '../model/codeTextTranslate.model';
 import { CONSTANTS } from '../utils/constants';
 import { Dialect } from '../model/dialect.model';
 import { Dialects } from '../model/dialects.model';
+import { DialectEnum } from '../model/dialect.enum';
 register();
 
 @Component({
@@ -122,27 +123,42 @@ export class HomePage implements OnInit {
   }
 
   changeDialect(data: CodeTextTranslate) {
-    this.alertService.presentAlertWithRadio('Comment jugerez-vous vos connaissances en ' + CONSTANTS.transcodeDialectLabelWithoutNoun[data.code] + '? ', this.setting.userInformation.level).then(result => {
-      if (result.role === 'validate' && result.data.values) {
-        this.alertService.presentActionSheetConfirmation('Confirmation', 'Êtes-vous sûr de vouloir changer de dialecte?').then(result => {
-          if (result.role === 'selected') {
-            const learn = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].learn };
-            const why = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].why };
-            const age = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].age };
-            const time = { ...this.authentificationService.user.dialects[this.authentificationService.dialect].time };
+    this.alertService.presentAlertWithRadio('Comment jugerez-vous vos connaissances en ' + CONSTANTS.transcodeDialectLabelWithoutNoun[data.code] + '? ', this.setting.userInformation.level).then(alertResult => {
+      if (alertResult.role === 'validate' && alertResult.data.values) {
+        this.alertService.presentActionSheetConfirmation('Confirmation', 'Êtes-vous sûr de vouloir changer de dialecte?').then(actionSheetResult => {
+          if (actionSheetResult.role === 'selected') {
+            this.authentificationService.dialect = Utils.findDialect(data.code); // nouveau dialect
+            const why = { ...this.user.dialects[this.dialect].why };
+            const age = { ...this.user.dialects[this.dialect].age };
+            const time = { ...this.user.dialects[this.dialect].time };
 
-            this.authentificationService.dialect = Utils.findDialect(data.code);
-            this.authentificationService.user.dialectSelected = data;
-            if (!this.authentificationService.user.dialects[this.authentificationService.dialect]) {
-              this.authentificationService.user.dialects[this.authentificationService.dialect] = {} as Dialect;
-              this.authentificationService.user.dialects[this.authentificationService.dialect].learn = data;
-              this.authentificationService.user.dialects[this.authentificationService.dialect].resultReviews = [];
-              this.authentificationService.user.dialects[this.authentificationService.dialect].resultLessons = [];
+            this.user.dialectSelected = data;
+            if (!this.user.dialects[this.dialect]) {
+              this.user.dialects[this.dialect] = {} as Dialect;
+              this.user.dialects[this.dialect].resultReviews = [];
+              this.user.dialects[this.dialect].resultLessons = [];
             }
-            this.router.navigate(['../why']);
+            this.user.dialects[this.dialect].learn = data;
+            this.user.dialects[this.dialect].why = why;
+            this.user.dialects[this.dialect].age = age;
+            this.user.dialects[this.dialect].time = time;
+            this.user.dialects[this.dialect].level = this.setting.userInformation.level.find((l: any) => l.code === alertResult.data.values);
+            this.user.dialects[this.dialect].resultReviews = [];
+            this.user.dialects[this.dialect].resultLessons = [];
+            forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(async([firstReview, firstLesson]) => {
+              this.user.dialects[this.dialect].resultReviews = [];
+              this.user.dialects[this.dialect].resultLessons = [];
+              this.user.dialects[this.dialect].review = firstReview;
+              this.user.dialects[this.dialect].lesson = firstLesson;
+              this.otherDialects = this.setting.userInformation.learn.filter((d: CodeTextTranslate) => d.code !== CONSTANTS.FRENCH_DIALECT && d.code !== this.user.dialectSelected.code);
+              this.authentificationService.addDialect(this.user.uid).then(()=>{
+                this.alertService.presentToast('Le changement de dialecte a été effectué.', 3000, 'dark');
+              });
+            });
+            this.dialectLearned = CONSTANTS.transcodeDialectLabel[this.user.dialectSelected.code];
           }
         });
-      } else if(result.role === 'validate' && !result.data.values) {
+      } else if (alertResult.role === 'validate' && !alertResult.data.values) {
         this.alertService.presentToast(CONSTANTS.CHOICE_DIALECT_MISSING, 3000, 'danger');
       }
     });
@@ -171,7 +187,7 @@ export class HomePage implements OnInit {
   }
 
   displayUnknownUser() {
-    this.user.photoURL = this.setting.profile.icon.unknownUserSrc;
+    this.user.photoURL = this.setting.profile.icon?.unknownUserSrc;
   }
 
 }
