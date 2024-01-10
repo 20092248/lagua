@@ -1,4 +1,4 @@
-package com.project.lagua;
+package com.lagua.shikomori;
 
 import com.getcapacitor.BridgeActivity;
 

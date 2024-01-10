@@ -34,6 +34,9 @@
             "styles": [
               "src/theme/variables.scss",
               "src/global.scss"
+            ],
+            "scripts": [
+              "src/assets/js/smtp.js"
             ]
           },
           "configurations": {

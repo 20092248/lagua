@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:137499573111:android:bff782af63ad5507807f72",
+        "mobilesdk_app_id": "1:137499573111:android:6d29518022ef4093807f72",
         "android_client_info": {
-          "package_name": "com.project.lagua"
+          "package_name": "com.lagua.shikomori"
         }
       },
       "oauth_client": [

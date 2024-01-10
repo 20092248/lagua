@@ -50,6 +50,11 @@
                 Voir les mots
               </ion-button>
               <ion-button
+                *ngIf="!(categoryLevel === codeCategorySelectedLevel && (userReview.lesson <= r.lesson && userReview.order === r.order))"
+                size="small" color="primary"
+                class="ion-button ion-button-active ion-padding-min-end ion-float-left ion-button-position"
+                fill="clear" (click)="openModal(r)">Aide</ion-button>
+              <ion-button
                 *ngIf="!(categoryLevel < codeCategorySelectedLevel || (userReview.lesson <= r.lesson && userReview.order < r.order))"
                 size="small"
                 class="ion-button ion-button-active ion-padding-min-end ion-float-right ion-button-position"

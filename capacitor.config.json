@@ -16,7 +16,7 @@
             "forceCodeForRefreshToken": true
         }
     },
-	"appId": "com.project.lagua",
+	"appId": "com.lagua.shikomori",
 	"appName": "Lagua",
 	"webDir": "www",
 	"bundledWebRuntime": false
