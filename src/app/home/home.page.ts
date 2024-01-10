@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, PopoverController, RefresherCustomEvent, ToastController } from '@ionic/angular';
 import { Lesson } from '../model/lessons.model';
@@ -40,6 +40,7 @@ export class HomePage implements OnInit {
   levelDialog: string = '';
   otherDialects: CodeTextTranslate[] = [];
   dialectLearned: string = '';
+  uploadSetting: EventEmitter<any> = new EventEmitter();
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
@@ -79,6 +80,7 @@ export class HomePage implements OnInit {
       this.progression = this.user && this.userDialect.resultReviews && this.userDialect.resultLessons ? (this.userDialect.resultReviews?.length + this.userDialect.resultLessons?.length) / (Utils.getReviewsLength(reviewsInfo) + lessons.length) * 100 : 0;
       this.otherDialects = setting.userInformation.learn.filter((d: CodeTextTranslate) => d.code !== CONSTANTS.FRENCH_DIALECT && d.code !== this.user.dialectSelected.code);
       this.dialectLearned = CONSTANTS.transcodeDialectLabel[this.user.dialectSelected.code];
+      this.uploadSetting.emit(this.setting);
     });
   }
 

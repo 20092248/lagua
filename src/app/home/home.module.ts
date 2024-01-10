@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { MenuComponentModule } from './menu/menu.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
     FormsModule,
     IonicModule,
     ExploreContainerComponentModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    MenuComponentModule
   ],
   declarations: [HomePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

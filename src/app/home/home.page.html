@@ -9,76 +9,7 @@
         </div>
       </ion-col>
       <ion-col size="3" class="ion-padding-end ion-display-flex">
-        <div class="border-white-tabs" id="popover-profil">
-          <div class="img-box">
-            <ion-img *ngIf="user.photoURL" [src]="user.photoURL"
-              [alt]="user.displayName" (ionError)="displayUnknownUser()"></ion-img>
-            <!-- <img *ngIf="user.photoURL" [src]="user.photoURL || setting.profile.icon.unknownUserSrc"> -->
-            <div *ngIf="!user.photoURL">{{initial}}</div>
-          </div>
-        </div>
-        <ion-popover trigger="popover-profil" class="ion-custom-top-popover">
-          <ng-template>
-            <ion-content>
-              <ion-list>
-                <div class="ion-padding-horizontal">
-                  <h5 class="ion-margin-top">{{user.displayName}}</h5>
-                  <div class="ion-margin-bottom">{{user.email}}</div>
-                </div>
-                <ion-accordion-group>
-                  <ion-accordion value="objective">
-                    <ion-item class="ion-accordion-content" button slot="header">
-                      <ion-avatar slot="start">
-                        <img alt="{{userDialect.learn.text}}" [src]="userDialect.learn.src" />
-                      </ion-avatar>
-                      <ion-label>Choisir un autre dialecte</ion-label>
-                    </ion-item>
-                    <div class="ion-accordion-content ion-other-dialect" slot="content">
-                      <ion-list>
-                        <!-- <ion-list-header>
-                          <ion-label>Actuellement, tu apprends {{dialectLearned}}</ion-label>
-                        </ion-list-header>
-                        <ion-item lines="none">
-                          <ion-avatar slot="start">
-                            <img alt="{{user.dialectSelected.text}}" [src]="user.dialectSelected.src" />
-                          </ion-avatar>
-                          <ion-label>{{user.dialectSelected.translate}}</ion-label>
-                        </ion-item> -->
-                        <ion-list-header>
-                          <ion-label>Apprendre un autre dialecte que {{dialectLearned}}</ion-label>
-                        </ion-list-header>
-                        <ion-item button lines="none" *ngFor="let l of otherDialects" (click)="changeDialect(l)">
-                          <ion-avatar slot="start">
-                            <img alt="{{l.text}}" [src]="l.src" />
-                          </ion-avatar>
-                          <ion-label>{{l.translate}}</ion-label>
-                        </ion-item>
-                      </ion-list>
-                    </div>
-                  </ion-accordion>
-                </ion-accordion-group>
-                <ion-accordion-group>
-                  <ion-accordion value="objective">
-                    <ion-item button lines="inset" slot="header"><ion-icon class="ion-padding-end"
-                        name="stats-chart-outline"></ion-icon>Mes
-                      objectifs</ion-item>
-                    <div class="ion-padding ion-accordion-content" slot="content">Temps : {{userDialect.time.label}}
-                    </div>
-                  </ion-accordion>
-                </ion-accordion-group>
-                <ion-item button (click)="goTo('../parameter', true, true)"><ion-icon class="ion-padding-end"
-                    name="settings-outline"></ion-icon>Paramètres</ion-item>
-                <!-- <ion-item button (click)="goTo('/tabs/account', false, true)"><ion-icon class="ion-padding-end"
-                    name="flag-outline"></ion-icon>Mes langues</ion-item> -->
-                <!-- <ion-item (click)="changeMode()"><ion-icon name="brush-outline" class="ion-padding-end">
-                  </ion-icon>Thème {{theme === 'moon' ? 'sombre' : 'clair'}}<ion-icon name="{{theme}}"
-                    slot="end"></ion-icon></ion-item> -->
-                <ion-item button lines="none" detail="false" (click)="logout()"><ion-icon class="ion-padding-end"
-                    name="log-out-outline"></ion-icon>Déconnexion</ion-item>
-              </ion-list>
-            </ion-content>
-          </ng-template>
-        </ion-popover>
+        <app-menu [uploadSetting]="uploadSetting"></app-menu>
       </ion-col>
     </ion-row>
     <ion-row>
