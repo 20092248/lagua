@@ -9,6 +9,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { MenuComponentModule } from './menu/menu.module';
+import { WeeklyCalendarComponentModule } from './weekly-calendar/menu.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { MenuComponentModule } from './menu/menu.module';
     IonicModule,
     ExploreContainerComponentModule,
     HomePageRoutingModule,
-    MenuComponentModule
+    MenuComponentModule,
+    WeeklyCalendarComponentModule
   ],
   declarations: [HomePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

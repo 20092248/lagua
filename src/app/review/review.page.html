@@ -34,7 +34,7 @@
               [ngClass]="{ 'ion-card-locked' : categoryLevel < codeCategorySelectedLevel || (userReview.lesson <= r.lesson && userReview.order < r.order) }">
               <ion-card-header>
                 <ion-card-title>{{r.text}} <ion-icon (click)="goToModifyReview(data.category, data.lesson, r.order)"
-                    *ngIf="user.email === 'brady91700@gmail.com' || user.email === 'bradyabd@gmail.com'"
+                    *ngIf="user.email === 'brady91700@gmail.com' || user.email === 'bradyabd@gmail.com' || user.email === 'lagua.shikomori@gmail.com'"
                     name="create-outline"></ion-icon> <img *ngIf="r.score" class="ion-flag-comoros ion-float-right"
                     src="{{flagSrc}}" /></ion-card-title>
                 <ion-card-subtitle>{{r.translate}}</ion-card-subtitle>
@@ -49,11 +49,11 @@
                 fill="clear" (click)="openModal(r)">
                 Voir les mots
               </ion-button>
-              <ion-button
-                *ngIf="!(categoryLevel === codeCategorySelectedLevel && (userReview.lesson <= r.lesson && userReview.order === r.order))"
+              <!-- <ion-button
+                *ngIf="!(categoryLevel === codeCategorySelectedLevel && (userReview.lesson === r.lesson && userReview.order === r.order))"
                 size="small" color="primary"
                 class="ion-button ion-button-active ion-padding-min-end ion-float-left ion-button-position"
-                fill="clear" (click)="openModal(r)">Aide</ion-button>
+                fill="clear" (click)="openModal(r)">Aide</ion-button> -->
               <ion-button
                 *ngIf="!(categoryLevel < codeCategorySelectedLevel || (userReview.lesson <= r.lesson && userReview.order < r.order))"
                 size="small"

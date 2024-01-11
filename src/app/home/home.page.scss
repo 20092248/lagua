@@ -37,17 +37,6 @@ h5.ion-subtitle {
   margin-top: 0px;
 }
 
-ion-text {
-  display: block;
-}
-
-ion-popover {
-  --width: 99%;
-  --backdrop-opacity: 0;
-  --offset-y: 5px;
-  --offset-x: 10px;
-}
-
 swiper-slide ion-card ion-card-content {
   height: 83px;
   padding: 10px;
@@ -211,30 +200,6 @@ ion-card-title .ion-card-title {
   color: #ffffff;
 }
 
-.border-white-tabs {
-  border: #ffffff solid 2px;
-  background-color: #ffffff;
-  border-radius: 50%;
-  width: 64px;
-  height: 64px;
-  float: right;
-}
-
-.img-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  overflow: hidden;
-  height: 60px;
-  width: 60px;
-  background-color: #e1e3d0;
-  margin-left: auto;
-  margin-right: auto;
-  color: #774141;
-  font-size: 30px;
-}
-
 .ion-font-weight-bold {
   font-weight: bold;
   font-size: 12px;
@@ -259,40 +224,6 @@ ion-card-title .ion-card-title {
   margin-right: 4px !important;
 }
 
-.ion-calendar-content {
-  display: flex;
-  flex-flow: row nowrap;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  gap: 0px;
-}
-
-.ion-calendar-day {
-  display: flex;
-  flex-flow: column nowrap;
-  -webkit-box-align: center;
-  align-items: center;
-  padding: 10px;
-  gap: 16px;
-}
-
-.ion-calendar-activity {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0px;
-  font-family: 'Babbel Milliard', sans-serif;
-  line-height: 22px;
-  color: rgb(57, 65, 73);
-  white-space: normal;
-  margin: 0px;
-}
-
-.is-today {
-  background-color: #d7e3ce;
-  border: 1.5px solid #9dba88;
-  border-radius: 10px;
-}
-
 .ion-lock-lesson {
   opacity: 0.7;
   filter: grayscale(0.75);
@@ -300,18 +231,4 @@ ion-card-title .ion-card-title {
 
 .ion-font-size-small {
   font-size: 90%;
-}
-
-.ion-accordion-content {
-  border-bottom: 1px solid #cbcbcb;
-}
-
-.ion-other-dialect {
-  ion-avatar {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  ion-label {
-    margin: 0;
-  }
 }

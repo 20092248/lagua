@@ -20,6 +20,7 @@ import { CONSTANTS } from '../utils/constants';
 import { AlertService } from './alert.service';
 import { Utils } from '../utils/utils';
 import { DialectEnum } from '../model/dialect.enum';
+import { Dialect } from '../model/dialect.model';
 const FACEBOOK_PERMISSIONS = ['email', 'user_birthday', 'user_photos', 'user_gender',];
 const USER_KEY = 'users';
 
@@ -369,6 +370,7 @@ export class AuthentificationService {
   }
 
   async updateResultReview(updateReview: any, nameObject: string, uid: string) {
+    var dialect = null;
     const dialectUser = this.user.dialects[this.dialect];
     if (!dialectUser.resultReviews) {
       dialectUser.resultReviews = [];
@@ -377,10 +379,26 @@ export class AuthentificationService {
     const userRef = doc(getFirestore(), nameObject, uid);
     const nextReview = await this.reviewService.findNextReview(dialectUser.review).then(result => { return result });
     this.reviewService.getPreviousReviews(nextReview).then(() => { });
-    await updateDoc(userRef, {
+    dialect = this.infoReviewByDialect(nextReview, dialectUser);
+    await updateDoc(userRef, dialect);
+  }
+
+  infoReviewByDialect(nextReview: Review, dialectUser: Dialect){
+    var dialect = null
+    const infoReview = {
       review: nextReview,
       resultReviews: dialectUser.resultReviews.map((obj) => { return Object.assign({}, obj) })
-    });
+    }
+    if (this.dialect === DialectEnum.SHGC) {
+      dialect = { 'dialects.shingazidja': infoReview };
+    } else if (this.dialect === DialectEnum.SHAN) {
+      dialect = { 'dialects.shindzuani': infoReview };
+    } else if (this.dialect === DialectEnum.MOHE) {
+      dialect = { 'dialects.shimwali': infoReview };
+    } else if (this.dialect === DialectEnum.MAOR) {
+      dialect = { 'dialects.shimaore': infoReview };
+    }
+    return dialect;
   }
 
   async updateLesson(updateLesson: Lesson, nameObject: string, uid: string) {
