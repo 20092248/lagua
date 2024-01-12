@@ -115,6 +115,17 @@ export class AuthentificationService {
     return true;
   }
 
+  async addDialectWithoutDialects(uid: string) {
+    const dialectsInfo = this.infoAddDialect();
+    if (dialectsInfo) {
+      await updateDoc(doc(getFirestore(), 'users', uid), { 'dialectSelected': this.user.dialectSelected });
+    } else {
+      this.alertService.presentToast(CONSTANTS.UPDATE_DIALECT_KO, 3000, 'danger');
+    }
+    this.getInfoUser(uid);
+    return true;
+  }
+
   infoAddDialect() {
     var dialect = null;
     if (this.dialect === DialectEnum.SHGC) {

@@ -54,19 +54,34 @@ export class MenuComponent implements OnInit {
 
   changeDialect(data: CodeTextTranslate) {
     const oldDialect = JSON.parse(JSON.stringify(this.dialect)) as DialectEnum;
-    this.alertService.presentAlertWithRadio('Comment jugerez-vous vos connaissances en ' + CONSTANTS.transcodeDialectLabelWithoutNoun[data.code] + '? ', this.settingService.userInformation.level).then(alertResult => {
-      if (alertResult.role === 'validate' && alertResult.data.values) {
-        this.alertService.presentActionSheetConfirmation('Confirmation', CONSTANTS.CONFIRM_ACTION_SHEET).then(actionSheetResult => {
-          if (actionSheetResult.role === 'selected') {
-            this.authentificationService.dialect = Utils.findDialect(data.code);
-            this.user.dialectSelected = data;
-            this.createDialectsIfNotExist();
-            this.addNewDialectInfo(alertResult, oldDialect);
-            this.dialectLearned = CONSTANTS.transcodeDialectLabel[this.user.dialectSelected.code];
-          }
-        });
-      } else if (alertResult.role === 'validate' && !alertResult.data.values) {
-        this.alertService.presentToast(CONSTANTS.CHOICE_DIALECT_MISSING, 3000, 'danger');
+    if(this.user.dialects[oldDialect]){
+      this.displayActionSheetConfirmation(data, null, oldDialect);
+    } else {
+      this.alertService.presentAlertWithRadio('Comment jugerez-vous vos connaissances en ' + CONSTANTS.transcodeDialectLabelWithoutNoun[data.code] + '? ', this.settingService.userInformation.level).then(alertResult => {
+        if (alertResult.role === 'validate' && alertResult.data.values) {
+          this.displayActionSheetConfirmation(data, alertResult, oldDialect);
+        } else if (alertResult.role === 'validate' && !alertResult.data.values) {
+          this.alertService.presentToast(CONSTANTS.CHOICE_DIALECT_MISSING, 3000, 'danger');
+        }
+      });
+    }
+  }
+
+  displayActionSheetConfirmation(data: CodeTextTranslate, alertResult: any, oldDialect: DialectEnum) {
+    this.alertService.presentActionSheetConfirmation('Confirmation', CONSTANTS.CONFIRM_ACTION_SHEET).then(actionSheetResult => {
+      if (actionSheetResult.role === 'selected') {
+        this.authentificationService.dialect = Utils.findDialect(data.code);
+        this.user.dialectSelected = data;
+        if (!this.user.dialects[oldDialect]) {
+          this.createDialectsIfNotExist();
+          this.addNewDialectInfo(alertResult, oldDialect);
+        } else {
+          this.authentificationService.addDialectWithoutDialects(this.user.uid).then(() => {
+            this.alertService.presentToast(CONSTANTS.CONFIRM_DIALECT_CHANGED, 3000, 'lagua');
+          });
+        } 
+        this.otherDialects = this.settingService.userInformation.learn.filter((d: CodeTextTranslate) => d.code !== CONSTANTS.FRENCH_DIALECT && d.code !== this.user.dialectSelected.code);
+        this.dialectLearned = CONSTANTS.transcodeDialectLabel[this.user.dialectSelected.code];
       }
     });
   }
@@ -84,7 +99,7 @@ export class MenuComponent implements OnInit {
     this.userDialect.why = this.user.dialects[oldDialect].why;
     this.userDialect.age = this.user.dialects[oldDialect].age;
     this.userDialect.time = this.user.dialects[oldDialect].time;
-    this.userDialect.level = this.settingService.userInformation.level.find((l: any) => l.code === alertResult.data.values);
+    this.userDialect.level = alertResult ? this.settingService.userInformation.level.find((l: any) => l.code === alertResult.data.values) : this.user.dialects[oldDialect].level;
     this.userDialect.resultReviews = [];
     this.userDialect.resultLessons = [];
     forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(async ([firstReview, firstLesson]) => {
@@ -92,9 +107,8 @@ export class MenuComponent implements OnInit {
       this.userDialect.resultLessons = [];
       this.userDialect.review = firstReview;
       this.userDialect.lesson = firstLesson;
-      this.otherDialects = this.settingService.userInformation.learn.filter((d: CodeTextTranslate) => d.code !== CONSTANTS.FRENCH_DIALECT && d.code !== this.user.dialectSelected.code);
       this.authentificationService.addDialect(this.user.uid).then(() => {
-        this.alertService.presentToast(CONSTANTS.CONFIRM_DIALECT_CHANGED, 3000, 'dark');
+        this.alertService.presentToast(CONSTANTS.CONFIRM_DIALECT_CHANGED, 3000, 'lagua');
       });
     });
   }
