@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { LoadingController, PopoverController, RefresherCustomEvent, ToastController } from '@ionic/angular';
 import { Lesson } from '../model/lessons.model';
 import { User } from '../model/user.model';
@@ -92,6 +92,17 @@ export class HomePage implements OnInit {
       }
     } else {
       this.alertService.presentToast('Débloquer les précedentes leçons avant d\'accéder à la leçon.', 3000, 'lagua');
+    }
+  }
+
+  goToLesson(routing: string, lessonUnlock: boolean, lesson: Lesson) {
+    if (lessonUnlock) {
+      const navigationExtras: NavigationExtras = {
+        state: { data: lesson }
+      };
+      this.router.navigate([routing], navigationExtras);
+    } else {
+      this.alertService.presentToast('Débloquer les précedentes leçons avant d\'accéder à la leçon "' + lesson.title + '".', 3000, 'lagua');
     }
   }
 

@@ -28,6 +28,13 @@ export class LessonService {
     return this.lesson;
   }
 
+  async getLessonByCode(code: string): Promise<Lesson> {
+    const q = query(collection(getFirestore(), 'lessons'), where('code', '==', code));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => this.lesson = doc.data() as Lesson);
+    return this.lesson;
+  }
+
   async findNextLesson(lesson: Lesson) {
     const nextOrder = lesson.order + 1;
     return await this.getLesson(nextOrder).then((l: Lesson) => {

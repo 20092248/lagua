@@ -22,6 +22,11 @@ export class LexiconPage implements OnInit {
   }
 
   ngOnInit() {
+    if(this.lexiconLesson){
+      this.lessonService.getLessonByCode('LEXI').then((resultLesson: Lesson) =>{
+        this.lexiconLesson = resultLesson;
+      })
+    }
   }
 
   saveLesson() {
