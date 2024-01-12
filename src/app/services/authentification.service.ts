@@ -370,7 +370,7 @@ export class AuthentificationService {
   }
 
   async updateResultReview(updateReview: any, nameObject: string, uid: string) {
-    var dialect = null;
+    var updateReviewDoc = null;
     const dialectUser = this.user.dialects[this.dialect];
     if (!dialectUser.resultReviews) { dialectUser.resultReviews = []; }
     dialectUser.resultReviews.push(updateReview);
@@ -378,39 +378,53 @@ export class AuthentificationService {
     const nextReview = await this.reviewService.findNextReview(dialectUser.review).then(result => { return result });
     dialectUser.review = nextReview;
     this.reviewService.getPreviousReviews(nextReview).then(() => { });
-    dialect = this.infoDialect(dialectUser);
-    if (dialect) {
-      await updateDoc(userRef, dialect);
+    updateReviewDoc = this.infoReviewByDialect(nextReview, dialectUser.resultReviews);
+    if (updateReviewDoc) {
+      await updateDoc(userRef, updateReviewDoc);
     }
   }
 
   async updateLesson(updateLesson: Lesson, nameObject: string, uid: string) {
-    var dialectLesson = null;
+    var updateLessonDoc = null;
     const dialectUser = this.user.dialects[this.dialect];
     const lessonsRef = doc(getFirestore(), nameObject, uid);
-    const userLessonExist = dialectUser.resultLessons?.find(lesson => lesson.code === updateLesson.code);
+    if (!dialectUser.resultLessons) { dialectUser.resultLessons = []; }
+    const userLessonExist = dialectUser.resultLessons.find(lesson => lesson.code === updateLesson.code);
     if (dialectUser.lesson && !userLessonExist) {
       const nextLesson = await this.lessonService.findNextLesson(dialectUser.lesson);
       dialectUser.lesson = nextLesson;
-      if (!dialectUser.resultLessons) { dialectUser.resultLessons = []; }
       dialectUser.resultLessons.push(updateLesson);
-      dialectLesson = this.infoDialect(dialectUser);
-      if (dialectLesson) {
-        await updateDoc(lessonsRef, dialectLesson);
+      updateLessonDoc = this.infoLessonByDialect(nextLesson, dialectUser.resultLessons);
+      if (updateLessonDoc) {
+        await updateDoc(lessonsRef, updateLessonDoc);
       }
     }
   }
 
-  infoDialect(dialectUser: Dialect) {
-    var dialect = null
+  infoReviewByDialect(nextReview: Review, resultReviews: ResultReview[]) {
+    var dialect = null;
     if (this.dialect === DialectEnum.SHGC) {
-      dialect = { dialects: { shingazidja: dialectUser } };
+      dialect = { 'dialects.shingazidja.review': nextReview, 'dialects.shingazidja.resultReviews': resultReviews.map((obj) => { return Object.assign({}, obj) }) };
     } else if (this.dialect === DialectEnum.SHAN) {
-      dialect = { dialects: { shindzuani: dialectUser } };
+      dialect = { 'dialects.shindzuani.review': nextReview, 'dialects.shindzuani.resultReviews': resultReviews.map((obj) => { return Object.assign({}, obj) }) };
     } else if (this.dialect === DialectEnum.MOHE) {
-      dialect = { dialects: { shimwali: dialectUser } };
+      dialect = { 'dialects.shimwali.review': nextReview, 'dialects.shimwali.resultReviews': resultReviews.map((obj) => { return Object.assign({}, obj) }) };
     } else if (this.dialect === DialectEnum.MAOR) {
-      dialect = { dialects: { shimaore: dialectUser } };
+      dialect = { 'dialects.shimaore.review': nextReview, 'dialects.shimaore.resultReviews': resultReviews.map((obj) => { return Object.assign({}, obj) }) };
+    }
+    return dialect;
+  }
+
+  infoLessonByDialect(nextLesson: Lesson, resultLessons: Lesson[]) {
+    var dialect = null;
+    if (this.dialect === DialectEnum.SHGC) {
+      dialect = { 'dialects.shingazidja.lesson': nextLesson, 'dialects.shingazidja.resultLessons': resultLessons.map((obj) => { return Object.assign({}, obj) }) };
+    } else if (this.dialect === DialectEnum.SHAN) {
+      dialect = { 'dialects.shindzuani.lesson': nextLesson, 'dialects.shindzuani.resultLessons': resultLessons.map((obj) => { return Object.assign({}, obj) }) };
+    } else if (this.dialect === DialectEnum.MOHE) {
+      dialect = { 'dialects.shimwali.lesson': nextLesson, 'dialects.shimwali.resultLessons': resultLessons.map((obj) => { return Object.assign({}, obj) }) };
+    } else if (this.dialect === DialectEnum.MAOR) {
+      dialect = { 'dialects.shimaore.lesson': nextLesson, 'dialects.shimaore.resultLessons': resultLessons.map((obj) => { return Object.assign({}, obj) }) };
     }
     return dialect;
   }
