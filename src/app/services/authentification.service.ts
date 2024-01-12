@@ -372,51 +372,47 @@ export class AuthentificationService {
   async updateResultReview(updateReview: any, nameObject: string, uid: string) {
     var dialect = null;
     const dialectUser = this.user.dialects[this.dialect];
-    if (!dialectUser.resultReviews) {
-      dialectUser.resultReviews = [];
-    }
+    if (!dialectUser.resultReviews) { dialectUser.resultReviews = []; }
     dialectUser.resultReviews.push(updateReview);
     const userRef = doc(getFirestore(), nameObject, uid);
     const nextReview = await this.reviewService.findNextReview(dialectUser.review).then(result => { return result });
+    dialectUser.review = nextReview;
     this.reviewService.getPreviousReviews(nextReview).then(() => { });
-    dialect = this.infoReviewByDialect(nextReview, dialectUser);
-    await updateDoc(userRef, dialect);
-  }
-
-  infoReviewByDialect(nextReview: Review, dialectUser: Dialect){
-    var dialect = null
-    const infoReview = {
-      review: nextReview,
-      resultReviews: dialectUser.resultReviews.map((obj) => { return Object.assign({}, obj) })
+    dialect = this.infoDialect(dialectUser);
+    if (dialect) {
+      await updateDoc(userRef, dialect);
     }
-    if (this.dialect === DialectEnum.SHGC) {
-      dialect = { 'dialects.shingazidja': infoReview };
-    } else if (this.dialect === DialectEnum.SHAN) {
-      dialect = { 'dialects.shindzuani': infoReview };
-    } else if (this.dialect === DialectEnum.MOHE) {
-      dialect = { 'dialects.shimwali': infoReview };
-    } else if (this.dialect === DialectEnum.MAOR) {
-      dialect = { 'dialects.shimaore': infoReview };
-    }
-    return dialect;
   }
 
   async updateLesson(updateLesson: Lesson, nameObject: string, uid: string) {
+    var dialectLesson = null;
     const dialectUser = this.user.dialects[this.dialect];
     const lessonsRef = doc(getFirestore(), nameObject, uid);
     const userLessonExist = dialectUser.resultLessons?.find(lesson => lesson.code === updateLesson.code);
     if (dialectUser.lesson && !userLessonExist) {
-      const lesson = await this.lessonService.findNextLesson(dialectUser.lesson);
-      dialectUser.lesson = lesson;
-      if (!dialectUser.resultLessons) {
-        dialectUser.resultLessons = [];
-      }
+      const nextLesson = await this.lessonService.findNextLesson(dialectUser.lesson);
+      dialectUser.lesson = nextLesson;
+      if (!dialectUser.resultLessons) { dialectUser.resultLessons = []; }
       dialectUser.resultLessons.push(updateLesson);
-      await updateDoc(lessonsRef, {
-        lesson: lesson,
-        resultLessons: dialectUser.resultLessons.map((obj) => { return Object.assign({}, obj) })
-      });
+      dialectLesson = this.infoDialect(dialectUser);
+      if (dialectLesson) {
+        await updateDoc(lessonsRef, dialectLesson);
+      }
     }
+  }
+
+  infoDialect(dialectUser: Dialect) {
+    var dialect = null
+    if (this.dialect === DialectEnum.SHGC) {
+      dialect = { dialects: { shingazidja: dialectUser } };
+    } else if (this.dialect === DialectEnum.SHAN) {
+      dialect = { dialects: { shindzuani: dialectUser } };
+    } else if (this.dialect === DialectEnum.MOHE) {
+      dialect = { dialects: { shimwali: dialectUser } };
+    } else if (this.dialect === DialectEnum.MAOR) {
+      dialect = { dialects: { shimaore: dialectUser } };
+    }
+    return dialect;
   }
 
   async updateDayConnected(collection: string, uid: string) {
