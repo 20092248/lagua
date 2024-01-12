@@ -125,79 +125,10 @@ export class HomePage implements OnInit {
     this.router.navigate(['/questions']);
   }
 
-  changeDialect(data: CodeTextTranslate) {
-    this.alertService.presentAlertWithRadio('Comment jugerez-vous vos connaissances en ' + CONSTANTS.transcodeDialectLabelWithoutNoun[data.code] + '? ', this.setting.userInformation.level).then(alertResult => {
-      if (alertResult.role === 'validate' && alertResult.data.values) {
-        this.alertService.presentActionSheetConfirmation('Confirmation', CONSTANTS.CONFIRM_ACTION_SHEET).then(actionSheetResult => {
-          if (actionSheetResult.role === 'selected') {
-            this.authentificationService.dialect = Utils.findDialect(data.code);
-            this.user.dialectSelected = data;
-            this.createDialectsIfNotExist();
-            this.addNewDialectInfo(alertResult);
-            this.dialectLearned = CONSTANTS.transcodeDialectLabel[this.user.dialectSelected.code];
-          }
-        });
-      } else if (alertResult.role === 'validate' && !alertResult.data.values) {
-        this.alertService.presentToast(CONSTANTS.CHOICE_DIALECT_MISSING, 3000, 'danger');
-      }
-    });
-  }
-
-  createDialectsIfNotExist() {
-    if (!this.user.dialects[this.dialect]) {
-      this.user.dialects[this.dialect] = {} as Dialect;
-      this.user.dialects[this.dialect].resultReviews = [];
-      this.user.dialects[this.dialect].resultLessons = [];
-    }
-  }
-  
-  addNewDialectInfo(alertResult: any) {
-    const why = { ...this.userDialect.why };
-    const age = { ...this.userDialect.age };
-    const time = { ...this.userDialect.time };
-    this.userDialect.learn = this.user.dialectSelected;
-    this.userDialect.why = why;
-    this.userDialect.age = age;
-    this.userDialect.time = time;
-    this.userDialect.level = this.setting.userInformation.level.find((l: any) => l.code === alertResult.data.values);
-    this.userDialect.resultReviews = [];
-    this.userDialect.resultLessons = [];
-    forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(async ([firstReview, firstLesson]) => {
-      this.userDialect.resultReviews = [];
-      this.userDialect.resultLessons = [];
-      this.userDialect.review = firstReview;
-      this.userDialect.lesson = firstLesson;
-      this.otherDialects = this.setting.userInformation.learn.filter((d: CodeTextTranslate) => d.code !== CONSTANTS.FRENCH_DIALECT && d.code !== this.user.dialectSelected.code);
-      this.authentificationService.addDialect(this.user.uid).then(() => {
-        this.alertService.presentToast(CONSTANTS.CONFIRM_DIALECT_CHANGED, 3000, 'dark');
-      });
-    });
-  }
-
   logout() {
     this.authentificationService.logout(true).then(() => {
       this.goTo('/firstpage', true, true);
     });
-  }
-
-  getDailyIcon(infoDay: any) {
-    if (infoDay) {
-      const todayMinusOneWeek = new Date();
-      const utcDay = todayMinusOneWeek.getUTCDay() ? todayMinusOneWeek.getUTCDay() : 7;
-      if (utcDay > infoDay.day) {
-        todayMinusOneWeek.setDate(todayMinusOneWeek.getDate() - 7);
-        if (infoDay.timestamp.toDate().getTime() > todayMinusOneWeek.getTime()) {
-          return "checkbox-outline";
-        }
-      } else if (utcDay == infoDay.day) {
-        return "checkbox-outline";
-      }
-    }
-    return "square-outline";
-  }
-
-  displayUnknownUser() {
-    this.user.photoURL = this.setting.profile.icon?.unknownUserSrc;
   }
 
 }

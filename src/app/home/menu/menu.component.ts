@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ModalController, PopoverController, ToastController } from '@ionic/angular';
 import { forkJoin } from 'rxjs';
 import { CodeTextTranslate } from 'src/app/model/codeTextTranslate.model';
+import { DialectEnum } from 'src/app/model/dialect.enum';
 import { Dialect } from 'src/app/model/dialect.model';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthentificationService } from 'src/app/services/authentification.service';
@@ -52,6 +53,7 @@ export class MenuComponent implements OnInit {
   }
 
   changeDialect(data: CodeTextTranslate) {
+    const oldDialect = JSON.parse(JSON.stringify(this.dialect)) as DialectEnum;
     this.alertService.presentAlertWithRadio('Comment jugerez-vous vos connaissances en ' + CONSTANTS.transcodeDialectLabelWithoutNoun[data.code] + '? ', this.settingService.userInformation.level).then(alertResult => {
       if (alertResult.role === 'validate' && alertResult.data.values) {
         this.alertService.presentActionSheetConfirmation('Confirmation', CONSTANTS.CONFIRM_ACTION_SHEET).then(actionSheetResult => {
@@ -59,7 +61,7 @@ export class MenuComponent implements OnInit {
             this.authentificationService.dialect = Utils.findDialect(data.code);
             this.user.dialectSelected = data;
             this.createDialectsIfNotExist();
-            this.addNewDialectInfo(alertResult);
+            this.addNewDialectInfo(alertResult, oldDialect);
             this.dialectLearned = CONSTANTS.transcodeDialectLabel[this.user.dialectSelected.code];
           }
         });
@@ -77,14 +79,11 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  addNewDialectInfo(alertResult: any) {
-    const why = { ...this.userDialect.why };
-    const age = { ...this.userDialect.age };
-    const time = { ...this.userDialect.time };
+  addNewDialectInfo(alertResult: any, oldDialect: DialectEnum) {
     this.userDialect.learn = this.user.dialectSelected;
-    this.userDialect.why = why;
-    this.userDialect.age = age;
-    this.userDialect.time = time;
+    this.userDialect.why = this.user.dialects[oldDialect].why;
+    this.userDialect.age = this.user.dialects[oldDialect].age;
+    this.userDialect.time = this.user.dialects[oldDialect].time;
     this.userDialect.level = this.settingService.userInformation.level.find((l: any) => l.code === alertResult.data.values);
     this.userDialect.resultReviews = [];
     this.userDialect.resultLessons = [];

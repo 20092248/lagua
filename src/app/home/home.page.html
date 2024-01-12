@@ -34,7 +34,7 @@
   <div class="ion-content-home">
     <div>
       <app-weekly-calendar></app-weekly-calendar>
-      
+
       <div class="ion-display-flex">
         <div class="ion-dashboard-bloc">
           <ion-card class="ion-dashboard ion-dashboard-left">
@@ -64,7 +64,7 @@
         </div>
       </div>
 
-      <div class="ion-unlock-lesson">
+      <div class="ion-unlock-lesson" *ngIf="userDialect.lesson">
         <swiper-container [slidesPerView]="2.5" [initialSlide]="0" speed="400">
           <swiper-slide *ngFor="let lesson of recommendedLessons; let index = index">
             <ion-card (click)="goTo('/tabs/lessons/'+lesson.navigate, userDialect.lesson.order >= lesson.order, false)"
@@ -128,7 +128,7 @@
               </ion-header>
               <ion-content>
                 <ion-list *ngIf="previousReviewLoaded">
-                  <ion-item detail="true" routerLinkActive="selected" lines="full" class="ion-item-result-dictionary"
+                  <ion-item detail="true" routerLinkActive="selected" lines="full"
                     *ngFor="let r of previousReviews; let index = index"
                     (click)="accessPreviousReview(r); modal.dismiss()">
                     <ion-icon name="lock-open-outline" slot="start"></ion-icon>
@@ -139,7 +139,7 @@
                   </ion-item>
                 </ion-list>
                 <ion-list *ngIf="!previousReviewLoaded">
-                  <ion-item lines="full" class="ion-item-result-dictionary"
+                  <ion-item lines="full"
                     *ngFor="let previousReview of previousReviewLoadedLength">
                     <ion-skeleton-text [animated]="true" style="width: 50px; height: 50px"></ion-skeleton-text>
                     <ion-label class="ion-margin-start">
@@ -154,7 +154,7 @@
         </ion-card>
       </div>
 
-      <div class="ion-unlock-lesson">
+      <div class="ion-unlock-lesson" *ngIf="userDialect.review">
         <ion-card class="ion-activatable" (click)="accessToReview()">
           <ion-ripple-effect></ion-ripple-effect>
           <ion-card-header>

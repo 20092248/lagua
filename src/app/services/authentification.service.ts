@@ -105,12 +105,28 @@ export class AuthentificationService {
   }
 
   async addDialect(uid: string) {
-    await setDoc(doc(getFirestore(), 'users', uid), {
-      dialectSelected: this.user.dialectSelected,
-      dialects: this.user.dialects,
-    }, { merge: true });
+    const dialectsInfo = this.infoAddDialect();
+    if (dialectsInfo) {
+      await updateDoc(doc(getFirestore(), 'users', uid), dialectsInfo);
+    } else {
+      this.alertService.presentToast(CONSTANTS.UPDATE_DIALECT_KO, 3000, 'danger');
+    }
     this.getInfoUser(uid);
     return true;
+  }
+
+  infoAddDialect() {
+    var dialect = null;
+    if (this.dialect === DialectEnum.SHGC) {
+      dialect = { 'dialectSelected': this.user.dialectSelected, 'dialects.shingazidja': this.user.dialects[this.dialect] };
+    } else if (this.dialect === DialectEnum.SHAN) {
+      dialect = { 'dialectSelected': this.user.dialectSelected, 'dialects.shindzuani': this.user.dialects[this.dialect] };
+    } else if (this.dialect === DialectEnum.MOHE) {
+      dialect = { 'dialectSelected': this.user.dialectSelected, 'dialects.shimwali': this.user.dialects[this.dialect] };
+    } else if (this.dialect === DialectEnum.MAOR) {
+      dialect = { 'dialectSelected': this.user.dialectSelected, 'dialects.shimaore': this.user.dialects[this.dialect] };
+    }
+    return dialect;
   }
 
   async login(email: string, password: string) {
