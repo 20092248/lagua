@@ -14,7 +14,7 @@
 
 <ion-content>
   <div class="ion-margin-top">
-    <p class="ion-margin-horizontal ion-text-center ion-small-size" *ngIf="infoChats.situation">Situation : {{infoChats.situation}}</p>
+    <p class="ion-margin-horizontal ion-text-center" style="font-size: 85%;" *ngIf="infoChats.situation">Situation : {{infoChats.situation}}</p>
     <div class="wrapper">
       <ul>
         <li *ngFor="let c of infoChats.chats" [ngClass]="c.userId === '1' || infoChats.onlySentences ? 'ion-li-left': 'ion-li-right'">
