@@ -4,7 +4,13 @@
       <ion-col class="ion-margin-horizontal">
         <nav>
           <div class="logo">
-            <h1 [ngClass]="{'ion-minHeight': heightWindow <= 600 }">Lagua <span> | shikomori </span><img [src]="homeSetting.icon?.comorosFlag" /></h1>
+            <h1 id="bottom-center" [ngClass]="{'ion-minHeight': heightWindow <= 600 }">Lagua <span> | shikomori </span><img
+                [src]="homeSetting.icon?.comorosFlag" /></h1>
+            <ion-popover trigger="bottom-center" side="bottom" alignment="center">
+              <ng-template>
+                <ion-content class="ion-padding">{{platforms}}</ion-content>
+              </ng-template>
+            </ion-popover>
           </div>
           <ul class="pages" [ngClass]="{'ion-minHeight': heightWindow <= 600 }">
             <li>A propos</li>
@@ -24,7 +30,7 @@
             <div class="word w2">SHINDJUANI</div>
             <div class="word w3">SHIMAORE</div>
             <div class="word w4">SHIMWALI</div>
-            <div class="word w5">LAGUA <img [src]="homeSetting.icon?.learn" width="64"/></div>
+            <div class="word w5">LAGUA <img [src]="homeSetting.icon?.learn" width="64" /></div>
           </h1>
           <!-- TYPER END -->
           <div class="line"></div>

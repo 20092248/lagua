@@ -236,22 +236,26 @@ export class AuthentificationService {
   }
 
   async signinWithGoogleCapacitor(firstReview: Review, firstLesson: Lesson): Promise<boolean> {
-    const provider = new GoogleAuthProvider();
-    const auth = getAuth();
     let responseInfoUser = false;
-    let response = await signInWithPopup(auth, provider)
-      .then(async (result) => {
-        GoogleAuthProvider.credentialFromResult(result);
-        this.user = this.getUserCredential(result);
-        return true;
-      }).catch((error) => {
-        GoogleAuthProvider.credentialFromError(error);
-        return false;
-      });
-    if (response) {
-      responseInfoUser = await this.addInfoUser(this.user.uid, firstReview, firstLesson);
+    const user = await GoogleAuth.signIn();
+    if (user) {
+      // Sign in with credential from the Google user.
+      let response = await signInWithCredential(getAuth(), GoogleAuthProvider.credential(user.authentication.idToken))
+        .then(async (result) => {
+          GoogleAuthProvider.credentialFromResult(result);
+          this.user = this.getUserCredential(result);
+          return true;
+        }).catch((error) => {
+          GoogleAuthProvider.credentialFromError(error);
+          return false;
+        });
+      if (response) {
+        responseInfoUser = await this.addInfoUser(this.user.uid, firstReview, firstLesson);
+      }
+      return response && responseInfoUser;
+    } else {
+      return false;
     }
-    return response && responseInfoUser;
   }
 
   async signinWithGoogleFirebase(firstReview: Review, firstLesson: Lesson): Promise<boolean> {

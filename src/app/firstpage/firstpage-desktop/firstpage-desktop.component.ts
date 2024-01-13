@@ -13,6 +13,7 @@ export class FirstpageDesktopComponent implements OnInit {
   isMobile: boolean = false;
   heightWindow: number = 0;
   homeSetting: any = {};
+  platforms: any = {};
   constructor(private router: Router, private settingService: SettingService, private platform: Platform) { }
 
   ngOnInit() {
@@ -20,6 +21,7 @@ export class FirstpageDesktopComponent implements OnInit {
     this.settingService.getSettings().then(setting => {
       this.homeSetting = setting.home;
     });
+    this.platforms = this.platform.platforms();
   }
 
   goTo(route: string) {
