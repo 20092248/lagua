@@ -25,7 +25,7 @@ export class FirstpagePage implements OnInit {
   }
 
   getMobile() {
-    if(this.platform.is('android')) {
+    if(this.platform.is('capacitor')) {
       return true;
     } else if(this.platform.is('desktop') || (this.platform.width() > 820 && this.platform.width() > this.platform.height()) ){
       return false;
