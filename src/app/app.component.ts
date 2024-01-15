@@ -21,7 +21,7 @@ export class AppComponent {
     this.pushNotificationsService.initPush();
     this.platform.ready().then(() => {
       GoogleAuth.initialize({
-        clientId: '137499573111-meej832h37i4cpploc0dfvmmeel974eu.apps.googleusercontent.com',
+        clientId: '137499573111-ev3dt174uqj0dkkkb641cdhd9l1ib4vd.apps.googleusercontent.com',
         scopes: ['profile', 'email'],
         grantOfflineAccess: true,
       });

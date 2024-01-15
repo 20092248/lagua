@@ -182,11 +182,14 @@ export class AuthentificationService {
 
   async loginwithgoogleCapacitor() {
     try {
+      console.log('demarrage loginwithgoogleCapacitor');
       const user = await GoogleAuth.signIn();
+      console.log('user', user);
       if (user) {
         // Sign in with credential from the Google user.
         let response = await signInWithCredential(getAuth(), GoogleAuthProvider.credential(user.authentication.idToken))
           .then(async (result) => {
+            console.log('result', result);
             GoogleAuthProvider.credentialFromResult(result);
             this.user = this.getUserCredential(result);
             const responseInfoUser = await this.getInfoUser(result.user?.uid);

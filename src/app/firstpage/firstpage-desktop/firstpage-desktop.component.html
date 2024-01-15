@@ -4,13 +4,8 @@
       <ion-col class="ion-margin-horizontal">
         <nav>
           <div class="logo">
-            <h1 id="bottom-center" [ngClass]="{'ion-minHeight': heightWindow <= 600 }">Lagua <span> | shikomori </span><img
+            <h1 (click)="goTo('/login')" [ngClass]="{'ion-minHeight': heightWindow <= 600 }">Lagua <span> | shikomori </span><img
                 [src]="homeSetting.icon?.comorosFlag" /></h1>
-            <ion-popover trigger="bottom-center" side="bottom" alignment="center">
-              <ng-template>
-                <ion-content class="ion-padding">{{platforms}}</ion-content>
-              </ng-template>
-            </ion-popover>
           </div>
           <ul class="pages" [ngClass]="{'ion-minHeight': heightWindow <= 600 }">
             <li>A propos</li>

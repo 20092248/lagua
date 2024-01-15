@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "137499573111-ev3dt174uqj0dkkkb641cdhd9l1ib4vd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lagua.shikomori",
+            "certificate_hash": "0a80815762b933be5431abf1798bd451b8f5e1ee"
+          }
+        },
+        {
           "client_id": "137499573111-jcprv17aligf1q8f5enak80pd03fkcd7.apps.googleusercontent.com",
           "client_type": 3
         }
