@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { PopoverController } from '@ionic/angular';
+import { IonTabs, PopoverController } from '@ionic/angular';
 import { User } from '../model/user.model';
 import { AuthentificationService } from '../services/authentification.service';
 
@@ -11,18 +11,21 @@ import { AuthentificationService } from '../services/authentification.service';
 })
 export class TabsPage implements OnInit {
 
-  user: User | undefined;
+  tabSelected: string = '';
+  @ViewChild('tabs', { static: false }) tabs: IonTabs = {} as IonTabs;
 
   constructor(private router: Router, private popoverController: PopoverController, private authentification: AuthentificationService) { }
 
-  ngOnInit(): void {
-    this.user = this.authentification.user;
-  }
+  ngOnInit(): void {}
 
   logout() {
     this.authentification.logout(true).then(() => {
       this.goTo('/firstPage');
     });
+  }
+
+  setCurrentTab(event : any) {
+    this.tabSelected = event.tab;
   }
 
   goTo(routing: string) {

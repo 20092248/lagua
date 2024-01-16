@@ -68,7 +68,7 @@ export class MenuComponent implements OnInit {
   }
 
   displayActionSheetConfirmation(data: CodeTextTranslate, alertResult: any, oldDialect: DialectEnum) {
-    this.alertService.presentActionSheetConfirmation('Confirmation', CONSTANTS.CONFIRM_ACTION_SHEET).then(actionSheetResult => {
+    this.alertService.presentActionSheetConfirmation('Confirmation', CONSTANTS.CONFIRM_ACTION_SHEET, 'action-sheet-success').then(actionSheetResult => {
       if (actionSheetResult.role === 'selected') {
         this.authentificationService.dialect = Utils.findDialect(data.code);
         this.user.dialectSelected = data;

@@ -10,7 +10,7 @@
         <div>
           <div class="border-white-tabs" id="popover-profil">
             <div class="img-box">
-              <img id="bottom-start" *ngIf="user?.photoURL" [src]="user.photoURL || profileSetting.icon?.unknownUserSrc">
+              <ion-img *ngIf="user?.photoURL" [src]="user.photoURL" (ionError)="displayUnknownUser()"></ion-img>
               <div id="bottom-start" class="ion-position-icon" *ngIf="!user?.photoURL">{{initial}}</div>
                 <ion-popover class="ion-padding-top ion-margin-top" trigger="bottom-start" side="bottom" alignment="center">
                   <ng-template>
@@ -99,7 +99,7 @@
             <ion-card class="ion-dashboard ion-dashboard-right">
               <ion-card-header>
                 <ion-card-title>
-                  <span class="ion-card-title">{{getDay(activeConnection)}}j {{activeConnection.getUTCHours()}}h</span>
+                  <span class="ion-card-title">{{getDay(activeConnection)}}j {{activeConnection | date: 'hh'}}h</span>
                   <span class="ion-float-right"><ion-icon size="large" name="stopwatch-outline"></ion-icon></span>
                 </ion-card-title>
               </ion-card-header>
@@ -130,7 +130,7 @@
         <ion-button class="ion-logout" expand="block" (click)="logout()"><ion-icon slot="start"
             name="log-out-outline"></ion-icon>Se
           déconnecter</ion-button>
-        <ion-button expand="block" color="danger" class="ion-margin-bottom"><ion-icon slot="start"
+        <ion-button class="ion-margin-bottom" expand="block" color="danger" (click)="deleteAccount()"><ion-icon slot="start"
             name="trash-outline"></ion-icon>Supprimer
           votre compte</ion-button>
       </ion-col>

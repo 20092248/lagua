@@ -12,9 +12,22 @@ export class CONSTANTS {
     public static SHARE_MSG_TITLE = 'Essaie ça !';
     public static SHARE_MSG_OBJECT = 'J\'utilise une application d\'apprentissage linguistique appelée Lagua et je pense qu\'elle pourrait te plaire aussi. Suis ce lien si tu veux en savoir plus : https://lagua-shikomori.web.app. Cette application m\'aide à apprendre plus vite et elle est très amusante !'
     public static CONFIRM_ACTION_SHEET = 'Êtes-vous sûr de vouloir changer de dialecte?';
+    public static CONFIRM_DELETE_ACCOUNT_ACTION_SHEET = 'Êtes-vous sûr de vouloir supprimer votre compte? Votre compte va être définitivement supprimé de nos systèmes.';
     public static CONFIRM_DIALECT_CHANGED = 'Le changement de dialecte a été effectué.';
     public static COLLECTION_DIALOG = 'shikomori_francais_dialogs';
     public static FRENCH_DIALECT = 'FREN';
+    public static transcodeCollectionQuestions: { [key: string]: string } = {
+        ['SHAN']: 'shindzuani_francais_questions',
+        ['SHGC']: 'shingazidza_francais_questions',
+        ['MAOR']: 'shimaore_francais_questions',
+        ['MOHE']: 'shimwali_francais_questions'
+    };
+    public static transcodeCollectionTopics: { [key: string]: string } = {
+        ['SHAN']: 'shindzuani_francais_topics',
+        ['SHGC']: 'shingazidza_francais_topics',
+        ['MAOR']: 'shimaore_francais_topics',
+        ['MOHE']: 'shimwali_francais_topics'
+    };
     public static transcodeDialect: { [key: string]: string } = {
         ['SHAN']: 'shindzuani',
         ['SHGC']: 'shingazidza',

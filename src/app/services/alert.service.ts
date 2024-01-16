@@ -28,7 +28,7 @@ export class AlertService {
     toast.present();
   }
 
-  async presentActionSheetConfirmation(header: string, subHeader: string) {
+  async presentActionSheetConfirmation(header: string, subHeader: string, cssClass: string) {
     const actionSheet = await this.actionSheetController.create({
       header: header,
       subHeader: subHeader,
@@ -37,6 +37,7 @@ export class AlertService {
           text: 'Oui',
           icon: 'checkmark-outline',
           role: 'selected',
+          cssClass: cssClass,
           data: {
             action: 'confirm',
           },

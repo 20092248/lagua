@@ -1,65 +1,28 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-row>
-      <ion-col size="10" class="ion-margin-top">
-        <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
-        </ion-buttons>
-        <ion-title>Lagua</ion-title>
-      </ion-col>
-      <ion-col size="2" class="ion-padding-end">
-        <div class="border-white-tabs " id="popover-profil">
-          <div class="img-box">
-            <img *ngIf="user?.photoURL" [src]="user?.photoURL">
-            <ion-icon size="large" *ngIf="!user?.photoURL" [src]="user?.photoURL" name="person-outline"></ion-icon>
-          </div>
-        </div>
-        <ion-popover trigger="popover-profil" class="ion-custom-top-popover">
-          <ng-template>
-            <ion-content>
-              <ion-list>
-                <div class="ion-padding-horizontal">
-                    <h5 class="ion-margin-top">{{user?.displayName}}</h5>
-                    <div class="ion-margin-bottom">{{user?.email}}</div>
-                </div>
-                <ion-item button (click)="goTo('/tabs/update-cv')"><ion-icon class="ion-padding-end" name="settings-outline"></ion-icon>Paramètres</ion-item>
-                <ion-item button (click)="goTo('/tabs/recrute')"><ion-icon class="ion-padding-end" name="bar-chart-outline"></ion-icon>Mon activité</ion-item>
-                <ion-item button (click)="goTo('/tabs/account')"><ion-icon class="ion-padding-end" name="flag-outline"></ion-icon>Mes langues</ion-item>
-                <ion-item button lines="none" detail="false" (click)="logout()"><ion-icon class="ion-padding-end" name="log-out-outline"></ion-icon>Déconnexion</ion-item>
-              </ion-list>
-            </ion-content>
-          </ng-template>
-        </ion-popover>
-      </ion-col>
-    </ion-row>
-  </ion-toolbar>
-</ion-header> -->
-<ion-tabs>
+<ion-tabs (ionTabsDidChange)="setCurrentTab($event)">
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="home">
-      <ion-icon name="home-outline"></ion-icon>
+      <ion-icon name="home{{tabSelected === 'home' ? '-sharp' : '-outline'}}"></ion-icon>
       <ion-label>Accueil</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="lessons">
-      <ion-icon name="book-outline"></ion-icon>
+      <ion-icon name="book{{tabSelected === 'lessons' ? '' : '-outline'}}"></ion-icon>
       <ion-label>Cours</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="review">
-      <ion-icon name="library-outline"></ion-icon>
+      <ion-icon name="library{{tabSelected === 'review' ? '' : '-outline'}}"></ion-icon>
       <ion-label>Apprendre</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="dictionary">
-      <ion-icon name="language-outline"></ion-icon>
+      <ion-icon name="language{{tabSelected === 'dictionary' ? '' : '-outline'}}"></ion-icon>
       <ion-label>Dictionnaire</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="profile">
-      <ion-icon name="person-outline"></ion-icon>
+      <ion-icon name="person{{tabSelected === 'profile' ? '' : '-outline'}}"></ion-icon>
       <ion-label>Profil</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
-
 </ion-tabs>

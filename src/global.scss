@@ -38,3 +38,21 @@ ion-alert.ion-home-alert {
     color: var(--ion-color-danger);
   }
 }
+
+ion-action-sheet {
+  .action-sheet-success {
+    color: #fff !important;
+    background-color: #1a6921 !important;
+    ion-icon {
+      color: #ffffff !important;
+    }
+  }
+  
+  .action-sheet-danger {
+    color: #fff !important;
+    background-color: #eb445a !important;
+    ion-icon {
+      color: #ffffff !important;
+    }
+  }
+}

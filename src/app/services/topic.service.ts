@@ -11,8 +11,8 @@ export class TopicService {
 
   constructor(private _firestore: Firestore) { }
 
-  async getTopic(document: string) {
-    const topic = await getDoc(doc(getFirestore(), 'shingazidza_francais_topics', document));
+  async getTopic(collection: string, document: string) {
+    const topic = await getDoc(doc(getFirestore(), collection, document));
     return topic.exists() ? topic.data() : undefined;
   }
 

@@ -9,6 +9,7 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
 import { QuestionService } from 'src/app/services/question.service';
 import { ReviewService } from 'src/app/services/review.service';
 import { SettingService } from 'src/app/services/setting.service';
+import { CONSTANTS } from 'src/app/utils/constants';
 
 @Component({
   selector: 'app-type',
@@ -18,18 +19,17 @@ import { SettingService } from 'src/app/services/setting.service';
 export class TypePage implements OnInit {
 
   translate: string = 'francais';
-  user: User = {} as User;
-  dialect: DialectEnum = DialectEnum.SHGC;
-  userDialect: Dialect = {} as Dialect;
   types: CodeLabel[] = [];
+  
   constructor(private router: Router, private settingsService: SettingService, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService) { }
 
+  get user() {
+    return this.authentificationService.user;
+  }
+
   ngOnInit() {
-    this.user = this.authentificationService.user;
-    this.dialect = this.authentificationService.dialect;
-    this.userDialect = this.user.dialects[this.dialect];
     const review = this.reviewService.review;
-    this.questionService.getQuestions(this.userDialect.learn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions', review.category + '_' + review.lesson + '_' + review.order).then();
+    this.questionService.getQuestions(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], review.category + '_' + review.lesson + '_' + review.order).then();
     this.settingsService.getSetting('questions').then((data => {
       this.types = data?.types;
     }));

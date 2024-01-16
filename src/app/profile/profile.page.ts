@@ -5,6 +5,7 @@ import { AuthentificationService } from '../services/authentification.service';
 import { SettingService } from '../services/setting.service';
 import { Utils } from '../utils/utils';
 import { CONSTANTS } from '../utils/constants';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-profile',
@@ -26,7 +27,7 @@ export class ProfilePage implements OnInit {
   profileSetting: any = {};
   initial: string = '';
 
-  constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService) { }
+  constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService, private alertService: AlertService) { }
 
   get user() {
     return this.authentificationService.user;
@@ -79,6 +80,10 @@ export class ProfilePage implements OnInit {
     }
   }
 
+  displayUnknownUser() {
+    this.user.photoURL = this.settingService.profile.icon?.unknownUserSrc;
+  }
+
   getDay(value: Date) {
     return Math.trunc(value.getTime() / 1000 / 60 / 60 / 24);
   }
@@ -95,6 +100,12 @@ export class ProfilePage implements OnInit {
   logout() {
     this.authentificationService.logout(true).then(() => {
       this.router.navigate(['/firstpage']);
+    });
+  }
+
+  deleteAccount() {
+    this.alertService.presentActionSheetConfirmation('Confirmation', CONSTANTS.CONFIRM_DELETE_ACCOUNT_ACTION_SHEET, 'action-sheet-danger').then(result=>{
+      console.log(result);
     });
   }
 

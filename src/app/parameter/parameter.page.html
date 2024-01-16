@@ -18,7 +18,7 @@
     <ion-item>
       <ion-label>Photo</ion-label>
       <ion-avatar slot="end">
-        <img alt="{{user.displayName}}" [src]="user.photoURL" />
+        <ion-img *ngIf="user?.photoURL" [src]="user.photoURL" (ionError)="displayUnknownUser()"></ion-img>
       </ion-avatar>
     </ion-item>
     <ion-item>

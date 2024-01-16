@@ -36,6 +36,10 @@ export class ParameterPage implements OnInit {
     }));
   }
 
+  displayUnknownUser() {
+    this.user.photoURL = this.settingsService.profile.icon?.unknownUserSrc;
+  }
+
   changeMode() {
     this.themeService.setAppTheme(this.theme);
   }
