@@ -7,6 +7,7 @@ import { NotificationsService } from './services/notification.service';
 import { AlertService } from './services/alert.service';
 import { LoadingService } from './services/loading.service';
 import { SplashScreen } from '@capacitor/splash-screen';
+import { FirebaseCrashlyticsOriginal } from '@awesome-cordova-plugins/firebase-crashlytics';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ import { SplashScreen } from '@capacitor/splash-screen';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private themeService: ThemeService, private platform: Platform, private pushNotificationsService: NotificationsService, private loadingService: LoadingService) {
+  constructor(private themeService: ThemeService, private platform: Platform, private pushNotificationsService: NotificationsService, private loadingService: LoadingService, private firebaseCrashlyticsOriginal: FirebaseCrashlyticsOriginal) {
     
     const value = localStorage.getItem('selected-app-theme');
     this.themeService.setAppTheme(value ? value : 'sunny');
@@ -22,18 +23,20 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.loadingService.present('Chargement en cours...');
+    if(this.platform.is('capacitor')){ this.loadingService.present('Chargement...'); }
     this.pushNotificationsService.initPush();
     this.platform.ready().then(async() => {
       if(this.platform.is('capacitor')){
         await SplashScreen.hide();
         await SplashScreen.show();
+        this.loadingService.dismiss();
       }
-      this.loadingService.dismiss();
       GoogleAuth.initialize();
       FacebookLogin.initialize({ 
         appId: '771703417822238' 
       });
+      this.firebaseCrashlyticsOriginal.initialise();
+      this.firebaseCrashlyticsOriginal.logException('my caught exception');
     });
   }
 }

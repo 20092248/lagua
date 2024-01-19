@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -16,6 +16,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { CrashlyticsErrorHandler } from './utils/crashlytics-handler';
 // import { app, auth, firestore } from '../environments/environment';
 
 @NgModule({
@@ -32,7 +33,7 @@ import { environment } from 'src/environments/environment';
     provideAuth(() => getAuth(initializeApp(environment.firebase))),
     provideAnalytics(() => getAnalytics(initializeApp(environment.firebase))),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, { provide: ErrorHandler, useClass: CrashlyticsErrorHandler }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
