@@ -4,7 +4,7 @@
     <string name="title_activity_main">Lagua</string>
     <string name="package_name">com.lagua.shikomori</string>
     <string name="custom_url_scheme">com.lagua.shikomori</string>
-    <string name="server_client_id">137499573111-ev3dt174uqj0dkkkb641cdhd9l1ib4vd.apps.googleusercontent.com</string>
+    <string name="server_client_id">137499573111-jcprv17aligf1q8f5enak80pd03fkcd7.apps.googleusercontent.com</string>
     <string name="facebook_app_id">771703417822238</string>
     <string name="facebook_client_token">fb771703417822238</string>
     <string name="admob_app_id">ca-app-pub-2159881532224833~9548870738</string>

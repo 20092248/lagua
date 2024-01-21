@@ -12,12 +12,11 @@
                 "profile",
                 "email"
             ],
-            "serverClientId": "137499573111-ev3dt174uqj0dkkkb641cdhd9l1ib4vd.apps.googleusercontent.com",
+            "serverClientId": "137499573111-jcprv17aligf1q8f5enak80pd03fkcd7.apps.googleusercontent.com",
             "forceCodeForRefreshToken": true
         }
     },
 	"appId": "com.lagua.shikomori",
 	"appName": "Lagua",
-	"webDir": "www",
-	"bundledWebRuntime": false
+	"webDir": "www"
 }

@@ -7,7 +7,6 @@ import { NotificationsService } from './services/notification.service';
 import { AlertService } from './services/alert.service';
 import { LoadingService } from './services/loading.service';
 import { SplashScreen } from '@capacitor/splash-screen';
-import { FirebaseCrashlyticsOriginal } from '@awesome-cordova-plugins/firebase-crashlytics';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,7 @@ import { FirebaseCrashlyticsOriginal } from '@awesome-cordova-plugins/firebase-c
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private themeService: ThemeService, private platform: Platform, private pushNotificationsService: NotificationsService, private loadingService: LoadingService, private firebaseCrashlyticsOriginal: FirebaseCrashlyticsOriginal) {
+  constructor(private themeService: ThemeService, private platform: Platform, private pushNotificationsService: NotificationsService, private loadingService: LoadingService) {
     
     const value = localStorage.getItem('selected-app-theme');
     this.themeService.setAppTheme(value ? value : 'sunny');
@@ -35,8 +34,6 @@ export class AppComponent {
       FacebookLogin.initialize({ 
         appId: '771703417822238' 
       });
-      this.firebaseCrashlyticsOriginal.initialise();
-      this.firebaseCrashlyticsOriginal.logException('my caught exception');
     });
   }
 }
