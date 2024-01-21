@@ -18,6 +18,95 @@
           <ion-list class="ion-no-padding ion-margin-bottom" lines="full">
             <ion-item class="ion-item-content" *ngFor=" let data of t.data"><ion-label class="ion-padding-start ion-text-wrap">{{data.translate}} : <span>{{data.text}}</span></ion-label></ion-item>
           </ion-list>
+          <div class="ion-padding-horizontal" *ngIf="t.infos && t.infos.length">
+            <p *ngFor="let info of t.infos">{{info}}</p>
+          </div>
+          <div>
+            <ion-grid class="ion-text-center">
+              <ion-row class="ion-no-border ion-full-height">
+                <ion-col class="ion-no-padding" size="4">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row class="ion-multiple-line ion-align-items-center">
+                      <ion-col class="ion-min-spacing">1ère pers. sg.</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">2e pers. sg.</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">1ère pers. pl.</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">2e pers. pl.</ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-col>
+                <ion-col class="ion-no-padding" size="8">
+                  <swiper-container pagination="true">
+                    <swiper-slide>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col>autonomes</ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col></ion-col>
+                        </ion-row>
+                        <ion-row class="ion-multiple-line ion-align-items-center">
+                          <ion-col><span>wami</span> "moi"</ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col><span>wawe</span> "toi"</ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col><span>wasi</span> "nous" *</ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col><span>wanuy</span> "vous"</ion-col>
+                        </ion-row>
+                        <ion-row class="ion-no-border">
+                        </ion-row>
+                      </ion-grid>
+                    </swiper-slide>
+                    <swiper-slide>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col>non-autonomes</ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col>sujet</ion-col>
+                          <ion-col>object</ion-col>
+                        </ion-row>
+                        <ion-row class="ion-multiple-line ion-align-items-center">
+                          <ion-col><span>ni-</span> "je"<br />
+                            <span>tsi-</span> "je" (acc.)<br />
+                            <span>tsi-</span> "je (conditionnel
+                            négatif)</ion-col>
+                          <ion-col><span>-ni-</span> "me, moi"</ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col><span>u-</span> "tu"</ion-col>
+                          <ion-col><span>-hu-</span> "te, toi"</ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col><span>ri-</span> "nous"</ion-col>
+                          <ion-col><span>ri-</span> "nous"</ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col><span>mu-</span> "vous"</ion-col>
+                          <ion-col><span>mu-...ni</span> "vous"</ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </swiper-slide>
+                  </swiper-container>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
         </div>
       </ion-accordion>
     </ion-accordion-group>
