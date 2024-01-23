@@ -1,11 +1,11 @@
-<div class="border-white-tabs" id="popover-profil">
+<div class="border-white-tabs" id="popover-menu">
   <div class="img-box">
     <ion-img *ngIf="user.photoURL" [src]="user.photoURL"
       (ionError)="displayUnknownUser()"></ion-img>
     <div *ngIf="!user.photoURL">{{initial}}</div>
   </div>
 </div>
-<ion-popover trigger="popover-profil">
+<ion-popover trigger="popover-menu">
   <ng-template>
     <ion-content>
       <ion-list>

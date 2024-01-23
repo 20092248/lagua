@@ -83,4 +83,26 @@ export class AlertService {
     return await alert.onDidDismiss();
   }
 
+  async presentAlertWithInput(header: string, subheader: string, buttons: any[]) {
+    const inputs: AlertInput[] = [];
+    // levels.forEach(input => {
+    //   inputs.push({ label: input.label, value: input.code, type: 'radio', cssClass: 'ion-alert-radio-element', });
+    // });
+    const alert = await this.alertController.create({
+      header: header,
+      subHeader: subheader,
+      buttons: buttons,
+      inputs: [
+        {
+          placeholder: 'Saisie votre email',
+          type: 'email'
+        }
+      ],
+      cssClass: 'ion-login-alert'
+    });
+
+    await alert.present();
+    return await alert.onDidDismiss();
+  }
+
 }

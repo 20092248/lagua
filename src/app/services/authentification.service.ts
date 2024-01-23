@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, signInWithCredential, signOut, UserCredential, getRedirectResult } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, signInWithCredential, signOut, UserCredential, sendPasswordResetEmail } from '@angular/fire/auth';
 import { doc, getDoc, updateDoc, Firestore, getFirestore, onSnapshot, setDoc, serverTimestamp } from '@angular/fire/firestore';
 import { CodeLabel } from '../model/codeLabel.model';
 import { CodeTextTranslate } from '../model/codeTextTranslate.model';
@@ -498,6 +498,16 @@ export class AuthentificationService {
         timerActiveConnection: this.user?.timerActiveConnection + (dateDisconnected.getTime() - this.timer.getTime())
       });
     }
+  }
+
+  async sendPasswordResetEmail(email: string) {
+    return sendPasswordResetEmail(getAuth(), email)
+      .then(() => {
+        return true
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   getUserCredential(result: UserCredential) {

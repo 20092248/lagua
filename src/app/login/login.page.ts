@@ -49,4 +49,21 @@ export class LoginPage implements OnInit {
     }, e => { console.error(e); });
   }
 
+  passwordForgot() {
+    this.alertService.presentAlertWithInput(CONSTANTS.FORGOT_PASSWORD_HEADER, CONSTANTS.FORGOT_PASSWORD_SUBHEADER, [{ text: 'Recevoir le lien', role: 'validate' }]).then(result => {
+      const regexPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (result.role === 'validate') {
+        if (result && result.data && result.data.values && result.data.values.length && regexPattern.test(result.data.values[0])) {
+          this.authentificationService.sendPasswordResetEmail(result.data.values[0]).then(confirm => {
+            if (confirm) {
+              this.alertService.presentToast(CONSTANTS.FORGOT_PASSWORD_LABEL_SUCCESS + result.data.values[0], 5000, 'lagua');
+            }
+          });
+        } else {
+          this.alertService.presentToast(CONSTANTS.FORMAT_EMAIL_KO, 3000, 'danger');
+        }
+      }
+    });
+  }
+
 }

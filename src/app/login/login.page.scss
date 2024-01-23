@@ -3,10 +3,25 @@ ion-content {
   // --padding-bottom: 64px;
 }
 
-ion-content>div {
-  background: var(--ion-background-light-color);
-  border-radius: 30px 30px 0 0;
-  height: 100%;
+ion-content {
+  >div.ion-login-content {
+    background: var(--ion-background-light-color);
+    border-radius: 30px 30px 0 0;
+    height: 90%;
+  }
+
+  >div.ion-logo-content {
+    height: 10%;
+
+    img {
+      border-style: solid;
+      border-radius: 50px;
+      padding: 5px;
+      border-width: 5px;
+      border-color: #eef1ee;
+      margin: 10px;
+    }
+  }
 }
 
 ion-toolbar {

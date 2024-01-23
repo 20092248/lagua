@@ -22,7 +22,7 @@ export class AppComponent {
   }
 
   initializeApp() {
-    if (this.platform.is('mobile')) { 
+    if (this.platform.is('capacitor')) { 
       StatusBar.setOverlaysWebView({overlay: false});
       StatusBar.setStyle({ style: Style.Dark});
       StatusBar.setBackgroundColor({ color: '#46895c' });

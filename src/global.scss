@@ -39,6 +39,18 @@ ion-alert.ion-home-alert {
   }
 }
 
+ion-alert.ion-login-alert {
+  --min-width : 320px;
+  .alert-head{
+    text-align: center;
+    padding-bottom: 0;
+  }
+  .alert-sub-title{
+    font-size: 14px;
+    margin-top: 20px;
+  }
+}
+
 ion-action-sheet {
   .action-sheet-success {
     color: #fff !important;

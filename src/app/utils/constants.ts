@@ -8,12 +8,16 @@ export class CONSTANTS {
     public static SEND_EMAIL_KO = 'Une erreur est survenue lors de l\'envoi du mail. Veuillez réessayer ultérieurement.';
     public static UPDATE_DAY_CONNECTED_KO = 'Une erreur est survenue lors de la connexion de l\'utilisateur.';
     public static UPDATE_DIALECT_KO = 'Une erreur est survenue lors de la mise à jour du dialecte.';
+    public static FORMAT_EMAIL_KO = 'Veuillez renseigner un email valide.';
     public static CHOICE_DIALECT_MISSING = 'Sélectionner un choix avant de cliquer sur Valider.';
     public static SHARE_MSG_TITLE = 'Essaie ça !';
     public static SHARE_MSG_OBJECT = 'J\'utilise une application d\'apprentissage linguistique appelée Lagua et je pense qu\'elle pourrait te plaire aussi. Suis ce lien si tu veux en savoir plus : https://lagua-shikomori.web.app. Cette application m\'aide à apprendre plus vite et elle est très amusante !'
     public static CONFIRM_ACTION_SHEET = 'Êtes-vous sûr de vouloir changer de dialecte?';
     public static CONFIRM_DELETE_ACCOUNT_ACTION_SHEET = 'Êtes-vous sûr de vouloir supprimer votre compte? Votre compte va être définitivement supprimé de nos systèmes.';
     public static CONFIRM_DIALECT_CHANGED = 'Le changement de dialecte a été effectué.';
+    public static FORGOT_PASSWORD_HEADER = 'Mot de passe oublié ?';
+    public static FORGOT_PASSWORD_SUBHEADER = 'Veuillez saisir votre email de connexion afin de recevoir le lien de réinitialisation de votre mot de passe.';
+    public static FORGOT_PASSWORD_LABEL_SUCCESS = 'Vous allez recevoir un message à l\'adresse ';
     public static COLLECTION_DIALOG = 'shikomori_francais_dialogs';
     public static FRENCH_DIALECT = 'FREN';
     public static transcodeCollectionQuestions: { [key: string]: string } = {
