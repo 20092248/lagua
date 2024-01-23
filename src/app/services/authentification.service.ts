@@ -21,6 +21,7 @@ import { AlertService } from './alert.service';
 import { Utils } from '../utils/utils';
 import { DialectEnum } from '../model/dialect.enum';
 import { Dialect } from '../model/dialect.model';
+import { AnalyticsService } from './analytics.service';
 const FACEBOOK_PERMISSIONS = ['email', 'user_birthday', 'user_photos', 'user_gender',];
 const USER_KEY = 'users';
 
@@ -36,7 +37,7 @@ export class AuthentificationService {
 
   constructor(private _auth: Auth, private _firestore: Firestore, private platform: Platform, private http: HttpClient,
     private reviewService: ReviewService, private lessonService: LessonService, private loadingService: LoadingService,
-    private alertService: AlertService) { }
+    private alertService: AlertService, private analyticsService: AnalyticsService) { }
 
   async isConnected() {
     const customInterval = interval(200).pipe(
@@ -216,6 +217,7 @@ export class AuthentificationService {
       const auth = getAuth();
       let response = await signInWithPopup(auth, provider)
         .then(async (result) => {
+          this.analyticsService.logEvent('login', result);
           GoogleAuthProvider.credentialFromResult(result);
           this.user = this.getUserCredential(result);
           const responseInfoUser = await this.getInfoUser(result.user?.uid);
