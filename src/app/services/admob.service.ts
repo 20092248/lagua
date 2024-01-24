@@ -30,7 +30,7 @@ export class AdMobService {
   async showBanner() {
     if (this.platform.is('capacitor')) {
       const options: BannerAdOptions = {
-        adId: 'android-ad-unit',
+        adId: 'ca-app-pub-2159881532224833/5637670566',
         adSize: BannerAdSize.ADAPTIVE_BANNER,
         position: BannerAdPosition.BOTTOM_CENTER,
         margin: 0,
@@ -44,7 +44,7 @@ export class AdMobService {
   async showInterstitial() {
     if (this.platform.is('capacitor')) {
       const options: AdOptions = {
-        adId: 'YOUR_AD_ID',
+        adId: 'ca-app-pub-2159881532224833/3515792301',
         isTesting: true,
         // npa: true
       }
@@ -60,7 +60,7 @@ export class AdMobService {
           console.log(reward);
         });
       const options: RewardAdOptions = {
-        adId: 'YOUR_AD_ID',
+        adId: 'ca-app-pub-2159881532224833/2989974852',
         isTesting: true,
         // npa: true
       }
