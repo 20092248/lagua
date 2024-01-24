@@ -17,11 +17,14 @@ export class SignInPage implements OnInit {
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
+  heightLogo: number = 55;
+  heightContent: number | undefined;
 
   constructor(private authentificationService: AuthentificationService, private router: Router, 
-    private reviewService: ReviewService, private lessonService: LessonService) { }
+    private reviewService: ReviewService, private lessonService: LessonService, private platform: Platform) { }
 
   ngOnInit() {
+    this.heightContent = this.platform.height() - this.heightLogo - 80;
   }
 
   async signIn() {

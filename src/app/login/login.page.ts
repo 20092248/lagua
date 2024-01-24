@@ -15,10 +15,13 @@ export class LoginPage implements OnInit {
 
   email: string = '';
   password: string = '';
+  heightLogo: number = 60;
+  heightContent: number | undefined;
 
-  constructor(private router: Router, private authentificationService: AuthentificationService, private alertService: AlertService) { }
+  constructor(private router: Router, private authentificationService: AuthentificationService, private alertService: AlertService, private platform: Platform) { }
 
   ngOnInit() {
+    this.heightContent = this.platform.height() - this.heightLogo - 80;
   }
 
   login() {

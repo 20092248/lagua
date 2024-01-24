@@ -6,10 +6,10 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div class="ion-logo-content ion-text-center">
+  <div class="ion-logo-content ion-text-center" [ngStyle]="{'height': heightLogo+'px'}">
     <img src="/assets/icon/capacitor_favicon.png" width="100"/>
   </div>
-  <div class="ion-login-content">
+  <div class="ion-login-content" [ngStyle]="{'height': heightContent+'px'}">
     <ion-grid>
       <ion-row>
         <ion-col>
