@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { EventParams, getAnalytics, logEvent, setUserId, setUserProperties } from '@angular/fire/analytics';
+import { Auth } from '@angular/fire/auth';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { FirebaseAnalytics } from "@capacitor-community/firebase-analytics";
 import { Platform } from '@ionic/angular';
@@ -10,9 +12,9 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class AnalyticsService {
 
-  constructor(private router: Router, private platform: Platform) {
+  constructor(private router: Router, private platform: Platform, _auth: Auth) {
     FirebaseAnalytics.initializeFirebase(environment.firebase);
-    if(this.platform.is('capacitor')){
+    if (this.platform.is('capacitor')) {
       this.router.events.pipe(
         filter((e: any) => e instanceof NavigationEnd)
       ).subscribe((e: RouterEvent) => {
@@ -23,15 +25,12 @@ export class AnalyticsService {
   }
 
   setUserId(userId: string) {
-    FirebaseAnalytics.setUserId({
-      userId: userId,
-    });
+    setUserId(getAnalytics(), userId);
   }
 
-  setUserProperty(name: string, value: string) {
-    FirebaseAnalytics.setUserProperty({
-      name: name,
-      value: value,
+  setUserProperties(name: string) {
+    setUserProperties(getAnalytics(), {
+      dialect_selected: name
     });
   }
 
@@ -50,15 +49,11 @@ export class AnalyticsService {
     FirebaseAnalytics.reset();
   }
 
-  logEvent(name: string, param: any) {
-    FirebaseAnalytics.logEvent({
-      name: name,
-      params: {
-        content_type: "image",
-        content_id: "P12453",
-        items: [{ name: "Kittens" }],
-      },
-    });
+  logEvent(name: string, param: EventParams) {
+    logEvent(getAnalytics(), 
+      name, {
+      params: param,
+  });
   }
 
   setCollectionEnabled(enabled: boolean) {

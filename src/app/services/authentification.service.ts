@@ -52,6 +52,8 @@ export class AuthentificationService {
     if (getAuth()) {
       const user = getAuth().currentUser;
       if (user) {
+        this.analyticsService.setUserId(this.user.uid);
+        this.analyticsService.logEvent('check_user', { content_type: 'user', method: 'check_user', transaction_id: this.user.uid });
         this.user.uid = user.uid;
         this.user.email = Utils.valueNotNull(user.email);
         this.user.displayName = Utils.valueNotNull(user.displayName);
@@ -157,6 +159,8 @@ export class AuthentificationService {
     let responseInfoUser = false;
     let response = await createUserWithEmailAndPassword(getAuth(), email, password)
       .then((userCredential: UserCredential) => {
+        this.analyticsService.setUserId(userCredential.user.uid);
+        this.analyticsService.logEvent('login', { content_type: 'user', screen_name: 'login', method: 'user_password', transaction_id: userCredential.user.uid });
         this.user.displayName = name;
         this.user.email = Utils.valueNotNull(userCredential.user.email);
         this.user.uid = userCredential?.user?.uid;
@@ -189,8 +193,8 @@ export class AuthentificationService {
         // Sign in with credential from the Google user.
         let response = await signInWithCredential(getAuth(), GoogleAuthProvider.credential(user.authentication.idToken))
           .then(async (result) => {
-            this.alertService.presentToast(JSON.stringify(user), 5000, 'dark');
-            console.log('result', result);
+            this.analyticsService.setUserId(result.user.uid);
+            this.analyticsService.logEvent('login', { content_type: 'user', screen_name: 'login', method: 'capacitor_google', transaction_id: result.user.uid });
             GoogleAuthProvider.credentialFromResult(result);
             this.user = this.getUserCredential(result);
             const responseInfoUser = await this.getInfoUser(result.user?.uid);
@@ -217,7 +221,8 @@ export class AuthentificationService {
       const auth = getAuth();
       let response = await signInWithPopup(auth, provider)
         .then(async (result) => {
-          this.analyticsService.logEvent('login', result);
+          this.analyticsService.setUserId(result.user.uid);
+          this.analyticsService.logEvent('login', { content_type: 'user', screen_name: 'login', method: 'firebase_google', transaction_id: result.user.uid });
           GoogleAuthProvider.credentialFromResult(result);
           this.user = this.getUserCredential(result);
           const responseInfoUser = await this.getInfoUser(result.user?.uid);
@@ -247,6 +252,8 @@ export class AuthentificationService {
       // Sign in with credential from the Google user.
       let response = await signInWithCredential(getAuth(), GoogleAuthProvider.credential(user.authentication.idToken))
         .then(async (result) => {
+          this.analyticsService.setUserId(result.user.uid);
+          this.analyticsService.logEvent('sign_up', { content_type: 'user', screen_name: 'sign_up', method: 'capacitor_google', transaction_id: result.user.uid });
           GoogleAuthProvider.credentialFromResult(result);
           this.user = this.getUserCredential(result);
           return true;
@@ -269,6 +276,8 @@ export class AuthentificationService {
     let responseInfoUser = false;
     let response = await signInWithPopup(auth, provider)
       .then(async (result) => {
+        this.analyticsService.setUserId(result.user.uid);
+        this.analyticsService.logEvent('sign_up', { content_type: 'user', screen_name: 'sign_up', method: 'firebase_google', transaction_id: result.user.uid });
         GoogleAuthProvider.credentialFromResult(result);
         this.user = this.getUserCredential(result);
         return true;
@@ -295,6 +304,8 @@ export class AuthentificationService {
     if (result.accessToken && result.accessToken.token) {
       let response = await signInWithCredential(getAuth(), FacebookAuthProvider.credential(result.accessToken.token))
         .then(async (result) => {
+          this.analyticsService.setUserId(result.user.uid);
+          this.analyticsService.logEvent('login', { content_type: 'user', screen_name: 'login', method: 'capacitor_facebook', transaction_id: result.user.uid });
           this.user = this.getUserCredential(result);
           const responseInfoUser = await this.getInfoUser(result.user?.uid);
           return responseInfoUser;
@@ -319,6 +330,8 @@ export class AuthentificationService {
       let response = await signInWithPopup(auth, provider)
         .then(async (result) => {
           if (result) {
+            this.analyticsService.setUserId(result.user.uid);
+            this.analyticsService.logEvent('login', { content_type: 'user', screen_name: 'login', method: 'firebase_facebook', transaction_id: result.user.uid });
             this.user = this.getUserCredential(result);
             FacebookAuthProvider.credentialFromResult(result);
             const responseInfoUser = await this.getInfoUser(result.user?.uid);
@@ -353,6 +366,8 @@ export class AuthentificationService {
     let responseInfoUser = false;
     let response = await signInWithPopup(auth, provider)
       .then((result) => {
+        this.analyticsService.setUserId(result.user.uid);
+        this.analyticsService.logEvent('sign_up', { content_type: 'user', screen_name: 'sign_up', method: 'capacitor_facebook', transaction_id: result.user.uid });
         this.user = this.getUserCredential(result);
         FacebookAuthProvider.credentialFromResult(result);
         return true;
@@ -376,9 +391,10 @@ export class AuthentificationService {
     let responseInfoUser = false;
     let response = await signInWithPopup(auth, provider)
       .then((result) => {
+        this.analyticsService.setUserId(result.user.uid);
+        this.analyticsService.logEvent('sign_up', { content_type: 'user', screen_name: 'sign_up', method: 'firebase_facebook', transaction_id: result.user.uid });
         FacebookAuthProvider.credentialFromResult(result);
-        const userData = this.getUserCredential(result);
-        FacebookAuthProvider.credentialFromResult(result);
+        this.getUserCredential(result);
         return true;
       })
       .catch((error) => {
