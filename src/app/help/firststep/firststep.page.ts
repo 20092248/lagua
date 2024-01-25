@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdMobService } from 'src/app/services/admob.service';
 
 @Component({
   selector: 'app-firststep',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FirststepPage implements OnInit {
 
-  constructor() { }
+  constructor(private adMobService: AdMobService) { }
 
   ngOnInit() {
+    this.adMobService.showRewardVideo();
   }
 
 }

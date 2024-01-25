@@ -5,7 +5,7 @@ import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { FacebookLogin } from '@capacitor-community/facebook-login';
 import { NotificationsService } from './services/notification.service';
 import { LoadingService } from './services/loading.service';
-import { SplashScreen } from '@capacitor/splash-screen';
+// import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
@@ -31,8 +31,8 @@ export class AppComponent {
     this.pushNotificationsService.initPush();
     this.platform.ready().then(async () => {
       if (this.platform.is('capacitor')) {
-        await SplashScreen.hide();
-        await SplashScreen.show();
+        // await SplashScreen.hide();
+        // await SplashScreen.show();
         this.loadingService.dismiss();
       }
       GoogleAuth.initialize();

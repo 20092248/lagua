@@ -22,6 +22,7 @@ import { Utils } from '../utils/utils';
 import { DialectEnum } from '../model/dialect.enum';
 import { Dialect } from '../model/dialect.model';
 import { AnalyticsService } from './analytics.service';
+import { Analytics } from '@angular/fire/analytics';
 const FACEBOOK_PERMISSIONS = ['email', 'user_birthday', 'user_photos', 'user_gender',];
 const USER_KEY = 'users';
 

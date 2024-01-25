@@ -6,6 +6,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { DictionaryPageRoutingModule } from './dictionary-routing.module';
 import { DictionaryPage } from './dictionary.page';
+import { BarStatusComponentModule } from '../bar-status/bar-status.module';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { DictionaryPage } from './dictionary.page';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    DictionaryPageRoutingModule
+    DictionaryPageRoutingModule,
+    BarStatusComponentModule
   ],
   declarations: [DictionaryPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

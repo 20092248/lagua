@@ -10,10 +10,10 @@ import { Platform } from '@ionic/angular';
 export class AdMobService {
 
   constructor(private router: Router, private platform: Platform, _auth: Auth) {
-    this.initializeAnalytics();
+    this.initializeAdmob();
   }
 
-  async initializeAnalytics() {
+  async initializeAdmob() {
     if (this.platform.is('capacitor')) {
       const { status } = await AdMob.trackingAuthorizationStatus();
       if (status === 'notDetermined') {
@@ -38,6 +38,18 @@ export class AdMobService {
         // npa: true
       }
       await AdMob.showBanner(options);
+    }
+  }
+
+  async hideBanner(){
+    if (this.platform.is('capacitor')) {
+      await AdMob.hideBanner();
+    }
+  }
+
+  async removeBanner(){
+    if (this.platform.is('capacitor')) {
+      await AdMob.removeBanner();
     }
   }
 

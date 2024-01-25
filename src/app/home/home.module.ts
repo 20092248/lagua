@@ -10,6 +10,7 @@ import { HomePage } from './home.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { MenuComponentModule } from './menu/menu.module';
 import { WeeklyCalendarComponentModule } from './weekly-calendar/menu.module';
+import { BarStatusComponentModule } from '../bar-status/bar-status.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { WeeklyCalendarComponentModule } from './weekly-calendar/menu.module';
     ExploreContainerComponentModule,
     HomePageRoutingModule,
     MenuComponentModule,
-    WeeklyCalendarComponentModule
+    WeeklyCalendarComponentModule,
+    BarStatusComponentModule
   ],
   declarations: [HomePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

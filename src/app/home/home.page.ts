@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { LoadingController, PopoverController, RefresherCustomEvent, ToastController } from '@ionic/angular';
+import { LoadingController, Platform, PopoverController, RefresherCustomEvent, ToastController } from '@ionic/angular';
 import { Lesson } from '../model/lessons.model';
 import { User } from '../model/user.model';
 import { AuthentificationService } from '../services/authentification.service';
@@ -44,7 +44,7 @@ export class HomePage implements OnInit {
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
-    private modalController: ModalController, private reviewService: ReviewService, private loadingService: LoadingService, private toastController: ToastController) { }
+    private reviewService: ReviewService, private loadingService: LoadingService) { }
 
   get theme() {
     return this.themeService.themeMode;
