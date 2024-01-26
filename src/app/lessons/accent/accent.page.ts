@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Lesson } from 'src/app/model/lessons.model';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LessonService } from 'src/app/services/lesson.service';
+import { SettingService } from 'src/app/services/setting.service';
 
 @Component({
   selector: 'app-accent',
@@ -12,8 +13,9 @@ import { LessonService } from 'src/app/services/lesson.service';
 export class AccentPage implements OnInit {
 
   accentLesson: Lesson = {} as Lesson;
+  isCapacitor: boolean | undefined;
 
-  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService) {
+  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService, private settingService: SettingService) {
     this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation()?.extras?.state) {
         this.accentLesson = this.router.getCurrentNavigation()?.extras?.state?.['data'] as Lesson;
@@ -22,6 +24,7 @@ export class AccentPage implements OnInit {
   }
 
   ngOnInit() {
+    this.isCapacitor = this.settingService.isCapacitor;
   }
 
   saveLesson() {

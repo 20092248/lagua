@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { DetailPageRoutingModule } from './detail-routing.module';
 
 import { DetailPage } from './detail.page';
+import { BarStatusComponentModule } from 'src/app/bar-status/bar-status.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetailPageRoutingModule
+    DetailPageRoutingModule,
+    BarStatusComponentModule
   ],
   declarations: [DetailPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingService } from 'src/app/services/setting.service';
 
 @Component({
   selector: 'app-reviewing',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewingPage implements OnInit {
 
-  constructor() { }
+  isCapacitor: boolean | undefined;
+
+  constructor(private settingService: SettingService) { }
 
   ngOnInit() {
+    this.isCapacitor = this.settingService.isCapacitor;
   }
 
 }

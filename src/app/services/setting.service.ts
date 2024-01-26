@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, getFirestore } from '@angular/fire/firestore';
 import { doc, getDoc, collection, setDoc, addDoc, query, getDocs } from '@firebase/firestore';
+import { Platform } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,11 @@ export class SettingService {
   topics: any = {};
   home: any = {};
   parameter: any = {};
+  isCapacitor: boolean;
 
-  constructor(private _firestore: Firestore) { }
+  constructor(private _firestore: Firestore, private platform: Platform) { 
+    this.isCapacitor = !this.platform.is('capacitor');
+  }
 
 
   async getSettings(): Promise<any> {

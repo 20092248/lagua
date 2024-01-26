@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdMobService } from 'src/app/services/admob.service';
+import { SettingService } from 'src/app/services/setting.service';
 
 @Component({
   selector: 'app-firststep',
@@ -8,10 +8,12 @@ import { AdMobService } from 'src/app/services/admob.service';
 })
 export class FirststepPage implements OnInit {
 
-  constructor(private adMobService: AdMobService) { }
+  isCapacitor: boolean | undefined;
+
+  constructor(private settingService: SettingService) { }
 
   ngOnInit() {
-    this.adMobService.showRewardVideo();
+    this.isCapacitor = this.settingService.isCapacitor;
   }
 
 }

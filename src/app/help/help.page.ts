@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingService } from '../services/setting.service';
 
 @Component({
   selector: 'app-help',
@@ -12,10 +13,12 @@ export class HelpPage implements OnInit {
   {title: 'Apprentissage', subtitle: 'Explore les différentes méthode pour apprendre le comorien', route: '/help/learning'},
   {title: 'Révision', subtitle: 'Découvre comment utiliser les outils de répétition pour améliorer tes compétences', route: '/help/reviewing'},
   {title: 'Nous contacter', subtitle: 'Contacte l\'équipe Lagua', route: '/help/contactus'}] 
+  isCapacitor : boolean |undefined;
 
-  constructor() { }
+  constructor(private settingService: SettingService) { }
 
   ngOnInit() {
+    this.isCapacitor = this.settingService.isCapacitor;
   }
 
 }

@@ -4,6 +4,7 @@ import { CHAT } from 'src/app/dialogs/detail/chat';
 import { User } from 'src/app/model/user.model';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { DialogService } from 'src/app/services/dialog.service';
+import { SettingService } from 'src/app/services/setting.service';
 import { CONSTANTS } from 'src/app/utils/constants';
 import { Utils } from 'src/app/utils/utils';
 
@@ -18,10 +19,13 @@ export class DetailPage implements OnInit {
   infoChats: any = {};
   chat: any = { date: '', userId: '', userName: '', senderId: '', senderName: '', translate: '', text: { shindzuani: '', shingazidja: '', shimwali: '', shimaore: '', } };
   paramModifyReview: string = '';
+  isCapacitor: boolean | undefined;
 
-  constructor(private route: ActivatedRoute, private router: Router, private dialogService: DialogService, private authentificationService: AuthentificationService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private dialogService: DialogService, private authentificationService: AuthentificationService, private settingService: SettingService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.isCapacitor = this.settingService.isCapacitor;
+  }
 
    ionViewWillEnter() {
     this.initialize();

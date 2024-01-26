@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar [ngClass]="{'ion-is-capacitor': isCapacitor }">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/home"></ion-back-button>
     </ion-buttons>
@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-segment value="{{category}}">    
+  <ion-segment value="{{category}}">
     <ion-segment-button *ngFor="let c of segments" value="{{c.code}}" (click)="changeCategoryDialog(c.code)">{{c.label}}</ion-segment-button>
   </ion-segment>
   <ion-list class="ion-no-padding ion-result-dictionary" lines="full">

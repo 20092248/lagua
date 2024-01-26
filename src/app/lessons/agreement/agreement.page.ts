@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Lesson } from 'src/app/model/lessons.model';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LessonService } from 'src/app/services/lesson.service';
+import { SettingService } from 'src/app/services/setting.service';
 import { register } from 'swiper/element/bundle';
 register();
 @Component({
@@ -13,8 +14,9 @@ register();
 export class AgreementPage implements OnInit {
 
   agreementLesson: Lesson = {} as Lesson;
+  isCapacitor: boolean | undefined;
 
-  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService) {
+  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService) {
     this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation()?.extras?.state) {
         this.agreementLesson = this.router.getCurrentNavigation()?.extras?.state?.['data'] as Lesson;
@@ -23,6 +25,7 @@ export class AgreementPage implements OnInit {
   }
 
   ngOnInit() {
+    this.isCapacitor = this.settingService.isCapacitor;
   }
 
   saveLesson() {

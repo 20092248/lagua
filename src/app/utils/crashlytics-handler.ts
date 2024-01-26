@@ -21,7 +21,7 @@ export class CrashlyticsErrorHandler implements ErrorHandler {
     }
 
     displayError(error: any){
-        return error && error.message && error.message.indexOf('dismiss') !== -1;
+        return error && error.message && error.message.indexOf('this.loading.dismiss') === -1;
     }
 
 }

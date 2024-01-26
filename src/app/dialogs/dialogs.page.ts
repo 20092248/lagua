@@ -6,6 +6,7 @@ import { Utils } from '../utils/utils';
 import { User } from '../model/user.model';
 import { LoadingService } from '../services/loading.service';
 import { CONSTANTS } from '../utils/constants';
+import { SettingService } from '../services/setting.service';
 
 @Component({
   selector: 'app-dialogs',
@@ -19,10 +20,12 @@ export class DialogsPage implements OnInit {
   user: User = {} as User;
   category: string = '';
   segments: any[] = [{ code: 'A1_A2', label: 'Débutant' }, { code: 'B1_B2', label: 'Intermédiaire' }];
-
-  constructor(private router: Router, private authentificationService: AuthentificationService, private dialogService: DialogService, private loadingService: LoadingService) { }
+  isCapacitor: boolean | undefined;
+  
+  constructor(private router: Router, private authentificationService: AuthentificationService, private dialogService: DialogService, private loadingService: LoadingService, private settingService: SettingService) { }
 
   ngOnInit() {
+    this.isCapacitor = this.settingService.isCapacitor;
     this.user = this.authentificationService.user;
     const dialect = Utils.findDialect(this.user.dialectSelected.code);
     this.category = Utils.getCategoryExtended(this.user.dialects[dialect].review.category);

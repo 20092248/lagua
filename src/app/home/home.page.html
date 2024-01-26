@@ -102,7 +102,7 @@
         </ion-card>
       </div>
 
-      <div class="ion-unlock-lesson">
+      <div class="ion-unlock-lesson" *ngIf="!(userDialect.review.category === 'A1' && userDialect.review.lesson === 1 && userDialect.review.order === 1)">
         <ion-card class="ion-activatable" id="open-modal" (click)="displayPreviousReviews()">
           <ion-ripple-effect></ion-ripple-effect>
           <ion-card-header>
