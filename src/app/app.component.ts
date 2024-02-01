@@ -5,8 +5,8 @@ import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { FacebookLogin } from '@capacitor-community/facebook-login';
 import { NotificationsService } from './services/notification.service';
 import { LoadingService } from './services/loading.service';
-// import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
+import { NavigationBar} from '@mauricewegner/capacitor-navigation-bar';
 
 @Component({
   selector: 'app-root',
@@ -26,15 +26,10 @@ export class AppComponent {
       StatusBar.setOverlaysWebView({overlay: false});
       StatusBar.setStyle({ style: Style.Dark});
       StatusBar.setBackgroundColor({ color: '#46895c' });
+      NavigationBar.setColor({color: '#46895c', darkButtons: false});
     }
-    if (this.platform.is('capacitor')) { this.loadingService.present('Chargement...'); }
     this.pushNotificationsService.initPush();
     this.platform.ready().then(async () => {
-      if (this.platform.is('capacitor')) {
-        // await SplashScreen.hide();
-        // await SplashScreen.show();
-        this.loadingService.dismiss();
-      }
       GoogleAuth.initialize();
       FacebookLogin.initialize({
         appId: '771703417822238'

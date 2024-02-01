@@ -5,6 +5,8 @@ import { Platform, ToastController, isPlatform } from '@ionic/angular';
 import { AuthentificationService } from '../services/authentification.service';
 import { AlertService } from '../services/alert.service';
 import { CONSTANTS } from '../utils/constants';
+import { SettingService } from '../services/setting.service';
+import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +19,14 @@ export class LoginPage implements OnInit {
   password: string = '';
   heightLogo: number = 60;
   heightContent: number | undefined;
+  isCapacitor: boolean | undefined;
 
-  constructor(private router: Router, private authentificationService: AuthentificationService, private alertService: AlertService, private platform: Platform) { }
+  constructor(private router: Router, private authentificationService: AuthentificationService, private alertService: AlertService, private platform: Platform,
+    private settingService: SettingService) { }
 
   ngOnInit() {
+    NavigationBar.setColor({ color: '#46895c', darkButtons: false });
+    this.isCapacitor = this.settingService.isCapacitor;
     this.heightContent = this.platform.height() - this.heightLogo - 80;
   }
 

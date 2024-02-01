@@ -16,9 +16,11 @@ export class SettingService {
   home: any = {};
   parameter: any = {};
   isCapacitor: boolean;
+  isMobile: boolean;
 
   constructor(private _firestore: Firestore, private platform: Platform) { 
-    this.isCapacitor = !this.platform.is('capacitor');
+    this.isCapacitor = this.platform.is('capacitor');
+    this.isMobile = this.platform.width() < 820 || this.platform.width() < this.platform.height();
   }
 
 

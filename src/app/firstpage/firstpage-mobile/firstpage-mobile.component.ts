@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
 import { SettingService } from 'src/app/services/setting.service';
 
 @Component({
@@ -18,8 +19,9 @@ export class FirstpageMobileComponent implements OnInit {
   @Input() isMobile: boolean | undefined;
 
   constructor(private settingsService: SettingService, private platform: Platform, private router: Router) { }
-
+  
   ngOnInit() {
+    NavigationBar.setColor({color: '#74a884', darkButtons: false});
     this.autoplayTimeLeft();
     this.settingsService.getUserInformation().then();
   }

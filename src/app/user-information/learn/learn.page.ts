@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
 import { CodeTextTranslate } from 'src/app/model/codeTextTranslate.model';
 import { Dialect } from 'src/app/model/dialect.model';
 import { Dialects } from 'src/app/model/dialects.model';
@@ -18,8 +19,9 @@ export class LearnPage implements OnInit {
   frenchFlag: CodeTextTranslate = {} as CodeTextTranslate;
 
   constructor(private settingService: SettingService, private authentificationService: AuthentificationService) { }
-
+  
   ngOnInit() {
+    NavigationBar.setColor({color: '#46895c', darkButtons: false});
     this.learn = this.settingService.userInformation?.learn.filter((f: CodeTextTranslate) => f.code !== CONSTANTS.FRENCH_DIALECT);
     this.frenchFlag = this.settingService.userInformation.learn.find((f: CodeTextTranslate) => f.code === CONSTANTS.FRENCH_DIALECT);
   }

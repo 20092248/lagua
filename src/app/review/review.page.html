@@ -35,7 +35,7 @@
               [ngClass]="{ 'ion-card-locked' : categoryLevel < codeCategorySelectedLevel || (userReview.lesson <= r.lesson && userReview.order < r.order) }">
               <ion-card-header>
                 <ion-card-title>{{r.text}} <ion-icon (click)="goToModifyReview(data.category, data.lesson, r.order)"
-                    *ngIf="user.email === 'brady91700@gmail.com' || user.email === 'bradyabd@gmail.com' || user.email === 'lagua.shikomori@gmail.com'"
+                    *ngIf="user.email === 'lagua.shikomori@gmail.com'"
                     name="create-outline"></ion-icon> <img *ngIf="r.score" class="ion-flag-comoros ion-float-right"
                     src="{{flagSrc}}" /></ion-card-title>
                 <ion-card-subtitle>{{r.translate}}</ion-card-subtitle>

@@ -5,6 +5,7 @@ import { forkJoin } from 'rxjs';
 import { ReviewService } from '../services/review.service';
 import { LessonService } from '../services/lesson.service';
 import { Platform } from '@ionic/angular';
+import { SettingService } from '../services/setting.service';
 
 @Component({
   selector: 'app-signin',
@@ -19,11 +20,13 @@ export class SignInPage implements OnInit {
   confirmPassword: string = '';
   heightLogo: number = 55;
   heightContent: number | undefined;
+  isCapacitor: boolean | undefined;
 
-  constructor(private authentificationService: AuthentificationService, private router: Router, 
+  constructor(private authentificationService: AuthentificationService, private router: Router, private settingService: SettingService,
     private reviewService: ReviewService, private lessonService: LessonService, private platform: Platform) { }
 
   ngOnInit() {
+    this.isCapacitor = this.settingService.isCapacitor;
     this.heightContent = this.platform.height() - this.heightLogo - 80;
   }
 

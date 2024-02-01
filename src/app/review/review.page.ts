@@ -70,6 +70,11 @@ export class ReviewPage implements OnInit {
     });
   }
 
+  ionViewWillEnter() {
+    this.userLearn = this.userDialect.learn;
+    this.userReview = this.userDialect.review;
+  }
+
   setCategory(code: string) {
     this.reviews = [];
     this.codeCategorySelectedLevel = this.reviewService.getCategoryLevel(code);
