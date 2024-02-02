@@ -25,9 +25,9 @@ ion-content {
 ion-toolbar {
   --background: #46895c;
   --color: white;
-  --min-height: 80px;
-  --padding-top: 20px;
-  --padding-bottom: 20px;
+  --min-height: 70px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
 }
 
 ion-icon.ion-login-icon {
@@ -39,7 +39,7 @@ form {
 }
 
 ion-item {
-  padding: 8px 0 4px;
+  padding: 8px 0px 0px;
   --background: #eef1ee; // #dfebdf;
   // --border-radius: 30px;
 }

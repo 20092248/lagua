@@ -1,7 +1,8 @@
-import { Component, OnInit, Optional } from '@angular/core';
+import { Component, EventEmitter, OnInit, Optional } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { IonRouterOutlet, Platform } from '@ionic/angular';
 import { App } from '@capacitor/app';
+import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
 register();
 @Component({
   selector: 'app-firstpage',
@@ -11,6 +12,8 @@ register();
 export class FirstpagePage implements OnInit {
 
   isMobile: boolean | undefined;
+  navBarCapacitor: boolean = false;
+  navigationBarEvent: EventEmitter<any> = new EventEmitter();
 
   constructor(private platform: Platform, @Optional() private routerOutlet?: IonRouterOutlet) { }
 
@@ -25,13 +28,16 @@ export class FirstpagePage implements OnInit {
   }
 
   ionViewWillEnter() {
-    console.log('coucou 3');
+    if (this.navBarCapacitor) {
+      this.navigationBarEvent.emit(true);
+    }
+    this.navBarCapacitor = true;
   }
 
   isPlatformMobile() {
-    if(this.platform.is('capacitor')) {
+    if (this.platform.is('capacitor')) {
       return true;
-    } else if(this.platform.is('desktop') || (this.platform.width() > 820 && this.platform.width() > this.platform.height()) ){
+    } else if (this.platform.width() > 820 && this.platform.width() > this.platform.height()) {
       return false;
     } else {
       return true;

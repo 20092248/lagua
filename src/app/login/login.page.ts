@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
 
   email: string = '';
   password: string = '';
-  heightLogo: number = 60;
+  heightLogo: number = 110;
   heightContent: number | undefined;
   isCapacitor: boolean | undefined;
 

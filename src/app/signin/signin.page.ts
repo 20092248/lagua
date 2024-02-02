@@ -18,7 +18,7 @@ export class SignInPage implements OnInit {
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
-  heightLogo: number = 55;
+  heightLogo: number = 100;
   heightContent: number | undefined;
   isCapacitor: boolean | undefined;
 
@@ -27,7 +27,7 @@ export class SignInPage implements OnInit {
 
   ngOnInit() {
     this.isCapacitor = this.settingService.isCapacitor;
-    this.heightContent = this.platform.height() - this.heightLogo - 80;
+    this.heightContent = this.platform.height() - this.heightLogo - 70;
   }
 
   async signIn() {

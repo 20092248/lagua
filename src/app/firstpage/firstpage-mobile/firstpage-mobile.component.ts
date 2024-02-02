@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
@@ -17,13 +17,20 @@ export class FirstpageMobileComponent implements OnInit {
   };
   countupBegin: number = 6;
   @Input() isMobile: boolean | undefined;
+  @Input() navigationBarEvent: EventEmitter<any> | undefined;
 
   constructor(private settingsService: SettingService, private platform: Platform, private router: Router) { }
   
   ngOnInit() {
-    NavigationBar.setColor({color: '#74a884', darkButtons: false});
     this.autoplayTimeLeft();
-    this.settingsService.getUserInformation().then();
+    this.settingsService.getUserInformation();
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      console.log('Handler was called!');
+    });
+    NavigationBar.setColor({color: '#74a884', darkButtons: false});
+    this.navigationBarEvent?.subscribe(() => {
+      NavigationBar.setColor({color: '#74a884', darkButtons: false});
+    });
   }
 
   autoplayTimeLeft() {

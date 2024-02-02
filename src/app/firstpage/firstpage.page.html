@@ -1,4 +1,4 @@
-<ion-content [ngClass]="{ 'ion-mobile-background-color' : isMobile }">
-  <app-firstpage-mobile *ngIf="isMobile"  [isMobile]="isMobile"></app-firstpage-mobile>
+<ion-content [ngClass]="{ 'ion-background-color' : isMobile }">
+  <app-firstpage-mobile *ngIf="isMobile"  [isMobile]="isMobile" [navigationBarEvent]="navigationBarEvent"></app-firstpage-mobile>
   <app-firstpage-desktop *ngIf="!isMobile"></app-firstpage-desktop>
 </ion-content>
