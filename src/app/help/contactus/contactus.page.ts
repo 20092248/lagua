@@ -20,7 +20,7 @@ export class ContactusPage implements OnInit {
   contactForm: FormGroup;
   contact: any = { mail: '', question: '', subject: '', description: '', attachment: null };
   user: User = {} as User;
-  isCapacitor: boolean | undefined;
+  isOverlay: boolean | undefined;
 
   constructor(private formBuilder: FormBuilder, private authentificationService: AuthentificationService, private emailService: EmailService, private alertService: AlertService, private settingService: SettingService) {
     this.contactForm = this.formBuilder.group({
@@ -32,7 +32,7 @@ export class ContactusPage implements OnInit {
   }
 
   ngOnInit() {
-    this.isCapacitor = this.settingService.isCapacitor;
+    this.isOverlay = this.settingService.isOverlay;
     this.user = this.authentificationService.user;
     this.parameter = this.settingService.parameter;
     if (JSON.stringify(this.parameter) === '{}') {

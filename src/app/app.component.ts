@@ -26,14 +26,13 @@ export class AppComponent {
       StatusBar.setOverlaysWebView({overlay: false});
       StatusBar.setStyle({ style: Style.Dark});
       StatusBar.setBackgroundColor({ color: '#46895c' });
-      NavigationBar.setColor({color: '#46895c', darkButtons: false});
+      NavigationBar.setColor({color: '#74a884', darkButtons: false});
+      // NavigationBar.setTransparency({ isTransparent: true });
     }
     this.pushNotificationsService.initPush();
     this.platform.ready().then(async () => {
       GoogleAuth.initialize();
-      FacebookLogin.initialize({
-        appId: '771703417822238'
-      });
+      FacebookLogin.initialize({ appId: '771703417822238' });
     });
   }
 }

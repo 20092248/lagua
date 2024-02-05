@@ -10,6 +10,7 @@ import { QuestionService } from 'src/app/services/question.service';
 import { ReviewService } from 'src/app/services/review.service';
 import { SettingService } from 'src/app/services/setting.service';
 import { CONSTANTS } from 'src/app/utils/constants';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-type',
@@ -20,14 +21,16 @@ export class TypePage implements OnInit {
 
   translate: string = 'francais';
   types: CodeLabel[] = [];
-  
-  constructor(private router: Router, private settingsService: SettingService, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService) { }
+
+  constructor(private router: Router, private settingsService: SettingService, private questionService: QuestionService, private authentificationService: AuthentificationService,
+    private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) { }
 
   get user() {
     return this.authentificationService.user;
   }
 
   ngOnInit() {
+    Utils.customCapacitorQuestion(this.settingService, '#eef1ee');
     const review = this.reviewService.review;
     this.questionService.getQuestions(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], review.category + '_' + review.lesson + '_' + review.order).then();
     this.settingsService.getSetting('questions').then((data => {

@@ -20,12 +20,12 @@ export class DialogsPage implements OnInit {
   user: User = {} as User;
   category: string = '';
   segments: any[] = [{ code: 'A1_A2', label: 'Débutant' }, { code: 'B1_B2', label: 'Intermédiaire' }];
-  isCapacitor: boolean | undefined;
+  isOverlay: boolean | undefined;
   
   constructor(private router: Router, private authentificationService: AuthentificationService, private dialogService: DialogService, private loadingService: LoadingService, private settingService: SettingService) { }
 
   ngOnInit() {
-    this.isCapacitor = this.settingService.isCapacitor;
+    this.isOverlay = this.settingService.isOverlay;
     this.user = this.authentificationService.user;
     const dialect = Utils.findDialect(this.user.dialectSelected.code);
     this.category = Utils.getCategoryExtended(this.user.dialects[dialect].review.category);

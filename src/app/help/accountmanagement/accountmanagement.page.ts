@@ -8,12 +8,12 @@ import { SettingService } from 'src/app/services/setting.service';
 })
 export class AccountmanagementPage implements OnInit {
 
-  isCapacitor: boolean | undefined;
+  isOverlay: boolean | undefined;
 
   constructor(private settingService: SettingService) { }
 
   ngOnInit() {
-    this.isCapacitor = this.settingService.isCapacitor;
+    this.isOverlay = this.settingService.isOverlay;
   }
 
 }

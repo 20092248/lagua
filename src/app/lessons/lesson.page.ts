@@ -7,6 +7,8 @@ import { User } from '../model/user.model';
 import { LoadingController } from '@ionic/angular';
 import { LoadingService } from '../services/loading.service';
 import { AlertService } from '../services/alert.service';
+import { Utils } from '../utils/utils';
+import { SettingService } from '../services/setting.service';
 
 @Component({
   selector: 'app-lesson',
@@ -15,7 +17,8 @@ import { AlertService } from '../services/alert.service';
 })
 export class LessonPage implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService, private loadingService: LoadingService, private alertService: AlertService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService, 
+    private loadingService: LoadingService, private alertService: AlertService, private settingService: SettingService) { }
 
   get dialect() {
     return this.authentificationService.dialect;
@@ -31,7 +34,12 @@ export class LessonPage implements OnInit {
     this.lessonService.lessons = lessons;
   }
 
+  get isOverlay(){
+    return this.settingService.isOverlay;
+  }  
+
   ngOnInit(): void {
+    Utils.customCapacitorTabs(this.settingService);
     if (!this.lessons.length) {
       this.loadingService.present('Chargement...');
       this.lessonService.searchLessons().then(lessons => {

@@ -13,7 +13,7 @@ import { SettingService } from 'src/app/services/setting.service';
 export class VerbalPage implements OnInit {
 
   verbalLesson: Lesson = {} as Lesson;
-  isCapacitor: boolean | undefined;
+  isOverlay: boolean | undefined;
 
   constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService) {
     this.route.queryParams.subscribe(() => {
@@ -24,7 +24,7 @@ export class VerbalPage implements OnInit {
   }
 
   ngOnInit() {
-    this.isCapacitor = this.settingService.isCapacitor;
+    this.isOverlay = this.settingService.isOverlay;
   }
 
   saveLesson() {

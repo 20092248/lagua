@@ -6,6 +6,7 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
 import { QuestionService } from 'src/app/services/question.service';
 import { ReviewService } from 'src/app/services/review.service';
 import { SettingService } from 'src/app/services/setting.service';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-translate',
@@ -30,6 +31,7 @@ export class TranslatePage implements OnInit {
   constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) { }
 
   ngOnInit() {
+    Utils.customCapacitorQuestion(this.settingService, '#ffffff');
     this.questionService.nbrQuestion = this.nbrQuestion;
     this.translateSetting = this.settingService.questions?.translate;
     this.user = this.authentificationService.user;

@@ -39,7 +39,12 @@ export class ProfilePage implements OnInit {
     return this.user.dialects[this.dialect];
   }
 
+  get isOverlay(){
+    return this.settingService.isOverlay;
+  }  
+
   ngOnInit() {
+    Utils.customCapacitorTabs(this.settingService);
     this.profileSetting = this.settingService.profile;
     if (JSON.stringify(this.profileSetting) === '{}') {
       this.settingService.getSettings().then(setting => {

@@ -18,7 +18,7 @@ export class ParameterPage implements OnInit {
   dialect: DialectEnum = DialectEnum.SHGC;
   userDialect: Dialect = {} as Dialect;
   categorie: any;
-  isCapacitor: boolean | undefined;
+  isOverlay: boolean | undefined;
 
   constructor(private router: Router, private authentificationService: AuthentificationService,
     private settingsService: SettingService, private themeService: ThemeService) { }
@@ -28,7 +28,7 @@ export class ParameterPage implements OnInit {
   }
 
   ngOnInit() {
-    this.isCapacitor = this.settingsService.isCapacitor;
+    this.isOverlay = this.settingsService.isOverlay;
     this.user = this.authentificationService.user;
     this.dialect = this.authentificationService.dialect;
     this.userDialect = this.user.dialects[this.dialect];

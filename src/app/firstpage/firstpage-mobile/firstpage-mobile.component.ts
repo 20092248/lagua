@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { StatusBar } from '@capacitor/status-bar';
 import { Platform } from '@ionic/angular';
 import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
 import { SettingService } from 'src/app/services/setting.service';
@@ -29,6 +30,9 @@ export class FirstpageMobileComponent implements OnInit {
     });
     NavigationBar.setColor({color: '#74a884', darkButtons: false});
     this.navigationBarEvent?.subscribe(() => {
+      if(this.settingsService.isCapacitor){
+        StatusBar.setBackgroundColor({ color: '#46895c' });
+      }
       NavigationBar.setColor({color: '#74a884', darkButtons: false});
     });
   }

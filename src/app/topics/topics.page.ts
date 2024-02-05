@@ -13,6 +13,10 @@ export class TopicsPage implements OnInit {
 
   constructor(private router: Router, private settingService: SettingService) { }
 
+  get isOverlay(){
+    return this.settingService.isOverlay;
+  }  
+
   ngOnInit() {
     this.sections = this.settingService.topics?.sections;
     if (!this.sections) {

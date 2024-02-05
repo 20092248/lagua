@@ -11,7 +11,7 @@ import { SettingService } from '../services/setting.service';
 })
 export class QuestionsPage implements OnInit {
 
-  isCapacitor: boolean | undefined;
+  isOverlay: boolean | undefined;
 
   constructor(private questionService: QuestionService, private reviewService: ReviewService, private settingService: SettingService) { }
   
@@ -23,7 +23,7 @@ export class QuestionsPage implements OnInit {
   }
 
   ngOnInit() {
-    this.isCapacitor = this.settingService.isCapacitor;
+    this.isOverlay = this.settingService.isOverlay;
     this.resetReview();
    }
 

@@ -6,6 +6,7 @@ import { AudioService } from 'src/app/services/audio.service';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { ReviewService } from 'src/app/services/review.service';
 import { SettingService } from 'src/app/services/setting.service';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-result',
@@ -31,6 +32,7 @@ export class ResultPage implements OnInit {
   constructor(private router: Router, private reviewService: ReviewService, private settingService: SettingService, private authentificationService: AuthentificationService, private audioService: AudioService) { }
 
   ngOnInit() {
+    Utils.customCapacitorQuestion(this.settingService, '#ffffff');
     this.review = this.reviewService.review;
     this.score = this.reviewService.resultReview?.score ? this.reviewService.resultReview?.score * 100 / (this.reviewService.resultReview?.nbrQuestion * 10) : 0;
     this.star = this.score / 20;

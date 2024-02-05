@@ -2,8 +2,25 @@ import { Observable, ReplaySubject } from "rxjs";
 import { ReviewGroup } from "../model/reviewGroup.model";
 import { User } from "../model/user.model";
 import { DialectEnum } from "../model/dialect.enum";
+import { StatusBar } from "@capacitor/status-bar";
+import { NavigationBar } from "@mauricewegner/capacitor-navigation-bar";
+import { SettingService } from "../services/setting.service";
 
 export class Utils {
+
+  static customCapacitorTabs(settingService: SettingService) {
+    if(settingService.isCapacitor){
+      StatusBar.setOverlaysWebView({overlay: true});
+      NavigationBar.setColor({color: '#ffffff', darkButtons: true});
+      settingService.isOverlay = true;
+    }
+  }
+
+  static customCapacitorQuestion(settingService: SettingService, color: string) {
+    if(settingService.isCapacitor){
+      NavigationBar.setColor({color: color, darkButtons: true});
+    }
+  }
 
   static getInitial(displayName: string) {
     const name = displayName.split(' ');

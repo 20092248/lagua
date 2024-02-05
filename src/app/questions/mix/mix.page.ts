@@ -6,6 +6,7 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
 import { QuestionService } from 'src/app/services/question.service';
 import { ReviewService } from 'src/app/services/review.service';
 import { SettingService } from 'src/app/services/setting.service';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-mix',
@@ -36,6 +37,7 @@ export class MixPage implements OnInit {
   }
 
   ngOnInit() {
+    Utils.customCapacitorQuestion(this.settingService,  '#ffffff');
     //memo
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.qcm?.questions;
@@ -172,6 +174,7 @@ export class MixPage implements OnInit {
       this.router.navigate(['/questions/result']);
     }
     this.typeDisplay = Math.floor(Math.random() * 3);
+    Utils.customCapacitorQuestion(this.settingService, this.typeDisplay ? '#eef1ee' : '#ffffff');
   }
 
   //translate

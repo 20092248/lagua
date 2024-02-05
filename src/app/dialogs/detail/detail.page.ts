@@ -19,12 +19,12 @@ export class DetailPage implements OnInit {
   infoChats: any = {};
   chat: any = { date: '', userId: '', userName: '', senderId: '', senderName: '', translate: '', text: { shindzuani: '', shingazidja: '', shimwali: '', shimaore: '', } };
   paramModifyReview: string = '';
-  isCapacitor: boolean | undefined;
+  isOverlay: boolean | undefined;
 
   constructor(private route: ActivatedRoute, private router: Router, private dialogService: DialogService, private authentificationService: AuthentificationService, private settingService: SettingService) { }
 
   ngOnInit() { 
-    this.isCapacitor = this.settingService.isCapacitor;
+    this.isOverlay = this.settingService.isOverlay;
   }
 
    ionViewWillEnter() {

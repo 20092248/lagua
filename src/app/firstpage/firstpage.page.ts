@@ -3,6 +3,7 @@ import { register } from 'swiper/element/bundle';
 import { IonRouterOutlet, Platform } from '@ionic/angular';
 import { App } from '@capacitor/app';
 import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
+import { AlertService } from '../services/alert.service';
 register();
 @Component({
   selector: 'app-firstpage',
@@ -15,16 +16,21 @@ export class FirstpagePage implements OnInit {
   navBarCapacitor: boolean = false;
   navigationBarEvent: EventEmitter<any> = new EventEmitter();
 
-  constructor(private platform: Platform, @Optional() private routerOutlet?: IonRouterOutlet) { }
+  constructor(private alertService: AlertService, private platform: Platform, private routerOutlet: IonRouterOutlet) {
+    this.platform.backButton.subscribeWithPriority(-1, () => {
+      this.alertService.presentToast('backbutton', 1000, 'primary');
+      if (!this.routerOutlet.canGoBack()) {
+        App.exitApp();
+      }
+    });
+    this.platform.backButton.subscribeWithPriority(5, () => {
+      this.alertService.presentToast('backbutton firstpage', 1000, 'primary');
+    });
+  }
 
   ngOnInit() {
     console.log('platform : ' + this.platform.platforms() + ', width : ' + this.platform.width() + ', height : ' + this.platform.height());
     this.isMobile = this.isPlatformMobile();
-    this.platform.backButton.subscribeWithPriority(-1, () => {
-      if (!this.routerOutlet?.canGoBack()) {
-        App.exitApp();
-      }
-    });
   }
 
   ionViewWillEnter() {

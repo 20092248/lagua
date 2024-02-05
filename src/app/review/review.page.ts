@@ -10,6 +10,7 @@ import { CodeTextTranslate } from '../model/codeTextTranslate.model';
 import { QuestionService } from '../services/question.service';
 import { ReviewGroup } from '../model/reviewGroup.model';
 import { LoadingService } from '../services/loading.service';
+import { Utils } from '../utils/utils';
 
 @Component({
   selector: 'app-review',
@@ -45,8 +46,12 @@ export class ReviewPage implements OnInit {
   get userDialect() {
     return this.user.dialects[this.dialect];
   }
+  get isOverlay(){
+    return this.settingsService.isOverlay;
+  }  
 
   ngOnInit() {
+    Utils.customCapacitorTabs(this.settingService);
     this.userLearn = this.userDialect.learn;
     this.userReview = this.userDialect.review;
     this.displayAccordion = this.userReview.category + '_' + this.userReview.lesson;

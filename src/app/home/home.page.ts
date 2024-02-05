@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { LoadingController, Platform, PopoverController, RefresherCustomEvent, ToastController } from '@ionic/angular';
+import { IonRouterOutlet, LoadingController, Platform, PopoverController, RefresherCustomEvent, ToastController } from '@ionic/angular';
 import { Lesson } from '../model/lessons.model';
 import { User } from '../model/user.model';
 import { AuthentificationService } from '../services/authentification.service';
@@ -22,6 +22,9 @@ import { Dialect } from '../model/dialect.model';
 import { Dialects } from '../model/dialects.model';
 import { DialectEnum } from '../model/dialect.enum';
 import { CodeLabel } from '../model/codeLabel.model';
+import { StatusBar } from '@capacitor/status-bar';
+import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
+import { App } from '@capacitor/app';
 register();
 
 @Component({
@@ -44,7 +47,15 @@ export class HomePage implements OnInit {
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
-    private reviewService: ReviewService, private loadingService: LoadingService) { }
+    private reviewService: ReviewService, private loadingService: LoadingService, private platform: Platform, private settingsService: SettingService,
+    private routerOutlet: IonRouterOutlet) {
+      this.platform.backButton.subscribeWithPriority(-1, () => {
+        this.alertService.presentToast('backbutton home', 1000, 'primary');
+        if (!this.routerOutlet.canGoBack()) {
+          App.exitApp();
+        }
+      });
+     }
 
   get theme() {
     return this.themeService.themeMode;
@@ -67,8 +78,12 @@ export class HomePage implements OnInit {
   get recommendedLessons() {
     return this.lessonService.lessons;
   }
+  get isOverlay(){
+    return this.settingsService.isOverlay;
+  }  
 
   ngOnInit() {
+    Utils.customCapacitorTabs(this.settingService);
     this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
     const numberPreviousReview = this.userDialect.resultReviews ? this.userDialect.resultReviews.length : 0;
     this.previousReviewLoadedLength = Array(numberPreviousReview).fill(undefined, 0, numberPreviousReview).map((x, i) => i);

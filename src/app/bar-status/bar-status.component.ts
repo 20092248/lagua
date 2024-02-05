@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SettingService } from '../services/setting.service';
 
@@ -9,12 +9,10 @@ import { SettingService } from '../services/setting.service';
 })
 export class BarStatusComponent implements OnInit {
 
-  isCapacitor: boolean = false;
+  @Input() isOverlay: boolean | undefined;
   
-  constructor(private settingService: SettingService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.isCapacitor = this.settingService.isCapacitor;
-  }
+  ngOnInit() { }
 
 }

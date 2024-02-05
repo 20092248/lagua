@@ -5,6 +5,8 @@ import { AudioService } from 'src/app/services/audio.service';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { QuestionService } from 'src/app/services/question.service';
 import { ReviewService } from 'src/app/services/review.service';
+import { SettingService } from 'src/app/services/setting.service';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-qcm',
@@ -24,9 +26,11 @@ export class QcmPage implements OnInit {
   radio_group: any;
   score: number = 0;
 
-  constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService) { }
+  constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService,
+    private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) { }
 
   ngOnInit() {
+    Utils.customCapacitorQuestion(this.settingService, '#ffffff');
     this.questionService.nbrQuestion = this.nbrQuestion;
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.qcm?.questions;
@@ -40,9 +44,9 @@ export class QcmPage implements OnInit {
   validate() {
     this.score = 0;
     this.displayAnswer = true;
-    if(this.answerSelected && this.answerSelected.answer){
+    if (this.answerSelected && this.answerSelected.answer) {
       this.audioService.play('rightAnswer');
-      if(!this.secondChance){
+      if (!this.secondChance) {
         this.score = 10;
       } else {
         this.score = 5;
@@ -68,7 +72,7 @@ export class QcmPage implements OnInit {
     this.secondChance = false;
     this.answerSelected = undefined;
     this.radio_group = {};
-    if(this.nbrQuestion !== this.questions.length) {
+    if (this.nbrQuestion !== this.questions.length) {
       this.question = this.questions[this.nbrQuestion];
     } else {
       this.router.navigate(['/questions/result']);
@@ -78,11 +82,11 @@ export class QcmPage implements OnInit {
   }
 
   saveScore() {
-    if(this.score === 10) {
+    if (this.score === 10) {
       const learned = this.question?.text;
       this.reviewService.resultReview.score += 10;
       this.reviewService.resultReview.learned.push(learned);
-    } else if(this.score === 5) {
+    } else if (this.score === 5) {
       const toLearn = this.question?.text;
       this.reviewService.resultReview.score += 5;
       this.reviewService.resultReview.toLearn.push(toLearn);

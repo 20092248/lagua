@@ -13,12 +13,12 @@ export class HelpPage implements OnInit {
   {title: 'Apprentissage', subtitle: 'Explore les différentes méthode pour apprendre le comorien', route: '/help/learning'},
   {title: 'Révision', subtitle: 'Découvre comment utiliser les outils de répétition pour améliorer tes compétences', route: '/help/reviewing'},
   {title: 'Nous contacter', subtitle: 'Contacte l\'équipe Lagua', route: '/help/contactus'}] 
-  isCapacitor : boolean |undefined;
+  isOverlay : boolean |undefined;
 
   constructor(private settingService: SettingService) { }
 
   ngOnInit() {
-    this.isCapacitor = this.settingService.isCapacitor;
+    this.isOverlay = this.settingService.isOverlay;
   }
 
 }

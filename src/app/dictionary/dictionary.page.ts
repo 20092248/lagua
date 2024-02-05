@@ -9,6 +9,8 @@ import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import { LoadingService } from '../services/loading.service';
 import { DialectEnum } from '../model/dialect.enum';
 import { Dialect } from '../model/dialect.model';
+import { Utils } from '../utils/utils';
+import { SettingService } from '../services/setting.service';
 
 @Component({
   selector: 'app-dictionary',
@@ -31,11 +33,16 @@ export class DictionaryPage implements OnInit {
   text: string = 'shikomori';
   linkInfo: FirebaseWord = {} as FirebaseWord;
   wordsLoaded: boolean = false;
-  wordsLength: number[] = Array(8).fill(undefined, 0, 8).map((x,i)=>i);
+  wordsLength: number[] = Array(8).fill(undefined, 0, 8).map((x, i) => i);
 
-  constructor(private dictionaryService: DictionaryService, private authentificationService: AuthentificationService, private loadingService: LoadingService) { }
+  constructor(private dictionaryService: DictionaryService, private authentificationService: AuthentificationService, private loadingService: LoadingService, private settingService: SettingService) { }
+
+  get isOverlay(){
+    return this.settingService.isOverlay;
+  }  
 
   ngOnInit(): void {
+    Utils.customCapacitorTabs(this.settingService);
     this.user = this.authentificationService.user;
     this.dialect = this.authentificationService.dialect;
     this.userDialect = this.user.dialects[this.dialect];
@@ -86,10 +93,10 @@ export class DictionaryPage implements OnInit {
     }, 500);
   }
 
-  changeDictionary(){
+  changeDictionary() {
     this.letterSelected = this.verifyLetterSelected();
     this.wordsLoaded = false;
-    if(this.translate === 'francais'){
+    if (this.translate === 'francais') {
       this.text = 'francais';
       this.translate = 'shikomori'; //this.user.learn.text;
     } else {
@@ -103,9 +110,9 @@ export class DictionaryPage implements OnInit {
   }
 
   verifyLetterSelected() {
-    if(this.letterSelected === 'ɓ') {
+    if (this.letterSelected === 'ɓ') {
       return 'b';
-    } else if(this.letterSelected === 'ɗ') {
+    } else if (this.letterSelected === 'ɗ') {
       return 'd';
     } else {
       return this.letterSelected;
