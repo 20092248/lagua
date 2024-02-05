@@ -2,23 +2,41 @@ import { Observable, ReplaySubject } from "rxjs";
 import { ReviewGroup } from "../model/reviewGroup.model";
 import { User } from "../model/user.model";
 import { DialectEnum } from "../model/dialect.enum";
-import { StatusBar } from "@capacitor/status-bar";
+import { StatusBar, Style } from "@capacitor/status-bar";
 import { NavigationBar } from "@mauricewegner/capacitor-navigation-bar";
 import { SettingService } from "../services/setting.service";
 
 export class Utils {
 
+  static customCapacitorApp(settingService: SettingService) {
+    if (settingService.isCapacitor) {
+      StatusBar.setOverlaysWebView({ overlay: false });
+      StatusBar.setStyle({ style: Style.Dark });
+      StatusBar.setBackgroundColor({ color: '#46895c' });
+      NavigationBar.setColor({ color: '#74a884', darkButtons: false });
+    }
+  }
+
+  static customCapacitorLoginSignInPage(settingService: SettingService) {
+    if (settingService.isCapacitor) {
+      StatusBar.setOverlaysWebView({ overlay: false });
+      StatusBar.setStyle({ style: Style.Dark });
+      StatusBar.setBackgroundColor({ color: '#46895c' });
+      NavigationBar.setColor({ color: '#eef1ee', darkButtons: true });
+    }
+  }
+
   static customCapacitorTabs(settingService: SettingService) {
-    if(settingService.isCapacitor){
-      StatusBar.setOverlaysWebView({overlay: true});
-      NavigationBar.setColor({color: '#ffffff', darkButtons: true});
+    if (settingService.isCapacitor) {
+      StatusBar.setOverlaysWebView({ overlay: true });
+      NavigationBar.setColor({ color: '#ffffff', darkButtons: true });
       settingService.isOverlay = true;
     }
   }
 
   static customCapacitorQuestion(settingService: SettingService, color: string) {
-    if(settingService.isCapacitor){
-      NavigationBar.setColor({color: color, darkButtons: true});
+    if (settingService.isCapacitor) {
+      NavigationBar.setColor({ color: color, darkButtons: true });
     }
   }
 

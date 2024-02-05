@@ -6,6 +6,7 @@ import { ReviewService } from '../services/review.service';
 import { LessonService } from '../services/lesson.service';
 import { Platform } from '@ionic/angular';
 import { SettingService } from '../services/setting.service';
+import { Utils } from '../utils/utils';
 
 @Component({
   selector: 'app-signin',
@@ -25,11 +26,8 @@ export class SignInPage implements OnInit {
   constructor(private authentificationService: AuthentificationService, private router: Router, private settingService: SettingService,
     private reviewService: ReviewService, private lessonService: LessonService, private platform: Platform) { }
 
-  get isOverlay() {
-    return this.settingService.isOverlay;
-  }
-
   ngOnInit() {
+    Utils.customCapacitorLoginSignInPage(this.settingService);
     this.isCapacitor = this.settingService.isCapacitor;
     this.heightContent = this.platform.height() - this.heightLogo - 70;
   }

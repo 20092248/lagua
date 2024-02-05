@@ -4,6 +4,7 @@ import { StatusBar } from '@capacitor/status-bar';
 import { Platform } from '@ionic/angular';
 import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
 import { SettingService } from 'src/app/services/setting.service';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-firstpage-mobile',
@@ -20,17 +21,17 @@ export class FirstpageMobileComponent implements OnInit {
   @Input() isMobile: boolean | undefined;
   @Input() navigationBarEvent: EventEmitter<any> | undefined;
 
-  constructor(private settingsService: SettingService, private platform: Platform, private router: Router) { }
+  constructor(private settingService: SettingService, private platform: Platform, private router: Router) { }
   
   ngOnInit() {
     this.autoplayTimeLeft();
-    this.settingsService.getUserInformation();
+    this.settingService.getUserInformation();
     this.platform.backButton.subscribeWithPriority(10, () => {
       console.log('Handler was called!');
     });
-    NavigationBar.setColor({color: '#74a884', darkButtons: false});
+    Utils.customCapacitorApp(this.settingService);
     this.navigationBarEvent?.subscribe(() => {
-      if(this.settingsService.isCapacitor){
+      if(this.settingService.isCapacitor){
         StatusBar.setBackgroundColor({ color: '#46895c' });
       }
       NavigationBar.setColor({color: '#74a884', darkButtons: false});

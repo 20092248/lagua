@@ -21,7 +21,7 @@ export class LearnPage implements OnInit {
   constructor(private settingService: SettingService, private authentificationService: AuthentificationService) { }
   
   ngOnInit() {
-    NavigationBar.setColor({color: '#46895c', darkButtons: false});
+    Utils.customCapacitorLoginSignInPage(this.settingService);
     this.learn = this.settingService.userInformation?.learn.filter((f: CodeTextTranslate) => f.code !== CONSTANTS.FRENCH_DIALECT);
     this.frenchFlag = this.settingService.userInformation.learn.find((f: CodeTextTranslate) => f.code === CONSTANTS.FRENCH_DIALECT);
   }

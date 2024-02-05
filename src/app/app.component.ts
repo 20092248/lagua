@@ -7,6 +7,8 @@ import { NotificationsService } from './services/notification.service';
 import { LoadingService } from './services/loading.service';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { NavigationBar} from '@mauricewegner/capacitor-navigation-bar';
+import { Utils } from './utils/utils';
+import { SettingService } from './services/setting.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,7 @@ import { NavigationBar} from '@mauricewegner/capacitor-navigation-bar';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private themeService: ThemeService, private platform: Platform, private pushNotificationsService: NotificationsService, private loadingService: LoadingService) {
+  constructor(private themeService: ThemeService, private platform: Platform, private pushNotificationsService: NotificationsService, private loadingService: LoadingService, private settingService: SettingService) {
 
     const value = localStorage.getItem('selected-app-theme');
     this.themeService.setAppTheme(value ? value : 'sunny');
@@ -22,13 +24,7 @@ export class AppComponent {
   }
 
   initializeApp() {
-    if (this.platform.is('capacitor')) { 
-      StatusBar.setOverlaysWebView({overlay: false});
-      StatusBar.setStyle({ style: Style.Dark});
-      StatusBar.setBackgroundColor({ color: '#46895c' });
-      NavigationBar.setColor({color: '#74a884', darkButtons: false});
-      // NavigationBar.setTransparency({ isTransparent: true });
-    }
+    Utils.customCapacitorApp(this.settingService);
     this.pushNotificationsService.initPush();
     this.platform.ready().then(async () => {
       GoogleAuth.initialize();

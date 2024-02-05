@@ -7,6 +7,7 @@ import { AlertService } from '../services/alert.service';
 import { CONSTANTS } from '../utils/constants';
 import { SettingService } from '../services/setting.service';
 import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
+import { Utils } from '../utils/utils';
 
 @Component({
   selector: 'app-login',
@@ -24,12 +25,8 @@ export class LoginPage implements OnInit {
   constructor(private router: Router, private authentificationService: AuthentificationService, private alertService: AlertService, private platform: Platform,
     private settingService: SettingService) { }
 
-  get isOverlay() {
-    return this.settingService.isOverlay;
-  }
-
   ngOnInit() {
-    NavigationBar.setColor({ color: '#46895c', darkButtons: false });
+    Utils.customCapacitorLoginSignInPage(this.settingService);
     this.isCapacitor = this.settingService.isCapacitor;
     this.heightContent = this.platform.height() - this.heightLogo - 80;
   }
