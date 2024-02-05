@@ -22,6 +22,9 @@ export class DetailPage implements OnInit {
   get user() {
     return this.authentificationService.user;
   }
+  get isOverlay(){
+    return this.settingService.isOverlay;
+  }  
   
   ngOnInit() {
     this.isCapacitor = this.settingService.isCapacitor;

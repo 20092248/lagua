@@ -24,6 +24,10 @@ export class LoginPage implements OnInit {
   constructor(private router: Router, private authentificationService: AuthentificationService, private alertService: AlertService, private platform: Platform,
     private settingService: SettingService) { }
 
+  get isOverlay() {
+    return this.settingService.isOverlay;
+  }
+
   ngOnInit() {
     NavigationBar.setColor({ color: '#46895c', darkButtons: false });
     this.isCapacitor = this.settingService.isCapacitor;

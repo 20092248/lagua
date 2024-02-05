@@ -25,6 +25,10 @@ export class SignInPage implements OnInit {
   constructor(private authentificationService: AuthentificationService, private router: Router, private settingService: SettingService,
     private reviewService: ReviewService, private lessonService: LessonService, private platform: Platform) { }
 
+  get isOverlay() {
+    return this.settingService.isOverlay;
+  }
+
   ngOnInit() {
     this.isCapacitor = this.settingService.isCapacitor;
     this.heightContent = this.platform.height() - this.heightLogo - 70;
@@ -45,23 +49,23 @@ export class SignInPage implements OnInit {
   }
 
   signInWithGoogle() {
-      forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(([firstReview, firstLesson]) => {
-        this.authentificationService.signInWithGoogle(firstReview, firstLesson).then((connected: boolean) => {
-          if (connected) {
-            this.router.navigate(['']); //go to home page
-          }
-        });
+    forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(([firstReview, firstLesson]) => {
+      this.authentificationService.signInWithGoogle(firstReview, firstLesson).then((connected: boolean) => {
+        if (connected) {
+          this.router.navigate(['']); //go to home page
+        }
       });
+    });
   }
 
   signInWithFacebook() {
-      forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(([firstReview, firstLesson]) => {
-        this.authentificationService.signinWithFacebook(firstReview, firstLesson).then((connected: boolean) => {
-          if (connected) {
-            this.router.navigate(['']); //go to home page
-          }
-        });
+    forkJoin([this.reviewService.getReview('A1', 1, 1), this.lessonService.getLesson(1)]).subscribe(([firstReview, firstLesson]) => {
+      this.authentificationService.signinWithFacebook(firstReview, firstLesson).then((connected: boolean) => {
+        if (connected) {
+          this.router.navigate(['']); //go to home page
+        }
       });
+    });
   }
 
 }
