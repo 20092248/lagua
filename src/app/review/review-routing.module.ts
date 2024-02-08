@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'modify-review/:id',
     loadChildren: () => import('./modify-review/modify-review.module').then( m => m.ModifyReviewPageModule)
+  },
+  {
+    path: 'modify-category/:id',
+    loadChildren: () => import('./modify-category/modify-category.module').then( m => m.ModifyCategoryPageModule)
   }
 ];
 

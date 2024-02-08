@@ -42,7 +42,8 @@ export class ModifyReviewPage implements OnInit {
   }
 
   addQuestion(index: number) {
-    this.questions.splice(index + 1, 0, this.questions[index]);
+    const question = { ...this.questions[index] };
+    this.questions.splice(index + 1, 0, question);
   }
 
   removeQuestion(index: number) {
