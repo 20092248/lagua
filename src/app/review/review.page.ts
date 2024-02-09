@@ -46,9 +46,9 @@ export class ReviewPage implements OnInit {
   get userDialect() {
     return this.user.dialects[this.dialect];
   }
-  get isOverlay(){
+  get isOverlay() {
     return this.settingsService.isOverlay;
-  }  
+  }
 
   ngOnInit() {
     Utils.customCapacitorTabs(this.settingService);
@@ -87,6 +87,12 @@ export class ReviewPage implements OnInit {
     this.reviewService.getReviewsByCategory(code).then((results: ReviewGroup[]) => {
       this.reviews = results;
     });
+  }
+
+  goTo(routing: string) {
+    if (this.user.email = 'lagua.shikomori@gmail.com') {
+      this.router.navigate([routing + '/' + this.category]);
+    }
   }
 
   accessReview(review: Review) {
