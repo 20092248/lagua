@@ -30,7 +30,11 @@ export class ReviewService {
     this.reviews = [];
     const q = query(collection(getFirestore(), 'reviews'), where('category', '==', category), orderBy('lesson'));
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => this.reviews.push(doc.data() as ReviewGroup));
+    querySnapshot.forEach((doc) => {
+      const rg = doc.data() as ReviewGroup;
+      rg.id = doc.id;
+      this.reviews.push(rg);
+    });
     return this.reviews;
   }
 
@@ -58,6 +62,19 @@ export class ReviewService {
       this.review = reviewInfo['reviews'].find((r: any) => r.order === order) as Review
     });
     return this.review;
+  }
+
+  async updateMenuReview(id: string, reviewGroup: ReviewGroup) {
+    const menuRef = doc(getFirestore(), 'reviews', id);
+    delete reviewGroup.id;
+    await updateDoc(menuRef, {
+      category: reviewGroup.category,
+      title: reviewGroup.title,
+      subtitle: reviewGroup.subtitle,
+      lesson: reviewGroup.lesson,
+      reviews: reviewGroup.reviews
+    });
+    reviewGroup.id = id;
   }
 
   async updateReview(uid: string, category: string, lesson: number, order: number) {

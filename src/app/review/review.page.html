@@ -1,7 +1,7 @@
 <ion-content [scrollEvents]="true" [fullscreen]="true" (ionScroll)="handleScroll($any($event))">
   <div class="subHeader ion-text-center">
     <app-bar-status [isOverlay]="isOverlay"></app-bar-status>
-    <h1 class="headline ion-no-margin">Apprendre <ion-icon name="albums" (click)="goTo('/modify-category')"></ion-icon></h1>
+    <h1 class="headline ion-no-margin">Apprendre <ion-icon name="albums" (click)="goTo('/tabs/review/modify-category')"></ion-icon></h1>
     <p class="subHeadline">{{categorySelected?.label}} ({{categorySelected?.code}}) - {{reviews.length}} leçon(s)</p>
   </div>
   <div id="categories-menu" class="ion-scroll-review" [class.is-pinned]="isPinned">

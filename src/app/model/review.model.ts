@@ -4,6 +4,6 @@ export interface Review {
     lesson: number;
     text: string;
     translate: string;
-    contents: string;
+    contents: string[];
     score: number;
 }
