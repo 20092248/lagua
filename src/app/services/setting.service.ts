@@ -19,7 +19,7 @@ export class SettingService {
   isMobile: boolean;
   isOverlay: boolean;
 
-  constructor(private _firestore: Firestore, private platform: Platform) { 
+  constructor(private _firestore: Firestore, private platform: Platform) {
     this.isCapacitor = this.platform.is('capacitor');
     this.isMobile = this.platform.width() < 820 || this.platform.width() < this.platform.height();
     this.isOverlay = false;
@@ -90,5 +90,10 @@ export class SettingService {
 
   async createDocument(collection: string, document: string, value: any) {
     await setDoc(doc(getFirestore(), collection, document), value);
+  }
+
+  async createDocumentAndGenerateId(col: string, value: any) {
+    const docRef = await addDoc(collection(getFirestore(), col), value);
+    console.log("Document written with ID: ", docRef.id);
   }
 }

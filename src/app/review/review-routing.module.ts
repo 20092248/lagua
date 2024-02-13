@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./add-lesson/add-lesson.module').then( m => m.AddLessonsPageModule)
   },
   {
-    path: 'modify-review/:id',
+    path: 'modify-review/:category/:lesson/:order',
     loadChildren: () => import('./modify-review/modify-review.module').then( m => m.ModifyReviewPageModule)
   },
   {

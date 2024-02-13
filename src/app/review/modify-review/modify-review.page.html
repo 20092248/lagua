@@ -8,36 +8,48 @@
 </ion-header>
 
 <ion-content>
-<div class="ion-border ion-padding-horizontal" *ngFor="let q of questions; let index = index">
-  <h4>Question n°{{index + 1}} <ion-icon class="ion-padding-end" name="add-circle-outline" (click)="addQuestion(index)"></ion-icon><ion-icon name="trash-outline" (click)="removeQuestion(index)"></ion-icon></h4>
   <ion-item>
-    <ion-label>Description</ion-label>
-    <ion-input value="{{q.description}}" [(ngModel)]="q.description"></ion-input>
+    <ion-input placeholder="Categorie" value="{{questionInfo.category}}" [(ngModel)]="questionInfo.category"></ion-input>
+    <ion-input text="number" placeholder="Cours" value="{{questionInfo.lesson}}" [(ngModel)]="questionInfo.lesson"></ion-input>
+    <ion-input text="number" placeholder="Lesson" value="{{questionInfo.order}}" [(ngModel)]="questionInfo.order"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label>Image</ion-label>
-    <ion-input value="{{q.img}}" [(ngModel)]="q.img"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Texte</ion-label>
-    <ion-input value="{{q.text}}" [(ngModel)]="q.text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Traduction</ion-label>
-    <ion-input value="{{q.translate}}" [(ngModel)]="q.translate"></ion-input>
-  </ion-item>
-  <div class="ion-margin-horizontal" *ngFor="let c of q.choices">
+  <div class="ion-border ion-padding-horizontal" *ngFor="let q of questionInfo.qcm?.questions; let index = index">
+    <h4>Question n°{{index + 1}} <ion-icon class="ion-padding-end" name="add-circle-outline"
+        (click)="addQuestion(index)"></ion-icon><ion-icon name="trash-outline"
+        (click)="removeQuestion(index)"></ion-icon></h4>
     <ion-item>
-      <ion-label>Réponse</ion-label>
-      <ion-toggle slot="end" [checked]="c.answer" [(ngModel)]="c.answer"></ion-toggle>
+      <ion-label>Description</ion-label>
+      <ion-input value="{{q.description}}" [(ngModel)]="q.description"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Choix</ion-label>
-      <ion-input value="{{c.choice}}" [(ngModel)]="c.choice"></ion-input>
+      <ion-label>Image</ion-label>
+      <ion-input value="{{q.img}}" [(ngModel)]="q.img"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label>Texte</ion-label>
+      <ion-input value="{{q.text}}" [(ngModel)]="q.text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Traduction</ion-label>
+      <ion-input value="{{q.translate}}" [(ngModel)]="q.translate"></ion-input>
+    </ion-item>
+    <div class="ion-margin-horizontal" *ngFor="let c of q.choices">
+      <ion-item>
+        <ion-label>Réponse</ion-label>
+        <ion-toggle slot="end" [checked]="c.answer" [(ngModel)]="c.answer"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Choix</ion-label>
+        <ion-input value="{{c.choice}}" [(ngModel)]="c.choice"></ion-input>
+      </ion-item>
+    </div>
   </div>
-</div>
-<div class="ion-text-center">
-  <ion-button (click)="saveReview()">VALIDER</ion-button>
-</div>
+  <div class="ion-text-center">
+    <ion-button (click)="saveReview()">VALIDER</ion-button>
+  </div>
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom" *ngIf="user.email === 'lagua.shikomori@gmail.com'">
+    <ion-fab-button color="lagua" (click)="copyReview()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

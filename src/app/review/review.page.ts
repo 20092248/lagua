@@ -128,6 +128,6 @@ export class ReviewPage implements OnInit {
   }
 
   goToModifyReview(category: string, lesson: number, order: number) {
-    this.router.navigate(['/tabs/review/modify-review/' + category + '_' + lesson + '_' + order]);
+    this.router.navigate(['/tabs/review/modify-review/' + category + '/' + lesson + '/' + order]);
   }
 }
