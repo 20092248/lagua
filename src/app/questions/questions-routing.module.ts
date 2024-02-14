@@ -25,6 +25,10 @@ const routes: Routes = [
         loadChildren: () => import('./translate/translate.module').then(m => m.TranslatePageModule)
       },
       {
+        path: 'spell',
+        loadChildren: () => import('./spell/spell.module').then(m => m.SpellPageModule)
+      },
+      {
         path: 'mix',
         loadChildren: () => import('./mix/mix.module').then(m => m.MixPageModule)
       },
