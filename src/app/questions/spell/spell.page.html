@@ -12,7 +12,7 @@
           <ion-card-title class="ion-text-qcm" [ngClass]="{ 'error' : question.text !== response.join('') && displayAnswer, 'success': question.text === response.join('') && displayAnswer }">
             <ion-button size="small" *ngFor="let r of response; let index = index" class="ion-letter-response ion-no-margin" (click)="removeLetter(index)">{{r}}</ion-button>
           </ion-card-title>
-          <ion-card-subtitle [ngStyle]="{'padding-top': response.length ? '3px' : '0px' }">{{question?.translate}}</ion-card-subtitle>
+          <ion-card-subtitle [ngStyle]="{'padding-top': response.length ? '3px' : '0px' }">{{question?.translate}}<span class="ion-response" *ngIf="displayAnswer && secondChance"><br/>Réponse : {{question?.text}}</span></ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
           <small>{{question?.description}}</small>
@@ -23,21 +23,21 @@
   <ion-row class="ion-container-choice ion-align-items-center">
     <ion-col>
       <div class="ion-text-center">
-        <ion-button [disabled]="response.indexOf(letter) !== -1" fill="outline" color="tertiary" class="ion-letter"
-        *ngFor="let letter of letters; let index = index" (click)="addLetter(letter)">{{letter}}</ion-button>
+        <ion-button [disabled]="positions.indexOf(index) !== -1" fill="outline" color="tertiary" class="ion-letter"
+        *ngFor="let letter of letters; let index = index" (click)="addLetter(letter, index)">{{letter}}</ion-button>
       </div>
     </ion-col>
   </ion-row>
 </ion-grid>
 <ion-footer class="ion-no-border">
-  <ion-toolbar [ngClass]="{ 'ion-text-center' : !displayAnswer || answerSelected?.answer || secondChance }">
+  <ion-toolbar [ngClass]="{ 'ion-text-center' : !displayAnswer || secondChance }">
     <ion-button *ngIf="!displayAnswer" [disabled]="!response.length" color="tertiary" class="ion-margin" (click)="validate()">
       Valider
     </ion-button>
-    <ion-button *ngIf="displayAnswer && !secondChance && !answerSelected?.answer" color="danger" class="ion-margin" (click)="tryAgain()">
+    <ion-button *ngIf="displayAnswer && !secondChance" color="danger" class="ion-margin" (click)="tryAgain()">
       Réessayer
     </ion-button>
-    <ion-button *ngIf="displayAnswer" color="lagua" [ngClass]="{ 'ion-float-right' : !answerSelected?.answer && !secondChance }" class="ion-margin" (click)="continue()">
+    <ion-button *ngIf="displayAnswer" color="lagua" [ngClass]="{ 'ion-float-right' : !secondChance }" class="ion-margin" (click)="continue()">
       Continuer
       <!-- <ion-icon slot="end" name="caret-forward-outline"></ion-icon> -->
     </ion-button>

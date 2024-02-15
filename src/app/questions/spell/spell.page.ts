@@ -22,11 +22,10 @@ export class SpellPage implements OnInit {
   nbrQuestion: number = 0;
   displayAnswer: boolean = false;
   secondChance: boolean = false;
-  answerSelected: any | undefined;
-  radio_group: any;
   score: number = 0;
   letters: string[] = [];
   response: string[] = [];
+  positions: number[] = [];
 
   constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService,
     private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) { }
@@ -40,16 +39,14 @@ export class SpellPage implements OnInit {
     this.mixLetter();
   }
 
-  addLetter(letter: any) {
+  addLetter(letter: any, index: number) {
     this.response.push(letter);
+    this.positions.push(index);
   }
 
   removeLetter(index: number) {
     this.response.splice(index, 1);
-  }
-
-  choiceSelected(choice: any) {
-    this.answerSelected = choice;
+    this.positions.splice(index, 1);
   }
 
   mixLetter() {
@@ -77,33 +74,30 @@ export class SpellPage implements OnInit {
     } else {
       this.audioService.play('wrongAnswer');
     }
-    console.log(this.answerSelected);
   }
 
   tryAgain() {
     this.secondChance = true;
     this.displayAnswer = false;
-    this.answerSelected = undefined;
-    this.radio_group = {};
+    this.response = [];
+    this.positions = [];
   }
 
   continue() {
     this.saveScore();
     this.nbrQuestion++;
     this.letters = [];
+    this.response = [];
+    this.positions = [];
     this.questionService.nbrQuestion++;
     this.displayAnswer = false;
     this.secondChance = false;
-    this.answerSelected = undefined;
-    this.radio_group = {};
     if (this.nbrQuestion !== this.questions.length) {
       this.question = this.questions[this.nbrQuestion];
       this.mixLetter();
     } else {
       this.router.navigate(['/questions/result']);
     }
-    // this.questions.push(this.question);
-    // this.questionService.updateQuestion(this.user?.learn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions' , this.user?.review ? this.user.review : '1_1', this.questions).then();
   }
 
   saveScore() {

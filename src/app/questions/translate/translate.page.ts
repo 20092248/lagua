@@ -27,6 +27,7 @@ export class TranslatePage implements OnInit {
   score: number = 0;
   translateSetting: any | undefined;
   response: any[] = [];
+  choices: any[] = [];
 
   constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) { }
 
@@ -37,6 +38,7 @@ export class TranslatePage implements OnInit {
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.qcm?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
+    this.getChoices();
   }
 
   addWord(choice: any, index: number) {
@@ -45,6 +47,18 @@ export class TranslatePage implements OnInit {
 
   removeWord(choice: any, index: number) {
     this.response.splice(index, 1);
+  }
+
+  getChoices(){
+    if(this.question && this.question.choices) {
+      const choices = this.question?.choices as any[];
+      choices.forEach(c => {
+        const e = c?.choice.split(' ');
+        const choicesConcat = this.choices.concat(e);
+        this.choices = choicesConcat.filter((x, i) => choicesConcat.indexOf(x) === i);
+        console.log(this.choices);
+      });
+    }
   }
 
   validate() {
@@ -82,9 +96,11 @@ export class TranslatePage implements OnInit {
     this.secondChance = false;
     this.error = false;
     this.response = [];
+    this.choices = [];
     this.radio_group = {};
     if(this.nbrQuestion !== this.questions.length) {
       this.question = this.questions[this.nbrQuestion];
+      this.getChoices();
     } else {
       this.router.navigate(['/questions/result']);
     }

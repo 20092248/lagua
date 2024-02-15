@@ -97,7 +97,11 @@ export class ReviewPage implements OnInit {
 
   accessReview(review: Review) {
     this.reviewService.review = review;
-    this.router.navigate(['/questions']);
+    if(this.categoryLevel === this.codeCategorySelectedLevel && this.userReview.lesson === review.lesson && this.userReview.order === review.order){
+      console.log('CCC');
+    } else {
+      this.router.navigate(['/questions']);
+    }
   }
 
   handleScroll(ev: CustomEvent<ScrollDetail>) {

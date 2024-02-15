@@ -3,14 +3,14 @@ ion-grid {
   }
   
   ion-row {
-    height: 60%;
+    height: 65%;
     align-content: center;
     justify-content: center;
     align-items: center;
   }
   
   ion-row:first-child {
-    height: 20%;
+    height: 15%;
   }
   
   ion-row:last-child {
@@ -36,7 +36,7 @@ ion-grid {
   
   ion-card {
     max-width: 450px;
-    max-height: 320px;
+    max-height: 350px;
   }
 
   ion-card-header {
@@ -86,8 +86,7 @@ ion-grid {
   }
   
   .ion-text-qcm {
-    display: inline-flex;
-    justify-content: center;
+    display: block;
     min-width: 75%;
     border-radius: 4px 4px 0px 0px;
     background-color: rgb(244, 244, 246);
@@ -97,4 +96,9 @@ ion-grid {
     border-image: initial;
     padding: 3px;
     min-height: 40px;
+  }
+
+  .ion-response {
+    font-weight: bold;
+    color: #27a132;
   }
