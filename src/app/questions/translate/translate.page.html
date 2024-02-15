@@ -3,10 +3,13 @@
     <ion-col>
       <h3>Traduisez la phrase</h3>
       <div class="ion-translate">
-        <img width="30" src="{{translateSetting?.playSrc}}"/>
+        <img *ngIf="translateSetting?.playSrc" width="30" src="{{translateSetting?.playSrc}}"/>
         <ion-text class="ion-padding-start"><span class="ion-translate-text">{{question?.translate}}</span><span *ngIf="question?.description"><i> - {{question?.description}}</i></span></ion-text>
       </div>
-      </ion-col>
+      <div class="ion-translate ion-padding-start" [ngClass]="{'ion-margin-start-2' : translateSetting?.playSrc}">
+        <ion-text class="ion-response" *ngIf="displayAnswer && secondChance"><i>Réponse : {{question?.text}}</i></ion-text>
+      </div>
+    </ion-col>
   </ion-row>
   <ion-row class="ion-container-response">
     <ion-col>
