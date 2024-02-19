@@ -41,16 +41,18 @@ export class TranslatePage implements OnInit {
     this.getChoices();
   }
 
-  addWord(choice: any, index: number) {
+  addWord(choice: any) {
     this.response.push(choice);
   }
 
-  removeWord(choice: any, index: number) {
-    this.response.splice(index, 1);
+  removeWord(index: number) {
+    if (!this.displayAnswer) {
+      this.response.splice(index, 1);
+    }
   }
 
-  getChoices(){
-    if(this.question && this.question.choices) {
+  getChoices() {
+    if (this.question && this.question.choices) {
       const choices = this.question?.choices as any[];
       choices.forEach(c => {
         const e = c?.choice.split(' ');
@@ -66,9 +68,9 @@ export class TranslatePage implements OnInit {
     this.displayAnswer = true;
     const goodAnswer = this.question.choices?.find((q: any) => q.answer);
     const myAnswer = this.response?.join(' ');
-    if(myAnswer && goodAnswer && myAnswer === goodAnswer?.choice){
+    if (myAnswer && goodAnswer && myAnswer === goodAnswer?.choice) {
       this.audioService.play('rightAnswer');
-      if(!this.secondChance){
+      if (!this.secondChance) {
         this.score = 10;
       } else {
         this.score = 5;
@@ -98,7 +100,7 @@ export class TranslatePage implements OnInit {
     this.response = [];
     this.choices = [];
     this.radio_group = {};
-    if(this.nbrQuestion !== this.questions.length) {
+    if (this.nbrQuestion !== this.questions.length) {
       this.question = this.questions[this.nbrQuestion];
       this.getChoices();
     } else {
@@ -109,11 +111,11 @@ export class TranslatePage implements OnInit {
   }
 
   saveScore() {
-    if(this.score === 10) {
+    if (this.score === 10) {
       const learned = this.question?.text;
       this.reviewService.resultReview.score += 10;
       this.reviewService.resultReview.learned.push(learned);
-    } else if(this.score === 5) {
+    } else if (this.score === 5) {
       const toLearn = this.question?.text;
       this.reviewService.resultReview.score += 5;
       this.reviewService.resultReview.toLearn.push(toLearn);

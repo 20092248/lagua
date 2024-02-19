@@ -45,8 +45,10 @@ export class SpellPage implements OnInit {
   }
 
   removeLetter(index: number) {
-    this.response.splice(index, 1);
-    this.positions.splice(index, 1);
+    if(!this.displayAnswer){
+      this.response.splice(index, 1);
+      this.positions.splice(index, 1);
+    }
   }
 
   mixLetter() {
