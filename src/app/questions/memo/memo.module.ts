@@ -15,6 +15,7 @@ import { MemoPage } from './memo.page';
     IonicModule,
     MemoPageRoutingModule
   ],
-  declarations: [MemoPage]
+  declarations: [MemoPage],
+  exports: [MemoPage]
 })
 export class MemoPageModule {}

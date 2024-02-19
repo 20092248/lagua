@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { AudioService } from 'src/app/services/audio.service';
@@ -28,6 +28,8 @@ export class TranslatePage implements OnInit {
   translateSetting: any | undefined;
   response: any[] = [];
   choices: any[] = [];
+  @Output()
+  nextQuestionEvent: EventEmitter<any> = new EventEmitter();
 
   constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) { }
 
@@ -103,6 +105,7 @@ export class TranslatePage implements OnInit {
     if (this.nbrQuestion !== this.questions.length) {
       this.question = this.questions[this.nbrQuestion];
       this.getChoices();
+      this.nextQuestionEvent.emit();
     } else {
       this.router.navigate(['/questions/result']);
     }

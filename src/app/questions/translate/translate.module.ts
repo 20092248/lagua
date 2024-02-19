@@ -15,6 +15,7 @@ import { TranslatePage } from './translate.page';
     IonicModule,
     TranslatePageRoutingModule
   ],
-  declarations: [TranslatePage]
+  declarations: [TranslatePage],
+  exports: [TranslatePage]
 })
 export class TranslatePageModule {}

@@ -33,7 +33,7 @@ export class MixPage implements OnInit {
   response: any[] = [];
 
   constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) {
-    this.typeDisplay = 0; //Math.floor(Math.random() * 3);
+    this.typeDisplay = Math.floor(Math.random() * 4);
   }
 
   ngOnInit() {
@@ -60,11 +60,12 @@ export class MixPage implements OnInit {
 
   nextQuestion(event: any) {
     console.log(event);
+    this.typeDisplay = Math.floor(Math.random() * 4);
   }
 
   //memo
   isCorrect(response: boolean) {
-    this.typeDisplay = Math.floor(Math.random() * 3);
+    this.typeDisplay = Math.floor(Math.random() * 4);
     this.correct = response ? 'success' : 'danger';
     this.saveScore(response);
     setTimeout(() => {
@@ -177,7 +178,7 @@ export class MixPage implements OnInit {
     } else {
       this.router.navigate(['/questions/result']);
     }
-    this.typeDisplay = Math.floor(Math.random() * 3);
+    this.typeDisplay = Math.floor(Math.random() * 4);
     Utils.customCapacitorQuestion(this.settingService, this.typeDisplay ? '#eef1ee' : '#ffffff');
   }
 

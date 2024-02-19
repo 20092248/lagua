@@ -15,6 +15,7 @@ import { SpellPage } from './spell.page';
     IonicModule,
     SpellPageRoutingModule
   ],
-  declarations: [SpellPage]
+  declarations: [SpellPage],
+  exports: [SpellPage]
 })
 export class SpellPageModule {}

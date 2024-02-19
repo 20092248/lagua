@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { AudioService } from 'src/app/services/audio.service';
@@ -23,6 +23,7 @@ export class MemoPage implements OnInit {
   answerSelected: any | undefined;
   radio_group: any;
   isOpen: boolean = false;
+  @Output()
   nextQuestionEvent: EventEmitter<any> = new EventEmitter();
 
   constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService) { }

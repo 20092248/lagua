@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { AudioService } from 'src/app/services/audio.service';
@@ -25,6 +25,7 @@ export class QcmPage implements OnInit {
   answerSelected: any | undefined;
   radio_group: any;
   score: number = 0;
+  nextQuestionEvent: EventEmitter<any> = new EventEmitter();
 
   constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService,
     private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) { }
@@ -74,6 +75,7 @@ export class QcmPage implements OnInit {
     this.radio_group = {};
     if (this.nbrQuestion !== this.questions.length) {
       this.question = this.questions[this.nbrQuestion];
+      this.nextQuestionEvent.emit();
     } else {
       this.router.navigate(['/questions/result']);
     }
