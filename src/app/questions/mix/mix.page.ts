@@ -33,7 +33,7 @@ export class MixPage implements OnInit {
   response: any[] = [];
 
   constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) {
-    this.typeDisplay = Math.floor(Math.random() * 3);
+    this.typeDisplay = 0; //Math.floor(Math.random() * 3);
   }
 
   ngOnInit() {
@@ -56,6 +56,10 @@ export class MixPage implements OnInit {
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.qcm?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
+  }
+
+  nextQuestion(event: any) {
+    console.log(event);
   }
 
   //memo

@@ -1,5 +1,6 @@
 <!-- MEMO -->
-<ion-grid *ngIf="typeDisplay === 0" class="ion-memo ion-text-center">
+<app-memo *ngIf="typeDisplay === 0" (nextQuestionEvent)="nextQuestion($event)"></app-memo>
+<!-- <ion-grid *ngIf="typeDisplay === 0" class="ion-memo ion-text-center">
   <ion-row>
     <ion-col>
       <h5>Comment dites-vous cela en comorien ?</h5>
@@ -37,10 +38,11 @@
       </div>
     </ion-col>
   </ion-row>
-</ion-grid>
+</ion-grid> -->
 
 <!-- QCM -->
-<ion-grid *ngIf="typeDisplay === 1" class="ion-qcm ion-text-center">
+<app-qcm *ngIf="typeDisplay === 1"></app-qcm>
+<!-- <ion-grid *ngIf="typeDisplay === 1" class="ion-qcm ion-text-center">
   <ion-row>
     <ion-col>
       <h5>Complétez les espaces vides</h5>
@@ -90,13 +92,13 @@
       [ngClass]="{ 'ion-float-right' : !answerSelected?.answer && !secondChance }" class="ion-margin"
       (click)="continue()">
       Continuer
-      <!-- <ion-icon slot="end" name="caret-forward-outline"></ion-icon> -->
     </ion-button>
   </ion-toolbar>
-</ion-footer>
+</ion-footer> -->
 
 <!-- TRANSLATE -->
-<ion-grid class="ion-translate" *ngIf="typeDisplay === 2">
+<app-translate *ngIf="typeDisplay === 2"></app-translate>
+<!-- <ion-grid class="ion-translate" *ngIf="typeDisplay === 2">
   <ion-row class="ion-container-translate">
     <ion-col>
       <h3>Traduisez la phrase</h3>
@@ -138,7 +140,6 @@
     <ion-button *ngIf="displayAnswer" color="lagua" [ngClass]="{ 'ion-float-right' : error && !secondChance }"
       class="ion-margin" (click)="continue()">
       Continuer
-      <!-- <ion-icon slot="end" name="caret-forward-outline"></ion-icon> -->
     </ion-button>
   </ion-toolbar>
-</ion-footer>
+</ion-footer> -->

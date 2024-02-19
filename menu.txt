@@ -61,6 +61,10 @@ Exprime les possibles monnaies
 Le pluriel des noms
 Apprends à former le pluriel des noms
 
+Prononciation: read or lead
+Révise les sons /b/ et /ɓ/ dans des mots comoriens courants
+Révise les sons /d/ et /ɗ/ dans des mots comoriens courants
+
 
 Commander une collation
 Commande à boire et à manger dans un restaurant
@@ -120,11 +124,14 @@ Checkpoint
 Teste tes connaissances pour accéder au prochain chapitre
 
 
-Chapitre Accord des classes 1er partie
-Accorde avec les pré-préfiexs
-Accorde avec les adjectifs
+Chapitre Le système nominal
+les classes nominales 1er partie
+Comprendre les classes nominales de 1 à 6
 
-Chapitre 
+Chapitre Le système nominal
+les classes nominales 2e partie
+Comprendre les classes nominales de 7 à 18
+ 
 
 Accord des classes 1er partie
 Accorde avec les pré-préfiexs
@@ -196,12 +203,13 @@ Connaitre le suffixe pour le relatif présent
 Exemple de phrase
 
 
+
 Les pronoms présentatifs
 Aprendre les pronoms présentitafs à la 1er et 2e personne 
 
 
 
-_________________________________________
+_______________________________________________________
 
 
 
@@ -218,9 +226,6 @@ Parle d’aliments et de quantités
 
 Les quantificateurs
 Apprends à exprimer des quantités
-
-Prononciation : sheep or ship
-Révise les voyelles longues dans des mots anglais courants
 
 Aller dans une boutique
 Recherche des objets dans un rayon
@@ -257,8 +262,49 @@ Checkpoint
 Teste tes connaissances pour accéder au prochain chapitre
 
 
+Chapitre 8 Bis : Le système verbal
 
+Les préfixes verbaux
+Apprendre les pré-préfixes verbaux (ppv)
+Comprendre les préfixes verbaux (PV)
 
+Le relateur et les aspecto-temporel
+Comprendre le relateur (-a)
+Apprendre les marques de l'aspect et du temps
+
+Les auxiliatifs 1er partie
+Apprendre l'idée de répétition
+Apprendre l'action verbal qui doit précéder une autre.
+Apprendre l'idée de venir faire l'action indiquée par le verbe.
+Apprendre l'action simultanée ou d'une petite durée
+
+Les auxiliatifs 2e partie
+
+Faire l'action indiquée parle verbe s'employant à l'accompli.
+Apprendre l'idée de simultanée, mais de façon durative, répétitive.
+Indique le risque encouru en accomplissant une action donnée.
+
+Les auxiliatifs 3e partie
+Evoque l'idée d'aller faire l'action indiquée par le verbe.
+Accomplir l'action indiquée par le verbe s'employant exclusivement avec l'habituel
+Déclencher immédiatement une autre action.
+
+Les infixes-objets
+Comprendre les infixes-objets
+
+Les extensions 1er partie
+Comprendre l'applicatif
+Comprendre le moyen-neutre
+Comprendre le causatif
+
+Les extensions 2e partie
+Comprendre le passif
+Comprendre l'associatif ou le réciproque'
+
+Les suffixes et post-suffixes verbaux
+Utilise les suffixes verbaux
+
+_______________________________________________________
 
 
 Chapitre 9 : Le temps et l’argent
@@ -268,9 +314,6 @@ Expressions utiles pour le shopping
 
 Demander des prix
 Quelques expressions utiles pour faire des courses et demander des prix 
-
-S’entraîner à utiliser des démonstratifs
-Apprends à utiliser « this », « that », « these », « those »
 
 Donner l’heure
 Précise le moment de la journée
@@ -284,9 +327,6 @@ Parle de différents moments dans le temps
 Révision
 Une petite révision des leçons vues récemment
 
-Décrire des personnes
-Regarde une vidéo sur l’apparence physique
-
 Développer tes compétences orales et écrites
 Entraîne-toi à communiquer dans une boutique
 
@@ -299,17 +339,11 @@ Chapitre 10 : Famille
 Parler de la famille
 Décris ta famille proche
 
-Le verbe « to have »
-Utilise le verbe « to have »
-
 Parler d’autres membres de la famille
 Décris plus précisément ta famille
 
 Développer tes compétences orales et écrites
 Discute avec des locuteurs anglophones
-
-Prononciation: coat, though, go
-Révise le son /oʊ/ dans des mots anglais courants
 
 Adjectifs possessifs
 Exprime la possession
@@ -338,9 +372,6 @@ Apprends les nombres de 20 à 100
 Parler de la vie quotidienne
 Parle des activités au travail et à la maison
 
-Le present continuous
-Apprends à utiliser le present continuous
-
 Se préparer pour le travail
 Regarde une vidéo sur la préparation avant d’aller travailler
 
@@ -349,9 +380,6 @@ Parle d’objets personnels essentiels
 
 Révision
 Une petite révision des leçons vues récemment
-
-Développer tes compétences orales et écrites
-S’entraîner à former et à utiliser le present continuous
 
 Checkpoint
 Teste tes connaissances pour accéder au prochain chapitre
@@ -366,10 +394,7 @@ Parler de son temps libre
 Décris le lieu où tu vas après le travail
 
 Décrire un week-end typique
-Utilise des mots comme « usually » pour parler de projets pour le week-end
-
-Améliore ta maîtrise
-Discute avec des locuteurs anglophones
+Utilise des mots fréquent pour parler de projets pour le week-end
 
 Checkpoint
 Teste tes connaissances pour accéder au prochain chapitre
@@ -420,13 +445,14 @@ Teste tes connaissances pour accéder au prochain chapitre
 Chapitre 15 : Free time
 
 Découvrir le sport
-Parle de sports avec « to play », « to do », « to go »
+Parle de sports
 
-Former des questions avec les mots en « wh »
+Former des questions avec les mots interrogatifs
 Apprends à poser des questions
 
 Prononciation: read or lead
-Révise les sons /r/ et /l/ dans des mots anglais courants
+Révise les sons /b/ et /ɓ/ dans des mots comoriens courants
+Révise les sons /d/ et /ɗ/ dans des mots comoriens courants
 
 Développer tes compétences orales et écrites
 Entraîne-toi à parler de sports
@@ -441,16 +467,16 @@ Teste tes connaissances pour accéder au prochain chapitre
 Chapitre 16 : Le week-end
 
 Parler de la journée
-Réponds à la question « How was your day? »
+Réponds à la question « Comment était ton week end? »
 
-Past simple - Le verbe « to be »
-Utilise le past simple
+Le passé - Le verbe être
+Utilise le passé
 
-Parler du temps qu’il fait
-Décris le temps qu’il fait en utilisant past simple
+Parler du temps qu’il faisait
+Décris le temps qu’il faisait en utilisant passé
 
 Améliore ta maîtrise
-Revois le past simple
+Revois le passé
 
 Faire des comparaisons
 Utilise les adjectifs comparatifs
@@ -463,6 +489,15 @@ Utilise le présent pour parler de l’avenir
 
 Améliore ta maîtrise
 Entraîne-toi à parler de projets pour le week-end
+
+
+
+
+
+
+
+
+
 
 Niveau A2 Débutant
 
