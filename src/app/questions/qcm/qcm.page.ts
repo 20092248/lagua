@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { AudioService } from 'src/app/services/audio.service';
@@ -19,20 +19,23 @@ export class QcmPage implements OnInit {
   user: User | undefined;
   questions: any[] = [];
   question: any;
-  nbrQuestion: number = 0;
   displayAnswer: boolean = false;
   secondChance: boolean = false;
   answerSelected: any | undefined;
   radio_group: any;
   score: number = 0;
+  @Output()
   nextQuestionEvent: EventEmitter<any> = new EventEmitter();
 
   constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService,
     private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) { }
 
+  get nbrQuestion() {
+    return this.questionService.nbrQuestion;
+  }  
+
   ngOnInit() {
     Utils.customCapacitorQuestion(this.settingService, '#ffffff');
-    this.questionService.nbrQuestion = this.nbrQuestion;
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.qcm?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
@@ -67,7 +70,6 @@ export class QcmPage implements OnInit {
 
   continue() {
     this.saveScore();
-    this.nbrQuestion++;
     this.questionService.nbrQuestion++;
     this.displayAnswer = false;
     this.secondChance = false;
@@ -75,7 +77,7 @@ export class QcmPage implements OnInit {
     this.radio_group = {};
     if (this.nbrQuestion !== this.questions.length) {
       this.question = this.questions[this.nbrQuestion];
-      this.nextQuestionEvent.emit();
+      this.nextQuestionEvent.emit(Math.floor(Math.random() * 4));
     } else {
       this.router.navigate(['/questions/result']);
     }

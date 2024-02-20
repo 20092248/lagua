@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Question } from 'src/app/model/question.model';
 import { User } from 'src/app/model/user.model';
 import { AudioService } from 'src/app/services/audio.service';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { QuestionService } from 'src/app/services/question.service';
 import { ReviewService } from 'src/app/services/review.service';
 import { SettingService } from 'src/app/services/setting.service';
+import { CONSTANTS } from 'src/app/utils/constants';
 import { Utils } from 'src/app/utils/utils';
 
 @Component({
@@ -15,180 +17,36 @@ import { Utils } from 'src/app/utils/utils';
 })
 export class MixPage implements OnInit {
 
-  typeDisplay: number;
-  translate: string = 'francais';
-  user: User | undefined;
-  questions: any[] = [];
-  question: any;
-  nbrQuestion: number = 0;
-  displayAnswer: boolean = false;
-  correct: string | undefined;
-  answerSelected: any | undefined;
-  radio_group: any;
-  isOpen: boolean = false;
-  score: number = 0;
-  secondChance: boolean = false;
-  error: boolean = false;
-  translateSetting: any | undefined;
-  response: any[] = [];
+  typeDisplay: string;
+  newReview: boolean = false;
 
-  constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) {
-    this.typeDisplay = Math.floor(Math.random() * 4);
+  constructor(private router: Router, private route: ActivatedRoute, private questionService: QuestionService, private settingService: SettingService) {
+    this.typeDisplay = CONSTANTS.transcodeTypeQuestion[Math.floor(Math.random() * 4)];
+    this.route.queryParams.subscribe(() => {
+      if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation()?.extras?.state) {
+        this.newReview = this.router.getCurrentNavigation()?.extras?.state?.['newReview'];
+        this.typeDisplay = this.questions[this.nbrQuestion].type;
+      }
+    });
+  }
+
+  get questions() {
+    return this.questionService.questions?.qcm?.questions;
+  }
+  get nbrQuestion() {
+    return this.questionService.nbrQuestion;
   }
 
   ngOnInit() {
-    Utils.customCapacitorQuestion(this.settingService,  '#ffffff');
-    //memo
-    this.user = this.authentificationService.user;
-    this.questions = this.questionService.questions?.qcm?.questions;
-    this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
-    setTimeout(() => { this.isOpen = true }, 2000);
-
-    //qcm
-    this.questionService.nbrQuestion = this.nbrQuestion;
-    this.user = this.authentificationService.user;
-    this.questions = this.questionService.questions?.qcm?.questions;
-    this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
-
-    //translate
-    this.questionService.nbrQuestion = this.nbrQuestion;
-    this.translateSetting = this.settingService.questions?.translate;
-    this.user = this.authentificationService.user;
-    this.questions = this.questionService.questions?.qcm?.questions;
-    this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
+    Utils.customCapacitorQuestion(this.settingService, '#ffffff');
   }
 
-  nextQuestion(event: any) {
-    console.log(event);
-    this.typeDisplay = Math.floor(Math.random() * 4);
-  }
-
-  //memo
-  isCorrect(response: boolean) {
-    this.typeDisplay = Math.floor(Math.random() * 4);
-    this.correct = response ? 'success' : 'danger';
-    this.saveScore(response);
-    setTimeout(() => {
-      this.isOpen = false;
-      this.answerSelected = undefined;
-      this.displayAnswer = false;
-      this.correct = undefined;
-      this.nbrQuestion++;
-      this.questionService.nbrQuestion++;
-      if (this.nbrQuestion !== this.questions.length) {
-        this.question = this.questions[this.nbrQuestion];
-        setTimeout(() => { this.isOpen = true }, 2000);
-      } else {
-        this.router.navigate(['/questions/result']);
-      }
-    }, 1000);
-  }
-
-  saveScore(response: boolean) {
-    if (this.typeDisplay === 0) { //memo
-      if (response) {
-        this.audioService.play('rightAnswer');
-        const learned = this.question?.text;
-        this.reviewService.resultReview.score += 10;
-        this.reviewService.resultReview.learned.push(learned);
-      } else {
-        this.audioService.play('wrongAnswer');
-        const toRevise = this.question?.text;
-        this.reviewService.resultReview.toRevise.push(toRevise);
-      }
-      this.reviewService.resultReview.nbrQuestion++;
-    }
-    else if (this.typeDisplay === 1 || this.typeDisplay === 2) { //qcm or translate
-      if (this.score === 10) {
-        const learned = this.question?.text;
-        this.reviewService.resultReview.score += 10;
-        this.reviewService.resultReview.learned.push(learned);
-      } else if (this.score === 5) {
-        const toLearn = this.question?.text;
-        this.reviewService.resultReview.score += 5;
-        this.reviewService.resultReview.toLearn.push(toLearn);
-      } else {
-        const toRevise = this.question?.text;
-        this.reviewService.resultReview.toRevise.push(toRevise);
-      }
-      this.reviewService.resultReview.nbrQuestion++;
-    }
-  }
-
-  //qcm
-  choiceSelected(choice: any) {
-    this.answerSelected = choice;
-  }
-
-  validate() {
-    if (this.typeDisplay === 1) { //qcm
-      this.score = 0;
-      this.displayAnswer = true;
-      if (this.answerSelected && this.answerSelected.answer) {
-        this.audioService.play('rightAnswer');
-        if (!this.secondChance) {
-          this.score = 10;
-        } else {
-          this.score = 5;
-        }
-      } else {
-        this.audioService.play('wrongAnswer');
-      }
-      console.log(this.answerSelected);
-    } else if (this.typeDisplay === 2) { //translate
-      this.score = 0;
-      this.displayAnswer = true;
-      const goodAnswer = this.question.choices?.find((q: any) => q.answer);
-      const myAnswer = this.response?.join(' ');
-      if (myAnswer && goodAnswer && myAnswer === goodAnswer?.choice) {
-        this.audioService.play('rightAnswer');
-        if (!this.secondChance) {
-          this.score = 10;
-        } else {
-          this.score = 5;
-        }
-      } else {
-        this.audioService.play('wrongAnswer');
-        this.error = true;
-      }
-      console.log(this.response);
-    }
-  }
-
-  tryAgain() {
-    this.secondChance = true;
-    this.displayAnswer = false;
-    this.displayAnswer = false;
-    this.error = false;
-    this.answerSelected = undefined;
-    this.response = [];
-    this.radio_group = {};
-  }
-
-  continue() {
-    this.saveScore(false);
-    this.nbrQuestion++;
-    this.questionService.nbrQuestion++;
-    this.displayAnswer = false;
-    this.secondChance = false;
-    this.answerSelected = undefined;
-    this.radio_group = {};
-    if (this.nbrQuestion !== this.questions.length) {
-      this.question = this.questions[this.nbrQuestion];
+  nextQuestion(random: any) {
+    if (this.newReview) {
+      this.typeDisplay = this.questions[this.nbrQuestion].type;
     } else {
-      this.router.navigate(['/questions/result']);
+      this.typeDisplay = CONSTANTS.transcodeTypeQuestion[random]; //Math.floor(Math.random() * 4);
     }
-    this.typeDisplay = Math.floor(Math.random() * 4);
-    Utils.customCapacitorQuestion(this.settingService, this.typeDisplay ? '#eef1ee' : '#ffffff');
-  }
-
-  //translate
-  addWord(choice: any, index: number) {
-    this.response.push(choice);
-  }
-
-  removeWord(choice: any, index: number) {
-    this.response.splice(index, 1);
   }
 
 }

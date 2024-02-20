@@ -1,11 +1,11 @@
 <!-- MEMO -->
-<app-memo *ngIf="typeDisplay === 0" (nextQuestionEvent)="nextQuestion($event)"></app-memo>
+<app-memo class="ion-page" *ngIf="typeDisplay === 'C'" (nextQuestionEvent)="nextQuestion($event)"></app-memo>
 
 <!-- QCM -->
-<app-qcm *ngIf="typeDisplay === 1" (nextQuestionEvent)="nextQuestion($event)"></app-qcm>
+<app-qcm class="ion-page" *ngIf="typeDisplay === 'Q'" (nextQuestionEvent)="nextQuestion($event)"></app-qcm>
 
 <!-- TRANSLATE -->
-<app-translate *ngIf="typeDisplay === 2" (nextQuestionEvent)="nextQuestion($event)"></app-translate>
+<app-translate class="ion-page" *ngIf="typeDisplay === 'T'" (nextQuestionEvent)="nextQuestion($event)"></app-translate>
 
 <!-- SPELL -->
-<app-spell *ngIf="typeDisplay === 3" (nextQuestionEvent)="nextQuestion($event)"></app-spell>
+<app-spell class="ion-page" *ngIf="typeDisplay === 'E'" (nextQuestionEvent)="nextQuestion($event)"></app-spell>

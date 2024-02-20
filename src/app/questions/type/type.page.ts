@@ -37,10 +37,7 @@ export class TypePage implements OnInit {
       this.types = data?.types;
     }));
     this.getInfoReview();
-    this.audioService.preload('rightAnswer', 'assets/audio/correct-choice.mp3');
-    this.audioService.preload('wrongAnswer', 'assets/audio/wrong-choice.mp3');
-    this.audioService.preload('successReview', 'assets/audio/success-review.mp3');
-    this.audioService.preload('failReview', 'assets/audio/fail-review.mp3');
+    Utils.preloadAudio(this.audioService);
   }
 
   typeSelected(code: string) {

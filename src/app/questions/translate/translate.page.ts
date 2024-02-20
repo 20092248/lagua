@@ -19,7 +19,6 @@ export class TranslatePage implements OnInit {
   user: User | undefined;
   questions: any[] = [];
   question: any;
-  nbrQuestion: number = 0;
   displayAnswer: boolean = false;
   secondChance: boolean = false;
   error: boolean = false;
@@ -33,9 +32,12 @@ export class TranslatePage implements OnInit {
 
   constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) { }
 
+  get nbrQuestion() {
+    return this.questionService.nbrQuestion;
+  } 
+
   ngOnInit() {
     Utils.customCapacitorQuestion(this.settingService, '#ffffff');
-    this.questionService.nbrQuestion = this.nbrQuestion;
     this.translateSetting = this.settingService.questions?.translate;
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.qcm?.questions;
@@ -94,7 +96,6 @@ export class TranslatePage implements OnInit {
 
   continue() {
     this.saveScore();
-    this.nbrQuestion++;
     this.questionService.nbrQuestion++;
     this.displayAnswer = false;
     this.secondChance = false;
@@ -105,7 +106,7 @@ export class TranslatePage implements OnInit {
     if (this.nbrQuestion !== this.questions.length) {
       this.question = this.questions[this.nbrQuestion];
       this.getChoices();
-      this.nextQuestionEvent.emit();
+      this.nextQuestionEvent.emit(Math.floor(Math.random() * 4));
     } else {
       this.router.navigate(['/questions/result']);
     }

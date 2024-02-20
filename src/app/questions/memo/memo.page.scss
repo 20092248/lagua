@@ -1,132 +1,133 @@
 ion-grid {
-    height: 100%;
-  }
-  
-  ion-row {
-    height: 50%;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  ion-row:first-child {
-    height: 20%;
-  }
-  
-  ion-row:last-child {
-    height: 30%;
-    align-content: center;
-  }
-  
-  ion-list {
-    background: transparent;
-  }
-  
-  ion-item {
-    --background: transparent;
-  }
-  
-  ion-item.error {
-    --border-color: #eb445a;
-  }
-  
-  ion-item.success {
-    --border-color: #27a132;
-  }
+  height: 100%;
+}
 
-  ion-card-title {
-    font-size: 24px;
-  }
+ion-row {
+  height: 50%;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
 
-  .ion-subtitle {
-    font-size: 16px;
-  }
-  
-  ion-card {
-    max-width: 450px;
-    max-height: 350px;
-  }
+ion-row:first-child {
+  height: 20%;
+}
 
-  img.ion-image-card {
-    max-height: 300px;
-  }
-  
-  ion-radio::part(container) {
-    border-radius: 8px;
-    border: 2px solid #ddd;
-  }
-  
-  ion-radio::part(mark) {
-    background: none;
-    transition: none;
-    transform: none;
-    border-radius: 0;
-  }
-  
-  ion-radio.radio-checked::part(container) {
-    background: #27a132;
-    border-color: transparent;
-  }
-  
-  ion-radio.radio-checked.ion-error::part(container) {
-    background: #eb445a;
-    border-color: transparent;
-  }
-  
-  ion-radio.radio-checked::part(mark) {
-    width: 6px;
-    height: 10px;
-  
-    border-width: 0px 2px 2px 0px;
-    border-style: solid;
-    border-color: #fff;
-  
-    transform: rotate(45deg);
-  }
-  
+ion-row:last-child {
+  height: 30%;
+  align-content: center;
+}
+
+ion-list {
+  background: transparent;
+}
+
+ion-item {
+  --background: transparent;
+}
+
+ion-item.error {
+  --border-color: #eb445a;
+}
+
+ion-item.success {
+  --border-color: #27a132;
+}
+
+ion-card-title {
+  font-size: 24px;
+}
+
+.ion-subtitle {
+  font-size: 16px;
+}
+
+ion-card {
+  max-width: 450px;
+  max-height: 400px;
+  margin: auto;
+}
+
+img.ion-image-card {
+  max-height: 300px;
+}
+
+ion-radio::part(container) {
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
+ion-radio::part(mark) {
+  background: none;
+  transition: none;
+  transform: none;
+  border-radius: 0;
+}
+
+ion-radio.radio-checked::part(container) {
+  background: #27a132;
+  border-color: transparent;
+}
+
+ion-radio.radio-checked.ion-error::part(container) {
+  background: #eb445a;
+  border-color: transparent;
+}
+
+ion-radio.radio-checked::part(mark) {
+  width: 6px;
+  height: 10px;
+
+  border-width: 0px 2px 2px 0px;
+  border-style: solid;
+  border-color: #fff;
+
+  transform: rotate(45deg);
+}
+
 .ion-text-qcm {
-    display: inline-block;
-    min-width: 50%;
-    border-radius: 4px 4px 0px 0px;
-    background-color: rgb(244, 244, 246);
-    border-width: 1px 1px 2px;
-    border-style: solid;
-    border-color: rgb(233, 234, 237) rgb(233, 234, 237) rgb(76, 180, 80);
-    border-image: initial;
-    padding: 3px;
-    min-height: 35px;
+  display: inline-block;
+  min-width: 50%;
+  border-radius: 4px 4px 0px 0px;
+  background-color: rgb(244, 244, 246);
+  border-width: 1px 1px 2px;
+  border-style: solid;
+  border-color: rgb(233, 234, 237) rgb(233, 234, 237) rgb(76, 180, 80);
+  border-image: initial;
+  padding: 3px;
+  min-height: 35px;
 }
 
 .ion-popover {
-    position: absolute;
-    padding: 0.5rem 0.75rem;
-    background: rgb(255, 255, 255);
-    border-radius: 0.25rem;
-    border: 1px solid rgb(211, 212, 217);
-    box-shadow: rgba(40, 75, 124, 0.15) 0px 2px 10px;
-    text-shadow: none;
-    z-index: 50;
-    width: max-content;
-    white-space: normal;
-    max-width: 15.875rem;
-    left: 50%;
-    bottom: 15px;
-    transform: translate(-50%, calc(100% + 0.75rem));
-    font-size: 14px;
+  position: absolute;
+  padding: 0.5rem 0.75rem;
+  background: rgb(255, 255, 255);
+  border-radius: 0.25rem;
+  border: 1px solid rgb(211, 212, 217);
+  box-shadow: rgba(40, 75, 124, 0.15) 0px 2px 10px;
+  text-shadow: none;
+  z-index: 50;
+  width: max-content;
+  white-space: normal;
+  max-width: 15.875rem;
+  left: 50%;
+  bottom: 15px;
+  transform: translate(-50%, calc(100% + 0.75rem));
+  font-size: 14px;
 }
 
 div.ion-popover::before {
-    position: absolute;
-    content: " ";
-    width: 0.75rem;
-    height: 0.75rem;
-    background-color: rgb(255, 255, 255);
-    border-width: 1px;
-    border-right-style: solid;
-    border-bottom-style: solid;
-    border-color: rgb(211, 212, 217);
-    transform-origin: center center;
-    transform: translateY(-50%) rotate(225deg);
-    left: calc(50% - 0.375rem);
-    top: -1px;
+  position: absolute;
+  content: " ";
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: rgb(255, 255, 255);
+  border-width: 1px;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-color: rgb(211, 212, 217);
+  transform-origin: center center;
+  transform: translateY(-50%) rotate(225deg);
+  left: calc(50% - 0.375rem);
+  top: -1px;
 }

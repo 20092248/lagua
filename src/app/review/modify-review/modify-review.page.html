@@ -9,14 +9,21 @@
 
 <ion-content>
   <ion-item>
-    <ion-input placeholder="Categorie" value="{{questionInfo.category}}" [(ngModel)]="questionInfo.category"></ion-input>
-    <ion-input text="number" placeholder="Cours" value="{{questionInfo.lesson}}" [(ngModel)]="questionInfo.lesson"></ion-input>
-    <ion-input text="number" placeholder="Lesson" value="{{questionInfo.order}}" [(ngModel)]="questionInfo.order"></ion-input>
+    <ion-input placeholder="Categorie" value="{{questionInfo.category}}"
+      [(ngModel)]="questionInfo.category"></ion-input>
+    <ion-input text="number" placeholder="Cours" value="{{questionInfo.lesson}}"
+      [(ngModel)]="questionInfo.lesson"></ion-input>
+    <ion-input text="number" placeholder="Lesson" value="{{questionInfo.order}}"
+      [(ngModel)]="questionInfo.order"></ion-input>
   </ion-item>
   <div class="ion-border ion-padding-horizontal" *ngFor="let q of questionInfo.qcm?.questions; let index = index">
     <h4>Question n°{{index + 1}} <ion-icon class="ion-padding-end" name="add-circle-outline"
         (click)="addQuestion(index)"></ion-icon><ion-icon name="trash-outline"
         (click)="removeQuestion(index)"></ion-icon></h4>
+    <ion-item>
+      <ion-label>Type</ion-label>
+      <ion-input value="{{q.type}}" [(ngModel)]="q.type"></ion-input>
+    </ion-item>
     <ion-item>
       <ion-label>Description</ion-label>
       <ion-input value="{{q.description}}" [(ngModel)]="q.description"></ion-input>

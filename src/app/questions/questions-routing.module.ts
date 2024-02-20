@@ -9,6 +9,10 @@ const routes: Routes = [
     component: QuestionsPage,
     children: [
       {
+        path: 'preview',
+        loadChildren: () => import('./preview/preview.module').then(m => m.PreviewPageModule)
+      },
+      {
         path: 'type',
         loadChildren: () => import('./type/type.module').then(m => m.TypePageModule)
       },
@@ -34,7 +38,7 @@ const routes: Routes = [
       },
       {
         path: 'result',
-        loadChildren: () => import('./result/result.module').then( m => m.ResultPageModule)
+        loadChildren: () => import('./result/result.module').then(m => m.ResultPageModule)
       },
       {
         path: '',

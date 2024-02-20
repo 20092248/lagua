@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Review } from '../model/review.model';
 import { ReviewService } from '../services/review.service';
 import { SettingService } from '../services/setting.service';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { AuthentificationService } from '../services/authentification.service';
 import { User } from '../model/user.model';
 import { IonContent, ScrollDetail, ToastController } from '@ionic/angular';
@@ -11,6 +11,8 @@ import { QuestionService } from '../services/question.service';
 import { ReviewGroup } from '../model/reviewGroup.model';
 import { LoadingService } from '../services/loading.service';
 import { Utils } from '../utils/utils';
+import { CONSTANTS } from '../utils/constants';
+import { AudioService } from '../services/audio.service';
 
 @Component({
   selector: 'app-review',
@@ -35,7 +37,8 @@ export class ReviewPage implements OnInit {
   flagSrc: string = '';
 
   constructor(private router: Router, private settingsService: SettingService, private reviewService: ReviewService, private authentificationService: AuthentificationService,
-    private toastController: ToastController, private questionService: QuestionService, private settingService: SettingService, private loadingService: LoadingService) { }
+    private toastController: ToastController, private questionService: QuestionService, private settingService: SettingService, private loadingService: LoadingService,
+    private audioService: AudioService) { }
 
   get user() {
     return this.authentificationService.user;
@@ -98,10 +101,22 @@ export class ReviewPage implements OnInit {
   accessReview(review: Review) {
     this.reviewService.review = review;
     if(this.categoryLevel === this.codeCategorySelectedLevel && this.userReview.lesson === review.lesson && this.userReview.order === review.order){
-      console.log('CCC');
+      this.startReview(review);
     } else {
       this.router.navigate(['/questions']);
     }
+  }
+
+  startReview(review: Review) {
+    this.questionService.getQuestions(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], review.category + '_' + review.lesson + '_' + review.order).then(()=>{
+      this.router.navigate(['/questions/preview']);
+      this.getInfoReview();
+    });
+  }
+  getInfoReview() {
+    this.reviewService.resultReview.category = this.reviewService.review.category;
+    this.reviewService.resultReview.lesson = this.reviewService.review.lesson;
+    this.reviewService.resultReview.order = this.reviewService.review.order;
   }
 
   handleScroll(ev: CustomEvent<ScrollDetail>) {

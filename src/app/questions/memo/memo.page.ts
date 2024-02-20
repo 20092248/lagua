@@ -17,7 +17,6 @@ export class MemoPage implements OnInit {
   user: User | undefined;
   questions: any[] = [];
   question: any;
-  nbrQuestion: number = 0;
   displayAnswer: boolean = false;
   correct: string | undefined;
   answerSelected: any | undefined;
@@ -27,6 +26,10 @@ export class MemoPage implements OnInit {
   nextQuestionEvent: EventEmitter<any> = new EventEmitter();
 
   constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService, private reviewService: ReviewService, private audioService: AudioService) { }
+
+  get nbrQuestion() {
+    return this.questionService.nbrQuestion;
+  } 
 
   ngOnInit() {
     this.user = this.authentificationService.user;
@@ -43,12 +46,11 @@ export class MemoPage implements OnInit {
       this.answerSelected = undefined;
       this.displayAnswer = false;
       this.correct = undefined;
-      this.nbrQuestion++;
       this.questionService.nbrQuestion++;
       if (this.nbrQuestion !== this.questions.length) {
         this.question = this.questions[this.nbrQuestion];
         setTimeout(() => { this.isOpen = true }, 2000);
-        this.nextQuestionEvent.emit();
+        this.nextQuestionEvent.emit(Math.floor(Math.random() * 4));
       } else {
         this.router.navigate(['/questions/result']);
       }

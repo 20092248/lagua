@@ -19,7 +19,6 @@ export class SpellPage implements OnInit {
   user: User | undefined;
   questions: any[] = [];
   question: any;
-  nbrQuestion: number = 0;
   displayAnswer: boolean = false;
   secondChance: boolean = false;
   score: number = 0;
@@ -32,9 +31,12 @@ export class SpellPage implements OnInit {
   constructor(private router: Router, private questionService: QuestionService, private authentificationService: AuthentificationService,
     private reviewService: ReviewService, private audioService: AudioService, private settingService: SettingService) { }
 
+  get nbrQuestion() {
+    return this.questionService.nbrQuestion;
+  }
+
   ngOnInit() {
     Utils.customCapacitorQuestion(this.settingService, '#ffffff');
-    this.questionService.nbrQuestion = this.nbrQuestion;
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.qcm?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
@@ -47,7 +49,7 @@ export class SpellPage implements OnInit {
   }
 
   removeLetter(index: number) {
-    if(!this.displayAnswer){
+    if (!this.displayAnswer) {
       this.response.splice(index, 1);
       this.positions.splice(index, 1);
     }
@@ -89,7 +91,6 @@ export class SpellPage implements OnInit {
 
   continue() {
     this.saveScore();
-    this.nbrQuestion++;
     this.letters = [];
     this.response = [];
     this.positions = [];
@@ -99,7 +100,7 @@ export class SpellPage implements OnInit {
     if (this.nbrQuestion !== this.questions.length) {
       this.question = this.questions[this.nbrQuestion];
       this.mixLetter();
-      this.nextQuestionEvent.emit();
+      this.nextQuestionEvent.emit(Math.floor(Math.random() * 4));
     } else {
       this.router.navigate(['/questions/result']);
     }

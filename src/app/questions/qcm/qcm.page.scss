@@ -1,5 +1,5 @@
 ion-grid {
-  max-height: 100%;
+  height: 100%;
 }
 
 ion-row {
@@ -10,11 +10,11 @@ ion-row {
 }
 
 ion-row:first-child {
-  height: 20%;
+  height: 10%;
 }
 
 ion-row:last-child {
-  height: 40%;
+  height: 55%;
   align-content: end;
 }
 
@@ -23,7 +23,9 @@ ion-list {
 }
 
 ion-item {
+  height: 35px;
   --background: transparent;
+  border-bottom: 1px #ddd solid;
 }
 
 ion-item.error {

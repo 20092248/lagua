@@ -1,0 +1,17 @@
+.container {
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+    // flex: auto;
+    // height: 100%;
+}
+
+ion-card {
+    width: 45%;
+}
+
+ion-card-title {
+    color: #1a6921 !important;
+}
