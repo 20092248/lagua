@@ -28,6 +28,8 @@ export class ModifyReviewPage implements OnInit {
   userDialect: Dialect = {} as Dialect;
   questionInfo: Question = {} as Question;
   paramModifyReview: ParamReview = {} as ParamReview;
+  questions: any[] = [];
+
   constructor(private route: ActivatedRoute, private reviewService: ReviewService, private questionService: QuestionService, private authentificationService: AuthentificationService,
     private alertService: AlertService, private actionSheetCtrl: ActionSheetController, private settingService: SettingService) { 
       this.paramModifyReview.category = this.route.snapshot.paramMap.get('category') || '';
@@ -41,6 +43,7 @@ export class ModifyReviewPage implements OnInit {
     this.userDialect = this.user.dialects[this.dialect];
     this.questionService.findQuestions(CONSTANTS.transcodeQuestion[this.user.dialectSelected.code], this.paramModifyReview).then((questionInfo: Question) => {
       this.questionInfo = questionInfo;
+      this.questions = questionInfo.questions ? questionInfo.questions : questionInfo.qcm?.questions;
     });
   }
 
@@ -58,7 +61,8 @@ export class ModifyReviewPage implements OnInit {
   }
 
   copyReview() {
-    this.settingService.createDocumentAndGenerateId(CONSTANTS.transcodeQuestion[this.user.dialectSelected.code], this.questionInfo).then(()=>{
+    this.settingService.createDocumentAndGenerateId(CONSTANTS.transcodeQuestion[this.user.dialectSelected.code], this.questionInfo).then((result)=>{
+      this.questions = result.questions;
       this.alertService.presentToast('Copie réussie', 3000, 'lagua');
     },
     ()=> this.alertService.presentToast('Erreur lors de la copie', 3000, 'lagua'));

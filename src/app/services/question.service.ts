@@ -46,6 +46,7 @@ export class QuestionService {
 
   async updateQuestion(collection: string, document: string, question: Question): Promise<any> {
     const docRef = doc(getFirestore(), collection, document);
+    delete question.id;
     await updateDoc(docRef, {
       category: question.category,
       lesson: Number(question.lesson),
@@ -53,6 +54,7 @@ export class QuestionService {
       // qcm: question.qcm,
       questions: question.qcm.questions
     });
+    question.id = document;
   }
 
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Firestore, getFirestore } from '@angular/fire/firestore';
 import { doc, getDoc, collection, setDoc, addDoc, query, getDocs } from '@firebase/firestore';
 import { Platform } from '@ionic/angular';
+import { Question } from '../model/question.model';
 
 @Injectable({
   providedIn: 'root'
@@ -92,8 +93,13 @@ export class SettingService {
     await setDoc(doc(getFirestore(), collection, document), value);
   }
 
-  async createDocumentAndGenerateId(col: string, value: any) {
+  async createDocumentAndGenerateId(col: string, value: Question) {
+    value.questions = value.questions ? value.questions : value.qcm.questions;
+    delete value.id;
+    delete value.qcm;
     const docRef = await addDoc(collection(getFirestore(), col), value);
     console.log("Document written with ID: ", docRef.id);
+    value.id = docRef.id;
+    return value;
   }
 }

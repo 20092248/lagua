@@ -16,7 +16,7 @@
     <ion-input text="number" placeholder="Lesson" value="{{questionInfo.order}}"
       [(ngModel)]="questionInfo.order"></ion-input>
   </ion-item>
-  <div class="ion-border ion-padding-horizontal" *ngFor="let q of questionInfo.qcm?.questions; let index = index">
+  <div class="ion-border ion-padding-horizontal" *ngFor="let q of questions; let index = index">
     <h4>Question n°{{index + 1}} <ion-icon class="ion-padding-end" name="add-circle-outline"
         (click)="addQuestion(index)"></ion-icon><ion-icon name="trash-outline"
         (click)="removeQuestion(index)"></ion-icon></h4>
