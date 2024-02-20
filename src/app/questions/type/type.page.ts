@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { CodeLabel } from 'src/app/model/codeLabel.model';
 import { DialectEnum } from 'src/app/model/dialect.enum';
 import { Dialect } from 'src/app/model/dialect.model';
@@ -57,6 +57,10 @@ export class TypePage implements OnInit {
         break;
       case 'M':
         this.router.navigate(['/questions/mix']);
+        break;
+      case 'R':
+        const navigationExtras: NavigationExtras = { state: { newReview: true } };
+        this.router.navigate(['/questions/mix'], navigationExtras);
         break;
     }
   }

@@ -3,7 +3,7 @@ ion-grid {
 }
 
 ion-row {
-  height: 40%;
+  height: 50%;
   align-content: center;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@ ion-row:first-child {
 }
 
 ion-row:last-child {
-  height: 55%;
+  height: 40%;
   align-content: end;
 }
 
@@ -23,7 +23,7 @@ ion-list {
 }
 
 ion-item {
-  height: 35px;
+  height: 38px;
   --background: transparent;
   border-bottom: 1px #ddd solid;
 }
