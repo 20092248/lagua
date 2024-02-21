@@ -6,6 +6,7 @@ import { SettingService } from '../services/setting.service';
 import { Utils } from '../utils/utils';
 import { CONSTANTS } from '../utils/constants';
 import { AlertService } from '../services/alert.service';
+declare let Donation: any;
 
 @Component({
   selector: 'app-profile',
@@ -44,6 +45,25 @@ export class ProfilePage implements OnInit {
   }  
 
   ngOnInit() {
+    console.log(Donation);
+    Donation.Button({
+      env:'production',
+      hosted_button_id:'RLY74AVE59HPS',
+      image: {
+      src:'https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif',
+      alt:'Bouton Faites un don avec PayPal',
+      title:'PayPal - The safer, easier way to pay online!',
+      }
+      }).render('#paypal-donate-button-container');
+
+    // render({
+    //   id: '#paypal-donate-button-container',
+    //   currency: 'EUR',
+    //   value: '1.00',
+    //   onApprove(details) {
+    //     console.log(details);
+    //   },
+    // });
     Utils.customCapacitorTabs(this.settingService);
     this.profileSetting = this.settingService.profile;
     if (JSON.stringify(this.profileSetting) === '{}') {
