@@ -40,7 +40,7 @@ export class DetailPage implements OnInit {
   }
 
   modifyDetail() {
-    this.router.navigate(['/tabs/dialogs/modify-review/' + this.paramModifyReview]);
+    this.router.navigate(['/tabs/dialogs/modify-dialog/' + this.paramModifyReview]);
   }
 
   getInitial(name: string) {

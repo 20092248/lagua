@@ -108,7 +108,7 @@ export class ReviewPage implements OnInit {
   }
 
   startReview(review: Review) {
-    this.questionService.getQuestions(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], review.category + '_' + review.lesson + '_' + review.order).then(()=>{
+    this.questionService.findQuestions(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], Utils.paramReview(review.category, review.lesson, review.order)).then(()=>{
       this.router.navigate(['/questions/preview']);
       this.getInfoReview();
     });
@@ -123,22 +123,11 @@ export class ReviewPage implements OnInit {
     this.isPinned = ev.detail.scrollTop > 125;
   }
 
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: 'Impossible de sélectionner ce cours sans avoir lu les précedents cours.',
-      duration: 1500,
-      position: 'bottom',
-    });
-    await toast.present();
-  }
-  // this.settingsService.createDocument('settings','reviews', data);
-  // this.settingsService.createCollection('reviews', data);
-
   openModal(review: Review) {
     this.isWordsDisplay = true;
     this.words = [];
-    this.questionService.getQuestions(this.userLearn?.text.toLocaleLowerCase() + '_' + this.translate + '_questions', review.category + '_' + review.lesson + '_' + review.order).then(result => {
-      this.words = result.qcm.questions;
+    this.questionService.findQuestions(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], Utils.paramReview(review.category, review.lesson, review.order)).then(result => {
+      this.words = result.questions;
     });
   }
 

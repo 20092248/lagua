@@ -93,6 +93,11 @@ export class ProfilePage implements OnInit {
     return Math.trunc(value.getTime() / 1000 / 60 / 60 / 24);
   }
 
+  donate() {
+    const donate = document.getElementById('donate-button');
+    console.log(donate);
+  }
+
   async share(){
     await Share.share({
       title: CONSTANTS.SHARE_MSG_TITLE,

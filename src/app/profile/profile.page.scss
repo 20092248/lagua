@@ -79,6 +79,13 @@ ion-popover ion-content {
   --padding-top: 10px !important;
 }
 
+ion-modal {
+  ion-content {
+    --background: #eef1ee;
+    color: #000000;
+  }
+}
+
 .border-white-tabs {
   border: #ffffff solid 2px;
   background-color: #9dc18c;
@@ -229,4 +236,9 @@ ion-card-title .ion-card-title {
 
 .ion-padding-horizontal-min {
   padding: 5px 0 10px;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
 }

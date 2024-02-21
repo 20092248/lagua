@@ -11,7 +11,7 @@ const routes: Routes = [
     path: ':dialog',
     loadChildren: () => import('./detail/detail.module').then(m => m.DetailPageModule)
   }, {
-    path: 'modify-review/:id',
+    path: 'modify-dialog/:id',
     loadChildren: () => import('./modify-dialog/modify-dialog.module').then( m => m.ModifyDialogPageModule)
   }
 ];

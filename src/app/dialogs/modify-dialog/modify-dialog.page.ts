@@ -27,11 +27,11 @@ export class ModifyDialogPage implements OnInit {
     this.paramModifyReview = this.route.snapshot.paramMap.get('id') || '';
     this.dialogService.getChats(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview).then(dialog => {
       this.chats = dialog.chats?.length ? dialog.chats : CHAT;
-      this.dialogExist = dialog.length ? true : false;
+      this.dialogExist = dialog.chats?.length ? true : false;
     });
   }
-  
-  ionViewWillEnter(){
+
+  ionViewWillEnter() {
     this.dialogExist = false;
     this.paramModifyReview = this.route.snapshot.paramMap.get('id') || '';
   }
@@ -54,44 +54,23 @@ export class ModifyDialogPage implements OnInit {
 
   async confirmActionSheet() {
     const exist = this.dialogExist ? 'modification' : 'création';
-    const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Confirmer la ' + exist + ' dans ' + this.paramModifyReview + ' ?',
-      subHeader: JSON.stringify(this.chats, (key, value) => key === 'userId' || key === 'text' ? undefined : value),
-      buttons: [
-        {
-          text: 'Confirmer',
-          role: 'confirm',
-          data: {
-            action: 'confirm',
-          },
-        },
-        {
-          text: 'Annuler',
-          role: 'cancel',
-          data: {
-            action: 'cancel',
-          },
-        },
-      ],
-    });
-
-    await actionSheet.present();
-
-    const result = await actionSheet.onDidDismiss();
-    if (result.role === 'confirm') {
-      if (this.dialogExist) {
-        this.dialogService.updateChats(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview, this.chats, this.situation).then(() => {
-          this.alertService.presentToast('La mise à jour a été effectué.', 1000, 'success');
-        }, () => this.alertService.presentToast('Erreur lors de la mise à jour du questionnaire.', 1000, 'danger'));
-      } else {
-        this.dialogService.createChats(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview, this.chats, this.situation).then(() => {
-          this.alertService.presentToast('La mise à jour a été effectué.', 1000, 'success');
-        }, () => this.alertService.presentToast('Erreur lors de la mise à jour du questionnaire.', 1000, 'danger'));
-      }
-    }
+    this.alertService.presentActionSheetConfirmation('Confirmer la ' + exist + ' dans ' + this.paramModifyReview + ' ?',
+      JSON.stringify(this.chats, (key, value) => key === 'userId' || key === 'text' ? undefined : value), '').then(result => {
+        if (result.role === 'selected') {
+          if (this.dialogExist) {
+            this.dialogService.updateChats(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview, this.chats, this.situation).then(() => {
+              this.alertService.presentToast('La mise à jour a été effectué.', 1000, 'success');
+            }, () => this.alertService.presentToast('Erreur lors de la mise à jour du questionnaire.', 1000, 'danger'));
+          } else {
+            this.dialogService.createChats(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview, this.chats, this.situation).then(() => {
+              this.alertService.presentToast('La mise à jour a été effectué.', 1000, 'success');
+            }, () => this.alertService.presentToast('Erreur lors de la mise à jour du questionnaire.', 1000, 'danger'));
+          }
+        }
+      });
   }
 
-  downloadChat(){
+  downloadChat() {
     this.dialogService.updatebodyLinkFr(CONSTANTS.COLLECTION_DIALOG, this.paramModifyReview, this.text, this.situation, this.dialogExist).then(() => {
       this.alertService.presentToast('La mise à jour a été effectué.', 1000, 'success');
     }, () => this.alertService.presentToast('Erreur lors de la mise à jour du questionnaire.', 1000, 'danger'));

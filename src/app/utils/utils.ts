@@ -6,8 +6,13 @@ import { StatusBar, Style } from "@capacitor/status-bar";
 import { NavigationBar } from "@mauricewegner/capacitor-navigation-bar";
 import { SettingService } from "../services/setting.service";
 import { AudioService } from "../services/audio.service";
+import { ParamReview } from "../model/paramReview.model";
 
 export class Utils {
+
+  static paramReview(category: string, lesson: number, order: number): ParamReview {
+    return { category: category, lesson: lesson, order: order };
+  }
 
   static preloadAudio(audioService: AudioService) {
     audioService.preload('rightAnswer', 'assets/audio/correct-choice.mp3');
@@ -15,7 +20,7 @@ export class Utils {
     audioService.preload('successReview', 'assets/audio/success-review.mp3');
     audioService.preload('failReview', 'assets/audio/fail-review.mp3');
   }
-  
+
   static customCapacitorApp(settingService: SettingService) {
     if (settingService.isCapacitor) {
       StatusBar.setOverlaysWebView({ overlay: false });

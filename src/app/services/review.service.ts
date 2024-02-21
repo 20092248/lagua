@@ -118,12 +118,12 @@ export class ReviewService {
     const question = await getDoc(questionRef);
     const sourceData = sourceQuestion.data() as any;
     const data = question.data() as any;
-    console.log('source', sourceData.qcm.questions);
-    console.log('destination', data.qcm.questions);
-    const merge = data.qcm.questions.concat(sourceData.qcm.questions);
+    console.log('source', sourceData.questions);
+    console.log('destination', data.questions);
+    const merge = data.questions.concat(sourceData.questions);
     console.log('ajout', merge);
     await updateDoc(questionRef, {
-      'qcm.questions': merge
+      'questions': merge
     });
   }
 

@@ -9,7 +9,7 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="false">
+  <div>
     <div class="ion-border ion-padding-horizontal" *ngFor="let c of chats; let index = index">
       <h4>Message n°{{index + 1}} <ion-icon class="ion-padding-end" name="add-circle-outline"
           (click)="addChat(index)"></ion-icon><ion-icon name="trash-outline" (click)="removeChat(index)"></ion-icon>
@@ -50,7 +50,7 @@
     </div>
   </div>
 
-  <div class="ion-text-center ion-margin-top">
+  <!-- <div class="ion-text-center ion-margin-top">
     <ion-item>
       <ion-label position="stacked" color="primary">Situation</ion-label>
       <ion-input [(ngModel)]="situation" placeholder=""></ion-input>
@@ -60,5 +60,5 @@
       <ion-textarea [autoGrow]="true" [(ngModel)]="text" placeholder="" rows="7"></ion-textarea>
     </ion-item>
     <ion-button (click)="downloadChat()">DOWNLOAD CHAT</ion-button>
-  </div>
+  </div> -->
 </ion-content>

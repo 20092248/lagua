@@ -22,9 +22,9 @@ export class CONSTANTS {
     public static FRENCH_DIALECT = 'FREN';
     public static transcodeTypeQuestion: { [key: number]: string } = {
         [0]: 'Q', //QCM
-        [1]: 'C', //MEMO
+        [1]: 'M', //MEMO
         [2]: 'T', //TRANSLATE
-        [3]: 'E', //SPELL
+        [3]: 'S', //SPELL
         [4]: 'M' //MIX
     };
     public static transcodeCollectionQuestions: { [key: string]: string } = {
@@ -56,12 +56,6 @@ export class CONSTANTS {
         ['SHGC']: 'grand-comorien',
         ['MAOR']: 'mahorais',
         ['MOHE']: 'mohélien'
-    };
-    public static transcodeQuestion: { [key: string]: string } = { 
-        ['SHAN']: 'shindzuani_francais_questions',
-        ['SHGC']: 'shingazidza_francais_questions',
-        ['MAOR']: 'shimaore_francais_questions',
-        ['MOHE']: 'shimwali_francais_questions'
     };
     public static topicDocument: { [key: string]: any } = {
         ['ANIMAL']: {code: 'animals', value: 'Les animaux'},

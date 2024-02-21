@@ -4,6 +4,5 @@ export interface Question {
     category: string;
     lesson: number;
     order: number;
-    qcm: any;
     questions: any[];
 }

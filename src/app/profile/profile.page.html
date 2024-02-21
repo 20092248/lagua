@@ -13,14 +13,15 @@
             <div class="img-box">
               <ion-img *ngIf="user?.photoURL" [src]="user.photoURL" (ionError)="displayUnknownUser()"></ion-img>
               <div id="bottom-start" class="ion-position-icon" *ngIf="!user?.photoURL">{{initial}}</div>
-                <ion-popover class="ion-padding-top ion-margin-top" trigger="bottom-start" side="bottom" alignment="center">
-                  <ng-template>
-                    <ion-content class="ion-padding">{{user.email}}</ion-content>
-                  </ng-template>
-                </ion-popover>
+              <ion-popover class="ion-padding-top ion-margin-top" trigger="bottom-start" side="bottom"
+                alignment="center">
+                <ng-template>
+                  <ion-content class="ion-padding">{{user.email}}</ion-content>
+                </ng-template>
+              </ion-popover>
             </div>
           </div>
-        </div>        
+        </div>
         <p class="ion-padding-top ion-no-margin-top">Niveau actuel : {{getActualLevelByCode()}}</p>
         <p>Langue en apprentissage : {{userDialect.learn.text}} / <i>{{userDialect.learn.translate}}</i></p>
       </ion-col>
@@ -45,7 +46,8 @@
                   <ion-col class="ion-no-padding" [ngClass]="{'ion-hide': !percentWordsToLearn}">
                     <div class="ion-label-progress ion-label-progress-warning"
                       [ngStyle]="{'left': percentWordsToLearn + '%'}">
-                      <ion-text color="warning" class="ion-text-left ion-text-bold">{{percentWordsToLearn | number : '.2-2'}}%</ion-text>à
+                      <ion-text color="warning" class="ion-text-left ion-text-bold">{{percentWordsToLearn | number :
+                        '.2-2'}}%</ion-text>à
                       apprendre
                     </div>
                   </ion-col>
@@ -68,13 +70,15 @@
                 <ion-row class="ion-label-progress-bottom-position" *ngIf="userDialect?.resultReviews?.length">
                   <ion-col size="{{percentWordsLearned ? 6 : 12}}" *ngIf="percentWordsToRevise">
                     <div class="ion-label-progress ion-label-progress-danger">
-                      <ion-text color="danger" class="ion-text-left ion-text-bold">{{percentWordsToRevise | number : '.2-2'}}%</ion-text>à
+                      <ion-text color="danger" class="ion-text-left ion-text-bold">{{percentWordsToRevise | number :
+                        '.2-2'}}%</ion-text>à
                       réviser
                     </div>
                   </ion-col>
                   <ion-col size="{{percentWordsToRevise ? 6 : 12}}" *ngIf="percentWordsLearned">
                     <div class="ion-label-progress ion-label-progress-success ion-text-right">
-                      <ion-text color="success" class="ion-text-bold">{{percentWordsLearned | number : '.2-2'}}%</ion-text>appris
+                      <ion-text color="success" class="ion-text-bold">{{percentWordsLearned | number :
+                        '.2-2'}}%</ion-text>appris
                     </div>
                   </ion-col>
                 </ion-row>
@@ -93,7 +97,8 @@
                   <span class="ion-float-right"><ion-icon size="large" name="thumbs-up-outline"></ion-icon></span>
                 </ion-card-title>
               </ion-card-header>
-              <ion-card-content class="ion-card-content-level">Evaluations positives&nbsp;&nbsp;&nbsp;</ion-card-content>
+              <ion-card-content class="ion-card-content-level">Evaluations
+                positives&nbsp;&nbsp;&nbsp;</ion-card-content>
             </ion-card>
           </div>
           <div class="ion-dashboard-bloc">
@@ -120,6 +125,8 @@
               name="people-outline"></ion-icon>Invite des
             amis
           </ion-item>
+          <ion-item (click)="donate()" lines="full" class="ion-share"><ion-icon slot="start"
+              name="card-outline"></ion-icon><a href="https://www.paypal.com/donate/?hosted_button_id=RLY74AVE59HPS">Faire un don</a></ion-item>
           <ion-item [routerLink]="['../../help']" routerLinkActive="selected" lines="none"><ion-icon slot="start"
               name="help-circle-outline"></ion-icon>Aide
           </ion-item>
@@ -131,8 +138,8 @@
         <ion-button class="ion-logout" expand="block" (click)="logout()"><ion-icon slot="start"
             name="log-out-outline"></ion-icon>Se
           déconnecter</ion-button>
-        <ion-button class="ion-margin-bottom" expand="block" color="danger" (click)="deleteAccount()"><ion-icon slot="start"
-            name="trash-outline"></ion-icon>Supprimer
+        <ion-button class="ion-margin-bottom" expand="block" color="danger" (click)="deleteAccount()"><ion-icon
+            slot="start" name="trash-outline"></ion-icon>Supprimer
           votre compte</ion-button>
       </ion-col>
     </ion-row>

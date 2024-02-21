@@ -94,9 +94,7 @@ export class SettingService {
   }
 
   async createDocumentAndGenerateId(col: string, value: Question) {
-    value.questions = value.questions ? value.questions : value.qcm.questions;
     delete value.id;
-    delete value.qcm;
     const docRef = await addDoc(collection(getFirestore(), col), value);
     console.log("Document written with ID: ", docRef.id);
     value.id = docRef.id;

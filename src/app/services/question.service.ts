@@ -17,17 +17,17 @@ export class QuestionService {
 
   constructor(private _auth: Auth, private _firestore: Firestore, private alertService: AlertService) { }
 
-  async getQuestions(collection: string, document: string): Promise<any> {
-    const docRef = doc(getFirestore(), collection, document);
-    const docSnap = await getDoc(docRef);
+  // async getQuestions(collection: string, document: string): Promise<any> {
+  //   const docRef = doc(getFirestore(), collection, document);
+  //   const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-      this.questions = docSnap.data();
-    } else {
-      console.log('Impossible de récupérer la liste de questions.');
-    }
-    return this.questions;
-  }
+  //   if (docSnap.exists()) {
+  //     this.questions = docSnap.data();
+  //   } else {
+  //     console.log('Impossible de récupérer la liste de questions.');
+  //   }
+  //   return this.questions;
+  // }
 
   async findQuestions(collection: string, param: ParamReview): Promise<any> {
     const q = query(collectionGroup(getFirestore(), collection), where('category', '==', param.category), where('lesson', '==', param.lesson), where('order', '==', param.order));
@@ -52,7 +52,7 @@ export class QuestionService {
       lesson: Number(question.lesson),
       order: Number(question.order),
       // qcm: question.qcm,
-      questions: question.qcm.questions
+      questions: question.questions
     });
     question.id = document;
   }

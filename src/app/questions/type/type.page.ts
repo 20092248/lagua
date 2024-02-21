@@ -32,7 +32,7 @@ export class TypePage implements OnInit {
   ngOnInit() {
     Utils.customCapacitorQuestion(this.settingService, '#eef1ee');
     const review = this.reviewService.review;
-    this.questionService.getQuestions(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], review.category + '_' + review.lesson + '_' + review.order).then();
+    this.questionService.findQuestions(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], Utils.paramReview(review.category, review.lesson, review.order)).then();
     this.settingsService.getSetting('questions').then((data => {
       this.types = data?.types;
     }));
@@ -46,13 +46,13 @@ export class TypePage implements OnInit {
       case 'Q':
         this.router.navigate(['/questions/qcm']);
         break;
-      case 'C':
+      case 'M':
         this.router.navigate(['/questions/memo']);
         break;
       case 'T':
         this.router.navigate(['/questions/translate']);
         break;
-      case 'E':
+      case 'S':
         this.router.navigate(['/questions/spell']);
         break;
       case 'M':
