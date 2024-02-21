@@ -3,7 +3,7 @@ ion-grid {
 }
 
 ion-row {
-  height: 50%;
+  height: 55%;
   align-content: center;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@ ion-row:first-child {
 }
 
 ion-row:last-child {
-  height: 40%;
+  height: 35%;
   align-content: end;
 }
 
@@ -38,7 +38,7 @@ ion-item.success {
 
 ion-card {
   max-width: 450px;
-  max-height: 300px;
+  max-height: 350px;
 }
 
 ion-card-header {
