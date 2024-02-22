@@ -71,7 +71,9 @@ Commande à boire et à manger dans un restaurant
 Payer le vendeur
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
+
+________________________________________________________________________________________________
 
 
 Chapitre 4 : Le présent
@@ -98,7 +100,7 @@ Parle des langues que tu connais avec le verbe « pouvoir »
 Parle des langues que tu connais avec le verbe « vouloir »
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 
 Les formes verbales négatives
@@ -121,7 +123,7 @@ Développer tes compétences orales et écrites
 Parle d’un·e ami·e
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 
 Chapitre Le système nominal
@@ -150,7 +152,7 @@ Ajouter un préfixe pour accorder les verbes
 
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 
 Chapitre 5 : Les nouveaux lieux
@@ -168,7 +170,7 @@ Apprendre les mots interrogatifs
 Poser des questions avec des mots interrogatifs
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 
 Chapitre 6 : Emplois
@@ -194,7 +196,7 @@ Découvrir la structure de la conjugaison forme négatif
 Associer avec des verbes fréquents
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 Chapitre 6 bis
 
@@ -232,7 +234,7 @@ Recherche des objets dans un rayon
 Donner de l’argent vendeur
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 
 
@@ -259,7 +261,7 @@ Améliore ta maîtrise
 Entraîne-toi à demander ton chemin
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 
 Chapitre 8 Bis : Le système verbal
@@ -331,7 +333,7 @@ Développer tes compétences orales et écrites
 Entraîne-toi à communiquer dans une boutique
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 
 Chapitre 10 : Famille
@@ -352,7 +354,7 @@ Révision : Layla vient du Canada
 Lecture sur une famille du Canada
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 
 
@@ -382,7 +384,7 @@ Révision
 Une petite révision des leçons vues récemment
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 
 Chapitre 12 : Les routines
@@ -397,7 +399,7 @@ Décrire un week-end typique
 Utilise des mots fréquent pour parler de projets pour le week-end
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 
 Chapitre 13 : Le matin
@@ -418,7 +420,7 @@ Développer tes compétences orales et écrites
 Entraîne-toi à parler de ta routine
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 
 Chapitre 14 : Les loisirs
@@ -439,7 +441,7 @@ Développer tes compétences orales et écrites
 Entraîne-toi à parler de ce que tu aimes faire
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 
 Chapitre 15 : Free time
@@ -461,7 +463,7 @@ Révision
 Une petite révision des leçons vues récemment
 
 Checkpoint
-Teste tes connaissances pour accéder au prochain chapitre
+Teste tes connaissances pour accéder à la prochain lecon
 
 
 Chapitre 16 : Le week-end

@@ -11,7 +11,16 @@ import { ReviewService } from 'src/app/services/review.service';
 })
 export class ModifyCategoryPage implements OnInit {
 
-  reviewGroup: ReviewGroup[] = [];
+  // id?: string;
+  //   category: string;
+  //   lesson: number;
+  //   order: number;
+  //   data: Review[];
+  //   title: string;
+  //   subtitle: string;
+  //   reviews: Review[];
+
+  reviewGroup: ReviewGroup[] = [{category: '', lesson: 0, order: 0, data: [], title: '', subtitle: '', reviews: []}];
   paramCategory: string;
   displayFirstAccordion: string = '';
 
@@ -22,6 +31,11 @@ export class ModifyCategoryPage implements OnInit {
   ngOnInit() {
     this.reviewService.getReviewsByCategory(this.paramCategory).then(reviewGroup => {
       this.reviewGroup = reviewGroup;
+      this.reviewGroup.forEach(group => {
+        group.reviews.forEach(review => {
+          review.content = review.contents.join();
+        });
+      });
       this.displayFirstAccordion = String(this.reviewGroup[0].lesson);
       console.log(this.reviewGroup);
     });
@@ -59,6 +73,9 @@ export class ModifyCategoryPage implements OnInit {
       if (actionSheetResult.role === 'selected') {
         this.reviewGroup.forEach(rg => {
           if (rg.id) {
+            rg.reviews.forEach(r => {
+              r.contents = r.content ? r.content?.split(',') : [];
+            });
             this.reviewService.updateMenuReview(rg.id, rg).then(() => {
               this.alertService.presentToast('Le menu a été mise a jour.', 3000, 'lagua');
             }, () => this.alertService.presentToast('La mise à jour a échoué!', 3000, 'danger'));

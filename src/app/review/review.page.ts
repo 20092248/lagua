@@ -81,6 +81,7 @@ export class ReviewPage implements OnInit {
   ionViewWillEnter() {
     this.userLearn = this.userDialect.learn;
     this.userReview = this.userDialect.review;
+    this.reviewService.getReviewsByCategory(this.category).then((results: ReviewGroup[]) => this.reviews = results);
   }
 
   setCategory(code: string) {
@@ -136,6 +137,8 @@ export class ReviewPage implements OnInit {
   }
 
   goToModifyReview(category: string, lesson: number, order: number) {
-    this.router.navigate(['/tabs/review/modify-review/' + category + '/' + lesson + '/' + order]);
+    if(this.user.email === 'lagua.shikomori@gmail.com'){
+      this.router.navigate(['/tabs/review/modify-review/' + category + '/' + lesson + '/' + order]);
+    }
   }
 }

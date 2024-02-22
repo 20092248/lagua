@@ -46,18 +46,26 @@
               <ion-label>Text</ion-label>
               <ion-input value="{{rs.text}}" [(ngModel)]="rs.text"></ion-input>
             </ion-item>
+            <ion-item>
+              <ion-label>Score</ion-label>
+              <ion-input value="{{rs.score}}" [(ngModel)]="rs.score"></ion-input>
+            </ion-item>
             <ion-item style="border-color: rgb(165, 0, 0);">
               <ion-label>Traduction</ion-label>
               <ion-input value="{{rs.translate}}" [(ngModel)]="rs.translate"></ion-input>
             </ion-item>
-            <div class="ion-margin-horizontal" *ngFor="let ct of rs.contents; let indexContent=index">
+            <div class="ion-padding-start">
+              <div>Contenu</div>
+              <ion-textarea class="ion-no-padding ion-border" value="{{rs.content}}" [(ngModel)]="rs.content" rows="3"></ion-textarea>
+            </div>
+            <!-- <div class="ion-margin-horizontal" *ngFor="let ct of rs.contents; let indexContent=index">
               <span>Contenu <ion-icon class="ion-padding-end" name="add-circle-outline"
                   (click)="addContent(index, indexReview, indexContent)"></ion-icon><ion-icon name="trash-outline"
                   (click)="removeContent(index, indexReview, indexContent)"></ion-icon></span>
               <ion-item>
-                <ion-input value="{{ct}}" [(ngModel)]="rs.contents[indexContent]"></ion-input>
+                <ion-input [value]="ct" [(ngModel)]="ct"></ion-input>
               </ion-item>
-            </div>
+            </div> -->
           </div>
         </div>
       </ion-accordion>

@@ -1,4 +1,4 @@
-ion-item {
+ion-item:not(.ion-content) {
     height: 36px;
     border-bottom: 1px solid;
 }
