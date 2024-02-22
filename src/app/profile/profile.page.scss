@@ -47,6 +47,11 @@ ion-button {
   --border-radius: 10px;
 }
 
+ion-accordion {
+  background: transparent;
+  border-bottom: 1px #ccc solid;
+}
+
 p {
   margin: 10px;
 }
@@ -238,7 +243,6 @@ ion-card-title .ion-card-title {
   padding: 5px 0 10px;
 }
 
-a {
-  color: #000000;
-  text-decoration: none;
+.ion-donate {
+  background-color: #eef1ee;
 }

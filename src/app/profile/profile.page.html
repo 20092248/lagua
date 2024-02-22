@@ -125,12 +125,17 @@
               name="people-outline"></ion-icon>Invite des
             amis
           </ion-item>
-          <ion-item (click)="donate()" lines="full" class="ion-share"><ion-icon slot="start"
-              name="card-outline"></ion-icon><a href="https://www.paypal.com/donate/?hosted_button_id=RLY74AVE59HPS">Faire un don</a></ion-item>
+          <ion-accordion-group>
+            <ion-accordion value="donate">
+              <ion-item lines="full" slot="header">
+                <ion-icon slot="start" name="card-outline"></ion-icon>Faire un don
+              </ion-item>
+              <div class="ion-padding ion-text-center ion-donate" slot="content"><div id="paypal-donate-button-container"></div></div>
+            </ion-accordion>
+          </ion-accordion-group>
           <ion-item [routerLink]="['../../help']" routerLinkActive="selected" lines="none"><ion-icon slot="start"
               name="help-circle-outline"></ion-icon>Aide
-          </ion-item>
-          <div id="paypal-donate-button-container"></div>
+          </ion-item>          
         </ion-list>
       </ion-col>
     </ion-row>
