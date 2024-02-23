@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ModalController, PopoverController, ToastController } from '@ionic/angular';
 import { forkJoin } from 'rxjs';
 import { CodeTextTranslate } from 'src/app/model/codeTextTranslate.model';
+import { CodeTextTranslateMin } from 'src/app/model/codeTextTranslateMin.model';
 import { DialectEnum } from 'src/app/model/dialect.enum';
 import { Dialect } from 'src/app/model/dialect.model';
 import { AlertService } from 'src/app/services/alert.service';
@@ -25,6 +26,7 @@ export class MenuComponent implements OnInit {
   initial: string = '';
   otherDialects: CodeTextTranslate[] = [];
   dialectLearned: string = '';
+  flagDialectLearned: string = '';
   @Input() uploadSetting: EventEmitter<any> | undefined;
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
@@ -46,6 +48,7 @@ export class MenuComponent implements OnInit {
       this.uploadSetting.subscribe(data => {
         this.settingService.profile = data.profile;
         this.settingService.userInformation = data.userInformation;
+        this.flagDialectLearned = this.settingService.userInformation?.learn.find((d: CodeTextTranslate) => d.code === this.userDialect.learn.code)?.src;
         this.otherDialects = this.settingService.userInformation.learn?.filter((d: CodeTextTranslate) => d.code !== CONSTANTS.FRENCH_DIALECT && d.code !== this.user.dialectSelected.code);
         this.dialectLearned = CONSTANTS.transcodeDialectLabel[this.user.dialectSelected.code];
       });

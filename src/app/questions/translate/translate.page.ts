@@ -40,7 +40,7 @@ export class TranslatePage implements OnInit {
     Utils.customCapacitorQuestion(this.settingService, '#ffffff');
     this.translateSetting = this.settingService.questions?.translate;
     this.user = this.authentificationService.user;
-    this.questions = this.questionService.questions?.qcm?.questions;
+    this.questions = this.questionService.questions?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
     this.getChoices();
   }

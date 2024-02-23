@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Firestore, getFirestore, orderBy } from '@angular/fire/firestore';
 import { getDocs, collection, query, where } from '@firebase/firestore';
-import { Lesson } from '../model/lessons.model';
+import { Lesson } from '../model/lesson.model';
+import { LessonMin } from '../model/lessonMin.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -35,9 +36,9 @@ export class LessonService {
     return this.lesson;
   }
 
-  async findNextLesson(lesson: Lesson) {
+  async findNextLesson(lesson: LessonMin) {
     const nextOrder = lesson.order + 1;
-    return await this.getLesson(nextOrder).then((l: Lesson) => {
+    return await this.getLesson(nextOrder).then((l: LessonMin) => {
       return l;
     });
   }

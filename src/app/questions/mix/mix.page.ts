@@ -31,7 +31,7 @@ export class MixPage implements OnInit {
   }
 
   get questions() {
-    return this.questionService.questions?.qcm?.questions;
+    return this.questionService.questions?.questions;
   }
   get nbrQuestion() {
     return this.questionService.nbrQuestion;

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { IonRouterOutlet, LoadingController, Platform, PopoverController, RefresherCustomEvent, ToastController } from '@ionic/angular';
-import { Lesson } from '../model/lessons.model';
+import { Lesson } from '../model/lesson.model';
 import { User } from '../model/user.model';
 import { AuthentificationService } from '../services/authentification.service';
 import { LessonService } from '../services/lesson.service';

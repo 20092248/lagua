@@ -1,21 +1,24 @@
 import { CodeLabel } from "./codeLabel.model";
+import { CodeLabelMin } from "./codeLabelMin.model";
 import { CodeTextTranslate } from "./codeTextTranslate.model";
-import { Lesson } from "./lessons.model";
+import { CodeTextTranslateMin } from "./codeTextTranslateMin.model";
+import { Lesson } from "./lesson.model";
+import { LessonMin } from "./lessonMin.model";
 import { ResultReview } from "./resultReview.model";
 import { Review } from "./review.model";
 
 export class Dialect {
-    learn: CodeTextTranslate;
-    why: CodeLabel;
-    age: CodeLabel;
-    time: CodeLabel;
-    level: CodeLabel;
+    learn: CodeTextTranslateMin;
+    why: CodeLabelMin;
+    age: CodeLabelMin;
+    time: CodeLabelMin;
+    level: CodeLabelMin;
     review: Review;
     resultReviews: ResultReview[];
-    lesson: Lesson;
-    resultLessons: Lesson[];
+    lesson: LessonMin;
+    resultLessons: LessonMin[];
 
-    constructor(learn: CodeTextTranslate, why: CodeLabel, age: CodeLabel, time: CodeLabel, level: CodeLabel, review: Review, lesson: Lesson) {
+    constructor(learn: CodeTextTranslateMin, why: CodeLabelMin, age: CodeLabelMin, time: CodeLabelMin, level: CodeLabelMin, review: Review, lesson: Lesson) {
         this.learn = learn;
         this.why = why;
         this.age = age;

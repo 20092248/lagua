@@ -1,11 +1,10 @@
-export class CodeLabel {
-    code: string;
-    label: string;
+import { CodeLabelMin } from "./codeLabelMin.model";
+
+export class CodeLabel extends CodeLabelMin {
     src: string;
 
     constructor(code: string, label: string, src: string) {
-        this.code = code;
-        this.label = label;
+        super(code, label);
         this.src = src;
     }
 }

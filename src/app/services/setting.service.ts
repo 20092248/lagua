@@ -3,6 +3,7 @@ import { Firestore, getFirestore } from '@angular/fire/firestore';
 import { doc, getDoc, collection, setDoc, addDoc, query, getDocs } from '@firebase/firestore';
 import { Platform } from '@ionic/angular';
 import { Question } from '../model/question.model';
+import { GlobalParam } from '../model/globalParam.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class SettingService {
   }
 
 
-  async getSettings(): Promise<any> {
+  async getSettings(): Promise<GlobalParam> {
     const querySnapshot = await getDocs(query(collection(getFirestore(), 'settings')));
     querySnapshot.forEach((doc) => {
       switch (doc.id) {

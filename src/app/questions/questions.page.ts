@@ -19,7 +19,7 @@ export class QuestionsPage implements OnInit {
     return this.questionService.type;
   }
   get nbrQuestion() {
-    return (this.questionService.nbrQuestion / this.questionService.questions?.qcm?.questions?.length) * 100;
+    return (this.questionService.nbrQuestion / this.questionService.questions?.questions?.length) * 100;
   }
 
   ngOnInit() {

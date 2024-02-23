@@ -7,7 +7,7 @@ import { User } from '../model/user.model';
 import { ReviewService } from './review.service';
 import { LessonService } from './lesson.service';
 import { Review } from '../model/review.model';
-import { Lesson } from '../model/lessons.model';
+import { Lesson } from '../model/lesson.model';
 import { ResultReview } from '../model/resultReview.model';
 import { finalize, take, interval, Subscription, lastValueFrom } from 'rxjs';
 import { LoadingService } from './loading.service';
@@ -23,6 +23,7 @@ import { DialectEnum } from '../model/dialect.enum';
 import { Dialect } from '../model/dialect.model';
 import { AnalyticsService } from './analytics.service';
 import { Analytics } from '@angular/fire/analytics';
+import { LessonMin } from '../model/lessonMin.model';
 const FACEBOOK_PERMISSIONS = ['email', 'user_birthday', 'user_photos', 'user_gender',];
 const USER_KEY = 'users';
 
@@ -423,7 +424,6 @@ export class AuthentificationService {
   }
 
   async updateResultReview(updateReview: any, nameObject: string, uid: string) {
-    var updateReviewDoc = null;
     const dialectUser = this.user.dialects[this.dialect];
     if (!dialectUser.resultReviews) { dialectUser.resultReviews = []; }
     dialectUser.resultReviews.push(updateReview);
@@ -431,14 +431,13 @@ export class AuthentificationService {
     const nextReview = await this.reviewService.findNextReview(dialectUser.review).then(result => { return result });
     dialectUser.review = nextReview;
     this.reviewService.getPreviousReviews(nextReview).then(() => { });
-    updateReviewDoc = this.infoReviewByDialect(nextReview, dialectUser.resultReviews);
+    const updateReviewDoc = this.infoReviewByDialect(nextReview, dialectUser.resultReviews);
     if (updateReviewDoc) {
       await updateDoc(userRef, updateReviewDoc);
     }
   }
 
   async updateLesson(updateLesson: Lesson, nameObject: string, uid: string) {
-    var updateLessonDoc = null;
     const dialectUser = this.user.dialects[this.dialect];
     const lessonsRef = doc(getFirestore(), nameObject, uid);
     if (!dialectUser.resultLessons) { dialectUser.resultLessons = []; }
@@ -447,7 +446,7 @@ export class AuthentificationService {
       const nextLesson = await this.lessonService.findNextLesson(dialectUser.lesson);
       dialectUser.lesson = nextLesson;
       dialectUser.resultLessons.push(updateLesson);
-      updateLessonDoc = this.infoLessonByDialect(nextLesson, dialectUser.resultLessons);
+      const updateLessonDoc = this.infoLessonByDialect(nextLesson, dialectUser.resultLessons);
       if (updateLessonDoc) {
         await updateDoc(lessonsRef, updateLessonDoc);
       }
@@ -468,7 +467,7 @@ export class AuthentificationService {
     return dialect;
   }
 
-  infoLessonByDialect(nextLesson: Lesson, resultLessons: Lesson[]) {
+  infoLessonByDialect(nextLesson: LessonMin, resultLessons: LessonMin[]) {
     var dialect = null;
     if (this.dialect === DialectEnum.SHGC) {
       dialect = { 'dialects.shingazidja.lesson': nextLesson, 'dialects.shingazidja.resultLessons': resultLessons.map((obj) => { return Object.assign({}, obj) }) };

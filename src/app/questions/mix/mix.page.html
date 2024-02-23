@@ -1,5 +1,5 @@
 <!-- MEMO -->
-<app-memo class="ion-page" *ngIf="typeDisplay === 'C'" (nextQuestionEvent)="nextQuestion($event)"></app-memo>
+<app-memo class="ion-page" *ngIf="typeDisplay === 'M'" (nextQuestionEvent)="nextQuestion($event)"></app-memo>
 
 <!-- QCM -->
 <app-qcm class="ion-page" *ngIf="typeDisplay === 'Q'" (nextQuestionEvent)="nextQuestion($event)"></app-qcm>
@@ -8,4 +8,4 @@
 <app-translate class="ion-page" *ngIf="typeDisplay === 'T'" (nextQuestionEvent)="nextQuestion($event)"></app-translate>
 
 <!-- SPELL -->
-<app-spell class="ion-page" *ngIf="typeDisplay === 'E'" (nextQuestionEvent)="nextQuestion($event)"></app-spell>
+<app-spell class="ion-page" *ngIf="typeDisplay === 'S'" (nextQuestionEvent)="nextQuestion($event)"></app-spell>

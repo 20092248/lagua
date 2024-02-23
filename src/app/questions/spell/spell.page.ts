@@ -38,7 +38,7 @@ export class SpellPage implements OnInit {
   ngOnInit() {
     Utils.customCapacitorQuestion(this.settingService, '#ffffff');
     this.user = this.authentificationService.user;
-    this.questions = this.questionService.questions?.qcm?.questions;
+    this.questions = this.questionService.questions?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
     this.mixLetter();
   }

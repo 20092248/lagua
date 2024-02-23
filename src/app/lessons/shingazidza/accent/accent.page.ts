@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Lesson } from 'src/app/model/lessons.model';
+import { Lesson } from 'src/app/model/lesson.model';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LessonService } from 'src/app/services/lesson.service';
 import { SettingService } from 'src/app/services/setting.service';

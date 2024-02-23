@@ -1,4 +1,4 @@
-import { CodeTextTranslate } from "./codeTextTranslate.model";
+import { CodeTextTranslateMin } from "./codeTextTranslateMin.model";
 import { Dialects } from "./dialects.model";
 
 export class User {
@@ -6,12 +6,12 @@ export class User {
     email: string;
     displayName: string;
     photoURL: string;
-    dialectSelected: CodeTextTranslate;
+    dialectSelected: CodeTextTranslateMin;
     dialects: Dialects;
     week: any;
     timerActiveConnection: number;
 
-    constructor(uid: string, email: string, displayName: string, photoURL: string, dialectSelected: CodeTextTranslate, dialects: Dialects, timerActiveConnection: number) {
+    constructor(uid: string, email: string, displayName: string, photoURL: string, dialectSelected: CodeTextTranslateMin, dialects: Dialects, timerActiveConnection: number) {
         this.uid = uid;
         this.email = email;
         this.displayName = displayName;

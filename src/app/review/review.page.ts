@@ -13,6 +13,7 @@ import { LoadingService } from '../services/loading.service';
 import { Utils } from '../utils/utils';
 import { CONSTANTS } from '../utils/constants';
 import { AudioService } from '../services/audio.service';
+import { CodeTextTranslateMin } from '../model/codeTextTranslateMin.model';
 
 @Component({
   selector: 'app-review',
@@ -26,7 +27,7 @@ export class ReviewPage implements OnInit {
   categories: any[] = [];
   reviews: ReviewGroup[] = [];
   userReview: Review = {} as Review;
-  userLearn: CodeTextTranslate = {} as CodeTextTranslate;
+  userLearn: CodeTextTranslateMin = {} as CodeTextTranslateMin;
   category: string = 'A1';
   categoryLevel: number = 0;
   isPinned: boolean = false;

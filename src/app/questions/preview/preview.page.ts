@@ -15,7 +15,7 @@ export class PreviewPage implements OnInit {
   constructor(private router: Router, private questionService: QuestionService, private audioService: AudioService, private settingService: SettingService) { }
 
   get questions() {
-    return this.questionService.questions?.qcm?.questions;
+    return this.questionService.questions?.questions;
   }
 
   ngOnInit() {

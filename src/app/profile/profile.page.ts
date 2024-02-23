@@ -40,30 +40,21 @@ export class ProfilePage implements OnInit {
     return this.user.dialects[this.dialect];
   }
 
-  get isOverlay(){
+  get isOverlay() {
     return this.settingService.isOverlay;
-  }  
+  }
 
   ngOnInit() {
     console.log(Donation);
     Donation.Button({
-      env:'production',
-      hosted_button_id:'RLY74AVE59HPS',
+      env: 'production',
+      hosted_button_id: 'RLY74AVE59HPS',
       image: {
-      src:'https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif',
-      alt:'Bouton Faites un don avec PayPal',
-      title:'PayPal - The safer, easier way to pay online!',
+        src: 'https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif',
+        alt: 'Bouton Faites un don avec PayPal',
+        title: 'PayPal - The safer, easier way to pay online!',
       }
-      }).render('#paypal-donate-button-container');
-
-    // render({
-    //   id: '#paypal-donate-button-container',
-    //   currency: 'EUR',
-    //   value: '1.00',
-    //   onApprove(details) {
-    //     console.log(details);
-    //   },
-    // });
+    }).render('#paypal-donate-button-container');
     Utils.customCapacitorTabs(this.settingService);
     this.profileSetting = this.settingService.profile;
     if (JSON.stringify(this.profileSetting) === '{}') {
@@ -118,7 +109,7 @@ export class ProfilePage implements OnInit {
     console.log(donate);
   }
 
-  async share(){
+  async share() {
     await Share.share({
       title: CONSTANTS.SHARE_MSG_TITLE,
       text: CONSTANTS.SHARE_MSG_OBJECT,
@@ -134,7 +125,7 @@ export class ProfilePage implements OnInit {
   }
 
   deleteAccount() {
-    this.alertService.presentActionSheetConfirmation('Confirmation', CONSTANTS.CONFIRM_DELETE_ACCOUNT_ACTION_SHEET, 'action-sheet-danger').then(result=>{
+    this.alertService.presentActionSheetConfirmation('Confirmation', CONSTANTS.CONFIRM_DELETE_ACCOUNT_ACTION_SHEET, 'action-sheet-danger').then(result => {
       console.log(result);
     });
   }

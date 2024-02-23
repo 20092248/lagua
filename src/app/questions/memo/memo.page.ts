@@ -33,7 +33,7 @@ export class MemoPage implements OnInit {
 
   ngOnInit() {
     this.user = this.authentificationService.user;
-    this.questions = this.questionService.questions?.qcm?.questions;
+    this.questions = this.questionService.questions?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
     setTimeout(() => { this.isOpen = true }, 2000);
   }
