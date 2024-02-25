@@ -83,6 +83,7 @@ export class MenuComponent implements OnInit {
             this.alertService.presentToast(CONSTANTS.CONFIRM_DIALECT_CHANGED, 3000, 'lagua');
           });
         } 
+        this.flagDialectLearned = this.settingService.userInformation?.learn.find((d: CodeTextTranslate) => d.code === this.userDialect.learn.code)?.src;
         this.otherDialects = this.settingService.userInformation.learn.filter((d: CodeTextTranslate) => d.code !== CONSTANTS.FRENCH_DIALECT && d.code !== this.user.dialectSelected.code);
         this.dialectLearned = CONSTANTS.transcodeDialectLabel[this.user.dialectSelected.code];
       }

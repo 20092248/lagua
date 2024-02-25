@@ -63,30 +63,30 @@
             </ion-card>
           </ion-item>
         </div>
-        <ion-modal [isOpen]="isWordsDisplay" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">
-          <ng-template>
-            <ion-header>
-              <ion-toolbar>
-                <ion-title>Mots à apprendre dans ce cours</ion-title>
-                <ion-buttons slot="end">
-                  <ion-button (click)="closeModal()">
-                    <ion-icon slot="icon-only" name="close"></ion-icon>
-                  </ion-button>
-                </ion-buttons>
-              </ion-toolbar>
-            </ion-header>
-            <ion-content>
-              <ion-list>
-                <ion-item *ngFor="let word of words" lines="full">
-                  <ion-label class="ion-text-wrap">
-                    <span>{{word.translate}} : </span><span class="ion-text">{{word.text}}</span>
-                  </ion-label>
-                </ion-item>
-              </ion-list>
-            </ion-content>
-          </ng-template>
-        </ion-modal>
       </div>
     </ion-accordion>
   </ion-accordion-group>
+  <ion-modal (ionModalDidDismiss)="closeModal()" [isOpen]="isWordsDisplay" [initialBreakpoint]="0.75" [breakpoints]="[0, 0.25, 0.5, 0.75, 1]">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Mots à apprendre dans ce cours</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeModal()">
+              <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item *ngFor="let word of words" lines="full">
+            <ion-label class="ion-text-wrap">
+              <span>{{word.translate}} : </span><span class="ion-text">{{word.text}}</span>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

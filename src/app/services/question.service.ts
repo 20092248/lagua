@@ -45,16 +45,22 @@ export class QuestionService {
   }
 
   async updateQuestion(collection: string, document: string, question: Question): Promise<any> {
-    const docRef = doc(getFirestore(), collection, document);
-    delete question.id;
-    await updateDoc(docRef, {
-      category: question.category,
-      lesson: Number(question.lesson),
-      order: Number(question.order),
-      // qcm: question.qcm,
-      questions: question.questions
-    });
-    question.id = document;
+    try {
+      const docRef = doc(getFirestore(), collection, document);
+      delete question.id;
+      await updateDoc(docRef, {
+        category: question.category,
+        lesson: Number(question.lesson),
+        order: Number(question.order),
+        // qcm: question.qcm,
+        questions: question.questions
+      });
+      question.id = document;
+    }
+    catch (e: any) {
+      question.id = document;
+      throw new Error(e.message);
+    }
   }
 
 }

@@ -40,14 +40,11 @@
       <ion-label>Traduction</ion-label>
       <ion-input value="{{q.translate}}" [(ngModel)]="q.translate"></ion-input>
     </ion-item>
-    <div class="ion-margin-horizontal" *ngFor="let c of q.choices">
+    <div class="ion-margin-horizontal" *ngFor="let c of q.choices; let index=index">
       <ion-item>
-        <ion-label>Réponse</ion-label>
-        <ion-toggle slot="end" [checked]="c.answer" [(ngModel)]="c.answer"></ion-toggle>
-      </ion-item>
-      <ion-item>
-        <ion-label>Choix</ion-label>
+        <ion-label>N°{{index}} - </ion-label>
         <ion-input value="{{c.choice}}" [(ngModel)]="c.choice"></ion-input>
+        <ion-toggle slot="end" [checked]="c.answer" [(ngModel)]="c.answer"></ion-toggle>
       </ion-item>
     </div>
   </div>
