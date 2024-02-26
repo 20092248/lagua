@@ -23,6 +23,7 @@
     <ion-item>
       <ion-label>Type</ion-label>
       <ion-input value="{{q.type}}" [(ngModel)]="q.type"></ion-input>
+      <ion-toggle slot="end" [checked]="q.sentence" [(ngModel)]="q.sentence"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-label>Description</ion-label>

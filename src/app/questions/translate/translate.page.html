@@ -21,7 +21,7 @@
   <ion-row class="ion-container-choice ion-align-items-center">
     <ion-col>
       <div class="ion-text-center">
-        <ion-button [disabled]="response.indexOf(c.choice) !== -1" *ngFor="let c of choices; let index = index" (click)="addWord(c)">{{c}}</ion-button>
+        <ion-button [disabled]="response.indexOf(c) !== -1" *ngFor="let c of choices; let index = index" (click)="addWord(c)">{{c}}</ion-button>
       </div>
     </ion-col>
   </ion-row>

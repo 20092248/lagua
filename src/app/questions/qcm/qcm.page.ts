@@ -41,6 +41,12 @@ export class QcmPage implements OnInit {
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
   }
 
+  checkedRadioGroup(event: any) {
+    if(!event.detail.value) {
+      this.answerSelected = undefined;
+    }
+  }
+
   choiceSelected(choice: any) {
     this.answerSelected = choice;
   }

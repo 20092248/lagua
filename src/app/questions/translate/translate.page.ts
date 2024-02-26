@@ -55,6 +55,17 @@ export class TranslatePage implements OnInit {
     }
   }
 
+  mixLetter(words: any[]) {
+    for (var i = 0; i < words.length; i++) {
+      const replacePosition = Math.floor(Math.random() * words.length);
+      const randomLetter = words.splice(replacePosition, 1);
+      const replacePosition2 = Math.floor(Math.random() * words.length);
+      words.splice(replacePosition2, 0, randomLetter[0]);
+      console.log(words);
+    }
+    this.choices = words;
+  }
+
   getChoices() {
     if (this.question && this.question.choices) {
       const choices = this.question?.choices as any[];
@@ -64,6 +75,7 @@ export class TranslatePage implements OnInit {
         this.choices = choicesConcat.filter((x, i) => choicesConcat.indexOf(x) === i);
         console.log(this.choices);
       });
+      this.mixLetter(this.choices);
     }
   }
 
