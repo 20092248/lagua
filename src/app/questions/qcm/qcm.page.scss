@@ -41,6 +41,21 @@ ion-card {
   max-height: 350px;
 }
 
+ion-card.ion-custom-margin-img {
+  margin: 0% 15%;
+}
+
+ion-card.ion-sentence {
+  background: linear-gradient(to bottom, #ffffff 90%, #5260ff);
+}
+
+ion-card.ion-sentence.error {
+  background: linear-gradient(to bottom, #ffffff 90%, #eb445a);
+}
+ion-card.ion-sentence.success {
+  background: linear-gradient(to bottom, #ffffff 90%, #27a132);
+}
+
 ion-card-header {
   padding-top: 10px;
 }
@@ -88,7 +103,7 @@ ion-radio.radio-checked::part(mark) {
 
   border-width: 0px 2px 2px 0px;
   border-style: solid;
-  border-color: #fff;
+  border-color: #ffffff;
 
   transform: rotate(45deg);
 }
@@ -97,12 +112,20 @@ ion-radio.radio-checked::part(mark) {
   display: inline-block;
   vertical-align: middle;
   border-radius: 4px 4px 0px 0px;
-  background-color: rgb(244, 244, 246);
+  background-color: #f4f4f6;
   border-width: 1px 1px 2px;
   border-style: solid;
-  border-color: rgb(233, 234, 237) rgb(233, 234, 237) rgb(76, 180, 80);
+  border-color: #e9eaed #e9eaed #5260ff;
   border-image: initial;
   padding: 3px;
+}
+
+.ion-text-qcm.error {
+  border-color: #e9eaed #e9eaed #eb445a;
+}
+
+.ion-text-qcm.success {
+  border-color: #e9eaed #e9eaed #27a132;
 }
 
 .ion-text-qcm.ion-not-sentence {
