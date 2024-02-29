@@ -30,6 +30,7 @@ export class ModifyReviewPage implements OnInit {
   questionInfo: Question = {} as Question;
   paramModifyReview: ParamReview = {} as ParamReview;
   questions: any[] = [];
+  isOverlay: boolean | undefined;
 
   constructor(private route: ActivatedRoute, private reviewService: ReviewService, private questionService: QuestionService, private authentificationService: AuthentificationService,
     private alertService: AlertService, private actionSheetCtrl: ActionSheetController, private settingService: SettingService) { 
@@ -38,6 +39,7 @@ export class ModifyReviewPage implements OnInit {
     }
 
   ngOnInit() {
+    this.isOverlay = this.settingService.isOverlay;
     this.user = this.authentificationService.user;
     this.dialect = this.authentificationService.dialect;
     this.userDialect = this.user.dialects[this.dialect];

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ReviewGroup } from 'src/app/model/reviewGroup.model';
 import { AlertService } from 'src/app/services/alert.service';
 import { ReviewService } from 'src/app/services/review.service';
+import { SettingService } from 'src/app/services/setting.service';
 
 @Component({
   selector: 'app-modify-category',
@@ -11,24 +12,17 @@ import { ReviewService } from 'src/app/services/review.service';
 })
 export class ModifyCategoryPage implements OnInit {
 
-  // id?: string;
-  //   category: string;
-  //   lesson: number;
-  //   order: number;
-  //   data: Review[];
-  //   title: string;
-  //   subtitle: string;
-  //   reviews: Review[];
-
+  isOverlay: boolean | undefined;
   reviewGroup: ReviewGroup[] = [{category: '', lesson: 0, order: 0, data: [], title: '', subtitle: '', reviews: []}];
   paramCategory: string;
   displayFirstAccordion: string = '';
 
-  constructor(private route: ActivatedRoute, private reviewService: ReviewService, private alertService: AlertService) {
+  constructor(private route: ActivatedRoute, private reviewService: ReviewService, private alertService: AlertService, private settingService: SettingService) {
     this.paramCategory = this.route.snapshot.paramMap.get('id') || '';
   }
 
   ngOnInit() {
+    this.isOverlay = this.settingService.isOverlay;
     this.reviewService.getReviewsByCategory(this.paramCategory).then(reviewGroup => {
       this.reviewGroup = reviewGroup;
       this.reviewGroup.forEach(group => {
