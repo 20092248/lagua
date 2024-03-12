@@ -33,10 +33,10 @@ export class ModifyReviewPage implements OnInit {
   isOverlay: boolean | undefined;
 
   constructor(private route: ActivatedRoute, private reviewService: ReviewService, private questionService: QuestionService, private authentificationService: AuthentificationService,
-    private alertService: AlertService, private actionSheetCtrl: ActionSheetController, private settingService: SettingService) { 
-      const paramMap = this.route.snapshot.paramMap;
-      this.paramModifyReview = Utils.paramReview(paramMap.get('category') || '', Number(paramMap.get('lesson')), Number(paramMap.get('order')));
-    }
+    private alertService: AlertService, private actionSheetCtrl: ActionSheetController, private settingService: SettingService) {
+    const paramMap = this.route.snapshot.paramMap;
+    this.paramModifyReview = Utils.paramReview(paramMap.get('category') || '', Number(paramMap.get('lesson')), Number(paramMap.get('order')));
+  }
 
   ngOnInit() {
     this.isOverlay = this.settingService.isOverlay;
@@ -45,7 +45,7 @@ export class ModifyReviewPage implements OnInit {
     this.userDialect = this.user.dialects[this.dialect];
     this.questionService.findQuestions(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], this.paramModifyReview).then((questionInfo: Question) => {
       this.questionInfo = questionInfo;
-      this.questions = questionInfo.questions;
+      this.questions = questionInfo.questions ? questionInfo.questions : [{ type: '', sentence: false, description: '', img: '', text: '', translate: '', choices: [{ choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }] }];
     });
   }
 
@@ -54,24 +54,24 @@ export class ModifyReviewPage implements OnInit {
   }
 
   addQuestion(index: number) {
-    const question = { ...this.questionInfo.questions[index] };
-    this.questionInfo.questions.splice(index + 1, 0, question);
+    const question = { ...this.questions[index] };
+    this.questions.splice(index + 1, 0, question);
   }
 
   removeQuestion(index: number) {
-    this.questionInfo.questions.splice(index, 1);
+    this.questions.splice(index, 1);
   }
 
   copyReview() {
-    this.settingService.createDocumentAndGenerateId(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], this.questionInfo).then((result)=>{
+    this.settingService.createDocumentAndGenerateId(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], this.questionInfo).then((result) => {
       this.questions = result.questions;
       this.alertService.presentToast('Copie réussie', 3000, 'lagua');
     },
-    ()=> this.alertService.presentToast('Erreur lors de la copie', 3000, 'lagua'));
+      () => this.alertService.presentToast('Erreur lors de la copie', 3000, 'lagua'));
   }
 
   async confirmActionSheet() {
-    this.alertService.presentActionSheetConfirmation('Confirmer la modification ?', '', '').then(result=>{
+    this.alertService.presentActionSheetConfirmation('Confirmer la modification ?', '', '').then(result => {
       if (result.role === 'selected' && this.questionInfo.id) {
         this.questionService.updateQuestion(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], this.questionInfo.id, this.questionInfo).then(() => {
           this.alertService.presentToast('La mise à jour a été effectué.', 2000, 'success');

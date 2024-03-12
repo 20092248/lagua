@@ -77,13 +77,16 @@ export class ReviewPage implements OnInit {
       this.reviews = results;
       // this.settingService.createDocument('reviews', '0xABG8UXaN8qNIXO8Ri0', data[0]).then();
     });
+    console.log(this.categoryLevel < this.codeCategorySelectedLevel);
+    console.log(this.codeCategorySelectedLevel);
+    console.log(this.userReview);
   }
 
-  ionViewWillEnter() {
-    this.userLearn = this.userDialect.learn;
-    this.userReview = this.userDialect.review;
-    this.reviewService.getReviewsByCategory(this.category).then((results: ReviewGroup[]) => this.reviews = results);
-  }
+  // ionViewWillEnter() {
+  //   this.userLearn = this.userDialect.learn;
+  //   this.userReview = this.userDialect.review;
+  //   this.reviewService.getReviewsByCategory(this.category).then((results: ReviewGroup[]) => this.reviews = results);
+  // }
 
   setCategory(code: string) {
     this.reviews = [];
