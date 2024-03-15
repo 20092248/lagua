@@ -67,10 +67,9 @@ export class ModifyCategoryPage implements OnInit {
       if (actionSheetResult.role === 'selected') {
         this.reviewGroup.forEach(rg => {
           if (rg.id) {
-            rg.reviews.forEach(r => {
-              r.contents = r.content ? r.content?.split(',') : [];
-            });
+            rg.reviews.forEach(r => { r.contents = r.content ? r.content?.split(',') : []; delete r.content; });
             this.reviewService.updateMenuReview(rg.id, rg).then(() => {
+              rg.reviews.forEach(r => { r.content = r.contents.join(); });
               this.alertService.presentToast('Le menu a été mise a jour.', 3000, 'lagua');
             }, () => this.alertService.presentToast('La mise à jour a échoué!', 3000, 'danger'));
           }

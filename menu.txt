@@ -62,8 +62,8 @@ Le pluriel des noms
 Apprends à former le pluriel des noms
 
 Prononciation: read or lead
-Révise les sons /b/ et /ɓ/ dans des mots comoriens courants
-Révise les sons /d/ et /ɗ/ dans des mots comoriens courants
+Révise les sons b et ɓ dans des mots comoriens courants
+Révise les sons d et ɗ dans des mots comoriens courants
 
 
 Commander une collation
@@ -124,6 +124,9 @@ Parle d’un·e ami·e
 
 Checkpoint
 Teste tes connaissances pour accéder à la prochain lecon
+
+
+
 
 
 Chapitre Le système nominal

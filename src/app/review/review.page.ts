@@ -75,6 +75,10 @@ export class ReviewPage implements OnInit {
     this.reviewService.getReviewsByCategory(this.category).then((results: ReviewGroup[]) => {
       this.loadingService.dismiss();
       this.reviews = results;
+      setTimeout(() => {
+        const id = this.userReview.category + '_' + this.userReview.lesson + '_' + this.userReview.order;
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+      }, 2000);
       // this.settingService.createDocument('reviews', '0xABG8UXaN8qNIXO8Ri0', data[0]).then();
     });
     console.log(this.categoryLevel < this.codeCategorySelectedLevel);
