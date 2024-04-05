@@ -279,8 +279,8 @@ Apprendre les marques de l'aspect et du temps
 
 Les auxiliatifs 1er partie
 Apprendre l'idée de répétition
-Apprendre l'action verbal qui doit précéder une autre.
-Apprendre l'idée de venir faire l'action indiquée par le verbe.
+Apprendre l'action verbal qui doit précéder une autre
+Apprendre l'idée de venir faire l'action indiquée par le verbe
 Apprendre l'action simultanée ou d'une petite durée
 
 Les auxiliatifs 2e partie
@@ -309,7 +309,7 @@ Comprendre l'associatif ou le réciproque'
 Les suffixes et post-suffixes verbaux
 Utilise les suffixes verbaux
 
-_______________________________________________________
+____________________________________________________________________________________________________________
 
 
 Chapitre 9 : Le temps et l’argent
@@ -424,6 +424,10 @@ Entraîne-toi à parler de ta routine
 
 Checkpoint
 Teste tes connaissances pour accéder à la prochain lecon
+
+
+_________________________________________________________________________________________
+
 
 
 Chapitre 14 : Les loisirs

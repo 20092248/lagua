@@ -31,7 +31,6 @@ export class ModifyCategoryPage implements OnInit {
         });
       });
       this.displayFirstAccordion = String(this.reviewGroup[0].lesson);
-      console.log(this.reviewGroup);
     });
   }
 
@@ -67,7 +66,7 @@ export class ModifyCategoryPage implements OnInit {
       if (actionSheetResult.role === 'selected') {
         this.reviewGroup.forEach(rg => {
           if (rg.id) {
-            rg.reviews.forEach(r => { r.contents = r.content ? r.content?.split(',') : []; delete r.content; });
+            rg.reviews.forEach(r => { r.contents = r.content ? r.content?.split(',') : []; delete r.content; r.order = Number(r.order); r.lesson = Number(rg.lesson); });
             this.reviewService.updateMenuReview(rg.id, rg).then(() => {
               rg.reviews.forEach(r => { r.content = r.contents.join(); });
               this.alertService.presentToast('Le menu a été mise a jour.', 3000, 'lagua');

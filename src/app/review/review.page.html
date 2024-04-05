@@ -22,19 +22,20 @@
       </ion-item>
       <div class="scrollGradient" slot="content">
         <div *ngFor="let r of data.reviews; let index = index" class="ion-unlock-lesson">
-          <div id="{{r.category}}_{{r.lesson}}_{{r.order}}" class="ion-actual-position"></div>
+          <div id="{{r.category}}_{{data.lesson}}_{{r.order}}" class="ion-actual-position"></div>
+          <div *ngIf="false"> {{ categoryLevel < codeCategorySelectedLevel }} - {{userReview.lesson < data.lesson}} - {{ (userReview.lesson <= data.lesson && userReview.order < r.order) }} -> {{ data.lesson }} {{ r.order }}</div>
           <ion-icon
-            *ngIf="categoryLevel < codeCategorySelectedLevel || userReview.lesson < r.lesson || (userReview.lesson <= r.lesson && userReview.order < r.order)"
+            *ngIf="categoryLevel < codeCategorySelectedLevel || userReview.lesson < data.lesson || (userReview.lesson <= data.lesson && userReview.order < r.order)"
             class="ion-icon-locked" size="medium" name="lock-closed"
             [ngClass]="{ 'ion-first-icon' : index }"></ion-icon>
           <ion-icon
-            *ngIf="!(categoryLevel < codeCategorySelectedLevel || userReview.lesson < r.lesson || (userReview.lesson <= r.lesson && userReview.order < r.order))"
+            *ngIf="!(categoryLevel < codeCategorySelectedLevel || userReview.lesson < data.lesson || (userReview.lesson <= data.lesson && userReview.order < r.order))"
             class="ion-icon-checked" size="medium" name="checkmark-circle"
             [ngClass]="{ 'ion-first-icon' : index }"></ion-icon>
           <ion-item lines="none" class="ion-card-review">
             <ion-card
-              [ngClass]="{ 'ion-card-locked' : categoryLevel < codeCategorySelectedLevel || userReview.lesson < r.lesson || (userReview.lesson <= r.lesson && userReview.order < r.order), 
-              'ion-actual-review' : categoryLevel == codeCategorySelectedLevel && userReview.lesson == r.lesson && userReview.order == r.order}">
+              [ngClass]="{ 'ion-card-locked' : categoryLevel < codeCategorySelectedLevel || userReview.lesson < data.lesson || (userReview.lesson <= data.lesson && userReview.order < r.order), 
+              'ion-actual-review' : categoryLevel == codeCategorySelectedLevel && userReview.lesson == data.lesson && userReview.order == r.order}">
               <ion-card-header>
                 <ion-card-title (click)="goToModifyReview(data.category, data.lesson, r.order)">{{r.text}} <img *ngIf="r.score" class="ion-flag-comoros ion-float-right"
                     src="{{flagSrc}}" /></ion-card-title>
@@ -44,19 +45,19 @@
                 <div class="ion-custom-text" *ngFor="let content of r.contents">{{content}}</div>
               </ion-card-content>
               <ion-button
-                *ngIf="!(categoryLevel < codeCategorySelectedLevel || userReview.lesson < r.lesson || (userReview.lesson <= r.lesson && userReview.order <= r.order) || r.score)"
+                *ngIf="!(categoryLevel < codeCategorySelectedLevel || userReview.lesson < data.lesson || (userReview.lesson <= data.lesson && userReview.order <= r.order) || r.score)"
                 size="small"
                 class="ion-button ion-button-words ion-padding-min-start ion-float-left ion-button-position"
                 fill="clear" (click)="openModal(r)">
                 Voir les mots
               </ion-button>
               <ion-button
-                *ngIf="!(categoryLevel < codeCategorySelectedLevel || userReview.lesson < r.lesson || (userReview.lesson <= r.lesson && userReview.order < r.order))"
+                *ngIf="!(categoryLevel < codeCategorySelectedLevel || userReview.lesson < data.lesson || (userReview.lesson <= data.lesson && userReview.order < r.order))"
                 size="small"
                 class="ion-button ion-button-active ion-padding-min-end ion-float-right ion-button-position"
-                [ngClass]="{'ion-actual-review-button' : categoryLevel == codeCategorySelectedLevel && userReview.lesson == r.lesson && userReview.order == r.order}"
+                [ngClass]="{'ion-actual-review-button' : categoryLevel == codeCategorySelectedLevel && userReview.lesson == data.lesson && userReview.order == r.order}"
                 fill="clear" (click)="accessReview(r)">
-                {{ r.score ? 'Commencer le test' : categoryLevel === codeCategorySelectedLevel && userReview.lesson <= r.lesson &&
+                {{ r.score ? 'Commencer le test' : categoryLevel === codeCategorySelectedLevel && userReview.lesson <= data.lesson &&
                   userReview.order===r.order ? 'Démarrer le cours' : 'Revoir le cours' }} </ion-button>
             </ion-card>
           </ion-item>

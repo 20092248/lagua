@@ -79,11 +79,7 @@ export class ReviewPage implements OnInit {
         const id = this.userReview.category + '_' + this.userReview.lesson + '_' + this.userReview.order;
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
       }, 2000);
-      // this.settingService.createDocument('reviews', '0xABG8UXaN8qNIXO8Ri0', data[0]).then();
     });
-    console.log(this.categoryLevel < this.codeCategorySelectedLevel);
-    console.log(this.codeCategorySelectedLevel);
-    console.log(this.userReview);
   }
 
   // ionViewWillEnter() {

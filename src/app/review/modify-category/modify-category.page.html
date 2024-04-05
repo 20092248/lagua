@@ -10,14 +10,16 @@
 <ion-content>
   <div class="ion-border ion-padding-horizontal">
     <ion-accordion-group class="ion-margin-vertical" [multiple]="true" [value]="[displayFirstAccordion]">
-      <ion-accordion value="{{r.lesson}}" toggleIcon="chevron-down-outline" toggleIconSlot="end"
+      <ion-accordion value="{{r.lesson}}_{{index}}" toggleIcon="chevron-down-outline" toggleIconSlot="end"
         *ngFor="let r of reviewGroup; let index = index">
-
-        <ion-item slot="header" style="font-size: 18px; height: 47px; color: rgb(118, 0, 0);">Cours n°{{index + 1}} <ion-icon class="ion-padding-end"
+        <ion-item slot="header" style="font-size: 18px; height: 47px; color: rgb(118, 0, 0);border-bottom: 3px solid;">Cours n°{{index + 1}} <ion-icon class="ion-padding-end"
             name="add-circle-outline" (click)="addMenu(index)"></ion-icon><ion-icon name="trash-outline"
             (click)="removeMenu(index)"></ion-icon></ion-item>
-
         <div slot="content">
+          <ion-item>
+            <ion-label>Id</ion-label>
+            <ion-input value="{{r.id}}" [(ngModel)]="r.id"></ion-input>
+          </ion-item>
           <ion-item>
             <ion-label>Categorie</ion-label>
             <ion-input value="{{r.category}}" [(ngModel)]="r.category"></ion-input>
@@ -28,7 +30,7 @@
           </ion-item>
           <ion-item>
             <ion-label>Cours</ion-label>
-            <ion-input value="{{r.lesson}}" [(ngModel)]="r.lesson"></ion-input>
+            <ion-input value="{{r.lesson}}" type="number" [(ngModel)]="r.lesson"></ion-input>
           </ion-item>
           <ion-item style="border-color: rgb(118, 0, 0);">
             <ion-label>Sous-titre</ion-label>
@@ -40,7 +42,7 @@
                 (click)="removeReview(index, indexReview)"></ion-icon></h5>
             <ion-item>
               <ion-label>Ordre</ion-label>
-              <ion-input value="{{rs.order}}" [(ngModel)]="rs.order"></ion-input>
+              <ion-input value="{{rs.order}}" type="number" [(ngModel)]="rs.order"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label>Text</ion-label>
@@ -48,7 +50,7 @@
             </ion-item>
             <ion-item>
               <ion-label>Score</ion-label>
-              <ion-input value="{{rs.score}}" [(ngModel)]="rs.score"></ion-input>
+              <ion-input value="{{rs.score}}" type="number" [(ngModel)]="rs.score"></ion-input>
             </ion-item>
             <ion-item style="border-color: rgb(165, 0, 0);">
               <ion-label>Traduction</ion-label>
