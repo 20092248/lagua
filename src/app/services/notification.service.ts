@@ -21,15 +21,15 @@ export class NotificationsService {
       }
     });
     PushNotifications.addListener('registration', (token) => {
-      console.log(token);
+      console.log('token', token);
     });
 
     PushNotifications.addListener('registrationError', (error) => {
-      console.log(error);
+      console.log('error', error);
     });
 
     PushNotifications.addListener('pushNotificationReceived', (notifications) => {
-      console.log(notifications);
+      console.log('notifications', notifications);
     });
 
   }
