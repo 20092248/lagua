@@ -17,7 +17,7 @@ export class NotificationsService {
         PushNotifications.register();
       }
       else {
-        // If permission is not granted
+        console.warn('If permission is not granted');
       }
     });
     PushNotifications.addListener('registration', (token) => {
