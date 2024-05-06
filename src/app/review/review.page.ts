@@ -99,7 +99,7 @@ export class ReviewPage implements OnInit {
 
   goTo(routing: string) {
     if (this.user.email = 'lagua.shikomori@gmail.com') {
-      this.router.navigate([routing + '/' + this.category]);
+      this.router.navigate([routing + '/' + this.categorySelected?.code]);
     }
   }
 

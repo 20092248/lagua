@@ -13,7 +13,7 @@ import { SettingService } from 'src/app/services/setting.service';
 export class ModifyCategoryPage implements OnInit {
 
   isOverlay: boolean | undefined;
-  reviewGroup: ReviewGroup[] = [{category: '', lesson: 0, order: 0, data: [], title: '', subtitle: '', reviews: []}];
+  reviewGroup: ReviewGroup[] = [{ category: '', lesson: 0, order: 0, data: [], title: '', subtitle: '', reviews: [] }];
   paramCategory: string;
   displayFirstAccordion: string = '';
 
@@ -30,7 +30,7 @@ export class ModifyCategoryPage implements OnInit {
           review.content = review.contents.join();
         });
       });
-      this.displayFirstAccordion = String(this.reviewGroup[0].lesson);
+      this.displayFirstAccordion = this.reviewGroup[0].category + '_' + this.reviewGroup[0].lesson;
     });
   }
 
@@ -59,6 +59,15 @@ export class ModifyCategoryPage implements OnInit {
 
   removeContent(index: number, indexReview: number, indexContent: number) {
     this.reviewGroup[index].reviews[indexReview].contents.splice(indexContent, 1);
+  }
+
+  copyReview() {
+    const newCategory = { category: '', lesson: 0, order: 0, data: [], title: '', subtitle: '', reviews: [{ category: '', contents: [], lesson: 0, order: 0, text: '', translate: '', score: 0 }] };
+    this.settingService.createDocumentAndGenerateId('reviews', newCategory).then((result) => {
+      this.reviewGroup = [newCategory];
+      this.alertService.presentToast('Copie réussie', 3000, 'lagua');
+    },
+      () => this.alertService.presentToast('Erreur lors de la copie', 3000, 'lagua'));
   }
 
   saveReview() {

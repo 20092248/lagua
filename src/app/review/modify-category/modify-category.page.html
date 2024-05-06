@@ -10,7 +10,7 @@
 <ion-content>
   <div class="ion-border ion-padding-horizontal">
     <ion-accordion-group class="ion-margin-vertical" [multiple]="true" [value]="[displayFirstAccordion]">
-      <ion-accordion value="{{r.lesson}}_{{index}}" toggleIcon="chevron-down-outline" toggleIconSlot="end"
+      <ion-accordion value="{{r.category}}_{{r.lesson}}" toggleIcon="chevron-down-outline" toggleIconSlot="end"
         *ngFor="let r of reviewGroup; let index = index">
         <ion-item slot="header" style="font-size: 18px; height: 47px; color: rgb(118, 0, 0);border-bottom: 3px solid;">Cours n°{{index + 1}} <ion-icon class="ion-padding-end"
             name="add-circle-outline" (click)="addMenu(index)"></ion-icon><ion-icon name="trash-outline"
@@ -76,4 +76,9 @@
   <div class="ion-text-center">
     <ion-button (click)="saveReview()">VALIDER</ion-button>
   </div>
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+    <ion-fab-button color="lagua" (click)="copyReview()">
+      <ion-icon name="clipboard-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

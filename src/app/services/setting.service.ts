@@ -94,7 +94,7 @@ export class SettingService {
     await setDoc(doc(getFirestore(), collection, document), value);
   }
 
-  async createDocumentAndGenerateId(col: string, value: Question) {
+  async createDocumentAndGenerateId(col: string, value: any) {
     delete value.id;
     const docRef = await addDoc(collection(getFirestore(), col), value);
     console.log("Document written with ID: ", docRef.id);
