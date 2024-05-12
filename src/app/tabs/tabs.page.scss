@@ -17,8 +17,8 @@ ion-tab-bar ion-icon {
   color: #417752;
   font-weight: bold;
   font-size: 13px;
-  // background: #619d69;
-  // border-radius: 25px 25px 0 0;
+  background: #ebf7ec;
+  border-radius: 25px;
 }
 
 ion-tabs {
@@ -26,10 +26,10 @@ ion-tabs {
 }
 
 ion-tab-bar {
-  margin-top: 5px;
+  margin: 0 2px 5px;
   --border: none;
-  border-radius: 25px 25px 0 0;
+  border-radius: 15px;
   --background: var(--ion-background-color);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px,
-    rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+    rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px,rgba(0, 0, 0, 0.1) 0px -5px 5px 0px;
 }
