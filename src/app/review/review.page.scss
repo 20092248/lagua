@@ -192,27 +192,31 @@ ion-icon.ion-icon-locked.first-icon {
 }
 
 .ion-button-a1 {
-  --background: #9dc18c; // #1a6921;
+  --background: #1a6921;
 }
 
 .ion-button-a2 {
-  --background: #9dc18c; // #6eb523;
+  --background: #6eb523;
 }
 
 .ion-button-b1 {
-  --background: #9dc18c; // #ffc409;
+  --background: #edcb5c;
 }
 
 .ion-button-b2 {
-  --background: #9dc18c; // #ff9000;
+  --background:  #f3ae54;
 }
 
 .ion-button-c1 {
-  --background: #9dc18c; // #ff0000;
+  --background: #eb5656;
+}
+
+.ion-button-review {
+  --background: #1a6921;
 }
 
 .ion-button-active {
-  --background: #1a6921;
+  filter: drop-shadow(2px 2px 6px var(--ion-color-medium));
 }
 
 .ion-button-words {

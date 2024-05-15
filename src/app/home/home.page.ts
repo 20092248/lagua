@@ -25,6 +25,7 @@ import { CodeLabel } from '../model/codeLabel.model';
 import { StatusBar } from '@capacitor/status-bar';
 import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
 import { App } from '@capacitor/app';
+import { QuestionService } from '../services/question.service';
 register();
 
 @Component({
@@ -49,7 +50,7 @@ export class HomePage implements OnInit {
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
     private reviewService: ReviewService, private loadingService: LoadingService, private platform: Platform, private settingsService: SettingService,
-    private routerOutlet: IonRouterOutlet) {
+    private questionService: QuestionService, private routerOutlet: IonRouterOutlet) {
       this.platform.backButton.subscribeWithPriority(-1, () => {
         this.alertService.presentToast('backbutton home', 1000, 'primary');
         if (!this.routerOutlet.canGoBack()) {
@@ -150,7 +151,21 @@ export class HomePage implements OnInit {
 
   accessToReview() {
     this.setReview = this.userDialect.review;
-    this.router.navigate(['/questions']);
+    this.startReview(this.userDialect.review);
+    // this.router.navigate(['/questions']);
+  }
+
+  startReview(review: Review) {
+    this.questionService.findQuestions(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], Utils.paramReview(review.category, review.lesson, review.order)).then(()=>{
+      this.router.navigate(['/questions/preview']);
+      this.getInfoReview();
+    });
+  }
+
+  getInfoReview() {
+    this.reviewService.resultReview.category = this.reviewService.review.category;
+    this.reviewService.resultReview.lesson = this.reviewService.review.lesson;
+    this.reviewService.resultReview.order = this.reviewService.review.order;
   }
 
   logout() {

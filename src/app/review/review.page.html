@@ -54,7 +54,7 @@
               <ion-button
                 *ngIf="!(categoryLevel < codeCategorySelectedLevel || userReview.lesson < data.lesson || (userReview.lesson <= data.lesson && userReview.order < r.order))"
                 size="small"
-                class="ion-button ion-button-active ion-padding-min-end ion-float-right ion-button-position"
+                class="ion-button ion-button-review ion-padding-min-end ion-float-right ion-button-position"
                 [ngClass]="{'ion-actual-review-button' : categoryLevel == codeCategorySelectedLevel && userReview.lesson == data.lesson && userReview.order == r.order}"
                 fill="clear" (click)="accessReview(r)">
                 {{ r.score ? 'Commencer le test' : categoryLevel === codeCategorySelectedLevel && userReview.lesson <= data.lesson &&

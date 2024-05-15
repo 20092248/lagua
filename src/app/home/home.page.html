@@ -132,9 +132,10 @@
                   <ion-item detail="true" routerLinkActive="selected" lines="full"
                     *ngFor="let r of previousReviews; let index = index"
                     (click)="accessPreviousReview(r); modal.dismiss()">
-                    <ion-icon name="lock-open-outline" slot="start"></ion-icon>
+                    <!-- <ion-icon name="lock-open-outline" slot="start"></ion-icon> -->
+                    <div class="ion-position-icon ion-color-{{r.category}}">{{r.category}}</div>
                     <ion-label class="ion-text-wrap">
-                      <h3>{{r.text}}</h3>
+                      <h3>{{r.text}} - cours n°{{r.lesson}}</h3>
                       <p>{{r.translate}}</p>
                     </ion-label>
                   </ion-item>
