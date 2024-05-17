@@ -118,6 +118,7 @@ export class ReviewPage implements OnInit {
       this.getInfoReview();
     });
   }
+  
   getInfoReview() {
     this.reviewService.resultReview.category = this.reviewService.review.category;
     this.reviewService.resultReview.lesson = this.reviewService.review.lesson;

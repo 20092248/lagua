@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow-y: scroll;
+    overflow-y: auto;
     // flex: auto;
     // height: 100%;
 }
@@ -14,4 +14,8 @@ ion-card {
 
 ion-card-title {
     color: #1a6921 !important;
+}
+
+.ion-full-width {
+    width: 100%;
 }
