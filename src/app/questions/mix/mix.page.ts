@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AnimationOptions } from 'ngx-lottie';
+import { AnimationItem } from 'ngx-lottie/lib/symbols';
 import { Question } from 'src/app/model/question.model';
 import { User } from 'src/app/model/user.model';
 import { AudioService } from 'src/app/services/audio.service';
@@ -19,13 +21,15 @@ export class MixPage implements OnInit {
 
   typeDisplay: string;
   newReview: boolean = false;
+  animation: AnimationItem = {} as AnimationItem;
+  options: AnimationOptions = { path: 'https://assets9.lottiefiles.com/packages/lf20_ydn9vde0.json' };
 
-  constructor(private router: Router, private route: ActivatedRoute, private questionService: QuestionService, private settingService: SettingService) {
-    this.typeDisplay = CONSTANTS.transcodeTypeQuestion[Math.floor(Math.random() * 4)];
+  constructor(private ngZone: NgZone, private router: Router, private route: ActivatedRoute, private questionService: QuestionService, private settingService: SettingService) {
+    this.typeDisplay = 'L'; //CONSTANTS.transcodeTypeQuestion[Math.floor(Math.random() * 4)];
     this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation()?.extras?.state) {
         this.newReview = this.router.getCurrentNavigation()?.extras?.state?.['newReview'];
-        this.typeDisplay = this.questions[this.nbrQuestion].type;
+        this.typeDisplay = 'L';//this.questions[this.nbrQuestion].type;
       }
     });
   }
@@ -39,6 +43,11 @@ export class MixPage implements OnInit {
 
   ngOnInit() {
     Utils.customCapacitorQuestion(this.settingService, '#ffffff');
+  }
+
+  animationCreated(animation: any) {
+    this.animation = animation;
+    console.log(animation);
   }
 
   nextQuestion(random: any) {

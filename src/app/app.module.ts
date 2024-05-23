@@ -17,7 +17,11 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { CrashlyticsErrorHandler } from './utils/crashlytics-handler';
-// import { app, auth, firestore } from '../environments/environment';
+
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+
+export function playerFactory() { return player; }
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +30,7 @@ import { CrashlyticsErrorHandler } from './utils/crashlytics-handler';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    LottieModule.forRoot({player: playerFactory}),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore(initializeApp(environment.firebase))),
     provideDatabase(() => getDatabase(initializeApp(environment.firebase))),
