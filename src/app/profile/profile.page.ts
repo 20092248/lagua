@@ -70,7 +70,7 @@ export class ProfilePage implements OnInit {
       this.nbrWords += review.toRevise.length + review.toLearn.length + review.learned.length;
       this.score += (this.nbrWordsToLearn * 50) + (this.nbrWordsLearned * 100);
     });
-    this.score += this.userDialect.resultLessons.length * 100;
+    this.score += this.userDialect.resultLessons?.length * 100;
     this.percentWordsToRevise = this.nbrWordsToRevise * 100 / this.nbrWords;
     this.percentWordsToLearn = this.nbrWordsToLearn * 100 / this.nbrWords;
     this.percentWordsLearned = this.nbrWordsLearned * 100 / this.nbrWords;

@@ -17,6 +17,7 @@ export class CONSTANTS {
     public static CONFIRM_DIALECT_CHANGED = 'Le changement de dialecte a été effectué.';
     public static FORGOT_PASSWORD_HEADER = 'Mot de passe oublié ?';
     public static FORGOT_PASSWORD_SUBHEADER = 'Veuillez saisir votre email de connexion afin de recevoir le lien de réinitialisation de votre mot de passe.';
+    public static FORGOT_PASSWORD_MESSAGE = 'N\'hésitez pas à vérifier les spams si le mail n\'arrive pas dans la boîte principale.';
     public static FORGOT_PASSWORD_LABEL_SUCCESS = 'Vous allez recevoir un message à l\'adresse ';
     public static COLLECTION_DIALOG = 'shikomori_francais_dialogs';
     public static FRENCH_DIALECT = 'FREN';

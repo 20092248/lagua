@@ -19,6 +19,7 @@ export class Utils {
     audioService.preload('wrongAnswer', 'assets/audio/wrong-choice.mp3');
     audioService.preload('successReview', 'assets/audio/success-review.mp3');
     audioService.preload('failReview', 'assets/audio/fail-review.mp3');
+    audioService.preload('countdown', 'assets/audio/countdown.mp3');
   }
 
   static customCapacitorApp(settingService: SettingService) {

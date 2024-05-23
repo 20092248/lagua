@@ -11,6 +11,7 @@ import { QcmPageModule } from '../qcm/qcm.module';
 import { TranslatePageModule } from '../translate/translate.module';
 import { SpellPageModule } from '../spell/spell.module';
 import { MemoPageModule } from '../memo/memo.module';
+import { LottieModule } from 'ngx-lottie';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { MemoPageModule } from '../memo/memo.module';
     QcmPageModule,
     TranslatePageModule,
     SpellPageModule,
-    MemoPageModule
+    MemoPageModule,
+    LottieModule
   ],
   declarations: [MixPage],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

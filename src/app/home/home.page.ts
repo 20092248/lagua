@@ -86,7 +86,6 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     Utils.customCapacitorTabs(this.settingService);
-    this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
     const numberPreviousReview = this.userDialect.resultReviews ? this.userDialect.resultReviews.length : 0;
     this.previousReviewLoadedLength = Array(numberPreviousReview).fill(undefined, 0, numberPreviousReview).map((x, i) => i);
     this.loadingService.present('Chargement...');

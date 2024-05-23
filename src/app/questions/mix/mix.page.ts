@@ -21,15 +21,17 @@ export class MixPage implements OnInit {
 
   typeDisplay: string;
   newReview: boolean = false;
+  countDownIsFinished: boolean = false;
   animation: AnimationItem = {} as AnimationItem;
-  options: AnimationOptions = { path: 'https://assets9.lottiefiles.com/packages/lf20_ydn9vde0.json' };
+  options: AnimationOptions = { path: 'assets/img/countdown.json' };
+  styles: Partial<CSSStyleDeclaration> = { background: 'rgb(238 241 238)' };
 
-  constructor(private ngZone: NgZone, private router: Router, private route: ActivatedRoute, private questionService: QuestionService, private settingService: SettingService) {
-    this.typeDisplay = 'L'; //CONSTANTS.transcodeTypeQuestion[Math.floor(Math.random() * 4)];
+  constructor(private ngZone: NgZone, private router: Router, private route: ActivatedRoute, private questionService: QuestionService, private settingService: SettingService, private audioService: AudioService) {
+    this.typeDisplay = CONSTANTS.transcodeTypeQuestion[Math.floor(Math.random() * 4)];
     this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation()?.extras?.state) {
         this.newReview = this.router.getCurrentNavigation()?.extras?.state?.['newReview'];
-        this.typeDisplay = 'L';//this.questions[this.nbrQuestion].type;
+        this.typeDisplay = this.nbrQuestion ? this.questions[this.nbrQuestion].type : this.typeDisplay;
       }
     });
   }
@@ -45,9 +47,18 @@ export class MixPage implements OnInit {
     Utils.customCapacitorQuestion(this.settingService, '#ffffff');
   }
 
+  // ionViewWillEnter() {
+  //   this.countDownIsFinished = false;
+  // }
+
   animationCreated(animation: any) {
-    this.animation = animation;
-    console.log(animation);
+    this.animation = animation as AnimationItem;
+    this.animation.loop = false;
+  }
+
+  complete(event: any) {
+    this.styles = {background: 'transparent'};
+    this.animation.hide();
   }
 
   nextQuestion(random: any) {

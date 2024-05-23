@@ -1,7 +1,4 @@
-<ng-lottie
-  [options]="options"
-  (animationCreated)="animationCreated($event)"
-></ng-lottie>
+<ng-lottie [styles]="styles" [options]="options" (animationCreated)="animationCreated($event)" (complete)="complete($event)"></ng-lottie>
 
 <!-- MEMO -->
 <app-memo class="ion-page" *ngIf="typeDisplay === 'M'" (nextQuestionEvent)="nextQuestion($event)"></app-memo>

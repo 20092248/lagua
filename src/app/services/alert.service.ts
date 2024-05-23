@@ -83,7 +83,7 @@ export class AlertService {
     return await alert.onDidDismiss();
   }
 
-  async presentAlertWithInput(header: string, subheader: string, buttons: any[]) {
+  async presentAlertWithInput(header: string, subheader: string, message: string, buttons: any[]) {
     const inputs: AlertInput[] = [];
     // levels.forEach(input => {
     //   inputs.push({ label: input.label, value: input.code, type: 'radio', cssClass: 'ion-alert-radio-element', });
@@ -91,6 +91,7 @@ export class AlertService {
     const alert = await this.alertController.create({
       header: header,
       subHeader: subheader,
+      message: message,
       buttons: buttons,
       inputs: [
         {

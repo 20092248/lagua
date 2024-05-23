@@ -44,6 +44,7 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
     if (this.uploadSetting) {
       this.uploadSetting.subscribe(data => {
         this.settingService.profile = data.profile;
