@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { QcmPageRoutingModule } from './qcm-routing.module';
 
 import { QcmPage } from './qcm.page';
+import { CountdownComponentModule } from 'src/app/countdown/countdown.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    QcmPageRoutingModule
+    QcmPageRoutingModule,
+    CountdownComponentModule
   ],
   declarations: [QcmPage],
   exports: [QcmPage]

@@ -1,13 +1,14 @@
-<ng-lottie [styles]="styles" [options]="options" (animationCreated)="animationCreated($event)" (complete)="complete($event)"></ng-lottie>
+<!-- COUNTDOWN -->
+<app-countdown (activeEvent)="setCountDownActive($event)"></app-countdown>
 
 <!-- MEMO -->
-<app-memo class="ion-page" *ngIf="typeDisplay === 'M'" (nextQuestionEvent)="nextQuestion($event)"></app-memo>
+<app-memo [newReview]="newReview" class="ion-page" *ngIf="typeDisplay === 'C' && !countDownActive" (nextQuestionEvent)="nextQuestion($event)"></app-memo>
 
 <!-- QCM -->
-<app-qcm class="ion-page" *ngIf="typeDisplay === 'Q'" (nextQuestionEvent)="nextQuestion($event)"></app-qcm>
+<app-qcm [newReview]="newReview" class="ion-page" *ngIf="typeDisplay === 'Q' && !countDownActive" (nextQuestionEvent)="nextQuestion($event)"></app-qcm>
 
 <!-- TRANSLATE -->
-<app-translate class="ion-page" *ngIf="typeDisplay === 'T'" (nextQuestionEvent)="nextQuestion($event)"></app-translate>
+<app-translate [newReview]="newReview" class="ion-page" *ngIf="typeDisplay === 'T' && !countDownActive" (nextQuestionEvent)="nextQuestion($event)"></app-translate>
 
 <!-- SPELL -->
-<app-spell class="ion-page" *ngIf="typeDisplay === 'S'" (nextQuestionEvent)="nextQuestion($event)"></app-spell>
+<app-spell [newReview]="newReview" class="ion-page" *ngIf="typeDisplay === 'S' && !countDownActive" (nextQuestionEvent)="nextQuestion($event)"></app-spell>

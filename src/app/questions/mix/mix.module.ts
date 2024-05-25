@@ -11,7 +11,7 @@ import { QcmPageModule } from '../qcm/qcm.module';
 import { TranslatePageModule } from '../translate/translate.module';
 import { SpellPageModule } from '../spell/spell.module';
 import { MemoPageModule } from '../memo/memo.module';
-import { LottieModule } from 'ngx-lottie';
+import { CountdownComponentModule } from 'src/app/countdown/countdown.module';
 
 @NgModule({
   imports: [
@@ -23,7 +23,7 @@ import { LottieModule } from 'ngx-lottie';
     TranslatePageModule,
     SpellPageModule,
     MemoPageModule,
-    LottieModule
+    CountdownComponentModule
   ],
   declarations: [MixPage],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]

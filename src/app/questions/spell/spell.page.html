@@ -1,4 +1,7 @@
-<ion-grid class="ion-text-center">
+<!-- COUNTDOWN -->
+<app-countdown *ngIf="countDownActive" (activeEvent)="setCountDownActive($event)"></app-countdown>
+
+<ion-grid class="ion-text-center" *ngIf="!countDownActive">
   <ion-row>
     <ion-col>
       <h5>Complétez les espaces vides</h5>
@@ -29,7 +32,7 @@
     </ion-col>
   </ion-row>
 </ion-grid>
-<ion-footer class="ion-no-border">
+<ion-footer class="ion-no-border" *ngIf="!countDownActive">
   <ion-toolbar [ngClass]="{ 'ion-text-center' : !displayAnswer || secondChance }">
     <ion-button *ngIf="!displayAnswer" [disabled]="!response.length" color="tertiary" class="ion-margin" (click)="validate()">
       Valider

@@ -1,0 +1,5 @@
+<div class="ion-ng-lottie-container" [ngStyle]="{'height': countDownIsFinished ? '0%' : '100%'}"
+  *ngIf="!countDownIsFinished">
+  <ng-lottie [styles]="styles" [options]="options" (animationCreated)="animationCreated($event)"
+    (complete)="complete($event)"></ng-lottie>
+</div>

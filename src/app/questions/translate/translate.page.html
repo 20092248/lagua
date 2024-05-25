@@ -1,4 +1,7 @@
-<ion-grid>
+<!-- COUNTDOWN -->
+<app-countdown *ngIf="countDownActive" (activeEvent)="setCountDownActive($event)"></app-countdown>
+
+<ion-grid *ngIf="!countDownActive">
   <ion-row class="ion-container-translate">
     <ion-col>
       <h3>Traduisez la phrase</h3>
@@ -26,7 +29,7 @@
     </ion-col>
   </ion-row>
 </ion-grid>
-<ion-footer class="ion-no-border">
+<ion-footer class="ion-no-border" *ngIf="!countDownActive">
   <ion-toolbar [ngClass]="{ 'ion-text-center' : !displayAnswer || !error || secondChance }">
     <ion-button *ngIf="!displayAnswer" [disabled]="!response.length" color="tertiary" class="ion-margin" (click)="validate()">
       Valider

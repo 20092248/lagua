@@ -1,10 +1,11 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { AudioService } from 'src/app/services/audio.service';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { QuestionService } from 'src/app/services/question.service';
 import { ReviewService } from 'src/app/services/review.service';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-memo',
@@ -22,6 +23,7 @@ export class MemoPage implements OnInit {
   answerSelected: any | undefined;
   radio_group: any;
   isOpen: boolean = false;
+  countDownActive: boolean = true;
   @Output()
   nextQuestionEvent: EventEmitter<any> = new EventEmitter();
 
@@ -36,6 +38,7 @@ export class MemoPage implements OnInit {
     this.questions = this.questionService.questions?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
     setTimeout(() => { this.isOpen = true }, 2000);
+    this.countDownActive = Utils.countdownMixOrRestart(this.questionService.type);
   }
 
   isCorrect(response: boolean) {
@@ -69,6 +72,10 @@ export class MemoPage implements OnInit {
       this.reviewService.resultReview.toRevise.push(toRevise);
     }
     this.reviewService.resultReview.nbrQuestion++;
+  }
+
+  setCountDownActive(event: any) {
+    this.countDownActive = false;
   }
 
 }

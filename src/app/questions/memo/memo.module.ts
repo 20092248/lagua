@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { MemoPageRoutingModule } from './memo-routing.module';
 
 import { MemoPage } from './memo.page';
+import { CountdownComponentModule } from 'src/app/countdown/countdown.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MemoPageRoutingModule
+    MemoPageRoutingModule,
+    CountdownComponentModule
   ],
   declarations: [MemoPage],
   exports: [MemoPage]

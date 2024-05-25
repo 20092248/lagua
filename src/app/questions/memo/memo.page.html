@@ -1,4 +1,7 @@
-<ion-grid class="ion-text-center">
+<!-- COUNTDOWN -->
+<app-countdown *ngIf="countDownActive" (activeEvent)="setCountDownActive($event)"></app-countdown>
+
+<ion-grid class="ion-text-center" *ngIf="!countDownActive">
   <ion-row>
     <ion-col>
       <h5>Comment dites-vous cela en comorien ?</h5>

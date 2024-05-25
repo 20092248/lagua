@@ -46,7 +46,7 @@ export class TypePage implements OnInit {
       case 'Q':
         this.router.navigate(['/questions/qcm']);
         break;
-      case 'M':
+      case 'C':
         this.router.navigate(['/questions/memo']);
         break;
       case 'T':

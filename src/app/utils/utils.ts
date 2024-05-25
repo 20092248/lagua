@@ -127,4 +127,8 @@ export class Utils {
     return value ? value : '';
   }
 
+  static countdownMixOrRestart(type: string) {
+    return !(type === 'M' || type === 'R');
+  }
+
 }

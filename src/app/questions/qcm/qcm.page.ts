@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { AudioService } from 'src/app/services/audio.service';
@@ -24,6 +24,7 @@ export class QcmPage implements OnInit {
   answerSelected: any | undefined;
   radio_group: any;
   score: number = 0;
+  countDownActive: boolean = true;
   @Output()
   nextQuestionEvent: EventEmitter<any> = new EventEmitter();
 
@@ -39,6 +40,7 @@ export class QcmPage implements OnInit {
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
+    this.countDownActive = Utils.countdownMixOrRestart(this.questionService.type);
   }
 
   checkedRadioGroup(event: any) {
@@ -105,6 +107,10 @@ export class QcmPage implements OnInit {
       this.reviewService.resultReview.toRevise.push(toRevise);
     }
     this.reviewService.resultReview.nbrQuestion++;
+  }
+
+  setCountDownActive(event: any) {
+    this.countDownActive = false;
   }
 
 }

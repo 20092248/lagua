@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { AudioService } from 'src/app/services/audio.service';
@@ -25,6 +25,7 @@ export class SpellPage implements OnInit {
   letters: string[] = [];
   response: string[] = [];
   positions: number[] = [];
+  countDownActive: boolean = true;
   @Output()
   nextQuestionEvent: EventEmitter<any> = new EventEmitter();
 
@@ -40,6 +41,7 @@ export class SpellPage implements OnInit {
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
+    this.countDownActive = Utils.countdownMixOrRestart(this.questionService.type);
     this.mixLetter();
   }
 
@@ -122,4 +124,7 @@ export class SpellPage implements OnInit {
     this.reviewService.resultReview.nbrQuestion++;
   }
 
+  setCountDownActive(event: any) {
+    this.countDownActive = false;
+  }
 }

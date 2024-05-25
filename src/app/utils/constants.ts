@@ -23,7 +23,7 @@ export class CONSTANTS {
     public static FRENCH_DIALECT = 'FREN';
     public static transcodeTypeQuestion: { [key: number]: string } = {
         [0]: 'Q', //QCM
-        [1]: 'M', //MEMO
+        [1]: 'C', //MEMO
         [2]: 'T', //TRANSLATE
         [3]: 'S', //SPELL
         [4]: 'M' //MIX

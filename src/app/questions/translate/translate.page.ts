@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { AudioService } from 'src/app/services/audio.service';
@@ -27,6 +27,7 @@ export class TranslatePage implements OnInit {
   translateSetting: any | undefined;
   response: any[] = [];
   choices: any[] = [];
+  countDownActive: boolean = true;
   @Output()
   nextQuestionEvent: EventEmitter<any> = new EventEmitter();
 
@@ -42,6 +43,7 @@ export class TranslatePage implements OnInit {
     this.user = this.authentificationService.user;
     this.questions = this.questionService.questions?.questions;
     this.question = this.questions ? this.questions[this.nbrQuestion] : undefined;
+    this.countDownActive = Utils.countdownMixOrRestart(this.questionService.type);
     this.getChoices();
   }
 
@@ -140,6 +142,10 @@ export class TranslatePage implements OnInit {
       this.reviewService.resultReview.toRevise.push(toRevise);
     }
     this.reviewService.resultReview.nbrQuestion++;
+  }
+
+  setCountDownActive(event: any) {
+    this.countDownActive = false;
   }
 
 }

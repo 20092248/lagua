@@ -21,10 +21,7 @@ export class MixPage implements OnInit {
 
   typeDisplay: string;
   newReview: boolean = false;
-  countDownIsFinished: boolean = false;
-  animation: AnimationItem = {} as AnimationItem;
-  options: AnimationOptions = { path: 'assets/img/countdown.json' };
-  styles: Partial<CSSStyleDeclaration> = { background: 'rgb(238 241 238)' };
+  countDownActive: boolean = true;
 
   constructor(private ngZone: NgZone, private router: Router, private route: ActivatedRoute, private questionService: QuestionService, private settingService: SettingService, private audioService: AudioService) {
     this.typeDisplay = CONSTANTS.transcodeTypeQuestion[Math.floor(Math.random() * 4)];
@@ -47,26 +44,16 @@ export class MixPage implements OnInit {
     Utils.customCapacitorQuestion(this.settingService, '#ffffff');
   }
 
-  // ionViewWillEnter() {
-  //   this.countDownIsFinished = false;
-  // }
-
-  animationCreated(animation: any) {
-    this.animation = animation as AnimationItem;
-    this.animation.loop = false;
-  }
-
-  complete(event: any) {
-    this.styles = {background: 'transparent'};
-    this.animation.hide();
-  }
-
   nextQuestion(random: any) {
     if (this.newReview) {
       this.typeDisplay = this.questions[this.nbrQuestion].type;
     } else {
       this.typeDisplay = CONSTANTS.transcodeTypeQuestion[random]; //Math.floor(Math.random() * 4);
     }
+  }
+ 
+  setCountDownActive(event: any) {
+    this.countDownActive = false;
   }
 
 }

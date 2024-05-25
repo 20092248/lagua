@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TranslatePageRoutingModule } from './translate-routing.module';
 
 import { TranslatePage } from './translate.page';
+import { CountdownComponentModule } from 'src/app/countdown/countdown.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TranslatePageRoutingModule
+    TranslatePageRoutingModule,
+    CountdownComponentModule
   ],
   declarations: [TranslatePage],
   exports: [TranslatePage]
