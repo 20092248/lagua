@@ -48,6 +48,7 @@ export class TranslatePage implements OnInit {
   }
 
   addWord(choice: any) {
+    this.audioService.play('click');
     this.response.push(choice);
   }
 

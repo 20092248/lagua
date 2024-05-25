@@ -46,6 +46,7 @@ export class SpellPage implements OnInit {
   }
 
   addLetter(letter: any, index: number) {
+    this.audioService.play('click');
     this.response.push(letter);
     this.positions.push(index);
   }

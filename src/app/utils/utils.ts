@@ -20,6 +20,7 @@ export class Utils {
     audioService.preload('successReview', 'assets/audio/success-review.mp3');
     audioService.preload('failReview', 'assets/audio/fail-review.mp3');
     audioService.preload('countdown', 'assets/audio/countdown.mp3');
+    audioService.preload('click', 'assets/audio/click.mp3');
   }
 
   static customCapacitorApp(settingService: SettingService) {
@@ -129,6 +130,14 @@ export class Utils {
 
   static countdownMixOrRestart(type: string) {
     return !(type === 'M' || type === 'R');
+  }
+
+  static shuffledArray(array: any[]) {
+    for (let i = array.length - 1; i > 0; i--) { 
+      const j = Math.floor(Math.random() * (i + 1)); 
+      [array[i], array[j]] = [array[j], array[i]]; 
+    } 
+    return array;
   }
 
 }
