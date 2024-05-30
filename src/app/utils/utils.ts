@@ -7,6 +7,7 @@ import { NavigationBar } from "@mauricewegner/capacitor-navigation-bar";
 import { SettingService } from "../services/setting.service";
 import { AudioService } from "../services/audio.service";
 import { ParamReview } from "../model/paramReview.model";
+import { AndroidSettings, NativeSettings } from "capacitor-native-settings";
 
 export class Utils {
 
@@ -29,6 +30,11 @@ export class Utils {
       StatusBar.setStyle({ style: Style.Dark });
       StatusBar.setBackgroundColor({ color: '#46895c' });
       NavigationBar.setColor({ color: '#74a884', darkButtons: false });
+      NativeSettings.openAndroid({
+        option: AndroidSettings.ApplicationDetails,
+      }).then(value=>{
+        console.log(value)
+      });
     }
   }
 

@@ -10,6 +10,7 @@ import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
 import { SplashScreen } from '@capacitor/splash-screen'
 import { Utils } from './utils/utils';
 import { SettingService } from './services/setting.service';
+import { NativeSettings, AndroidSettings } from 'capacitor-native-settings';
 
 @Component({
   selector: 'app-root',
