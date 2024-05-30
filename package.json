@@ -37,7 +37,7 @@
     "@capacitor/status-bar": "^5.0.6",
     "@codetrix-studio/capacitor-google-auth": "^3.3.6",
     "@emailjs/browser": "^3.11.0",
-    "@ionic-native/audio-management": "^5.0.0",
+    "@ionic-native/audio-management": "^5.0.0-beta.24",
     "@ionic/angular": "^6.1.9",
     "@mauricewegner/capacitor-navigation-bar": "^2.0.3",
     "@sendgrid/mail": "^6.4.0",
