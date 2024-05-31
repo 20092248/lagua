@@ -30,11 +30,6 @@ export class Utils {
       StatusBar.setStyle({ style: Style.Dark });
       StatusBar.setBackgroundColor({ color: '#46895c' });
       NavigationBar.setColor({ color: '#74a884', darkButtons: false });
-      NativeSettings.openAndroid({
-        option: AndroidSettings.ApplicationDetails,
-      }).then(value=>{
-        console.log(value)
-      });
     }
   }
 
@@ -144,6 +139,16 @@ export class Utils {
       [array[i], array[j]] = [array[j], array[i]]; 
     } 
     return array;
+  }
+
+  static displayText(questions: any[]) {
+    questions.forEach(question=>{
+      if(question?.text.indexOf('$') !== -1) {
+        const choice = question.choices.find((c:any)=>c.answer)?.choice;
+        question.text = question?.text.replace('$', choice);
+      }
+    });
+    return questions;
   }
 
 }

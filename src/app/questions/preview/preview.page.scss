@@ -8,13 +8,23 @@
     // height: 100%;
 }
 
-ion-card {
+ion-card.ion-content-words {
     width: 100%;
+    ion-card-title {
+        color: #1a6921 !important;
+    }
 }
 
-ion-card-title {
-    color: #1a6921 !important;
+ion-card.ion-help {
+    width: 100%;
+    ion-card-title {
+        color: #ffffff;
+    }
+    ion-card-subtitle {
+        color: #ffffff !important;
+    }
 }
+
 
 .ion-full-width {
     width: 100%;

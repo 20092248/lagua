@@ -20,6 +20,8 @@ import { CrashlyticsErrorHandler } from './utils/crashlytics-handler';
 
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
+import { Vibration } from '@awesome-cordova-plugins/vibration/ngx';
+import { OpenNativeSettings } from '@awesome-cordova-plugins/open-native-settings/ngx';
 
 export function playerFactory() { return player; }
 
@@ -38,7 +40,7 @@ export function playerFactory() { return player; }
     provideAuth(() => getAuth(initializeApp(environment.firebase))),
     provideAnalytics(() => getAnalytics(initializeApp(environment.firebase))),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, { provide: ErrorHandler, useClass: CrashlyticsErrorHandler }],
+  providers: [OpenNativeSettings, Vibration, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, { provide: ErrorHandler, useClass: CrashlyticsErrorHandler }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

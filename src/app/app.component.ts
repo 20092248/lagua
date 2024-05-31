@@ -5,12 +5,9 @@ import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { FacebookLogin } from '@capacitor-community/facebook-login';
 import { NotificationsService } from './services/notification.service';
 import { LoadingService } from './services/loading.service';
-import { StatusBar, Style } from '@capacitor/status-bar';
-import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
 import { SplashScreen } from '@capacitor/splash-screen'
 import { Utils } from './utils/utils';
 import { SettingService } from './services/setting.service';
-import { NativeSettings, AndroidSettings } from 'capacitor-native-settings';
 
 @Component({
   selector: 'app-root',

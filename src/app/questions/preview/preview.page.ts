@@ -14,21 +14,16 @@ import { Utils } from 'src/app/utils/utils';
 export class PreviewPage implements OnInit {
 
   questions: any[] = [];
+  helps: any[] = [];
 
   constructor(private router: Router, private questionService: QuestionService, private audioService: AudioService, private settingService: SettingService) { }
 
   ngOnInit() {
-    this.questions = Utils.shuffledArray(this.questionService.questions?.questions);
+    this.questions = Utils.displayText(this.questionService.questions?.questions);
+    this.questions = Utils.shuffledArray(this.questions);
+    this.helps = this.questionService.questions?.helps;
     Utils.preloadAudio(this.audioService);
     this.settingService.getSetting('questions').then();
-  }
-
-  displayText(text: string, content: any) {
-    if(text.indexOf('$') !== -1) {
-      const choice = content.choices.find((c:any)=>c.answer)?.choice;
-      return text.replace('$', choice);
-    }
-    return text;
   }
 
   continue() {
