@@ -3,6 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Observable } from 'rxjs';
 import { AuthentificationService } from '../services/authentification.service';
 import { LoadingService } from '../services/loading.service';
+import { Utils } from '../utils/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,8 @@ export class AuthGuard implements CanActivate {
     if(uid){
       this.loadingService.present('Chargement...');
         return this.authentificationService.getInfoUser(uid).then(() => {
+          Utils.previousUrl = 'home';
+          Utils.currentUrl = 'home';
           this.loadingService.dismiss();
           return true;
         }, () => {
@@ -33,6 +36,8 @@ export class AuthGuard implements CanActivate {
           return false; 
         });
     } else {
+      Utils.previousUrl = 'firstpage';
+      Utils.currentUrl = 'firstpage';
       this.router.navigate(['/firstpage']);
       return false;
     }

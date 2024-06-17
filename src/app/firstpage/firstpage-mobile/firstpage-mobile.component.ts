@@ -1,10 +1,13 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { StatusBar } from '@capacitor/status-bar';
-import { Platform } from '@ionic/angular';
+import { IonRouterOutlet, Platform } from '@ionic/angular';
 import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
+import { AlertService } from 'src/app/services/alert.service';
 import { SettingService } from 'src/app/services/setting.service';
 import { Utils } from 'src/app/utils/utils';
+import { App } from '@capacitor/app';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-firstpage-mobile',
@@ -21,14 +24,11 @@ export class FirstpageMobileComponent implements OnInit {
   @Input() isMobile: boolean | undefined;
   @Input() navigationBarEvent: EventEmitter<any> | undefined;
 
-  constructor(private settingService: SettingService, private platform: Platform, private router: Router) { }
+  constructor(private location: Location, private alertService: AlertService, private settingService: SettingService, private platform: Platform, private router: Router, private routerOutlet: IonRouterOutlet) { }
   
   ngOnInit() {
     this.autoplayTimeLeft();
     this.settingService.getUserInformation();
-    this.platform.backButton.subscribeWithPriority(10, () => {
-      console.log('Handler was called!');
-    });
     Utils.customCapacitorApp(this.settingService);
     this.navigationBarEvent?.subscribe(() => {
       if(this.settingService.isCapacitor){

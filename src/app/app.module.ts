@@ -21,7 +21,7 @@ import { CrashlyticsErrorHandler } from './utils/crashlytics-handler';
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { Vibration } from '@awesome-cordova-plugins/vibration/ngx';
-import { OpenNativeSettings } from '@awesome-cordova-plugins/open-native-settings/ngx';
+import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
 
 export function playerFactory() { return player; }
 
@@ -40,7 +40,7 @@ export function playerFactory() { return player; }
     provideAuth(() => getAuth(initializeApp(environment.firebase))),
     provideAnalytics(() => getAnalytics(initializeApp(environment.firebase))),
   ],
-  providers: [OpenNativeSettings, Vibration, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, { provide: ErrorHandler, useClass: CrashlyticsErrorHandler }],
+  providers: [Vibration, NativeAudio, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, { provide: ErrorHandler, useClass: CrashlyticsErrorHandler }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

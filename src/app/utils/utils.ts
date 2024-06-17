@@ -1,4 +1,4 @@
-import { Observable, ReplaySubject } from "rxjs";
+import { Observable, ReplaySubject, filter } from "rxjs";
 import { ReviewGroup } from "../model/reviewGroup.model";
 import { User } from "../model/user.model";
 import { DialectEnum } from "../model/dialect.enum";
@@ -7,15 +7,22 @@ import { NavigationBar } from "@mauricewegner/capacitor-navigation-bar";
 import { SettingService } from "../services/setting.service";
 import { AudioService } from "../services/audio.service";
 import { ParamReview } from "../model/paramReview.model";
-import { AndroidSettings, NativeSettings } from "capacitor-native-settings";
+import { Platform } from "@ionic/angular";
+import { Location } from "@angular/common";
+import { App } from "@capacitor/app";
+import { NavigationEnd, Router } from "@angular/router";
 
 export class Utils {
+
+  static previousUrl: string = '';
+  static currentUrl: string = '';
 
   static paramReview(category: string, lesson: number, order: number): ParamReview {
     return { category: category, lesson: lesson, order: order };
   }
 
   static preloadAudio(audioService: AudioService) {
+    console.log('preload');
     audioService.preload('rightAnswer', 'assets/audio/correct-choice.mp3');
     audioService.preload('wrongAnswer', 'assets/audio/wrong-choice.mp3');
     audioService.preload('successReview', 'assets/audio/success-review.mp3');
@@ -30,6 +37,16 @@ export class Utils {
       StatusBar.setStyle({ style: Style.Dark });
       StatusBar.setBackgroundColor({ color: '#46895c' });
       NavigationBar.setColor({ color: '#74a884', darkButtons: false });
+    }
+  }
+
+  static customCapacitorStart(router: Router, platform: Platform, location: Location) {
+    if (platform.is('capacitor')) {
+      StatusBar.setOverlaysWebView({ overlay: false });
+      StatusBar.setStyle({ style: Style.Dark });
+      StatusBar.setBackgroundColor({ color: '#46895c' });
+      NavigationBar.setColor({ color: '#74a884', darkButtons: false });
+      
     }
   }
 
@@ -134,17 +151,17 @@ export class Utils {
   }
 
   static shuffledArray(array: any[]) {
-    for (let i = array.length - 1; i > 0; i--) { 
-      const j = Math.floor(Math.random() * (i + 1)); 
-      [array[i], array[j]] = [array[j], array[i]]; 
-    } 
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
     return array;
   }
 
   static displayText(questions: any[]) {
-    questions.forEach(question=>{
-      if(question?.text.indexOf('$') !== -1) {
-        const choice = question.choices.find((c:any)=>c.answer)?.choice;
+    questions?.forEach(question => {
+      if (question?.text.indexOf('$') !== -1) {
+        const choice = question.choices.find((c: any) => c.answer)?.choice;
         question.text = question?.text.replace('$', choice);
       }
     });

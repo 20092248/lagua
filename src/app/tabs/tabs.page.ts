@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { IonTabs, PopoverController } from '@ionic/angular';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { IonRouterOutlet, IonTabs, Platform, PopoverController } from '@ionic/angular';
 import { User } from '../model/user.model';
 import { AuthentificationService } from '../services/authentification.service';
+import { App } from '@capacitor/app';
+import { Location } from '@angular/common';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-tabs',
@@ -12,11 +15,16 @@ import { AuthentificationService } from '../services/authentification.service';
 export class TabsPage implements OnInit {
 
   tabSelected: string = '';
-  @ViewChild('tabs', { static: false }) tabs: IonTabs = {} as IonTabs;
 
-  constructor(private router: Router, private popoverController: PopoverController, private authentification: AuthentificationService) { }
+  constructor(private router: Router, private platform: Platform, private popoverController: PopoverController, private authentification: AuthentificationService) {
+    if(this.platform.is('capacitor')) {
+      this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: any) => {
+        this.tabSelected = event.url.substring(event.url.lastIndexOf("/") + 1);
+      });
+    }
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   logout() {
     this.authentification.logout(true).then(() => {
@@ -24,7 +32,7 @@ export class TabsPage implements OnInit {
     });
   }
 
-  setCurrentTab(event : any) {
+  setCurrentTab(event: any) {
     this.tabSelected = event.tab;
   }
 

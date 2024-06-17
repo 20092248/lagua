@@ -1,29 +1,20 @@
-import { Component, EventEmitter, Input, OnInit, Optional, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { IonRouterOutlet, LoadingController, Platform, PopoverController, RefresherCustomEvent, ToastController } from '@ionic/angular';
+import { IonRouterOutlet, IonTabs, Platform, PopoverController } from '@ionic/angular';
 import { Lesson } from '../model/lesson.model';
-import { User } from '../model/user.model';
 import { AuthentificationService } from '../services/authentification.service';
 import { LessonService } from '../services/lesson.service';
 import { ThemeService } from '../services/theme.service';
-import { ModalController } from '@ionic/angular';
 import { ReviewService } from '../services/review.service';
 import { Review } from '../model/review.model';
 import { SettingService } from '../services/setting.service';
 import { LoadingService } from '../services/loading.service';
 import { forkJoin } from 'rxjs';
 import { register } from 'swiper/element/bundle';
-import { ReviewGroup } from '../model/reviewGroup.model';
 import { Utils } from '../utils/utils';
 import { AlertService } from '../services/alert.service';
 import { CodeTextTranslate } from '../model/codeTextTranslate.model';
 import { CONSTANTS } from '../utils/constants';
-import { Dialect } from '../model/dialect.model';
-import { Dialects } from '../model/dialects.model';
-import { DialectEnum } from '../model/dialect.enum';
-import { CodeLabel } from '../model/codeLabel.model';
-import { StatusBar } from '@capacitor/status-bar';
-import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
 import { App } from '@capacitor/app';
 import { QuestionService } from '../services/question.service';
 register();
@@ -46,17 +37,12 @@ export class HomePage implements OnInit {
   dialectLearned: string = '';
   dialectPathLearned: string = '';
   uploadSetting: EventEmitter<any> = new EventEmitter();
+  @ViewChild(IonTabs, { static: true }) private ionTabs: IonTabs = {} as IonTabs;
 
   constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
     private reviewService: ReviewService, private loadingService: LoadingService, private platform: Platform, private settingsService: SettingService,
     private questionService: QuestionService, private routerOutlet: IonRouterOutlet) {
-      this.platform.backButton.subscribeWithPriority(-1, () => {
-        this.alertService.presentToast('backbutton home', 1000, 'primary');
-        if (!this.routerOutlet.canGoBack()) {
-          App.exitApp();
-        }
-      });
      }
 
   get theme() {

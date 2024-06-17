@@ -18,10 +18,8 @@ dependencies {
     implementation project(':capacitor-share')
     implementation project(':capacitor-splash-screen')
     implementation project(':capacitor-status-bar')
-    implementation project(':capawesome-capacitor-managed-configurations')
     implementation project(':codetrix-studio-capacitor-google-auth')
     implementation project(':mauricewegner-capacitor-navigation-bar')
-    implementation project(':capacitor-native-settings')
 
 }
 

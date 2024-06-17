@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Vibration } from '@awesome-cordova-plugins/vibration/ngx';
 import { Platform } from '@ionic/angular';
-import { AndroidSettings } from 'capacitor-native-settings';
-import { NativeAudio } from '@capacitor-community/native-audio';
 import { AlertService } from './alert.service';
-import { OpenNativeSettings } from '@awesome-cordova-plugins/open-native-settings/ngx';
+import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
 
 interface Sound {
   key: string;
@@ -17,11 +15,12 @@ interface Sound {
 export class AudioService {
   private sounds: Sound[] = [];
   private audioPlayer: HTMLAudioElement = new Audio();
-  constructor(private alertService: AlertService, private platform: Platform, private nativeSettings: OpenNativeSettings,private vibration: Vibration) {
+  constructor(private alertService: AlertService, private platform: Platform, private nativeAudio: NativeAudio, 
+    private vibration: Vibration) {
   }
   preload(key: string, asset: string): void {
     if (this.platform.is('capacitor')) {
-      NativeAudio.preload({ assetId: key, assetPath: asset, audioChannelNum: 1, isUrl: false });
+      this.nativeAudio.preloadSimple(key, asset);
     } else {
       let audio = new Audio();
       audio.src = asset;
@@ -35,14 +34,10 @@ export class AudioService {
   }
 
   playAudio(key: string, timeToVibrate: number) {
-    if (this.platform.is('capacitor')) {
-      NativeAudio.play({ assetId: key });
-      console.log('-------->', AndroidSettings.Sound);
-      this.nativeSettings.open('sound').then( res => { console.log(res); }).catch( err => { console.log(err); });
+    if (this.platform.is('capacitor') && timeToVibrate) {
       this.vibration.vibrate(timeToVibrate);
-    } else {
-      this.play(key);
     }
+    this.play(key);
   }
 
   play(key: string): void {

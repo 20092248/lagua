@@ -21,7 +21,7 @@ export class CountdownComponent implements OnInit {
   ngOnInit() {}
 
   animationCreated(animation: any) {
-    this.audioService.playAudio('countdown', 1000);
+    this.audioService.play('countdown');
     this.animation = animation as AnimationItem;
     setTimeout(() => {
       console.log('force to hide countdown');

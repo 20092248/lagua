@@ -19,6 +19,7 @@ export class PreviewPage implements OnInit {
   constructor(private router: Router, private questionService: QuestionService, private audioService: AudioService, private settingService: SettingService) { }
 
   ngOnInit() {
+    this.questionService.type = 'R';
     this.questions = Utils.displayText(this.questionService.questions?.questions);
     this.questions = Utils.shuffledArray(this.questions);
     this.helps = this.questionService.questions?.helps;
@@ -27,6 +28,7 @@ export class PreviewPage implements OnInit {
   }
 
   continue() {
+    this.questionService.type = 'R';
     const navigationExtras: NavigationExtras = { state: { newReview: true } };
     this.router.navigate(['/questions/mix'], navigationExtras);
   }
