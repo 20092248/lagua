@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { BarStatusComponentModule } from '../bar-status/bar-status.module';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { BarStatusComponentModule } from '../bar-status/bar-status.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ExploreContainerComponentModule,
     ProfilePageRoutingModule,
     BarStatusComponentModule
   ],

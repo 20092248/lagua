@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { MenuComponentModule } from './menu/menu.module';
 import { WeeklyCalendarComponentModule } from './weekly-calendar/menu.module';
 import { BarStatusComponentModule } from '../bar-status/bar-status.module';
@@ -17,7 +16,6 @@ import { BarStatusComponentModule } from '../bar-status/bar-status.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ExploreContainerComponentModule,
     HomePageRoutingModule,
     MenuComponentModule,
     WeeklyCalendarComponentModule,

@@ -3,8 +3,6 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Lesson } from '../model/lesson.model';
 import { LessonService } from '../services/lesson.service';
 import { AuthentificationService } from '../services/authentification.service';
-import { User } from '../model/user.model';
-import { LoadingController } from '@ionic/angular';
 import { LoadingService } from '../services/loading.service';
 import { AlertService } from '../services/alert.service';
 import { Utils } from '../utils/utils';

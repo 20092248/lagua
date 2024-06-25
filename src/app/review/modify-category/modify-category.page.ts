@@ -15,7 +15,6 @@ export class ModifyCategoryPage implements OnInit {
   isOverlay: boolean | undefined;
   reviewGroup: ReviewGroup[] = [{ category: '', lesson: 0, order: 0, data: [], title: '', subtitle: '', reviews: [] }];
   paramCategory: string;
-  displayFirstAccordion: string = '';
 
   constructor(private route: ActivatedRoute, private reviewService: ReviewService, private alertService: AlertService, private settingService: SettingService) {
     this.paramCategory = this.route.snapshot.paramMap.get('id') || '';
@@ -30,7 +29,6 @@ export class ModifyCategoryPage implements OnInit {
           review.content = review.contents.join();
         });
       });
-      this.displayFirstAccordion = this.reviewGroup[0].category + '_' + this.reviewGroup[0].lesson;
     });
   }
 

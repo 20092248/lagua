@@ -31,6 +31,7 @@ export class ModifyReviewPage implements OnInit {
   paramModifyReview: ParamReview = {} as ParamReview;
   questions: any[] = [];
   isOverlay: boolean | undefined;
+  rawQuestions: string = '';
 
   constructor(private route: ActivatedRoute, private reviewService: ReviewService, private questionService: QuestionService, private authentificationService: AuthentificationService,
     private alertService: AlertService, private actionSheetCtrl: ActionSheetController, private settingService: SettingService) {
@@ -45,8 +46,14 @@ export class ModifyReviewPage implements OnInit {
     this.userDialect = this.user.dialects[this.dialect];
     this.questionService.findQuestions(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], this.paramModifyReview).then((questionInfo: Question) => {
       this.questionInfo = questionInfo;
-      this.questions = questionInfo.questions ? questionInfo.questions : [{ type: '', sentence: false, description: '', img: '', text: '', translate: '', choices: [{ choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }] }];
+      this.questionInfo.questions = questionInfo.questions && questionInfo.questions.length ? questionInfo.questions : [{ type: '', sentence: false, description: '', img: '', text: '', translate: '', choices: [{ choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }] }];
+      this.questions = this.questionInfo.questions;
+      this.rawQuestions = JSON.stringify(this.questions, (key, value) => key === 'img' ? undefined : value);
     });
+  }
+
+  updateQuestions() {
+    this.questions = JSON.parse(this.rawQuestions);
   }
 
   saveReview() {

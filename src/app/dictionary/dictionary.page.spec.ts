@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { DictionaryPage } from './dictionary.page';
 
@@ -12,7 +11,7 @@ describe('DictionaryPage', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DictionaryPage],
-      imports: [IonicModule.forRoot(), ExploreContainerComponentModule]
+      imports: [IonicModule.forRoot()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(DictionaryPage);
