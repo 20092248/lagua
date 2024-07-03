@@ -30,7 +30,7 @@ export class DictionaryPage implements OnInit {
   userDialect: Dialect = {} as Dialect;
   words: FirebaseWord[] = [];
   translate: string = 'francais';
-  text: string = 'shikomori';
+  text: string = '';
   linkInfo: FirebaseWord = {} as FirebaseWord;
   wordsLoaded: boolean = false;
   wordsLength: number[] = Array(8).fill(undefined, 0, 8).map((x, i) => i);
@@ -46,9 +46,11 @@ export class DictionaryPage implements OnInit {
     this.user = this.authentificationService.user;
     this.dialect = this.authentificationService.dialect;
     this.userDialect = this.user.dialects[this.dialect];
-    // this.text = this.user.learn.text;
+    this.text = this.user.dialectSelected.text;
     this.loadingService.present('Chargement...');
-    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/this.text, this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
+    const text = this.translate === 'francais' ? 'shikomori' : 'francais';
+    const translate = this.translate === 'francais' ? 'francais' : 'shikomori';
+    this.dictionaryService.displayAlphabet(text, translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
       this.loadingService.dismiss();
       this.wordsLoaded = true;
       this.words = words;
@@ -70,7 +72,9 @@ export class DictionaryPage implements OnInit {
   changeLetter(letter: string) {
     this.wordsLoaded = false;
     this.letterSelected = letter;
-    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/this.text, this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
+    const text = this.translate === 'francais' ? 'shikomori' : 'francais';
+    const translate = this.translate === 'francais' ? 'francais' : 'shikomori';
+    this.dictionaryService.displayAlphabet(text, translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
       this.wordsLoaded = true;
       this.words = words;
     });
@@ -85,7 +89,9 @@ export class DictionaryPage implements OnInit {
   }
 
   onIonInfinite(ev: any) {
-    this.dictionaryService.nextWords(/*this.user?.learn?.text.toLocaleLowerCase()*/this.text, this.translate, this.letterSelected).then((words: FirebaseWord[]) => {
+    const text = this.translate === 'francais' ? 'shikomori' : 'francais';
+    const translate = this.translate === 'francais' ? 'francais' : 'shikomori';
+    this.dictionaryService.nextWords(text, translate, this.letterSelected).then((words: FirebaseWord[]) => {
       this.words = words;
     });
     setTimeout(() => {
@@ -98,12 +104,14 @@ export class DictionaryPage implements OnInit {
     this.wordsLoaded = false;
     if (this.translate === 'francais') {
       this.text = 'francais';
-      this.translate = 'shikomori'; //this.user.learn.text;
+      this.translate = this.user.dialectSelected.text;
     } else {
-      this.text = 'shikomori'; //this.user.learn.text;
+      this.text = this.user.dialectSelected.text;
       this.translate = 'francais';
     }
-    this.dictionaryService.displayAlphabet(/*this.user?.learn?.text.toLocaleLowerCase()*/this.text, this.translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
+    const text = this.translate === 'francais' ? 'shikomori' : 'francais';
+    const translate = this.translate === 'francais' ? 'francais' : 'shikomori';
+    this.dictionaryService.displayAlphabet(text , translate, this.letterSelected, false).then((words: FirebaseWord[]) => {
       this.wordsLoaded = true;
       this.words = words;
     });
