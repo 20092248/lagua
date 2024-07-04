@@ -60,7 +60,7 @@ export class DictionaryPage implements OnInit {
   searchWord() {
     this.isResultDisplay = true;
     this.wordsFound = [];
-    this.dictionaryService.searchWord(this.word.toLocaleLowerCase()).then((words: FirebaseWord[]) => {
+    this.dictionaryService.searchWord(this.word.normalize('NFD').toLocaleLowerCase(), this.translate === 'francais').then((words: FirebaseWord[]) => {
       if (words && words.length) {
         words.forEach((w: FirebaseWord) => {
           this.wordsFound.push(new Word(w.text.join(', '), w.translate.join(', '), w.description, w.examples, w.link ? w.link : ''));

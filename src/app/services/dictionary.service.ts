@@ -172,12 +172,14 @@ export class DictionaryService {
     });
   }
 
-  async searchWord(word: string): Promise<FirebaseWord[]> {
+  async searchWord(word: string, isShikomori: boolean): Promise<FirebaseWord[]> {
     const firstLetter = word.normalize('NFD').replace(/[\u0300-\u036f]/g, '').substring(0, 1).toLocaleLowerCase();
-    const q = query(collection(getFirestore(), 'shindzuani_francais_' + firstLetter), where('phoneticText', 'array-contains', word));
+    const searchType = isShikomori ? 'phoneticTranslate' : 'phoneticText' ;
+    const q = query(collection(getFirestore(), 'shindzuani_francais_' + firstLetter), where(searchType, 'array-contains', word));
     const querySnapshot = await getDocs(q);
     const words: FirebaseWord[] = [];
     querySnapshot.forEach((doc) => words.push(doc.data() as FirebaseWord));
+    console.log(words);
     return words;
   }
 
