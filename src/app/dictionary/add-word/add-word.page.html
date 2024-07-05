@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>add-word</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment value="{{category}}">
+    <ion-segment-button *ngFor="let c of segments" value="{{c}}" (click)="category = c">{{c}}</ion-segment-button>
+  </ion-segment>
+  <ion-list lines="full" *ngIf="category === 'FR'">
+    FR
+  </ion-list>
+  <ion-list lines="full" *ngIf="category === 'KM'">
+    KM
+  </ion-list>
+</ion-content>

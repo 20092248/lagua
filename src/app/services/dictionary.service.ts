@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { doc, getDoc, getDocs, addDoc, collection, query, where, updateDoc, orderBy, startAfter, limit, DocumentData, QueryDocumentSnapshot } from '@firebase/firestore';
+import { doc, getDoc, getDocs, addDoc, collection, query, where, updateDoc, orderBy, startAt, endAt, startAfter, limit, DocumentData, QueryDocumentSnapshot } from '@firebase/firestore';
 import { FirebaseWord } from '../model/wordFirebase.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
@@ -174,11 +174,13 @@ export class DictionaryService {
 
   async searchWord(word: string, isShikomori: boolean): Promise<FirebaseWord[]> {
     const firstLetter = word.normalize('NFD').replace(/[\u0300-\u036f]/g, '').substring(0, 1).toLocaleLowerCase();
-    const searchType = isShikomori ? 'phoneticTranslate' : 'phoneticText' ;
-    const q = query(collection(getFirestore(), 'shindzuani_francais_' + firstLetter), where(searchType, 'array-contains', word));
+    const col = isShikomori ? 'shikomori_francais_' : 'francais_shikomori_';
+    const q = query(collection(getFirestore(), col + firstLetter), where('phoneticText', 'array-contains', word));
     const querySnapshot = await getDocs(q);
     const words: FirebaseWord[] = [];
     querySnapshot.forEach((doc) => words.push(doc.data() as FirebaseWord));
+    words[0].scraper = {};
+    console.log(JSON.stringify(words));
     console.log(words);
     return words;
   }
