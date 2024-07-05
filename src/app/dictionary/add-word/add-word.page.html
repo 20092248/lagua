@@ -9,9 +9,109 @@
     <ion-segment-button *ngFor="let c of segments" value="{{c}}" (click)="category = c">{{c}}</ion-segment-button>
   </ion-segment>
   <ion-list lines="full" *ngIf="category === 'FR'">
-    FR
+    <h4>Mot Francais</h4>
+    <ion-item [ngStyle]="{'--background': !wordToUpdate.text ? 'lightcoral' : '#fff'}">
+      <ion-label>Text</ion-label>
+      <ion-input value="{{wordToUpdate.text}}" [(ngModel)]="wordToUpdate.text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pluriel</ion-label>
+      <ion-input value="{{wordToUpdate.pluralText}}" [(ngModel)]="wordToUpdate.pluralText"></ion-input>
+    </ion-item>
+    <ion-item [ngStyle]="{'--background': !wordToUpdate.translate ? 'lightcoral' : '#fff'}">
+      <ion-label>Traduction</ion-label>
+      <ion-input value="{{wordToUpdate.translate}}" [(ngModel)]="wordToUpdate.translate"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-input value="{{wordToUpdate.description}}" [(ngModel)]="wordToUpdate.description"></ion-input>
+    </ion-item>
+    <div class="ion-margin-horizontal" *ngFor="let c of wordToUpdate.examples; let index=index">
+      <ion-label>Exemple °{{index+1}}</ion-label>
+      <ion-item>
+        <ion-label>Symbole</ion-label>
+        <ion-input value="{{c.symbol}}" [(ngModel)]="c.symbol"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Dialecte</ion-label>
+        <ion-input value="{{c.dialect}}" [(ngModel)]="c.dialect"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Text</ion-label>
+        <ion-input value="{{c.text}}" [(ngModel)]="c.text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Dialecte</ion-label>
+        <ion-input value="{{c.translate}}" [(ngModel)]="c.translate"></ion-input>
+      </ion-item>
+    </div>
+    <div class="ion-margin-horizontal" *ngFor="let c of wordToUpdate.siblings; let index=index">
+      <ion-label>Siblings °{{index+1}}</ion-label>
+      <ion-item>
+        <ion-label>Dialecte</ion-label>
+        <ion-input value="{{c.dialect}}" [(ngModel)]="c.dialect"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Text</ion-label>
+        <ion-input value="{{c.text}}" [(ngModel)]="c.text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Traduction</ion-label>
+        <ion-input value="{{c.translate}}" [(ngModel)]="c.translate"></ion-input>
+      </ion-item>
+    </div>
   </ion-list>
   <ion-list lines="full" *ngIf="category === 'KM'">
-    KM
+    <h4>Mot Comorien</h4>
+    <ion-item [ngStyle]="{'--background': !wordToUpdate.text ? 'lightcoral' : '#fff'}">
+      <ion-label>Text</ion-label>
+      <ion-input value="{{wordToUpdate.text}}" [(ngModel)]="wordToUpdate.text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pluriel</ion-label>
+      <ion-input value="{{wordToUpdate.pluralText}}" [(ngModel)]="wordToUpdate.pluralText"></ion-input>
+    </ion-item>
+    <ion-item [ngStyle]="{'--background': !wordToUpdate.translate ? 'lightcoral' : '#fff'}">
+      <ion-label>Traduction</ion-label>
+      <ion-input value="{{wordToUpdate.translate}}" [(ngModel)]="wordToUpdate.translate"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-input value="{{wordToUpdate.description}}" [(ngModel)]="wordToUpdate.description"></ion-input>
+    </ion-item>
+    <div class="ion-margin-horizontal" *ngFor="let c of wordToUpdate.examples; let index=index">
+      <ion-label>Exemple °{{index+1}}</ion-label>
+      <ion-item>
+        <ion-label>Symbole</ion-label>
+        <ion-input value="{{c.symbol}}" [(ngModel)]="c.symbol"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Dialecte</ion-label>
+        <ion-input value="{{c.dialect}}" [(ngModel)]="c.dialect"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Text</ion-label>
+        <ion-input value="{{c.text}}" [(ngModel)]="c.text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Dialecte</ion-label>
+        <ion-input value="{{c.translate}}" [(ngModel)]="c.translate"></ion-input>
+      </ion-item>
+    </div>
+    <div class="ion-margin-horizontal" *ngFor="let c of wordToUpdate.siblings; let index=index">
+      <ion-label>Siblings °{{index+1}}</ion-label>
+      <ion-item>
+        <ion-label>Dialecte</ion-label>
+        <ion-input value="{{c.dialect}}" [(ngModel)]="c.dialect"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Text</ion-label>
+        <ion-input value="{{c.text}}" [(ngModel)]="c.text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Traduction</ion-label>
+        <ion-input value="{{c.translate}}" [(ngModel)]="c.translate"></ion-input>
+      </ion-item>
+    </div>
   </ion-list>
 </ion-content>
