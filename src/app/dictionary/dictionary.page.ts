@@ -11,6 +11,7 @@ import { DialectEnum } from '../model/dialect.enum';
 import { Dialect } from '../model/dialect.model';
 import { Utils } from '../utils/utils';
 import { SettingService } from '../services/setting.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dictionary',
@@ -35,7 +36,7 @@ export class DictionaryPage implements OnInit {
   wordsLoaded: boolean = false;
   wordsLength: number[] = Array(8).fill(undefined, 0, 8).map((x, i) => i);
 
-  constructor(private dictionaryService: DictionaryService, private authentificationService: AuthentificationService, private loadingService: LoadingService, private settingService: SettingService) { }
+  constructor(private router: Router, private dictionaryService: DictionaryService, private authentificationService: AuthentificationService, private loadingService: LoadingService, private settingService: SettingService) { }
 
   get isOverlay(){
     return this.settingService.isOverlay;
@@ -130,6 +131,12 @@ export class DictionaryPage implements OnInit {
   closeModal() {
     this.isResultDisplay = false;
     this.isDetailDisplay = false;
+  }
+
+  goTo(route: string) {
+    if(this.user.email === 'lagua.shikomori@gmail.com') {
+      this.router.navigate([route]);
+    }
   }
 
 }

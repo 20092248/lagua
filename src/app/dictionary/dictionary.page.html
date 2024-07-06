@@ -6,7 +6,7 @@
         <div>
           <div class="ion-inline-flex ion-padding-top ion-margin-top">
             <h1 class="ion-no-margin">
-              Dictionnaire <ion-icon name="language" [routerLink]="['add-word']"></ion-icon>
+              Dictionnaire <ion-icon name="language" (click)="goTo('/tabs/dictionary/add-word')"></ion-icon>
             </h1>
           </div>
           <div class="ion-padding-vertical-min">
