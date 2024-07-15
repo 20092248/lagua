@@ -11,6 +11,7 @@ export class AddWordPage implements OnInit {
   category: string = 'FR';
   segments: string[] = ['FR', 'KM'];
   wordToUpdate: any = {text: '', pluralText: '', translate:'', description: '', examples: [{text: '', dialect: '', translate:''}], siblings: [{symbol: '', text: '', dialect: '', translate:''}]};
+  wordToUpdateKM: any = {text: '', pluralText: '', translate:'', description: '', examples: [{text: '', dialect: '', translate:''}], siblings: [{symbol: '', text: '', dialect: '', translate:''}]};
 
   constructor() { }
 

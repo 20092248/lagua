@@ -66,23 +66,23 @@
   </ion-list>
   <ion-list lines="full" *ngIf="category === 'KM'">
     <h4>Mot Comorien</h4>
-    <ion-item [ngStyle]="{'--background': !wordToUpdate.text ? 'lightcoral' : '#fff'}">
+    <ion-item [ngStyle]="{'--background': !wordToUpdateKM.text ? 'lightcoral' : '#fff'}">
       <ion-label>Text</ion-label>
-      <ion-input value="{{wordToUpdate.text}}" [(ngModel)]="wordToUpdate.text"></ion-input>
+      <ion-input value="{{wordToUpdateKM.text}}" [(ngModel)]="wordToUpdateKM.text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Pluriel</ion-label>
-      <ion-input value="{{wordToUpdate.pluralText}}" [(ngModel)]="wordToUpdate.pluralText"></ion-input>
+      <ion-input value="{{wordToUpdateKM.pluralText}}" [(ngModel)]="wordToUpdateKM.pluralText"></ion-input>
     </ion-item>
-    <ion-item [ngStyle]="{'--background': !wordToUpdate.translate ? 'lightcoral' : '#fff'}">
+    <ion-item [ngStyle]="{'--background': !wordToUpdateKM.translate ? 'lightcoral' : '#fff'}">
       <ion-label>Traduction</ion-label>
-      <ion-input value="{{wordToUpdate.translate}}" [(ngModel)]="wordToUpdate.translate"></ion-input>
+      <ion-input value="{{wordToUpdateKM.translate}}" [(ngModel)]="wordToUpdateKM.translate"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Description</ion-label>
-      <ion-input value="{{wordToUpdate.description}}" [(ngModel)]="wordToUpdate.description"></ion-input>
+      <ion-input value="{{wordToUpdateKM.description}}" [(ngModel)]="wordToUpdateKM.description"></ion-input>
     </ion-item>
-    <div class="ion-margin-horizontal" *ngFor="let c of wordToUpdate.examples; let index=index">
+    <div class="ion-margin-horizontal" *ngFor="let c of wordToUpdateKM.examples; let index=index">
       <ion-label>Exemple °{{index+1}}</ion-label>
       <ion-item>
         <ion-label>Symbole</ion-label>
@@ -101,7 +101,7 @@
         <ion-input value="{{c.translate}}" [(ngModel)]="c.translate"></ion-input>
       </ion-item>
     </div>
-    <div class="ion-margin-horizontal" *ngFor="let c of wordToUpdate.siblings; let index=index">
+    <div class="ion-margin-horizontal" *ngFor="let c of wordToUpdateKM.siblings; let index=index">
       <ion-label>Siblings °{{index+1}}</ion-label>
       <ion-item>
         <ion-label>Dialecte</ion-label>

@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <ion-accordion-group [multiple]="true" [value]="['determinant']">
+  <ion-accordion-group [multiple]="true" [value]="['determinant','tableau']">
     <ion-accordion value="determinant" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
       <ion-item class="ion-margin-top" lines="none" slot="header">
         <ion-label class="ion-text-wrap">Les déterminants</ion-label>
@@ -126,8 +126,15 @@
             "l'enfant le
             boit".
           </p>
-          <p>Les principaux accords sont résumés dans le tableaux ci-dessous:</p>
         </div>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="tableau" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+      <ion-item lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Le tableau des accords</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>Les principaux accords sont résumés dans le tableaux ci-dessous:</p>
         <!-- tableaux -->
         <ion-grid class="ion-text-center">
           <ion-row class="ion-no-border ion-full-height">
@@ -143,43 +150,43 @@
                   <ion-col></ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col>1</ion-col>
+                  <ion-col>1/mu-</ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col>2</ion-col>
+                  <ion-col>2/wa-</ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col>3</ion-col>
+                  <ion-col>3/mu-</ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col>4</ion-col>
+                  <ion-col>4/mi-</ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col>5</ion-col>
+                  <ion-col>5/dzi-, ø-</ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col>6</ion-col>
+                  <ion-col>6/ma-</ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col>7</ion-col>
+                  <ion-col>7/sh-</ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col>8</ion-col>
+                  <ion-col>8/z-</ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col>9</ion-col>
+                  <ion-col>9/N-, ø-</ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col>10</ion-col>
+                  <ion-col>10/ø-</ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col>11</ion-col>
+                  <ion-col class="ion-min-spacing-2">11/cl.6, 10</ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col>15</ion-col>
+                  <ion-col>15/hu-</ion-col>
                 </ion-row>
                 <ion-row>
-                  <ion-col>16</ion-col>
+                  <ion-col>16/va-, ø-</ion-col>
                 </ion-row>
                 <ion-row>
                   <ion-col>17</ion-col>
@@ -593,7 +600,8 @@
           </ion-row>
         </ion-grid>
       </div>
-    </ion-accordion></ion-accordion-group>
+    </ion-accordion>
+  </ion-accordion-group>
   <div class="ion-text-center ion-margin-bottom">
     <ion-button (click)="saveLesson()">Terminer le cours</ion-button>
   </div>
