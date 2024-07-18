@@ -32,6 +32,7 @@ export class ModifyReviewPage implements OnInit {
   questions: any[] = [];
   isOverlay: boolean | undefined;
   rawQuestions: string = '';
+  id: string = '';
 
   constructor(private route: ActivatedRoute, private reviewService: ReviewService, private questionService: QuestionService, private authentificationService: AuthentificationService,
     private alertService: AlertService, private actionSheetCtrl: ActionSheetController, private settingService: SettingService) {
@@ -48,6 +49,7 @@ export class ModifyReviewPage implements OnInit {
       this.questionInfo = questionInfo;
       this.questionInfo.questions = questionInfo.questions && questionInfo.questions.length ? questionInfo.questions : [{ type: '', sentence: false, description: '', img: '', text: '', translate: '', choices: [{ choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }] }];
       this.questions = this.questionInfo.questions;
+      this.id = this.questionInfo.id || '';
       this.rawQuestions = JSON.stringify(this.questions, (key, value) => key === 'img' ? undefined : value);
     });
   }
@@ -79,6 +81,9 @@ export class ModifyReviewPage implements OnInit {
 
   async confirmActionSheet() {
     this.alertService.presentActionSheetConfirmation('Confirmer la modification ?', '', '').then(result => {
+      if (this.id) {
+        this.questionInfo.id = this.id;
+      }
       if (result.role === 'selected' && this.questionInfo.id) {
         this.questionService.updateQuestion(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], this.questionInfo.id, this.questionInfo).then(() => {
           this.alertService.presentToast('La mise à jour a été effectué.', 2000, 'success');
