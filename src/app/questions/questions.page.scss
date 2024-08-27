@@ -12,6 +12,12 @@ ion-footer {
   }
 }
 
+ion-popover {
+  --width: 99%;
+  --offset-y: 5px;
+  --offset-x: 10px;
+}
+
 .ion-progress-content {
   display: flex;
   -webkit-box-pack: center;
