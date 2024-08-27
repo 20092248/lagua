@@ -92,4 +92,8 @@ export class ModifyReviewPage implements OnInit {
     });
   }
 
+  eventQuestion() {
+    this.rawQuestions = JSON.stringify(this.questions);
+  }
+
 }
