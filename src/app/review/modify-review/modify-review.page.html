@@ -32,31 +32,31 @@
         (click)="removeQuestion(index)"></ion-icon></h4>
     <ion-item [ngStyle]="{'--background': !q.type ? 'lightcoral' : '#fff'}">
       <ion-label>Type</ion-label>
-      <ion-input value="{{q.type}}" [(ngModel)]="q.type"></ion-input>
-      <ion-toggle slot="end" [checked]="q.sentence" [(ngModel)]="q.sentence"></ion-toggle>
+      <ion-input value="{{q.type}}" [(ngModel)]="q.type" (ionChange)="eventQuestion()"></ion-input>
+      <ion-toggle slot="end" [checked]="q.sentence" [(ngModel)]="q.sentence" (ionChange)="eventQuestion()"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-label>Description</ion-label>
-      <ion-input value="{{q.description}}" [(ngModel)]="q.description"></ion-input>
+      <ion-input value="{{q.description}}" [(ngModel)]="q.description" (ionChange)="eventQuestion()"></ion-input>
     </ion-item>
     <ion-item [ngStyle]="{'--background': !q.img ? 'lightcoral' : '#fff'}">
       <ion-label id="img-trigger">Image</ion-label>
-      <ion-input value="{{q.img}}" [(ngModel)]="q.img"></ion-input>
+      <ion-input value="{{q.img}}" [(ngModel)]="q.img" (ionChange)="eventQuestion()"></ion-input>
       <img src="{{q.img}}" style="height: 40px"/>
     </ion-item>
     <ion-item [ngStyle]="{'--background': !q.text ? 'lightcoral' : '#fff'}">
       <ion-label>Texte</ion-label>
-      <ion-input value="{{q.text}}" [(ngModel)]="q.text"></ion-input>
+      <ion-input value="{{q.text}}" [(ngModel)]="q.text" (ionChange)="eventQuestion()"></ion-input>
     </ion-item>
     <ion-item [ngStyle]="{'--background': !q.translate ? 'lightcoral' : '#fff'}">
       <ion-label>Traduction</ion-label>
-      <ion-input value="{{q.translate}}" [(ngModel)]="q.translate"></ion-input>
+      <ion-input value="{{q.translate}}" [(ngModel)]="q.translate" (ionChange)="eventQuestion()"></ion-input>
     </ion-item>
     <div class="ion-margin-horizontal" *ngFor="let c of q.choices; let index=index">
       <ion-item [ngStyle]="{'--background': !c.choice ? 'lightcoral' : '#fff'}">
         <ion-label>N°{{index}} - </ion-label>
-        <ion-input value="{{c.choice}}" [(ngModel)]="c.choice"></ion-input>
-        <ion-toggle slot="end" [checked]="c.answer" [(ngModel)]="c.answer"></ion-toggle>
+        <ion-input value="{{c.choice}}" [(ngModel)]="c.choice" (ionChange)="eventQuestion()"></ion-input>
+        <ion-toggle slot="end" [checked]="c.answer" [(ngModel)]="c.answer" (ionChange)="eventQuestion()"></ion-toggle>
       </ion-item>
     </div>
   </div>
