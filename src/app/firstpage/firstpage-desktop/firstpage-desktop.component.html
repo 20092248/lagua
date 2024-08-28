@@ -8,9 +8,12 @@
                 [src]="homeSetting.icon?.comorosFlag" /></h1>
           </div>
           <ul class="pages" [ngClass]="{'ion-minHeight': heightWindow <= 600 }">
-            <li>A propos</li>
-            <li>Lien utiles</li>
-            <li>Contact</li>
+            <li (click)="goTo('/aboutus')">A propos</li>
+            <li (click)="goTo('/link')">Lien utiles</li>
+            <li (click)="goTo('/legal-notices')">Mentions légales</li>
+            <li (click)="goTo('/privacy')">Politique de Confidentialité</li>
+            <li (click)="goTo('/terms')">CGV</li>
+            <li (click)="goTo('/contactus')">Contact</li>
             <!-- <li><img [src]="homeSetting.icon?.frenchFlag" /></li> -->
             <li class="ion-button-connexion"><ion-button (click)="goTo('/login')">Espace Professionnel</ion-button></li>
           </ul>

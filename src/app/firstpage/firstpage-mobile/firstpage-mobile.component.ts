@@ -50,7 +50,9 @@ export class FirstpageMobileComponent implements OnInit {
   }
 
   goTo(route: string) {
-    this.router.navigate([route]);
+    if(this.isMobile) {
+      this.router.navigate([route]);
+    }
   }
 
 }
