@@ -24,17 +24,20 @@ ion-grid {
             display: flex;
             ul {
                 width: 70%;
+                padding: 0;
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
                 flex-direction: row;
                 justify-content: flex-end;
                 ion-button {
-                    --background: #46895c;
+                    --background: transparent;
+                    --box-shadow: 0;
                 }
                 li {
                     color: #fff;
                     margin: 8px;
+                    font-size: 14px;
                     cursor: pointer;
                     padding: 3px;
                     list-style: none;
@@ -43,10 +46,13 @@ ion-grid {
                     letter-spacing: 2px;
                     transition: 200ms ease-in-out;
                 }
+                li:last-child {
+                    margin: 0px;
+                }
                 li:hover {
                     border-bottom: 2px solid #fff;
                 }
-                li.ion-button-connexion:hover {
+                li.ion-button-connexion {
                     border-bottom: 2px solid transparent;
                 }
             }
@@ -56,6 +62,7 @@ ion-grid {
             .logo h1 {
                 font-weight: 900;
                 font-family: 'Roboto', sans-serif;
+                cursor: pointer;
             }
             .logo h1.ion-minHeight {
                 margin-top: 10px;
@@ -68,6 +75,12 @@ ion-grid {
 
     .ion-content {
         height: 84%;
+        .ion-android {
+            cursor: not-allowed;
+        }
+        .ion-apk {
+            cursor: pointer;
+        }
         .ion-left-content {
             display: flex;
             z-index: 100;

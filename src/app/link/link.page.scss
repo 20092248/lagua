@@ -1,7 +1,7 @@
 ion-toolbar {
     --background: url(/assets/img/background.png) 0% / 100%;
     --color: white;
-    --min-height: 400px;
+    --min-height: 250px;
 
     ion-title {
         font-size: 40px;
@@ -10,7 +10,7 @@ ion-toolbar {
     }
 
     ion-grid {
-        height: 400px;
+        height: 250px;
         ion-row:first-child {
             height: 20%;
         }

@@ -11,11 +11,11 @@
             <li (click)="goTo('/aboutus')">A propos</li>
             <li (click)="goTo('/link')">Lien utiles</li>
             <li (click)="goTo('/legal-notices')">Mentions légales</li>
-            <li (click)="goTo('/privacy')">Politique de Confidentialité</li>
+            <!-- <li (click)="goTo('/privacy')">Politique de Confidentialité</li> -->
             <li (click)="goTo('/terms')">CGV</li>
             <li (click)="goTo('/contactus')">Contact</li>
             <!-- <li><img [src]="homeSetting.icon?.frenchFlag" /></li> -->
-            <li class="ion-button-connexion"><ion-button (click)="goTo('/login')">Espace Professionnel</ion-button></li>
+            <li class="ion-button-connexion"><ion-button (click)="goTo('/login')"><ion-icon slot="icon-only" name="log-in"></ion-icon></ion-button></li>
           </ul>
         </nav>
       </ion-col>
@@ -39,8 +39,8 @@
               et le mohélien... à votre propre rythme.</p>
           </div>
           <div class="ion-text-center">
-            <img class="ion-padding-end" [src]="homeSetting.icon?.android" height="70px" />
-            <img class="ion-padding-start" [src]="homeSetting.icon?.apk" height="70px" />
+            <img class="ion-padding-end ion-android" [src]="homeSetting.icon?.android" height="70px" />
+            <img class="ion-padding-start ion-apk" [src]="homeSetting.icon?.apk" height="70px" />
           </div>
         </div>
       </ion-col>

@@ -27,7 +27,53 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div class="ion-margin-horizontal ion-padding-horizontal">
-    ...
+  <div class="ion-margin ion-padding">
+    <form [formGroup]="contactForm" (ngSubmit)="sendEmail()">
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Adresse mail *</ion-label>
+          <ion-input placeholder="" [(ngModel)]="contact.mail" name="mail" formControlName="mail"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Ma question concerne *</ion-label>
+          <ion-select name="question" [(ngModel)]="contact.question" formControlName="question" interface="popover" placeholder="-">
+            <ion-select-option value="Pré-achat">Pré-achat</ion-select-option>
+            <ion-select-option value="Mon abonnement premium">Mon abonnement premium</ion-select-option>
+            <ion-select-option value="Un problème technique">Un problème technique</ion-select-option>
+            <ion-select-option value="Des commentaires / suggestions">Des commentaires / suggestions</ion-select-option>
+            <ion-select-option value="Autre">Autre</ion-select-option>
+          </ion-select>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="stacked">Sujet *</ion-label>
+          <ion-input placeholder="" [(ngModel)]="contact.subject" name="subject" formControlName="subject"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="stacked">Description *</ion-label>
+          <ion-textarea placeholder="" rows="7" [(ngModel)]="contact.description" name="description" formControlName="description" Email
+            service></ion-textarea>
+        </ion-item>
+  
+        <div class="ion-margin">
+          <div class="ion-margin-vertical ion-padding ion-text-center ion-upload">
+            <div *ngIf="filesIsSelected && selectedFiles && selectedFiles[0]"><ion-icon name="close-circle-outline" size="large" (click)="removeAttachment()"></ion-icon></div>
+            <ion-label class="ion-font-size">{{filesIsSelected && selectedFiles && selectedFiles[0] ? 'Retirer le fichier' : 'Ajouter un fichier'}}</ion-label>
+            <div (click)="fileInput.click()">
+              <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+              <div>extension accepté : .pdf, .png, .jpg, .doc, .docx (taille max 50kb)</div>
+              <ion-icon *ngIf="!filesIsSelected" size="large" name="cloud-upload-outline"
+                class="ion-margin-top"></ion-icon>
+              <div *ngIf="filesIsSelected && selectedFiles && selectedFiles[0]">
+                <img class="ion-margin-top" width="50" height="50" [src]="icon" />
+                <div><small>{{selectedFiles[0].name}}</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-list>
+      <ion-button expand="block" type="submit">Envoyer</ion-button>
+    </form>
   </div>
 </ion-content>
