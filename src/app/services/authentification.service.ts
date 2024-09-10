@@ -81,6 +81,7 @@ export class AuthentificationService {
         this.user.dialectSelected = data.dialectSelected;
         this.user.week = data.week;
         this.user.timerActiveConnection = data.timerActiveConnection;
+        this.user.account = data.account;
         this.dialect = Utils.findDialect(this.user.dialectSelected.code);
         return true;
       } else {
@@ -103,6 +104,7 @@ export class AuthentificationService {
       photoURL: this.user.photoURL ? this.user.photoURL : '',
       dialectSelected: this.user.dialectSelected,
       dialects: this.user.dialects,
+      account: this.user.account,
       timerActiveConnection: 0
     }, { merge: true });
     this.getInfoUser(uid);

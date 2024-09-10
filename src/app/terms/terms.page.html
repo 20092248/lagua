@@ -1,32 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-grid class="ion-no-padding">
-      <ion-row class="ion-header">
-        <ion-col class="ion-margin-horizontal">
-          <nav>
-            <div class="logo">
-              <h1 (click)="goTo('')">Lagua <span> | shikomori
-                </span><img [src]="homeSetting.icon?.comorosFlag" /></h1>
-            </div>
-            <ul class="pages">
-              <li (click)="goTo('/aboutus')">A propos</li>
-              <li (click)="goTo('/link')">Lien utiles</li>
-              <li (click)="goTo('/legal-notices')">Mentions légales</li>
-              <li (click)="goTo('/terms')">CGV</li>
-              <li (click)="goTo('/contactus')">Contact</li>
-            </ul>
-          </nav>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="ion-title">
-          <ion-title>Conditions générales de vente <i>(En vigueur au 28/08/2024)</i></ion-title>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
-</ion-header>
 <ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-header">
+      <ion-col class="ion-margin-horizontal">
+        <nav>
+          <div class="logo">
+            <h1 (click)="goTo('')">Lagua <span> | shikomori
+              </span><img [src]="homeSetting.icon?.comorosFlag" /></h1>
+          </div>
+          <ul class="pages">
+            <li (click)="goTo('/aboutus')">A propos</li>
+            <li (click)="goTo('/link')">Lien utiles</li>
+            <li (click)="goTo('/legal-notices')">Mentions légales</li>
+            <li (click)="goTo('/terms')">CGV</li>
+            <li (click)="goTo('/contactus')">Contact</li>
+          </ul>
+        </nav>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-title">
+        <ion-title>Conditions générales de vente <i>(En vigueur au 28/08/2024)</i></ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <div class="ion-margin ion-padding">
     <div class="lp-modal-content">
       <div modal-render="">

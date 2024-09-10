@@ -45,6 +45,8 @@
             </div>
           </ion-accordion>
         </ion-accordion-group>
+        <ion-item button (click)="goTo('../products', true, true)"><ion-icon class="ion-padding-end"
+          name="card-outline"></ion-icon>Voir les abonnements</ion-item>
         <ion-item button (click)="goTo('../parameter', true, true)"><ion-icon class="ion-padding-end"
             name="settings-outline"></ion-icon>Paramètres</ion-item>
         <ion-item button lines="none" detail="false" (click)="logout()"><ion-icon class="ion-padding-end"

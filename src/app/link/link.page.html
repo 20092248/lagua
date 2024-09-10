@@ -1,36 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-grid class="ion-no-padding">
-      <ion-row class="ion-header">
-        <ion-col class="ion-margin-horizontal">
-          <nav>
-            <div class="logo">
-              <h1 (click)="goTo('')">Lagua <span> | shikomori
-                </span><img [src]="homeSetting.icon?.comorosFlag" /></h1>
-            </div>
-            <ul class="pages">
-              <li (click)="goTo('/aboutus')">A propos</li>
-              <li (click)="goTo('/link')">Lien utiles</li>
-              <li (click)="goTo('/legal-notices')">Mentions légales</li>
-              <li (click)="goTo('/terms')">CGV</li>
-              <li (click)="goTo('/contactus')">Contact</li>
-            </ul>
-          </nav>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="ion-title">
-          <ion-title>Liens utiles</ion-title>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
-</ion-header>
 <ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-header">
+      <ion-col class="ion-margin-horizontal">
+        <nav>
+          <div class="logo">
+            <h1 (click)="goTo('')">Lagua <span> | shikomori
+              </span><img [src]="homeSetting.icon?.comorosFlag" /></h1>
+          </div>
+          <ul class="pages">
+            <li (click)="goTo('/aboutus')">A propos</li>
+            <li (click)="goTo('/link')">Lien utiles</li>
+            <li (click)="goTo('/legal-notices')">Mentions légales</li>
+            <li (click)="goTo('/terms')">CGV</li>
+            <li (click)="goTo('/contactus')">Contact</li>
+          </ul>
+        </nav>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-title">
+        <ion-title>Liens utiles</ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <div class="ion-margin ion-padding-horizontal">
     <h1>Dictionnaire</h1>
     <p class="pp"><span class="jb">• </span> <a href="https://swadrii.com/orelc/ShikomoriWords"
-        target="_blank">Orelc</a> : dictionnaire comorien-français </p>
+        target="_blank">Orelc</a> : dictionnaire comorien-français </p>
     <p class="pp"><span class="jb">• </span> <a href="http://ylangue.free.fr/lexique/index-french/main.htm"
         target="_blank">Ylangue</a> : dictionnaire mahorais-français (<span class="xi">shimaore</span>, Mayotte) </p>
     <p class="pp1 ion-margin-start"><span class="jb">• </span> <a href="http://ylangue.free.fr/themes/direct.htm"
@@ -45,7 +41,7 @@
         target="_blank">Note sur les plantes du Coran en comorien</a> par Saïd Assoumani Mohamed, in <i>Études océan
         indien</i> (2009) </p>
     <p class="pp"><span class="jb">• </span> <a href="https://journals.openedition.org/oceanindien/1770"
-        target="_blank">Recueil d'une pharmacopée à Mayotte</a> : <span class="x">le savoir sur les plantes médicinales
+        target="_blank">Recueil d'une pharmacopée à Mayotte</a> : <span class="x">le savoir sur les plantes médicinales
         de Maoulida Mchangama</span>, par Pascale Salaün, in <i>Études océan Indien</i> (2012) </p>
     <p class="pp"><span class="jb">• </span> <a href="https://www.persee.fr/doc/cea_0008-0055_1977_num_17_66_2451"
         target="_blank">Recherches sur l'instrumentalisation du comorien</a>, <span class="x">problèmes d'adaptation
@@ -61,10 +57,10 @@
         href="https://swadrii.com/orelc/ShikomoriInfinitives/getWordByLetter/a?m=tps.%20pres."
         target="_blank">conjugaison des verbes</a> </p>
     <p class="pp"><span class="jb">• </span> <a href="http://shingazidja.free.fr/" target="_blank">Urongoa
-        shingazidja !</a> cours de comorien <span class="xi">shingazidja</span> (Grande-Comore) &amp; vocabulaire</p>
+        shingazidja !</a> cours de comorien <span class="xi">shingazidja</span> (Grande-Comore) &amp; vocabulaire</p>
     <p class="pp"><span class="jb">• </span> <a href="https://swadrii.com/orelc/ShikomoriWords"
-        target="_blank">Orelc</a> : dictionnaire comorien-français </p>
-    <p class="pp"><span class="jb">• </span> <a href="http://ylangue.free.fr/" target="_blank">Ylangue</a> : initiation
+        target="_blank">Orelc</a> : dictionnaire comorien-français </p>
+    <p class="pp"><span class="jb">• </span> <a href="http://ylangue.free.fr/" target="_blank">Ylangue</a> : initiation
       au mahorais (<span class="xi">shimaore</span>) </p>
     <p class="pp1 ion-margin-start"><span class="jb">• </span> <a href="http://ylangue.free.fr/table.htm" target="_blank">grammaire</a>
     </p>
@@ -79,12 +75,12 @@
         href="https://www.canal-u.tv/chaines/cnrspouchet/langues-et-grammaires-en-idf/presentation-du-comorien"
         target="_blank">Présentation du comorien</a> par Aliou Mohamadou <span class="k">(vidéo)</span> </p>
     <p class="pp"><span class="jb">• </span> <a href="https://books.openedition.org/purh/5186" target="_blank">La langue
-        comorienne</a> : <span class="x">unité et diversité</span>, par Mohamed Ahmed-Chamanga, in <i>Plurilinguisme,
+        comorienne</a> : <span class="x">unité et diversité</span>, par Mohamed Ahmed-Chamanga, in <i>Plurilinguisme,
         politique linguistique et éducation</i> (2011) </p>
     <p class="pp"><span class="jb">• </span> <a href="https://shs.hal.science/hal-00432799" target="_blank">Les langues
         de Mayotte</a> par Marie-Françoise Rombi (2003) </p>
     <p class="pp"><span class="jb">• </span> <a href="https://theses.hal.science/tel-03324804" target="_blank">Le
-        français et le shimaoré à Mayotte</a> : <span class="x">influences réciproques</span>, par Lavie Maturafi, thèse
+        français et le shimaoré à Mayotte</a> : <span class="x">influences réciproques</span>, par Lavie Maturafi, thèse
       (2019) </p>
     <p class="pp"><span class="jb">• </span> <a href="https://theses.hal.science/tel-00131147" target="_blank">Le
         shingazidja</a>, <span class="x">une langue bantu sous influence arabe</span>, par Michel Lafon, thèse (1988)
@@ -99,14 +95,14 @@
         féminin et fonctions sociales en bantu oriental</a> <span class="x">(Les Comores)</span> par Marie-Françoise
       Rombi (2000) </p>
     <p class="pp"><span class="jb">• </span> <a href="https://journals.openedition.org/oceanindien/1521"
-        target="_blank">Ideology and orthography</a> : <span class="x">dictionary construction and spelling choice in
+        target="_blank">Ideology and orthography</a> : <span class="x">dictionary construction and spelling choice in
         the Comoro islands</span>, par Harriet Ottenheimer, in <i>Études Océan indien</i> (2012) </p>
     <p class="pp"><span class="jb">• </span> <a
         href="https://books.google.fr/books?id=HyFggUgGHJ4C&amp;printsec=frontcover" target="_blank">The clause of
-        Shimaore dialect of Comorian</a> : étude grammaticale sur le dialecte mahorais, par Aimée Johansen Alnet (2009)
+        Shimaore dialect of Comorian</a> : étude grammaticale sur le dialecte mahorais, par Aimée Johansen Alnet (2009)
     </p>
-    <p class="pp"><span class="jb">• </span> <a href="https://hal.science/halshs-00265704" target="_blank">Le système
-        Kamar-Eddine</a> : <span class="x">une tentative originale d'écriture du comorien en graphie arabe</span>, par
+    <p class="pp ion-padding-bottom"><span class="jb">• </span> <a href="https://hal.science/halshs-00265704" target="_blank">Le système
+        Kamar-Eddine</a> : <span class="x">une tentative originale d'écriture du comorien en graphie arabe</span>, par
       Michel Lafon, in <i>Ya Mkobe</i> (2007) </p>
   </div>
 </ion-content>

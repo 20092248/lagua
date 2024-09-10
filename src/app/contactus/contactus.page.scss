@@ -1,67 +1,68 @@
-ion-toolbar {
-    --background: url(/assets/img/background.png) 0% / 100%;
-    --color: white;
-    --min-height: 400px;
+ion-title {
+    font-size: 40px;
+    padding-left: 100px;
+    font-weight: bold;
+}
 
-    ion-title {
-        font-size: 40px;
-        padding-left: 100px;
-        font-weight: bold;
+ion-grid {
+    height: 400px;
+    background: url(/assets/img/background.png) 0% / 100%;
+    color: white;
+    min-height: 400px;
+
+    ion-row:first-child {
+        height: 20%;
     }
 
-    ion-grid {
-        height: 400px;
-        ion-row:first-child {
-            height: 20%;
-        }
-        ion-row:last-child {
-            height: 80%;
-            ion-col {
-                display: flex;
-                align-self: center;
-            }
+    ion-row:last-child {
+        height: 80%;
+
+        ion-col {
+            display: flex;
+            align-self: center;
         }
     }
+}
 
-    nav {
+nav {
+    width: 100%;
+    display: flex;
+
+    div {
+        width: 260px;
+        white-space: nowrap;
+    }
+
+    ul {
         width: 100%;
         display: flex;
-        div {
-            width: 260px;
-            white-space: nowrap;
+        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        ion-button {
+            --background: #46895c;
         }
 
-        ul {
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            flex-direction: row;
-            justify-content: flex-end;
+        li {
+            color: #fff;
+            margin: 8px;
+            cursor: pointer;
+            padding: 3px;
+            list-style: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            letter-spacing: 2px;
+            transition: 200ms ease-in-out;
+        }
 
-            ion-button {
-                --background: #46895c;
-            }
+        li:hover {
+            border-bottom: 2px solid #fff;
+        }
 
-            li {
-                color: #fff;
-                margin: 8px;
-                cursor: pointer;
-                padding: 3px;
-                list-style: none;
-                font-weight: 600;
-                border-bottom: 2px solid transparent;
-                letter-spacing: 2px;
-                transition: 200ms ease-in-out;
-            }
-
-            li:hover {
-                border-bottom: 2px solid #fff;
-            }
-
-            li.ion-button-connexion:hover {
-                border-bottom: 2px solid transparent;
-            }
+        li.ion-button-connexion:hover {
+            border-bottom: 2px solid transparent;
         }
     }
 }
