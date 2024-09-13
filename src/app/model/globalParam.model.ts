@@ -9,4 +9,5 @@ export interface GlobalParam {
     topics: any;
     home: any;
     parameter: any;
+    product: any;
 }

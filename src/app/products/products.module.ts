@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ProductsPageRoutingModule } from './products-routing.module';
 
 import { ProductsPage } from './products.page';
+import { LottieModule } from 'ngx-lottie';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProductsPageRoutingModule
+    ProductsPageRoutingModule,
+    LottieModule
   ],
   declarations: [ProductsPage]
 })
-export class ProductsPageModule {}
+export class ProductsPageModule { }

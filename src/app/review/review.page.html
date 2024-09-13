@@ -4,6 +4,7 @@
     <h1 class="headline ion-no-margin">Apprendre <ion-icon name="albums" (click)="goTo('/tabs/review/modify-category')"></ion-icon></h1>
     <p class="subHeadline">{{categorySelected?.label}} ({{categorySelected?.code}}) - {{reviews.length}} leçon(s)</p>
   </div>
+  <div class="ion-status-bar"></div>
   <div id="categories-menu" class="ion-scroll-review" [class.is-pinned]="isPinned">
     <div class="ion-margin-vertical-min">
       <ion-button *ngFor="let c of categories" size="small" class="ion-button ion-button-{{c.code | lowercase}}"

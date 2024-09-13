@@ -17,6 +17,7 @@ export class SettingService {
   topics: any = {};
   home: any = {};
   parameter: any = {};
+  product: any = {};
   isCapacitor: boolean;
   isMobile: boolean;
   isOverlay: boolean;
@@ -53,9 +54,12 @@ export class SettingService {
         case 'parameter':
           this.parameter = doc.data();
           break;
+        case 'product':
+          this.product = doc.data();
+          break;
       }
     });
-    return { questions: this.questions, reviews: this.reviews, userInformation: this.userInformation, profile: this.profile, topics: this.topics, home: this.home, parameter: this.parameter };
+    return { questions: this.questions, reviews: this.reviews, userInformation: this.userInformation, profile: this.profile, topics: this.topics, home: this.home, parameter: this.parameter, product: this.product };
   }
 
   async getSetting(document: string): Promise<any> {
