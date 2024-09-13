@@ -18,7 +18,7 @@ export class ProductsPage implements OnInit {
   animation: AnimationItem = {} as AnimationItem;
   productsSetting: any = {};
   options: AnimationOptions = { path: 'assets/img/comoros_flag.json', loop: true, name: 'comoros_flag' };
-  styles: Partial<CSSStyleDeclaration> = { margin: 'auto', width: '35%' };
+  styles: Partial<CSSStyleDeclaration> = { margin: 'auto', width: '35%', maxWidth: '300px' };
 
   constructor(private router: Router, private settingService: SettingService, private alertService: AlertService) { }
 
@@ -52,4 +52,5 @@ export class ProductsPage implements OnInit {
       }
     });
   }
+  
 }

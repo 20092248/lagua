@@ -1,4 +1,4 @@
-<!-- <ion-header>
+<ion-header>
   <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '20px' : '0px' }">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
@@ -8,127 +8,80 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-background-top">
-    <div class="ion-top-content ion-padding-top ion-margin-horizontal ion-margin-top">
-      <ng-lottie [styles]="styles" [options]="options" (animationCreated)="animationCreated($event)"
-        (complete)="complete($event)"></ng-lottie>
-      <h4 class="ion-title ion-padding-top">Les utilisateurs Premium ont <span class="ion-color-dark-lagua">5 fois
-          plus</span> de chances de terminer leur cours en comorien</h4>
-      <h6 class="ion-subtitle ion-padding-vertical">Débloque un an de Premium pour <span
-          class="ion-custom-original-price">119,76 €</span> 29,94 € (2,50 €/mois).</h6>
-    </div>
-  </div>
   <div>
     <div class="ion-middle-content">
-      <h4 class="ion-padding-vertical">Débloque les fonctionnalités Premium</h4>
-      <div class="ion-dashboard-bloc">
-        <ion-item lines="none">
-          <ion-thumbnail slot="start">
-            <img *ngIf="productsSetting.icon?.repeat" [src]="productsSetting.icon?.repeat" />
-          </ion-thumbnail>
-          <ion-label>
-            <h4>La répétition espacée</h4>
-            <p>Révise les bons mots au bon moment et enregistre-les dans ta mémoire.</p>
-          </ion-label>
-        </ion-item>
+      <h4 class="ion-padding-vertical">Résumé du forfait</h4>
+      <div class="ion-summary-bloc">
+        <p>Accès aux dialectes suivants : </p>
+        <ion-chip>
+          <ion-avatar>
+            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+          <ion-label>Grand-comorien</ion-label>
+        </ion-chip>
+        <ion-chip>
+          <ion-avatar>
+            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+          <ion-label>Anjouannais</ion-label>
+        </ion-chip>
+        <ion-chip>
+          <ion-avatar>
+            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+          <ion-label>Mohélien</ion-label>
+        </ion-chip>
+        <ion-chip>
+          <ion-avatar>
+            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+          <ion-label>Mahorais</ion-label>
+        </ion-chip>
       </div>
-      <div class="ion-dashboard-bloc">
-        <ion-item lines="none">
-          <ion-thumbnail slot="start">
-            <img *ngIf="productsSetting.icon?.map" [src]="productsSetting.icon?.map" />
-          </ion-thumbnail>
-          <ion-label>
-            <h4>Leçons à la carte</h4>
-            <p>Accède aux leçons dans l’ordre que tu souhaites pour étudier les sujets qui t’intéressent le plus.</p>
-          </ion-label>
-        </ion-item>
+      <div>
+        <p>Durée</p>
+        <h6>12 mois</h6>
+        <p>Démarre le 10 sept. 2024 et expire 9 sept. 2025</p>
+        <p>Important! Votre abonnement n'est pas renouvelé automatiquement. Pensez à souscrire un nouveau forfait à la
+          fin de votre période d'engagement.</p>
+
+        <p>Insatisfait(e) ? Un remboursement intégral vous est accordé. Envoyez simplement un email à
+          lagua.shikomori@gmail.com dans les 14 jours suivant votre achat.</p>
       </div>
-      <div class="ion-dashboard-bloc">
-        <ion-item lines="none">
-          <ion-thumbnail slot="start">
-            <img *ngIf="productsSetting.icon?.pub" [src]="productsSetting.icon?.pub" />
-          </ion-thumbnail>
-          <ion-label>
-            <h4>0 publicité</h4>
-            <p>Finies les interruptions publicitaires.</p>
-          </ion-label>
-        </ion-item>
-      </div>
-      <div class="ion-dashboard-bloc">
-        <ion-item lines="none">
-          <ion-thumbnail slot="start">
-            <img *ngIf="productsSetting.icon?.dialog" [src]="productsSetting.icon?.dialog" />
-          </ion-thumbnail>
-          <ion-label>
-            <h4>Des dialogues spécialisés</h4>
-            <p>Découvre des échanges ciblés pour enrichir tes connaissances.</p>
-          </ion-label>
-        </ion-item>
+      <div>
+        <h4>Ton forfait</h4>
+        <p>Abonnement Premium de 12 mois <span>119,34€</span></p>
+        <p>Réduction de -75% <span>-87,11€</span></p>
+        <h6>Prix total : <span>30,23€</span></h6>
       </div>
     </div>
-    <div class="ion-bottom-content">
-      <h5 class="ion-padding">N'attends plus un instant, démarre en toute confiance.</h5>
-      <div class="ion-padding-horizontal ion-margin-horizontal">
-        <div>
-          <span class="ion-save-money ion-reduction">Economisez 75%</span>
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title class="ion-text-left">12 mois <ion-text class="ion-text-right ion-float-right">2,50
-                  €/mois</ion-text></ion-card-title>
-            </ion-card-header>
-
-            <ion-card-content>
-              <ion-text class="ion-text-content"><span class="ion-custom-original-price">119,76 €</span><span> 29,94
-                  €</span></ion-text>
-              <ion-button fill="solid" class="ion-button-selected" (click)="goToCheckout()">Sélectionner</ion-button>
-            </ion-card-content>
-          </ion-card>
-        </div>
-        <div>
-          <span class="ion-save-money ion-reduction-2">Economisez 50%</span>
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title class="ion-text-left">6 mois <ion-text class="ion-text-right ion-float-right">2,50
-                  €/mois</ion-text></ion-card-title>
-            </ion-card-header>
-
-            <ion-card-content>
-              <ion-text class="ion-text-content"><span class="ion-custom-original-price">119,76 €</span><span> 29,94
-                  €</span></ion-text>
-              <ion-button fill="solid" class="ion-button-selected" (click)="goToCheckout()">Sélectionner</ion-button>
-            </ion-card-content>
-          </ion-card>
-        </div>
-        <div>
-          <span class="ion-save-money ion-reduction-3">Economisez 25%</span>
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title class="ion-text-left">3 mois <ion-text class="ion-text-right ion-float-right">2,50
-                  €/mois</ion-text></ion-card-title>
-            </ion-card-header>
-
-            <ion-card-content>
-              <ion-text class="ion-text-content"><span class="ion-custom-original-price">119,76 €</span><span> 29,94
-                  €</span></ion-text>
-              <ion-button fill="solid" class="ion-button-selected" (click)="goToCheckout()">Sélectionner</ion-button>
-            </ion-card-content>
-          </ion-card>
-        </div>
-        <div class="ion-padding-top">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title class="ion-text-left">1 mois <ion-text class="ion-text-right ion-float-right">2,50
-                  €/mois</ion-text></ion-card-title>
-            </ion-card-header>
-
-            <ion-card-content>
-              <ion-text class="ion-text-content"><span class="ion-custom-original-price">119,76 €</span><span> 29,94
-                  €</span></ion-text>
-              <ion-button fill="solid" class="ion-button-selected" (click)="goToCheckout()">Sélectionner</ion-button>
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </div>
+    <div>
+      <h4>Sélectionner un mode de paiement</h4>
+      <ion-accordion-group>
+        <ion-accordion value="first">
+          <ion-item slot="header" color="light">
+            <ion-label>Carte de crédit</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">First Content</div>
+        </ion-accordion>
+        <ion-accordion value="second">
+          <ion-item slot="header" color="light">
+            <ion-label>PayPal</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">Second Content</div>
+        </ion-accordion>
+        <ion-accordion value="third">
+          <ion-item slot="header" color="light">
+            <ion-label>Google Pay</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">Third Content</div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </div>
+    <div>
+      <p>Je confirme avoir lu et j'accepte les <span>CGV</span>.</p>
+      <h3>Contact & assistance</h3>
+      <p [routerLink]="['/help/contactus']">Team Lagua</p>
     </div>
     <div class="ion-background-bottom ion-padding-horizontal">
       <div class="ion-margin-top ion-margin-horizontal">
@@ -144,4 +97,4 @@
       </div>
     </div>
   </div>
-</ion-content> -->
+</ion-content>

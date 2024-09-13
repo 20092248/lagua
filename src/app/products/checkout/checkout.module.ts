@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { CheckoutPageRoutingModule } from './checkout-routing.module';
 
 import { CheckoutPage } from './checkout.page';
+import { LottieModule } from 'ngx-lottie';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CheckoutPageRoutingModule
+    CheckoutPageRoutingModule,
+    LottieModule
   ],
   declarations: [CheckoutPage]
 })
