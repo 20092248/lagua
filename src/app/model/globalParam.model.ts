@@ -10,4 +10,5 @@ export interface GlobalParam {
     home: any;
     parameter: any;
     product: any;
+    dialect: any;
 }

@@ -43,7 +43,7 @@ export class ProductsPage implements OnInit {
   }
 
   async showPayment() {
-    const choices: CodeLabel[] = [{ code: 'ALL', label: 'Ponctuel (en 1 seul fois)', src: '' }, { code: 'MENSUEL', label: 'Mensuel', src: '' }];
+    const choices: CodeLabel[] = [{ code: 'ALL', label: 'Ponctuel (en 1 seul fois)', src: '' }, { code: 'MENSUEL', label: 'Mensuel (par mois)', src: '' }];
     this.alertService.presentAlertWithRadio('Sélectionner la période de paiement', choices).then(alertResult => {
       if (alertResult.role === 'validate' && alertResult.data.values) {
         this.goToCheckout();
@@ -52,5 +52,5 @@ export class ProductsPage implements OnInit {
       }
     });
   }
-  
+
 }

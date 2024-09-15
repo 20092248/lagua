@@ -18,6 +18,7 @@ export class SettingService {
   home: any = {};
   parameter: any = {};
   product: any = {};
+  dialect: any = {};
   isCapacitor: boolean;
   isMobile: boolean;
   isOverlay: boolean;
@@ -57,9 +58,12 @@ export class SettingService {
         case 'product':
           this.product = doc.data();
           break;
+        case 'dialect':
+          this.dialect = doc.data();
+          break;
       }
     });
-    return { questions: this.questions, reviews: this.reviews, userInformation: this.userInformation, profile: this.profile, topics: this.topics, home: this.home, parameter: this.parameter, product: this.product };
+    return { questions: this.questions, reviews: this.reviews, userInformation: this.userInformation, profile: this.profile, topics: this.topics, home: this.home, parameter: this.parameter, product: this.product, dialect: this.dialect };
   }
 
   async getSetting(document: string): Promise<any> {

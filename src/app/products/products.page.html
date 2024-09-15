@@ -24,6 +24,15 @@
       <div class="ion-dashboard-bloc">
         <ion-item lines="none">
           <ion-thumbnail slot="start">
+            <img *ngIf="productsSetting.icon?.dialect" [src]="productsSetting.icon?.dialect" />
+          </ion-thumbnail>
+          <ion-label>
+            <h4>Dialectes débloqués</h4>
+            <p>Accède à tous les dialectes à partir du même compte.</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-thumbnail slot="start">
             <img *ngIf="productsSetting.icon?.repeat" [src]="productsSetting.icon?.repeat" />
           </ion-thumbnail>
           <ion-label>

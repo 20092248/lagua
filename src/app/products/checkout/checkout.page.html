@@ -10,8 +10,14 @@
 <ion-content>
   <div>
     <div class="ion-middle-content">
-      <h4 class="ion-padding-vertical">Résumé du forfait</h4>
-      <div class="ion-summary-bloc">
+      <h3 class="ion-padding-vertical ion-text-center">Résumé du forfait</h3>
+      <div class="ion-padding-horizontal ion-margin-horizontal ion-info-bloc">
+        <h4 class="ion-padding-bottom"><b>Ton forfait</b></h4>
+        <p>Offre Premium de 12 mois<span class="ion-float-right">119,34€</span></p>
+        <p>Réduction de -75%<span class="ion-float-right">-87,11€</span></p>
+        <h1 class="ion-text-right">Prix total : <span>30,23€</span></h1>
+      </div>
+      <div class="ion-dialect-bloc">
         <p>Accès aux dialectes suivants : </p>
         <ion-chip>
           <ion-avatar>
@@ -38,24 +44,17 @@
           <ion-label>Mahorais</ion-label>
         </ion-chip>
       </div>
-      <div>
-        <p>Durée</p>
-        <h6>12 mois</h6>
-        <p>Démarre le 10 sept. 2024 et expire 9 sept. 2025</p>
-        <p>Important! Votre abonnement n'est pas renouvelé automatiquement. Pensez à souscrire un nouveau forfait à la
+      <div class="ion-info-bloc ion-margin ion-padding">
+        <ion-text class="ion-margin-top">Durée</ion-text>
+        <h2 class="ion-color-lagua ion-no-margin">12 mois</h2>
+        <p><i>Démarre le 10 sept. 2024 et expire 9 sept. 2025</i></p>
+        <p><b>Important :</b> Votre abonnement n'est pas renouvelé automatiquement. Pensez à souscrire un nouveau forfait à la
           fin de votre période d'engagement.</p>
-
-        <p>Insatisfait(e) ? Un remboursement intégral vous est accordé. Envoyez simplement un email à
+        <p class="ion-not-satisfied">Insatisfait(e) ? Un remboursement intégral vous est accordé. Envoyez simplement un email à
           lagua.shikomori@gmail.com dans les 14 jours suivant votre achat.</p>
       </div>
-      <div>
-        <h4>Ton forfait</h4>
-        <p>Abonnement Premium de 12 mois <span>119,34€</span></p>
-        <p>Réduction de -75% <span>-87,11€</span></p>
-        <h6>Prix total : <span>30,23€</span></h6>
-      </div>
     </div>
-    <div>
+    <div class="ion-margin-horizontal">
       <h4>Sélectionner un mode de paiement</h4>
       <ion-accordion-group>
         <ion-accordion value="first">
@@ -78,16 +77,17 @@
         </ion-accordion>
       </ion-accordion-group>
     </div>
-    <div>
-      <p>Je confirme avoir lu et j'accepte les <span>CGV</span>.</p>
-      <h3>Contact & assistance</h3>
-      <p [routerLink]="['/help/contactus']">Team Lagua</p>
+    <div class="ion-text-center">
+      <p class="ion-padding-vertical">Je confirme avoir lu et j'accepte les <span>CGV</span>.</p>
+      <h4>Contact & assistance</h4>
+      <a href="mailto:lagua.shikomori@gmail.com">Team Lagua</a>
+      <!-- <span [routerLink]="['/help/contactus']">Team Lagua</span> -->
     </div>
     <div class="ion-background-bottom ion-padding-horizontal">
       <div class="ion-margin-top ion-margin-horizontal">
         <img *ngIf="productsSetting.icon?.cashback" [src]="productsSetting.icon?.cashback" width="64" />
         <h6>Essayez Lagua sans risque</h6>
-        <p class="ion-padding-bottom">Contactez Babbel dans les 20 jours pour un remboursement complet.</p>
+        <p class="ion-padding-bottom">Contactez Lagua dans les 20 jours pour un remboursement complet.</p>
       </div>
 
       <div class="ion-padding-vertical ion-margin">
