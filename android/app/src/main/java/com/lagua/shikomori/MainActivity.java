@@ -11,5 +11,6 @@ public class MainActivity extends BridgeActivity {
   public void onCreate(Bundle saveInstanceState) {
     super.onCreate(saveInstanceState);
     this.registerPlugin(GoogleAuth.class);
+    this.registerPlugin(StripePlugin.class);
   }
 }

@@ -1,10 +1,14 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GooglePayEventsEnum, PaymentFlowEventsEnum, PaymentSheetEventsEnum, Stripe } from '@capacitor-community/stripe';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
+import { first, lastValueFrom } from 'rxjs';
 import { CodeLabel } from 'src/app/model/codeLabel.model';
 import { AlertService } from 'src/app/services/alert.service';
 import { SettingService } from 'src/app/services/setting.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-checkout',
@@ -18,8 +22,11 @@ export class CheckoutPage implements OnInit {
   productsSetting: any = {};
   options: AnimationOptions = { path: 'assets/img/comoros_flag.json', loop: true, name: 'comoros_flag' };
   styles: Partial<CSSStyleDeclaration> = { margin: 'auto', width: '35%', maxWidth: '300px' };
+  data: any = {};
 
-  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService) { }
+  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, private http: HttpClient) { 
+    this.data = {name: 'Name', email: 'email@test.com', amount: 1000, currency: 'eur'};
+  }
 
   ngOnInit() {
     this.isOverlay = this.settingService.isOverlay;
@@ -46,10 +53,130 @@ export class CheckoutPage implements OnInit {
     this.alertService.presentAlertWithRadio('Sélectionner la période de paiement', choices).then(alertResult => {
       if (alertResult.role === 'validate' && alertResult.data.values) {
         this.goToCheckout();
-      } else if(!alertResult.data.values) {
+      } else if (!alertResult.data.values) {
         this.alertService.presentToast('Veuillez sélectionner un choix', 3000, 'lagua');
       }
     });
+  }
+
+  async PaymentCreditCard() {
+    try {
+      // be able to get event of PaymentSheet
+      Stripe.addListener(PaymentSheetEventsEnum.Completed, () => {
+        console.log('PaymentSheetEventsEnum.Completed');
+      });
+
+      // Connect to your backend endpoint, and get every key.
+      const data$ = this.http.post<{
+        paymentIntent: string;
+        ephemeralKey: string;
+        customer: string;
+      }>(environment.api + 'payment-sheet', this.data).pipe(first());
+
+      const { paymentIntent, ephemeralKey, customer } = await lastValueFrom(data$);
+
+      // prepare PaymentSheet with CreatePaymentSheetOption.
+      await Stripe.createPaymentSheet({
+        paymentIntentClientSecret: paymentIntent,
+        customerId: customer,
+        customerEphemeralKeySecret: ephemeralKey,
+        merchantDisplayName: 'Lagua'
+      });
+
+      // present PaymentSheet and get result.
+      const result = await Stripe.presentPaymentSheet();
+      if (result.paymentResult === PaymentSheetEventsEnum.Completed) {
+        // Happy path
+      }
+    } catch (e) {
+      if(e) {console.log(e); }
+    }
+  }
+
+  async PaymentCreditCard2() {
+    try {
+      // be able to get event of PaymentFlow
+      Stripe.addListener(PaymentFlowEventsEnum.Completed, () => {
+        console.log('PaymentFlowEventsEnum.Completed');
+      });
+
+      // Connect to your backend endpoint, and get every key.
+      const data$ = this.http.post<{
+        paymentIntent: string;
+        ephemeralKey: string;
+        customer: string;
+      }>(environment.api + 'payment-sheet', {}).pipe(first());
+
+      const { paymentIntent, ephemeralKey, customer } = await lastValueFrom(data$);
+
+      // Prepare PaymentFlow with CreatePaymentFlowOption.
+      Stripe.createPaymentFlow({
+        paymentIntentClientSecret: paymentIntent,
+        // setupIntentClientSecret: setupIntent,
+        customerEphemeralKeySecret: ephemeralKey,
+        customerId: customer,
+      });
+
+      // Present PaymentFlow. **Not completed yet.**
+      const presentResult = await Stripe.presentPaymentFlow();
+      console.log(presentResult); // { cardNumber: "●●●● ●●●● ●●●● ****" }
+
+      // Confirm PaymentFlow. Completed.
+      const confirmResult = await Stripe.confirmPaymentFlow();
+      if (confirmResult.paymentResult === PaymentFlowEventsEnum.Completed) {
+        // Happy path
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async PaymentPayPal() {
+
+  }
+
+  async PaymentGooglePay() {
+    try {
+      // Check to be able to use Google Pay on device
+      const isAvailable = Stripe.isGooglePayAvailable().catch(() => undefined);
+      if (isAvailable === undefined) {
+        // disable to use Google Pay
+        return;
+      }
+
+      Stripe.addListener(GooglePayEventsEnum.Completed, () => {
+        console.log('GooglePayEventsEnum.Completed');
+      });
+
+      // Connect to your backend endpoint, and get paymentIntent.
+      const data$ = this.http.post<{
+        paymentIntent: string;
+      }>(environment.api + 'payment-sheet', {}).pipe(first());
+
+      const { paymentIntent } = await lastValueFrom(data$);
+
+      // Prepare Google Pay
+      await Stripe.createGooglePay({
+        paymentIntentClientSecret: paymentIntent,
+
+        // Web only. Google Pay on Android App doesn't need
+        paymentSummaryItems: [{
+          label: 'Lagua',
+          amount: 1099.00
+        }],
+        merchantIdentifier: 'lagua',
+        countryCode: 'FR',
+        currency: 'eur',
+      });
+
+      // Present Google Pay
+      const result = await Stripe.presentGooglePay();
+      if (result.paymentResult === GooglePayEventsEnum.Completed) {
+        // Happy path
+      }
+    } catch (e) {
+      console.log(e);
+    }
   }
 
 }

@@ -1,6 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ThemeService } from './services/theme.service';
-import { IonRouterOutlet, Platform } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { FacebookLogin } from '@capacitor-community/facebook-login';
 import { NotificationsService } from './services/notification.service';
@@ -13,6 +13,8 @@ import { AlertService } from './services/alert.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { App } from '@capacitor/app';
+import { Stripe } from '@capacitor-community/stripe';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +27,9 @@ export class AppComponent {
     const value = localStorage.getItem('selected-app-theme');
     this.themeService.setAppTheme(value ? value : 'sunny');
     this.initializeApp();
+    Stripe.initialize({
+      publishableKey: environment.stripe.publishableKey,
+    });
   }
 
   initializeApp() {

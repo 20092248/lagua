@@ -61,19 +61,19 @@
           <ion-item slot="header" color="light">
             <ion-label>Carte de crédit</ion-label>
           </ion-item>
-          <div class="ion-padding" slot="content">First Content</div>
+          <div class="ion-padding" slot="content"><ion-button (click)="PaymentCreditCard()">Valider le paiement</ion-button></div>
         </ion-accordion>
         <ion-accordion value="second">
           <ion-item slot="header" color="light">
             <ion-label>PayPal</ion-label>
           </ion-item>
-          <div class="ion-padding" slot="content">Second Content</div>
+          <div class="ion-padding" slot="content"><ion-button (click)="PaymentPayPal()">Valider le paiement</ion-button></div>
         </ion-accordion>
         <ion-accordion value="third">
           <ion-item slot="header" color="light">
             <ion-label>Google Pay</ion-label>
           </ion-item>
-          <div class="ion-padding" slot="content">Third Content</div>
+          <div class="ion-padding" slot="content"><ion-button (click)="PaymentGooglePay()">Valider le paiement</ion-button></div>
         </ion-accordion>
       </ion-accordion-group>
     </div>
