@@ -48,32 +48,54 @@
         <ion-text class="ion-margin-top">Durée</ion-text>
         <h2 class="ion-color-lagua ion-no-margin">12 mois</h2>
         <p><i>Démarre le 10 sept. 2024 et expire 9 sept. 2025</i></p>
-        <p><b>Important :</b> Votre abonnement n'est pas renouvelé automatiquement. Pensez à souscrire un nouveau forfait à la
+        <p><b>Important :</b> Votre abonnement n'est pas renouvelé automatiquement. Pensez à souscrire un nouveau
+          forfait à la
           fin de votre période d'engagement.</p>
-        <p class="ion-not-satisfied">Insatisfait(e) ? Un remboursement intégral vous est accordé. Envoyez simplement un email à
+        <p class="ion-not-satisfied">Insatisfait(e) ? Un remboursement intégral vous est accordé. Envoyez simplement un
+          email à
           lagua.shikomori@gmail.com dans les 14 jours suivant votre achat.</p>
       </div>
     </div>
     <div class="ion-margin-horizontal">
       <h4>Sélectionner un mode de paiement</h4>
       <ion-accordion-group>
-        <ion-accordion value="first">
+        <ion-accordion class="ion-margin-bottom" value="first">
           <ion-item slot="header" color="light">
-            <ion-label>Carte de crédit</ion-label>
+            <ion-label>Carte de crédit
+              <img width="26" *ngIf="productsSetting.icon?.visa" [src]="productsSetting.icon?.visa" />
+              <img width="26" *ngIf="productsSetting.icon?.mastercard" [src]="productsSetting.icon?.mastercard" />
+              <img width="26" *ngIf="productsSetting.icon?.creditCard" [src]="productsSetting.icon?.creditCard" />
+            </ion-label>
           </ion-item>
-          <div class="ion-padding" slot="content"><ion-button (click)="PaymentCreditCard()">Valider le paiement</ion-button></div>
+          <div class="ion-padding" slot="content">
+            <p class="ion-text-center ion-total-content">Total du jour : 29,94 €</p>
+            <ion-button class="ion-payment-button" shape="round" expand="block" (click)="PaymentCreditCard()">Valider le
+              paiement</ion-button></div>
         </ion-accordion>
-        <ion-accordion value="second">
+        <ion-accordion class="ion-margin-bottom" value="second">
           <ion-item slot="header" color="light">
-            <ion-label>PayPal</ion-label>
+            <ion-label>PayPal
+              <img width="26" *ngIf="productsSetting.icon?.paypal" [src]="productsSetting.icon?.paypal" />
+            </ion-label>
           </ion-item>
-          <div class="ion-padding" slot="content"><ion-button (click)="PaymentPayPal()">Valider le paiement</ion-button></div>
+          <div class="ion-padding" slot="content">
+            <p class="ion-text-center ion-total-content">Total du jour : 29,94 €</p>
+            <ion-button class="ion-paypal-button" shape="round" expand="block" (click)="PaymentPayPal()">
+              <img width="64" *ngIf="productsSetting.icon?.payPalButton" [src]="productsSetting.icon?.payPalButton" />
+            </ion-button>
+          </div>
         </ion-accordion>
-        <ion-accordion value="third">
+        <ion-accordion class="ion-margin-bottom" value="third">
           <ion-item slot="header" color="light">
-            <ion-label>Google Pay</ion-label>
+            <ion-label>Google Pay
+              <img width="26" *ngIf="productsSetting.icon?.googlePay" [src]="productsSetting.icon?.googlePay" />
+            </ion-label>
           </ion-item>
-          <div class="ion-padding" slot="content"><ion-button (click)="PaymentGooglePay()">Valider le paiement</ion-button></div>
+          <div class="ion-padding" slot="content">
+            <p class="ion-text-center ion-total-content">Total du jour : 29,94 €</p>
+            <ion-button shape="round" expand="block" class="ion-googlepay-button" (click)="PaymentGooglePay()">
+              <img width="64" *ngIf="productsSetting.icon?.googlePayButton" [src]="productsSetting.icon?.googlePayButton" />
+            </ion-button></div>
         </ion-accordion>
       </ion-accordion-group>
     </div>

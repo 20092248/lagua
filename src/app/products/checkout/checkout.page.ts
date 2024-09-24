@@ -24,8 +24,8 @@ export class CheckoutPage implements OnInit {
   styles: Partial<CSSStyleDeclaration> = { margin: 'auto', width: '35%', maxWidth: '300px' };
   data: any = {};
 
-  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, private http: HttpClient) { 
-    this.data = {name: 'Name', email: 'email@test.com', amount: 1000, currency: 'eur'};
+  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, private http: HttpClient) {
+    this.data = { name: 'Name', email: 'email@test.com', amount: 1, currency: 'eur' };
   }
 
   ngOnInit() {
@@ -80,16 +80,28 @@ export class CheckoutPage implements OnInit {
         paymentIntentClientSecret: paymentIntent,
         customerId: customer,
         customerEphemeralKeySecret: ephemeralKey,
-        merchantDisplayName: 'Lagua'
+        merchantDisplayName: 'Lagua',
+        countryCode: 'FR',
+        withZipCode: false
       });
+      
 
       // present PaymentSheet and get result.
       const result = await Stripe.presentPaymentSheet();
       if (result.paymentResult === PaymentSheetEventsEnum.Completed) {
         // Happy path
+        document.querySelectorAll('#stripe-card-element').forEach((doc) => {
+          if(doc.querySelectorAll('.stripe-heading')[0]) {
+            doc.querySelectorAll('.stripe-heading')[0].innerHTML = 'Ajouter vos informations bancaires';
+            doc.querySelectorAll('.stripe-section-title')[0].innerHTML = 'Informations bancaires';
+          }
+          if(doc.querySelectorAll('.stripe-section-title')[1]) {
+            doc.querySelectorAll('.stripe-section-title')[1].innerHTML = 'Code Postal';
+          }
+        });
       }
     } catch (e) {
-      if(e) {console.log(e); }
+      if (e) { console.log(e); }
     }
   }
 
@@ -132,7 +144,11 @@ export class CheckoutPage implements OnInit {
   }
 
   async PaymentPayPal() {
+    // Connect to your backend endpoint, and get every key.
+    const data$ = this.http.post<any>(environment.api + 'pay', this.data).pipe(first());
+    const response = await lastValueFrom(data$);
 
+    console.log(response);
   }
 
   async PaymentGooglePay() {
@@ -151,7 +167,7 @@ export class CheckoutPage implements OnInit {
       // Connect to your backend endpoint, and get paymentIntent.
       const data$ = this.http.post<{
         paymentIntent: string;
-      }>(environment.api + 'payment-sheet', {}).pipe(first());
+      }>(environment.api + 'payment-sheet', this.data).pipe(first());
 
       const { paymentIntent } = await lastValueFrom(data$);
 
