@@ -9,6 +9,7 @@ import { CodeLabel } from 'src/app/model/codeLabel.model';
 import { AlertService } from 'src/app/services/alert.service';
 import { SettingService } from 'src/app/services/setting.service';
 import { environment } from 'src/environments/environment';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-checkout',
@@ -22,9 +23,11 @@ export class CheckoutPage implements OnInit {
   productsSetting: any = {};
   options: AnimationOptions = { path: 'assets/img/comoros_flag.json', loop: true, name: 'comoros_flag' };
   styles: Partial<CSSStyleDeclaration> = { margin: 'auto', width: '35%', maxWidth: '300px' };
+  displayPayPalContent: boolean = false;
+  urlPayPal: SafeResourceUrl = {} as SafeResourceUrl;
   data: any = {};
 
-  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, private http: HttpClient) {
+  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private domSanitizer: DomSanitizer) {
     this.data = { name: 'Name', email: 'email@test.com', amount: 1, currency: 'eur' };
   }
 
@@ -80,25 +83,23 @@ export class CheckoutPage implements OnInit {
         paymentIntentClientSecret: paymentIntent,
         customerId: customer,
         customerEphemeralKeySecret: ephemeralKey,
-        merchantDisplayName: 'Lagua',
-        countryCode: 'FR',
-        withZipCode: false
+        merchantDisplayName: 'Lagua'
       });
-      
+
 
       // present PaymentSheet and get result.
       const result = await Stripe.presentPaymentSheet();
       if (result.paymentResult === PaymentSheetEventsEnum.Completed) {
         // Happy path
-        document.querySelectorAll('#stripe-card-element').forEach((doc) => {
-          if(doc.querySelectorAll('.stripe-heading')[0]) {
-            doc.querySelectorAll('.stripe-heading')[0].innerHTML = 'Ajouter vos informations bancaires';
-            doc.querySelectorAll('.stripe-section-title')[0].innerHTML = 'Informations bancaires';
-          }
-          if(doc.querySelectorAll('.stripe-section-title')[1]) {
-            doc.querySelectorAll('.stripe-section-title')[1].innerHTML = 'Code Postal';
-          }
-        });
+        // document.querySelectorAll('#stripe-card-element').forEach((doc) => {
+        //   if(doc.querySelectorAll('.stripe-heading')[0]) {
+        //     doc.querySelectorAll('.stripe-heading')[0].innerHTML = 'Ajouter vos informations bancaires';
+        //     doc.querySelectorAll('.stripe-section-title')[0].innerHTML = 'Informations bancaires';
+        //   }
+        //   if(doc.querySelectorAll('.stripe-section-title')[1]) {
+        //     doc.querySelectorAll('.stripe-section-title')[1].innerHTML = 'Code Postal';
+        //   }
+        // });
       }
     } catch (e) {
       if (e) { console.log(e); }
@@ -149,6 +150,9 @@ export class CheckoutPage implements OnInit {
     const response = await lastValueFrom(data$);
 
     console.log(response);
+    const url = response?.links.find((link: any) => link.rel === 'approve')?.href;
+    this.urlPayPal = this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+    this.displayPayPalContent = true;
   }
 
   async PaymentGooglePay() {

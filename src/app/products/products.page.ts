@@ -47,9 +47,9 @@ export class ProductsPage implements OnInit {
     this.alertService.presentAlertWithRadio('Sélectionner la période de paiement', choices).then(alertResult => {
       if (alertResult.role === 'validate' && alertResult.data.values) {
         this.goToCheckout();
-      } else if(!alertResult.data.values) {
+      } else if(alertResult.role === 'validate' && alertResult.data && !alertResult.data.values) {
         this.alertService.presentToast('Veuillez sélectionner un choix', 3000, 'lagua');
-      }
+      } 
     });
   }
 

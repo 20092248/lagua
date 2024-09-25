@@ -1,3 +1,5 @@
+import { DebitTypeEnum } from "./debitType";
+
 export class Account {
     premium: boolean;
     month: number;
@@ -5,6 +7,7 @@ export class Account {
     startDate: Date;
     endDate: Date;
     percentageReduction: number;
+    type: DebitTypeEnum;
 
     constructor() {
         this.premium = false;
@@ -13,5 +16,6 @@ export class Account {
         this.percentageReduction = 0;
         this.startDate = new Date();
         this.endDate = new Date();
+        this.type = DebitTypeEnum.ONCE;
     }
 }
