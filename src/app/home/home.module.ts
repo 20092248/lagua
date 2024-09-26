@@ -10,6 +10,7 @@ import { HomePage } from './home.page';
 import { MenuComponentModule } from './menu/menu.module';
 import { WeeklyCalendarComponentModule } from './weekly-calendar/menu.module';
 import { BarStatusComponentModule } from '../bar-status/bar-status.module';
+import { LottieModule } from 'ngx-lottie';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { BarStatusComponentModule } from '../bar-status/bar-status.module';
     HomePageRoutingModule,
     MenuComponentModule,
     WeeklyCalendarComponentModule,
-    BarStatusComponentModule
+    BarStatusComponentModule,
+    LottieModule
   ],
   declarations: [HomePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

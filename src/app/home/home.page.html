@@ -190,6 +190,23 @@
         </ion-card>
       </div>
 
+      <ion-modal class="ion-premium-account" [isOpen]="displayPremiumAccountModal">
+        <ng-template>
+          <ion-content>
+            <div class="ion-padding">
+              <div>
+                <ion-button class="ion-close-button" (click)="closeDisplayPremiumAccountModal()">
+                  <ion-icon class="ion-icon-close" slot="icon-only" size="large" name="close-outline"></ion-icon>
+                </ion-button>               
+              </div>
+              <h1 class="ion-no-margin ion-text-center">Félicitation!</h1>
+              <ng-lottie [styles]="styles" [options]="options" (animationCreated)="animationCreated($event)"
+        (complete)="complete($event)"></ng-lottie>
+             </div>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+
     </div>
   </div>
 </ion-content>

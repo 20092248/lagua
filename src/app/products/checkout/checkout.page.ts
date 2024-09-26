@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { GooglePayEventsEnum, PaymentFlowEventsEnum, PaymentSheetEventsEnum, Stripe } from '@capacitor-community/stripe';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
@@ -10,6 +10,7 @@ import { AlertService } from 'src/app/services/alert.service';
 import { SettingService } from 'src/app/services/setting.service';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
   selector: 'app-checkout',
@@ -19,15 +20,16 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class CheckoutPage implements OnInit {
 
   isOverlay: boolean | undefined;
-  animation: AnimationItem = {} as AnimationItem;
   productsSetting: any = {};
-  options: AnimationOptions = { path: 'assets/img/comoros_flag.json', loop: true, name: 'comoros_flag' };
-  styles: Partial<CSSStyleDeclaration> = { margin: 'auto', width: '35%', maxWidth: '300px' };
   displayPayPalContent: boolean = false;
   urlPayPal: SafeResourceUrl = {} as SafeResourceUrl;
   data: any = {};
 
-  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private domSanitizer: DomSanitizer) {
+  get user() {
+    return this.authentificationService.user;
+  }
+
+  constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private domSanitizer: DomSanitizer) {
     this.data = { name: 'Name', email: 'email@test.com', amount: 1, currency: 'eur' };
   }
 
@@ -36,15 +38,6 @@ export class CheckoutPage implements OnInit {
     this.settingService.getSettings().then(setting => {
       this.productsSetting = setting.product;
     });
-  }
-
-  animationCreated(animation: any) {
-    this.animation = animation as AnimationItem;
-  }
-
-  complete(event: any) {
-    console.log('hide countdown');
-    this.animation.destroy('countdown');
   }
 
   goToCheckout() {
@@ -197,6 +190,19 @@ export class CheckoutPage implements OnInit {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  closeDisplayPayPalContent() {
+    this.authentificationService.getInfoUser(this.user.uid).then(() => {
+      this.displayPayPalContent = false;
+      const endDate = this.user.account.endDate;
+      if (this.user.account && this.user.account.premium && endDate > new Date()) {
+        const navigationExtras: NavigationExtras = {
+          state: { data: { newAccount: true } }
+        };
+        this.router.navigate([''], navigationExtras);
+      }
+    }, () => { this.displayPayPalContent = false; this.alertService.presentToast('Error lors de la récupération du compte premium. Veuillez contacter le support technique.', 5000, 'danger') });
   }
 
 }

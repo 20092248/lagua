@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { IonRouterOutlet, IonTabs, Platform, PopoverController } from '@ionic/angular';
 import { Lesson } from '../model/lesson.model';
 import { AuthentificationService } from '../services/authentification.service';
@@ -17,6 +17,8 @@ import { CodeTextTranslate } from '../model/codeTextTranslate.model';
 import { CONSTANTS } from '../utils/constants';
 import { App } from '@capacitor/app';
 import { QuestionService } from '../services/question.service';
+import { AnimationOptions } from 'ngx-lottie';
+import { AnimationItem } from 'lottie-web';
 register();
 
 @Component({
@@ -36,13 +38,27 @@ export class HomePage implements OnInit {
   otherDialects: CodeTextTranslate[] = [];
   dialectLearned: string = '';
   dialectPathLearned: string = '';
+  displayPremiumAccountModal: boolean = false;
+  animation: AnimationItem = {} as AnimationItem;
+  options: AnimationOptions = { path: 'assets/img/medal.json', loop: false, name: 'medal' };
+  styles: Partial<CSSStyleDeclaration> = { margin: 'auto', width: '100%', maxWidth: '300px' };
   uploadSetting: EventEmitter<any> = new EventEmitter();
   @ViewChild(IonTabs, { static: true }) private ionTabs: IonTabs = {} as IonTabs;
 
-  constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
+  constructor(private router: Router, private route: ActivatedRoute, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
     private reviewService: ReviewService, private loadingService: LoadingService, private platform: Platform, private settingsService: SettingService,
     private questionService: QuestionService, private routerOutlet: IonRouterOutlet) {
+      this.route.queryParams.subscribe(() => {
+        if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation()?.extras?.state) {
+          const data = this.router.getCurrentNavigation()?.extras?.state?.['data'];
+          if(data && data.newAccount) {
+            //animation compte premium
+            this.displayPremiumAccountModal = true;
+          }
+        }
+      });
+      this.displayPremiumAccountModal = true;
      }
 
   get theme() {
@@ -151,6 +167,19 @@ export class HomePage implements OnInit {
     this.reviewService.resultReview.category = this.reviewService.review.category;
     this.reviewService.resultReview.lesson = this.reviewService.review.lesson;
     this.reviewService.resultReview.order = this.reviewService.review.order;
+  }
+
+  animationCreated(animation: any) {
+    this.animation = animation as AnimationItem;
+  }
+
+  complete(event: any) {
+    console.log('complete medal');
+    // this.animation.destroy('medal');
+  }
+
+  closeDisplayPremiumAccountModal() {
+    this.displayPremiumAccountModal = false;
   }
 
   logout() {

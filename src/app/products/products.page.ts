@@ -34,8 +34,8 @@ export class ProductsPage implements OnInit {
   }
 
   complete(event: any) {
-    console.log('hide countdown');
-    this.animation.destroy('countdown');
+    console.log('hide comoros flag');
+    this.animation.destroy('comoros flag');
   }
 
   goToCheckout() {
