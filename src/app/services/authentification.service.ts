@@ -24,6 +24,7 @@ import { Dialect } from '../model/dialect.model';
 import { AnalyticsService } from './analytics.service';
 import { Analytics } from '@angular/fire/analytics';
 import { LessonMin } from '../model/lessonMin.model';
+import { Account } from '../model/account.model';
 const FACEBOOK_PERMISSIONS = ['email', 'user_birthday', 'user_photos', 'user_gender',];
 const USER_KEY = 'users';
 
@@ -33,6 +34,7 @@ const USER_KEY = 'users';
 export class AuthentificationService {
 
   user: User = {} as User;
+  account: Account = {} as Account;
   timer: Date = new Date();
   choice: Subscription | undefined;
   dialect: DialectEnum = DialectEnum.SHGC;

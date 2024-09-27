@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AlertService } from '../services/alert.service';
 import { CodeLabel } from '../model/codeLabel.model';
+import { AuthentificationService } from '../services/authentification.service';
 
 @Component({
   selector: 'app-products',
@@ -20,7 +21,7 @@ export class ProductsPage implements OnInit {
   options: AnimationOptions = { path: 'assets/img/comoros_flag.json', loop: true, name: 'comoros_flag' };
   styles: Partial<CSSStyleDeclaration> = { margin: 'auto', width: '35%', maxWidth: '300px' };
 
-  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService) { }
+  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, private authentificationService: AuthentificationService) { }
 
   ngOnInit() {
     this.isOverlay = this.settingService.isOverlay;
