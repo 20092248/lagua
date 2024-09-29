@@ -14,16 +14,18 @@ import { CodeLabel } from '../model/codeLabel.model';
 })
 export class ProductsPage implements OnInit {
 
-  isOverlay: boolean | undefined;
   animation: AnimationItem = {} as AnimationItem;
   productsSetting: any = {};
   options: AnimationOptions = { path: 'assets/img/comoros_flag.json', loop: true, name: 'comoros_flag' };
   styles: Partial<CSSStyleDeclaration> = { margin: 'auto', width: '35%', maxWidth: '300px' };
 
+  get isOverlay() {
+    return this.settingService.isOverlay;
+  }
+
   constructor(private router: Router, private settingService: SettingService, private alertService: AlertService) { }
 
   ngOnInit() {
-    this.isOverlay = this.settingService.isOverlay;
     this.settingService.getSettings().then(setting => {
       this.productsSetting = setting.product;
     });

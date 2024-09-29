@@ -8,6 +8,7 @@ import { CheckoutPageRoutingModule } from './checkout-routing.module';
 
 import { CheckoutPage } from './checkout.page';
 import { LottieModule } from 'ngx-lottie';
+import { BarStatusComponentModule } from 'src/app/bar-status/bar-status.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { LottieModule } from 'ngx-lottie';
     FormsModule,
     IonicModule,
     CheckoutPageRoutingModule,
-    LottieModule
+    LottieModule,
+    BarStatusComponentModule
   ],
   declarations: [CheckoutPage]
 })

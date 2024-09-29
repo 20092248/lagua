@@ -3,9 +3,11 @@ ion-modal ion-toolbar {
 }
 
 ion-toolbar {
-    --background:  #255b37;
+    --background:  #46895c;
     text-align: center;
     color: #ffffff;
+    --padding-top: 20px;
+    --padding-bottom: 20px;
 }
 
 ion-chip > ion-label {

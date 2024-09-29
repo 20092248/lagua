@@ -19,7 +19,6 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
 })
 export class CheckoutPage implements OnInit {
 
-  isOverlay: boolean | undefined;
   productsSetting: any = {};
   displayPayPalContent: boolean = false;
   urlPayPal: SafeResourceUrl = {} as SafeResourceUrl;
@@ -28,13 +27,15 @@ export class CheckoutPage implements OnInit {
   get user() {
     return this.authentificationService.user;
   }
+  get isOverlay() {
+    return this.settingService.isOverlay;
+  }
 
   constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private domSanitizer: DomSanitizer) {
     this.data = { name: 'Name', email: 'email@test.com', amount: 1, currency: 'eur' };
   }
 
   ngOnInit() {
-    this.isOverlay = this.settingService.isOverlay;
     this.settingService.getSettings().then(setting => {
       this.productsSetting = setting.product;
     });
@@ -42,6 +43,10 @@ export class CheckoutPage implements OnInit {
 
   goToCheckout() {
     this.router.navigate(['/products/checkout']);
+  }
+
+  httpPost(body: any) {
+    return this.http.post<any>(environment.api + 'payment-sheet', body).pipe(first());
   }
 
   async showPayment() {
@@ -62,14 +67,11 @@ export class CheckoutPage implements OnInit {
         console.log('PaymentSheetEventsEnum.Completed');
       });
 
-      // Connect to your backend endpoint, and get every key.
-      const data$ = this.http.post<{
-        paymentIntent: string;
-        ephemeralKey: string;
-        customer: string;
-      }>(environment.api + 'payment-sheet', this.data).pipe(first());
+      const data$ = this.httpPost(this.data);
 
       const { paymentIntent, ephemeralKey, customer } = await lastValueFrom(data$);
+
+      console.log('paymentIntent: ', paymentIntent);
 
       // prepare PaymentSheet with CreatePaymentSheetOption.
       await Stripe.createPaymentSheet({
@@ -79,23 +81,16 @@ export class CheckoutPage implements OnInit {
         merchantDisplayName: 'Lagua'
       });
 
-
+      console.log('createPaymentSheet');
       // present PaymentSheet and get result.
       const result = await Stripe.presentPaymentSheet();
-      if (result.paymentResult === PaymentSheetEventsEnum.Completed) {
+      console.log('result: ', result);
+      if (result && result.paymentResult === PaymentSheetEventsEnum.Completed) {
         // Happy path
-        // document.querySelectorAll('#stripe-card-element').forEach((doc) => {
-        //   if(doc.querySelectorAll('.stripe-heading')[0]) {
-        //     doc.querySelectorAll('.stripe-heading')[0].innerHTML = 'Ajouter vos informations bancaires';
-        //     doc.querySelectorAll('.stripe-section-title')[0].innerHTML = 'Informations bancaires';
-        //   }
-        //   if(doc.querySelectorAll('.stripe-section-title')[1]) {
-        //     doc.querySelectorAll('.stripe-section-title')[1].innerHTML = 'Code Postal';
-        //   }
-        // });
+        this.splitAndJoin(paymentIntent);
       }
-    } catch (e) {
-      if (e) { console.log(e); }
+    } catch(e) {
+      console.log(e);
     }
   }
 
@@ -149,46 +144,40 @@ export class CheckoutPage implements OnInit {
   }
 
   async PaymentGooglePay() {
-    try {
-      // Check to be able to use Google Pay on device
-      const isAvailable = Stripe.isGooglePayAvailable().catch(() => undefined);
-      if (isAvailable === undefined) {
-        // disable to use Google Pay
-        return;
-      }
+    // Check to be able to use Google Pay on device
+    const isAvailable = Stripe.isGooglePayAvailable().catch(() => undefined);
+    if (isAvailable === undefined) {
+      // disable to use Google Pay
+      return;
+    }
+  
+    Stripe.addListener(GooglePayEventsEnum.Completed, () => {
+      console.log('GooglePayEventsEnum.Completed');
+    });
 
-      Stripe.addListener(GooglePayEventsEnum.Completed, () => {
-        console.log('GooglePayEventsEnum.Completed');
-      });
+    const data$ = this.httpPost(this.data);
 
-      // Connect to your backend endpoint, and get paymentIntent.
-      const data$ = this.http.post<{
-        paymentIntent: string;
-      }>(environment.api + 'payment-sheet', this.data).pipe(first());
+    const { paymentIntent } = await lastValueFrom(data$);
 
-      const { paymentIntent } = await lastValueFrom(data$);
+    // Prepare Google Pay
+    await Stripe.createGooglePay({
+      paymentIntentClientSecret: paymentIntent,
 
-      // Prepare Google Pay
-      await Stripe.createGooglePay({
-        paymentIntentClientSecret: paymentIntent,
+      // Web only. Google Pay on Android App doesn't need
+      paymentSummaryItems: [{
+        label: 'Lagua',
+        amount: 1.00
+      }],
+      merchantIdentifier: 'merchant.com.getcapacitor.stripe',
+      countryCode: 'IN',
+      currency: 'INR',
+    });
 
-        // Web only. Google Pay on Android App doesn't need
-        paymentSummaryItems: [{
-          label: 'Lagua',
-          amount: 1099.00
-        }],
-        merchantIdentifier: 'lagua',
-        countryCode: 'FR',
-        currency: 'eur',
-      });
-
-      // Present Google Pay
-      const result = await Stripe.presentGooglePay();
-      if (result.paymentResult === GooglePayEventsEnum.Completed) {
-        // Happy path
-      }
-    } catch (e) {
-      console.log(e);
+    // Present Google Pay
+    const result = await Stripe.presentGooglePay();
+    if (result.paymentResult === GooglePayEventsEnum.Completed) {
+      // Happy path
+      this.splitAndJoin(paymentIntent);
     }
   }
 
@@ -203,6 +192,12 @@ export class CheckoutPage implements OnInit {
         this.router.navigate([''], navigationExtras);
       }
     }, () => { this.displayPayPalContent = false; this.alertService.presentToast('Error lors de la récupération du compte premium. Veuillez contacter le support technique.', 5000, 'danger') });
+  }
+
+  splitAndJoin(paymentIntent: any) {
+    const result = paymentIntent.split('_').slice(0, 2).join('_');
+    console.log(result);
+    return result;
   }
 
 }

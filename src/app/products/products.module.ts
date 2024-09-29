@@ -8,6 +8,7 @@ import { ProductsPageRoutingModule } from './products-routing.module';
 
 import { ProductsPage } from './products.page';
 import { LottieModule } from 'ngx-lottie';
+import { BarStatusComponentModule } from '../bar-status/bar-status.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { LottieModule } from 'ngx-lottie';
     FormsModule,
     IonicModule,
     ProductsPageRoutingModule,
-    LottieModule
+    LottieModule,
+    BarStatusComponentModule
   ],
   declarations: [ProductsPage]
 })

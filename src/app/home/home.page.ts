@@ -19,6 +19,7 @@ import { App } from '@capacitor/app';
 import { QuestionService } from '../services/question.service';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
+import { GlobalParam } from '../model/globalParam.model';
 register();
 
 @Component({
@@ -33,7 +34,7 @@ export class HomePage implements OnInit {
   initial: string = '';
   previousReviewLoaded: boolean = false;
   previousReviewLoadedLength: number[] = [];
-  setting: any = {};
+  setting: GlobalParam = {} as GlobalParam;
   levelDialog: string = '';
   otherDialects: CodeTextTranslate[] = [];
   dialectLearned: string = '';
@@ -172,7 +173,7 @@ export class HomePage implements OnInit {
   animationCreated(animation: any) {
     this.animation = animation as AnimationItem;
   }
-
+  
   complete(event: any) {
     console.log('complete medal');
     // this.animation.destroy('medal');
