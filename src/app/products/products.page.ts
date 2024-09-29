@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AlertService } from '../services/alert.service';
 import { CodeLabel } from '../model/codeLabel.model';
+import { AuthentificationService } from '../services/authentification.service';
 
 @Component({
   selector: 'app-products',
