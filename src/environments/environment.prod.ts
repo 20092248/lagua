@@ -12,5 +12,5 @@ export const environment = {
   stripe: {
     publishableKey: 'pk_live_51Q07Ee08IGrp4ssfJQbIoP5pxFoXHKBNQKD0dU9d0s9lHWOqsvNnW9Yms2opoZgUFLzfcnit5EwVSrkIq4gLnGRd00oCKMaZBg'
   },
-  api:'https://lagua-backend.onrender.com/'
+  api:'https://lagua-backend.onrender.com'
 };

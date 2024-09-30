@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '20px' : '0px' }">
+  <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '30px' : '0px' }">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -59,7 +59,7 @@
     <div class="ion-margin-horizontal">
       <h4>Sélectionner un mode de paiement</h4>
       <ion-accordion-group>
-        <ion-accordion class="ion-margin-bottom" value="first">
+        <ion-accordion class="ion-margin-bottom" value="card">
           <ion-item slot="header" color="light">
             <ion-label>Carte de crédit
               <img width="26" *ngIf="productsSetting.icon?.visa" [src]="productsSetting.icon?.visa" />
@@ -69,11 +69,11 @@
           </ion-item>
           <div class="ion-padding" slot="content">
             <p class="ion-text-center ion-total-content">Total du jour : 29,94 €</p>
-            <ion-button class="ion-payment-button" shape="round" expand="block" (click)="PaymentCreditCard()">Valider le
+            <ion-button class="ion-payment-button" shape="round" expand="block" (click)="PaymentCreditCard2()">Valider le
               paiement</ion-button>
           </div>
         </ion-accordion>
-        <ion-accordion class="ion-margin-bottom" value="second">
+        <ion-accordion class="ion-margin-bottom" value="paypal">
           <ion-item slot="header" color="light">
             <ion-label>PayPal
               <img width="26" *ngIf="productsSetting.icon?.paypal" [src]="productsSetting.icon?.paypal" />
@@ -86,7 +86,7 @@
             </ion-button>
           </div>
         </ion-accordion>
-        <ion-accordion class="ion-margin-bottom" value="third">
+        <!-- <ion-accordion class="ion-margin-bottom" value="third">
           <ion-item slot="header" color="light">
             <ion-label>Google Pay
               <img width="26" *ngIf="productsSetting.icon?.googlePay" [src]="productsSetting.icon?.googlePay" />
@@ -99,7 +99,7 @@
                 [src]="productsSetting.icon?.googlePayButton" />
             </ion-button>
           </div>
-        </ion-accordion>
+        </ion-accordion> -->
       </ion-accordion-group>
     </div>
     <div class="ion-text-center">
@@ -122,20 +122,20 @@
       </div>
     </div>
   </div>
-  <ion-modal [isOpen]="displayPayPalContent">
+  <ion-modal [isOpen]="displayPaymentContent">
     <ng-template>
       <ion-header>
-        <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '20px' : '0px' }">
-          <ion-title class="ion-text-left">PayPal</ion-title>
+        <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '30px' : '0px' }" [ngClass]="titlePayment === 'PayPal' ? 'ion-paypal' : 'ion-card'">
+          <ion-title class="ion-text-left">{{titlePayment}}</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="closeDisplayPayPalContent()">
+            <ion-button (click)="closeDisplayPaymentContent()">
               <ion-icon slot="icon-only" name="close"></ion-icon>
             </ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <iframe [src]="urlPayPal" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+        <iframe [src]="urlPayment" width="100%" height="99.55%" frameborder="0" allowfullscreen></iframe>
       </ion-content>
     </ng-template>
   </ion-modal>

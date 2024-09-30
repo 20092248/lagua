@@ -1,14 +1,19 @@
-ion-modal ion-toolbar {
-    --background: #0551b5;
+.ion-paypal {
+    --background:  #0551b5;
+}
+.ion-card {
+    --background:  #46895c;
 }
 
 ion-toolbar {
     --background:  #46895c;
     text-align: center;
     color: #ffffff;
-    --padding-top: 20px;
-    --padding-bottom: 20px;
+    --padding-top: 15px;
+    --padding-bottom: 15px;
 }
+
+
 
 ion-chip > ion-label {
     color: #ffffff;

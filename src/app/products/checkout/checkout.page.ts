@@ -1,16 +1,17 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { GooglePayEventsEnum, PaymentFlowEventsEnum, PaymentSheetEventsEnum, Stripe } from '@capacitor-community/stripe';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
-import { first, lastValueFrom } from 'rxjs';
+import { first, lastValueFrom, Subscription, switchMap } from 'rxjs';
 import { CodeLabel } from 'src/app/model/codeLabel.model';
 import { AlertService } from 'src/app/services/alert.service';
 import { SettingService } from 'src/app/services/setting.service';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AuthentificationService } from 'src/app/services/authentification.service';
+import { StripeFactoryService, StripeInstance } from 'ngx-stripe';
 
 @Component({
   selector: 'app-checkout',
@@ -20,9 +21,11 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
 export class CheckoutPage implements OnInit {
 
   productsSetting: any = {};
-  displayPayPalContent: boolean = false;
-  urlPayPal: SafeResourceUrl = {} as SafeResourceUrl;
+  titlePayment: string = '';
+  displayPaymentContent: boolean = false;
+  urlPayment: SafeResourceUrl = {} as SafeResourceUrl;
   data: any = {};
+  stripe!: StripeInstance;
 
   get user() {
     return this.authentificationService.user;
@@ -31,7 +34,7 @@ export class CheckoutPage implements OnInit {
     return this.settingService.isOverlay;
   }
 
-  constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private domSanitizer: DomSanitizer) {
+  constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private stripeFactory: StripeFactoryService, private domSanitizer: DomSanitizer) {
     this.data = { name: 'Name', email: 'email@test.com', amount: 1, currency: 'eur' };
   }
 
@@ -45,8 +48,8 @@ export class CheckoutPage implements OnInit {
     this.router.navigate(['/products/checkout']);
   }
 
-  httpPost(body: any) {
-    return this.http.post<any>(environment.api + 'payment-sheet', body).pipe(first());
+  httpPost(path: string, body: any) {
+    return this.http.post<any>(environment.api + path, body).pipe(first());
   }
 
   async showPayment() {
@@ -67,7 +70,7 @@ export class CheckoutPage implements OnInit {
         console.log('PaymentSheetEventsEnum.Completed');
       });
 
-      const data$ = this.httpPost(this.data);
+      const data$ = this.httpPost('/payment-sheet', this.data);
 
       const { paymentIntent, ephemeralKey, customer } = await lastValueFrom(data$);
 
@@ -89,44 +92,20 @@ export class CheckoutPage implements OnInit {
         // Happy path
         this.splitAndJoin(paymentIntent);
       }
-    } catch(e) {
+    } catch (e) {
       console.log(e);
     }
   }
 
   async PaymentCreditCard2() {
     try {
-      // be able to get event of PaymentFlow
-      Stripe.addListener(PaymentFlowEventsEnum.Completed, () => {
-        console.log('PaymentFlowEventsEnum.Completed');
-      });
+      const data$ = this.httpPost('/create-checkout-session', this.data);
+      const { url } = await lastValueFrom(data$);
+      this.titlePayment = 'Moyen de paiement';
+      this.urlPayment = this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+      this.displayPaymentContent = true;
 
-      // Connect to your backend endpoint, and get every key.
-      const data$ = this.http.post<{
-        paymentIntent: string;
-        ephemeralKey: string;
-        customer: string;
-      }>(environment.api + 'payment-sheet', {}).pipe(first());
 
-      const { paymentIntent, ephemeralKey, customer } = await lastValueFrom(data$);
-
-      // Prepare PaymentFlow with CreatePaymentFlowOption.
-      Stripe.createPaymentFlow({
-        paymentIntentClientSecret: paymentIntent,
-        // setupIntentClientSecret: setupIntent,
-        customerEphemeralKeySecret: ephemeralKey,
-        customerId: customer,
-      });
-
-      // Present PaymentFlow. **Not completed yet.**
-      const presentResult = await Stripe.presentPaymentFlow();
-      console.log(presentResult); // { cardNumber: "●●●● ●●●● ●●●● ****" }
-
-      // Confirm PaymentFlow. Completed.
-      const confirmResult = await Stripe.confirmPaymentFlow();
-      if (confirmResult.paymentResult === PaymentFlowEventsEnum.Completed) {
-        // Happy path
-      }
     } catch (e) {
       console.log(e);
     }
@@ -134,13 +113,14 @@ export class CheckoutPage implements OnInit {
 
   async PaymentPayPal() {
     // Connect to your backend endpoint, and get every key.
-    const data$ = this.http.post<any>(environment.api + 'pay', this.data).pipe(first());
+    const data$ = this.http.post<any>(environment.api + '/pay', this.data).pipe(first());
     const response = await lastValueFrom(data$);
 
     console.log(response);
     const url = response?.links.find((link: any) => link.rel === 'approve')?.href;
-    this.urlPayPal = this.domSanitizer.bypassSecurityTrustResourceUrl(url);
-    this.displayPayPalContent = true;
+    this.titlePayment = 'PayPal';
+    this.urlPayment = this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+    this.displayPaymentContent = true;
   }
 
   async PaymentGooglePay() {
@@ -150,12 +130,12 @@ export class CheckoutPage implements OnInit {
       // disable to use Google Pay
       return;
     }
-  
+
     Stripe.addListener(GooglePayEventsEnum.Completed, () => {
       console.log('GooglePayEventsEnum.Completed');
     });
 
-    const data$ = this.httpPost(this.data);
+    const data$ = this.httpPost('/payment-sheet', this.data);
 
     const { paymentIntent } = await lastValueFrom(data$);
 
@@ -181,9 +161,9 @@ export class CheckoutPage implements OnInit {
     }
   }
 
-  closeDisplayPayPalContent() {
+  closeDisplayPaymentContent() {
     this.authentificationService.getInfoUser(this.user.uid).then(() => {
-      this.displayPayPalContent = false;
+      this.displayPaymentContent = false;
       const endDate = this.user.account.endDate;
       if (this.user.account && this.user.account.premium && endDate > new Date()) {
         const navigationExtras: NavigationExtras = {
@@ -191,7 +171,7 @@ export class CheckoutPage implements OnInit {
         };
         this.router.navigate([''], navigationExtras);
       }
-    }, () => { this.displayPayPalContent = false; this.alertService.presentToast('Error lors de la récupération du compte premium. Veuillez contacter le support technique.', 5000, 'danger') });
+    }, () => { this.displayPaymentContent = false; this.alertService.presentToast('Error lors de la récupération du compte premium. Veuillez contacter le support technique.', 5000, 'danger') });
   }
 
   splitAndJoin(paymentIntent: any) {

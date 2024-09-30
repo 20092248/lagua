@@ -22,6 +22,7 @@ import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { Vibration } from '@awesome-cordova-plugins/vibration/ngx';
 import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
+import {NgxStripeModule} from "ngx-stripe";
 
 export function playerFactory() { return player; }
 
@@ -32,6 +33,7 @@ export function playerFactory() { return player; }
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxStripeModule.forRoot(),
     LottieModule.forRoot({player: playerFactory}),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore(initializeApp(environment.firebase))),
