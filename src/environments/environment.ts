@@ -17,7 +17,7 @@ export const environment = {
     publishableKey: 'pk_test_51Q07Ee08IGrp4ssffM05mA0vdt8TiwblcCe6aKenMhuZpF5eY1qOimJpflAMDITXV4mwHfww5CfYaYkNCcDiJpMC00QZ4FCIsn',
     key: 'sk_test_51Q07Ee08IGrp4ssfefOpTxY24JMvxkUO1mImQESLzN6xyk3Xtiq0c315KD1UefWXW8lR73prsbOmUZvA4yEXGdcH00iRYU1CmF'
   },
-  api: 'https://lagua-backend.onrender.com', //'http://localhost:3000'
+  api: 'http://localhost:3000', //'http://localhost:3000'
 };
 
 /*

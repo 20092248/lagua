@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { GooglePayEventsEnum, PaymentFlowEventsEnum, PaymentSheetEventsEnum, Stripe } from '@capacitor-community/stripe';
+import { GooglePayEventsEnum, PaymentFlowEventsEnum, PaymentSheetEventsEnum } from '@capacitor-community/stripe';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 import { first, lastValueFrom, Subscription, switchMap } from 'rxjs';
@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { StripeFactoryService, StripeInstance } from 'ngx-stripe';
+declare let Stripe: any;
 
 @Component({
   selector: 'app-checkout',
@@ -100,12 +101,17 @@ export class CheckoutPage implements OnInit {
   async PaymentCreditCard2() {
     try {
       const data$ = this.httpPost('/create-checkout-session', this.data);
-      const { url } = await lastValueFrom(data$);
+      const { id, client_secret, url } = await lastValueFrom(data$);
       this.titlePayment = 'Moyen de paiement';
-      this.urlPayment = this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+      // this.urlPayment = this.domSanitizer.bypassSecurityTrustResourceUrl(url);
       this.displayPaymentContent = true;
-
-
+      const stripe = Stripe(environment.stripe.publishableKey);
+      // Initialize Checkout
+      const checkout = await stripe.initEmbeddedCheckout({
+        clientSecret: client_secret
+      });
+      // Mount Checkout
+      checkout.mount('#checkout');
     } catch (e) {
       console.log(e);
     }

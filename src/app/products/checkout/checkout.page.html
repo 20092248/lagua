@@ -135,7 +135,8 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <iframe [src]="urlPayment" width="100%" height="99.55%" frameborder="0" allowfullscreen></iframe>
+        <div *ngIf="titlePayment !== 'PayPal'" id="checkout"></div>
+        <iframe *ngIf="titlePayment === 'PayPal'" [src]="urlPayment" width="100%" height="99.55%" frameborder="0" allowfullscreen></iframe>
       </ion-content>
     </ng-template>
   </ion-modal>
