@@ -59,7 +59,6 @@ export class HomePage implements OnInit {
           }
         }
       });
-      this.displayPremiumAccountModal = true;
      }
 
   get theme() {

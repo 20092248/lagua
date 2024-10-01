@@ -45,9 +45,9 @@
             </ion-card-header>
 
             <ion-card-content>
-              <ion-text class="ion-text-content"><span class="ion-custom-original-price">{{p.price}} €</span><span> {{p.economy}}
+              <ion-text class="ion-text-content"><span class="ion-custom-original-price">{{p.price}} €</span><span> {{(1 - p.economy) * p.price}}
                   €</span></ion-text>
-              <ion-button fill="solid" class="ion-button-selected" (click)="showPayment()">Sélectionner</ion-button>
+              <ion-button fill="solid" class="ion-button-selected" (click)="showPayment(p)">Sélectionner</ion-button>
             </ion-card-content>
           </ion-card>
         </div>

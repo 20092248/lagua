@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import { DebitTypeEnum } from "./debitType";
 
 export class Account {
@@ -5,8 +6,8 @@ export class Account {
     month: number;
     originalPrice: number;
     price: number;
-    startDate: Date;
-    endDate: Date;
+    startDate: Timestamp;
+    endDate: Timestamp;
     percentageReduction: number;
     type: DebitTypeEnum;
 
@@ -16,8 +17,8 @@ export class Account {
         this.originalPrice = 0;
         this.price = 0;
         this.percentageReduction = 0;
-        this.startDate = new Date();
-        this.endDate = new Date();
+        this.startDate = Timestamp.now();
+        this.endDate = Timestamp.now();
         this.type = DebitTypeEnum.ONCE;
     }
 }

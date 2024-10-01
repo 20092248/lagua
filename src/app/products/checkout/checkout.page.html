@@ -69,7 +69,7 @@
           </ion-item>
           <div class="ion-padding" slot="content">
             <p class="ion-text-center ion-total-content">Total du jour : 29,94 €</p>
-            <ion-button class="ion-payment-button" shape="round" expand="block" (click)="PaymentCreditCard2()">Valider le
+            <ion-button class="ion-payment-button" shape="round" expand="block" (click)="PaymentCreditCard3()">Valider le
               paiement</ion-button>
           </div>
         </ion-accordion>
@@ -122,20 +122,29 @@
       </div>
     </div>
   </div>
-  <ion-modal [isOpen]="displayPaymentContent">
+  <ion-modal [isOpen]="displayPaymentContent" [initialBreakpoint]="0.95" [breakpoints]="[0, 0.5, 0.95]">
     <ng-template>
       <ion-header>
         <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '30px' : '0px' }" [ngClass]="titlePayment === 'PayPal' ? 'ion-paypal' : 'ion-card'">
           <ion-title class="ion-text-left">{{titlePayment}}</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="closeDisplayPaymentContent()">
+            <ion-button (click)="displayPaymentContent = false">
               <ion-icon slot="icon-only" name="close"></ion-icon>
             </ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
-      <ion-content>
-        <div *ngIf="titlePayment !== 'PayPal'" id="checkout"></div>
+      <ion-content class="ion-padding">
+        <h3 class="ion-margin-bottom">Total à payer : <span class="ion-float-right ion-color-lagua">1,00 €</span></h3>
+        <form *ngIf="titlePayment !== 'PayPal'" id="payment-form">
+          <div id="payment-element"></div>
+          <div class="ion-text-center">
+            <button class="ion-margin" id="submit">
+              <ion-icon slot="start" name="card"></ion-icon>
+              Payer maintenant</button>
+          </div>
+          <div id="error-message"></div>
+        </form>
         <iframe *ngIf="titlePayment === 'PayPal'" [src]="urlPayment" width="100%" height="99.55%" frameborder="0" allowfullscreen></iframe>
       </ion-content>
     </ng-template>

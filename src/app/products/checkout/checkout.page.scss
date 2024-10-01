@@ -13,7 +13,10 @@ ion-toolbar {
     --padding-bottom: 15px;
 }
 
-
+ion-modal ion-toolbar {
+    --padding-top: 5px;
+    --padding-bottom: 5px;
+}
 
 ion-chip > ion-label {
     color: #ffffff;
@@ -29,6 +32,21 @@ ion-label > img {
 ion-accordion {
     border: 1px  #255b37 solid;
     border-radius: 10px;
+}
+
+button#submit {
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    background: #46895c;
+}
+
+button#submit:hover {
+    background: rgb(83, 157, 109);
+}
+
+button#submit:active {
+    background: #64ad7d;
 }
 
 .ion-dialect-bloc {

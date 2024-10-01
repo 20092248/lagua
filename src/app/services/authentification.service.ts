@@ -457,6 +457,25 @@ export class AuthentificationService {
     }
   }
 
+  async addPremiumAccount() {
+    const uid =  this.user.uid?  this.user.uid : 'test';
+    const userRef = doc(getFirestore(), 'users', uid);
+    const enDdate = this.addMonth(new Date(), 12);
+    await updateDoc(userRef, {
+      account: {
+        premium: true,
+        month: 6,
+        originalPrice: 99.50,
+        price: 49.29,
+        startDate: new Date(),
+        endDate: enDdate,
+        percentageReduction: 50,
+        type: 'ONCE'
+      }
+    });
+    return true;
+  }
+
   infoReviewByDialect(nextReview: Review, resultReviews: ResultReview[]) {
     var dialect = null;
     if (this.dialect === DialectEnum.SHGC) {
@@ -552,6 +571,11 @@ export class AuthentificationService {
     const dialect = Utils.findDialect(this.user.dialectSelected.code);
     this.user.dialects[dialect].review = firstReview;
     this.user.dialects[dialect].lesson = firstLesson;
+  }
+
+  addMonth(date: Date, month: number) {
+    date.setMonth(date.getMonth() + month);
+    return date;
   }
 
 }

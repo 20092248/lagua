@@ -7,6 +7,7 @@ import { AlertController } from '@ionic/angular';
 import { AlertService } from '../services/alert.service';
 import { CodeLabel } from '../model/codeLabel.model';
 import { AuthentificationService } from '../services/authentification.service';
+import { Account } from '../model/account.model';
 
 @Component({
   selector: 'app-products',
@@ -24,7 +25,11 @@ export class ProductsPage implements OnInit {
     return this.settingService.isOverlay;
   }
 
-  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService) { }
+  get user() {
+    return this.authentificationService.user;
+  }
+
+  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, private authentificationService: AuthentificationService) { }
 
   ngOnInit() {
     this.settingService.getSettings().then(setting => {
@@ -45,7 +50,8 @@ export class ProductsPage implements OnInit {
     this.router.navigate(['/products/checkout']);
   }
 
-  async showPayment() {
+  async showPayment(formule: any) {
+    this.user.account = {} as Account;
     const choices: CodeLabel[] = [{ code: 'ALL', label: 'Ponctuel (en 1 seul fois)', src: '' }, { code: 'MENSUEL', label: 'Mensuel (par mois)', src: '' }];
     this.alertService.presentAlertWithRadio('Sélectionner la période de paiement', choices).then(alertResult => {
       if (alertResult.role === 'validate' && alertResult.data.values) {
