@@ -1,4 +1,4 @@
 export enum DebitTypeEnum {
-    ONCE = 'ONCE',
+    ALL = 'ALL',
     MNTH = 'MNTH'
   }

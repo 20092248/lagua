@@ -26,7 +26,6 @@ export class CheckoutPage implements OnInit {
   titlePayment: string = '';
   displayPaymentContent: boolean = false;
   urlPayment: SafeResourceUrl = {} as SafeResourceUrl;
-  data: any = {};
   stripe!: StripeInstance;
 
   get user() {
@@ -37,7 +36,6 @@ export class CheckoutPage implements OnInit {
   }
 
   constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private stripeFactory: StripeFactoryService, private domSanitizer: DomSanitizer) {
-    this.data = { name: 'Name', email: 'email@test.com', amount: 1, currency: 'eur' };
   }
 
   ngOnInit() {
@@ -72,7 +70,7 @@ export class CheckoutPage implements OnInit {
         console.log('PaymentSheetEventsEnum.Completed');
       });
 
-      const data$ = this.httpPost('/payment-sheet', this.data);
+      const data$ = this.httpPost('/payment-sheet', this.user);
 
       const { paymentIntent, ephemeralKey, customer } = await lastValueFrom(data$);
 
@@ -101,7 +99,7 @@ export class CheckoutPage implements OnInit {
 
   async PaymentCreditCard2() {
     try {
-      const data$ = this.httpPost('/create-checkout-session', this.data);
+      const data$ = this.httpPost('/create-checkout-session', this.user);
       const { id, client_secret, url } = await lastValueFrom(data$);
       this.titlePayment = 'Moyen de paiement';
       // this.urlPayment = this.domSanitizer.bypassSecurityTrustResourceUrl(url);
@@ -122,7 +120,7 @@ export class CheckoutPage implements OnInit {
     try {
       this.displayPaymentContent = true;
       const stripe = Stripe(environment.stripe.publishableKey);
-      const data$ = this.httpPost('/create-payment-intent', this.data);
+      const data$ = this.httpPost('/create-payment-intent', this.user);
       const { client_secret } = await lastValueFrom(data$);
       this.titlePayment = 'Moyen de paiement';
       const options = {
@@ -164,7 +162,7 @@ export class CheckoutPage implements OnInit {
 
   async PaymentPayPal() {
     // Connect to your backend endpoint, and get every key.
-    const data$ = this.http.post<any>(environment.api + '/pay', this.data).pipe(first());
+    const data$ = this.http.post<any>(environment.api + '/pay', this.user).pipe(first());
     const response = await lastValueFrom(data$);
 
     console.log(response);
@@ -186,7 +184,7 @@ export class CheckoutPage implements OnInit {
       console.log('GooglePayEventsEnum.Completed');
     });
 
-    const data$ = this.httpPost('/payment-sheet', this.data);
+    const data$ = this.httpPost('/payment-sheet', this.user);
 
     const { paymentIntent } = await lastValueFrom(data$);
 

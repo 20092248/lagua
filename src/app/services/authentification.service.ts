@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, signInWithCredential, signOut, UserCredential, sendPasswordResetEmail } from '@angular/fire/auth';
-import { doc, getDoc, updateDoc, Firestore, getFirestore, onSnapshot, setDoc, serverTimestamp } from '@angular/fire/firestore';
+import { doc, getDoc, updateDoc, Firestore, getFirestore, onSnapshot, setDoc, serverTimestamp, Timestamp } from '@angular/fire/firestore';
 import { CodeLabel } from '../model/codeLabel.model';
 import { CodeTextTranslate } from '../model/codeTextTranslate.model';
 import { User } from '../model/user.model';
@@ -458,19 +458,19 @@ export class AuthentificationService {
   }
 
   async addPremiumAccount() {
-    const uid =  this.user.uid?  this.user.uid : 'test';
-    const userRef = doc(getFirestore(), 'users', uid);
-    const enDdate = this.addMonth(new Date(), 12);
+    this.user.account.startDate = Timestamp.now();
+    this.user.account.endDate = this.addMonth(this.user.account.startDate, this.user.account.month);
+    const userRef = doc(getFirestore(), 'users', this.user.uid);
     await updateDoc(userRef, {
       account: {
         premium: true,
-        month: 6,
-        originalPrice: 99.50,
-        price: 49.29,
-        startDate: new Date(),
-        endDate: enDdate,
-        percentageReduction: 50,
-        type: 'ONCE'
+        month: this.user.account.month,
+        originalPrice: this.user.account.originalPrice,
+        price: this.user.account.price,
+        startDate: this.user.account.startDate,
+        endDate: this.user.account.endDate,
+        percentageReduction: this.user.account.percentageReduction,
+        type: this.user.account.type
       }
     });
     return true;
@@ -573,8 +573,8 @@ export class AuthentificationService {
     this.user.dialects[dialect].lesson = firstLesson;
   }
 
-  addMonth(date: Date, month: number) {
-    date.setMonth(date.getMonth() + month);
+  addMonth(date: Timestamp, month: number) {
+    date.toDate().setMonth(date.toDate().getMonth() + month);
     return date;
   }
 

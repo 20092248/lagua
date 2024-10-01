@@ -19,6 +19,6 @@ export class Account {
         this.percentageReduction = 0;
         this.startDate = Timestamp.now();
         this.endDate = Timestamp.now();
-        this.type = DebitTypeEnum.ONCE;
+        this.type = DebitTypeEnum.ALL;
     }
 }

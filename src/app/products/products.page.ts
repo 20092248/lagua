@@ -8,6 +8,7 @@ import { AlertService } from '../services/alert.service';
 import { CodeLabel } from '../model/codeLabel.model';
 import { AuthentificationService } from '../services/authentification.service';
 import { Account } from '../model/account.model';
+import { DebitTypeEnum } from '../model/debitType';
 
 @Component({
   selector: 'app-products',
@@ -51,10 +52,16 @@ export class ProductsPage implements OnInit {
   }
 
   async showPayment(formule: any) {
-    this.user.account = {} as Account;
+    this.user.account = new Account();
+    this.user.account.month = formule.duration;
+    this.user.account.originalPrice = formule.price;
+    this.user.account.price = formule.price * (1-formule.economy);
+    
     const choices: CodeLabel[] = [{ code: 'ALL', label: 'Ponctuel (en 1 seul fois)', src: '' }, { code: 'MENSUEL', label: 'Mensuel (par mois)', src: '' }];
     this.alertService.presentAlertWithRadio('Sélectionner la période de paiement', choices).then(alertResult => {
+      this.user.account.percentageReduction = formule.economy;
       if (alertResult.role === 'validate' && alertResult.data.values) {
+        this.user.account.type = alertResult.data.values?.code;
         this.goToCheckout();
       } else if(alertResult.role === 'validate' && alertResult.data && !alertResult.data.values) {
         this.alertService.presentToast('Veuillez sélectionner un choix', 3000, 'lagua');
