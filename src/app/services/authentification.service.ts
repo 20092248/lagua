@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, signInWithCredential, signOut, UserCredential, sendPasswordResetEmail } from '@angular/fire/auth';
 import { doc, getDoc, updateDoc, Firestore, getFirestore, onSnapshot, setDoc, serverTimestamp, Timestamp } from '@angular/fire/firestore';
-import { CodeLabel } from '../model/codeLabel.model';
-import { CodeTextTranslate } from '../model/codeTextTranslate.model';
 import { User } from '../model/user.model';
 import { ReviewService } from './review.service';
 import { LessonService } from './lesson.service';
@@ -15,16 +13,12 @@ import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { FacebookLogin, FacebookLoginResponse } from '@capacitor-community/facebook-login';
 import { Platform } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
 import { CONSTANTS } from '../utils/constants';
 import { AlertService } from './alert.service';
 import { Utils } from '../utils/utils';
 import { DialectEnum } from '../model/dialect.enum';
-import { Dialect } from '../model/dialect.model';
 import { AnalyticsService } from './analytics.service';
-import { Analytics } from '@angular/fire/analytics';
 import { LessonMin } from '../model/lessonMin.model';
-import { Account } from '../model/account.model';
 const FACEBOOK_PERMISSIONS = ['email', 'user_birthday', 'user_photos', 'user_gender',];
 const USER_KEY = 'users';
 
@@ -34,7 +28,6 @@ const USER_KEY = 'users';
 export class AuthentificationService {
 
   user: User = {} as User;
-  account: Account = {} as Account;
   timer: Date = new Date();
   choice: Subscription | undefined;
   dialect: DialectEnum = DialectEnum.SHGC;
@@ -574,8 +567,7 @@ export class AuthentificationService {
   }
 
   addMonth(date: Timestamp, month: number) {
-    date.toDate().setMonth(date.toDate().getMonth() + month);
-    return date;
+    return Timestamp.fromDate(new Date(new Date(date.toDate().setMonth(date.toDate().getMonth() + month)).setDate(date.toDate().getDate() -1)));
   }
 
 }

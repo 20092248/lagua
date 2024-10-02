@@ -12,7 +12,6 @@ import { environment } from 'src/environments/environment';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { StripeFactoryService, StripeInstance } from 'ngx-stripe';
-import { Timestamp } from 'firebase/firestore';
 declare let Stripe: any;
 
 @Component({
@@ -23,9 +22,11 @@ declare let Stripe: any;
 export class CheckoutPage implements OnInit {
 
   productsSetting: any = {};
+  dialectSetting: any = {};
   titlePayment: string = '';
   displayPaymentContent: boolean = false;
   urlPayment: SafeResourceUrl = {} as SafeResourceUrl;
+  options : any = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
   stripe!: StripeInstance;
 
   get user() {
@@ -39,8 +40,11 @@ export class CheckoutPage implements OnInit {
   }
 
   ngOnInit() {
+    this.authentificationService.user
     this.settingService.getSettings().then(setting => {
       this.productsSetting = setting.product;
+      this.dialectSetting = setting.userInformation;
+      this.dialectSetting.learn = this.dialectSetting.learn?.filter((d: any) =>d.code !== 'FREN');
     });
   }
 
@@ -119,42 +123,15 @@ export class CheckoutPage implements OnInit {
   async PaymentCreditCard3() {
     try {
       this.displayPaymentContent = true;
-      const stripe = Stripe(environment.stripe.publishableKey);
-      const data$ = this.httpPost('/create-payment-intent', this.user);
-      const { client_secret } = await lastValueFrom(data$);
       this.titlePayment = 'Moyen de paiement';
-      const options = {
-        clientSecret: client_secret
-      };
-      const elements = stripe.elements(options);
+      const stripe = Stripe(environment.stripe.publishableKey);
+      const data$ = this.httpPost('/create-payment-intent', {uid: this.user.uid, email: this.user.email, account: this.user.account});
+      const { client_secret } = await lastValueFrom(data$);
+      const elements = stripe.elements({ clientSecret: client_secret });
       const paymentElement = elements.create('payment');
       paymentElement.mount('#payment-element');
 
-      const form = document.getElementById('payment-form');
-
-      form?.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        const { error } = await stripe.confirmPayment({
-          //`Elements` instance that was used to create the Payment Element
-          elements,
-          confirmParams: {},
-          redirect: 'if_required'
-        });
-
-        if (error) {
-          const messageContainer = document.querySelector('#error-message');
-          if (messageContainer) {
-            messageContainer.textContent = error.message;
-            this.alertService.presentToast(error.message, 5000, 'danger');
-          }
-        } else {
-          this.authentificationService.addPremiumAccount().then(() => {
-            this.confirmDisplayPaymentContent();
-          }, error => { this.alertService.presentToast(error.message, 5000, 'danger') }
-          );
-        }
-      });
+      this.getStripeContent(stripe, elements);
     } catch (e) {
       console.log(e);
     }
@@ -208,6 +185,29 @@ export class CheckoutPage implements OnInit {
       // Happy path
       this.splitAndJoin(paymentIntent);
     }
+  }
+
+  getStripeContent(stripe: any, elements: any) {
+    const form = document.getElementById('payment-form');
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const { error } = await stripe.confirmPayment({
+        //`Elements` instance that was used to create the Payment Element
+        elements,
+        confirmParams: {},
+        redirect: 'if_required'
+      });
+
+      if (error) {
+        this.alertService.presentToast(error.message, 5000, 'danger');
+      } else {
+        this.authentificationService.addPremiumAccount().then(() => {
+          this.confirmDisplayPaymentContent();
+        }, error => { this.alertService.presentToast(error.message, 5000, 'danger') }
+        );
+      }
+    });
   }
 
   confirmDisplayPaymentContent() {

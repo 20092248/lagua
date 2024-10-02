@@ -15,7 +15,7 @@
       <h4 class="ion-title ion-padding-top">Les utilisateurs Premium ont <span class="ion-color-dark-lagua">5 fois
           plus</span> de chances de terminer leur cours en comorien</h4>
       <h6 class="ion-subtitle ion-padding-vertical">Débloque un an de Premium pour <span
-          class="ion-custom-original-price">119,76 €</span> 29,94 € (2,50 €/mois).</h6>
+          class="ion-custom-original-price">{{priceData?.originalPrice}} €</span> {{priceData?.price}} € ({{priceData?.monthlyPrice}} €/mois).</h6>
     </div>
   </div>
   <div>
@@ -36,16 +36,15 @@
     <div class="ion-bottom-content">
       <h5 class="ion-padding">N'attends plus un instant, démarre en toute confiance.</h5>
       <div class="ion-padding-horizontal ion-margin-horizontal">
-        <div *ngFor="let p of productsSetting?.prices">
+        <div *ngFor="let p of productsSetting?.prices" [ngClass]="{ 'ion-padding-top' : !p.economy }">
           <span *ngIf="p.economy" class="ion-save-money ion-reduction">Economisez {{p.economy*100}}%</span>
           <ion-card>
             <ion-card-header>
-              <ion-card-title class="ion-text-left">{{p.duration}} mois <ion-text class="ion-text-right ion-float-right">{{p.monthlyPrice | number : '1.2-2'}}
+              <ion-card-title class="ion-text-left">{{p.duration}} mois <ion-text class="ion-text-right ion-float-right">{{p.monthlyPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}
                   €/mois</ion-text></ion-card-title>
             </ion-card-header>
-
             <ion-card-content>
-              <ion-text class="ion-text-content"><span class="ion-custom-original-price">{{p.price}} €</span><span> {{(1 - p.economy) * p.price}}
+              <ion-text class="ion-text-content"><span [ngClass]="{ 'ion-custom-original-price' : p.economy }">{{p.price.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} €</span><span *ngIf="p.economy"> {{((1 - p.economy) * p.price).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}
                   €</span></ion-text>
               <ion-button fill="solid" class="ion-button-selected" (click)="showPayment(p)">Sélectionner</ion-button>
             </ion-card-content>
