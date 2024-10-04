@@ -8,17 +8,4 @@
     <string name="facebook_app_id">771703417822238</string>
     <string name="facebook_client_token">fb771703417822238</string>
     <string name="admob_app_id">ca-app-pub-2159881532224833~9548870738</string>
-
-    <string name="publishable_key">pk_test_51Q07Ee08IGrp4ssffM05mA0vdt8TiwblcCe6aKenMhuZpF5eY1qOimJpflAMDITXV4mwHfww5CfYaYkNCcDiJpMC00QZ4FCIsn</string>
-    <bool name="enable_google_pay">true</bool>
-    <string name="country_code">FR</string>
-    <string name="merchant_display_name">Lagua</string>
-    <bool name="google_pay_is_testing">true</bool>
-
-    <bool name="email_address_required">false</bool>
-    <bool name="phone_number_required">false</bool>
-    <bool name="billing_address_required">false</bool>
-    <string name="billing_address_format">Full</string>
-  
-    <bool name="google_pay_existing_payment_method_required">false</bool>
 </resources>
