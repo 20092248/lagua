@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { StripeFactoryService, StripeInstance } from 'ngx-stripe';
+import { CONSTANTS } from 'src/app/utils/constants';
+declare let paypal: any;
 declare let Stripe: any;
 
 @Component({
@@ -26,7 +28,7 @@ export class CheckoutPage implements OnInit {
   titlePayment: string = '';
   displayPaymentContent: boolean = false;
   urlPayment: SafeResourceUrl = {} as SafeResourceUrl;
-  options : any = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+  options: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   stripe!: StripeInstance;
 
   get user() {
@@ -44,8 +46,9 @@ export class CheckoutPage implements OnInit {
     this.settingService.getSettings().then(setting => {
       this.productsSetting = setting.product;
       this.dialectSetting = setting.userInformation;
-      this.dialectSetting.learn = this.dialectSetting.learn?.filter((d: any) =>d.code !== 'FREN');
+      this.dialectSetting.learn = this.dialectSetting.learn?.filter((d: any) => d.code !== 'FREN');
     });
+    this.displayPayPal();
   }
 
   goToCheckout() {
@@ -125,7 +128,7 @@ export class CheckoutPage implements OnInit {
       this.displayPaymentContent = true;
       this.titlePayment = 'Moyen de paiement';
       const stripe = Stripe(environment.stripe.publishableKey);
-      const data$ = this.httpPost('/create-payment-intent', {uid: this.user.uid, email: this.user.email, account: this.user.account});
+      const data$ = this.httpPost('/create-payment-intent', { uid: this.user.uid, email: this.user.email, account: this.user.account });
       const { client_secret } = await lastValueFrom(data$);
       const elements = stripe.elements({ clientSecret: client_secret });
       const paymentElement = elements.create('payment');
@@ -135,6 +138,51 @@ export class CheckoutPage implements OnInit {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  async displayPayPal() {
+    paypal
+      .Buttons({
+        // Sets up the transaction when a payment button is clicked
+        createOrder: this.createOrderCallback,
+        onApprove: this.onApproveCallback,
+        onError: this.onError,
+        style: { shape: "pill", layout: "vertical", color: "gold", label: "paypal" },
+        message: { amount: 100 },
+      }, this)
+      .render("#paypal-button-container");
+  }
+
+  async createOrderCallback() {
+    const rawData = window.document.querySelector('#rawData > p')?.id;
+    const data = rawData?.split('_');
+    if(rawData && data) {
+      const responsePay = await fetch(environment.api + '/pay', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ uid: data[0], email: data[1], price: data[2] }),
+    });
+      // const data$ = this.http.post<any>(environment.api + '/pay', { uid: rawData[0], email: rawData[1], account: rawData[2] }).pipe(first());
+      // const response = await lastValueFrom(data$);
+      console.log(responsePay);
+      const response = responsePay.json() as any;
+      if (response.id) {
+        return response.id;
+      } else if(response?.details?.[0]){
+        this.alertService.presentToast(response?.details?.[0], 5000, 'danger');
+      } else {
+        this.alertService.presentToast(CONSTANTS.RESPONSE_KO, 5000, 'danger');
+      }
+    }
+
+  }
+
+  async onApproveCallback() {
+    console.log('approuve');
+  }
+
+  async onError() {
+    console.log('error');
   }
 
   async PaymentPayPal() {

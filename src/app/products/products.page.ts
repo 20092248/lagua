@@ -8,7 +8,6 @@ import { CodeLabel } from '../model/codeLabel.model';
 import { AuthentificationService } from '../services/authentification.service';
 import { Account } from '../model/account.model';
 import { Timestamp } from 'firebase/firestore';
-import { User } from '../model/user.model';
 
 @Component({
   selector: 'app-products',

@@ -61,11 +61,12 @@
               <img width="26" *ngIf="productsSetting.icon?.paypal" [src]="productsSetting.icon?.paypal" />
             </ion-label>
           </ion-item>
-          <div class="ion-padding" slot="content">
-            <p class="ion-text-center ion-total-content">Total du jour : {{user.account.price.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} €</p>
-            <ion-button class="ion-paypal-button" shape="round" expand="block" (click)="PaymentPayPal()">
+          <div id="rawData" class="ion-padding" slot="content">
+            <p class="ion-text-center ion-total-content" id="{{user.uid}}_{{user.email}}_{{user.account.price}}">Total du jour : {{user.account.price.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} €</p>
+            <div id="paypal-button-container"></div>
+            <!-- <ion-button class="ion-paypal-button" shape="round" expand="block" (click)="PaymentPayPal()">
               <img width="64" *ngIf="productsSetting.icon?.payPalButton" [src]="productsSetting.icon?.payPalButton" />
-            </ion-button>
+            </ion-button> -->
           </div>
         </ion-accordion>
         <!-- <ion-accordion class="ion-margin-bottom" value="third">
@@ -126,7 +127,8 @@
               Payer maintenant</button>
           </div>
         </form>
-        <iframe *ngIf="titlePayment === 'PayPal'" [src]="urlPayment" width="100%" height="99.55%" frameborder="0" allowfullscreen></iframe>
+        <div *ngIf="titlePayment === 'PayPal'" id="paypal-button-container"></div>
+        <!-- <iframe *ngIf="titlePayment === 'PayPal'" [src]="urlPayment" width="100%" height="99.55%" frameborder="0" allowfullscreen></iframe> -->
       </ion-content>
     </ng-template>
   </ion-modal>

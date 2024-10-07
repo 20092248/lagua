@@ -3,6 +3,7 @@ export class CONSTANTS {
     public static URL_SEND_GRID = 'https://api.sendgrid.com/v3/mail/send';
     public static TEAM_LAGUA_NAME = 'Team Lagua';
     public static TEAM_LAGUA_EMAIL = 'lagua.shikomori@gmail.com';
+    public static RESPONSE_KO = 'Une erreur est survenue. Veuillez réessayer ultérieurement.';
     public static LOGIN_KO = 'Une erreur est survenue lors de la connexion. Veuillez réessayer ultérieurement.';
     public static NOT_SIGNIN = 'Veuillez créer un compte avant de vous connecter.';
     public static SEND_EMAIL_KO = 'Une erreur est survenue lors de l\'envoi du mail. Veuillez réessayer ultérieurement.';
