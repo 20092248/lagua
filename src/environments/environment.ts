@@ -13,10 +13,6 @@ export const environment = {
     appId: "1:137499573111:web:670bc2f91420e63f807f72",
     measurementId: "G-56QVYPSYSH"
   },
-  stripe: {
-    publishableKey: 'pk_test_51Q07Ee08IGrp4ssffM05mA0vdt8TiwblcCe6aKenMhuZpF5eY1qOimJpflAMDITXV4mwHfww5CfYaYkNCcDiJpMC00QZ4FCIsn',
-    key: 'sk_test_51Q07Ee08IGrp4ssfefOpTxY24JMvxkUO1mImQESLzN6xyk3Xtiq0c315KD1UefWXW8lR73prsbOmUZvA4yEXGdcH00iRYU1CmF'
-  },
   api: 'http://localhost:3000', //'http://localhost:3000'
 };
 

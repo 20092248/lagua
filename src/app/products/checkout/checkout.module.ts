@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -9,7 +9,6 @@ import { CheckoutPageRoutingModule } from './checkout-routing.module';
 import { CheckoutPage } from './checkout.page';
 import { LottieModule } from 'ngx-lottie';
 import { BarStatusComponentModule } from 'src/app/bar-status/bar-status.module';
-import { NgxStripeModule } from 'ngx-stripe';
 
 @NgModule({
   imports: [
@@ -19,8 +18,8 @@ import { NgxStripeModule } from 'ngx-stripe';
     CheckoutPageRoutingModule,
     LottieModule,
     BarStatusComponentModule,
-    NgxStripeModule
   ],
-  declarations: [CheckoutPage]
+  declarations: [CheckoutPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CheckoutPageModule {}

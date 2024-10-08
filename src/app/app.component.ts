@@ -13,8 +13,6 @@ import { AlertService } from './services/alert.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { App } from '@capacitor/app';
-import { Stripe } from '@capacitor-community/stripe';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -27,9 +25,6 @@ export class AppComponent {
     const value = localStorage.getItem('selected-app-theme');
     this.themeService.setAppTheme(value ? value : 'sunny');
     this.initializeApp();
-    Stripe.initialize({
-      publishableKey: environment.stripe.publishableKey,
-    });
   }
 
   initializeApp() {

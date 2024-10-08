@@ -9,8 +9,5 @@ export const environment = {
     appId: "1:137499573111:web:670bc2f91420e63f807f72",
     measurementId: "G-56QVYPSYSH"
   },
-  stripe: {
-    publishableKey: 'pk_live_51Q07Ee08IGrp4ssfJQbIoP5pxFoXHKBNQKD0dU9d0s9lHWOqsvNnW9Yms2opoZgUFLzfcnit5EwVSrkIq4gLnGRd00oCKMaZBg'
-  },
   api:'https://lagua-backend.onrender.com'
 };

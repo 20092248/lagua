@@ -62,6 +62,7 @@
             </ion-label>
           </ion-item>
           <div id="rawData" class="ion-padding" slot="content">
+            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
             <p class="ion-text-center ion-total-content" id="{{user.uid}}_{{user.email}}_{{user.account.price}}">Total du jour : {{user.account.price.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} €</p>
             <div id="paypal-button-container"></div>
             <!-- <ion-button class="ion-paypal-button" shape="round" expand="block" (click)="PaymentPayPal()">
