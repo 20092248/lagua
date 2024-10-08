@@ -195,73 +195,71 @@
       <ion-modal class="ion-premium-account" [isOpen]="displayPremiumAccountModal">
         <ng-template>
           <ion-content>
-            <div class="ion-padding">
+            <div class="ion-padding-horizontal ion-padding-top">
               <div>
                 <ion-button class="ion-close-button" (click)="closeDisplayPremiumAccountModal()">
                   <ion-icon class="ion-icon-close" slot="icon-only" size="large" name="close-outline"></ion-icon>
                 </ion-button>
               </div>
-              <h1 class="ion-no-margin ion-text-center">Félicitation!</h1>
-              <ng-lottie [styles]="styles" [options]="options" (animationCreated)="animationCreated($event)"
-                (complete)="complete($event)"></ng-lottie>
-              <div class="ion-middle-content">
-                <h5 class="ion-text-center ion-padding-vertical">Vous avez accès à toutes les fonctionnalités Premium</h5>
-                <div>
-                  <ion-item lines="none">
-                    <ion-thumbnail slot="start">
-                      <img *ngIf="setting.product?.icon?.dialect" [src]="setting.product?.icon?.dialect" />
-                    </ion-thumbnail>
-                    <ion-label class="ion-text-wrap">
-                      <h4>Dialectes débloqués</h4>
-                      <p>Accède à tous les dialectes à partir du même compte.</p>
-                    </ion-label>
-                  </ion-item>
-                  <ion-item lines="none">
-                    <ion-thumbnail slot="start">
-                      <img *ngIf="setting.product?.icon?.repeat" [src]="setting.product?.icon?.repeat" />
-                    </ion-thumbnail>
-                    <ion-label class="ion-text-wrap">
-                      <h4>La répétition espacée</h4>
-                      <p>Révise les bons mots au bon moment et enregistre-les dans ta mémoire.</p>
-                    </ion-label>
-                  </ion-item>
-                </div>
-                <div>
-                  <ion-item lines="none">
-                    <ion-thumbnail slot="start">
-                      <img *ngIf="setting.product?.icon?.map" [src]="setting.product?.icon?.map" />
-                    </ion-thumbnail>
-                    <ion-label class="ion-text-wrap">
-                      <h4>Leçons à la carte</h4>
-                      <p>Accède aux leçons dans l’ordre que tu souhaites pour étudier les sujets qui t’intéressent le
-                        plus.</p>
-                    </ion-label>
-                  </ion-item>
-                </div>
-                <div>
-                  <ion-item lines="none">
-                    <ion-thumbnail slot="start">
-                      <img *ngIf="setting.product?.icon?.pub" [src]="setting.product?.icon?.pub" />
-                    </ion-thumbnail>
-                    <ion-label class="ion-text-wrap">
-                      <h4>0 publicité</h4>
-                      <p>Finies les interruptions publicitaires.</p>
-                    </ion-label>
-                  </ion-item>
-                </div>
-                <div>
-                  <ion-item lines="none">
-                    <ion-thumbnail slot="start">
-                      <img *ngIf="setting.product?.icon?.dialog" [src]="setting.product?.icon?.dialog" />
-                    </ion-thumbnail>
-                    <ion-label class="ion-text-wrap">
-                      <h4>Des dialogues spécialisés</h4>
-                      <p>Découvre des échanges ciblés pour enrichir tes connaissances.</p>
-                    </ion-label>
-                  </ion-item>
-                </div>
-                <div class="ion-text-center ion-margin-top">
-                  <ion-button (click)="closeDisplayPremiumAccountModal()">Fermer</ion-button>
+              <div class="ion-position-content">
+                <h1 class="ion-no-margin ion-text-center">Félicitation!</h1>
+                <ng-lottie [styles]="styles" [options]="options" (animationCreated)="animationCreated($event)"
+                  (complete)="complete($event)"></ng-lottie>
+                <div class="ion-middle-content">
+                  <h5 class="ion-text-center">Vous avez accès à toutes les fonctionnalités Premium</h5>
+                  <div>
+                    <ion-item lines="none">
+                      <ion-thumbnail slot="start">
+                        <img *ngIf="setting.product?.icon?.dialect" [src]="setting.product?.icon?.dialect" />
+                      </ion-thumbnail>
+                      <ion-label class="ion-text-wrap">
+                        <h4>Dialectes débloqués</h4>
+                        <p>Accède à tous les dialectes à partir du même compte.</p>
+                      </ion-label>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-thumbnail slot="start">
+                        <img *ngIf="setting.product?.icon?.repeat" [src]="setting.product?.icon?.repeat" />
+                      </ion-thumbnail>
+                      <ion-label class="ion-text-wrap">
+                        <h4>La répétition espacée</h4>
+                        <p>Révise les bons mots au bon moment et enregistre-les dans ta mémoire.</p>
+                      </ion-label>
+                    </ion-item>
+                  </div>
+                  <div>
+                    <ion-item lines="none">
+                      <ion-thumbnail slot="start">
+                        <img *ngIf="setting.product?.icon?.map" [src]="setting.product?.icon?.map" />
+                      </ion-thumbnail>
+                      <ion-label class="ion-text-wrap">
+                        <h4>Leçons à la carte</h4>
+                        <p>Explore les sujets qui te passionnent en toute liberté, sans contrainte.</p>
+                      </ion-label>
+                    </ion-item>
+                  </div>
+                  <div>
+                    <ion-item lines="none">
+                      <ion-thumbnail slot="start">
+                        <img *ngIf="setting.product?.icon?.pub" [src]="setting.product?.icon?.pub" />
+                      </ion-thumbnail>
+                      <ion-label class="ion-text-wrap">
+                        <h4>0 publicité</h4>
+                        <p>Finies les interruptions publicitaires.</p>
+                      </ion-label>
+                    </ion-item>
+                  </div>
+                  <div>
+                    <ion-item lines="none">
+                      <ion-thumbnail slot="start">
+                        <img *ngIf="setting.product?.icon?.dialog" [src]="setting.product?.icon?.dialog" />
+                      </ion-thumbnail>
+                      <ion-label class="ion-text-wrap">
+                        <h4>Des dialogues spécialisés</h4>
+                        <p>Découvre des échanges ciblés pour enrichir tes connaissances.</p>
+                      </ion-label>
+                    </ion-item>
+                  </div>
                 </div>
               </div>
             </div>

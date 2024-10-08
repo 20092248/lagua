@@ -12,6 +12,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { CONSTANTS } from 'src/app/utils/constants';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
+import { User } from 'src/app/model/user.model';
+import { Account } from 'src/app/model/account.model';
 declare let paypal: any;
 declare let Stripe: any;
 
@@ -28,7 +30,7 @@ export class CheckoutPage implements OnInit {
   displayPaymentContent: boolean = false;
   urlPayment: SafeResourceUrl = {} as SafeResourceUrl;
   options: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  public payPalConfig ? : IPayPalConfig;
+  public payPalConfig?: IPayPalConfig;
 
   get user() {
     return this.authentificationService.user;
@@ -46,67 +48,47 @@ export class CheckoutPage implements OnInit {
       this.dialectSetting = setting.userInformation;
       this.dialectSetting.learn = this.dialectSetting.learn?.filter((d: any) => d.code !== 'FREN');
     });
-    this.displayPayPal();
+    // this.displayPayPal(); 
     this.initConfig();
   }
 
+  // const responseRawValue = await fetch(environment.api + '/payButton', {
+  //   method: 'POST', 
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ uid: data[0], email: data[1], price: data[2] }),
+
   private initConfig(): void {
     this.payPalConfig = {
-        currency: 'EUR',
-        clientId: 'Aex9Pkp_nDfTNSiv7z_BiupH2xJk6ZKN8U-4glIyUpEz1EonylEf_WogONgzWYN8F2VMMxOxKYTdIxF-',
-        createOrderOnClient: (data) => < ICreateOrderRequest > {
-            intent: 'CAPTURE',
-            purchase_units: [{
-                amount: {
-                    currency_code: 'EUR',
-                    value: '9.99',
-                    breakdown: {
-                        item_total: {
-                            currency_code: 'EUR',
-                            value: '9.99'
-                        }
-                    }
-                },
-                items: [{
-                    name: 'Enterprise Subscription',
-                    quantity: '1',
-                    category: 'DIGITAL_GOODS',
-                    unit_amount: {
-                        currency_code: 'EUR',
-                        value: '9.99',
-                    },
-                }]
-            }]
-        },
-        advanced: {
-            commit: 'true'
-        },
-        style: {
-            label: 'paypal',
-            layout: 'vertical'
-        },
-        onApprove: (data, actions) => {
-            console.log('onApprove - transaction was approved, but not authorized', data, actions);
-            actions.order.get().then((details: any) => {
-                console.log('onApprove - you can get full order details inside onApprove: ', details);
-            });
-
-        },
-        onClientAuthorization: (data) => {
-            console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-        },
-        onCancel: (data, actions) => {
-            console.log('OnCancel', data, actions);
-
-        },
-        onError: err => {
-            console.log('OnError', err);
-        },
-        onClick: (data, actions) => {
-            console.log('onClick', data, actions);
-        }
+      currency: 'EUR',
+      clientId: 'Aex9Pkp_nDfTNSiv7z_BiupH2xJk6ZKN8U-4glIyUpEz1EonylEf_WogONgzWYN8F2VMMxOxKYTdIxF-',
+      createOrderOnServer: (data) => fetch(environment.api + '/payButton', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ uid: this.user.uid, email: this.user.email, account: this.user.account })
+      }).then((res) => res.json())
+        .then((order) => JSON.parse(order).id),
+      advanced: { commit: 'true' },
+      style: { shape: "pill", layout: "vertical", color: "gold", label: "paypal" },
+      onApprove: (data, actions) => {
+        console.log('onApprove - transaction was approved, but not authorized', data, actions);
+        actions.order.get().then((details: any) => {
+          console.log('onApprove - you can get full order details inside onApprove: ', details);
+        });
+      },
+      onClientAuthorization: (data) => {
+        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+      },
+      onCancel: (data, actions) => {
+        console.log('OnCancel', data, actions);
+        this.alertService.presentToast('Transaction annulé', 5000, 'dark');
+      },
+      onError: error => {
+        this.alertService.presentToast(error, 5000, 'danger');
+      },
+      onClick: (data, actions) => {
+        console.log('onClick', data, actions);
+      }
     };
-}
+  }
 
   goToCheckout() {
     this.router.navigate(['/products/checkout']);
@@ -179,19 +161,19 @@ export class CheckoutPage implements OnInit {
   async createOrderCallback() {
     const rawData = window.document.querySelector('#rawData > p')?.id;
     const data = rawData?.split('_');
-    if(rawData && data) {
+    if (rawData && data) {
       const responseRawValue = await fetch(environment.api + '/payButton', {
-        method: 'POST', 
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ uid: data[0], email: data[1], price: data[2] }),
-    }).then(response => response.json());
-    const response = JSON.parse(responseRawValue); 
-    if(response?.details?.[0]){
-      this.alertService.presentToast(response?.details?.[0], 5000, 'danger');
-    } else if(!response.id) {
-      this.alertService.presentToast(CONSTANTS.RESPONSE_KO, 5000, 'danger');
-    }
-    return response.id;
+      }).then(response => response.json());
+      const response = JSON.parse(responseRawValue);
+      if (response?.details?.[0]) {
+        this.alertService.presentToast(response?.details?.[0], 5000, 'danger');
+      } else if (!response.id) {
+        this.alertService.presentToast(CONSTANTS.RESPONSE_KO, 5000, 'danger');
+      }
+      return response.id;
     }
 
   }

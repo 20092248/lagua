@@ -42,7 +42,7 @@ export class HomePage implements OnInit {
   displayPremiumAccountModal: boolean = false;
   animation: AnimationItem = {} as AnimationItem;
   options: AnimationOptions = { path: 'assets/img/medal.json', loop: false, name: 'medal' };
-  styles: Partial<CSSStyleDeclaration> = { margin: 'auto', width: '100%', maxWidth: '300px' };
+  styles: Partial<CSSStyleDeclaration> = { margin: 'auto', width: '100%', maxWidth: '250px' };
   uploadSetting: EventEmitter<any> = new EventEmitter();
   @ViewChild(IonTabs, { static: true }) private ionTabs: IonTabs = {} as IonTabs;
 
