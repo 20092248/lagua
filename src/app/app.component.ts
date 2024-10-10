@@ -13,6 +13,7 @@ import { AlertService } from './services/alert.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { App } from '@capacitor/app';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',

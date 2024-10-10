@@ -31,7 +31,6 @@ export class CheckoutPage implements OnInit {
   options: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   payPalConfig?: IPayPalConfig;
   paymentRequest: any = {} as google.payments.api.PaymentDataRequest;
-  key?: string;
   subscriptionSelected: any = {};
   buttonRadius = 20;
 
@@ -40,6 +39,9 @@ export class CheckoutPage implements OnInit {
   }
   get isOverlay() {
     return this.settingService.isOverlay;
+  }
+  get isCapacitor() {
+    return this.settingService.isCapacitor;
   }
 
   constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private cryptoService: CryptoService) {
@@ -94,6 +96,16 @@ export class CheckoutPage implements OnInit {
         console.log('onClick', data, actions);
       }
     };
+  }
+
+  async retrieveClientId() {
+    const key = this.user.uid ? this.user.uid : 'test';
+    if (!this.settingService.stripe) {
+      const data$ = this.http.get<any>(environment.api + '/getKey?uid=' + key).pipe(first());
+      const { stripe } = await lastValueFrom(data$);
+      this.settingService.stripe = stripe;
+    }
+    const publishableKey = this.settingService.stripe.prodMode === 'true' ? this.settingService.stripe.key : this.settingService.stripe.keyTest;
     this.paymentRequest = <google.payments.api.PaymentDataRequest>{
       apiVersion: 2,
       apiVersionMinor: 0,
@@ -109,7 +121,7 @@ export class CheckoutPage implements OnInit {
             parameters: {
               gateway: 'stripe',
               'stripe:version': '2018-10-31',
-              'stripe:publishableKey': this.key
+              'stripe:publishableKey': this.cryptoService.decrypt(publishableKey, key)
             }
           }
         }
@@ -126,18 +138,6 @@ export class CheckoutPage implements OnInit {
         countryCode: 'FR'
       }
     };
-  }
-
-  async retrieveClientId() {
-    const key = this.user.uid ? this.user.uid : 'test';
-    if (!this.settingService.stripe) {
-      const data$ = this.http.get<any>(environment.api + '/getKey?uid=' + key).pipe(first());
-      const { stripe } = await lastValueFrom(data$);
-      this.settingService.stripe = stripe;
-    }
-    const publishableKey = this.settingService.stripe.prodMode === 'true' ? this.settingService.stripe.key : this.settingService.stripe.keyTest;
-    this.key = this.cryptoService.decrypt(publishableKey, key);
-    console.log(this.key);
   }
 
   goToCheckout() {

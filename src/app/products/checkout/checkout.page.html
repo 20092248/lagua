@@ -70,7 +70,7 @@
             </ion-button> -->
           </div>
         </ion-accordion>
-        <ion-accordion class="ion-margin-bottom" value="third">
+        <ion-accordion class="ion-margin-bottom" value="third" *ngIf="!isCapacitor">
           <ion-item slot="header" color="light">
             <ion-label>Google Pay
               <img width="26" *ngIf="productsSetting.icon?.googlePay" [src]="productsSetting.icon?.googlePay" />
