@@ -23,6 +23,7 @@ import player from 'lottie-web';
 import { Vibration } from '@awesome-cordova-plugins/vibration/ngx';
 import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { GooglePayButtonModule } from '@google-pay/button-angular';
 
 export function playerFactory() { return player; }
 
@@ -34,6 +35,7 @@ export function playerFactory() { return player; }
     FormsModule,
     HttpClientModule,
     NgxPayPalModule,
+    GooglePayButtonModule,
     LottieModule.forRoot({player: playerFactory}),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore(initializeApp(environment.firebase))),

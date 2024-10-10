@@ -20,6 +20,7 @@ import { QuestionService } from '../services/question.service';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { GlobalParam } from '../model/globalParam.model';
+import { AudioService } from '../services/audio.service';
 register();
 
 @Component({
@@ -48,14 +49,15 @@ export class HomePage implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
-    private reviewService: ReviewService, private loadingService: LoadingService, private platform: Platform, private settingsService: SettingService,
-    private questionService: QuestionService, private routerOutlet: IonRouterOutlet) {
+    private reviewService: ReviewService, private loadingService: LoadingService, private settingsService: SettingService,
+    private questionService: QuestionService, private audioService: AudioService) {
       this.route.queryParams.subscribe(() => {
         if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation()?.extras?.state) {
           const data = this.router.getCurrentNavigation()?.extras?.state?.['data'];
           if(data && data.newAccount) {
             //animation compte premium
             this.displayPremiumAccountModal = true;
+            this.audioService.play('successReview');
           }
         }
       });

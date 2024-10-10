@@ -13,6 +13,9 @@ export const environment = {
     appId: "1:137499573111:web:670bc2f91420e63f807f72",
     measurementId: "G-56QVYPSYSH"
   },
+  paypal: {
+    clientId : 'Aex9Pkp_nDfTNSiv7z_BiupH2xJk6ZKN8U-4glIyUpEz1EonylEf_WogONgzWYN8F2VMMxOxKYTdIxF-'
+  },
   api: 'http://localhost:3000', //'http://localhost:3000'
 };
 

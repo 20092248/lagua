@@ -10,6 +10,7 @@ import { CheckoutPage } from './checkout.page';
 import { LottieModule } from 'ngx-lottie';
 import { BarStatusComponentModule } from 'src/app/bar-status/bar-status.module';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { GooglePayButtonModule } from '@google-pay/button-angular';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
     CheckoutPageRoutingModule,
     LottieModule,
     BarStatusComponentModule,
-    NgxPayPalModule
+    NgxPayPalModule,
+    GooglePayButtonModule
   ],
   declarations: [CheckoutPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

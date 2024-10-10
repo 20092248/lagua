@@ -11,9 +11,8 @@ import { environment } from 'src/environments/environment';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { CONSTANTS } from 'src/app/utils/constants';
-import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
-import { User } from 'src/app/model/user.model';
-import { Account } from 'src/app/model/account.model';
+import { IPayPalConfig } from 'ngx-paypal';
+import { CryptoService } from 'src/app/services/crypto';
 declare let paypal: any;
 declare let Stripe: any;
 
@@ -30,7 +29,11 @@ export class CheckoutPage implements OnInit {
   displayPaymentContent: boolean = false;
   urlPayment: SafeResourceUrl = {} as SafeResourceUrl;
   options: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  public payPalConfig?: IPayPalConfig;
+  payPalConfig?: IPayPalConfig;
+  paymentRequest: any = {} as google.payments.api.PaymentDataRequest;
+  key?: string;
+  subscriptionSelected: any = {};
+  buttonRadius = 20;
 
   get user() {
     return this.authentificationService.user;
@@ -39,7 +42,8 @@ export class CheckoutPage implements OnInit {
     return this.settingService.isOverlay;
   }
 
-  constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private domSanitizer: DomSanitizer) {
+  constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private cryptoService: CryptoService) {
+    this.retrieveClientId();
   }
 
   ngOnInit() {
@@ -48,27 +52,26 @@ export class CheckoutPage implements OnInit {
       this.dialectSetting = setting.userInformation;
       this.dialectSetting.learn = this.dialectSetting.learn?.filter((d: any) => d.code !== 'FREN');
     });
-    // this.displayPayPal(); 
-    this.initConfig();
+    this.subscriptionSelected = { ...this.user.account };
+    this.subscriptionSelected.reduction = this.subscriptionSelected && this.subscriptionSelected.originalPrice ? (this.subscriptionSelected.originalPrice * this.subscriptionSelected.percentageReduction).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '';
+    this.subscriptionSelected.price = this.subscriptionSelected && this.subscriptionSelected.price ? this.subscriptionSelected.price.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '';
+    this.subscriptionSelected.originalPrice = this.subscriptionSelected && this.subscriptionSelected.originalPrice ? this.subscriptionSelected.originalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '';
+    this.initConfigPayment();
   }
 
-  // const responseRawValue = await fetch(environment.api + '/payButton', {
-  //   method: 'POST', 
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({ uid: data[0], email: data[1], price: data[2] }),
-
-  private initConfig(): void {
+  initConfigPayment(): void {
     this.payPalConfig = {
       currency: 'EUR',
-      clientId: 'Aex9Pkp_nDfTNSiv7z_BiupH2xJk6ZKN8U-4glIyUpEz1EonylEf_WogONgzWYN8F2VMMxOxKYTdIxF-',
+      clientId: environment.paypal.clientId,
       createOrderOnServer: (data) => fetch(environment.api + '/payButton', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ uid: this.user.uid, email: this.user.email, account: this.user.account })
       }).then((res) => res.json())
         .then((order) => JSON.parse(order).id),
       advanced: { commit: 'true' },
-      style: { shape: "pill", layout: "vertical", color: "gold", label: "paypal" },
+      style: { shape: 'pill', layout: 'vertical', color: 'gold', label: 'paypal' },
       onApprove: (data, actions) => {
+        this.alertService.presentToast('Transaction approuvée!', 3000, 'lagua');
         console.log('onApprove - transaction was approved, but not authorized', data, actions);
         actions.order.get().then((details: any) => {
           console.log('onApprove - you can get full order details inside onApprove: ', details);
@@ -76,6 +79,9 @@ export class CheckoutPage implements OnInit {
       },
       onClientAuthorization: (data) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        this.authentificationService.addPremiumAccount().then(() => {
+          this.confirmDisplayPaymentContent();
+        }, error => { this.alertService.presentToast(error.message, 5000, 'danger') });
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
@@ -88,6 +94,50 @@ export class CheckoutPage implements OnInit {
         console.log('onClick', data, actions);
       }
     };
+    this.paymentRequest = <google.payments.api.PaymentDataRequest>{
+      apiVersion: 2,
+      apiVersionMinor: 0,
+      allowedPaymentMethods: [
+        {
+          type: 'CARD',
+          parameters: {
+            allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+            allowedCardNetworks: ['AMEX', 'VISA', 'MASTERCARD']
+          },
+          tokenizationSpecification: {
+            type: 'PAYMENT_GATEWAY',
+            parameters: {
+              gateway: 'stripe',
+              'stripe:version': '2018-10-31',
+              'stripe:publishableKey': this.key
+            }
+          }
+        }
+      ],
+      merchantInfo: {
+        merchantId: this.user.uid ? this.user.uid : 'test',
+        merchantName: 'Forfait Premium Lagua : Débloquer les fonctionnalités Premium du client ' + this.user.email ? this.user.email : 'Test'
+      },
+      transactionInfo: {
+        totalPriceStatus: 'FINAL',
+        totalPriceLabel: 'Total',
+        totalPrice: String(this.user.account ? this.user.account.price : '0.50'),
+        currencyCode: 'EUR',
+        countryCode: 'FR'
+      }
+    };
+  }
+
+  async retrieveClientId() {
+    const key = this.user.uid ? this.user.uid : 'test';
+    if (!this.settingService.stripe) {
+      const data$ = this.http.get<any>(environment.api + '/getKey?uid=' + key).pipe(first());
+      const { stripe } = await lastValueFrom(data$);
+      this.settingService.stripe = stripe;
+    }
+    const publishableKey = this.settingService.stripe.prodMode === 'true' ? this.settingService.stripe.key : this.settingService.stripe.keyTest;
+    this.key = this.cryptoService.decrypt(publishableKey, key);
+    console.log(this.key);
   }
 
   goToCheckout() {
@@ -152,10 +202,10 @@ export class CheckoutPage implements OnInit {
         createOrder: this.createOrderCallback,
         onApprove: this.onApproveCallback,
         onError: this.onError,
-        style: { shape: "pill", layout: "vertical", color: "gold", label: "paypal" },
+        style: { shape: 'pill', layout: 'vertical', color: 'gold', label: 'paypal' },
         message: { amount: 100 },
       }, this)
-      .render("#paypal-button-container");
+      .render('#paypal-button-container');
   }
 
   async createOrderCallback() {
@@ -257,8 +307,7 @@ export class CheckoutPage implements OnInit {
       } else {
         this.authentificationService.addPremiumAccount().then(() => {
           this.confirmDisplayPaymentContent();
-        }, error => { this.alertService.presentToast(error.message, 5000, 'danger') }
-        );
+        }, error => { this.alertService.presentToast(error.message, 5000, 'danger') });
       }
     });
   }
@@ -280,6 +329,13 @@ export class CheckoutPage implements OnInit {
     const result = paymentIntent.split('_').slice(0, 2).join('_');
     console.log(result);
     return result;
+  }
+
+  onLoadPaymentData(event: any) {
+    console.log('load payment data', event.detail);
+    this.authentificationService.addPremiumAccount().then(() => {
+      this.confirmDisplayPaymentContent();
+    }, error => { this.alertService.presentToast(error.message, 5000, 'danger') });
   }
 
 }

@@ -94,9 +94,9 @@ ion-modal {
     --border-radius: 30px;
     --padding-top: 5px;
     --padding-bottom: 5px;
-    --padding-start: 10px;
-    --padding-end: 10px;
-    height: 50px;
+    --padding-start: 5px;
+    --padding-end: 5px;
+    height: 40px;
     margin: 0;
   }
 
@@ -287,5 +287,5 @@ ion-card-title .ion-card-title {
 
 .ion-position-content {
   position: relative;
-  bottom: 20px;
+  bottom: 5px;
 }

@@ -13,9 +13,9 @@
       <h3 class="ion-padding-vertical ion-text-center">Résumé du forfait</h3>
       <div class="ion-padding-horizontal ion-margin-horizontal ion-info-bloc">
         <h4 class="ion-padding-bottom"><b>Ton forfait</b></h4>
-        <p>Offre Premium de {{user.account.month}} mois<span class="ion-float-right">{{user.account.originalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}€</span></p>
-        <p>Réduction de -{{user.account.percentageReduction*100}}%<span class="ion-float-right">- {{(user.account.originalPrice * user.account.percentageReduction).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}€</span></p>
-        <h1 class="ion-text-right">Prix total : <span>{{user.account.price.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}€</span></h1>
+        <p>Offre Premium de {{subscriptionSelected.month}} mois<span class="ion-float-right">{{subscriptionSelected.originalPrice}}€</span></p>
+        <p>Réduction de -{{subscriptionSelected.percentageReduction*100}}%<span class="ion-float-right">- {{subscriptionSelected.reduction}}€</span></p>
+        <h1 class="ion-text-right">Prix total : <span>{{subscriptionSelected.price}}€</span></h1>
       </div>
       <div class="ion-dialect-bloc">
         <p>Accès aux dialectes suivants : </p>
@@ -28,8 +28,8 @@
       </div>
       <div class="ion-info-bloc ion-margin ion-padding">
         <ion-text class="ion-margin-top">Durée</ion-text>
-        <h2 class="ion-color-lagua ion-no-margin">{{user.account.month}} mois</h2>
-        <p><i>Démarre le {{user.account.startDate.toDate().toLocaleDateString('fr-FR', options)}} et expire le {{user.account.endDate.toDate().toLocaleDateString('fr-FR', options)}}</i></p>
+        <h2 class="ion-color-lagua ion-no-margin">{{subscriptionSelected.month}} mois</h2>
+        <p><i>Démarre le {{subscriptionSelected.startDate?.toDate()?.toLocaleDateString('fr-FR', options)}} et expire le {{subscriptionSelected.endDate?.toDate()?.toLocaleDateString('fr-FR', options)}}</i></p>
         <p><b>Important :</b> Votre abonnement n'est pas renouvelé automatiquement. Pensez à souscrire un nouveau
           forfait à la
           fin de votre période d'engagement.</p>
@@ -50,7 +50,7 @@
             </ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">
-            <p class="ion-text-center ion-total-content">Total du jour : {{user.account.price.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} €</p>
+            <p class="ion-text-center ion-total-content">Total du jour : {{subscriptionSelected.price}} €</p>
             <ion-button class="ion-payment-button" shape="round" expand="block" (click)="PaymentCreditCard3()">Valider le
               paiement</ion-button>
           </div>
@@ -62,28 +62,25 @@
             </ion-label>
           </ion-item>
           <div id="rawData" class="ion-padding" slot="content">
-            <p class="ion-text-center ion-total-content" id="{{user.uid}}_{{user.email}}_{{user.account.price}}">Total du jour : {{user.account.price.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} €</p>
-            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+            <p class="ion-text-center ion-total-content" id="{{user.uid}}_{{user.email}}_{{subscriptionSelected.price}}">Total du jour : {{subscriptionSelected.price}} €</p>
+            <div class="ion-text-center ion-paypal-position-button"><ngx-paypal [config]="payPalConfig"></ngx-paypal></div>
             <!-- <div id="paypal-button-container"></div> -->
             <!-- <ion-button class="ion-paypal-button" shape="round" expand="block" (click)="PaymentPayPal()">
               <img width="64" *ngIf="productsSetting.icon?.payPalButton" [src]="productsSetting.icon?.payPalButton" />
             </ion-button> -->
           </div>
         </ion-accordion>
-        <!-- <ion-accordion class="ion-margin-bottom" value="third">
+        <ion-accordion class="ion-margin-bottom" value="third">
           <ion-item slot="header" color="light">
             <ion-label>Google Pay
               <img width="26" *ngIf="productsSetting.icon?.googlePay" [src]="productsSetting.icon?.googlePay" />
             </ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">
-            <p class="ion-text-center ion-total-content">Total du jour : 29,94 €</p>
-            <ion-button shape="round" expand="block" class="ion-googlepay-button" (click)="PaymentGooglePay()">
-              <img width="64" *ngIf="productsSetting.icon?.googlePayButton"
-                [src]="productsSetting.icon?.googlePayButton" />
-            </ion-button>
+            <p class="ion-text-center ion-total-content">Total du jour : {{subscriptionSelected.price}} €</p>
+            <google-pay-button style="width:100%" class="ion-text-center" environment="TEST" buttonType="buy" [buttonRadius]="buttonRadius" [paymentRequest]="paymentRequest" (loadpaymentdata)="onLoadPaymentData($event)"></google-pay-button>
           </div>
-        </ion-accordion> -->
+        </ion-accordion>
       </ion-accordion-group>
     </div>
     <div class="ion-text-center">
@@ -119,7 +116,7 @@
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
-        <h3 class="ion-margin-bottom">Total à payer : <span class="ion-float-right ion-color-lagua">{{user.account.price.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} €</span></h3>
+        <h3 class="ion-margin-bottom">Total à payer : <span class="ion-float-right ion-color-lagua">{{subscriptionSelected.price}} €</span></h3>
         <form *ngIf="titlePayment !== 'PayPal'" id="payment-form">
           <div id="payment-element"></div>
           <div class="ion-text-center">

@@ -8,6 +8,9 @@ import { CodeLabel } from '../model/codeLabel.model';
 import { AuthentificationService } from '../services/authentification.service';
 import { Account } from '../model/account.model';
 import { Timestamp } from 'firebase/firestore';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { first, lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -28,12 +31,12 @@ export class ProductsPage implements OnInit {
     return this.authentificationService.user;
   }
 
-  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, private authentificationService: AuthentificationService) { }
+  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, private authentificationService: AuthentificationService, private http: HttpClient) { }
 
   ngOnInit() {
     this.settingService.getSettings().then(setting => {
       this.productsSetting = setting.product;
-      this.priceData = {...setting.product.prices.find((p: any) => p.duration === 12)};    
+      this.priceData = { ...setting.product.prices.find((p: any) => p.duration === 12) };
       this.priceData.originalPrice = this.priceData.price?.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       this.priceData.monthlyPrice = (this.priceData.monthlyPrice * (1 - this.priceData.economy)).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       this.priceData.price = (this.priceData.price * (1 - this.priceData.economy)).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });

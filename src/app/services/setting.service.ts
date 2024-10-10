@@ -22,6 +22,7 @@ export class SettingService {
   isCapacitor: boolean;
   isMobile: boolean;
   isOverlay: boolean;
+  stripe: any;
 
   constructor(private _firestore: Firestore, private platform: Platform) {
     this.isCapacitor = this.platform.is('capacitor');
