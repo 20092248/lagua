@@ -13,6 +13,9 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
 import { CONSTANTS } from 'src/app/utils/constants';
 import { IPayPalConfig } from 'ngx-paypal';
 import { CryptoService } from 'src/app/services/crypto';
+import { StatusBar } from '@capacitor/status-bar';
+import { Utils } from 'src/app/utils/utils';
+import { LoadingService } from 'src/app/services/loading.service';
 declare let paypal: any;
 declare let Stripe: any;
 
@@ -44,7 +47,8 @@ export class CheckoutPage implements OnInit {
     return this.settingService.isCapacitor;
   }
 
-  constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private cryptoService: CryptoService) {
+  constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private cryptoService: CryptoService, private loadingService: LoadingService) {
+    Utils.customOverlayStatus(this.settingService, true);
     this.retrieveClientId();
   }
 
@@ -229,6 +233,7 @@ export class CheckoutPage implements OnInit {
   }
 
   async onApproveCallback() {
+    this.loadingService.present('Chargement...');
     this.authentificationService.addPremiumAccount().then(() => {
       this.confirmDisplayPaymentContent();
     }, error => { this.alertService.presentToast(error.message, 5000, 'danger') }
@@ -252,47 +257,10 @@ export class CheckoutPage implements OnInit {
     this.displayPaymentContent = true;
   }
 
-  // async PaymentGooglePay() {
-  //   // Check to be able to use Google Pay on device
-  //   const isAvailable = Stripe.isGooglePayAvailable().catch(() => undefined);
-  //   if (isAvailable === undefined) {
-  //     // disable to use Google Pay
-  //     return;
-  //   }
-
-  //   Stripe.addListener(GooglePayEventsEnum.Completed, () => {
-  //     console.log('GooglePayEventsEnum.Completed');
-  //   });
-
-  //   const data$ = this.httpPost('/payment-sheet', this.user);
-
-  //   const { paymentIntent } = await lastValueFrom(data$);
-
-  //   // Prepare Google Pay
-  //   await Stripe.createGooglePay({
-  //     paymentIntentClientSecret: paymentIntent,
-
-  //     // Web only. Google Pay on Android App doesn't need
-  //     paymentSummaryItems: [{
-  //       label: 'Lagua',
-  //       amount: 1.00
-  //     }],
-  //     merchantIdentifier: 'merchant.com.getcapacitor.stripe',
-  //     countryCode: 'IN',
-  //     currency: 'INR',
-  //   });
-
-  //   // Present Google Pay
-  //   const result = await Stripe.presentGooglePay();
-  //   if (result.paymentResult === GooglePayEventsEnum.Completed) {
-  //     // Happy path
-  //     this.splitAndJoin(paymentIntent);
-  //   }
-  // }
-
   getStripeContent(stripe: any, elements: any) {
     const form = document.getElementById('payment-form');
     form?.addEventListener('submit', async (event) => {
+      this.loadingService.present('Chargement...');
       event.preventDefault();
 
       const { error } = await stripe.confirmPayment({
@@ -313,16 +281,19 @@ export class CheckoutPage implements OnInit {
   }
 
   confirmDisplayPaymentContent() {
+    this.displayPaymentContent = false;
     this.authentificationService.getInfoUser(this.user.uid).then(() => {
-      this.displayPaymentContent = false;
+      this.loadingService.dismiss();
       const endDate = this.user.account.endDate;
       if (this.user.account && this.user.account.premium && endDate.toDate() > new Date()) {
-        const navigationExtras: NavigationExtras = {
-          state: { data: { newAccount: true } }
-        };
-        this.router.navigate([''], navigationExtras);
+        setTimeout(() => {
+          Utils.customOverlayStatus(this.settingService, false);
+          this.router.navigate(['/products/confirm-payment']);
+        }, 500);
+      } else {
+        this.alertService.presentToast('Error lors de la récupération du compte premium. Veuillez contacter le support technique.', 5000, 'danger');
       }
-    }, () => { this.displayPaymentContent = false; this.alertService.presentToast('Error lors de la récupération du compte premium. Veuillez contacter le support technique.', 5000, 'danger') });
+    }, () => { this.alertService.presentToast('Error lors de la récupération du compte premium. Veuillez contacter le support technique.', 5000, 'danger') });
   }
 
   splitAndJoin(paymentIntent: any) {

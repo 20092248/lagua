@@ -33,7 +33,7 @@ export class Utils {
 
   static customCapacitorApp(settingService: SettingService) {
     if (settingService.isCapacitor) {
-      StatusBar.setOverlaysWebView({ overlay: false });
+      StatusBar.setOverlaysWebView({ overlay: true });
       StatusBar.setStyle({ style: Style.Dark });
       StatusBar.setBackgroundColor({ color: '#46895c' });
       NavigationBar.setColor({ color: '#74a884', darkButtons: false });
@@ -70,6 +70,12 @@ export class Utils {
   static customCapacitorQuestion(settingService: SettingService, color: string) {
     if (settingService.isCapacitor) {
       NavigationBar.setColor({ color: color, darkButtons: true });
+    }
+  }
+
+  static customOverlayStatus(settingService: SettingService, overlay: boolean) {
+    if (settingService.isCapacitor) {
+      StatusBar.setOverlaysWebView({ overlay: overlay });
     }
   }
 
