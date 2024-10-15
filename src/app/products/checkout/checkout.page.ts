@@ -48,7 +48,6 @@ export class CheckoutPage implements OnInit {
   }
 
   constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private cryptoService: CryptoService, private loadingService: LoadingService) {
-    Utils.customOverlayStatus(this.settingService, true);
     this.retrieveClientId();
   }
 
@@ -287,7 +286,6 @@ export class CheckoutPage implements OnInit {
       const endDate = this.user.account.endDate;
       if (this.user.account && this.user.account.premium && endDate.toDate() > new Date()) {
         setTimeout(() => {
-          Utils.customOverlayStatus(this.settingService, false);
           this.router.navigate(['/products/confirm-payment']);
         }, 500);
       } else {
