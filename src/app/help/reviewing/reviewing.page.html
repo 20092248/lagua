@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '20px' : '0px' }">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Révision</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <h4 class="ion-padding-horizontal">Découvre comment utiliser les outils de répétition pour améliorer tes compétences</h4>
+  <ion-list class="ion-no-padding ion-result-dictionary" lines="full">
+    <ion-accordion-group [multiple]="true" [value]="['revision']">
+      <ion-accordion value="revision" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion" slot="header">
+          <ion-label class="ion-text-wrap">Qu'est-ce que la Révision ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Chaque mot est associé à un niveau : À travailler, À revoir ou Acquis en fonction de leur difficulté ou de
+            ton niveau de maîtrise. Utilise la Révision de vocabulaire pour renforcer tes connaissances.</p>
+          <p>Les souvenirs s'effacent avec le temps et l'apprentissage du vocabulaire n'est pas épargné. C'est pour
+            cette raison que nous faisons appel à un algorithme généré par IA, inspiré de la méthode de la répétition
+            espacée d'Ebbinghaus, qui te permet de savoir quels mots tu dois réviser. Cet algorithme réduit
+            progressivement le niveau d'acquisition pour que tu saches quel vocabulaire revoir.</p>
+          <p>Pour réviser les mots au hasard, cliques sur le bouton Révision > ...</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="precis" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion" slot="header">
+          <ion-label class="ion-text-wrap">Comment réviser des mots précis dans la Révision de vocabulaire ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Il est possible de réviser des leçons précis mais il n'est pas possible de réviser des précis.</p>
+          <p>Pour réviser les leçons au hasard, cliques sur le bouton Révision > ...</p>
+          <p>Vous pouvez observer votre progression dans l'onglet Profil.</p>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-list>
+</ion-content>

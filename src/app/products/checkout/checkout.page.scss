@@ -1,0 +1,118 @@
+.ion-paypal {
+    --background:  #0551b5;
+}
+.ion-card {
+    --background:  #46895c;
+}
+
+ion-toolbar {
+    --background:  #46895c;
+    text-align: center;
+    color: #ffffff;
+    --padding-top: 15px;
+    --padding-bottom: 15px;
+}
+
+ion-modal ion-toolbar {
+    --padding-top: 5px;
+    --padding-bottom: 5px;
+}
+
+ion-chip > ion-label {
+    color: #ffffff;
+}
+
+ion-label > img {
+    position: relative;
+    vertical-align: middle;
+    margin-left: 5px;
+    top: -2px;
+}
+
+ion-accordion {
+    border: 1px  #255b37 solid;
+    border-radius: 10px;
+}
+
+button#submit {
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    background: #46895c;
+}
+
+button#submit:hover {
+    background: rgb(83, 157, 109);
+}
+
+button#submit:active {
+    background: #64ad7d;
+}
+
+.ion-dialect-bloc {
+    background: url(/assets/img/background.png) 0 / 250%;
+    background-position-y: 65%;
+    border-radius: 10px;
+    padding: 10px 10px 16px;
+    margin: 16px;
+    color: #fff;
+    text-align: center;
+}
+
+.ion-info-bloc {
+    text-align: left;
+    border: 1px  #255b37 solid;
+    border-radius: 10px;
+}
+
+.ion-color-lagua {
+    color:  #255b37;
+}
+
+.ion-not-satisfied {
+    font-size: 85%;
+}
+
+.ion-custom-original-price {
+    text-decoration: line-through;
+}
+
+.ion-background-bottom {
+    width: 100%;
+    background-color: #46895c;
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: 80% 5rem;
+    border-top-right-radius: 80% 5rem;
+    padding-top: 32px;
+    margin-top: 32px;
+    color: #ffffff;
+    text-align: center;
+    h6 {
+        font-weight: bold;
+    }
+    p {
+        margin-top: 0px;
+    }
+}
+
+.ion-total-content {
+    margin-top: 0;
+}
+
+.ion-payment-button {
+    --background: #255b37;
+}
+
+.ion-paypal-button {
+    --background: #ffc439;
+}
+
+.ion-googlepay-button {
+    --background: #f5f5f5;
+}
+
+.ion-paypal-position-button {
+    max-width: 750px;
+    margin: auto;
+}

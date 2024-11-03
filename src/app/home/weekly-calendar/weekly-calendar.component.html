@@ -1,0 +1,39 @@
+<div class="ion-padding-top-min">
+  <ion-card>
+    <ion-card-header class="ion-weekly-calendar">
+      <ion-card-title class="ion-text-center">Tendance hebdomadaire</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="ion-calendar-content">
+        <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 1 }">
+          <div style="color: rgb(154, 167, 179)">Lu</div>
+          <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.lun)}}"></ion-icon></div>
+        </div>
+        <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 2 }">
+          <div style="color: rgb(154, 167, 179)">Ma</div>
+          <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.mar)}}"></ion-icon></div>
+        </div>
+        <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 3 }">
+          <div style="color: rgb(154, 167, 179)">Me</div>
+          <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.mer)}}"></ion-icon></div>
+        </div>
+        <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 4 }">
+          <div style="color: rgb(154, 167, 179)">Je</div>
+          <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.jeu)}}"></ion-icon></div>
+        </div>
+        <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 5 }">
+          <div style="color: rgb(154, 167, 179)">Ve</div>
+          <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.ven)}}"></ion-icon></div>
+        </div>
+        <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 6 }">
+          <div style="color: rgb(154, 167, 179)">Sa</div>
+          <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.sam)}}"></ion-icon></div>
+        </div>
+        <div class="ion-calendar-day" [ngClass]="{ 'is-today' : currentDate.getUTCDay() === 7 }">
+          <div style="color: rgb(154, 167, 179)">Di</div>
+          <div class="ion-calendar-activity"><ion-icon name="{{getDailyIcon(user.week?.dim)}}"></ion-icon></div>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</div>

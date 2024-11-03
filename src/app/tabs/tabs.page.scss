@@ -1,1 +1,34 @@
+ion-popover {
+  --width: 97%;
+  --backdrop-opacity: 0;
 
+  --offset-y: 10px;
+}
+
+.img-box > ion-icon {
+  padding: 9px;
+}
+
+ion-tab-bar ion-icon {
+  padding: 5px;
+}
+
+.tab-selected {
+  color: #417752;
+  font-weight: bold;
+  font-size: 13px;
+  background: #ebf7ec;
+  border-radius: 15px / 30px;
+}
+
+ion-tabs {
+  background: #eef1ee;
+}
+
+ion-tab-bar {
+  --border: none;
+  border-radius: 15px 15px 0px 0px;
+  --background: var(--ion-background-color);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px,
+    rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px,rgba(0, 0, 0, 0.1) 0px -5px 5px 0px;
+}

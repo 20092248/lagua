@@ -1,0 +1,31 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <app-bar-status [isOverlay]="isOverlay"></app-bar-status>
+    <div class="ion-padding-vertical ion-margin-vertical ion-text-center">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-arrow" size="2">
+            <ion-icon [routerLink]="['']" name="arrow-back-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <h1 class="headline ion-no-margin">Vocabulaire <ion-icon name="logo-microsoft"></ion-icon></h1>
+            <p class="subHeadline">Choisir une thématique</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ul>
+    <li *ngFor="let section of sections">
+      <ion-card class="ion-activatable ion-text-center" (click)="goToDetailSection(section)">
+        <ion-ripple-effect></ion-ripple-effect>
+        <img class="ion-padding-top ion-padding-horizontal" src="{{section?.src}}" />
+        <ion-card-header>
+          <ion-card-subtitle>{{section?.title}}</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </li>
+  </ul>
+</ion-content>

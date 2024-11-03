@@ -1,0 +1,127 @@
+//coundown
+app-countdown {
+  height: 100%;
+  z-index: 2;
+}
+
+ion-grid {
+  height: 100%;
+}
+
+ion-row {
+  height: 55%;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-row:first-child {
+  height: 10%;
+}
+
+ion-row:last-child {
+  height: 35%;
+  align-content: end;
+}
+
+ion-list {
+  background: transparent;
+}
+
+ion-item {
+  height: 38px;
+  --background: transparent;
+  border-bottom: 1px #ddd solid;
+}
+
+ion-item.error {
+  --border-color: #eb445a;
+}
+
+ion-item.success {
+  --border-color: #27a132;
+}
+
+ion-card {
+  max-width: 450px;
+  max-height: 350px;
+}
+
+ion-card-header {
+  padding-top: 10px;
+}
+
+ion-card-title.ion-sentence {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+ion-card-subtitle.ion-sentence {
+  font-weight: normal;
+}
+
+ion-card-subtitle {
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+ion-radio::part(container) {
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
+ion-radio::part(mark) {
+  background: none;
+  transition: none;
+  transform: none;
+  border-radius: 0;
+}
+
+ion-radio.radio-checked::part(container) {
+  background: #27a132;
+  border-color: transparent;
+}
+
+ion-radio.radio-checked.ion-error::part(container) {
+  background: #eb445a;
+  border-color: transparent;
+}
+
+ion-radio.radio-checked::part(mark) {
+  width: 6px;
+  height: 10px;
+
+  border-width: 0px 2px 2px 0px;
+  border-style: solid;
+  border-color: #fff;
+
+  transform: rotate(45deg);
+}
+
+.ion-text-qcm {
+  display: inline-block;
+  vertical-align: middle;
+  border-image: initial;
+  padding: 3px;
+}
+
+.ion-text-qcm.ion-not-sentence {
+  min-width: 50%;
+  min-height: 25px;
+  background-color: rgb(244, 244, 246);
+  border-radius: 4px 4px 0px 0px;  
+  border-width: 1px 1px 2px;
+  border-style: solid;
+  border-color: rgb(233, 234, 237) rgb(233, 234, 237) rgb(76, 180, 80);
+}
+
+.ion-text-qcm.ion-sentence {
+  min-width: 30%;
+  min-height: 25px;
+  background-color: rgb(244, 244, 246);
+  border-radius: 4px 4px 0px 0px;  
+  border-width: 0px 0px 2px;
+  border-style: solid;
+  border-color: rgb(255, 255, 255) rgb(255, 255, 255) rgb(82, 96, 255);
+}

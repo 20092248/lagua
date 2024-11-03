@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '20px' : '0px' }">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Categorie {{paramCategory}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-border ion-padding-horizontal">
+    <ion-accordion-group class="ion-margin-vertical" [multiple]="true">
+      <ion-accordion value="{{r.category}}_{{r.lesson}}" toggleIcon="chevron-down-outline" toggleIconSlot="end"
+        *ngFor="let r of reviewGroup; let index = index">
+        <ion-item slot="header" style="font-size: 18px; height: 47px; color: rgb(118, 0, 0);border-bottom: 3px solid;">Cours n°{{index + 1}} <ion-icon class="ion-padding-end"
+            name="add-circle-outline" (click)="addMenu(index)"></ion-icon><ion-icon name="trash-outline"
+            (click)="removeMenu(index)"></ion-icon></ion-item>
+        <div slot="content">
+          <ion-item>
+            <ion-label>Id</ion-label>
+            <ion-input value="{{r.id}}" [(ngModel)]="r.id"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Categorie</ion-label>
+            <ion-input value="{{r.category}}" [(ngModel)]="r.category"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Niveau</ion-label>
+            <ion-input value="{{r.title}}" [(ngModel)]="r.title"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Cours</ion-label>
+            <ion-input value="{{r.lesson}}" type="number" [(ngModel)]="r.lesson"></ion-input>
+          </ion-item>
+          <ion-item style="border-color: rgb(118, 0, 0);">
+            <ion-label>Sous-titre</ion-label>
+            <ion-input value="{{r.subtitle}}" [(ngModel)]="r.subtitle"></ion-input>
+          </ion-item>
+          <div class="ion-margin-horizontal" *ngFor="let rs of r.reviews; let indexReview = index">
+            <h5>Leçon {{indexReview + 1}}<ion-icon class="ion-padding-end" name="add-circle-outline"
+                (click)="addReview(index, indexReview)"></ion-icon><ion-icon name="trash-outline"
+                (click)="removeReview(index, indexReview)"></ion-icon></h5>
+            <ion-item>
+              <ion-label>Ordre</ion-label>
+              <ion-input value="{{rs.order}}" type="number" [(ngModel)]="rs.order"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Text</ion-label>
+              <ion-input value="{{rs.text}}" [(ngModel)]="rs.text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Score</ion-label>
+              <ion-input value="{{rs.score}}" type="number" [(ngModel)]="rs.score"></ion-input>
+            </ion-item>
+            <ion-item style="border-color: rgb(165, 0, 0);">
+              <ion-label>Traduction</ion-label>
+              <ion-input value="{{rs.translate}}" [(ngModel)]="rs.translate"></ion-input>
+            </ion-item>
+            <div class="ion-padding-start">
+              <div>Contenu</div>
+              <ion-textarea class="ion-no-padding ion-border" value="{{rs.content}}" [(ngModel)]="rs.content" rows="3"></ion-textarea>
+            </div>
+            <!-- <div class="ion-margin-horizontal" *ngFor="let ct of rs.contents; let indexContent=index">
+              <span>Contenu <ion-icon class="ion-padding-end" name="add-circle-outline"
+                  (click)="addContent(index, indexReview, indexContent)"></ion-icon><ion-icon name="trash-outline"
+                  (click)="removeContent(index, indexReview, indexContent)"></ion-icon></span>
+              <ion-item>
+                <ion-input [value]="ct" [(ngModel)]="ct"></ion-input>
+              </ion-item>
+            </div> -->
+          </div>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </div>
+  <div class="ion-text-center">
+    <ion-button (click)="saveReview()">VALIDER</ion-button>
+  </div>
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+    <ion-fab-button color="lagua" (click)="copyReview()">
+      <ion-icon name="clipboard-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

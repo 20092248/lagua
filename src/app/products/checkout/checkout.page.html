@@ -1,0 +1,133 @@
+<ion-header>
+  <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '30px' : '0px' }">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Récapitulatif</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div class="ion-middle-content">
+      <h3 class="ion-padding-vertical ion-text-center">Résumé du forfait</h3>
+      <div class="ion-padding-horizontal ion-margin-horizontal ion-info-bloc">
+        <h4 class="ion-padding-bottom"><b>Ton forfait</b></h4>
+        <p>Offre Premium de {{subscriptionSelected.month}} mois<span class="ion-float-right">{{subscriptionSelected.originalPrice}}€</span></p>
+        <p>Réduction de -{{subscriptionSelected.percentageReduction*100}}%<span class="ion-float-right">- {{subscriptionSelected.reduction}}€</span></p>
+        <h1 class="ion-text-right">Prix total : <span>{{subscriptionSelected.price}}€</span></h1>
+      </div>
+      <div class="ion-dialect-bloc">
+        <p>Accès aux dialectes suivants : </p>
+        <ion-chip *ngFor="let dialect of dialectSetting?.learn">
+          <ion-avatar>
+            <img alt="{{dialect.text}}" [src]="dialect.src" />
+          </ion-avatar>
+          <ion-label>{{dialect.translate}}</ion-label>
+        </ion-chip>        
+      </div>
+      <div class="ion-info-bloc ion-margin ion-padding">
+        <ion-text class="ion-margin-top">Durée</ion-text>
+        <h2 class="ion-color-lagua ion-no-margin">{{subscriptionSelected.month}} mois</h2>
+        <p><i>Démarre le {{subscriptionSelected.startDate?.toDate()?.toLocaleDateString('fr-FR', options)}} et expire le {{subscriptionSelected.endDate?.toDate()?.toLocaleDateString('fr-FR', options)}}</i></p>
+        <p><b>Important :</b> Votre abonnement n'est pas renouvelé automatiquement. Pensez à souscrire un nouveau
+          forfait à la
+          fin de votre période d'engagement.</p>
+        <p class="ion-not-satisfied">Insatisfait(e) ? Un remboursement intégral vous est accordé. Envoyez simplement un
+          email à
+          lagua.shikomori&#64;gmail.com dans les 14 jours suivant votre achat.</p>
+      </div>
+    </div>
+    <div class="ion-margin-horizontal">
+      <h4 class="ion-padding-top">Sélectionner un mode de paiement</h4>
+      <ion-accordion-group>
+        <ion-accordion class="ion-margin-bottom" value="card">
+          <ion-item slot="header" color="light">
+            <ion-label>Carte de crédit
+              <img width="26" *ngIf="productsSetting.icon?.visa" [src]="productsSetting.icon?.visa" />
+              <img width="26" *ngIf="productsSetting.icon?.mastercard" [src]="productsSetting.icon?.mastercard" />
+              <img width="26" *ngIf="productsSetting.icon?.creditCard" [src]="productsSetting.icon?.creditCard" />
+            </ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <p class="ion-text-center ion-total-content">Total du jour : {{subscriptionSelected.price}} €</p>
+            <ion-button class="ion-payment-button" shape="round" expand="block" (click)="PaymentCreditCard3()">Valider le
+              paiement</ion-button>
+          </div>
+        </ion-accordion>
+        <ion-accordion class="ion-margin-bottom" value="paypal">
+          <ion-item slot="header" color="light">
+            <ion-label>PayPal
+              <img width="26" *ngIf="productsSetting.icon?.paypal" [src]="productsSetting.icon?.paypal" />
+            </ion-label>
+          </ion-item>
+          <div id="rawData" class="ion-padding" slot="content">
+            <p class="ion-text-center ion-total-content" id="{{user.uid}}_{{user.email}}_{{subscriptionSelected.price}}">Total du jour : {{subscriptionSelected.price}} €</p>
+            <div class="ion-text-center ion-paypal-position-button"><ngx-paypal [config]="payPalConfig"></ngx-paypal></div>
+            <!-- <div id="paypal-button-container"></div> -->
+            <!-- <ion-button class="ion-paypal-button" shape="round" expand="block" (click)="PaymentPayPal()">
+              <img width="64" *ngIf="productsSetting.icon?.payPalButton" [src]="productsSetting.icon?.payPalButton" />
+            </ion-button> -->
+          </div>
+        </ion-accordion>
+        <ion-accordion class="ion-margin-bottom" value="third" *ngIf="!isCapacitor">
+          <ion-item slot="header" color="light">
+            <ion-label>Google Pay
+              <img width="26" *ngIf="productsSetting.icon?.googlePay" [src]="productsSetting.icon?.googlePay" />
+            </ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <p class="ion-text-center ion-total-content">Total du jour : {{subscriptionSelected.price}} €</p>
+            <google-pay-button style="width:100%" class="ion-text-center" environment="TEST" buttonType="buy" [buttonRadius]="buttonRadius" [paymentRequest]="paymentRequest" (loadpaymentdata)="onLoadPaymentData($event)"></google-pay-button>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </div>
+    <div class="ion-text-center">
+      <p class="ion-padding-vertical">Je confirme avoir lu et j'accepte les <span>CGV</span>.</p>
+      <h4>Contact & assistance</h4>
+      <a href="mailto:lagua.shikomori@gmail.com">Team Lagua</a>
+      <!-- <span [routerLink]="['/help/contactus']">Team Lagua</span> -->
+    </div>
+    <div class="ion-background-bottom ion-padding-horizontal">
+      <div class="ion-margin-top ion-margin-horizontal">
+        <img *ngIf="productsSetting.icon?.cashback" [src]="productsSetting.icon?.cashback" width="64" />
+        <h6>Essayez Lagua sans risque</h6>
+        <p class="ion-padding-bottom">Contactez Lagua dans les 20 jours pour un remboursement complet.</p>
+      </div>
+
+      <div class="ion-padding-vertical ion-margin">
+        <img *ngIf="productsSetting.icon?.lock" [src]="productsSetting.icon?.lock" width="64" />
+        <h6>Paiement sécurisé</h6>
+        <p class="ion-padding-bottom">Toutes les transactions sont sécurisées et cryptées.</p>
+      </div>
+    </div>
+  </div>
+  <ion-modal [isOpen]="displayPaymentContent" [initialBreakpoint]="0.95" [breakpoints]="[0, 0.5, 0.95]">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar [ngClass]="titlePayment === 'PayPal' ? 'ion-paypal' : 'ion-card'">
+          <ion-title class="ion-text-left">{{titlePayment}}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="displayPaymentContent = false">
+              <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <h3 class="ion-margin-bottom">Total à payer : <span class="ion-float-right ion-color-lagua">{{subscriptionSelected.price}} €</span></h3>
+        <form *ngIf="titlePayment !== 'PayPal'" id="payment-form">
+          <div id="payment-element"></div>
+          <div class="ion-text-center ion-margin-bottom">
+            <button class="ion-margin" id="submit">
+              <ion-icon slot="start" name="card"></ion-icon>
+              Payer maintenant</button>
+          </div>
+        </form>
+        <div *ngIf="titlePayment === 'PayPal'" id="paypal-button-container"></div>
+        <!-- <iframe *ngIf="titlePayment === 'PayPal'" [src]="urlPayment" width="100%" height="99.55%" frameborder="0" allowfullscreen></iframe> -->
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

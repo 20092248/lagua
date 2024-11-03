@@ -1,0 +1,61 @@
+<div class="border-white-tabs" id="popover-menu">
+  <div class="img-box">
+    <ion-img *ngIf="user.photoURL" [src]="user.photoURL"
+      (ionError)="displayUnknownUser()"></ion-img>
+    <div *ngIf="!user.photoURL">{{initial}}</div>
+  </div>
+</div>
+<ion-popover trigger="popover-menu">
+  <ng-template>
+    <ion-content>
+      <ion-list>
+        <div class="ion-padding-horizontal">
+          <h5 class="ion-margin-top">{{user.displayName}}</h5>
+          <div class="ion-margin-bottom">{{user.email}}</div>
+        </div>
+        <ion-item>
+          <ion-label>Compte premium</ion-label>
+          <ion-toggle slot="end" [checked]="premium" [enableOnOffLabels]="true" (ionChange)="changeStatePremiumAccount($event)"></ion-toggle>
+        </ion-item>
+        <ion-accordion-group *ngIf="premium">
+          <ion-accordion value="objective">
+            <ion-item class="ion-accordion-content" button slot="header">
+              <ion-avatar slot="start">
+                <img alt="{{userDialect.learn.text}}" [src]="flagDialectLearned" />
+              </ion-avatar>
+              <ion-label>Choisir un autre dialecte</ion-label>
+            </ion-item>
+            <div class="ion-accordion-content ion-other-dialect" slot="content">
+              <ion-list>
+                <ion-list-header>
+                  <ion-label>Apprendre un autre dialecte que {{dialectLearned}}</ion-label>
+                </ion-list-header>
+                <ion-item button lines="none" *ngFor="let l of otherDialects" (click)="changeDialect(l)">
+                  <ion-avatar slot="start">
+                    <img alt="{{l.text}}" [src]="l.src" />
+                  </ion-avatar>
+                  <ion-label>{{l.translate}}</ion-label>
+                </ion-item>
+              </ion-list>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+        <ion-accordion-group>
+          <ion-accordion value="objective">
+            <ion-item button lines="inset" slot="header"><ion-icon class="ion-padding-end"
+                name="stats-chart-outline"></ion-icon>Mes
+              objectifs</ion-item>
+            <div class="ion-padding ion-accordion-content" slot="content">Temps : {{userDialect.time.label}}
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+        <ion-item *ngIf="!premium" class="ion-alert-subscription" button (click)="goTo('../products', true, true)"><ion-icon class="ion-padding-end ion-alert-subscription"
+          name="wallet-outline"></ion-icon>Voir les abonnements</ion-item>
+        <ion-item button (click)="goTo('../parameter', true, true)"><ion-icon class="ion-padding-end"
+            name="settings-outline"></ion-icon>Paramètres</ion-item>
+        <ion-item button lines="none" detail="false" (click)="logout()"><ion-icon class="ion-padding-end"
+            name="log-out-outline"></ion-icon>Déconnexion</ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-popover>

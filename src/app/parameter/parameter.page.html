@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '20px' : '0px' }">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Paramètre</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list lines="full">
+    <ion-list-header>
+      <ion-label>Compte</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label class="ion-stacked-label" position="stacked">Nom</ion-label>
+      <ion-input class="ion-stacked-input" [(ngModel)]="user.displayName" name="displayName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Photo</ion-label>
+      <ion-avatar slot="end">
+        <ion-img *ngIf="user?.photoURL" [src]="user.photoURL" (ionError)="displayUnknownUser()"></ion-img>
+      </ion-avatar>
+    </ion-item>
+    <ion-item>
+      <ion-label class="ion-stacked-label" position="stacked">Email</ion-label>
+      <ion-input [(ngModel)]="user.email" name="email" [disabled]="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Je souahaite parler <span>{{userDialect.learn.code === 'SHAN' ? 'l\'' : 'le'}}</span> :</h3>
+        <p>{{userDialect.learn.translate}}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Cours en apprentissage :</h3>
+        <p>Cours n°{{userDialect.review.lesson}} - leçon {{userDialect.review.order}}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Niveau :</h3>
+        <p>{{categorie?.label}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list lines="full">
+    <ion-list-header>
+      <ion-label>Général</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Activer les notification (bêta)</ion-label>
+      <ion-toggle slot="end"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mode sombre ({{theme === 'sunny' ? 'Activer' : 'Désactiver'}})</ion-label>
+      <ion-toggle slot="end" color="success" (ionChange)="changeMode()"></ion-toggle>
+    </ion-item>
+    <ion-item [routerLink]="['../help']" routerLinkActive="selected" lines="none">
+      <ion-icon slot="start" name="help-circle-outline"></ion-icon>Aide
+    </ion-item>
+    <ion-item class="ion-logout" (click)="logout()" lines="none">
+      <ion-icon color="danger" slot="start" name="log-out-outline"></ion-icon><ion-text color="danger">Se déconnecter</ion-text>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-header class="ion-no-border"><ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Age</ion-title>
+    <ion-button class="ion-margin-end" slot="end" color="light" size="small" [routerLink]="['../../login']" shape="round">Se
+      connecter</ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div>
+    <ion-list>
+      <h4 class="ion-padding-bottom">Quel âge avez-vous ?</h4>
+      <ion-item lines="full" *ngFor="let a of age" [routerLink]="['../time']" routerLinkActive="selected"
+        (click)="selectedItem(a)">
+        <img class="ion-icon-src" width="64" src="{{a.src}}">
+        <ion-label>{{a.label}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

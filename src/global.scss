@@ -24,3 +24,71 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-toast {
+  --border-radius: 16px;
+}
+
+ion-alert.ion-home-alert {
+  --min-width : 320px;
+  .ion-alert-radio-element .alert-radio-label{
+    font-size: 14px;
+  }
+  button.alert-button.alert-button-cancel {
+    color: var(--ion-color-danger);
+  }
+}
+
+ion-alert.ion-login-alert {
+  --min-width : 320px;
+  .alert-head{
+    text-align: center;
+    padding-bottom: 0;
+  }
+  .alert-sub-title{
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .alert-message {
+    font-size: 12px;
+    margin-top: 20px;
+    padding-bottom: 0;
+    text-align: center;
+    font-style: italic;
+}
+}
+
+ion-action-sheet {
+  .action-sheet-success {
+    color: #fff !important;
+    background-color: #1a6921 !important;
+    ion-icon {
+      color: #ffffff !important;
+    }
+  }
+  
+  .action-sheet-danger {
+    color: #fff !important;
+    background-color: #eb445a !important;
+    ion-icon {
+      color: #ffffff !important;
+    }
+  }
+}
+
+ion-modal.ion-premium-account {
+  --min-height: 675px;
+  --max-height: 750px;
+  --width: 90%;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.ion-home-is-capacitor {
+  height: 221px;
+  padding-top: 26px;
+}
+
+.paypal-checkout-sandbox {
+  margin-top: 40px;
+}

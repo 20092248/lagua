@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '20px' : '0px' }">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Apprendre</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <h4 class="ion-padding-horizontal">Explore les différentes méthodes disponibles pour apprendre le comorien</h4>
+  <ion-list class="ion-no-padding ion-result-dictionary" lines="full">
+    <ion-accordion-group [multiple]="true" [value]="['langue']">
+      <ion-accordion value="langue" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion" slot="header">
+          <ion-label class="ion-text-wrap">Combien de langues peut-on apprendre ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Nous proposons les 4 dialectes de la langue comorienne. Tu peux donc en apprendre autant que tu le souhaites !</p>
+          <p>Nos responsables de l'apprentissage veillent à compléter régulièrement nos cours. Reste attentif·ve, il y a souvent des nouveautés côté leçons, niveaux et langues !</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="checkpoints" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion" slot="header">
+          <ion-label class="ion-text-wrap">Que sont les Checkpoints et comment fonctionnent-ils ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Dans la plupart de nos cours, les niveaux sont divisés en plusieurs. À la fin de chaque themes, tu devras te soumettre à un checkpoint, une mini-évaluation de tes connaissances acquises au sein de ce chapitre.</p>
+          <p>Il est possible de passer des leçons ou des chapitres comme bon te semble avec un abonnement Premium. Si tu utilises la version gratuite, tu peux répondre aux checkpoints pour évaluer tes connaissances et débloquer de nouvelles leçons.</p>
+          <p>En validant un checkpoint, tu pourras accéder :</p>
+          <ul>
+            <li>à toutes les précédentes leçons</li>
+            <li>à la première leçon du chapitre suivant</li>
+          </ul>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="passer_lecon" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion" slot="header">
+          <ion-label class="ion-text-wrap">Est-ce possible de passer des leçons ou des chapitres ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Il est possible de passer des leçons ou des chapitres comme bon te semble avec un abonnement Premium. Si tu utilises la version gratuite, tu peux répondre aux checkpoints pour évaluer tes connaissances et débloquer de nouvelles leçons.</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="erreur" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion" slot="header">
+          <ion-label class="ion-text-wrap">J'ai trouvé une erreur. Comment la signaler ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Si, sur notre application, tu trouves une erreur dans un exercice, nous te serions reconnaissants de nous la signaler.</p>
+          <p>Envoie un e-mail à l'équipe Lagua ou complète le formulaire ici avec le numéro du chapitre.</p>
+        </div>
+      </ion-accordion>
+      <ion-accordion class="ion-firststep" value="supprmer" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+        <ion-item class="ion-header-accordion" slot="header">
+          <ion-label class="ion-text-wrap">J'ai raté mon test de fin de niveau. Est-ce que je peux le repasser ?</ion-label>
+        </ion-item>
+        <div class="ion-margin-horizontal" slot="content">
+          <p>Tu n'as pas réussi ton test de fin de niveau du premier coup ? Ce n'est pas grave ! Rappelle-toi que l'apprentissage linguistique est une expérience et non une course. Tu auras la possibilité de retenter ta chance dans 14 jours.</p>
+          <p>Pourquoi ne pas profiter de ce temps pour revoir les sujets complexes ou pour réviser certains points ? On croit en toi !</p>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-list>
+</ion-content>

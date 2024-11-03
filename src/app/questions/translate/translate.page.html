@@ -1,0 +1,45 @@
+<!-- COUNTDOWN -->
+<app-countdown *ngIf="countDownActive" (activeEvent)="setCountDownActive($event)"></app-countdown>
+
+<ion-grid *ngIf="!countDownActive">
+  <ion-row class="ion-container-translate">
+    <ion-col>
+      <h3>Traduisez la phrase</h3>
+      <div class="ion-translate">
+        <img *ngIf="translateSetting?.playSrc" width="30" src="{{translateSetting?.playSrc}}"/>
+        <ion-text class="ion-padding-start"><span class="ion-translate-text">{{question?.translate}}</span><span *ngIf="question?.description"><i> - {{question?.description}}</i></span></ion-text>
+      </div>
+      <div class="ion-translate ion-padding-start" [ngClass]="{'ion-margin-start-2' : translateSetting?.playSrc}">
+        <ion-text class="ion-response" *ngIf="displayAnswer && secondChance"><i>Réponse : {{question?.text}}</i></ion-text>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-container-response">
+    <ion-col>
+      <div class="ion-background-horizontal-line">
+        <ion-button *ngFor="let r of response; let index = index" (click)="removeWord(index)" [ngClass]="{ 'error' : error, 'success': !error && displayAnswer }">{{r}}</ion-button>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-container-choice ion-align-items-center">
+    <ion-col>
+      <div class="ion-text-center">
+        <ion-button [disabled]="response.indexOf(c) !== -1" *ngFor="let c of choices; let index = index" (click)="addWord(c)">{{c}}</ion-button>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-footer class="ion-no-border" *ngIf="!countDownActive">
+  <ion-toolbar [ngClass]="{ 'ion-text-center' : !displayAnswer || !error || secondChance }">
+    <ion-button *ngIf="!displayAnswer" [disabled]="!response.length" color="tertiary" class="ion-margin" (click)="validate()">
+      Valider
+    </ion-button>
+    <ion-button *ngIf="displayAnswer && !secondChance && error" [ngClass]="{ 'ion-float-left' : !secondChance }" color="danger" class="ion-margin" (click)="tryAgain()">
+      Réessayer
+    </ion-button>
+    <ion-button *ngIf="displayAnswer" color="lagua" [ngClass]="{ 'ion-float-right' : error && !secondChance }" class="ion-margin" (click)="continue()">
+      Continuer
+      <!-- <ion-icon slot="end" name="caret-forward-outline"></ion-icon> -->
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "lagua-shikomori": {
+      "hosting": {
+        "app": [
+          "lagua-shikomori"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "lagua-shikomori"
+  }
+}

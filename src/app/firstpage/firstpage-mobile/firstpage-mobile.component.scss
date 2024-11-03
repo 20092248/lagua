@@ -1,0 +1,137 @@
+ion-content {
+    --color: #ffffff;
+    --background: transparent;
+}
+
+swiper-container {
+    --swiper-pagination-bullet-inactive-color: var(--ion-color-step-200, #cccccc);
+    --swiper-pagination-color: var(--ion-color-primary, #46895c);
+    --swiper-pagination-progressbar-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.25);
+    --swiper-scrollbar-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.1);
+    --swiper-scrollbar-drag-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.5);
+    --swiper-pagination-color: #ffffff;
+    height: 100%;
+}
+
+ion-button {
+    font-size: 12px;
+    font-weight: 100;
+}
+
+ion-grid {
+    height: 100%;
+}
+
+ion-grid.ion-desktop-background {
+    background: linear-gradient(to bottom, #46895c 48%, #74a884 48%);
+    border-radius: 20px;
+}
+
+ion-col.ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ion-icon {
+    font-size: 150px;
+}
+
+img {
+    max-height: 95%;
+}
+
+.ion-mobile-background-color {
+    --background: #46895c;
+}
+
+.ion-second-background {
+    background: #74a884;
+    border-radius: 20px 20px 0 0;
+    position: absolute;
+    width: 100%;
+    height: 52%;
+    top: 48%;
+}
+
+.ion-content-page {
+    height: 80%;
+}
+
+.ion-footer-page {
+    height: 20%;
+}
+
+.ion-subtitle-text {
+    line-height: 1.5rem;
+    font-size: 18px;
+}
+
+.ion-small-text {
+    font-size: 85%;
+    line-height: 1.25;
+}
+
+.swiper-pagination-bullet {
+    width: 20px !important;
+    height: 10px;
+}
+
+.ion-full-height {
+    height: 100%;
+}
+
+.ion-half-minus-height {
+    height: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.ion-half-plus-height {
+    height: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.ion-quart-height {
+    height: 25%;
+    display: flex;
+    align-items: center;
+}
+
+.swiper-pagination-bullets {
+    top: 25% !important;
+}
+
+.autoplay-progress {
+    position: absolute;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    font-weight: bold;
+    color: #46895c;
+    margin-top: 16px;
+}
+
+.autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: #46895c;
+    fill: none;
+    stroke-dashoffset: calc(80 * (1 - var(--progress)));
+    stroke-dasharray: 80;
+    transform: rotate(-90deg);
+}
+
+.ion-full-width {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

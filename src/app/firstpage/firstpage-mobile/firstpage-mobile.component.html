@@ -1,0 +1,78 @@
+<div *ngIf="isMobile" class="ion-second-background"></div>
+<ion-grid class="ion-text-center" [ngClass]="{'ion-desktop-background': !isMobile}">
+  <ion-row class="ion-content-page">
+    <ion-col class="ion-content">
+      <ion-content class="swiper-slides-background-color">
+        <swiper-container [autoplay]="autoplay" [slidesPerView]="1" [initialSlide]="0" speed="2000" pagination="true"
+          direction="vertical">
+          <swiper-slide>
+            <div class="ion-full-height ion-padding-horizontal ion-margin-horizontal">
+              <div class="ion-half-plus-height ion-align-items-end">
+                <img src="assets/img/slide_1.png">
+              </div>
+              <div class="ion-half-minus-height ion-align-items-center">
+                <div>
+                  <p class="ion-subtitle-text" [ngClass]="{'ion-small-text': !isMobile}">Apprenez les mots dont vous avez vraiment besoin, quand vous en avez
+                    besoin
+                  </p>
+                  <p><small>Vous apprenez de facon plus rapide et plus intelligente en découvrant d'abord les mots les
+                      plus
+                      fréquents utilisés dans une langue</small></p>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="ion-full-height ion-padding-horizontal ion-margin-horizontal">
+              <div class="ion-half-plus-height ion-align-items-end">
+                <img src="assets/img/slide_5.png">
+              </div>
+              <div class="ion-half-minus-height ion-align-items-center">
+                <div>
+                  <p class="ion-subtitle-text" [ngClass]="{'ion-small-text': !isMobile}">Apprenez selon votre rythme
+                  </p>
+                  <p><small>Intégrez facilement les leçons dans votre quotidien avec la possibilité de réviser les
+                      cours déjà visionnées</small></p>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="ion-full-height ion-padding-horizontal ion-margin-horizontal">
+              <div class="ion-half-plus-height ion-align-items-end">
+                <img src="assets/img/slide_4.png">
+              </div>
+              <div class="ion-half-minus-height ion-align-items-center">
+                <div>
+                  <p class="ion-subtitle-text" [ngClass]="{'ion-small-text': !isMobile}">Recherchez des mots et expressions grâce à notre dictionnaire
+                  </p>
+                  <p><small>L'équipe Lagua est heureux de vous mettre à disposition le meilleur dictionnaire avec plus
+                      de 100
+                      000 mots et expressions dans notre dictionnaire</small></p>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper-container>
+      </ion-content>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-footer-page">
+    <ion-col>
+      <div>
+        <ion-button (click)="goTo('../../user-information/learn')" [disabled]="!isMobile" class="ion-margin-bottom" expand="block" color="lagua"
+          shape="round">Démarrer
+          l'apprentissage</ion-button>
+        <ion-button (click)="goTo('../../login')" [disabled]="!isMobile" expand="block" color="light" shape="round">J'ai déjà un
+          compte</ion-button>
+      </div>
+      <div class="ion-full-width" *ngIf="isMobile">
+        <div class="autoplay-progress">
+          <svg>
+            <circle class="circle" cx="20" cy="20" r="10"></circle>
+          </svg>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

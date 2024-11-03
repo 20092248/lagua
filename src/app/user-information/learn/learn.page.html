@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Apprendre</ion-title>
+    <ion-button class="ion-margin-end" slot="end" color="light" size="small" [routerLink]="['../../login']" shape="round">Se
+      connecter</ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div>
+    <ion-list class="ion-speak">
+      <h4 class="ion-padding-bottom">Je parle</h4>
+      <ion-item lines="none">
+        <ion-thumbnail slot="start">
+          <img alt="Drapeau français" [src]="frenchFlag.src" />
+        </ion-thumbnail>
+        <ion-label>Shizungu / <i>Français</i></ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-list class="ion-learn">
+      <h4 class="ion-padding-bottom">Je voudrais apprendre</h4>
+      <ion-item *ngFor="let l of learn" [routerLink]="['../why']" routerLinkActive="selected" lines="none"
+        [disabled]="l.code !== 'SHAN'" (click)="selectedItem(l)">
+        <ion-thumbnail slot="start">
+          <img alt="{{l.text}}" [src]="l.src" />
+        </ion-thumbnail>
+        <ion-label>{{l.text}} / <i>{{l.translate}}</i></ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

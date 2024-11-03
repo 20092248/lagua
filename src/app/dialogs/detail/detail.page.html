@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '20px' : '0px' }">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{infoChats.title ? infoChats.title : 'Conversation' }}</ion-title>
+    <ion-buttons slot="end" *ngIf="user.email === 'lagua.shikomori@gmail.com'">
+      <ion-button (click)="modifyDetail()">
+        <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-margin-top">
+    <p class="ion-margin-horizontal ion-text-center" style="font-size: 85%;" *ngIf="infoChats.situation">Situation : {{infoChats.situation}}</p>
+    <div class="wrapper">
+      <ul>
+        <li *ngFor="let c of infoChats.chats" [ngClass]="c.userId === '1' || infoChats.onlySentences ? 'ion-li-left': 'ion-li-right'">
+          <div class="ion-position-icon"
+            [ngClass]="c.userId === '1' || infoChats.onlySentences ? 'ion-position-icon-left': 'ion-position-icon-right'">
+            {{getInitial(c.userName)}}</div>
+          <div class="ion-chat-content">
+            <ion-label class="ion-name" *ngIf="!infoChats.onlySentences">{{c.userName}}</ion-label>
+            <ion-label class="ion-text">{{c.translate}}</ion-label>
+            <ion-label class="ion-line" *ngIf="getDialectText(c.text)"></ion-label>
+            <ion-label class="ion-translate" *ngIf="getDialectText(c.text)">{{getDialectText(c.text)}}</ion-label>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="ion-margin-horizontal ion-end-conversation">
+    <ion-label class="ion-text-center ion-line ion-margin-bottom" color="medium">Fin de la discussion</ion-label>
+  </div>
+</ion-content>

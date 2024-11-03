@@ -1,0 +1,21 @@
+<ion-content>
+  <ion-grid>
+    <ion-row class="lottie-content">
+      <ion-col>
+        <div class="ion-text-center">
+          <ng-lottie [styles]="styles" [options]="options" (animationCreated)="animationCreated($event)"
+          (complete)="complete($event)"></ng-lottie>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="main-content">
+      <ion-col>
+        <div class="ion-text-center ion-margin-horizontal">
+          <h4>Félicitations! Votre paiement sécurisé a été traité avec succès.</h4>
+          <p class="ion-padding-bottom">Votre abonnement a bien été activé. Vous pouvez désormais accéder à tous les avantages depuis votre compte.</p>
+          <ion-button shape="round" (click)="goToHome()" expand="block">Retour à l'écran d'accueil</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

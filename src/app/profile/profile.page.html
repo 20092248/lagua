@@ -1,0 +1,156 @@
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-grid-header">
+    <ion-row class="ion-text-center ion-padding-horizontal-min">
+      <ion-col>
+        <app-bar-status [isOverlay]="isOverlay"></app-bar-status>
+        <h1>{{user.displayName}}</h1>
+        <p class="ion-position-badge ion-padding-bottom">
+          <img width="32" src="{{profileSetting?.icon?.badgeSrc}}">
+          <span class="ion-padding-end-min">{{score}} Points</span>
+        </p>
+        <div>
+          <div class="border-white-tabs" id="popover-profil">
+            <div class="img-box">
+              <ion-img *ngIf="user?.photoURL" [src]="user.photoURL" (ionError)="displayUnknownUser()"></ion-img>
+              <div id="bottom-start" class="ion-position-icon" *ngIf="!user?.photoURL">{{initial}}</div>
+              <ion-popover class="ion-padding-top ion-margin-top" trigger="bottom-start" side="bottom"
+                alignment="center">
+                <ng-template>
+                  <ion-content class="ion-padding">{{user.email}}</ion-content>
+                </ng-template>
+              </ion-popover>
+            </div>
+          </div>
+        </div>
+        <p class="ion-padding-top ion-no-margin-top">Niveau actuel : {{getActualLevelByCode()}}</p>
+        <p>Langue en apprentissage : {{userDialect.learn.text}} / <i>{{userDialect.learn.translate}}</i></p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="ion-grid-content">
+    <ion-row>
+      <ion-col size="12" *ngIf="userDialect?.resultReviews">
+        <div class="ion-padding-top-min">
+          <ion-card class="ion-no-margin">
+            <ion-card-content>
+              <ion-grid>
+                <ion-row class="ion-text-bold">
+                  <ion-col class="ion-no-padding-left ion-text-left">
+                    Vocabulaire
+                  </ion-col>
+                  <ion-col class="ion-text-right">
+                    {{nbrWords}} mot au total
+                  </ion-col>
+                </ion-row>
+                <ion-row *ngIf="userDialect?.resultReviews?.length">
+                  <ion-col class="ion-no-padding" [ngClass]="{'ion-hide': !percentWordsToLearn}">
+                    <div class="ion-label-progress ion-label-progress-warning"
+                      [ngStyle]="{'left': percentWordsToLearn + '%'}">
+                      <ion-text color="warning" class="ion-text-left ion-text-bold">{{percentWordsToLearn | number :
+                        '.2-2'}}%</ion-text>à
+                      apprendre
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <ion-row *ngIf="userDialect?.resultReviews?.length">
+                  <ion-col>
+                    <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate"
+                      data-max="100" class="ion-vocabulary-bar-red" [ngStyle]="{'width': percentWordsToRevise + '%'}">
+                    </div>
+                    <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate"
+                      data-max="100" class="ion-vocabulary-bar-orange"
+                      [ngStyle]="{'width': percentWordsToLearn + '%', 'left': percentWordsToRevise + '%'}">
+                    </div>
+                    <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate"
+                      data-max="100" class="ion-vocabulary-bar-green"
+                      [ngStyle]="{'width': percentWordsLearned + '%', 'left': (percentWordsToRevise + percentWordsToLearn) + '%'}">
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-label-progress-bottom-position" *ngIf="userDialect?.resultReviews?.length">
+                  <ion-col size="{{percentWordsLearned ? 6 : 12}}" *ngIf="percentWordsToRevise">
+                    <div class="ion-label-progress ion-label-progress-danger">
+                      <ion-text color="danger" class="ion-text-left ion-text-bold">{{percentWordsToRevise | number :
+                        '.2-2'}}%</ion-text>à
+                      réviser
+                    </div>
+                  </ion-col>
+                  <ion-col size="{{percentWordsToRevise ? 6 : 12}}" *ngIf="percentWordsLearned">
+                    <div class="ion-label-progress ion-label-progress-success ion-text-right">
+                      <ion-text color="success" class="ion-text-bold">{{percentWordsLearned | number :
+                        '.2-2'}}%</ion-text>appris
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="ion-display-flex">
+          <div class="ion-dashboard-bloc">
+            <ion-card class="ion-dashboard ion-dashboard-left">
+              <ion-card-header>
+                <ion-card-title>
+                  <span class="ion-card-title">1</span>
+                  <span class="ion-float-right"><ion-icon size="large" name="thumbs-up-outline"></ion-icon></span>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="ion-card-content-level">Evaluations
+                positives&nbsp;&nbsp;&nbsp;</ion-card-content>
+            </ion-card>
+          </div>
+          <div class="ion-dashboard-bloc">
+            <ion-card class="ion-dashboard ion-dashboard-right">
+              <ion-card-header>
+                <ion-card-title>
+                  <span class="ion-card-title">{{getDay(activeConnection)}}j {{activeConnection | date: 'hh'}}h</span>
+                  <span class="ion-float-right"><ion-icon size="large" name="stopwatch-outline"></ion-icon></span>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="ion-card-content-level">Temps sur l'application</ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item [routerLink]="['../../parameter']" routerLinkActive="selected" lines="full"><ion-icon slot="start"
+              name="settings-outline"></ion-icon>Paramètres de compte
+          </ion-item>
+          <ion-item (click)="share()" lines="full" class="ion-share"><ion-icon slot="start"
+              name="people-outline"></ion-icon>Invite des
+            amis
+          </ion-item>
+          <ion-accordion-group>
+            <ion-accordion value="donate">
+              <ion-item lines="full" slot="header">
+                <ion-icon slot="start" name="card-outline"></ion-icon>Faire un don
+              </ion-item>
+              <div class="ion-padding ion-text-center ion-donate" slot="content"><div id="paypal-donate-button-container"></div></div>
+            </ion-accordion>
+          </ion-accordion-group>
+          <ion-item [routerLink]="['../../products']" lines="full" class="ion-share ion-alert-subscription"><ion-icon slot="start"
+            name="wallet-outline"></ion-icon>Voir les abonnements
+        </ion-item>
+          <ion-item [routerLink]="['../../help']" routerLinkActive="selected" lines="none"><ion-icon slot="start"
+              name="help-circle-outline"></ion-icon>Aide
+          </ion-item>          
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button class="ion-logout" expand="block" (click)="logout()"><ion-icon slot="start"
+            name="log-out-outline"></ion-icon>Se
+          déconnecter</ion-button>
+        <ion-button class="ion-margin-bottom" expand="block" color="danger" (click)="deleteAccount()"><ion-icon
+            slot="start" name="trash-outline"></ion-icon>Supprimer
+          votre compte</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,60 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Se connecter</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="ion-logo-content ion-text-center" [ngStyle]="{'height': heightLogo+'px'}">
+    <img src="/assets/icon/capacitor_favicon.png" width="90"/>
+  </div>
+  <div class="ion-login-content" [ngStyle]="{'height': heightContent+'px'}">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <form #f="ngForm">
+            <div class="content ion-padding-top">
+              <!-- <ion-label class="ion-client-login-custom ion-padding-start" position="stacked">Identifiant</ion-label> -->
+              <ion-item>
+                <ion-icon class="ion-login-icon" name="person" slot="start"></ion-icon>
+                <ion-input type="mail" class="custom" placeholder="Identifiant" [(ngModel)]="email" #emailCtrl="ngModel" name="email"></ion-input>
+              </ion-item>
+
+              <!-- <ion-label class="ion-client-login-custom ion-padding-start" position="stacked">Mot de passe</ion-label> -->
+              <ion-item>
+                <ion-icon class="ion-login-icon" name="lock-closed" slot="start"></ion-icon>
+                <ion-input type="password" placeholder="Mot de passe" [(ngModel)]="password" #passwordCtrl="ngModel" name="password"></ion-input>
+              </ion-item>
+
+              <ion-item lines="none" class="ion-background-transparent ion-margin-bottom">
+                <ion-button class="ion-password-forgot" slot="end" fill="clear" (click)="passwordForgot()">Mot de passe oublié ?</ion-button>
+              </ion-item>
+              <div class="ion-content-button">
+                <ion-button [disabled]="!f.valid" color="light" expand="block" (click)="login()"
+                  shape="round">Connexion</ion-button>
+              </div>
+
+              <ion-item lines="none" class="ion-background-transparent">
+                <ion-label class="ion-text-other ion-text-center ion-client-login-custom">Ou</ion-label>
+              </ion-item>
+
+              <div>
+                <ion-button class="ion-margin-bottom" color="facebook" expand="block" (click)="logInWithFacebook()"
+                  shape="round">
+                  <ion-icon slot="start" name="logo-facebook"></ion-icon>
+                  Se connecter avec Facebook
+                </ion-button>
+                <ion-button color="google" expand="block" (click)="logInWithGoogle()" shape="round">
+                  <ion-icon slot="start" name="logo-google"></ion-icon>
+                  Se connecter avec Google
+                </ion-button>
+              </div>
+            </div>
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

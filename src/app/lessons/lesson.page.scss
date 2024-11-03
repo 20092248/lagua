@@ -1,0 +1,117 @@
+ion-toolbar {
+    --background: url('/assets/img/background.png') 0% / 200%;
+    --color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 20px 17px -17px, rgba(0, 0, 0, 0.18) 0px 10px 20px -20px;
+    // border-radius: 0 0 20px 20px;
+}
+
+ion-content {
+    --background: #eef1ee;
+    --color: #ffffff;
+}
+
+.ion-background-content {
+    margin-top: 10px;
+    // background-color: #eef1ee;
+}
+
+ion-card {
+    --background: var(--ion-background-color);
+    border-radius: 15px;
+}
+
+ion-card-header {
+    text-align: center;
+    padding: 16px 0;
+    width: 70%;
+}
+
+ion-card-title {
+    font-size: 17px;
+    color: #1a6921;
+}
+
+ion-card-title.ion-lock-title {
+    color: #b2b4ba;
+}
+
+ion-card-subtitle {
+    font-size: 13px;
+}
+
+.ion-flex:first-child {
+    margin-top: 0px !important;
+}
+
+.ion-flex {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.ion-size-arrow {
+    width: 12.5%;
+    text-align: center;
+}
+
+.ion-size-img {
+    width: 17.5%;
+}
+
+.ion-lock-lesson {
+    opacity: 0.7;
+}
+
+.ionic-category {
+    background: #ffffff;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px #284b7c14;
+    padding: 1px 12px 16px
+}
+
+.ion-link-between-card {
+    width: 5px;
+    height: 50px;
+    background: #1a6921;
+    margin-top: 0;
+    position: relative;
+    margin-left: 50%;
+}
+
+.ion-custom-lock {
+    text-align: center;
+    width: 17.5%;
+    padding-left: 10px;
+}
+
+.ion-lock-closed {
+    background: lightgray;
+    padding: 7px;
+    border-radius: 25px;
+    font-size: 28px;
+}
+
+.headline {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1.25;
+    padding: 0px 5px;
+}
+
+.subHeadline {
+    color: #ffffff;
+    margin: 5px 0px 5px 5px !important;
+}
+
+.ion-icon-src {
+    position: relative;
+    padding-left: 5px;
+    left: 5px;
+    display: block;
+    max-height: 100px;
+    margin: auto;
+  }

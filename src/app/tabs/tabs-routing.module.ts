@@ -8,27 +8,43 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'home',
+        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'dictionary',
+        loadChildren: () => import('../dictionary/dictionary.module').then(m => m.DictionaryPageModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'lessons',
+        loadChildren: () => import('../lessons/lesson.module').then(m => m.LessonsPageModule),
+      },
+      {
+        path: 'review',
+        loadChildren: () => import('../review/review.module').then(m => m.ReviewPageModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
+      },
+      {
+        path: 'topics',
+        loadChildren: () => import('../topics/topics.module').then( m => m.TopicsPageModule)
+      },
+      {
+        path: 'dialogs',
+        loadChildren: () => import('../dialogs/dialogs.module').then( m => m.DialogsPageModule)
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
 ];

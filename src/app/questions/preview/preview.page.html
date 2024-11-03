@@ -1,0 +1,21 @@
+<div class="container">
+  <h4 class="ion-padding-top ion-text-center ion-full-width">Apprenez bien les mots que vous allez voir durant cette leçon</h4>
+  <ion-card color="light" class="ion-content-words ion-text-center" *ngFor="let q of questions">
+    <ion-card-header>
+      <ion-card-title>{{q.text}}</ion-card-title>
+      <ion-card-subtitle>{{q.translate}}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <ion-card *ngIf="helps" color="lagua" class="ion-padding-top ion-margin-top ion-full-width ion-text-center">
+    <ion-card-header class="ion-help">
+      <ion-card-title>Aide/Règle de lecture</ion-card-title>
+      <ion-card-subtitle *ngFor="let help of helps">{{help}}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <p class="ion-text-center ion-full-width">Dès que vous avez mémorisé les mots, cliquez sur "Continuer"</p>
+</div>
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="ion-text-center">
+    <ion-button color="lagua" (click)="continue()">Continuer</ion-button>
+  </ion-toolbar>
+</ion-footer>

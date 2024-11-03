@@ -1,0 +1,60 @@
+<div class="ion-desktop-content">
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-header">
+      <ion-col class="ion-margin-horizontal">
+        <nav>
+          <div class="logo">
+            <h1 (click)="goTo('/login')" [ngClass]="{'ion-minHeight': heightWindow <= 600 }">Lagua <span> | shikomori </span><img
+                [src]="homeSetting.icon?.comorosFlag" /></h1>
+          </div>
+          <ul class="pages" [ngClass]="{'ion-minHeight': heightWindow <= 600 }">
+            <li (click)="goTo('/aboutus')">A propos</li>
+            <li (click)="goTo('/link')">Lien utiles</li>
+            <li (click)="goTo('/legal-notices')">Mentions légales</li>
+            <!-- <li (click)="goTo('/privacy')">Politique de Confidentialité</li> -->
+            <li (click)="goTo('/terms')">CGV</li>
+            <li (click)="goTo('/contactus')">Contact</li>
+            <!-- <li><img [src]="homeSetting.icon?.frenchFlag" /></li> -->
+            <li class="ion-button-connexion"><ion-button (click)="goTo('/login')"><ion-icon slot="icon-only" name="log-in"></ion-icon></ion-button></li>
+          </ul>
+        </nav>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-content">
+      <ion-col size="6" class="ion-left-content">
+        <div class="main">
+          <h1 class="ion-text-center">
+            <div class="word w1">SHINGAZIDJA</div>
+            <div class="word w2">SHINDZUANI</div>
+            <div class="word w3">SHIMAORE</div>
+            <div class="word w4">SHIMWALI</div>
+            <div class="word w5">LAGUA <img [src]="homeSetting.icon?.learn" width="64" /></div>
+          </h1>
+          <!-- TYPER END -->
+          <div class="line"></div>
+          <div class="ion-padding ion-margin ion-text-center">
+            <h4 class="ion-margin-bottom">Prêt à enrichir votre vocabulaire ou à apprendre le comorien facilement ?</h4>
+            <p>
+              Grâce à l'application Lagua, vous pouvez parler ou apprendre le grand comorien, l'anjouanais, le mahorais
+              et le mohélien... à votre propre rythme.</p>
+          </div>
+          <div class="ion-text-center">
+            <img class="ion-padding-end ion-android" [src]="homeSetting.icon?.android" height="70px" />
+            <img class="ion-padding-start ion-apk" [src]="homeSetting.icon?.apk" height="70px" />
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="6" class="ion-right-content">
+        <div class="ion-mobile-content" [ngClass]="{'ion-minHeight': heightWindow <= 600 }">
+          <app-firstpage-mobile [isMobile]="isMobile"></app-firstpage-mobile>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-footer ion-text-center">
+      <ion-col>
+        <div>Made with <img class="ion-margin-horizontal" [src]="homeSetting.icon?.heartFlag" width="28" /> by <span
+            class="ion-developper">Brady Abderemane</span></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

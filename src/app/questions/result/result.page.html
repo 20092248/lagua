@@ -1,0 +1,84 @@
+<app-firework *ngIf="star >= scoreToReach"></app-firework>
+<ion-grid>
+  <ion-row class="ion-text-center">
+    <ion-col>
+      <div>
+        <h1>{{star < scoreToReach ? 'Essaye encore...' : 'Félicitation!'}}</h1>
+        <h3 class="ion-no-margin">Vous avez terminé la leçon {{review?.order}}</h3>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-text-center ion-justify-content-center">
+    <ion-col size="7">
+      <div>
+        <img src="{{trophySrc}}" [ngClass]="{'ion-lose-review': star < scoreToReach}"/> 
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div class="ion-content-summary">
+        <ion-item lines="none">
+          <ion-thumbnail slot="start">
+            <div class="ion-thumbnail-content">
+              <h3 class="ion-no-margin">{{score | number : '.0-2'}}</h3>
+              <div>Score</div>
+            </div>
+          </ion-thumbnail>
+          <ion-label>
+            <h3>Leçon : {{review?.text}} / <i>{{review?.translate}}</i></h3>
+            <p>
+              <ion-icon *ngFor="let r of ratings; let index = index" class="ion-rating" name="star{{star - index < 1 && star - index > 0 ? '-half' : ''}}" [ngClass]="{'ion-rating-check': star - index > 0}"></ion-icon>
+            </p>
+            <p>{{displayLevel()}} - Leçon {{review?.order}}</p>
+          </ion-label>
+        </ion-item>
+        <div class="ion-summary ion-text-center">
+          <div *ngIf="toRevise">
+            <div class="circle error" [ngClass]="{'over-50': scoreToRevise > 180 }">
+              <span class="ion-circle-circle-score">{{toRevise}}</span>
+              <span class="ion-circle-circle-label">mot</span>
+              <div class="slice">
+                <div class="bar" [style]="displayCircle(scoreToRevise)"></div>
+                <div class="fill"></div>
+              </div>
+            </div>
+            <p class="ion-small-label">à apprendre</p>
+          </div>
+          <div *ngIf="toLearn">
+            <div class="circle warning" [ngClass]="{'over-50': scoreToLearn > 180 }">
+              <span class="ion-circle-circle-score">{{toLearn}}</span>
+              <span class="ion-circle-circle-label">mot</span>
+              <div class="slice">
+                <div class="bar" [style]="displayCircle(scoreToLearn)"></div>
+                <div class="fill"></div>
+              </div>
+            </div>
+            <p class="ion-small-label">à réviser</p>
+          </div>
+          <div *ngIf="learned">
+            <div class="circle success" [ngClass]="{'over-50': scoreLearned > 180 }">
+              <span class="ion-circle-circle-score">{{learned}}</span>
+              <span class="ion-circle-circle-label">mot</span>
+              <div class="slice">
+                <div class="bar" [style]="displayCircle(scoreLearned)"></div>
+                <div class="fill"></div>
+              </div>
+            </div>
+            <p class="ion-small-label">appris</p>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button color="danger" class="ion-margin" (click)="tryAgain()" *ngIf="star < scoreToReach" [ngClass]="{ 'ion-display-block' : star < scoreToReach && scoreToReach !== 2.5}">
+      Réssayer
+    </ion-button>
+    <ion-button *ngIf="scoreToReach === 2.5 || star >= scoreToReach" expand="block" color="lagua" class="ion-margin" (click)="saveReview()" [ngClass]="{ 'ion-float-right' : star < scoreToReach }">
+      Terminer la leçon
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,42 @@
+<!-- COUNTDOWN -->
+<app-countdown *ngIf="countDownActive" (activeEvent)="setCountDownActive($event)"></app-countdown>
+
+<ion-grid class="ion-text-center" *ngIf="!countDownActive">
+  <ion-row>
+    <ion-col>
+      <h5>Comment dites-vous cela en comorien ?</h5>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="10">
+      <ion-card (click)="displayAnswer = true">
+        <img class="ion-image-card" src="{{question?.img}}" />
+        <ion-card-header>
+          <ion-card-title *ngIf="displayAnswer" color="{{correct}}">{{question?.text}}</ion-card-title>
+          <ion-card-subtitle [ngClass]="{ 'ion-subtitle' : !displayAnswer}" >{{question?.translate}}</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+      <div class="ion-popover" *ngIf="isOpen && !displayAnswer">
+        <p>Cliquez pour vérifier la traduction
+        </p>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col *ngIf="displayAnswer">
+      <div>
+        <h5>Vous vous en souvenez bien ?</h5>
+        <div>
+          <ion-button color="danger" class="ion-margin-end" (click)="isCorrect(false)">
+            <ion-icon color="dark" slot="start" name="close-outline"></ion-icon>
+            Non
+          </ion-button>
+          <ion-button color="success" class="ion-margin-start" (click)="isCorrect(true)">
+            <ion-icon color="dark" slot="start" name="checkmark-outline"></ion-icon>
+            Oui
+          </ion-button>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

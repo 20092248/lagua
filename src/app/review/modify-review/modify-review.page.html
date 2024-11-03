@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '20px' : '0px' }">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Modifier une leçon</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input placeholder="Categorie" value="{{questionInfo.category}}"
+      [(ngModel)]="questionInfo.category"></ion-input>
+    <ion-input text="number" placeholder="Cours" value="{{questionInfo.lesson}}"
+      [(ngModel)]="questionInfo.lesson"></ion-input>
+    <ion-input text="number" placeholder="Lesson" value="{{questionInfo.order}}"
+      [(ngModel)]="questionInfo.order"></ion-input>
+      <ion-input text="string" placeholder="Id" value="{{id}}"
+      [(ngModel)]="id"></ion-input>
+  </ion-item>
+  <ion-row>
+    <ion-col size="11">
+      <ion-textarea [(ngModel)]="rawQuestions"></ion-textarea>
+    </ion-col>
+    <ion-col size="1">
+      <ion-button (click)="updateQuestions()">MAJ</ion-button>
+    </ion-col>
+  </ion-row>
+  <div class="ion-border ion-padding-horizontal" *ngFor="let q of questions; let index = index">
+    <h4>Question n°{{index + 1}} <ion-icon class="ion-padding-end" name="add-circle-outline"
+        (click)="addQuestion(index)"></ion-icon><ion-icon name="trash-outline"
+        (click)="removeQuestion(index)"></ion-icon></h4>
+    <ion-item [ngStyle]="{'--background': !q.type ? 'lightcoral' : '#fff'}">
+      <ion-label>Type</ion-label>
+      <ion-input value="{{q.type}}" [(ngModel)]="q.type" (ionChange)="eventQuestion()"></ion-input>
+      <ion-toggle slot="end" [checked]="q.sentence" [(ngModel)]="q.sentence" (ionChange)="eventQuestion()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-input value="{{q.description}}" [(ngModel)]="q.description" (ionChange)="eventQuestion()"></ion-input>
+    </ion-item>
+    <ion-item [ngStyle]="{'--background': !q.img ? 'lightcoral' : '#fff'}">
+      <ion-label id="img-trigger">Image</ion-label>
+      <ion-input value="{{q.img}}" [(ngModel)]="q.img" (ionChange)="eventQuestion()"></ion-input>
+      <img src="{{q.img}}" style="height: 40px"/>
+    </ion-item>
+    <ion-item [ngStyle]="{'--background': !q.text ? 'lightcoral' : '#fff'}">
+      <ion-label>Texte</ion-label>
+      <ion-input value="{{q.text}}" [(ngModel)]="q.text" (ionChange)="eventQuestion()"></ion-input>
+    </ion-item>
+    <ion-item [ngStyle]="{'--background': !q.translate ? 'lightcoral' : '#fff'}">
+      <ion-label>Traduction</ion-label>
+      <ion-input value="{{q.translate}}" [(ngModel)]="q.translate" (ionChange)="eventQuestion()"></ion-input>
+    </ion-item>
+    <div class="ion-margin-horizontal" *ngFor="let c of q.choices; let index=index">
+      <ion-item [ngStyle]="{'--background': !c.choice ? 'lightcoral' : '#fff'}">
+        <ion-label>N°{{index}} - </ion-label>
+        <ion-input value="{{c.choice}}" [(ngModel)]="c.choice" (ionChange)="eventQuestion()"></ion-input>
+        <ion-toggle slot="end" [checked]="c.answer" [(ngModel)]="c.answer" (ionChange)="eventQuestion()"></ion-toggle>
+      </ion-item>
+    </div>
+  </div>
+  <div class="ion-text-center">
+    <ion-button (click)="saveReview()">VALIDER</ion-button>
+  </div>
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom" *ngIf="user.email === 'lagua.shikomori@gmail.com'">
+    <ion-fab-button color="lagua" (click)="copyReview()">
+      <ion-icon name="clipboard-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

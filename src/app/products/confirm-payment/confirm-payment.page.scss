@@ -1,0 +1,25 @@
+ion-content {
+    --background: #46895c;
+    --color: #ffffff;
+    ion-grid {
+        height: 100%;
+        ion-row {
+            display: flex;
+        }
+
+        ion-row.lottie-content {
+            height: 60%;            
+            align-content: center;
+            justify-content: center;
+        }
+
+        ion-row.main-content {
+            height: 40%;
+            align-content: flex-start;
+            justify-content: center;
+            ion-button {
+                --background: #2bb063;
+            }
+        }
+    }
+}

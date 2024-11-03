@@ -1,0 +1,17 @@
+<div class="ion-position-content ion-text-center">
+  <div class="ion-content-center">
+    <h5 class="ion-padding-bottom">Sélectionner le mode d'apprentissage</h5>
+    <div>
+      <ul>
+        <li *ngFor="let type of types" class="ion-margin-top">
+          <ion-card (click)="typeSelected(type.code)">
+            <img src="{{type.src}}" [ngClass]="{'left': type.code === 'C' || type.code === 'Q'}" />
+            <ion-card-header>
+              <ion-card-title>{{type.label}}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

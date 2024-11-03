@@ -1,0 +1,84 @@
+//coundown
+app-countdown {
+    height: 100%;
+    z-index: 2;
+  }
+  
+ion-grid {
+    width: 100%;
+    padding: 5px 0;
+}
+
+ion-row.ion-container-translate {
+    padding: 0 5px;
+    height: 15%;
+    min-height: 130px;
+}
+
+ion-row.ion-container-translate ion-col {
+    box-shadow: 0 9px 6px -6px #e0e0e0;
+}
+
+ion-row.ion-container-response {
+    background-color: var(--ion-background-color);
+    height: 45%;
+    max-height: 280px;
+}
+
+ion-row.ion-container-choice {
+    height: 40%;
+    box-shadow: 0 -9px 6px -6px #e0e0e0;
+}
+
+ion-chip {
+    font-size: 16px;
+    margin-top: 24px;
+}
+
+div.ion-background-horizontal-line ion-button {
+    font-size: 16px;
+    margin-top: 20px;
+    --padding-start: 12px;
+    --padding-end: 12px;
+    --background: #46895c;
+    --border-radius: 10px;
+}
+
+ion-button.success {
+    --background: #27a132 !important;
+}
+
+ion-button.error {
+    --background: #eb445a !important;
+}
+
+.ion-container-choice ion-button {
+    --background: #46895c;
+    --border-radius: 10px;
+}
+
+.ion-translate {
+    display: flex;
+    align-items: center;
+}
+
+.ion-background-horizontal-line {
+    height: 100%;
+    width: 100%;
+    background: url('/assets/img/questions/translate/line.png');
+    background-position-x: center;
+}
+
+.ion-translate-text {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.ion-response {
+    font-weight: bold;
+    color: #27a132;
+  }
+
+  .ion-margin-start-2 {
+    margin-left: 30px;
+  }

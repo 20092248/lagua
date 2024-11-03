@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar [ngStyle]="{'padding-top': isOverlay ? '30px' : '0px' }">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>75% sur Premium</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-background-top">
+    <div class="ion-top-content ion-padding-top ion-margin-horizontal ion-margin-top">
+      <ng-lottie [styles]="styles" [options]="options" (animationCreated)="animationCreated($event)"
+        (complete)="complete($event)"></ng-lottie>
+      <h4 class="ion-title ion-padding-top">Les utilisateurs Premium ont <span class="ion-color-dark-lagua">5 fois
+          plus</span> de chances de terminer leur cours en comorien</h4>
+      <h6 class="ion-subtitle ion-padding-vertical">Débloque un an de Premium pour <span
+          class="ion-custom-original-price">{{priceData?.originalPrice}} €</span> {{priceData?.price}} € ({{priceData?.monthlyPrice}} €/mois).</h6>
+    </div>
+  </div>
+  <div>
+    <div class="ion-middle-content">
+      <h4 class="ion-padding-vertical">Débloque les fonctionnalités Premium</h4>
+      <div class="ion-dashboard-bloc" *ngFor="let access of productsSetting?.premiumAccess">
+        <ion-item lines="none">
+          <ion-thumbnail slot="start">
+            <img *ngIf="access.icon" [src]="access.icon" />
+          </ion-thumbnail>
+          <ion-label>
+            <h4>{{access.title}}</h4>
+            <p>{{access.label}}</p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </div>
+    <div class="ion-bottom-content">
+      <h5 class="ion-padding">N'attends plus un instant, démarre en toute confiance.</h5>
+      <div class="ion-padding-horizontal ion-margin-horizontal">
+        <div *ngFor="let p of productsSetting?.prices" [ngClass]="{ 'ion-padding-top' : !p.economy }">
+          <span *ngIf="p.economy" class="ion-save-money ion-reduction">Economisez {{p.economy*100}}%</span>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title class="ion-text-left">{{p.duration}} mois <ion-text class="ion-text-right ion-float-right">{{p.monthlyPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}
+                  €/mois</ion-text></ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-text class="ion-text-content"><span [ngClass]="{ 'ion-custom-original-price' : p.economy }">{{p.price.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} €</span><span *ngIf="p.economy"> {{((1 - p.economy) * p.price).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}
+                  €</span></ion-text>
+              <ion-button fill="solid" class="ion-button-selected" (click)="showPayment(p)">Sélectionner</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+    <div class="ion-background-bottom ion-padding-horizontal">
+      <div class="ion-margin-top ion-margin-horizontal">
+        <img *ngIf="productsSetting.icon?.cashback" [src]="productsSetting.icon?.cashback" width="64" />
+        <h6>Essayez Lagua sans risque</h6>
+        <p class="ion-padding-bottom">Contactez Babbel dans les 20 jours pour un remboursement complet.</p>
+      </div>
+
+      <div class="ion-padding-vertical ion-margin">
+        <img *ngIf="productsSetting.icon?.lock" [src]="productsSetting.icon?.lock" width="64" />
+        <h6>Paiement sécurisé</h6>
+        <p class="ion-padding-bottom">Toutes les transactions sont sécurisées et cryptées.</p>
+      </div>
+    </div>
+  </div>
+</ion-content>

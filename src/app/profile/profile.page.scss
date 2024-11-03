@@ -1,0 +1,252 @@
+ion-content {
+  --background: linear-gradient(to bottom, #206a4f 50%, #eef1ee 50%); //#206a4f;
+  --color: var(--ion-background-color);
+}
+
+ion-grid.ion-grid-header {
+  position: relative;
+  background: url('/assets/img/background.png') 0% 60%; //#46895c;
+  // background-size: cover;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 25px -15px, rgba(0, 0, 0, 0.08) 0px 10px 10px -10px;
+  padding: 0;
+}
+
+ion-grid.ion-grid-content {
+  background: var(--ion-background-light-color);
+  border-radius: 20px 20px 0 0;
+}
+
+ion-card-header.ion-weekly-calendar {
+  padding: 10px;
+}
+
+ion-card-content {
+  padding: 13px 10px;
+}
+
+ion-list {
+  background: transparent;
+}
+
+ion-item {
+  --background: transparent;
+}
+
+ion-item.ion-share:hover {
+  --background: #e5e8e5;
+  cursor: pointer;
+}
+
+ion-card {
+  --background: var(--ion-background-color);
+  border-radius: 15px;
+  height: 90%;
+}
+
+ion-button {
+  --border-radius: 10px;
+}
+
+ion-accordion {
+  background: transparent;
+  border-bottom: 1px #ccc solid;
+}
+
+p {
+  margin: 10px;
+}
+
+p:last-child {
+  margin-bottom: 13px;
+}
+
+ion-text {
+  display: block;
+}
+
+.img-box img {
+  min-height: 96px;
+}
+
+ion-popover {
+  text-align: center;
+  font-style: italic;
+  --offset-y: -5px;
+  --backdrop-opacity: 0;
+  --background: #eef1ee;
+  --box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
+}
+
+ion-popover ion-content {
+  --background: #eef1ee;
+  --color: var(--ion-text-color);
+  --padding-bottom: 10px !important;
+  --padding-top: 10px !important;
+}
+
+ion-modal {
+  ion-content {
+    --background: #eef1ee;
+    color: #000000;
+  }
+}
+
+.border-white-tabs {
+  border: #ffffff solid 2px;
+  background-color: #9dc18c;
+  border-radius: 50%;
+  width: 104px;
+  height: 104px;
+  margin: auto;
+}
+
+.img-box {
+  position: relative;
+  top: 2px;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 96px;
+  width: 96px;
+  background-color: #e1e3d0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ion-label-progress-bottom-position {
+  margin-top: 5px;
+}
+
+.ion-label-progress-warning {
+  padding-left: 5px;
+  margin-top: 10px;
+  position: relative;
+  // left: 20%;
+  border-left: 2px solid orange;
+  line-height: 1.25;
+}
+
+.ion-label-progress-danger {
+  padding-left: 5px;
+  position: relative;
+  left: 0%;
+  border-left: 2px solid red;
+  line-height: 1.25;
+}
+
+.ion-label-progress-success {
+  padding-right: 5px;
+  position: relative;
+  right: 0%;
+  border-right: 2px solid green;
+  line-height: 1.25;
+}
+
+.ion-vocabulary-bar-red {
+  border-radius: 1rem 0 0 1rem;
+  // width: 20%;
+  background-color: red;
+  height: 10px;
+  position: absolute;
+  left: 0%;
+  border-left: 2px solid #fff;
+}
+
+.ion-vocabulary-bar-orange {
+  background-color: orange;
+  // width: 20%;
+  height: 10px;
+  position: absolute;
+  // left: 20%;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+
+.ion-vocabulary-bar-green {
+  border-radius: 0 1rem 1rem 0;
+  // width: 60%;
+  background-color: green;
+  height: 10px;
+  position: absolute;
+  // left: 40%;
+  border-right: 2px solid #fff;
+}
+
+.ion-text-bold {
+  font-weight: bold;
+}
+
+.ion-padding-top-min {
+  padding-top: 2px;
+}
+
+.ion-display-flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+ion-card.ion-dashboard {
+  --background: #9dc18c;
+  --color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ion-card.ion-dashboard-left {
+  margin-left: 0;
+}
+
+ion-card.ion-dashboard-right {
+  margin-right: 0;
+}
+
+ion-card.ion-dashboard ion-icon {
+  color: #ffffff;
+}
+
+.ion-dashboard-bloc {
+  width: 50%;
+}
+
+ion-card-title .ion-card-title {
+  font-size: 25px;
+  color: #ffffff;
+}
+
+.ion-position-icon {
+  font-size: 54px;
+  margin-top: 16px;
+  color: #774141;
+}
+
+.ion-position-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0px;
+}
+
+.ion-no-margin-top {
+  margin-top: 0px;
+}
+
+.ion-padding-end-min {
+  padding-left: 5px;
+}
+
+.ion-logout {
+  --background: #46895c;
+}
+
+.ion-padding-horizontal-min {
+  padding: 5px 0 10px;
+}
+
+.ion-donate {
+  background-color: #eef1ee;
+}
+
+ion-item.ion-alert-subscription {
+  --background: #eef9ef;
+}

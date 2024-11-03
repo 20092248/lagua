@@ -1,0 +1,42 @@
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-header">
+      <ion-col class="ion-margin-horizontal">
+        <nav>
+          <div class="logo">
+            <h1 (click)="goTo('')">Lagua <span> | shikomori
+              </span><img [src]="homeSetting.icon?.comorosFlag" /></h1>
+          </div>
+          <ul class="pages">
+            <li (click)="goTo('/aboutus')">A propos</li>
+            <li (click)="goTo('/link')">Lien utiles</li>
+            <li (click)="goTo('/legal-notices')">Mentions légales</li>
+            <li (click)="goTo('/terms')">CGV</li>
+            <li (click)="goTo('/contactus')">Contact</li>
+          </ul>
+        </nav>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-title">
+        <ion-title>À propos de Lagua</ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="ion-margin-horizontal ion-padding-horizontal">
+    <p class="ion-padding-top">Lagua vous aide à atteindre vos objectifs personnels et professionnels en apprenant la
+      langue comorienne.
+      Nous proposons l'apprentissage en ligne avec différents types d'apprentissage pour vous offrir la meilleure
+      expérience utilisateur.</p>
+    <h1>L'apprentissage en automnomie</h1>
+    <p>Avec notre plan d'études sur mesure, tu reçois des rappels pour suivre tes leçons conçues par des experts.
+      Notre rubrique Révision te guide pour savoir quoi réviser. Apprends à ton rythme, c'est toi qui décides !</p>
+    <h1>Notre histoire</h1>
+    <p>C'est l'histoire d'un franco-comorien qui n'a pas eu l'opportunité d'apprendre la langue comorienne en France. Pour renouer avec ses origines, il décide d'apprendre le comorien, plus précisement l'anjouannais. Le problème, aucun moyen d'apprendre convenablement le comorien sur internet.
+      Il manque <b>énormement</b> de ressource pour apprendre le comorien, seul les livres de Mohamed Ahmed-Chamanga lui ont permis de mieux comprendre les variétés luiguistiques comorien. Son amour pour les Comores et la frustration de ne trouver aucune méthode d'apprentissage viable lui ont donné l'idée 
+      ambitieuse de <b>developper une nouvelle plateforme d'apprentissage linguistique</b> qui allait lui permettre de comprendre et de parler la langue comorien (d'où le nom Lagua).
+    </p>
+    <p>Ce nouveau service a pour but des proposer des cours en ligne, le tout à un tarif attractif. Le projet démarre en 2021, juste avant la naissance de son premier fils.</p>
+    <p class="ion-padding-bottom">Envie d'apprendre la langue comorienne?</p>
+  </div>
+</ion-content>

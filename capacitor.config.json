@@ -1,6 +1,28 @@
 {
-	"appId": "io.ionic.starter",
+	"plugins": {
+        "PushNotifications": {
+            "presentationOptions": [
+                "badge",
+                "sound",
+                "alert"
+            ]
+        },
+        "GoogleAuth": {
+            "scopes": [
+                "profile",
+                "email"
+            ],
+            "serverClientId": "137499573111-jcprv17aligf1q8f5enak80pd03fkcd7.apps.googleusercontent.com",
+            "forceCodeForRefreshToken": true
+        },
+        "SplashScreen": {
+            "launchShowDuration": 100,
+            "launchAutoHide": false,
+            "launchFadeOutDuration": 300,
+            "backgroundColor": "#46895c"
+          }
+    },
+	"appId": "com.lagua.shikomori",
 	"appName": "Lagua",
-	"webDir": "www",
-	"bundledWebRuntime": false
+	"webDir": "www"
 }

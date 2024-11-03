@@ -1,0 +1,70 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Inscription</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="ion-logo-content ion-text-center" [ngStyle]="{'height': heightLogo+'px'}">
+    <img src="/assets/icon/capacitor_favicon.png" width="85" />
+  </div>
+  <div class="ion-login-content" [ngStyle]="{'height': heightContent+'px'}">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="content ion-margin-top">
+            <ion-item>
+              <ion-icon class="ion-login-icon" name="person" slot="start"></ion-icon>
+              <ion-input type="text" class="custom" placeholder="Pseudonyme" [(ngModel)]="displayName"
+                #displayNameCtrl="ngModel" name="displayName"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-icon class="ion-login-icon" name="mail" slot="start"></ion-icon>
+              <ion-input type="mail" class="custom" placeholder="Email" [(ngModel)]="email" #emailCtrl="ngModel"
+                name="email"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-icon class="ion-login-icon" name="lock-closed" slot="start"></ion-icon>
+              <ion-input type="password" placeholder="Mot de passe" [(ngModel)]="password" #passwordCtrl="ngModel"
+                name="password"></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-margin-bottom">
+              <ion-icon class="ion-login-icon" name="lock-closed" slot="start"></ion-icon>
+              <ion-input type="password" placeholder="Confirmer mot de passe" [(ngModel)]="confirmPassword"
+                #confirmPasswordCtrl="ngModel" name="confirmPassword"></ion-input>
+            </ion-item>
+
+            <div class="ion-margin-start ion-bloc-error p-error"
+              *ngIf="passwordCtrl.touched && confirmPasswordCtrl.touched && password !== confirmPassword">
+              <ion-text color="danger"><small>Mot de passe différent</small></ion-text>
+            </div>
+            <br />
+            <ion-button class="ion-inscription" color="lagua" expand="block" (click)="signIn()"
+              shape="round">Valider</ion-button>
+
+            <ion-item lines="none" class="ion-background-transparent">
+              <ion-label class="ion-text-other ion-text-center">Ou</ion-label>
+            </ion-item>
+
+            <div class="ion-other-inscription">
+              <ion-button class="ion-margin-bottom" color="facebook" expand="block" (click)="signInWithFacebook()"
+                shape="round">
+                <ion-icon slot="start" name="logo-facebook"></ion-icon>
+                Se connecter avec Facebook
+              </ion-button>
+              <ion-button color="google" expand="block" (click)="signInWithGoogle()" shape="round">
+                <ion-icon slot="start" name="logo-google"></ion-icon>
+                Se connecter avec Google
+              </ion-button>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

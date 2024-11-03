@@ -1,0 +1,232 @@
+<!-- <ion-header class="ion-no-border"> -->
+<ion-toolbar class="ion-header-home">
+  <app-bar-status [isOverlay]="isOverlay"></app-bar-status>
+  <ion-grid class="ion-no-margin">
+    <ion-row>
+      <ion-col size="9">
+        <div class="ion-margin-start">
+          <h4>Bonjour</h4>
+          <h5 class="ion-subtitle">{{user.displayName}} !</h5>
+        </div>
+      </ion-col>
+      <ion-col size="3" class="ion-padding-end ion-display-flex">
+        <app-menu [uploadSetting]="uploadSetting"></app-menu>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding ion-margin-horizontal ion-margin-bottom">
+        <p class="ion-text-progress">Votre progression</p>
+        <div aria-valuemax="100" aria-valuemin="0" role="progressbar" data-state="indeterminate" data-max="100"
+          class="ion-progress">
+          <div data-state="indeterminate" data-max="100" class="ion-range-progress"
+            [ngStyle]="{'width': progression+'%'}">
+            <span class="ion-position-cursor">{{progression | number: '1.0-0'}}%</span>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-toolbar>
+<!-- </ion-header> -->
+<ion-content [fullscreen]="true" class="ion-content-fullscreen-home">
+  <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="ion-content-home">
+    <div>
+      <app-weekly-calendar></app-weekly-calendar>
+
+      <div class="ion-display-flex">
+        <div class="ion-dashboard-bloc">
+          <ion-card class="ion-dashboard ion-dashboard-left">
+            <ion-card-header>
+              <ion-card-title>
+                <span class="ion-card-title">{{userDialect && userDialect.resultReviews ?
+                  userDialect.resultReviews.length : 0}}</span>
+                <span class="ion-float-right"><ion-icon size="large" name="checkmark-outline"></ion-icon></span>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="ion-card-content-level">
+              Leçons terminées
+            </ion-card-content>
+          </ion-card>
+        </div>
+        <div class="ion-dashboard-bloc">
+          <ion-card class="ion-dashboard ion-dashboard-right">
+            <ion-card-header>
+              <ion-card-title>
+                <span class="ion-card-title">{{userDialect.resultLessons ? userDialect.resultLessons.length : 0}}</span>
+                <span class="ion-float-right"><ion-icon size="large" name="book-outline"></ion-icon></span>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="ion-card-content-level">
+              Cours visualisés
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+
+      <div class="ion-unlock-lesson" *ngIf="userDialect.lesson">
+        <swiper-container [slidesPerView]="2.5" [initialSlide]="0" speed="400">
+          <swiper-slide *ngFor="let lesson of recommendedLessons; let index = index">
+            <ion-card
+              (click)="goToLesson('/tabs/lessons/'+dialectPathLearned+'/'+lesson.navigate, userDialect.lesson.order >= lesson.order, lesson)"
+              class="ion-activatable ion-no-margin-bottom"
+              [ngClass]="{'ion-no-margin-middle': !(index === 0 || index === recommendedLessons.length - 1),'ion-no-margin-right': index === 0, 'ion-no-margin-left': index === recommendedLessons.length - 1, 'ion-lock-lesson': userDialect.lesson.order < lesson.order}">
+              <ion-ripple-effect></ion-ripple-effect>
+              <img src="{{lesson.src}}" />
+              <ion-card-content>
+                <div class="ion-font-weight-bold">{{lesson.title}}</div>
+                <div class="ion-padding-top-min ion-font-size-small">{{lesson.subTitle}}</div>
+              </ion-card-content>
+              <ion-button size="small"
+                class="ion-button ion-button-lesson ion-padding-end ion-float-right ion-button-position" fill="clear"
+                (click)="goTo('/tabs/lessons/'+dialectPathLearned+'/'+lesson.navigate, userDialect.lesson.order >= lesson.order, false)">Voir
+                la
+                leçon</ion-button>
+            </ion-card>
+          </swiper-slide>
+        </swiper-container>
+      </div>
+
+      <div class="ion-unlock-lesson">
+        <ion-card class="ion-activatable" [routerLink]="['/tabs/dialogs']">
+          <ion-ripple-effect></ion-ripple-effect>
+          <ion-card-header>
+            <ion-card-title>Dialogue - niveau {{levelDialog | lowercase}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="">Lire des situations de la vie de tous les jours</div>
+            <div class="">Conseiller de voir les dialogues avant les exercices</div>
+          </ion-card-content>
+          <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position" fill="clear"
+            [routerLink]="['/tabs/dialogs']">Voir les dialogues</ion-button>
+        </ion-card>
+      </div>
+
+      <div class="ion-unlock-lesson"
+        *ngIf="!(userDialect.review.category === 'A1' && userDialect.review.lesson === 1 && userDialect.review.order === 1)">
+        <ion-card class="ion-activatable" id="open-modal" (click)="displayPreviousReviews()">
+          <ion-ripple-effect></ion-ripple-effect>
+          <ion-card-header>
+            <ion-card-title>C'est l'heure de réviser</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="">Visualiser les précédentes leçons</div>
+            <div class="">Améliorer votre score en faisant des tests</div>
+          </ion-card-content>
+          <ion-button id="open-modal" size="small"
+            class="ion-button ion-padding-end ion-float-right ion-button-position" fill="clear"
+            (click)="displayPreviousReviews()">Réviser les leçons</ion-button>
+          <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 0.75, 0.95]">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>Quelles leçon souhaitez-vous réviser ?</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button (click)="modal.dismiss()">
+                      <ion-icon slot="icon-only" name="close"></ion-icon>
+                    </ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content>
+                <ion-list *ngIf="previousReviewLoaded">
+                  <ion-item detail="true" routerLinkActive="selected" lines="full"
+                    *ngFor="let r of previousReviews; let index = index"
+                    (click)="accessPreviousReview(r); modal.dismiss()">
+                    <!-- <ion-icon name="lock-open-outline" slot="start"></ion-icon> -->
+                    <div class="ion-position-icon ion-color-{{r.category}}">{{r.category}}</div>
+                    <ion-label class="ion-text-wrap">
+                      <h3>{{r.text}} - cours n°{{r.lesson}}</h3>
+                      <p>{{r.translate}}</p>
+                    </ion-label>
+                  </ion-item>
+                </ion-list>
+                <ion-list *ngIf="!previousReviewLoaded">
+                  <ion-item lines="full" *ngFor="let previousReview of previousReviewLoadedLength">
+                    <ion-skeleton-text [animated]="true" style="width: 50px; height: 50px"></ion-skeleton-text>
+                    <ion-label class="ion-margin-start">
+                      <h3><ion-skeleton-text [animated]="true" style="width: 50%;"></ion-skeleton-text></h3>
+                      <p><ion-skeleton-text [animated]="true" style="width: 40%;"></ion-skeleton-text></p>
+                    </ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
+        </ion-card>
+      </div>
+
+      <div class="ion-unlock-lesson" *ngIf="userDialect.review">
+        <ion-card class="ion-activatable" (click)="accessToReview()">
+          <ion-ripple-effect></ion-ripple-effect>
+          <ion-card-header>
+            <ion-card-title>{{userDialect.review.category === 'A1' && userDialect.review.lesson === 1 &&
+              userDialect.review.order === 1 ?
+              'Premier': 'Prochain'}} cours à visualiser</ion-card-title>
+            <ion-card-subtitle>Cours {{userDialect.review.lesson}} : Leçon {{userDialect.review.order}} -
+              {{userDialect.review.text}} /
+              <i>{{userDialect.review.translate}}</i></ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="ion-custom-text" *ngFor="let content of userDialect.review.contents">{{content}}</div>
+          </ion-card-content>
+          <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position" fill="clear"
+            (click)="accessToReview()">Accéder au cours</ion-button>
+        </ion-card>
+      </div>
+
+      <ng-adsense [adClient]="'ca-pub-7640562161899788'" [adSlot]="8458664896" [display]="'block'" [pageLevelAds]="true"></ng-adsense>
+
+      <div class="ion-unlock-lesson" *ngIf="premium">
+        <ion-card class="ion-activatable" [routerLink]="['/tabs/topics']">
+          <ion-ripple-effect></ion-ripple-effect>
+          <ion-card-header>
+            <ion-card-title>Acquérir du vocabulaire</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="">Visualiser les différentes thématiques</div>
+            <div class="">Valider chaque thème pour débloquer le suivant</div>
+          </ion-card-content>
+          <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position" fill="clear"
+            [routerLink]="['/tabs/topics']">Voir les thèmes</ion-button>
+        </ion-card>
+      </div>
+
+      <ion-modal class="ion-premium-account" [isOpen]="displayPremiumAccountModal">
+        <ng-template>
+          <ion-content>
+            <div class="ion-padding-horizontal ion-padding-top">
+              <div (click)="closeDisplayPremiumAccountModal()">
+                <ion-button class="ion-close-button">
+                  <ion-icon class="ion-icon-close" slot="icon-only" size="large" name="close-outline"></ion-icon>
+                </ion-button>
+              </div>
+              <div class="ion-position-content">
+                <h1 class="ion-no-margin ion-text-center">Félicitation!</h1>
+                <ng-lottie [styles]="styles" [options]="options" (animationCreated)="animationCreated($event)"
+                  (complete)="complete($event)"></ng-lottie>
+                <div class="ion-middle-content">
+                  <h5 class="ion-text-center">Vous avez accès à toutes les fonctionnalités Premium</h5>
+                  <div *ngFor="let access of setting?.product?.premiumAccess">
+                    <ion-item lines="none">
+                      <ion-thumbnail slot="start">
+                        <img *ngIf="access.icon" [src]="access.icon" />
+                      </ion-thumbnail>
+                      <ion-label class="ion-text-wrap">
+                        <h4>{{access.title}}</h4>
+                        <p>{{access.label}}</p>
+                      </ion-label>
+                    </ion-item>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+
+    </div>
+  </div>
+</ion-content>
