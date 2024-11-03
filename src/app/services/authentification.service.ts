@@ -570,4 +570,13 @@ export class AuthentificationService {
     return Timestamp.fromDate(new Date(new Date(date.toDate().setMonth(date.toDate().getMonth() + month)).setDate(date.toDate().getDate() -1)));
   }
 
+  getPremium() {
+    const account = this.user.account;
+    if(account) {
+      return account?.premium && account?.endDate?.toDate() > new Date();
+    } else {
+      return false;
+    }
+  }
+
 }

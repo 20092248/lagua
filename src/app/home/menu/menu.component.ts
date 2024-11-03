@@ -1,9 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, PopoverController, ToastController } from '@ionic/angular';
 import { forkJoin } from 'rxjs';
 import { CodeTextTranslate } from 'src/app/model/codeTextTranslate.model';
-import { CodeTextTranslateMin } from 'src/app/model/codeTextTranslateMin.model';
 import { DialectEnum } from 'src/app/model/dialect.enum';
 import { Dialect } from 'src/app/model/dialect.model';
 import { AlertService } from 'src/app/services/alert.service';
@@ -41,6 +40,9 @@ export class MenuComponent implements OnInit {
   }
   get userDialect() {
     return this.user.dialects[this.dialect];
+  }
+  get premium(){
+    return this.authentificationService.getPremium();
   }
 
   ngOnInit() {
@@ -116,6 +118,10 @@ export class MenuComponent implements OnInit {
         this.alertService.presentToast(CONSTANTS.CONFIRM_DIALECT_CHANGED, 3000, 'lagua');
       });
     });
+  }
+
+  changeStatePremiumAccount(event: any) {
+    this.user.account.premium = event.detail.checked;
   }
 
   dismissPopover() {

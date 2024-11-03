@@ -86,7 +86,10 @@ export class HomePage implements OnInit {
   }
   get isOverlay(){
     return this.settingsService.isOverlay;
-  }  
+  }
+  get premium(){
+    return this.authentificationService.getPremium();
+  }
 
   ngOnInit() {
     Utils.customCapacitorTabs(this.settingService);

@@ -17,7 +17,7 @@ import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { CrashlyticsErrorHandler } from './utils/crashlytics-handler';
-
+import { AdsenseModule } from 'ng2-adsense';
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { Vibration } from '@awesome-cordova-plugins/vibration/ngx';
@@ -36,6 +36,7 @@ export function playerFactory() { return player; }
     HttpClientModule,
     NgxPayPalModule,
     GooglePayButtonModule,
+    AdsenseModule.forRoot({adClient: 'ca-pub-2159881532224833'}),
     LottieModule.forRoot({player: playerFactory}),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore(initializeApp(environment.firebase))),

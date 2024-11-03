@@ -13,7 +13,11 @@
           <h5 class="ion-margin-top">{{user.displayName}}</h5>
           <div class="ion-margin-bottom">{{user.email}}</div>
         </div>
-        <ion-accordion-group>
+        <ion-item>
+          <ion-label>Compte premium</ion-label>
+          <ion-toggle slot="end" [checked]="premium" [enableOnOffLabels]="true" (ionChange)="changeStatePremiumAccount($event)"></ion-toggle>
+        </ion-item>
+        <ion-accordion-group *ngIf="premium">
           <ion-accordion value="objective">
             <ion-item class="ion-accordion-content" button slot="header">
               <ion-avatar slot="start">
@@ -45,7 +49,7 @@
             </div>
           </ion-accordion>
         </ion-accordion-group>
-        <ion-item class="ion-alert-subscription" button (click)="goTo('../products', true, true)"><ion-icon class="ion-padding-end ion-alert-subscription"
+        <ion-item *ngIf="!premium" class="ion-alert-subscription" button (click)="goTo('../products', true, true)"><ion-icon class="ion-padding-end ion-alert-subscription"
           name="wallet-outline"></ion-icon>Voir les abonnements</ion-item>
         <ion-item button (click)="goTo('../parameter', true, true)"><ion-icon class="ion-padding-end"
             name="settings-outline"></ion-icon>Paramètres</ion-item>
