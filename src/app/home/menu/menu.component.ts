@@ -5,6 +5,7 @@ import { forkJoin } from 'rxjs';
 import { CodeTextTranslate } from 'src/app/model/codeTextTranslate.model';
 import { DialectEnum } from 'src/app/model/dialect.enum';
 import { Dialect } from 'src/app/model/dialect.model';
+import { AdMobService } from 'src/app/services/admob.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LessonService } from 'src/app/services/lesson.service';
@@ -28,9 +29,9 @@ export class MenuComponent implements OnInit {
   flagDialectLearned: string = '';
   @Input() uploadSetting: EventEmitter<any> | undefined;
 
-  constructor(private router: Router, private themeService: ThemeService, private settingService: SettingService, private alertService: AlertService,
+  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
-    private modalController: ModalController, private reviewService: ReviewService, private loadingService: LoadingService, private toastController: ToastController) { }
+    private reviewService: ReviewService, private adMobService: AdMobService) { }
 
   get user() {
     return this.authentificationService.user;
@@ -122,6 +123,11 @@ export class MenuComponent implements OnInit {
 
   changeStatePremiumAccount(event: any) {
     this.user.account.premium = event.detail.checked;
+    if(this.user.account.premium) {
+      this.adMobService.hideBanner();
+    } else {
+      this.adMobService.showBanner();
+    }
   }
 
   dismissPopover() {

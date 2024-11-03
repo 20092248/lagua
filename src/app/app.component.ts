@@ -14,6 +14,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { App } from '@capacitor/app';
 import { environment } from 'src/environments/environment';
+import { AdMobService } from './services/admob.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
 
-  constructor(private router: Router, private location: Location, private alertService: AlertService, private themeService: ThemeService, private platform: Platform, private pushNotificationsService: NotificationsService, private loadingService: LoadingService, private settingService: SettingService) {
+  constructor(private router: Router, private location: Location, private alertService: AlertService, private themeService: ThemeService, private platform: Platform, private pushNotificationsService: NotificationsService, private adMobService: AdMobService, private settingService: SettingService) {
     const value = localStorage.getItem('selected-app-theme');
     this.themeService.setAppTheme(value ? value : 'sunny');
     this.initializeApp();
@@ -31,6 +32,7 @@ export class AppComponent {
   initializeApp() {
     Utils.customCapacitorApp(this.settingService);
     this.pushNotificationsService.initPush();
+    this.adMobService.initializeAdmob();
     this.platform.ready().then(async () => {
       this.hideSplashScreen();
       GoogleAuth.initialize();

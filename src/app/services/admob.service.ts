@@ -3,15 +3,14 @@ import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AdMob, AdMobRewardItem, AdOptions, BannerAdOptions, BannerAdPosition, BannerAdSize, RewardAdOptions, RewardAdPluginEvents } from '@capacitor-community/admob';
 import { Platform } from '@ionic/angular';
+import { AuthentificationService } from './authentification.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdMobService {
 
-  constructor(private router: Router, private platform: Platform, _auth: Auth) {
-    this.initializeAdmob();
-  }
+  constructor(private router: Router, private platform: Platform, _auth: Auth, private authentificationService: AuthentificationService) { }
 
   async initializeAdmob() {
     if (this.platform.is('capacitor')) {
@@ -28,7 +27,7 @@ export class AdMobService {
   }
 
   async showBanner() {
-    if (this.platform.is('capacitor')) {
+    if (this.platform.is('capacitor') && this.authentificationService.getPremium()) {
       const options: BannerAdOptions = {
         adId: 'ca-app-pub-2159881532224833/5637670566',
         adSize: BannerAdSize.ADAPTIVE_BANNER,
@@ -54,7 +53,7 @@ export class AdMobService {
   }
 
   async showInterstitial() {
-    if (this.platform.is('capacitor')) {
+    if (this.platform.is('capacitor') && this.authentificationService.getPremium()) {
       const options: AdOptions = {
         adId: 'ca-app-pub-2159881532224833/3515792301',
         isTesting: true,
@@ -66,7 +65,7 @@ export class AdMobService {
   }
 
   async showRewardVideo() {
-    if (this.platform.is('capacitor')) {
+    if (this.platform.is('capacitor') && this.authentificationService.getPremium()) {
       AdMob.addListener(RewardAdPluginEvents.Rewarded,
         (reward: AdMobRewardItem) => {
           console.log(reward);

@@ -21,6 +21,7 @@ import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { GlobalParam } from '../model/globalParam.model';
 import { AudioService } from '../services/audio.service';
+import { AdMobService } from '../services/admob.service';
 register();
 
 @Component({

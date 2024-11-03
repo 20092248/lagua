@@ -6,6 +6,7 @@ import { AuthentificationService } from '../services/authentification.service';
 import { App } from '@capacitor/app';
 import { Location } from '@angular/common';
 import { filter } from 'rxjs';
+import { AdMobService } from '../services/admob.service';
 
 @Component({
   selector: 'app-tabs',
@@ -16,7 +17,11 @@ export class TabsPage implements OnInit {
 
   tabSelected: string = '';
 
-  constructor(private router: Router, private platform: Platform, private popoverController: PopoverController, private authentification: AuthentificationService) {
+  get premium(){
+    return this.authentification.getPremium();
+  }
+
+  constructor(private router: Router, private platform: Platform, private popoverController: PopoverController, private authentification: AuthentificationService, private adMobService: AdMobService) {
     if(this.platform.is('capacitor')) {
       this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: any) => {
         this.tabSelected = event.url.substring(event.url.lastIndexOf("/") + 1);
@@ -24,7 +29,9 @@ export class TabsPage implements OnInit {
     }
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.adMobService.showBanner();
+   }
 
   logout() {
     this.authentification.logout(true).then(() => {
