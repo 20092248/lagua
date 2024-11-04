@@ -6,7 +6,6 @@ import { SettingService } from '../services/setting.service';
 import { ThemeService } from '../services/theme.service';
 import { DialectEnum } from '../model/dialect.enum';
 import { Dialect } from '../model/dialect.model';
-import { AdMobService } from '../services/admob.service';
 
 @Component({
   selector: 'app-parameter',
@@ -21,7 +20,7 @@ export class ParameterPage implements OnInit {
   categorie: any;
   isOverlay: boolean | undefined;
 
-  constructor(private router: Router, private authentificationService: AuthentificationService, private adMobService: AdMobService,
+  constructor(private router: Router, private authentificationService: AuthentificationService,
     private settingsService: SettingService, private themeService: ThemeService) { }
 
   get theme() {
@@ -29,7 +28,6 @@ export class ParameterPage implements OnInit {
   }
 
   ngOnInit() {
-    this.adMobService.showInterstitial();
     this.isOverlay = this.settingsService.isOverlay;
     this.user = this.authentificationService.user;
     this.dialect = this.authentificationService.dialect;

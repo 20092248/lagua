@@ -1,12 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { IonRouterOutlet, IonTabs, Platform, PopoverController } from '@ionic/angular';
-import { User } from '../model/user.model';
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthentificationService } from '../services/authentification.service';
-import { App } from '@capacitor/app';
-import { Location } from '@angular/common';
 import { filter } from 'rxjs';
-import { AdMobService } from '../services/admob.service';
+import { SettingService } from '../services/setting.service';
 
 @Component({
   selector: 'app-tabs',
@@ -17,41 +13,22 @@ export class TabsPage implements OnInit {
 
   tabSelected: string = '';
 
-  get premium(){
+  get premium() {
     return this.authentification.getPremium();
   }
 
-  constructor(private router: Router, private platform: Platform, private popoverController: PopoverController, private authentification: AuthentificationService, private adMobService: AdMobService) {
-    if(this.platform.is('capacitor')) {
+  constructor(private router: Router, private settingService: SettingService, private authentification: AuthentificationService) {
+    if (this.settingService.isCapacitor) {
       this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: any) => {
         this.tabSelected = event.url.substring(event.url.lastIndexOf("/") + 1);
       });
     }
   }
 
-  ngOnInit(): void {
-    this.adMobService.showBanner();
-   }
-
-  logout() {
-    this.authentification.logout(true).then(() => {
-      this.goTo('/firstPage');
-    });
-  }
+  ngOnInit(): void { }
 
   setCurrentTab(event: any) {
     this.tabSelected = event.tab;
-  }
-
-  goTo(routing: string) {
-    this.router.navigate([routing]);
-    this.dismissPopover();
-  }
-
-  dismissPopover() {
-    if (this.popoverController) {
-      this.popoverController.dismiss();
-    }
   }
 
 }

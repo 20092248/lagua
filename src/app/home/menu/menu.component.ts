@@ -48,6 +48,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
+    if(!this.premium) { this.adMobService.hideBanner(); }
     if (this.uploadSetting) {
       this.uploadSetting.subscribe(data => {
         this.settingService.profile = data.profile;
@@ -122,7 +123,12 @@ export class MenuComponent implements OnInit {
   }
 
   changeStatePremiumAccount(event: any) {
+    console.log('change state');
     this.user.account.premium = event.detail.checked;
+    this.getPremiumAccount();
+  }
+
+  getPremiumAccount() {
     if(this.user.account.premium) {
       this.adMobService.hideBanner();
     } else {
@@ -140,7 +146,8 @@ export class MenuComponent implements OnInit {
     this.user.photoURL = this.settingService.profile.icon?.unknownUserSrc;
   }
 
-  goTo(routing: string, lessonUnlock: boolean, dismissPopover: boolean) {
+  goTo(routing: string, lessonUnlock: boolean, dismissPopover: boolean) {    
+    this.adMobService.showInterstitial();
     if (lessonUnlock) {
       this.router.navigate([routing]);
       if (dismissPopover) {

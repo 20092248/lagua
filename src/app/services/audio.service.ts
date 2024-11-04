@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Vibration } from '@awesome-cordova-plugins/vibration/ngx';
-import { Platform } from '@ionic/angular';
-import { AlertService } from './alert.service';
 import { NativeAudio } from '@awesome-cordova-plugins/native-audio/ngx';
+import { SettingService } from './setting.service';
 
 interface Sound {
   key: string;
@@ -15,11 +14,11 @@ interface Sound {
 export class AudioService {
   private sounds: Sound[] = [];
   private audioPlayer: HTMLAudioElement = new Audio();
-  constructor(private alertService: AlertService, private platform: Platform, private nativeAudio: NativeAudio, 
+  constructor(private settingService: SettingService, private nativeAudio: NativeAudio, 
     private vibration: Vibration) {
   }
   preload(key: string, asset: string): void {
-    if (this.platform.is('capacitor')) {
+    if (this.settingService.isCapacitor) {
       this.nativeAudio.preloadSimple(key, asset);
     } else {
       let audio = new Audio();
@@ -34,7 +33,7 @@ export class AudioService {
   }
 
   playAudio(key: string, timeToVibrate: number) {
-    if (this.platform.is('capacitor') && timeToVibrate) {
+    if (this.settingService.isCapacitor && timeToVibrate) {
       this.vibration.vibrate(timeToVibrate);
     }
     this.play(key);

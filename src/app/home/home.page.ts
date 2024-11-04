@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { IonRouterOutlet, IonTabs, Platform, PopoverController } from '@ionic/angular';
+import { IonTabs, PopoverController } from '@ionic/angular';
 import { Lesson } from '../model/lesson.model';
 import { AuthentificationService } from '../services/authentification.service';
 import { LessonService } from '../services/lesson.service';
@@ -15,13 +15,11 @@ import { Utils } from '../utils/utils';
 import { AlertService } from '../services/alert.service';
 import { CodeTextTranslate } from '../model/codeTextTranslate.model';
 import { CONSTANTS } from '../utils/constants';
-import { App } from '@capacitor/app';
 import { QuestionService } from '../services/question.service';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { GlobalParam } from '../model/globalParam.model';
 import { AudioService } from '../services/audio.service';
-import { AdMobService } from '../services/admob.service';
 register();
 
 @Component({

@@ -1,5 +1,5 @@
-<ion-tabs [ngClass]="{ 'ion-free-account' : !premium }" (ionTabsDidChange)="setCurrentTab($event)">
-  <ion-tab-bar slot="bottom">
+<ion-tabs (ionTabsDidChange)="setCurrentTab($event)">
+  <ion-tab-bar slot="bottom" [ngClass]="{ 'ion-free-account' : !premium }">
     <ion-tab-button tab="home">
       <ion-icon name="home{{tabSelected === 'home' ? '-sharp' : '-outline'}}"></ion-icon>
       <ion-label>Accueil</ion-label>

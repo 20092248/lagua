@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, signInWithCredential, signOut, UserCredential, sendPasswordResetEmail } from '@angular/fire/auth';
-import { doc, getDoc, updateDoc, Firestore, getFirestore, onSnapshot, setDoc, serverTimestamp, Timestamp } from '@angular/fire/firestore';
+import { Auth, createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signInWithCredential, signOut, UserCredential, sendPasswordResetEmail } from '@angular/fire/auth';
+import { doc, getDoc, updateDoc, Firestore, getFirestore, setDoc, Timestamp } from '@angular/fire/firestore';
 import { User } from '../model/user.model';
 import { ReviewService } from './review.service';
 import { LessonService } from './lesson.service';
@@ -8,10 +8,8 @@ import { Review } from '../model/review.model';
 import { Lesson } from '../model/lesson.model';
 import { ResultReview } from '../model/resultReview.model';
 import { finalize, take, interval, Subscription, lastValueFrom } from 'rxjs';
-import { LoadingService } from './loading.service';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { FacebookLogin, FacebookLoginResponse } from '@capacitor-community/facebook-login';
-import { Platform } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { CONSTANTS } from '../utils/constants';
 import { AlertService } from './alert.service';
@@ -19,6 +17,7 @@ import { Utils } from '../utils/utils';
 import { DialectEnum } from '../model/dialect.enum';
 import { AnalyticsService } from './analytics.service';
 import { LessonMin } from '../model/lessonMin.model';
+import { SettingService } from './setting.service';
 const FACEBOOK_PERMISSIONS = ['email', 'user_birthday', 'user_photos', 'user_gender',];
 const USER_KEY = 'users';
 
@@ -32,8 +31,8 @@ export class AuthentificationService {
   choice: Subscription | undefined;
   dialect: DialectEnum = DialectEnum.SHGC;
 
-  constructor(private _auth: Auth, private _firestore: Firestore, private platform: Platform, private http: HttpClient,
-    private reviewService: ReviewService, private lessonService: LessonService, private loadingService: LoadingService,
+  constructor(private _auth: Auth, private _firestore: Firestore, private http: HttpClient,
+    private reviewService: ReviewService, private lessonService: LessonService, private settingService: SettingService,
     private alertService: AlertService, private analyticsService: AnalyticsService) { }
 
   async isConnected() {
@@ -177,7 +176,7 @@ export class AuthentificationService {
   }
 
   async loginWithGoogle() {
-    if (this.platform.is('capacitor')) {
+    if (this.settingService.isCapacitor) {
       return this.loginwithgoogleCapacitor();
     } else {
       return this.loginWithGoogleFirebase();
@@ -237,7 +236,7 @@ export class AuthentificationService {
   }
 
   async signInWithGoogle(firstReview: Review, firstLesson: Lesson) {
-    if (this.platform.is('capacitor')) {
+    if (this.settingService.isCapacitor) {
       return this.signinWithGoogleCapacitor(firstReview, firstLesson);
     } else {
       return this.signinWithGoogleFirebase(firstReview, firstLesson);
@@ -291,7 +290,7 @@ export class AuthentificationService {
   }
 
   async loginWithFacebook() {
-    if (this.platform.is('capacitor')) {
+    if (this.settingService.isCapacitor) {
       return this.loginWithFacebookCapacitor();
     } else {
       return this.loginWithFacebookFirebase();
@@ -350,7 +349,7 @@ export class AuthentificationService {
   }
 
   async signinWithFacebook(firstReview: Review, firstLesson: Lesson) {
-    if (this.platform.is('capacitor')) {
+    if (this.settingService.isCapacitor) {
       return this.signinWithFacebookCapacitor(firstReview, firstLesson);
     } else {
       return this.signinWithFacebookFirebase(firstReview, firstLesson);
