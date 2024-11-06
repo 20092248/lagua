@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingService } from '../services/setting.service';
+import { AdMobService } from '../services/admob.service';
 
 @Component({
   selector: 'app-help',
@@ -15,7 +16,9 @@ export class HelpPage implements OnInit {
   {title: 'Nous contacter', subtitle: 'Contacte l\'équipe Lagua', route: '/help/contactus'}] 
   isOverlay : boolean |undefined;
 
-  constructor(private settingService: SettingService) { }
+  constructor(private settingService: SettingService, private adMobService: AdMobService) { 
+    this.adMobService.showInterstitial();
+  }
 
   ngOnInit() {
     this.isOverlay = this.settingService.isOverlay;

@@ -2,6 +2,11 @@ ion-content {
   --background: var(--ion-background-light-color);
 }
 
+ion-toolbar {
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+}
+
 ion-title {
     padding: 0 16px;
 }

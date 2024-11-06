@@ -11,6 +11,7 @@ import { Timestamp } from 'firebase/firestore';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { first, lastValueFrom } from 'rxjs';
+import { AdMobService } from '../services/admob.service';
 
 @Component({
   selector: 'app-products',
@@ -31,7 +32,10 @@ export class ProductsPage implements OnInit {
     return this.authentificationService.user;
   }
 
-  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, private authentificationService: AuthentificationService, private http: HttpClient) { }
+  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, 
+    private authentificationService: AuthentificationService, private http: HttpClient, private adMobService: AdMobService) {
+    this.adMobService.showInterstitial();
+   }
 
   ngOnInit() {
     this.settingService.getSettings().then(setting => {

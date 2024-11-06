@@ -40,16 +40,6 @@ export class Utils {
     }
   }
 
-  static customCapacitorStart(router: Router, platform: Platform, location: Location) {
-    if (platform.is('capacitor')) {
-      StatusBar.setOverlaysWebView({ overlay: false });
-      StatusBar.setStyle({ style: Style.Dark });
-      StatusBar.setBackgroundColor({ color: '#46895c' });
-      NavigationBar.setColor({ color: '#74a884', darkButtons: false });
-      
-    }
-  }
-
   static customCapacitorLoginSignInPage(settingService: SettingService) {
     if (settingService.isCapacitor) {
       StatusBar.setOverlaysWebView({ overlay: false });
@@ -69,6 +59,7 @@ export class Utils {
 
   static customCapacitorQuestion(settingService: SettingService, color: string) {
     if (settingService.isCapacitor) {
+      StatusBar.setStyle({ style: Style.Light });
       NavigationBar.setColor({ color: color, darkButtons: true });
     }
   }

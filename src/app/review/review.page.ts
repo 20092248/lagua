@@ -1,12 +1,11 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Review } from '../model/review.model';
 import { ReviewService } from '../services/review.service';
 import { SettingService } from '../services/setting.service';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthentificationService } from '../services/authentification.service';
 import { User } from '../model/user.model';
-import { IonContent, ScrollDetail, ToastController } from '@ionic/angular';
-import { CodeTextTranslate } from '../model/codeTextTranslate.model';
+import { ScrollDetail, ToastController } from '@ionic/angular';
 import { QuestionService } from '../services/question.service';
 import { ReviewGroup } from '../model/reviewGroup.model';
 import { LoadingService } from '../services/loading.service';
@@ -14,7 +13,6 @@ import { Utils } from '../utils/utils';
 import { CONSTANTS } from '../utils/constants';
 import { AudioService } from '../services/audio.service';
 import { CodeTextTranslateMin } from '../model/codeTextTranslateMin.model';
-import { AdMobService } from '../services/admob.service';
 
 @Component({
   selector: 'app-review',
@@ -40,7 +38,7 @@ export class ReviewPage implements OnInit {
 
   constructor(private router: Router, private settingsService: SettingService, private reviewService: ReviewService, private authentificationService: AuthentificationService,
     private toastController: ToastController, private questionService: QuestionService, private settingService: SettingService, private loadingService: LoadingService,
-    private audioService: AudioService, private adMobService: AdMobService) { }
+    private audioService: AudioService) { }
 
   get user() {
     return this.authentificationService.user;
@@ -105,7 +103,6 @@ export class ReviewPage implements OnInit {
   }
 
   accessReview(review: Review) {
-    this.adMobService.showRewardVideo();
     this.reviewService.review = review;
     if(this.categoryLevel === this.codeCategorySelectedLevel && this.userReview.lesson === review.lesson && this.userReview.order === review.order){
       this.startReview(review);

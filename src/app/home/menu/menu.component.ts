@@ -1,18 +1,15 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController, PopoverController, ToastController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
 import { forkJoin } from 'rxjs';
 import { CodeTextTranslate } from 'src/app/model/codeTextTranslate.model';
 import { DialectEnum } from 'src/app/model/dialect.enum';
 import { Dialect } from 'src/app/model/dialect.model';
-import { AdMobService } from 'src/app/services/admob.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LessonService } from 'src/app/services/lesson.service';
-import { LoadingService } from 'src/app/services/loading.service';
 import { ReviewService } from 'src/app/services/review.service';
 import { SettingService } from 'src/app/services/setting.service';
-import { ThemeService } from 'src/app/services/theme.service';
 import { CONSTANTS } from 'src/app/utils/constants';
 import { Utils } from 'src/app/utils/utils';
 
@@ -31,7 +28,7 @@ export class MenuComponent implements OnInit {
 
   constructor(private router: Router, private settingService: SettingService, private alertService: AlertService,
     private authentificationService: AuthentificationService, private lessonService: LessonService, private popoverController: PopoverController,
-    private reviewService: ReviewService, private adMobService: AdMobService) { }
+    private reviewService: ReviewService) { }
 
   get user() {
     return this.authentificationService.user;
@@ -48,7 +45,6 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
-    if(!this.premium) { this.adMobService.hideBanner(); }
     if (this.uploadSetting) {
       this.uploadSetting.subscribe(data => {
         this.settingService.profile = data.profile;
@@ -122,20 +118,6 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  changeStatePremiumAccount(event: any) {
-    console.log('change state');
-    this.user.account.premium = event.detail.checked;
-    this.getPremiumAccount();
-  }
-
-  getPremiumAccount() {
-    if(this.user.account.premium) {
-      this.adMobService.hideBanner();
-    } else {
-      this.adMobService.showBanner();
-    }
-  }
-
   dismissPopover() {
     if (this.authentificationService) {
       this.popoverController.dismiss();
@@ -146,8 +128,7 @@ export class MenuComponent implements OnInit {
     this.user.photoURL = this.settingService.profile.icon?.unknownUserSrc;
   }
 
-  goTo(routing: string, lessonUnlock: boolean, dismissPopover: boolean) {    
-    this.adMobService.showInterstitial();
+  goTo(routing: string, lessonUnlock: boolean, dismissPopover: boolean) {
     if (lessonUnlock) {
       this.router.navigate([routing]);
       if (dismissPopover) {

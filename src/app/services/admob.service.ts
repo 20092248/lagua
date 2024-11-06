@@ -27,10 +27,10 @@ export class AdMobService {
   }
 
   async showBanner() {
-    if (this.settingService.isCapacitor && this.authentificationService.getPremium()) {
+    if (this.settingService.isCapacitor && !this.authentificationService.getPremium()) {
       const options: BannerAdOptions = {
         adId: 'ca-app-pub-2159881532224833/5637670566',
-        adSize: BannerAdSize.ADAPTIVE_BANNER,
+        adSize: BannerAdSize.BANNER,
         position: BannerAdPosition.BOTTOM_CENTER,
         margin: 0,
         isTesting: true,
@@ -53,7 +53,7 @@ export class AdMobService {
   }
 
   async showInterstitial() {
-    if (this.settingService.isCapacitor && this.authentificationService.getPremium()) {
+    if (this.settingService.isCapacitor && !this.authentificationService.getPremium()) {
       const options: AdOptions = {
         adId: 'ca-app-pub-2159881532224833/3515792301',
         isTesting: true,
@@ -65,7 +65,7 @@ export class AdMobService {
   }
 
   async showRewardVideo() {
-    if (this.settingService.isCapacitor && this.authentificationService.getPremium()) {
+    if (this.settingService.isCapacitor && !this.authentificationService.getPremium()) {
       AdMob.addListener(RewardAdPluginEvents.Rewarded,
         (reward: AdMobRewardItem) => {
           console.log(reward);

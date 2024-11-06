@@ -32,8 +32,8 @@ export class AppComponent {
   initializeApp() {
     Utils.customCapacitorApp(this.settingService);
     this.pushNotificationsService.initPush();
-    this.adMobService.initializeAdmob();
     this.platform.ready().then(async () => {
+      this.adMobService.initializeAdmob();
       this.hideSplashScreen();
       GoogleAuth.initialize();
       FacebookLogin.initialize({ appId: '771703417822238' });

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { Question } from 'src/app/model/question.model';
+import { AdMobService } from 'src/app/services/admob.service';
 import { AudioService } from 'src/app/services/audio.service';
 import { QuestionService } from 'src/app/services/question.service';
 import { SettingService } from 'src/app/services/setting.service';
@@ -16,7 +17,10 @@ export class PreviewPage implements OnInit {
   questions: any[] = [];
   helps: any[] = [];
 
-  constructor(private router: Router, private questionService: QuestionService, private audioService: AudioService, private settingService: SettingService) { }
+  constructor(private router: Router, private questionService: QuestionService, private audioService: AudioService, 
+    private settingService: SettingService, private adMobService: AdMobService) {
+    this.adMobService.showRewardVideo();
+  }
 
   ngOnInit() {
     this.questionService.type = 'R';

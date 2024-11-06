@@ -572,7 +572,7 @@ export class AuthentificationService {
   getPremium() {
     const account = this.user.account;
     if(account) {
-      return account?.premium && account?.endDate?.toDate() > new Date();
+      return account.premium && account.endDate?.toDate() > new Date();
     } else {
       return false;
     }
