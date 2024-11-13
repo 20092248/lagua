@@ -9,35 +9,35 @@ const routes: Routes = [
   },
   {
     path: 'shindzuani/accent',
-    loadChildren: () => import('./shindzuani/accent/accent.module').then(m => m.AccentPageModule)
+    loadChildren: () => import('./shikomori/accent/accent.module').then(m => m.AccentPageModule)
   },
   {
     path: 'shindzuani/agreement',
-    loadChildren: () => import('./shindzuani/agreement/agreement.module').then(m => m.AgreementPageModule)
+    loadChildren: () => import('./shikomori/agreement/agreement.module').then(m => m.AgreementPageModule)
   },
   {
     path: 'shindzuani/alphabet',
-    loadChildren: () => import('./shindzuani/alphabet/alphabet.module').then(m => m.AlphabetPageModule)
+    loadChildren: () => import('./shikomori/alphabet/alphabet.module').then(m => m.AlphabetPageModule)
   },
   {
     path: 'shindzuani/lexicon',
-    loadChildren: () => import('./shindzuani/lexicon/lexicon.module').then(m => m.LexiconPageModule)
+    loadChildren: () => import('./shikomori/lexicon/lexicon.module').then(m => m.LexiconPageModule)
   },
   {
     path: 'shindzuani/nominal',
-    loadChildren: () => import('./shindzuani/nominal/nominal.module').then(m => m.NominalPageModule)
+    loadChildren: () => import('./shikomori/nominal/nominal.module').then(m => m.NominalPageModule)
   },
   {
     path: 'shindzuani/pronoun',
-    loadChildren: () => import('./shindzuani/pronoun/pronoun.module').then(m => m.PronounPageModule)
+    loadChildren: () => import('./shikomori/pronoun/pronoun.module').then(m => m.PronounPageModule)
   },
   {
     path: 'shindzuani/verbal',
-    loadChildren: () => import('./shindzuani/verbal/verbal.module').then(m => m.VerbalPageModule)
+    loadChildren: () => import('./shikomori/verbal/verbal.module').then(m => m.VerbalPageModule)
   },
   {
     path: 'shindzuani/conjugation',
-    loadChildren: () => import('./shindzuani/conjugation/conjugation.module').then(m => m.ConjugationPageModule)
+    loadChildren: () => import('./shikomori/conjugation/conjugation.module').then(m => m.ConjugationPageModule)
   },
   {
     path: 'shingazidza/accent',
@@ -73,67 +73,67 @@ const routes: Routes = [
   },
   {
     path: 'shimaore/accent',
-    loadChildren: () => import('./shimaore/accent/accent.module').then(m => m.AccentPageModule)
+    loadChildren: () => import('./shikomori/accent/accent.module').then(m => m.AccentPageModule)
   },
   {
     path: 'shimaore/agreement',
-    loadChildren: () => import('./shimaore/agreement/agreement.module').then(m => m.AgreementPageModule)
+    loadChildren: () => import('./shikomori/agreement/agreement.module').then(m => m.AgreementPageModule)
   },
   {
     path: 'shimaore/alphabet',
-    loadChildren: () => import('./shimaore/alphabet/alphabet.module').then(m => m.AlphabetPageModule)
+    loadChildren: () => import('./shikomori/alphabet/alphabet.module').then(m => m.AlphabetPageModule)
   },
   {
     path: 'shimaore/lexicon',
-    loadChildren: () => import('./shimaore/lexicon/lexicon.module').then(m => m.LexiconPageModule)
+    loadChildren: () => import('./shikomori/lexicon/lexicon.module').then(m => m.LexiconPageModule)
   },
   {
     path: 'shimaore/nominal',
-    loadChildren: () => import('./shimaore/nominal/nominal.module').then(m => m.NominalPageModule)
+    loadChildren: () => import('./shikomori/nominal/nominal.module').then(m => m.NominalPageModule)
   },
   {
     path: 'shimaore/pronoun',
-    loadChildren: () => import('./shimaore/pronoun/pronoun.module').then(m => m.PronounPageModule)
+    loadChildren: () => import('./shikomori/pronoun/pronoun.module').then(m => m.PronounPageModule)
   },
   {
     path: 'shimaore/verbal',
-    loadChildren: () => import('./shimaore/verbal/verbal.module').then(m => m.VerbalPageModule)
+    loadChildren: () => import('./shikomori/verbal/verbal.module').then(m => m.VerbalPageModule)
   },
   {
     path: 'shimaore/conjugation',
-    loadChildren: () => import('./shimaore/conjugation/conjugation.module').then(m => m.ConjugationPageModule)
+    loadChildren: () => import('./shikomori/conjugation/conjugation.module').then(m => m.ConjugationPageModule)
   },
   {
     path: 'shimwali/accent',
-    loadChildren: () => import('./shimwali/accent/accent.module').then(m => m.AccentPageModule)
+    loadChildren: () => import('./shikomori/accent/accent.module').then(m => m.AccentPageModule)
   },
   {
     path: 'shimwali/agreement',
-    loadChildren: () => import('./shimwali/agreement/agreement.module').then(m => m.AgreementPageModule)
+    loadChildren: () => import('./shikomori/agreement/agreement.module').then(m => m.AgreementPageModule)
   },
   {
     path: 'shimwali/alphabet',
-    loadChildren: () => import('./shimwali/alphabet/alphabet.module').then(m => m.AlphabetPageModule)
+    loadChildren: () => import('./shikomori/alphabet/alphabet.module').then(m => m.AlphabetPageModule)
   },
   {
     path: 'shimwali/lexicon',
-    loadChildren: () => import('./shimwali/lexicon/lexicon.module').then(m => m.LexiconPageModule)
+    loadChildren: () => import('./shikomori/lexicon/lexicon.module').then(m => m.LexiconPageModule)
   },
   {
     path: 'shimwali/nominal',
-    loadChildren: () => import('./shimwali/nominal/nominal.module').then(m => m.NominalPageModule)
+    loadChildren: () => import('./shikomori/nominal/nominal.module').then(m => m.NominalPageModule)
   },
   {
     path: 'shimwali/pronoun',
-    loadChildren: () => import('./shimwali/pronoun/pronoun.module').then(m => m.PronounPageModule)
+    loadChildren: () => import('./shikomori/pronoun/pronoun.module').then(m => m.PronounPageModule)
   },
   {
     path: 'shimwali/verbal',
-    loadChildren: () => import('./shimwali/verbal/verbal.module').then(m => m.VerbalPageModule)
+    loadChildren: () => import('./shikomori/verbal/verbal.module').then(m => m.VerbalPageModule)
   },
   {
     path: 'shimwali/conjugation',
-    loadChildren: () => import('./shimwali/conjugation/conjugation.module').then(m => m.ConjugationPageModule)
+    loadChildren: () => import('./shikomori/conjugation/conjugation.module').then(m => m.ConjugationPageModule)
   },  
   {
     path: '',

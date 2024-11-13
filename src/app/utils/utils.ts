@@ -52,6 +52,7 @@ export class Utils {
   static customCapacitorTabs(settingService: SettingService) {
     if (settingService.isCapacitor) {
       StatusBar.setOverlaysWebView({ overlay: true });
+      StatusBar.setStyle({ style: Style.Dark });
       NavigationBar.setColor({ color: '#ffffff', darkButtons: true });
       settingService.isOverlay = true;
     }
