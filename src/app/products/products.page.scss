@@ -15,11 +15,13 @@ ion-card {
     .ion-text-content {
         float: left;
     }
+
     .ion-button-selected {
         float: right;
         position: relative;
         top: -10px;
-    }    
+    }
+
     .ion-custom-original-price {
         color: #eb445a;
         font-weight: bold;
@@ -27,19 +29,40 @@ ion-card {
     }
 }
 
+h2.ion-subtitle {
+    position: relative;
+    right: 16px;
+}
+
+ion-row {
+    color: #ffffff;
+}
+
 ion-button {
     --background: #46895c;
 }
 
+ion-col.ion-arrow {
+    padding: 0px;
+
+    ion-icon {
+        padding: 10px;
+        border-radius: 25px;
+        bottom: 4px;
+        position: relative;
+    }
+
+    ion-icon:hover {
+        background: #ffffff36;
+    }
+
+}
+
+ion-item:last-child {
+    border-radius: 10px;
+}
+
 .ion-background-top {
-    width: 100%;
-    background: url(/assets/img/background.png) 0 / 250%;
-    background-position-y: bottom;
-    position: relative;
-    overflow: hidden;
-    border-bottom-left-radius: 80% 5rem;
-    border-bottom-right-radius: 80% 5rem;
-    padding-bottom: 32px;
 
     h4 {
         color: #ffffff;
@@ -53,6 +76,16 @@ ion-button {
         color: #c8f5cc;
         font-size: 110%;
     }
+}
+
+.ion-top-content {
+    background: url(/assets/img/background.png) 0 / 250%;
+    background-position-y: bottom;
+}
+
+.ion-top-content,.ion-middle-content {
+    border: 1px #255b37 solid;
+    border-radius: 10px;
 }
 
 .ion-top-content,
@@ -76,9 +109,11 @@ ion-button {
     margin-top: 32px;
     color: #ffffff;
     text-align: center;
+
     h6 {
         font-weight: bold;
     }
+
     p {
         margin-top: 0px;
     }
@@ -104,4 +139,8 @@ ion-button {
 .ion-reduction-3 {
     background: #a7cbb3;
     border: 2px solid #75a183;
+}
+
+h3.ion-title {
+    color:#000000;
 }

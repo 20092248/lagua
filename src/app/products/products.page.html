@@ -9,7 +9,8 @@
 
 <ion-content>
   <div class="ion-background-top">
-    <div class="ion-top-content ion-padding-top ion-margin-horizontal ion-margin-top">
+    <h3 class="ion-title ion-padding-vertical ion-text-center">Forfait Premium</h3>
+    <div class="ion-top-content ion-padding-top ion-padding-horizontal ion-margin-horizontal ion-margin-top">
       <ng-lottie [styles]="styles" [options]="options" (animationCreated)="animationCreated($event)"
         (complete)="complete($event)"></ng-lottie>
       <h4 class="ion-title ion-padding-top">Les utilisateurs Premium ont <span class="ion-color-dark-lagua">5 fois
@@ -19,14 +20,14 @@
     </div>
   </div>
   <div>
-    <div class="ion-middle-content">
+    <div class="ion-middle-content ion-margin-horizontal ion-margin-top">
       <h4 class="ion-padding-vertical">Débloque les fonctionnalités Premium</h4>
       <div class="ion-dashboard-bloc" *ngFor="let access of productsSetting?.premiumAccess">
         <ion-item lines="none">
           <ion-thumbnail slot="start">
             <img *ngIf="access.icon" [src]="access.icon" />
           </ion-thumbnail>
-          <ion-label>
+          <ion-label class="ion-text-wrap">
             <h4>{{access.title}}</h4>
             <p>{{access.label}}</p>
           </ion-label>
