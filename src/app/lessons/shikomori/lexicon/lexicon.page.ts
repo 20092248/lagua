@@ -4,6 +4,7 @@ import { Lesson } from 'src/app/model/lesson.model';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { LessonService } from 'src/app/services/lesson.service';
 import { SettingService } from 'src/app/services/setting.service';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-lexicon',
@@ -14,8 +15,10 @@ export class LexiconPage implements OnInit {
 
   lexiconLesson: Lesson = {} as Lesson;
   isOverlay: boolean | undefined;
+  content: any[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService) {
+  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, 
+    private settingService: SettingService, private lessonService: LessonService) {
     this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation()?.extras?.state) {
         this.lexiconLesson = this.router.getCurrentNavigation()?.extras?.state?.['data'] as Lesson;
@@ -25,6 +28,11 @@ export class LexiconPage implements OnInit {
 
   ngOnInit() { 
     this.isOverlay = this.settingService.isOverlay;
+    if(this.lessonService.lesson && this.lessonService.lesson.code !== 'LEXI') {
+      this.lessonService.getLessonByCode('LEXI').then(lesson=> {
+        this.content = lesson.content.shikomori; //Utils.convertStringToHtml(lesson.content.shikomori);
+      });
+    }
   }
 
   saveLesson() {
