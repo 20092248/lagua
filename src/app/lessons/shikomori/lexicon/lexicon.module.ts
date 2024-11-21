@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { LexiconPageRoutingModule } from './lexicon-routing.module';
 
 import { LexiconPage } from './lexicon.page';
+import { AccordionComponentModule } from '../../accordion/accordion.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LexiconPageRoutingModule
+    LexiconPageRoutingModule,
+    AccordionComponentModule
   ],
   declarations: [LexiconPage]
 })

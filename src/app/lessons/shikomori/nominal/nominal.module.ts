@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { NominalPageRoutingModule } from './nominal-routing.module';
 
 import { NominalPage } from './nominal.page';
+import { AccordionComponentModule } from '../../accordion/accordion.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NominalPageRoutingModule
+    NominalPageRoutingModule,
+    AccordionComponentModule
   ],
   declarations: [NominalPage]
 })

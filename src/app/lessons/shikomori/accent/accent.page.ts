@@ -14,6 +14,7 @@ export class AccentPage implements OnInit {
 
   accentLesson: Lesson = {} as Lesson;
   isOverlay: boolean | undefined;
+  contents: any[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private lessonService: LessonService, private settingService: SettingService) {
     this.route.queryParams.subscribe(() => {
@@ -25,6 +26,9 @@ export class AccentPage implements OnInit {
 
   ngOnInit() {
     this.isOverlay = this.settingService.isOverlay;
+    this.lessonService.getLessonByCode('ACCE').then(((result: Lesson) => {
+      this.contents = result.content['km'];
+    }));
   }
 
   saveLesson() {
