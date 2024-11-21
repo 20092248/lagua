@@ -12,6 +12,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { first, lastValueFrom } from 'rxjs';
 import { AdMobService } from '../services/admob.service';
+import { Location } from "@angular/common";
+import { IonRouterOutlet, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-products',
@@ -32,7 +34,7 @@ export class ProductsPage implements OnInit {
     return this.authentificationService.user;
   }
 
-  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, 
+  constructor(private router: Router, private settingService: SettingService, private alertService: AlertService, private navCtrl: NavController,
     private authentificationService: AuthentificationService, private http: HttpClient, private adMobService: AdMobService) {
     this.adMobService.showInterstitial();
    }
@@ -58,6 +60,10 @@ export class ProductsPage implements OnInit {
 
   goToCheckout() {
     this.router.navigate(['/products/checkout']);
+  }
+
+  backToPreviousPage() {
+    this.navCtrl.back();
   }
 
   async showPayment(formule: any) {
