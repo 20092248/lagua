@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Lesson } from 'src/app/model/lesson.model';
+import { LessonService } from 'src/app/services/lesson.service';
 
 @Component({
   selector: 'app-accordion',
@@ -8,11 +10,17 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class AccordionComponent implements OnInit {
 
-  @Input() contents: any[] = [];
+  contents: any[] = [];
+  @Input() lessonCode: string = '';
+  @Input() dialectCode: string = '';
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private lessonService: LessonService, private sanitizer: DomSanitizer) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.lessonService.getLessonByCode(this.lessonCode).then(((result: Lesson) => {
+      this.contents = result.content[this.dialectCode];
+    }));
+   }
 
   convertToHtml(value: string) {
     return this.sanitizer.bypassSecurityTrustHtml(value);

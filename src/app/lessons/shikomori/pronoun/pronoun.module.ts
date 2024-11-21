@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PronounPageRoutingModule } from './pronoun-routing.module';
 
 import { PronounPage } from './pronoun.page';
+import { AccordionComponentModule } from '../../accordion/accordion.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PronounPageRoutingModule
+    PronounPageRoutingModule,
+    AccordionComponentModule
   ],
   declarations: [PronounPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

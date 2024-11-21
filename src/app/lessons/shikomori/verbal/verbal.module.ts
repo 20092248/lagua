@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { VerbalPageRoutingModule } from './verbal-routing.module';
 
 import { VerbalPage } from './verbal.page';
+import { AccordionComponentModule } from '../../accordion/accordion.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    VerbalPageRoutingModule
+    VerbalPageRoutingModule,
+    AccordionComponentModule
   ],
   declarations: [VerbalPage]
 })

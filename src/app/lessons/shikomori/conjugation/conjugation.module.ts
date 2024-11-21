@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ConjugationPageRoutingModule } from './conjugation-routing.module';
 
 import { ConjugationPage } from './conjugation.page';
+import { AccordionComponentModule } from '../../accordion/accordion.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ConjugationPageRoutingModule
+    ConjugationPageRoutingModule,
+    AccordionComponentModule
   ],
   declarations: [ConjugationPage]
 })

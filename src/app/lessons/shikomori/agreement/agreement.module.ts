@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AgreementPageRoutingModule } from './agreement-routing.module';
 
 import { AgreementPage } from './agreement.page';
+import { AccordionComponentModule } from '../../accordion/accordion.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AgreementPageRoutingModule
+    AgreementPageRoutingModule,
+    AccordionComponentModule
   ],
   declarations: [AgreementPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
