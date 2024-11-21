@@ -14,8 +14,10 @@ export class NominalPage implements OnInit {
 
   nominalLesson: Lesson = {} as Lesson;
   isOverlay: boolean | undefined;
+  contents: any[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService) {
+  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService
+    , private settingService: SettingService, private lessonService: LessonService) {
     this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation()?.extras?.state) {
         this.nominalLesson = this.router.getCurrentNavigation()?.extras?.state?.['data'] as Lesson;
@@ -25,6 +27,9 @@ export class NominalPage implements OnInit {
 
   ngOnInit() {
     this.isOverlay = this.settingService.isOverlay;
+    this.lessonService.getLessonByCode('CLNO').then(((result: Lesson) => {
+      this.contents = result.content['km'];
+    }));
   }
 
   saveLesson() {

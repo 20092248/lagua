@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AccentPageRoutingModule } from './accent-routing.module';
 
 import { AccentPage } from './accent.page';
+import { AccordionComponentModule } from '../../accordion/accordion.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AccentPageRoutingModule
+    AccentPageRoutingModule,
+    AccordionComponentModule
   ],
   declarations: [AccentPage]
 })

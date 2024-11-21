@@ -8,48 +8,13 @@
       [routerLink]="['/tabs/home']"></ion-icon>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true" class="ion-padding-horizontal" *ngIf="content">
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
   <p>Le classement des mots dans le lexique s'inspire du classement utilisé dans
     les dictionnaires usuels du swahili (Sacleux, Johnson,...), langue dont la
     structure est assez proche de celle du <i>shindzuani</i>. Ce classement opère un
-    compromis :</p>
-
-  <div>
-    <ion-accordion-group [multiple]="true" [value]="['nom']">
-      <ion-accordion value="nom" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
-        <ion-item lines="none" slot="header">
-          <ion-label class="ion-text-wrap">Les noms</ion-label>
-        </ion-item>
-        <div class="ion-padding-horizontal" slot="content">
-          <div [innerHTML]="content[0]"></div>
-        </div>
-      </ion-accordion>
-      <ion-accordion value="verbe" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
-        <ion-item lines="none" slot="header">
-          <ion-label class="ion-text-wrap">Les verbes</ion-label>
-        </ion-item>
-        <div class="ion-padding-horizontal" slot="content">
-          <div [innerHTML]="content[1]"></div>
-        </div>
-      </ion-accordion>
-      <ion-accordion value="adjectif" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
-        <ion-item lines="none" slot="header">
-          <ion-label class="ion-text-wrap">Les adjectifs</ion-label>
-        </ion-item>
-        <div class="ion-padding-horizontal" slot="content">
-          <div [innerHTML]="content[2]"></div>
-        </div>
-      </ion-accordion>
-      <ion-accordion value="autre" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
-        <ion-item lines="none" slot="header">
-          <ion-label class="ion-text-wrap">Autre</ion-label>
-        </ion-item>
-        <div class="ion-padding-horizontal" slot="content">
-          <div [innerHTML]="content[3]"></div>
-        </div>
-      </ion-accordion>
-    </ion-accordion-group>
-  </div>
+    compromis :
+  </p>
+    <app-accordion [contents]="contents"></app-accordion>
   <p>Dans quelques cas, la parenté qui relie ces emprunts issus de la même
     racine arabe n'est plus guère perçue par le locuteur comorien. Dans ce cas,
     chaque mot a été considéré comme indépendant (mais l'étymologie arabe

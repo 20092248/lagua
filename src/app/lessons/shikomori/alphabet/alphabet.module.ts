@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AlphabetPageRoutingModule } from './alphabet-routing.module';
 
 import { AlphabetPage } from './alphabet.page';
+import { AccordionComponentModule } from '../../accordion/accordion.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AlphabetPageRoutingModule
+    AlphabetPageRoutingModule,
+    AccordionComponentModule
   ],
   declarations: [AlphabetPage]
 })

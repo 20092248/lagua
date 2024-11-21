@@ -11,6 +11,7 @@ import { Platform } from "@ionic/angular";
 import { Location } from "@angular/common";
 import { App } from "@capacitor/app";
 import { NavigationEnd, Router } from "@angular/router";
+import { DomSanitizer } from '@angular/platform-browser';
 
 export class Utils {
 

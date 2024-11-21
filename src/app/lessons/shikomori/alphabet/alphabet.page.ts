@@ -14,8 +14,10 @@ export class AlphabetPage implements OnInit {
 
   alphabetLesson: Lesson = {} as Lesson;
   isOverlay: boolean | undefined;
+  contents: any = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService) {
+  constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService
+    , private settingService: SettingService, private lessonService: LessonService) {
     this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation()?.extras?.state) {
         this.alphabetLesson = this.router.getCurrentNavigation()?.extras?.state?.['data'] as Lesson;
@@ -25,6 +27,9 @@ export class AlphabetPage implements OnInit {
 
   ngOnInit() {
     this.isOverlay = this.settingService.isOverlay;
+    this.lessonService.getLessonByCode('ALPH').then(((result: Lesson) => {
+      this.contents = result.content['km'];
+    }));
   }
 
   saveLesson() {

@@ -1,0 +1,10 @@
+<ion-accordion-group [multiple]="true" [value]="[contents[0]?.value]">
+  <ion-accordion *ngFor="let content of contents" value="{{content.value}}" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+    <ion-item lines="none" slot="header">
+      <ion-label class="ion-text-wrap">{{content.label}}</ion-label>
+    </ion-item>
+    <div class="ion-padding-horizontal" slot="content">
+      <div [innerHTML]="convertToHtml(content.description)"></div>
+    </div>
+  </ion-accordion>
+</ion-accordion-group>
