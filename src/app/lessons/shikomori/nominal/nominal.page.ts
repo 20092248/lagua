@@ -15,8 +15,6 @@ export class NominalPage implements OnInit {
 
   nominalLesson: Lesson = {} as Lesson;
   isOverlay: boolean | undefined;
-  contents: any[] = [];
-  order: number = 0;
 
   constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService
     , private settingService: SettingService, private alertService: AlertService) {
@@ -42,7 +40,7 @@ export class NominalPage implements OnInit {
   }
 
   saveLesson() {
-    if (this.order < this.userDialect.lesson.order) {
+    if (this.nominalLesson.order < this.userDialect.lesson.order) {
       this.router.navigate(['/tabs/lessons']);
     } else if (this.user.uid && this.nominalLesson) {
       this.authentificationService.updateLesson(this.nominalLesson, this.user.uid).then(() => {

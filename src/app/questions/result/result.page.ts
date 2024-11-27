@@ -62,7 +62,7 @@ export class ResultPage implements OnInit {
 
   saveReview() {
     if(this.authentificationService.user.uid){
-      this.authentificationService.updateResultReview(this.reviewService.resultReview, 'users', this.authentificationService.user.uid).then(()=>{
+      this.authentificationService.updateResultReview(this.reviewService.resultReview, this.authentificationService.user.uid).then(()=>{
         this.resetReview();
         this.router.navigate(['/tabs/home']);
       });

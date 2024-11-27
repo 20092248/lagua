@@ -15,7 +15,6 @@ export class AlphabetPage implements OnInit {
 
   alphabetLesson: Lesson = {} as Lesson;
   isOverlay: boolean | undefined;
-  order: number = 0;
 
   constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService
     , private settingService: SettingService, private alertService: AlertService) {
@@ -40,12 +39,8 @@ export class AlphabetPage implements OnInit {
     this.isOverlay = this.settingService.isOverlay;
   }
 
-  orderEvent(order: number) {
-    this.order = order;
-  }
-
   saveLesson() {
-    if (this.order < this.userDialect.lesson.order) {
+    if (this.alphabetLesson.order < this.userDialect.lesson.order) {
       this.router.navigate(['/tabs/lessons']);
     } else if (this.user.uid && this.alphabetLesson) {
       this.authentificationService.updateLesson(this.alphabetLesson, this.user.uid).then(() => {

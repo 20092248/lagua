@@ -89,14 +89,14 @@ export class AuthentificationService {
         throw Error(CONSTANTS.NOT_SIGNIN);
       }
       if(documentLesson.exists()) {
-        this.userDialectLesson = document.data() as UserDialectLesson;
+        this.userDialectLesson = documentLesson.data() as UserDialectLesson;
       } else {
         this.logout(false);
         this.alertService.presentToastWithIcon(CONSTANTS.GET_RESULT_KO, 2000, 'danger', 'alert-circle-outline');
         throw Error(CONSTANTS.NOT_SIGNIN);
       }
       if(documentReview.exists()) {
-        this.userDialectReview = document.data() as UserDialectReview;
+        this.userDialectReview = documentReview.data() as UserDialectReview;
       } else {
         this.logout(false);
         this.alertService.presentToastWithIcon(CONSTANTS.GET_RESULT_KO, 2000, 'danger', 'alert-circle-outline');
@@ -120,12 +120,8 @@ export class AuthentificationService {
       dialects: this.user.dialects,
       timerActiveConnection: 0
     }, { merge: true });
-    await setDoc(doc(getFirestore(), 'resultLessons', uid), {
-      dialects: this.userDialectLesson,
-    }, { merge: true });
-    await setDoc(doc(getFirestore(), 'resultReviews', uid), {
-      dialects: this.userDialectReview,
-    }, { merge: true });
+    await setDoc(doc(getFirestore(), 'resultLessons', uid), this.userDialectLesson, { merge: true });
+    await setDoc(doc(getFirestore(), 'resultReviews', uid), this.userDialectReview, { merge: true });
     this.getInfoUser(uid);
     return true;
   }
@@ -444,35 +440,40 @@ export class AuthentificationService {
     });
   }
 
-  async updateResultReview(updateReview: any, nameObject: string, uid: string) {
+  async updateResultReview(updateReview: any, uid: string) {
     const dialectUser = this.user.dialects[this.dialect];
-    if (!dialectUser.resultReviews) { dialectUser.resultReviews = []; }
-    dialectUser.resultReviews.push(updateReview);
-    const userRef = doc(getFirestore(), nameObject, uid);
+    const userRef = doc(getFirestore(), 'users', uid);
+    const resultReviewRef = doc(getFirestore(), 'resultReviews', uid);
+    // const userReviewExist = this.userDialectReview[this.dialect].resultReviews.find(l => l.order === updateLesson.code);
+
     const nextReview = await this.reviewService.findNextReview(dialectUser.review).then(result => { return result });
     dialectUser.review = nextReview;
-    this.reviewService.getPreviousReviews(nextReview).then(() => { });
-    const updateReviewDoc = this.infoReviewByDialect(nextReview, dialectUser.resultReviews);
-    if (updateReviewDoc) {
-      await updateDoc(userRef, updateReviewDoc);
+    this.userDialectReview[this.dialect].resultReviews.push(updateReview);
+    const updateNextReviewDoc = this.infoNextReview(nextReview);
+    const updateResultReviewDoc = this.infoResultReview(this.userDialectReview[this.dialect].resultReviews);
+    if (updateNextReviewDoc) {
+      await updateDoc(userRef, updateNextReviewDoc);
     }
+    if (updateResultReviewDoc/* && !userReviewExist*/) {
+      await updateDoc(resultReviewRef, updateResultReviewDoc);
+    }
+    await this.reviewService.getPreviousReviews(nextReview).then();
   }
 
   async updateLesson(updateLesson: LessonMin, uid: string) {
     const dialectUser = this.user.dialects[this.dialect];
-    const lessonsRef = doc(getFirestore(), 'users', uid);
+    const userRef = doc(getFirestore(), 'users', uid);
     const resultLessonsRef = doc(getFirestore(), 'resultLessons', uid);
-    if (!dialectUser.resultLessons) { dialectUser.resultLessons = []; }
-    const userLessonExist = dialectUser.resultLessons.find(lesson => lesson.code === updateLesson.code);
+    
+    const userLessonExist = this.userDialectLesson[this.dialect].resultLessons.find(l => l.code === updateLesson.code);
     if (dialectUser.lesson && !userLessonExist) {
       const nextLesson = await this.lessonService.findNextLesson(dialectUser.lesson);
       dialectUser.lesson = nextLesson;
-      Utils.clearResultLessons(dialectUser.resultLessons);
-      dialectUser.resultLessons.push(updateLesson);
+      this.userDialectLesson[this.dialect].resultLessons.push(Utils.convertToLessonMin(updateLesson));
       const updateNextLessonDoc = this.infoNextLesson(nextLesson);
-      const updateResultLessonDoc = this.infoResultLesson(dialectUser.resultLessons);
+      const updateResultLessonDoc = this.infoResultLesson(this.userDialectLesson[this.dialect].resultLessons);
       if (updateNextLessonDoc && updateResultLessonDoc) {
-        await updateDoc(lessonsRef, updateNextLessonDoc);
+        await updateDoc(userRef, updateNextLessonDoc);
         await updateDoc(resultLessonsRef, updateResultLessonDoc);
       }
     }
@@ -497,16 +498,30 @@ export class AuthentificationService {
     return true;
   }
 
-  infoReviewByDialect(nextReview: Review, resultReviews: ResultReview[]) {
+  infoNextReview(nextReview: Review) {
     var dialect = null;
     if (this.dialect === DialectEnum.SHGC) {
-      dialect = { 'dialects.shingazidja.review': nextReview, 'dialects.shingazidja.resultReviews': resultReviews.map((obj) => { return Object.assign({}, obj) }) };
+      dialect = { 'dialects.shingazidja.review': nextReview };
     } else if (this.dialect === DialectEnum.SHAN) {
-      dialect = { 'dialects.shindzuani.review': nextReview, 'dialects.shindzuani.resultReviews': resultReviews.map((obj) => { return Object.assign({}, obj) }) };
+      dialect = { 'dialects.shindzuani.review': nextReview };
     } else if (this.dialect === DialectEnum.MOHE) {
-      dialect = { 'dialects.shimwali.review': nextReview, 'dialects.shimwali.resultReviews': resultReviews.map((obj) => { return Object.assign({}, obj) }) };
+      dialect = { 'dialects.shimwali.review': nextReview };
     } else if (this.dialect === DialectEnum.MAOR) {
-      dialect = { 'dialects.shimaore.review': nextReview, 'dialects.shimaore.resultReviews': resultReviews.map((obj) => { return Object.assign({}, obj) }) };
+      dialect = { 'dialects.shimaore.review': nextReview };
+    }
+    return dialect;
+  }
+
+  infoResultReview(resultReviews: ResultReview[]) {
+    var dialect = null;
+    if (this.dialect === DialectEnum.SHGC) {
+      dialect = { 'shingazidja.resultReviews': resultReviews.map((obj) => { return Object.assign({}, obj) }) };
+    } else if (this.dialect === DialectEnum.SHAN) {
+      dialect = { 'shindzuani.resultReviews': resultReviews.map((obj) => { return Object.assign({}, obj) }) };
+    } else if (this.dialect === DialectEnum.MOHE) {
+      dialect = { 'shimwali.resultReviews': resultReviews.map((obj) => { return Object.assign({}, obj) }) };
+    } else if (this.dialect === DialectEnum.MAOR) {
+      dialect = { 'shimaore.resultReviews': resultReviews.map((obj) => { return Object.assign({}, obj) }) };
     }
     return dialect;
   }
@@ -528,13 +543,13 @@ export class AuthentificationService {
   infoResultLesson(resultLessons: LessonMin[]) {
     var dialect = null;
     if (this.dialect === DialectEnum.SHGC) {
-      dialect = { 'dialects.shingazidja.resultLessons': resultLessons.map((obj) => { return Object.assign({}, Utils.convertToLessonMin(obj)) }) };
+      dialect = { 'shingazidja.resultLessons': resultLessons.map((obj) => { return Object.assign({}, Utils.convertToLessonMin(obj)) }) };
     } else if (this.dialect === DialectEnum.SHAN) {
-      dialect = { 'dialects.shindzuani.resultLessons': resultLessons.map((obj) => { return Object.assign({}, Utils.convertToLessonMin(obj)) }) };
+      dialect = { 'shindzuani.resultLessons': resultLessons.map((obj) => { return Object.assign({}, Utils.convertToLessonMin(obj)) }) };
     } else if (this.dialect === DialectEnum.MOHE) {
-      dialect = { 'dialects.shimwali.resultLessons': resultLessons.map((obj) => { return Object.assign({}, Utils.convertToLessonMin(obj)) }) };
+      dialect = { 'shimwali.resultLessons': resultLessons.map((obj) => { return Object.assign({}, Utils.convertToLessonMin(obj)) }) };
     } else if (this.dialect === DialectEnum.MAOR) {
-      dialect = { 'dialects.shimaore.resultLessons': resultLessons.map((obj) => { return Object.assign({}, Utils.convertToLessonMin(obj)) }) };
+      dialect = { 'shimaore.resultLessons': resultLessons.map((obj) => { return Object.assign({}, Utils.convertToLessonMin(obj)) }) };
     }
     return dialect;
   }

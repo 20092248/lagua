@@ -15,7 +15,6 @@ export class LexiconPage implements OnInit {
 
   lexiconLesson: Lesson = {} as Lesson;
   isOverlay: boolean | undefined;
-  order: number = 0;
   
   constructor(private route: ActivatedRoute, private router: Router, private authentificationService: AuthentificationService
     , private settingService: SettingService, private alertService: AlertService) {
@@ -40,12 +39,8 @@ export class LexiconPage implements OnInit {
     this.isOverlay = this.settingService.isOverlay;
   }
 
-  orderEvent(order: number) {
-    this.order = order;
-  }
-
   saveLesson() {
-    if (this.order < this.userDialect.lesson.order) {
+    if (this.lexiconLesson.order < this.userDialect.lesson.order) {
       this.router.navigate(['/tabs/lessons']);
     } else if (this.user.uid && this.lexiconLesson) {
       this.authentificationService.updateLesson(this.lexiconLesson, this.user.uid).then(() => {
