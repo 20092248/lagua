@@ -20,8 +20,9 @@ export class TimePage implements OnInit {
   }
 
   selectedItem(timeSelected: CodeLabel) {
+    const timeSelectedMin = Utils.convertToCodeLabelMin(timeSelected);
     const dialect = this.authentificationService.dialect;
-    this.authentificationService.user.dialects[dialect].time = timeSelected;
+    this.authentificationService.user.dialects[dialect].time = timeSelectedMin;
   }
 
 }

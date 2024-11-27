@@ -20,8 +20,9 @@ export class WhyPage implements OnInit {
   }
 
   selectedItem(whySelected: CodeLabel) {
+    const whySelectedMin = Utils.convertToCodeLabelMin(whySelected);
     const dialect = this.authentificationService.dialect;
-    this.authentificationService.user.dialects[dialect].why = whySelected;
+    this.authentificationService.user.dialects[dialect].why = whySelectedMin;
   }
 
 }

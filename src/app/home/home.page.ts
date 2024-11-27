@@ -20,6 +20,7 @@ import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { GlobalParam } from '../model/globalParam.model';
 import { AudioService } from '../services/audio.service';
+import { ReviewMin } from '../model/reviewMin.model';
 register();
 
 @Component({
@@ -114,7 +115,7 @@ export class HomePage implements OnInit {
         this.dismissPopover();
       }
     } else {
-      this.alertService.presentToast('Débloquer les précedentes leçons avant d\'accéder à la leçon.', 3000, 'lagua');
+      this.alertService.presentToast(CONSTANTS.UNLOCKED_PREVIOUS_LESSON, 3000, 'lagua');
     }
   }
 
@@ -126,6 +127,14 @@ export class HomePage implements OnInit {
       this.router.navigate([routing], navigationExtras);
     } else {
       this.alertService.presentToast('Débloquer les précedentes leçons avant d\'accéder à la leçon "' + lesson.title + '".', 3000, 'lagua');
+    }
+  }
+
+  goToTopics() {
+    if (this.premium) {
+      this.router.navigate(['/tabs/topics']);
+    } else {
+      this.alertService.presentToast(CONSTANTS.PREMIUM_ACCESS, 3000, 'lagua');
     }
   }
 
@@ -160,7 +169,7 @@ export class HomePage implements OnInit {
     // this.router.navigate(['/questions']);
   }
 
-  startReview(review: Review) {
+  startReview(review: ReviewMin) {
     this.questionService.findQuestions(CONSTANTS.transcodeCollectionQuestions[this.user.dialectSelected.code], Utils.paramReview(review.category, review.lesson, review.order)).then(()=>{
       this.router.navigate(['/questions/preview']);
       this.getInfoReview();

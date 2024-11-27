@@ -29,7 +29,7 @@ export class ConjugationPage implements OnInit {
 
   saveLesson() {
     if (this.authentificationService.user.uid && this.conjugationLesson) {
-      this.authentificationService.updateLesson(this.conjugationLesson, 'users', this.authentificationService.user.uid).then(() => {
+      this.authentificationService.updateLesson(this.conjugationLesson, this.authentificationService.user.uid).then(() => {
         this.router.navigate(['/tabs/lessons']);
       });
     } else {

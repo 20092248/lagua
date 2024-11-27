@@ -12,6 +12,14 @@ import { Location } from "@angular/common";
 import { App } from "@capacitor/app";
 import { NavigationEnd, Router } from "@angular/router";
 import { DomSanitizer } from '@angular/platform-browser';
+import { Lesson } from "../model/lesson.model";
+import { LessonMin } from "../model/lessonMin.model";
+import { CodeTextTranslateMin } from "../model/codeTextTranslateMin.model";
+import { CodeLabel } from "../model/codeLabel.model";
+import { CodeTextTranslate } from "../model/codeTextTranslate.model";
+import { CodeLabelMin } from "../model/codeLabelMin.model";
+import { Review } from "../model/review.model";
+import { ReviewMin } from "../model/reviewMin.model";
 
 export class Utils {
 
@@ -165,6 +173,29 @@ export class Utils {
       }
     });
     return questions;
+  }
+
+  static clearResultLessons(resultLessons: LessonMin[]) {
+    resultLessons.map((obj) => {
+      const lessonMin: LessonMin = { order: obj.order, code: obj.code, navigate: obj.navigate, title: obj.title, subTitle: obj.subTitle } 
+      return Object.assign({}, lessonMin) 
+    });
+  }
+
+  static convertToReviewMin(value: Review) {
+    return {category: value.category, order: value.order, lesson: value.lesson, text: value.text } as ReviewMin;
+  }
+
+  static convertToLessonMin(value: Lesson | LessonMin) {
+    return {order: value.order, code: value.code, navigate: value.navigate, title: value.title, subTitle: value.subTitle } as LessonMin;
+  }
+
+  static convertToCodeTextTranslateMin(value: CodeTextTranslate) {
+    return {code: value.code, text: value.text, translate: value.translate } as CodeTextTranslateMin;
+  }
+
+  static convertToCodeLabelMin(value: CodeLabel) {
+    return {code: value.code, label: value.label } as CodeLabelMin;
   }
 
 }

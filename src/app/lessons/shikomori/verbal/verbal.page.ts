@@ -29,7 +29,7 @@ export class VerbalPage implements OnInit {
 
   saveLesson() {
     if (this.authentificationService.user.uid && this.verbalLesson) {
-      this.authentificationService.updateLesson(this.verbalLesson, 'users', this.authentificationService.user.uid).then(() => {
+      this.authentificationService.updateLesson(this.verbalLesson, this.authentificationService.user.uid).then(() => {
         this.router.navigate(['/tabs/lessons']);
       });
     } else {

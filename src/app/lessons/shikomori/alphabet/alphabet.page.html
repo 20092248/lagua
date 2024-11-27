@@ -13,7 +13,7 @@
     que j'ai adopté ici est celui que j'ai déjà mis en pratique dans mes différentes
     publications et qui est aujourd'hui largement répandu.
   </p>
-  <app-accordion [dialectCode]="'km'" [lessonCode]="'ALPH'"></app-accordion>
+  <app-accordion [dialectCode]="'km'" [lessonCode]="'ALPH'" (orderEvent)="orderEvent($event)"></app-accordion>
   <div class="ion-text-center ion-margin-bottom">
     <ion-button (click)="saveLesson()">Terminer le cours</ion-button>
   </div>

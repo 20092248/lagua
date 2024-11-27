@@ -17,8 +17,8 @@
           <ion-label>Compte premium</ion-label>
           <ion-toggle slot="end" [checked]="premium" [disabled]="true" [enableOnOffLabels]="true"></ion-toggle>
         </ion-item>
-        <ion-accordion-group *ngIf="premium">
-          <ion-accordion value="objective">
+        <ion-accordion-group>
+          <ion-accordion value="objective" [disabled]="!premium" (click)="isPremium()">
             <ion-item class="ion-accordion-content" button slot="header">
               <ion-avatar slot="start">
                 <img alt="{{userDialect.learn.text}}" [src]="flagDialectLearned" />

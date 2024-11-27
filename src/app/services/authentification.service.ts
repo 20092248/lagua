@@ -18,6 +18,8 @@ import { DialectEnum } from '../model/dialect.enum';
 import { AnalyticsService } from './analytics.service';
 import { LessonMin } from '../model/lessonMin.model';
 import { SettingService } from './setting.service';
+import { UserDialectLesson } from '../model/userDialectLesson.model';
+import { UserDialectReview } from '../model/userDialectReview.model';
 const FACEBOOK_PERMISSIONS = ['email', 'user_birthday', 'user_photos', 'user_gender',];
 const USER_KEY = 'users';
 
@@ -27,6 +29,8 @@ const USER_KEY = 'users';
 export class AuthentificationService {
 
   user: User = {} as User;
+  userDialectLesson: UserDialectLesson = {} as UserDialectLesson;
+  userDialectReview: UserDialectReview = {} as UserDialectReview;
   timer: Date = new Date();
   choice: Subscription | undefined;
   dialect: DialectEnum = DialectEnum.SHGC;
@@ -64,6 +68,8 @@ export class AuthentificationService {
     try {
       localStorage.setItem(USER_KEY, uid);
       const document = await getDoc(doc(getFirestore(), 'users', uid));
+      const documentLesson = await getDoc(doc(getFirestore(), 'resultLessons', uid));
+      const documentReview = await getDoc(doc(getFirestore(), 'resultReviews', uid));
       this.updateDayConnected('users', uid);
       if (document.exists()) {
         const data = document.data() as User;
@@ -77,12 +83,26 @@ export class AuthentificationService {
         this.user.timerActiveConnection = data.timerActiveConnection;
         this.user.account = data.account;
         this.dialect = Utils.findDialect(this.user.dialectSelected.code);
-        return true;
       } else {
         this.logout(false);
         this.alertService.presentToastWithIcon(CONSTANTS.NOT_SIGNIN, 2000, 'danger', 'alert-circle-outline');
         throw Error(CONSTANTS.NOT_SIGNIN);
       }
+      if(documentLesson.exists()) {
+        this.userDialectLesson = document.data() as UserDialectLesson;
+      } else {
+        this.logout(false);
+        this.alertService.presentToastWithIcon(CONSTANTS.GET_RESULT_KO, 2000, 'danger', 'alert-circle-outline');
+        throw Error(CONSTANTS.NOT_SIGNIN);
+      }
+      if(documentReview.exists()) {
+        this.userDialectReview = document.data() as UserDialectReview;
+      } else {
+        this.logout(false);
+        this.alertService.presentToastWithIcon(CONSTANTS.GET_RESULT_KO, 2000, 'danger', 'alert-circle-outline');
+        throw Error(CONSTANTS.NOT_SIGNIN);
+      }
+      return true;
     } catch (error: any) {
       localStorage.removeItem(USER_KEY);
       throw Error(error);
@@ -98,8 +118,13 @@ export class AuthentificationService {
       photoURL: this.user.photoURL ? this.user.photoURL : '',
       dialectSelected: this.user.dialectSelected,
       dialects: this.user.dialects,
-      account: this.user.account,
       timerActiveConnection: 0
+    }, { merge: true });
+    await setDoc(doc(getFirestore(), 'resultLessons', uid), {
+      dialects: this.userDialectLesson,
+    }, { merge: true });
+    await setDoc(doc(getFirestore(), 'resultReviews', uid), {
+      dialects: this.userDialectReview,
     }, { merge: true });
     this.getInfoUser(uid);
     return true;
@@ -433,18 +458,22 @@ export class AuthentificationService {
     }
   }
 
-  async updateLesson(updateLesson: Lesson, nameObject: string, uid: string) {
+  async updateLesson(updateLesson: LessonMin, uid: string) {
     const dialectUser = this.user.dialects[this.dialect];
-    const lessonsRef = doc(getFirestore(), nameObject, uid);
+    const lessonsRef = doc(getFirestore(), 'users', uid);
+    const resultLessonsRef = doc(getFirestore(), 'resultLessons', uid);
     if (!dialectUser.resultLessons) { dialectUser.resultLessons = []; }
     const userLessonExist = dialectUser.resultLessons.find(lesson => lesson.code === updateLesson.code);
     if (dialectUser.lesson && !userLessonExist) {
       const nextLesson = await this.lessonService.findNextLesson(dialectUser.lesson);
       dialectUser.lesson = nextLesson;
+      Utils.clearResultLessons(dialectUser.resultLessons);
       dialectUser.resultLessons.push(updateLesson);
-      const updateLessonDoc = this.infoLessonByDialect(nextLesson, dialectUser.resultLessons);
-      if (updateLessonDoc) {
-        await updateDoc(lessonsRef, updateLessonDoc);
+      const updateNextLessonDoc = this.infoNextLesson(nextLesson);
+      const updateResultLessonDoc = this.infoResultLesson(dialectUser.resultLessons);
+      if (updateNextLessonDoc && updateResultLessonDoc) {
+        await updateDoc(lessonsRef, updateNextLessonDoc);
+        await updateDoc(resultLessonsRef, updateResultLessonDoc);
       }
     }
   }
@@ -482,16 +511,30 @@ export class AuthentificationService {
     return dialect;
   }
 
-  infoLessonByDialect(nextLesson: LessonMin, resultLessons: LessonMin[]) {
+  infoNextLesson(nextLesson: LessonMin) {
     var dialect = null;
     if (this.dialect === DialectEnum.SHGC) {
-      dialect = { 'dialects.shingazidja.lesson': nextLesson, 'dialects.shingazidja.resultLessons': resultLessons.map((obj) => { return Object.assign({}, obj) }) };
+      dialect = { 'dialects.shingazidja.lesson': nextLesson };
     } else if (this.dialect === DialectEnum.SHAN) {
-      dialect = { 'dialects.shindzuani.lesson': nextLesson, 'dialects.shindzuani.resultLessons': resultLessons.map((obj) => { return Object.assign({}, obj) }) };
+      dialect = { 'dialects.shindzuani.lesson': nextLesson };
     } else if (this.dialect === DialectEnum.MOHE) {
-      dialect = { 'dialects.shimwali.lesson': nextLesson, 'dialects.shimwali.resultLessons': resultLessons.map((obj) => { return Object.assign({}, obj) }) };
+      dialect = { 'dialects.shimwali.lesson': nextLesson };
     } else if (this.dialect === DialectEnum.MAOR) {
-      dialect = { 'dialects.shimaore.lesson': nextLesson, 'dialects.shimaore.resultLessons': resultLessons.map((obj) => { return Object.assign({}, obj) }) };
+      dialect = { 'dialects.shimaore.lesson': nextLesson };
+    }
+    return dialect;
+  }
+
+  infoResultLesson(resultLessons: LessonMin[]) {
+    var dialect = null;
+    if (this.dialect === DialectEnum.SHGC) {
+      dialect = { 'dialects.shingazidja.resultLessons': resultLessons.map((obj) => { return Object.assign({}, Utils.convertToLessonMin(obj)) }) };
+    } else if (this.dialect === DialectEnum.SHAN) {
+      dialect = { 'dialects.shindzuani.resultLessons': resultLessons.map((obj) => { return Object.assign({}, Utils.convertToLessonMin(obj)) }) };
+    } else if (this.dialect === DialectEnum.MOHE) {
+      dialect = { 'dialects.shimwali.resultLessons': resultLessons.map((obj) => { return Object.assign({}, Utils.convertToLessonMin(obj)) }) };
+    } else if (this.dialect === DialectEnum.MAOR) {
+      dialect = { 'dialects.shimaore.resultLessons': resultLessons.map((obj) => { return Object.assign({}, Utils.convertToLessonMin(obj)) }) };
     }
     return dialect;
   }
@@ -562,7 +605,9 @@ export class AuthentificationService {
   addFirstReviewAndFirstLessonInDialect(firstReview: Review, firstLesson: Lesson) {
     const dialect = Utils.findDialect(this.user.dialectSelected.code);
     this.user.dialects[dialect].review = firstReview;
-    this.user.dialects[dialect].lesson = firstLesson;
+    this.user.dialects[dialect].lesson = Utils.convertToLessonMin(firstLesson);
+    this.userDialectLesson[dialect] = { resultLessons : [] };
+    this.userDialectReview[dialect] = { resultReviews : [] };
   }
 
   addMonth(date: Timestamp, month: number) {

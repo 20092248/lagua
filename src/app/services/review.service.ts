@@ -4,6 +4,7 @@ import { doc, getDocs, updateDoc, collection, query, where } from '@firebase/fir
 import { Review } from '../model/review.model';
 import { ResultReview } from '../model/resultReview.model';
 import { ReviewGroup } from '../model/reviewGroup.model';
+import { ReviewMin } from '../model/reviewMin.model';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,7 @@ export class ReviewService {
     return this.reviews;
   }
 
-  async getPreviousReviews(review: Review): Promise<Review[]> { //category: string, lesson: number, order: number
+  async getPreviousReviews(review: ReviewMin): Promise<Review[]> { //category: string, lesson: number, order: number
     this.previousReviews = [];
     const q = query(collection(getFirestore(), 'reviews'), where('category', '==', review.category), orderBy('lesson'));
     const querySnapshot = await getDocs(q);
@@ -85,7 +86,7 @@ export class ReviewService {
     });
   }
 
-  async findNextReview(review: Review) {
+  async findNextReview(review: ReviewMin) {
     const reviews = this.reviews ? this.reviews.find(r => r.category === review.category && r.lesson === review.lesson)?.reviews : [];
     const order = reviews ? reviews?.findIndex(r => r.order === review.order) : 0;
     if (reviews && reviews.length !== order) {

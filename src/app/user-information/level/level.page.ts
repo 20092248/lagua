@@ -20,8 +20,9 @@ export class LevelPage implements OnInit {
   }
 
   selectedItem(levelSelected: CodeLabel) {
+    const levelSelectedMin = Utils.convertToCodeLabelMin(levelSelected);
     const dialect = this.authentificationService.dialect;
-    this.authentificationService.user.dialects[dialect].level = levelSelected;
+    this.authentificationService.user.dialects[dialect].level = levelSelectedMin;
   }
 
 }

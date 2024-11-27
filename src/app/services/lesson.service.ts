@@ -37,10 +37,14 @@ export class LessonService {
   }
 
   async findNextLesson(lesson: LessonMin) {
-    const nextOrder = lesson.order + 1;
-    return await this.getLesson(nextOrder).then((l: LessonMin) => {
-      return l;
-    });
+    if(this.lessons.length === lesson.order) { // DERNIERE LECON
+      return lesson;
+    } else {
+      const nextOrder = lesson.order + 1;
+      return await this.getLesson(nextOrder).then((l: LessonMin) => {
+        return { order: l.order, code: l.code, navigate: l.navigate, title: l.title, subTitle: l.subTitle } as LessonMin;
+      });
+    }
   }
 
 }

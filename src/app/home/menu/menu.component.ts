@@ -75,7 +75,7 @@ export class MenuComponent implements OnInit {
     this.alertService.presentActionSheetConfirmation('Confirmation', CONSTANTS.CONFIRM_ACTION_SHEET, 'action-sheet-success').then(actionSheetResult => {
       if (actionSheetResult.role === 'selected') {
         this.authentificationService.dialect = Utils.findDialect(data.code);
-        this.user.dialectSelected = data;
+        this.user.dialectSelected = Utils.convertToCodeTextTranslateMin(data);
         if (!this.user.dialects[oldDialect]) {
           this.createDialectsIfNotExist();
           this.addNewDialectInfo(alertResult, oldDialect);
@@ -135,7 +135,7 @@ export class MenuComponent implements OnInit {
         this.dismissPopover();
       }
     } else {
-      this.alertService.presentToast('Débloquer les précedentes leçons avant d\'accéder à la leçon.', 3000, 'lagua');
+      this.alertService.presentToast(CONSTANTS.UNLOCKED_PREVIOUS_LESSON, 3000, 'lagua');
     }
   }
 
@@ -144,4 +144,11 @@ export class MenuComponent implements OnInit {
       this.goTo('/firstpage', true, true);
     });
   }
+
+  isPremium() {
+    if(!this.premium) {
+      this.alertService.presentToast(CONSTANTS.PREMIUM_ACCESS, 3000, 'lagua');
+    }
+  }
+
 }

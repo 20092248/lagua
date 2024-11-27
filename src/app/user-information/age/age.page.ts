@@ -20,8 +20,9 @@ export class AgePage implements OnInit {
   }
 
   selectedItem(ageSelected: CodeLabel) {
+    const ageSelectedMin = Utils.convertToCodeLabelMin(ageSelected);
     const dialect = this.authentificationService.dialect;
-    this.authentificationService.user.dialects[dialect].age = ageSelected;
+    this.authentificationService.user.dialects[dialect].age = ageSelectedMin;
   }
 
 }

@@ -8,6 +8,7 @@ import { AlertService } from '../services/alert.service';
 import { Utils } from '../utils/utils';
 import { SettingService } from '../services/setting.service';
 import { CONSTANTS } from '../utils/constants';
+import { LessonMin } from '../model/lessonMin.model';
 
 @Component({
   selector: 'app-lesson',

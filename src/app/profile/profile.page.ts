@@ -33,13 +33,18 @@ export class ProfilePage implements OnInit {
   get user() {
     return this.authentificationService.user;
   }
+  get userDialectLesson() {
+    return this.authentificationService.userDialectLesson[this.dialect];
+  }
+  get userDialectReview() {
+    return this.authentificationService.userDialectReview[this.dialect];
+  }
   get dialect() {
     return this.authentificationService.dialect;
   }
   get userDialect() {
     return this.user.dialects[this.dialect];
   }
-
   get isOverlay() {
     return this.settingService.isOverlay;
   }
@@ -63,14 +68,14 @@ export class ProfilePage implements OnInit {
       });
     }
     this.initial = !this.user.photoURL && this.user.displayName ? Utils.getInitial(this.user.displayName) : '';
-    this.userDialect.resultReviews?.forEach(review => {
+    this.userDialectReview.resultReviews?.forEach(review => {
       this.nbrWordsToRevise += review.toRevise.length;
       this.nbrWordsToLearn += review.toLearn.length;
       this.nbrWordsLearned += review.learned.length;
       this.nbrWords += review.toRevise.length + review.toLearn.length + review.learned.length;
       this.score += (this.nbrWordsToLearn * 50) + (this.nbrWordsLearned * 100);
     });
-    this.score += this.userDialect.resultLessons?.length * 100;
+    this.score += this.userDialectLesson.resultLessons?.length * 100;
     this.percentWordsToRevise = this.nbrWordsToRevise * 100 / this.nbrWords;
     this.percentWordsToLearn = this.nbrWordsToLearn * 100 / this.nbrWords;
     this.percentWordsLearned = this.nbrWordsLearned * 100 / this.nbrWords;

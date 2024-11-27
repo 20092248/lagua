@@ -30,7 +30,7 @@ export class LexiconPage implements OnInit {
 
   saveLesson() {
     if (this.authentificationService.user.uid && this.lexiconLesson) {
-      this.authentificationService.updateLesson(this.lexiconLesson, 'users', this.authentificationService.user.uid).then(() => {
+      this.authentificationService.updateLesson(this.lexiconLesson, this.authentificationService.user.uid).then(() => {
         this.router.navigate(['/tabs/lessons']);
       });
     } else {

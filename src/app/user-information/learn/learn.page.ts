@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationBar } from '@mauricewegner/capacitor-navigation-bar';
 import { CodeTextTranslate } from 'src/app/model/codeTextTranslate.model';
+import { CodeTextTranslateMin } from 'src/app/model/codeTextTranslateMin.model';
 import { Dialect } from 'src/app/model/dialect.model';
 import { Dialects } from 'src/app/model/dialects.model';
 import { AuthentificationService } from 'src/app/services/authentification.service';
@@ -27,13 +28,14 @@ export class LearnPage implements OnInit {
   }
 
   selectedItem(learnSelected: CodeTextTranslate) {
+    const learnSelectedMin = Utils.convertToCodeTextTranslateMin(learnSelected);
     this.authentificationService.dialect = Utils.findDialect(learnSelected.code);
-    this.authentificationService.user.dialectSelected = learnSelected;
+    this.authentificationService.user.dialectSelected = learnSelectedMin
     if(!this.authentificationService.user.dialects){
       this.authentificationService.user.dialects = {} as Dialects;
       this.authentificationService.user.dialects[this.authentificationService.dialect] = {} as Dialect;
     }
-    this.authentificationService.user.dialects[this.authentificationService.dialect].learn = learnSelected;
+    this.authentificationService.user.dialects[this.authentificationService.dialect].learn = learnSelectedMin;
   }
 
 }

@@ -6,6 +6,7 @@ export class CONSTANTS {
     public static RESPONSE_KO = 'Une erreur est survenue. Veuillez réessayer ultérieurement.';
     public static LOGIN_KO = 'Une erreur est survenue lors de la connexion. Veuillez réessayer ultérieurement.';
     public static NOT_SIGNIN = 'Veuillez créer un compte avant de vous connecter.';
+    public static GET_RESULT_KO = 'Impossible de récupérer les informations supplémentaires client.';
     public static SEND_EMAIL_KO = 'Une erreur est survenue lors de l\'envoi du mail. Veuillez réessayer ultérieurement.';
     public static UPDATE_DAY_CONNECTED_KO = 'Une erreur est survenue lors de la connexion de l\'utilisateur.';
     public static UPDATE_DIALECT_KO = 'Une erreur est survenue lors de la mise à jour du dialecte.';
@@ -20,6 +21,9 @@ export class CONSTANTS {
     public static FORGOT_PASSWORD_SUBHEADER = 'Veuillez saisir votre email de connexion afin de recevoir le lien de réinitialisation de votre mot de passe.';
     public static FORGOT_PASSWORD_MESSAGE = 'N\'hésitez pas à vérifier les spams si le mail n\'arrive pas dans la boîte principale.';
     public static FORGOT_PASSWORD_LABEL_SUCCESS = 'Vous allez recevoir un message à l\'adresse ';
+    public static UPDATE_LESSON_SUCCESS = 'Félicitations! Vous avez terminé cette leçon!';
+    public static PREMIUM_ACCESS = 'Ce contenu est exclusif aux abonnements premium.';
+    public static UNLOCKED_PREVIOUS_LESSON = 'Débloquer les précedentes leçons avant d\'accéder à la leçon.';
     public static COLLECTION_DIALOG = 'shikomori_francais_dialogs';
     public static FRENCH_DIALECT = 'FREN';
     public static transcodeTypeQuestion: { [key: number]: string } = {

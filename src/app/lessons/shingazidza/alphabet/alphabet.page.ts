@@ -29,7 +29,7 @@ export class AlphabetPage implements OnInit {
 
   saveLesson() {
     if (this.authentificationService.user.uid && this.alphabetLesson) {
-      this.authentificationService.updateLesson(this.alphabetLesson, 'users', this.authentificationService.user.uid).then(() => {
+      this.authentificationService.updateLesson(this.alphabetLesson, this.authentificationService.user.uid).then(() => {
         this.router.navigate(['/tabs/lessons']);
       });
     } else {

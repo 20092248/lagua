@@ -1,6 +1,4 @@
-import { CodeLabel } from "./codeLabel.model";
 import { CodeLabelMin } from "./codeLabelMin.model";
-import { CodeTextTranslate } from "./codeTextTranslate.model";
 import { CodeTextTranslateMin } from "./codeTextTranslateMin.model";
 import { Lesson } from "./lesson.model";
 import { LessonMin } from "./lessonMin.model";

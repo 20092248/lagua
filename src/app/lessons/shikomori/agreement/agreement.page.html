@@ -9,9 +9,717 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <div class="ion-margin">
-    <app-accordion [dialectCode]="'km'" [lessonCode]="'ACDC'"></app-accordion>
-  </div>
+  <ion-accordion-group [multiple]="true" [value]="['determinant','tableau']">
+    <ion-accordion value="determinant" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+      <ion-item class="ion-margin-top" lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Les déterminants</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>Ce sont :</p>
+        <div class="ion-padding-horizontal">
+          <h5><i>a) les pré-préfixes :</i></h5>
+          <p>Ce sont des éléments qui précèdent le préfixe de classe et qui permettent
+            de donner au nom un sens défini, déterminé. Le mot désigné est connu ou
+            reconnu par l'interlocuteur. Ex. : <span>muntru</span> "une personne", <span><u>u</u>muntru</span> "la
+            personne (celle dont on a déjà parlé)", <span>nkuhu</span> "une poule", <span><u>i</u>nkuhu</span> "la
+            poule (celle qu'on a déjà mentionnée, celle qui est connue de votre
+            interlocuteur). L'emploi du pré-préfixe entraîne ou s'accompagne souvent
+            de l'emploi d'un démonstratif ou d'un possessif après le nom.</p>
+          <h5><i>b) Les adjectifs :</i></h5>
+          <p>Les adjectifs (qualiftcatifs et numéraux) prennent généralement le même
+            préfixe que le nom qu'ils déterminent. Les accords en classe 5 et 9/10
+            posent parfois problème. Ex. : <span><u>mu</u>ntru <u>mu</u>zuri</span> "une jolie personne",
+            <span><u>wa</u>ntru <u>wa</u>zuri</span> "de jolies personnes". Mais on a : <span>gari <u>dzú</u>zuri</span>
+            "une
+            belle
+            voiture", <span>nguo <u>ndzu</u>zuri</span> "un joli vêtement" ou "de jolis vêtements". Outre ces accords
+            souvent
+            imprévisibles,
+            certains adjectifs voient
+            leur consonnes initiales alterner avec d'autres. Compte-tenu de cette particularité et de son caractère
+            parfois
+            imprévisible, l'entrée du mot dans
+            le lexique sera complétée des accords de ces trois classes.
+          </p>
+          <h5><i>c) les démonstratifs :</i></h5>
+          <p>Le shindzuani connaît trois types de démonstratifs selon le degré
+            d'éloignement de l'objet désigné: le <i>proche</i> <span>-ni</span> ou <span>-nu</span> "ceci, ce...ci",
+            <i>l'intermédiaire</i> <span>--o</span> (qui s'accorde sur deux paradigmes, l'objet désigné
+            n'est pas très éloigné) et <i>l'éloigné</i> <span>-le</span> "cela, ce...là-bas". Ex. : <span>shintru
+              <u>sh</u>ini</span>
+            "cet objet-ci", <span>shintru <u>shi</u>sho</span> "cet objet-là" et <span>shintru <u>shi</u>le</span> "cet
+            objet
+            là-bas".
+          </p>
+          <p>Dans les contes et les narrations, ces trois démonstratifs (plus
+            particulièrement l'intermédiaire et l'éloigné) peuvent être employés comme
+            des démonstratifs de référence: shintru <u>shi</u>sho "l'objet en question",
+            djini lile "le djinn en question".</p>
+          <p>Il convient ici de s'attarder un tout petit peu sur les 3 classes locatives 16,
+            17 et 18. Si, sur le plan morphologique, elles ne présentent pas de
+            difficulté particulière, il me semble par contre utile de préciser les valeurs
+            sémantiques qui les distinguent:</p>
+          <div class="ion-padding-horizontal">
+            <p>- les 3 formes d'accords de la classe 16 indiquent des endroits très précis et
+              bien délimités. Ces accords présentent les trois degrés vus ci-dessus: <span>vani</span>
+              ou <span>vanu</span> "ici", <span>vavo</span> "là" et <span>vale</span> "là-bas",
+              - les formes d'accords des classes 17 et 18 indiquent des endroits moins
+              précis et certainement plus vastes que pour la classe 16. Ces deux classes
+              semblent apparaître comme en opposition de nombre singulier/pluriel. On
+              a ainsi:</p>
+            <p class="ion-padding-left ion-margin-left">
+              cl.l7 : <span>hunu</span> "ici, par ici"
+              <span>hule</span> "là-bas, par là-bas (un endroit
+              qu'on voit)"
+              <span>hoho</span> "là-bas (un endroit qu'on ne
+              voit pas)"
+            </p>
+            <p class="ion-padding-left ion-margin-left">
+              cl.l8 : <span>munu</span> "ici, partout ici"
+              <span>mule</span> "là-bas, partout là-bas (toute
+              une région qu'on voit"
+              <span>momo</span> "là-bas, partout là-bas (toute
+              une région qu'on ne voit pas)"
+            </p>
+          </div>
+          <h5>d) le connecttf <span>-a</span> :</h5>
+          <p>C'est un élément grammatical qui introduit un complément de nom. Ex. :
+            <span>umwana <u>wá</u> shekhi</span> "le fils du cheikh", <span>mindru <u>yá</u> mbuzi</span> "pattes de
+            chèvres".
+          </p>
+          <h5><i>e) les possessifs :</i></h5>
+          <p>Les possessifs sont construits à partir du connectif -a qui s'accorde
+            normalement, suivi d'un pronom substitutif qui ne peut s'employer que
+            dans ce contexte. Ces pronoms, que j'appelle <i>possessifs</i>, sont pour les premières et deuxièmes
+            personnes:
+            <span>-ngu</span> "moi",
+            <span>-ho</span> "toi", <span>-tru</span> "nous" et
+            <span>-nyu</span> "vous". Ex. : <span>mwana <u>wa</u>ngu</span> "mon enfant (Litt. l'enfant de moi),
+            <span>shintru <u>sha</u>ngu</span> "ma chose (Litt. : la chose de moi), <span>mme</span> waho "ton mari
+            (Litt : le mari de toi)...
+            Pour les pronoms possessifs des autres classes, voir le tableau de la page
+            24.
+          </p>
+          <h5><i>j) les indéfinis et les interrogatifs :</i></h5>
+          <p>Ils obéissent aux mêmes accords que les démonstratifs et le connectjf. Ex. : <span>muntru
+              <u>w</u>ontsi</span>
+            "tout homme,
+            quiconque", <span>shintru <u>sh</u>ontsi</span> "tout objet,
+            objet quelconque", <span>muntru <u>ú</u>vi</span> ? : "quel homme ?", <span>shintru <u>shi</u>vi</span> ? :
+            "quel objet ?"</p>
+        </div>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="verbaux" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+      <ion-item lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Les verbaux</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <div>
+          <p>Dans la conjugaison, les verbes doivent obligatoirement avoir un préfixe
+            sujet, en accord de classe avec le nom sujet (sauf pour les premières et
+            deuxièmes personnes où on a les pronoms personnels). Ils peuvent aussi
+            recevoir un préfixe, dit traditionnellement "infixe-objet" (remplissant la
+            fonction d'objet). Ce dernier précède immédiatement le radical verbal. Ex.
+            <span>umwána <u>a</u>sinwa lidzía</span> "l'enfant boit le lait" ; <span>umwana
+              <u>a</u>si<u>li</u>nwa</span>
+            "l'enfant le
+            boit".
+          </p>
+        </div>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="tableau" class="ion-margin-bottom" toggleIcon="chevron-down-outline" toggleIconSlot="end">
+      <ion-item lines="none" slot="header">
+        <ion-label class="ion-text-wrap">Le tableau des accords</ion-label>
+      </ion-item>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>Les principaux accords sont résumés dans le tableaux ci-dessous:</p>
+        <!-- tableaux -->
+        <ion-grid class="ion-text-center">
+          <ion-row class="ion-no-border ion-full-height">
+            <ion-col class="ion-no-padding" size="3">
+              <ion-grid>
+                <ion-row>
+                  <ion-col class="ion-min-spacing">classes</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col></ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col></ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>1/mu-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>2/wa-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>3/mu-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>4/mi-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>5/dzi-, ø-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>6/ma-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>7/sh-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>8/z-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>9/N-, ø-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>10/ø-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="ion-min-spacing-2">11/cl.6, 10</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>15/hu-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>16/va-, ø-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>17</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>18</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+            <ion-col class="ion-no-padding" size="9">
+              <swiper-container pagination="true">
+                <swiper-slide>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>préfixe</ion-col>
+                      <ion-col>pré-préfixe</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>mu-</ion-col>
+                      <ion-col>u-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>wa-</ion-col>
+                      <ion-col>u-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>mu-</ion-col>
+                      <ion-col>u-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>mi-</ion-col>
+                      <ion-col>i-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>dzi-, ø-</ion-col>
+                      <ion-col>li-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>ma-</ion-col>
+                      <ion-col>ya-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>shi-</ion-col>
+                      <ion-col>i-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>zi-</ion-col>
+                      <ion-col>i-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>N-, ø-</ion-col>
+                      <ion-col>i-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>N-, ø-</ion-col>
+                      <ion-col>zi-, izi-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>u-</ion-col>
+                      <ion-col>u-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>hu-</ion-col>
+                      <ion-col>i-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>va, ø-</ion-col>
+                      <ion-col>u-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col>u-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col>u-</ion-col>
+                    </ion-row>
+                    <ion-row class="ion-no-border">
+                    </ion-row>
+                  </ion-grid>
+                </swiper-slide>
+                <swiper-slide>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>adj. qual</ion-col>
+                      <ion-col>adj. num.</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>mu-</ion-col>
+                      <ion-col>u-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>wa-</ion-col>
+                      <ion-col>wa-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>mu-</ion-col>
+                      <ion-col>u-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>mi-</ion-col>
+                      <ion-col>mi-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">dzi-, dz-, ø-</ion-col>
+                      <ion-col>ø-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>ma-</ion-col>
+                      <ion-col>ma-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>shi-</ion-col>
+                      <ion-col>shi-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>zi-</ion-col>
+                      <ion-col>zi-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">N-, ndzi-, ndzi-ø-</ion-col>
+                      <ion-col>ø-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">N-, ndzi-, ndzi-ø-</ion-col>
+                      <ion-col>N-, ø-,</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>mu-</ion-col>
+                      <ion-col>u-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>va- ~ vwa-</ion-col>
+                      <ion-col>va- ~ vwa-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </swiper-slide>
+                <swiper-slide>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>démonstratifs</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>proche</ion-col>
+                      <ion-col class="ion-min-spacing">intermédiaire</ion-col>
+                      <ion-col>éloigné</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>-ni ~ -nu</ion-col>
+                      <ion-col>-o</ion-col>
+                      <ion-col>-le</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>unu-</ion-col>
+                      <ion-col>uwo</ion-col>
+                      <ion-col>ule</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">wani ~ wanu</ion-col>
+                      <ion-col>wawo</ion-col>
+                      <ion-col>wale</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>unu</ion-col>
+                      <ion-col>uwo</ion-col>
+                      <ion-col>ule</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>ini ~ inu</ion-col>
+                      <ion-col>iyo</ion-col>
+                      <ion-col>ile</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">lini ~ linu</ion-col>
+                      <ion-col>lilo</ion-col>
+                      <ion-col>lile</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">yani ~ yanu</ion-col>
+                      <ion-col>yayo</ion-col>
+                      <ion-col>yale</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">shini ~ shinu</ion-col>
+                      <ion-col>shisho</ion-col>
+                      <ion-col>shile</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">zini ~ zinu</ion-col>
+                      <ion-col>zizo</ion-col>
+                      <ion-col>zile</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>ini ~ inu</ion-col>
+                      <ion-col>iyo</ion-col>
+                      <ion-col>ile</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">zini ~ zinu</ion-col>
+                      <ion-col>zizo</ion-col>
+                      <ion-col>zile</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>unu</ion-col>
+                      <ion-col>uwo</ion-col>
+                      <ion-col>ule</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">ini ~ inu</ion-col>
+                      <ion-col>iyo</ion-col>
+                      <ion-col>ile</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-min-spacing">vani- ~ vanu-</ion-col>
+                      <ion-col>vavo</ion-col>
+                      <ion-col>vale</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>hunu</ion-col>
+                      <ion-col>hoho</ion-col>
+                      <ion-col>hule</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>munu</ion-col>
+                      <ion-col>momo</ion-col>
+                      <ion-col>mule</ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </swiper-slide>
+                <swiper-slide>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>connectif</ion-col>
+                      <ion-col>possessifs</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>-a</ion-col>
+                      <ion-col>-a-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>wa</ion-col>
+                      <ion-col>-ahe</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>wa</ion-col>
+                      <ion-col>-ao</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>wa</ion-col>
+                      <ion-col>-ao</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>ya</ion-col>
+                      <ion-col>-ayo</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>la</ion-col>
+                      <ion-col>-alo</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>ya</ion-col>
+                      <ion-col>-ayo</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>sha</ion-col>
+                      <ion-col>-asho</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>za</ion-col>
+                      <ion-col>-azo</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>ya</ion-col>
+                      <ion-col>-ayo</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>za</ion-col>
+                      <ion-col>-azo</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>wa</ion-col>
+                      <ion-col>-ao</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>ya</ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>vwa</ion-col>
+                      <ion-col>-avo</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>mwa-</ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </swiper-slide>
+                <swiper-slide>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>préfixes verbaux</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>sujet</ion-col>
+                      <ion-col>objet</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>a-</ion-col>
+                      <ion-col>-mu-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>wa-</ion-col>
+                      <ion-col>-wa-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>u-</ion-col>
+                      <ion-col>-u-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>i-</ion-col>
+                      <ion-col>-i-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>li-</ion-col>
+                      <ion-col>-li</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>ya-</ion-col>
+                      <ion-col>-ya-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>shi-</ion-col>
+                      <ion-col>-shi-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>zi-</ion-col>
+                      <ion-col>-zi</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>i-</ion-col>
+                      <ion-col>-i-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>zi-</ion-col>
+                      <ion-col>-zi</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>u-</ion-col>
+                      <ion-col>-u-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>i-</ion-col>
+                      <ion-col>-i-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>vu-</ion-col>
+                      <ion-col>-vwa-</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col></ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </swiper-slide>
+              </swiper-container>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div class="ion-padding-horizontal" slot="content">
+        <p>0 : Kavu, 1 : Moja, 2 : Mbili, 3 : Traru, 4 : Nne, 5 : Tsanu, 6 : Sita, 7 : Saba, 8 : Nane, 9 : Shendra</p>
+        <p>Les nombres se comportent comme des adjectifs, et comme tous les adjectifs, ils se placent après le nom, mais avant le démonstratif.</p>
+        <p>Certains nombres sont invariables tandis que d'autres s'accordent en genre avec le nom. Les nombres 1, 6, 7, 9, 10, sont invariables et ne prennent pas de préfixes de classes.</p>
+        <p>Les nombres 2, 3, 4, 5, 8 s'accordent avec le nom et prennent un préfixe de classe pluriel.</p>
+        <p>Les principaux accords des nombres sont dans le tableaux ci-dessous:</p>
+        <!-- tableaux -->
+        <ion-grid class="ion-text-center">
+          <ion-row class="ion-no-border ion-full-height">
+            <ion-col class="ion-no-padding" size="3">
+              <ion-grid>
+                <ion-row>
+                  <ion-col class="ion-min-spacing">classes</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>2/wa-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>4/mi-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>6/ma-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>8/z-</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>10/ø-</ion-col>
+                </ion-row>
+                <ion-row class="ion-no-border">
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+            <ion-col class="ion-no-padding" size="9">
+              <swiper-container pagination="true">
+                <swiper-slide>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>2 : deux</ion-col>
+                      <ion-col>3 : trois</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>waili</ion-col>
+                      <ion-col>wararu</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>mili</ion-col>
+                      <ion-col>miraru</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>maili</ion-col>
+                      <ion-col>mararu</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>mbili</ion-col>
+                      <ion-col>traru</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>mbili</ion-col>
+                      <ion-col>traru</ion-col>
+                    </ion-row>                    
+                  </ion-grid>
+                </swiper-slide>
+                <swiper-slide>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>4 : quatre</ion-col>
+                      <ion-col>5 : cinq</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>wanne</ion-col>
+                      <ion-col>watsano</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>minne</ion-col>
+                      <ion-col>mitsano</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>manne</ion-col>
+                      <ion-col>matsano</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>nne</ion-col>
+                      <ion-col>tsanu</ion-col>
+                    </ion-row>  
+                    <ion-row>
+                      <ion-col>nne</ion-col>
+                      <ion-col>tsanu</ion-col>
+                    </ion-row>                  
+                  </ion-grid>
+                </swiper-slide>
+                <swiper-slide>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>8 : huit</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>wanane</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>minane</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>manane</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>nane</ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>nane</ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </swiper-slide>
+              </swiper-container>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
   <div class="ion-text-center ion-margin-bottom">
     <ion-button (click)="saveLesson()">Terminer le cours</ion-button>
   </div>

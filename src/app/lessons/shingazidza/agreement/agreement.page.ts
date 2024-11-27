@@ -30,7 +30,7 @@ export class AgreementPage implements OnInit {
 
   saveLesson() {
     if (this.authentificationService.user.uid && this.agreementLesson) {
-      this.authentificationService.updateLesson(this.agreementLesson, 'users', this.authentificationService.user.uid).then(() => {
+      this.authentificationService.updateLesson(this.agreementLesson, this.authentificationService.user.uid).then(() => {
         this.router.navigate(['/tabs/lessons']);
       });
     } else {

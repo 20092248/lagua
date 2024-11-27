@@ -177,8 +177,8 @@
         </ion-card>
       </div>
 
-      <div class="ion-unlock-lesson" *ngIf="premium">
-        <ion-card class="ion-activatable" [routerLink]="['/tabs/topics']">
+      <div class="ion-unlock-lesson" [ngClass]="{'ion-lock-lesson':!premium}">
+        <ion-card class="ion-activatable" (click)="goToTopics()">
           <ion-ripple-effect></ion-ripple-effect>
           <ion-card-header>
             <ion-card-title>Acquérir du vocabulaire</ion-card-title>
@@ -188,7 +188,7 @@
             <div class="">Valider chaque thème pour débloquer le suivant</div>
           </ion-card-content>
           <ion-button size="small" class="ion-button ion-padding-end ion-float-right ion-button-position" fill="clear"
-            [routerLink]="['/tabs/topics']">Voir les thèmes</ion-button>
+          (click)="goToTopics()">Voir les thèmes</ion-button>
         </ion-card>
       </div>
 
