@@ -88,14 +88,14 @@ export class AuthentificationService {
         this.alertService.presentToastWithIcon(CONSTANTS.NOT_SIGNIN, 2000, 'danger', 'alert-circle-outline');
         throw Error(CONSTANTS.NOT_SIGNIN);
       }
-      if(documentLesson.exists()) {
+      if (documentLesson.exists()) {
         this.userDialectLesson = documentLesson.data() as UserDialectLesson;
       } else {
         this.logout(false);
         this.alertService.presentToastWithIcon(CONSTANTS.GET_RESULT_KO, 2000, 'danger', 'alert-circle-outline');
         throw Error(CONSTANTS.NOT_SIGNIN);
       }
-      if(documentReview.exists()) {
+      if (documentReview.exists()) {
         this.userDialectReview = documentReview.data() as UserDialectReview;
       } else {
         this.logout(false);
@@ -444,17 +444,25 @@ export class AuthentificationService {
     const dialectUser = this.user.dialects[this.dialect];
     const userRef = doc(getFirestore(), 'users', uid);
     const resultReviewRef = doc(getFirestore(), 'resultReviews', uid);
-    // const userReviewExist = this.userDialectReview[this.dialect].resultReviews.find(l => l.order === updateLesson.code);
-
+    
     const nextReview = await this.reviewService.findNextReview(dialectUser.review).then(result => { return result });
     dialectUser.review = nextReview;
-    this.userDialectReview[this.dialect].resultReviews.push(updateReview);
     const updateNextReviewDoc = this.infoNextReview(nextReview);
-    const updateResultReviewDoc = this.infoResultReview(this.userDialectReview[this.dialect].resultReviews);
     if (updateNextReviewDoc) {
       await updateDoc(userRef, updateNextReviewDoc);
     }
-    if (updateResultReviewDoc/* && !userReviewExist*/) {
+    
+    var index: number = 0;
+    const userReviewExist = this.userDialectReview[this.dialect].resultReviews.find((l, i) => {
+      index = i; return l.category === updateReview.category && l.lesson === updateReview.lesson && l.order === updateReview.order
+    });
+    if(index && userReviewExist) {
+      this.userDialectReview[this.dialect].resultReviews.splice(index, 1, userReviewExist)
+    } else {
+      this.userDialectReview[this.dialect].resultReviews.push(updateReview);
+    }
+    const updateResultReviewDoc = this.infoResultReview(this.userDialectReview[this.dialect].resultReviews);
+    if (updateResultReviewDoc) {
       await updateDoc(resultReviewRef, updateResultReviewDoc);
     }
     await this.reviewService.getPreviousReviews(nextReview).then();
@@ -464,16 +472,19 @@ export class AuthentificationService {
     const dialectUser = this.user.dialects[this.dialect];
     const userRef = doc(getFirestore(), 'users', uid);
     const resultLessonsRef = doc(getFirestore(), 'resultLessons', uid);
-    
+
     const userLessonExist = this.userDialectLesson[this.dialect].resultLessons.find(l => l.code === updateLesson.code);
     if (dialectUser.lesson && !userLessonExist) {
       const nextLesson = await this.lessonService.findNextLesson(dialectUser.lesson);
       dialectUser.lesson = nextLesson;
-      this.userDialectLesson[this.dialect].resultLessons.push(Utils.convertToLessonMin(updateLesson));
       const updateNextLessonDoc = this.infoNextLesson(nextLesson);
-      const updateResultLessonDoc = this.infoResultLesson(this.userDialectLesson[this.dialect].resultLessons);
-      if (updateNextLessonDoc && updateResultLessonDoc) {
+      if (updateNextLessonDoc) {
         await updateDoc(userRef, updateNextLessonDoc);
+      }
+      
+      this.userDialectLesson[this.dialect].resultLessons.push(Utils.convertToLessonMin(updateLesson));
+      const updateResultLessonDoc = this.infoResultLesson(this.userDialectLesson[this.dialect].resultLessons);
+      if(updateResultLessonDoc) {
         await updateDoc(resultLessonsRef, updateResultLessonDoc);
       }
     }
@@ -621,17 +632,17 @@ export class AuthentificationService {
     const dialect = Utils.findDialect(this.user.dialectSelected.code);
     this.user.dialects[dialect].review = firstReview;
     this.user.dialects[dialect].lesson = Utils.convertToLessonMin(firstLesson);
-    this.userDialectLesson[dialect] = { resultLessons : [] };
-    this.userDialectReview[dialect] = { resultReviews : [] };
+    this.userDialectLesson[dialect] = { resultLessons: [] };
+    this.userDialectReview[dialect] = { resultReviews: [] };
   }
 
   addMonth(date: Timestamp, month: number) {
-    return Timestamp.fromDate(new Date(new Date(date.toDate().setMonth(date.toDate().getMonth() + month)).setDate(date.toDate().getDate() -1)));
+    return Timestamp.fromDate(new Date(new Date(date.toDate().setMonth(date.toDate().getMonth() + month)).setDate(date.toDate().getDate() - 1)));
   }
 
   getPremium() {
     const account = this.user.account;
-    if(account) {
+    if (account) {
       return account.premium && account.endDate?.toDate() > new Date();
     } else {
       return false;
