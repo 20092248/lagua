@@ -39,6 +39,7 @@ export class QuestionService {
       this.questions = querySnapshot.docs[0].data();
       this.questions.id = querySnapshot.docs[0].id;
     } else {
+      this.questions = [];
       console.log('Impossible de récupérer la liste de questions.');
     }
     return this.questions;

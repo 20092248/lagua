@@ -12,6 +12,7 @@ import { TranslatePageModule } from '../translate/translate.module';
 import { SpellPageModule } from '../spell/spell.module';
 import { MemoPageModule } from '../memo/memo.module';
 import { CountdownComponentModule } from 'src/app/countdown/countdown.module';
+import { InfoPageModule } from '../info/info.module';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { CountdownComponentModule } from 'src/app/countdown/countdown.module';
     TranslatePageModule,
     SpellPageModule,
     MemoPageModule,
+    InfoPageModule,
     CountdownComponentModule
   ],
   declarations: [MixPage],

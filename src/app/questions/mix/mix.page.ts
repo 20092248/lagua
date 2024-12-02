@@ -28,7 +28,7 @@ export class MixPage implements OnInit {
     this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation()?.extras?.state) {
         this.newReview = this.router.getCurrentNavigation()?.extras?.state?.['newReview'];
-        this.typeDisplay = this.nbrQuestion ? this.questions[this.nbrQuestion].type : this.typeDisplay;
+        this.typeDisplay = this.questions[this.nbrQuestion]?.type;
       }
     });
   }

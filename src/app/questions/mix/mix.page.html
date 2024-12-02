@@ -1,6 +1,9 @@
 <!-- COUNTDOWN -->
 <app-countdown *ngIf="countDownActive" (activeEvent)="setCountDownActive($event)"></app-countdown>
 
+<!-- INFO -->
+<app-info [newReview]="newReview" class="ion-page" *ngIf="typeDisplay === 'I' && !countDownActive" (nextQuestionEvent)="nextQuestion($event)"></app-info>
+
 <!-- MEMO -->
 <app-memo [newReview]="newReview" class="ion-page" *ngIf="typeDisplay === 'C' && !countDownActive" (nextQuestionEvent)="nextQuestion($event)"></app-memo>
 

@@ -44,7 +44,7 @@ export class NominalPage implements OnInit {
       this.router.navigate(['/tabs/lessons']);
     } else if (this.user.uid && this.nominalLesson) {
       this.authentificationService.updateLesson(this.nominalLesson, this.user.uid).then(() => {
-        this.alertService.presentToast(CONSTANTS.UPDATE_LESSON_SUCCESS, 3000, 'success');
+        this.alertService.presentToast(CONSTANTS.UPDATE_LESSON_SUCCESS, 3000, 'lagua');
         this.router.navigate(['/tabs/lessons']);
       }, () => { console.error('Erreur lors de la sauvegarde de la leçon'); });
     } else {

@@ -58,6 +58,10 @@ img.ion-image-card {
   max-height: 300px;
 }
 
+ion-footer > ion-toolbar {
+  --background: #eef1ee;
+}
+
 ion-radio::part(container) {
   border-radius: 8px;
   border: 2px solid #ddd;

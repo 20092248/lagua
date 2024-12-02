@@ -21,6 +21,10 @@ const routes: Routes = [
         loadChildren: () => import('./qcm/qcm.module').then(m => m.QcmPageModule)
       },
       {
+        path: 'info',
+        loadChildren: () => import('./info/info.module').then(m => m.InfoPageModule)
+      },
+      {
         path: 'memo',
         loadChildren: () => import('./memo/memo.module').then(m => m.MemoPageModule)
       },
