@@ -64,6 +64,9 @@ export class ModifyReviewPage implements OnInit {
 
   addQuestion(index: number) {
     const question = { ...this.questions[index] };
+    if(!question.choices) {
+      question.choices = [{ choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }];
+    } 
     this.questions.splice(index + 1, 0, question);
   }
 

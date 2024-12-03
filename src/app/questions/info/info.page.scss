@@ -1,0 +1,15 @@
+ion-row:first-child {
+    height: 20%;
+    display: flex;
+    align-content: center;
+}
+ion-row:last-child {
+    height: 80%
+}
+
+ion-card {
+    border-radius: 15px;
+    ion-card-header {
+        border-bottom: 2px #ddd solid;
+    }
+}
