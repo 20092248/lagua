@@ -49,11 +49,13 @@
       <ion-input value="{{q.text}}" [(ngModel)]="q.text" (ionChange)="eventQuestion()"></ion-input>
     </ion-item>
     <ion-item [ngStyle]="{'--background': !q.translate ? 'lightcoral' : '#fff'}">
+      <ion-icon class="ion-no-margin" (click)="addChoices(q)" name="add-circle-outline" slot="start"></ion-icon>
       <ion-label>Traduction</ion-label>
       <ion-input value="{{q.translate}}" [(ngModel)]="q.translate" (ionChange)="eventQuestion()"></ion-input>
     </ion-item>
     <div class="ion-margin-horizontal" *ngFor="let c of q.choices; let index=index">
       <ion-item [ngStyle]="{'--background': !c.choice ? 'lightcoral' : '#fff'}">
+        <ion-icon *ngIf="!index" class="ion-no-margin ion-tash-choice" (click)="removeChoices(q)" name="trash-outline" slot="start"></ion-icon>
         <ion-label>N°{{index}} - </ion-label>
         <ion-input value="{{c.choice}}" [(ngModel)]="c.choice" (ionChange)="eventQuestion()"></ion-input>
         <ion-toggle slot="end" [checked]="c.answer" [(ngModel)]="c.answer" (ionChange)="eventQuestion()"></ion-toggle>

@@ -64,14 +64,26 @@ export class ModifyReviewPage implements OnInit {
 
   addQuestion(index: number) {
     const question = { ...this.questions[index] };
-    if(!question.choices) {
+    if (!question.choices) {
       question.choices = [{ choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }];
-    } 
+    }
     this.questions.splice(index + 1, 0, question);
   }
 
   removeQuestion(index: number) {
     this.questions.splice(index, 1);
+  }
+
+  addChoices(question: any) {
+    if (!question.choices) {
+      question.choices = [{ choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }];
+    }
+  }
+
+  removeChoices(question: any) {
+    if (question.choices) {
+      delete question.choices;
+    }
   }
 
   copyReview() {
