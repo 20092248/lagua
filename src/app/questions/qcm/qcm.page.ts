@@ -44,7 +44,7 @@ export class QcmPage implements OnInit {
   }
 
   checkedRadioGroup(event: any) {
-    if(!event.detail.value) {
+    if(!event.detail.value || typeof event.detail.value === 'object') {
       this.answerSelected = undefined;
     } else {
       this.audioService.play('click');

@@ -39,7 +39,7 @@
       <ion-label>Description</ion-label>
       <ion-input value="{{q.description}}" [(ngModel)]="q.description" (ionChange)="eventQuestion()"></ion-input>
     </ion-item>
-    <ion-item [ngStyle]="{'--background': !q.img ? 'lightcoral' : '#fff'}">
+    <ion-item *ngIf="q.type !== 'I'" [ngStyle]="{'--background': !q.img ? 'lightcoral' : '#fff'}">
       <ion-label id="img-trigger">Image</ion-label>
       <ion-input value="{{q.img}}" [(ngModel)]="q.img" (ionChange)="eventQuestion()"></ion-input>
       <img src="{{q.img}}" style="height: 40px"/>

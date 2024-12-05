@@ -30,6 +30,7 @@ export class InfoPage implements OnInit {
   }
 
   continue() {
+    this.questionService.nbrQuestion++;
     if (this.nbrQuestion !== this.questions.length) {
       this.question = this.questions[this.nbrQuestion];
       this.nextQuestionEvent.emit(Math.floor(Math.random() * 4));
