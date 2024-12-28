@@ -68,6 +68,8 @@ export class ModifyReviewPage implements OnInit {
       question.choices = [{ choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }];
     }
     this.questions.splice(index + 1, 0, question);
+    delete question.choices;
+    question.choices = [{ choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }, { choice: '', answer: false }];
   }
 
   removeQuestion(index: number) {
