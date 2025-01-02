@@ -12,5 +12,5 @@ export const environment = {
   paypal: {
     clientId : 'Aex9Pkp_nDfTNSiv7z_BiupH2xJk6ZKN8U-4glIyUpEz1EonylEf_WogONgzWYN8F2VMMxOxKYTdIxF-'
   },
-  api:'https://lagua-backend.onrender.com'
+  api:'https://lagua-backend.vercel.app'
 };

@@ -62,7 +62,7 @@
             </ion-label>
           </ion-item>
           <div id="rawData" class="ion-padding" slot="content">
-            <p class="ion-text-center ion-total-content" id="{{user.uid}}_{{user.email}}_{{subscriptionSelected.price}}">Total du jour : {{subscriptionSelected.price}} €</p>
+            <p class="ion-text-center ion-total-content" id="{{user.uid}}_{{user.email}}_{{subscriptionSelected.price}}_{{environment}}">Total du jour : {{subscriptionSelected.price}} €</p>
             <div class="ion-text-center ion-paypal-position-button"><ngx-paypal [config]="payPalConfig"></ngx-paypal></div>
             <!-- <div id="paypal-button-container"></div> -->
             <!-- <ion-button class="ion-paypal-button" shape="round" expand="block" (click)="PaymentPayPal()">

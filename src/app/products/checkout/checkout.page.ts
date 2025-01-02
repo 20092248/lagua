@@ -16,6 +16,7 @@ import { CryptoService } from 'src/app/services/crypto';
 import { StatusBar } from '@capacitor/status-bar';
 import { Utils } from 'src/app/utils/utils';
 import { LoadingService } from 'src/app/services/loading.service';
+import { Checkout } from 'src/app/model/checkout';
 declare let paypal: any;
 declare let Stripe: any;
 
@@ -45,6 +46,10 @@ export class CheckoutPage implements OnInit {
   }
   get isCapacitor() {
     return this.settingService.isCapacitor;
+  }
+
+  get environment() {
+    return environment.production;
   }
 
   constructor(private router: Router, private authentificationService: AuthentificationService, private settingService: SettingService, private alertService: AlertService, private http: HttpClient, private cryptoService: CryptoService, private loadingService: LoadingService) {
@@ -106,6 +111,7 @@ export class CheckoutPage implements OnInit {
     if (!this.settingService.stripe) {
       const data$ = this.http.get<any>(environment.api + '/getKey?uid=' + key).pipe(first());
       const { stripe } = await lastValueFrom(data$);
+      console.log(stripe);
       this.settingService.stripe = stripe;
     }
     const publishableKey = this.settingService.stripe.prodMode === 'true' ? this.settingService.stripe.key : this.settingService.stripe.keyTest;
@@ -116,7 +122,7 @@ export class CheckoutPage implements OnInit {
         {
           type: 'CARD',
           parameters: {
-            allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+            allowedAuthMethods: ['CARD', 'PAN_ONLY', 'CRYPTOGRAM_3DS'],
             allowedCardNetworks: ['AMEX', 'VISA', 'MASTERCARD']
           },
           tokenizationSpecification: {
@@ -185,7 +191,8 @@ export class CheckoutPage implements OnInit {
     try {
       this.displayPaymentContent = true;
       this.titlePayment = 'Moyen de paiement';
-      const data$ = this.httpPost('/create-payment-intent', { uid: this.user.uid, email: this.user.email, account: this.user.account });
+      Utils.clearResultLessons
+      const data$ = this.httpPost('/create-payment-intent', new Checkout(this.user.uid, this.user.email, this.user.account, environment.production));
       const { client_secret, publishableKey } = await lastValueFrom(data$);
       const stripe = Stripe(publishableKey);
       const elements = stripe.elements({ clientSecret: client_secret });
@@ -218,7 +225,7 @@ export class CheckoutPage implements OnInit {
       const responseRawValue = await fetch(environment.api + '/payButton', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ uid: data[0], email: data[1], price: data[2] }),
+        body: JSON.stringify({ uid: data[0], email: data[1], price: data[2], production: data[3] === 'true' }),
       }).then(response => response.json());
       const response = JSON.parse(responseRawValue);
       if (response?.details?.[0]) {
